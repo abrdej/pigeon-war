@@ -5,12 +5,12 @@
 
 struct stone final
 {
-	static entity_data create()
+	static entity_definition create()
 	{
-		entity_data data(typeid(stone));
-		data.name = "Kamie�";
-		data.health = indestructible;
-		return data;
+		entity_definition entity_def(typeid(stone));
+		entity_def.name = "Kamie�";
+		entity_def.health = indestructible;
+		return entity_def;
 	}
 };
 

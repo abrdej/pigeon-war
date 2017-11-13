@@ -5,7 +5,7 @@
 
 struct shooter final
 {
-	static entity_data create();
+	static entity_definition create();
 };
 
 #endif

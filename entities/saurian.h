@@ -7,13 +7,13 @@
 class saurian final
 {
 public:
-	static entity_data create()
+	static entity_definition create()
 	{
-		entity_data data(typeid(saurian));
-		data.name = "Jaszczur";
-		data.health = 35;
-		data.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<tongue_of_fire>());
-		return data;
+		entity_definition entity_def(typeid(saurian));
+		entity_def.name = "Jaszczur";
+		entity_def.health = 35;
+		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<tongue_of_fire>());
+		return entity_def;
 	}
 };
 

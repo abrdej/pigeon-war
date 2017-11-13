@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.5.1)
 project(pigeonwar)
 
 include_directories(${CMAKE_SOURCE_DIR})
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
@@ -54,4 +54,4 @@ set(SOURCE_FILES main.cpp
         entities/shooter.cpp
         managers/entity_remover.cpp managers/entity_remover.h utils/scenario_helper.h scenarios/scenarios.h scenarios/scenarios.cpp entities/tree.cpp entities/tree.h entities/samurai_rat.h abilities/sword_blow.cpp abilities/sword_blow.h abilities/poison.cpp abilities/poison.h)
 add_executable(pigeonwar ${SOURCE_FILES})
-target_link_libraries(pigeonwar Box2D ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+target_link_libraries(pigeonwar ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

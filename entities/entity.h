@@ -7,14 +7,11 @@
 
 static const int indestructible = std::numeric_limits<int>::max();
 
-struct entity_data
+struct entity_definition
 {
 	enum class directions { right, left };
-	explicit entity_data(const std::type_index& type)
-			: type(type)
-	{
-
-	}
+	explicit entity_definition(const std::type_index& type)
+			: type(type) {}
 	std::type_index type;
 	std::string name;
 	int health;
@@ -24,14 +21,14 @@ struct entity_data
 
 namespace entity_helper
 {
-inline entity_data turned_right(entity_data&& data)
+inline entity_definition turned_right(entity_definition&& data)
 {
-	data.direction = entity_data::directions::right;
+	data.direction = entity_definition::directions::right;
 	return data;
 }
-inline entity_data turned_left(entity_data&& data)
+inline entity_definition turned_left(entity_definition&& data)
 {
-	data.direction = entity_data::directions::left;
+	data.direction = entity_definition::directions::left;
 	return data;
 }
 };

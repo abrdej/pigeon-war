@@ -8,12 +8,12 @@
 #include "entity.h"
 
 struct tree {
-    static entity_data create()
+    static entity_definition create()
     {
-        entity_data data(typeid(tree));
-        data.name = "Drzewo";
-        data.health = indestructible;
-        return data;
+        entity_definition entity_def(typeid(tree));
+        entity_def.name = "Drzewo";
+        entity_def.health = indestructible;
+        return entity_def;
     }
 };
 

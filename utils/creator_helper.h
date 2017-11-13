@@ -22,7 +22,7 @@ template <typename T>
 void create_neutral_many(std::vector<std::pair<std::size_t, std::size_t>>& positions) {
     for (auto& position : positions)
     {
-        size_t id = entity_manager::add(T::create());
+        size_t id = entity_manager::create(T::create());
         board::insert(board::to_index(position.first, position.second), id);
         players::add_neutral_entity(id);
     }
@@ -32,7 +32,7 @@ template <typename T>
 void create_neutral_many(std::initializer_list<std::pair<std::size_t, std::size_t>> positions) {
     for (auto& position : positions)
     {
-        size_t id = entity_manager::add(T::create());
+        size_t id = entity_manager::create(T::create());
         board::insert(board::to_index(position.first, position.second), id);
         players::add_neutral_entity(id);
     }

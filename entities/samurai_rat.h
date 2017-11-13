@@ -12,14 +12,14 @@
 
 struct samurai_rat final
 {
-    static entity_data create() {
-        entity_data data(typeid(samurai_rat));
-        data.name = "Samuraj";
-        data.health = 45;
-        data.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        data.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<sword_blow>());
-        return data;
-    }
+	static entity_definition create() {
+		entity_definition entity_def(typeid(samurai_rat));
+		entity_def.name = "Samuraj";
+		entity_def.health = 45;
+		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<sword_blow>());
+		return entity_def;
+	}
 };
 
 #endif //PIGEONWAR_SAMURAI_RAT_H

@@ -20,12 +20,12 @@ std::unordered_map<std::string, std::function<void()>> scenarios_initializers;
 
 void saurions_web(game& game) {
 
-    auto shooter_id = entity_manager::add(entity_helper::turned_right(shooter::create()));
-    auto saberhand_id = entity_manager::add(entity_helper::turned_right(saberhand::create()));
-    auto saurion1_id = entity_manager::add(entity_helper::turned_left(saurian::create()));
-    auto saurion2_id = entity_manager::add(entity_helper::turned_left(saurian::create()));
-    auto saurion3_id = entity_manager::add(entity_helper::turned_left(saurian::create()));
-    auto saurion4_id = entity_manager::add(entity_helper::turned_left(saurian::create()));
+    auto shooter_id = entity_manager::create(entity_helper::turned_right(shooter::create()));
+    auto saberhand_id = entity_manager::create(entity_helper::turned_right(saberhand::create()));
+    auto saurion1_id = entity_manager::create(entity_helper::turned_left(saurian::create()));
+    auto saurion2_id = entity_manager::create(entity_helper::turned_left(saurian::create()));
+    auto saurion3_id = entity_manager::create(entity_helper::turned_left(saurian::create()));
+    auto saurion4_id = entity_manager::create(entity_helper::turned_left(saurian::create()));
 
     auto ai_sequence = behavior_tree::helper::Sequence<ai::behavior_tree_tasks::blackboard,
             ai::behavior_tree_tasks::attack_enemy, ai::behavior_tree_tasks::find_nearest_enemy>::create();
@@ -55,11 +55,11 @@ void saurions_web(game& game) {
     using creator_helper::pos;
     creator_helper::create_stones({ pos(5, 0), pos(5, 1), pos(9, 9), pos(1, 8), pos(14, 8) });
 
-    auto native_id = entity_manager::add(native::create());
+    auto native_id = entity_manager::create(native::create());
     board::insert(board::to_index(12, 4), native_id);
     players::add_neutral_entity(native_id);
 
-    auto saurion_web = entity_manager::add(saurions_web::create());
+    auto saurion_web = entity_manager::create(saurions_web::create());
     board::insert(board::to_index(12, 4), saurion_web);
     players::add_entity_for_player("enemy", saurion_web);
 
@@ -71,7 +71,7 @@ void saurions_web(game& game) {
 
     auto web_poison_to_native = turn::turn_system::every_turn(callback);
 
-    entity_remover::add_remover(saurion_web, [&](){
+    entity_remover::add_remover(saurion_web, [native_id, web_poison_to_native]() mutable {
         web_poison_to_native.reset();
         std::cout << "tester have native\n";
         players::add_entity_for_player("tester", native_id);
@@ -88,7 +88,7 @@ void saurions_web(game& game) {
 }
 
 void wolves_dinner(game& game) {
-    auto shooter_id = entity_manager::add(entity_helper::turned_right(shooter::create()));
+    auto shooter_id = entity_manager::create(entity_helper::turned_right(shooter::create()));
     //auto samurai_id = entity_manager::add(entity_helper::turned_right(samurai_rat::create()));
     board::insert(board::to_index(2, 3), shooter_id);
     //board::insert(board::to_index(2, 5), samurai_id);
@@ -107,7 +107,6 @@ void wolves_dinner(game& game) {
 
     using creator_helper::pos;
     std::vector<std::pair<std::size_t, std::size_t>> wolves_positions = {
-            //pos(2, 7),
             pos(5, 6),
             pos(9, 7),
             pos(12, 2),
@@ -117,7 +116,7 @@ void wolves_dinner(game& game) {
     };
     std::vector<std::size_t> enemies_ids;
     for (auto&& wolf_pos : wolves_positions) {
-        auto wolf_id = entity_manager::add(entity_helper::turned_left(wolf::create()));
+        auto wolf_id = entity_manager::create(entity_helper::turned_left(wolf::create()));
         ai_manager::add_component(wolf_id, ai_sequence);
         board::insert(board::to_index(wolf_pos.first, wolf_pos.second), wolf_id);
         players::add_entity_for_player("enemy", wolf_id);
@@ -150,5 +149,5 @@ void wolves_dinner(game& game) {
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {
-    saurions_web(game);
+  saurions_web(game);
 }

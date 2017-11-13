@@ -1,13 +1,10 @@
 #include "core/board.h"
 #include "managers/entity_manager.h"
 
-std::array<std::vector<size_t>, board::cols_n * board::rows_n> board::fields_;
-const size_t board::empty_id;
+std::array<std::vector<std::size_t>, board::cols_n * board::rows_n> board::fields_;
 
 void board::prepare_board()
 {
-	//std::fill(std::begin(fields_), std::end(fields_), empty_id);
-
 	entity_manager::on_destroy([](size_t entity_id)
 	{
 		auto it = std::find_if(std::begin(fields_), std::end(fields_), [entity_id](auto field){

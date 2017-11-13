@@ -146,10 +146,10 @@ void game::victory() {
 
 void game::create_werewolf()
 {
-	size_t wolf1_id = entity_manager::add(entity_helper::turned_left(wolf::create()));
-	size_t wolf2_id = entity_manager::add(entity_helper::turned_left(wolf::create()));
-	size_t wolf3_id = entity_manager::add(entity_helper::turned_left(wolf::create()));
-	size_t wolf4_id = entity_manager::add(entity_helper::turned_left(wolf::create()));
+	size_t wolf1_id = entity_manager::create(entity_helper::turned_left(wolf::create()));
+	size_t wolf2_id = entity_manager::create(entity_helper::turned_left(wolf::create()));
+	size_t wolf3_id = entity_manager::create(entity_helper::turned_left(wolf::create()));
+	size_t wolf4_id = entity_manager::create(entity_helper::turned_left(wolf::create()));
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(13, 5), std::chrono::milliseconds(100), "hello.png"));
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(13, 4), std::chrono::milliseconds(100), "hello.png"));

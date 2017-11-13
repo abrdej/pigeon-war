@@ -8,15 +8,14 @@
 class native final
 {
 public:
-	static entity_data create()
+	static entity_definition create()
 	{
-		entity_data data(typeid(native));
-		data.name = "Tubylec";
-		data.health = 50;
-		//data.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(0));
-		data.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(5));
-		data.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<drain>());
-		return data;
+		entity_definition entity_def(typeid(native));
+		entity_def.name = "Tubylec";
+		entity_def.health = 50;
+		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(5));
+		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<drain>());
+		return entity_def;
 	}
 };
 

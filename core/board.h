@@ -1,8 +1,6 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "utils/create_methods.h"
-#include "abilities/bullet.h"
 #include <memory>
 #include <functional>
 #include <algorithm>
@@ -12,9 +10,9 @@
 class board final
 {
 public:
-	static const size_t cols_n = 15;
-	static const size_t rows_n = 10;
-	static const size_t empty_id = -1;
+	static const std::size_t cols_n = 15;
+	static const std::size_t rows_n = 10;
+	static const std::size_t empty_id = std::numeric_limits<std::size_t>::max();
 
 	static void prepare_board();
 	inline static void insert(size_t on_index, size_t entity_id)
@@ -24,7 +22,6 @@ public:
 	inline static void remove(size_t from_index)
 	{
 		fields_[from_index].pop_back();
-		//= empty_id;
 	}
 	inline static void move(size_t from_index, size_t to_index)
 	{
@@ -46,7 +43,7 @@ public:
 	{
         auto& field = fields_[at_index];
         if (field.empty())
-            return -1;
+            return empty_id;
 		return fields_[at_index].back();
 	}
 	inline static bool empty(size_t at_index)
@@ -63,7 +60,7 @@ public:
 		if (it != std::end(fields_))
 			return it - std::begin(fields_);
 		else
-			return -1;
+			return empty_id;
 	}
 	inline static void call_worker(const std::function<void(size_t entity_id,
 		size_t col, size_t row)>& worker)
@@ -72,7 +69,7 @@ public:
 		{
 			auto col_row = to_col_row(i);
             if (fields_[i].empty()) {
-                worker(-1, col_row.first, col_row.second);
+                worker(empty_id, col_row.first, col_row.second);
             } else {
                 for (auto&& id : fields_[i]) {
                     worker(id, col_row.first, col_row.second);

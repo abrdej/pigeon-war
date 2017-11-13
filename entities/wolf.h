@@ -6,7 +6,7 @@
 class wolf final
 {
 public:
-	static entity_data create();
+	static entity_definition create();
 };
 
 #endif

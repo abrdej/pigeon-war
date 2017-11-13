@@ -58,7 +58,7 @@ namespace view
 					auto position = sf::Vector2f(board_indexies_to_point(col, row));
 					data.sprite.setPosition(position);
 					data.sprite.setTextureRect(directions_manager::component_for(entity_id)
-								== entity_data::directions::left ? sf::IntRect(60, 0, -60, 60)
+								== entity_definition::directions::left ? sf::IntRect(60, 0, -60, 60)
 								: sf::IntRect(0, 0, 60, 60));
 
 					data.health = healths_manager::component_for(entity_id);
