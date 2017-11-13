@@ -1,0 +1,3 @@
+/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir

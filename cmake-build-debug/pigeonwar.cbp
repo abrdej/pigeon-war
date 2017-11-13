@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="pigeonwar"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake_modules\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pigeonwar">
+				<Option output="/home/abrdej/Projekty/pigeonwar/cmake-build-debug/pigeonwar" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/abrdej/Projekty/pigeonwar"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 pigeonwar"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pigeonwar/fast">
+				<Option output="/home/abrdej/Projekty/pigeonwar/cmake-build-debug/pigeonwar" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/abrdej/Projekty/pigeonwar"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 pigeonwar/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/ability.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/ability.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/basic_melee_attack.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/basic_melee_attack.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bullet.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/damage_dealer.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/damage_receivers.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/damage_receivers.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/drain.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/drain.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/grenade.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/grenade.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/invisibility.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/invisibility.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/moveable.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/moveable.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poison.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poison.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sabers.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sabers.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/shoot.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/shoot.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sword_blow.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sword_blow.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animation.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animation.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animation_impl.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animation_impl.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animations_objects.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animations_objects.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/board.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/board.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/game.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/game.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/path_finder.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/path_finder.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/players.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/players.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/states.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/states.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/turn.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/turn.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/entity.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/samurai_rat.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/shooter.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/shooter.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/tree.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/tree.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/werewolf.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/werewolf.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/wolf.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/wolf.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/bitmap_center.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/bitmap_center.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/board_panel.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/board_panel.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/buttons_panel.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/buttons_panel.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawer.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawer.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/gui.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/gui.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/labels_panel.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/labels_panel.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/my_button.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/my_button.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/main.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/abilities_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/abilities_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/directions_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/directions_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_remover.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_remover.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/names_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/names_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/types_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/types_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/scenarios/scenarios.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/scenarios/scenarios.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/utils/creator_helper.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/utils/creator_helper.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/utils/scenario_helper.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/cmake_modules/FindSFML.cmake">
+			<Option virtualFolder="CMake Files\cmake_modules\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
