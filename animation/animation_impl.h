@@ -11,8 +11,8 @@ namespace animation
 	class player_impl final
 	{
 	public:
-		player_impl(){}
-		player_impl(const std::function<void()>& updater);
+		player_impl() = default;
+		explicit player_impl(const std::function<void()>& updater);
 		void updater(const std::function<void()>& updater)
 		{
 			updater_ = updater;

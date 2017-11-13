@@ -19,10 +19,6 @@ public:
 	{
 		fields_[on_index].push_back(entity_id);
 	}
-	inline static void remove(size_t from_index)
-	{
-		fields_[from_index].pop_back();
-	}
 	inline static void move(size_t from_index, size_t to_index)
 	{
 		auto entity_id = fields_[from_index].back();
@@ -62,17 +58,16 @@ public:
 		else
 			return empty_id;
 	}
-	inline static void call_worker(const std::function<void(size_t entity_id,
-		size_t col, size_t row)>& worker)
+	inline static void for_each(const std::function<void(size_t entity_id, size_t col, size_t row)>& func)
 	{
 		for (size_t i = 0; i < fields_.size(); ++i)
 		{
 			auto col_row = to_col_row(i);
             if (fields_[i].empty()) {
-                worker(empty_id, col_row.first, col_row.second);
+                func(empty_id, col_row.first, col_row.second);
             } else {
                 for (auto&& id : fields_[i]) {
-                    worker(id, col_row.first, col_row.second);
+                    func(id, col_row.first, col_row.second);
                 }
             }
 		}

@@ -37,8 +37,8 @@ void sabers::target(size_t target_index)
 		if (used)
 			return;
 
-		for (auto target_index : targets_)
-			use(target_index);
+		for (auto ti : targets_)
+			use(ti);
 		use(target_index);
 
 		used = true;

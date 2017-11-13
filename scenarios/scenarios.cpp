@@ -1,22 +1,20 @@
-#include "scenarios.h"
-#include <unordered_map>
-#include <functional>
-#include <gui/effects_manager.h>
-#include <entities/tree.h>
 #include <entities/samurai_rat.h>
-#include <abilities/damage_dealers.h>
+#include "scenarios.h"
+#include "core/game.h"
+#include "abilities/damage_dealers.h"
 #include "managers/entity_manager.h"
-#include "utils/creator_helper.h"
-#include "utils/scenario_helper.h"
+#include "entities/tree.h"
+#include "entities/wolf.h"
+#include "entities/shooter.h"
 #include "entities/saurions_web.h"
 #include "entities/native.h"
 #include "entities/saurian.h"
 #include "entities/saberhand.h"
-#include "abilities/drain.h"
 #include "entities/stone.h"
-#include "core/game.h"
+#include "utils/creator_helper.h"
+#include "utils/scenario_helper.h"
 
-std::unordered_map<std::string, std::function<void()>> scenarios_initializers;
+std::unordered_map<std::string, std::function<void()>> scenarios_initializer;
 
 void saurions_web(game& game) {
 
@@ -88,15 +86,15 @@ void saurions_web(game& game) {
 }
 
 void wolves_dinner(game& game) {
-    auto shooter_id = entity_manager::create(entity_helper::turned_right(shooter::create()));
-    //auto samurai_id = entity_manager::add(entity_helper::turned_right(samurai_rat::create()));
-    board::insert(board::to_index(2, 3), shooter_id);
-    //board::insert(board::to_index(2, 5), samurai_id);
+    //auto shooter_id = entity_manager::create(entity_helper::turned_right(shooter::create()));
+    auto samurai_id = entity_manager::create(entity_helper::turned_right(samurai_rat::create()));
+    //board::insert(board::to_index(2, 3), shooter_id);
+    board::insert(board::to_index(2, 5), samurai_id);
 
     players::create_human_player("tester");
     players::create_ai_player("enemy");
-    players::add_entity_for_player("tester", shooter_id);
-    //players::add_entity_for_player("tester", samurai_id);
+    //players::add_entity_for_player("tester", shooter_id);
+    players::add_entity_for_player("tester", samurai_id);
 
     auto ai_sequence = behavior_tree::helper::Sequence<
             ai::behavior_tree_tasks::blackboard,
@@ -138,7 +136,7 @@ void wolves_dinner(game& game) {
     creator_helper::create_neutral_many<tree>({pos(4, 4), pos(5, 4), pos(4, 5), pos(4, 6)});
     creator_helper::create_neutral_many<stone>({pos(1, 1), pos(5, 5)});
 
-    if_any_die({shooter_id}, [&]() {
+    if_any_die({samurai_id}, [&]() {
         std::cout << "defeat\n";
         game.defeat();
     });
@@ -149,5 +147,5 @@ void wolves_dinner(game& game) {
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {
-  saurions_web(game);
+    wolves_dinner(game);
 }

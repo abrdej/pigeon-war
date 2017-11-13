@@ -21,7 +21,7 @@ namespace ai
 	void ai_brain::do_turn()
 	{
 		std::vector<size_t> entities_indexies;
-		players_funcs::player_entities_indexies(player_name_, entities_indexies);
+        players_funcs::player_entities_indexes(player_name_, entities_indexies);
 
 		for (auto& entity_index : entities_indexies)
 			move_entity(entity_index);
@@ -63,7 +63,7 @@ namespace ai
 		bool find_nearest_enemy::operator()(blackboard& blackboard)
 		{
 			std::vector<size_t> enemies_indexies;
-			players_funcs::enemy_entities_indexies(blackboard.player_name_, enemies_indexies);
+			players_funcs::enemy_entities_indexes(blackboard.player_name_, enemies_indexies);
 			if (enemies_indexies.size() == 0)
 				return false;
 

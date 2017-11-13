@@ -33,8 +33,13 @@ private:
 
 namespace players_funcs
 {
-	void player_entities_indexies(const players::player_id_type& player_name, std::vector<size_t>& indexies);
-	void enemy_entities_indexies(const players::player_id_type& player_name, std::vector<size_t>& indexies);
+
+void player_entities_indexes(const players::player_id_type& player_name, std::vector<std::size_t>& indexies);
+void enemy_entities_indexes(const players::player_id_type& player_name, std::vector<std::size_t>& indexies);
+bool player_entity(std::size_t entity_index);
+bool enemy_entity(std::size_t entity_index);
+std::size_t active_player_first_entity_index();
+
 }
 
 #endif
