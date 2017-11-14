@@ -3,7 +3,7 @@
 #include "abilities/moveable.h"
 #include "abilities/basic_melee_attack.h"
 
-entity_definition wolf::create()
+entity_definition wolf::create(size_t id)
 {
 	entity_definition entity_def(typeid(wolf));
 	entity_def.name = "Wilk";

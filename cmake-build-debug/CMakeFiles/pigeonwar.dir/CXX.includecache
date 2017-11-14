@@ -163,10 +163,6 @@ SFML/Audio.hpp
 -
 
 ..//core/board.h
-utils/create_methods.h
-../core/utils/create_methods.h
-abilities/bullet.h
-../core/abilities/bullet.h
 memory
 -
 functional
@@ -191,20 +187,8 @@ algorithm
 -
 
 ..//core/game.h
-board.h
-../core/board.h
-managers/entity_manager.h
-../core/managers/entity_manager.h
-turn.h
-../core/turn.h
-core/states.h
-../core/core/states.h
-players.h
-../core/players.h
-entities/shooter.h
-../core/entities/shooter.h
-entities/wolf.h
-../core/entities/wolf.h
+cstddef
+-
 
 ..//core/module_holder.h
 memory
@@ -417,22 +401,8 @@ animation/animation_impl.h
 ../gui/animation/animation_impl.h
 drawer.h
 ../gui/drawer.h
-nana/gui.hpp
+atomic
 -
-nana/gui/timer.hpp
--
-thread
--
-my_button.h
-../gui/my_button.h
-board_panel.h
-../gui/board_panel.h
-buttons_panel.h
-../gui/buttons_panel.h
-labels_panel.h
-../gui/labels_panel.h
-animation_impl.h
-../gui/animation_impl.h
 
 ..//gui/my_button.h
 SFML/Graphics.hpp
@@ -542,12 +512,6 @@ typeindex
 string
 -
 
-..//utils/create_methods.h
-memory
--
-entities/shooter.h
-../utils/entities/shooter.h
-
 ..//utils/creator_helper.h
 vector
 -
@@ -603,10 +567,6 @@ chrono
 -
 
 ../core/board.h
-utils/create_methods.h
-../core/utils/create_methods.h
-abilities/bullet.h
-../core/abilities/bullet.h
 memory
 -
 functional
@@ -640,18 +600,6 @@ algorithm
 core/board.h
 ../core/core/board.h
 
-../core/turn.h
-vector
--
-string
--
-unordered_map
--
-players.h
-../core/players.h
-core/signals.h
-../core/core/signals.h
-
 ../entities/entity.h
 limits
 -
@@ -659,22 +607,6 @@ core/module_holder.h
 ../entities/core/module_holder.h
 abilities/abilities.h
 ../entities/abilities/abilities.h
-
-../gui/board_panel.h
-SFML/Graphics.hpp
--
-my_button.h
-../gui/my_button.h
-
-../gui/buttons_panel.h
-my_button.h
-../gui/my_button.h
-SFML/Graphics.hpp
--
-nana/gui.hpp
--
-my_button.h
-../gui/my_button.h
 
 ../gui/drawer.h
 SFML/Graphics.hpp
@@ -703,12 +635,6 @@ managers/directions_manager.h
 ../gui/managers/directions_manager.h
 managers/types_manager.h
 ../gui/managers/types_manager.h
-
-../gui/labels_panel.h
-nana/gui.hpp
--
-nana/gui/widgets/label.hpp
--
 
 ../gui/my_button.h
 SFML/Graphics.hpp
@@ -1189,10 +1115,6 @@ managers/entity_manager.h
 /home/abrdej/Projekty/pigeonwar/core/managers/entity_manager.h
 
 /home/abrdej/Projekty/pigeonwar/core/board.h
-utils/create_methods.h
-/home/abrdej/Projekty/pigeonwar/core/utils/create_methods.h
-abilities/bullet.h
-/home/abrdej/Projekty/pigeonwar/core/abilities/bullet.h
 memory
 -
 functional
@@ -1217,10 +1139,6 @@ algorithm
 -
 
 /home/abrdej/Projekty/pigeonwar/core/game.cpp
-iostream
--
-utils/scenario_helper.h
--
 game.h
 /home/abrdej/Projekty/pigeonwar/core/game.h
 core/path_finder.h
@@ -1229,6 +1147,8 @@ abilities/moveable.h
 /home/abrdej/Projekty/pigeonwar/core/abilities/moveable.h
 abilities/abilities.h
 /home/abrdej/Projekty/pigeonwar/core/abilities/abilities.h
+states.h
+/home/abrdej/Projekty/pigeonwar/core/states.h
 abilities/ability.h
 /home/abrdej/Projekty/pigeonwar/core/abilities/ability.h
 ai/ai.h
@@ -1245,6 +1165,8 @@ entities/saberhand.h
 /home/abrdej/Projekty/pigeonwar/core/entities/saberhand.h
 utils/creator_helper.h
 /home/abrdej/Projekty/pigeonwar/core/utils/creator_helper.h
+entities/wolf.h
+/home/abrdej/Projekty/pigeonwar/core/entities/wolf.h
 entities/saurions_web.h
 /home/abrdej/Projekty/pigeonwar/core/entities/saurions_web.h
 entities/native.h
@@ -1259,22 +1181,14 @@ ai/ai_manager.h
 /home/abrdej/Projekty/pigeonwar/core/ai/ai_manager.h
 scenarios/scenarios.h
 /home/abrdej/Projekty/pigeonwar/core/scenarios/scenarios.h
+utils/scenario_helper.h
+/home/abrdej/Projekty/pigeonwar/core/utils/scenario_helper.h
+iostream
+-
 
 /home/abrdej/Projekty/pigeonwar/core/game.h
-board.h
-/home/abrdej/Projekty/pigeonwar/core/board.h
-managers/entity_manager.h
-/home/abrdej/Projekty/pigeonwar/core/managers/entity_manager.h
-turn.h
-/home/abrdej/Projekty/pigeonwar/core/turn.h
-core/states.h
-/home/abrdej/Projekty/pigeonwar/core/core/states.h
-players.h
-/home/abrdej/Projekty/pigeonwar/core/players.h
-entities/shooter.h
-/home/abrdej/Projekty/pigeonwar/core/entities/shooter.h
-entities/wolf.h
-/home/abrdej/Projekty/pigeonwar/core/entities/wolf.h
+cstddef
+-
 
 /home/abrdej/Projekty/pigeonwar/core/path_finder.cpp
 path_finder.h
@@ -1295,6 +1209,8 @@ functional
 /home/abrdej/Projekty/pigeonwar/core/players.cpp
 players.h
 /home/abrdej/Projekty/pigeonwar/core/players.h
+managers/entity_manager.h
+/home/abrdej/Projekty/pigeonwar/core/managers/entity_manager.h
 
 /home/abrdej/Projekty/pigeonwar/core/players.h
 unordered_map
@@ -1395,14 +1311,6 @@ entity.h
 /home/abrdej/Projekty/pigeonwar/entities/werewolf.cpp
 werewolf.h
 /home/abrdej/Projekty/pigeonwar/entities/werewolf.h
-params.h
-/home/abrdej/Projekty/pigeonwar/entities/params.h
-abilities/abilities.h
-/home/abrdej/Projekty/pigeonwar/entities/abilities/abilities.h
-abilities/moveable.h
-/home/abrdej/Projekty/pigeonwar/entities/abilities/moveable.h
-abilities/drain.h
-/home/abrdej/Projekty/pigeonwar/entities/abilities/drain.h
 
 /home/abrdej/Projekty/pigeonwar/entities/werewolf.h
 entity.h
@@ -1585,22 +1493,8 @@ animation/animation_impl.h
 /home/abrdej/Projekty/pigeonwar/gui/animation/animation_impl.h
 drawer.h
 /home/abrdej/Projekty/pigeonwar/gui/drawer.h
-nana/gui.hpp
+atomic
 -
-nana/gui/timer.hpp
--
-thread
--
-my_button.h
-/home/abrdej/Projekty/pigeonwar/gui/my_button.h
-board_panel.h
-/home/abrdej/Projekty/pigeonwar/gui/board_panel.h
-buttons_panel.h
-/home/abrdej/Projekty/pigeonwar/gui/buttons_panel.h
-labels_panel.h
-/home/abrdej/Projekty/pigeonwar/gui/labels_panel.h
-animation_impl.h
-/home/abrdej/Projekty/pigeonwar/gui/animation_impl.h
 
 /home/abrdej/Projekty/pigeonwar/gui/labels_panel.cpp
 labels_panel.h
@@ -1775,26 +1669,22 @@ typeindex
 -
 
 /home/abrdej/Projekty/pigeonwar/scenarios/scenarios.cpp
-scenarios.h
-/home/abrdej/Projekty/pigeonwar/scenarios/scenarios.h
-unordered_map
--
-functional
--
-gui/effects_manager.h
--
-entities/tree.h
--
 entities/samurai_rat.h
 -
+scenarios.h
+/home/abrdej/Projekty/pigeonwar/scenarios/scenarios.h
+core/game.h
+/home/abrdej/Projekty/pigeonwar/scenarios/core/game.h
 abilities/damage_dealers.h
--
+/home/abrdej/Projekty/pigeonwar/scenarios/abilities/damage_dealers.h
 managers/entity_manager.h
 /home/abrdej/Projekty/pigeonwar/scenarios/managers/entity_manager.h
-utils/creator_helper.h
-/home/abrdej/Projekty/pigeonwar/scenarios/utils/creator_helper.h
-utils/scenario_helper.h
-/home/abrdej/Projekty/pigeonwar/scenarios/utils/scenario_helper.h
+entities/tree.h
+/home/abrdej/Projekty/pigeonwar/scenarios/entities/tree.h
+entities/wolf.h
+/home/abrdej/Projekty/pigeonwar/scenarios/entities/wolf.h
+entities/shooter.h
+/home/abrdej/Projekty/pigeonwar/scenarios/entities/shooter.h
 entities/saurions_web.h
 /home/abrdej/Projekty/pigeonwar/scenarios/entities/saurions_web.h
 entities/native.h
@@ -1803,12 +1693,12 @@ entities/saurian.h
 /home/abrdej/Projekty/pigeonwar/scenarios/entities/saurian.h
 entities/saberhand.h
 /home/abrdej/Projekty/pigeonwar/scenarios/entities/saberhand.h
-abilities/drain.h
-/home/abrdej/Projekty/pigeonwar/scenarios/abilities/drain.h
 entities/stone.h
 /home/abrdej/Projekty/pigeonwar/scenarios/entities/stone.h
-core/game.h
-/home/abrdej/Projekty/pigeonwar/scenarios/core/game.h
+utils/creator_helper.h
+/home/abrdej/Projekty/pigeonwar/scenarios/utils/creator_helper.h
+utils/scenario_helper.h
+/home/abrdej/Projekty/pigeonwar/scenarios/utils/scenario_helper.h
 
 /home/abrdej/Projekty/pigeonwar/scenarios/scenarios.h
 string

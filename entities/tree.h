@@ -8,7 +8,7 @@
 #include "entity.h"
 
 struct tree {
-    static entity_definition create()
+    static entity_definition create(size_t id)
     {
         entity_definition entity_def(typeid(tree));
         entity_def.name = "Drzewo";

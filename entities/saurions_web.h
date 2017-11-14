@@ -6,7 +6,7 @@
 class saurions_web final
 {
 public:
-	static entity_definition create()
+	static entity_definition create(size_t id)
 	{
 		entity_definition entity_def(typeid(saurions_web));
 		entity_def.name = "Paj�czyna jaszczura";

@@ -8,7 +8,7 @@
 class native final
 {
 public:
-	static entity_definition create()
+	static entity_definition create(size_t id)
 	{
 		entity_definition entity_def(typeid(native));
 		entity_def.name = "Tubylec";

@@ -45,6 +45,6 @@ void my_button::icon(const bitmap_type& img)
 
 void my_button::remove_icon()
 {
-	sprite_.setTexture(bitmap_type());
+	sprite_ = sf::Sprite();
 }
 }

@@ -16,7 +16,7 @@ void create_stones(std::vector<std::pair<size_t, size_t>>& positions)
 {
 	for (auto& position : positions)
 	{
-		size_t stone_id = entity_manager::create(stone::create());
+		size_t stone_id = entity_manager::create<stone>();
 		board::insert(board::to_index(position.first, position.second), stone_id);
 		players::add_neutral_entity(stone_id);
 	}
@@ -26,7 +26,7 @@ void create_stones(std::initializer_list<std::pair<size_t, size_t>> positions)
 {
 	for (auto& position : positions)
 	{
-		size_t stone_id = entity_manager::create(stone::create());
+		size_t stone_id = entity_manager::create<stone>();
 		board::insert(board::to_index(position.first, position.second), stone_id);
 		players::add_neutral_entity(stone_id);
 	}
@@ -36,7 +36,7 @@ void create_trees(std::initializer_list<std::pair<size_t, size_t>> positions)
 {
 	for (auto& position : positions)
 	{
-		size_t tree_id = entity_manager::create(tree::create());
+		size_t tree_id = entity_manager::create<tree>();
 		board::insert(board::to_index(position.first, position.second), tree_id);
 		players::add_neutral_entity(tree_id);
 	}

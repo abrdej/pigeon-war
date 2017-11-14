@@ -12,7 +12,7 @@
 
 struct samurai_rat final
 {
-	static entity_definition create() {
+	static entity_definition create(size_t id) {
 		entity_definition entity_def(typeid(samurai_rat));
 		entity_def.name = "Samuraj";
 		entity_def.health_pack.base_health = 45;

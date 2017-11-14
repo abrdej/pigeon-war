@@ -5,23 +5,20 @@
 path_finder::path_finder(bool all_fields)
 	: start_index_(-1)
 {
-	board::call_worker([this, &all_fields](size_t entity_id, size_t col, size_t row)
-	{
+	board::for_each([this, &all_fields](size_t entity_id, size_t col, size_t row) {
 		auto rows_n = board::rows_n;
 		auto cols_n = board::cols_n;
 		auto key_from = board::to_index(col, row);
-		
-		if (row < rows_n - 1)
-		{
+
+		if (row < rows_n - 1) {
 			auto key_to = board::to_index(col, row + 1);
 			if (board::empty(key_to) || all_fields)
 				graph_.add_egde(key_from, key_to);
-			
+
 			if (board::empty(key_from) || all_fields)
 				graph_.add_egde(key_to, key_from);
 		}
-		if (col < cols_n - 1)
-		{
+		if (col < cols_n - 1) {
 			auto key_to = board::to_index(col + 1, row);
 			if (board::empty(key_to) || all_fields)
 				graph_.add_egde(key_from, key_to);

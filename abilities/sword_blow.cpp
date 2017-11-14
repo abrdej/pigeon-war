@@ -15,10 +15,6 @@ void sword_blow::prepare(size_t for_index) {
 
     states::state_controller::possible_movements_.push_back(for_index);
 
-//    board_helper::calc_straight(for_index, states::state_controller::possible_movements_,
-//                                states::state_controller::possible_movements_costs_,
-//                                1);
-
     states::state_controller::actual_targeting_type_ = states::target_types::caster;
     states::state_controller::wait_for_action([this](size_t index)
                                               {
@@ -34,14 +30,29 @@ void sword_blow::use(size_t index_on) {
     //audio::shoot_sound();
 
     auto used_from_index = states::state_controller::selected_index_;
-    play_sword_blow_animation(used_from_index, index_on);
 
     std::vector<size_t> around_fields_ids;
     board_helper::neighboring_fields(used_from_index, around_fields_ids, false);
 
+    play_sword_blow_animation(used_from_index, index_on);
+
+    int hit_entities_counter = 0;
+
     for (auto&& field_id : around_fields_ids) {
         if (!board::empty(field_id)) {
-            damage_dealers::standard_damage_dealer(damage_, field_id);
+            auto damage = damage_dealers::standard_damage_dealer(damage_, field_id);
+            if (damage != 0) {
+                ++hit_entities_counter;
+            }
+        }
+    }
+
+    if (hit_entities_counter == 3) {
+        play_sword_blow_animation(used_from_index, index_on);
+        for (auto&& field_id : around_fields_ids) {
+            if (!board::empty(field_id)) {
+                damage_dealers::standard_damage_dealer(damage_, field_id);
+            }
         }
     }
 

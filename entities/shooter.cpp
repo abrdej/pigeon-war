@@ -5,7 +5,7 @@
 #include "abilities/shoot.h"
 #include "abilities/grenade.h"
 
-entity_definition shooter::create()
+entity_definition shooter::create(size_t id)
 {
 	entity_definition entity_def(typeid(shooter));
 	entity_def.name = "Strzelec";

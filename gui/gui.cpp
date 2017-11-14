@@ -83,8 +83,12 @@ namespace view
 
 	void gui::on_board(size_t col, size_t row)
 	{
-		game_.on_board(col, row);
-		update_for_entity();
+		if (!block) {
+			block = true;
+			game_.on_board(col, row);
+			update_for_entity();
+			block = false;
+		}
 	}
 
 	void gui::on_button(size_t n)

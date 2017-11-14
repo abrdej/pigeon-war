@@ -46,27 +46,36 @@ namespace view
 		void prepare_render(sf::RenderWindow& window)
 		{
 			render_data_.clear();
-			board::call_worker([this, &window](size_t entity_id, size_t col, size_t row)
-			{
-				if (entity_id != -1)
-				{
-					render_data data{};
-					data.sprite.setTexture(bitmap_center::get_image_for_entity(
-						types_manager::component_for(entity_id)));
+			std::size_t last_col{std::numeric_limits<std::size_t>::max()};
+			std::size_t last_row{std::numeric_limits<std::size_t>::max()};
+            board::for_each([this, &window, &last_col, &last_row](size_t entity_id, size_t col, size_t row) {
+                if (entity_id != -1) {
+                    render_data data{};
+                    data.sprite.setTexture(bitmap_center::get_image_for_entity(
+                            types_manager::component_for(entity_id)));
 
-					auto position = sf::Vector2f(board_indexies_to_point(col, row));
-					data.sprite.setPosition(position);
-					data.sprite.setTextureRect(directions_manager::component_for(entity_id)
-								== entity_definition::directions::left ? sf::IntRect(60, 0, -60, 60)
-								: sf::IntRect(0, 0, 60, 60));
+                    auto position = sf::Vector2f(board_indexies_to_point(col, row));
+                    data.sprite.setPosition(position);
+                    data.sprite.setTextureRect(directions_manager::component_for(entity_id)
+                                               == entity_definition::directions::left ? sf::IntRect(60, 0, -60, 60)
+                                                                                      : sf::IntRect(0, 0, 60, 60));
 
-					data.health = healths_manager::component_for(entity_id).health;
-					position.x += view::constants::field_size / 4.f;
-					position.y -= view::constants::field_size / 4.f;
-					data.health_pos = position;
-					render_data_.push_back(data);
-				}
-			});
+                    data.health = healths_manager::component_for(entity_id).health;
+                    position.x += view::constants::field_size / 4.f;
+                    position.y -= view::constants::field_size / 4.f;
+
+					if (last_col == col && last_row == row) {
+						position.x += view::constants::field_size / 4.f;
+						position.y += view::constants::field_size / 4.f;
+					}
+
+                    data.health_pos = position;
+                    render_data_.push_back(data);
+
+					last_col = col;
+					last_row = row;
+                }
+            });
 		}
 
 		void render_text(size_t entity_health, sf::Vector2f position, sf::RenderWindow& window)

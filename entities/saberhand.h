@@ -9,7 +9,7 @@
 class saberhand final
 {
 public:
-	static entity_definition create()
+	static entity_definition create(size_t id)
 	{
 		entity_definition entity_def(typeid(saberhand));
 		entity_def.name = "Szablor�ki";

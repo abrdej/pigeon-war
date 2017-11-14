@@ -5,7 +5,7 @@
 
 struct stone final
 {
-	static entity_definition create()
+	static entity_definition create(size_t id)
 	{
 		entity_definition entity_def(typeid(stone));
 		entity_def.name = "Kamie�";

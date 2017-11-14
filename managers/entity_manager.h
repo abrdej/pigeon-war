@@ -22,20 +22,29 @@ class entity_manager final
 {
 	static std::unordered_set<size_t> entities_;
 	static std::vector<std::function<void(size_t)>> on_destroy_callbacks_;
-public:
-	inline static size_t create(entity_definition entity_def)
-	{
+
+	inline static size_t generate_id() {
 		static size_t entity_id_generator = 0;
-
-		entities_.insert(entity_id_generator);
-
-		types_manager::add_component(entity_id_generator, entity_def.type);
-		healths_manager::add_component(entity_id_generator, entity_def.health_pack);
-		names_manager::add_component(entity_id_generator, entity_def.name);
-		abilities_manager::add_component(entity_id_generator, entity_def.entity_abilities);
-		directions_manager::add_component(entity_id_generator, entity_def.direction);
-
 		return entity_id_generator++;
+	}
+
+public:
+	template <typename EntityDef>
+	inline static size_t create()
+	{
+		auto entity_id = generate_id();
+
+		entities_.insert(entity_id);
+
+		auto entity_def = EntityDef::create(entity_id);
+
+		types_manager::add_component(entity_id, entity_def.type);
+		healths_manager::add_component(entity_id, entity_def.health_pack);
+		names_manager::add_component(entity_id, entity_def.name);
+		abilities_manager::add_component(entity_id, entity_def.entity_abilities);
+		directions_manager::add_component(entity_id, entity_def.direction);
+
+		return entity_id++;
 	}
 	inline static bool alive(size_t entity_id)
 	{
