@@ -36,7 +36,7 @@ namespace damage_dealers
 
 		play_change_helath_animation(to_index, -rand_damage);
 
-		if (healths_manager::component_for(enemy_id) <= 0)
+		if (healths_manager::component_for(enemy_id).health <= 0)
 			entity_manager::destroy(enemy_id);
 
 		return dealt_damage;

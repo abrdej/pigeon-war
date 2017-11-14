@@ -9,7 +9,7 @@
 #include "entities/entity.h"
 #include "abilities/abilities.h"
 #include "abilities/damage_receivers.h"
-#include "health_component.h"
+#include "health_manager.h"
 #include "names_manager.h"
 #include "managers/abilities_manager.h"
 #include <functional>
@@ -30,7 +30,7 @@ public:
 		entities_.insert(entity_id_generator);
 
 		types_manager::add_component(entity_id_generator, entity_def.type);
-		healths_manager::add_component(entity_id_generator, entity_def.health);
+		healths_manager::add_component(entity_id_generator, entity_def.health_pack);
 		names_manager::add_component(entity_id_generator, entity_def.name);
 		abilities_manager::add_component(entity_id_generator, entity_def.entity_abilities);
 		directions_manager::add_component(entity_id_generator, entity_def.direction);
@@ -46,6 +46,8 @@ public:
 		entities_.erase(entity_id);
 
         entity_remover::remove(entity_id);
+
+		board::remove_entity(entity_id);
 
 		call_destroy_callbacks(entity_id);
 	}

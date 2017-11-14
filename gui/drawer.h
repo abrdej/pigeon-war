@@ -8,10 +8,9 @@
 #include "managers/entity_manager.h"
 #include "core/states.h"
 #include "core/game.h"
-#include "entities/params.h"
 #include "gui/view_constants.h"
 #include "gui/board_panel.h"
-#include "managers/health_component.h"
+#include "managers/health_manager.h"
 #include "managers/directions_manager.h"
 #include "managers/types_manager.h"
 
@@ -51,7 +50,7 @@ namespace view
 			{
 				if (entity_id != -1)
 				{
-					render_data data;
+					render_data data{};
 					data.sprite.setTexture(bitmap_center::get_image_for_entity(
 						types_manager::component_for(entity_id)));
 
@@ -61,7 +60,7 @@ namespace view
 								== entity_definition::directions::left ? sf::IntRect(60, 0, -60, 60)
 								: sf::IntRect(0, 0, 60, 60));
 
-					data.health = healths_manager::component_for(entity_id);
+					data.health = healths_manager::component_for(entity_id).health;
 					position.x += view::constants::field_size / 4.f;
 					position.y -= view::constants::field_size / 4.f;
 					data.health_pos = position;

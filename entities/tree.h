@@ -12,7 +12,7 @@ struct tree {
     {
         entity_definition entity_def(typeid(tree));
         entity_def.name = "Drzewo";
-        entity_def.health = indestructible;
+        entity_def.health_pack.base_health = indestructible;
         return entity_def;
     }
 };

@@ -7,7 +7,7 @@
 #include "animation/animation.h"
 #include "animation/animation_impl.h"
 #include "damage_dealers.h"
-#include "managers/health_component.h"
+#include "managers/health_manager.h"
 #include "managers/types_manager.h"
 
 drain::drain()

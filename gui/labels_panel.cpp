@@ -5,7 +5,6 @@
 
 #include "board.h"
 #include "entity.h"
-#include "params.h"
 
 namespace view
 {

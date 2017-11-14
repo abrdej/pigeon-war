@@ -20,12 +20,8 @@
 #include "ai/ai_manager.h"
 #include "scenarios/scenarios.h"
 
-game::game()
-{
-	board::prepare_board();
-
-    create_scenario(*this, "saurions_web");
-
+game::game() {
+	create_scenario(*this, "saurions_web");
 }
 
 void game::on_board(size_t col, size_t row)

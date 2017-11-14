@@ -4,8 +4,7 @@
 #include <limits>
 #include "core/module_holder.h"
 #include "abilities/abilities.h"
-
-static const int indestructible = std::numeric_limits<int>::max();
+#include "managers/health_manager.h"
 
 struct entity_definition
 {
@@ -14,7 +13,7 @@ struct entity_definition
 			: type(type) {}
 	std::type_index type;
 	std::string name;
-	int health;
+	health_field health_pack;
 	abilities entity_abilities;
 	directions direction;
 };

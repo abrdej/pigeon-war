@@ -13,7 +13,7 @@ public:
 	{
 		entity_definition entity_def(typeid(saberhand));
 		entity_def.name = "Szablor�ki";
-		entity_def.health = 60;
+		entity_def.health_pack.base_health = 60;
 		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
 		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<sabers>());
 		entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<invisibility>());

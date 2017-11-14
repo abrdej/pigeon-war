@@ -14,7 +14,6 @@ public:
 	static const std::size_t rows_n = 10;
 	static const std::size_t empty_id = std::numeric_limits<std::size_t>::max();
 
-	static void prepare_board();
 	inline static void insert(size_t on_index, size_t entity_id)
 	{
 		fields_[on_index].push_back(entity_id);
@@ -50,11 +49,10 @@ public:
 	{
 		return fields_[at_index].empty();
 	}
-	inline static size_t index_for(size_t entity_id)
-	{
-		auto it = std::find_if(std::begin(fields_), std::end(fields_), [entity_id](auto field){
-            if (field.empty())
-                return false;
+	inline static size_t index_for(size_t entity_id) {
+		auto it = std::find_if(std::begin(fields_), std::end(fields_), [entity_id](auto field) {
+			if (field.empty())
+				return false;
 			return field.back() == entity_id;
 		});
 		if (it != std::end(fields_))
@@ -62,8 +60,17 @@ public:
 		else
 			return empty_id;
 	}
-	inline static void call_worker(const std::function<void(size_t entity_id,
-		size_t col, size_t row)>& worker)
+	inline static void remove_entity(size_t entity_id)
+	{
+		for (auto&& field : fields_) {
+			auto it = std::remove(std::begin(field), std::end(field), entity_id);
+			if (it != std::end(field)) {
+				field.erase(it);
+				break;
+			}
+		}
+	}
+	inline static void call_worker(const std::function<void(size_t entity_id, size_t col, size_t row)>& worker)
 	{
 		for (size_t i = 0; i < fields_.size(); ++i)
 		{
