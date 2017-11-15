@@ -1,5 +1,6 @@
 #include <entities/samurai_rat.h>
 #include <entities/troll.h>
+#include <entities/droid.h>
 #include "scenarios.h"
 #include "core/game.h"
 #include "abilities/damage_dealers.h"
@@ -152,20 +153,24 @@ void skirmish(game& game) {
 
     auto shooter_id = entity_manager::create<shooter>();
     auto samurai_id = entity_manager::create<samurai_rat>();
+    auto droid_id = entity_manager::create<droid>();
+
     board::insert(board::to_index(2, 3), shooter_id);
     board::insert(board::to_index(2, 5), samurai_id);
+    board::insert(board::to_index(2, 7), droid_id);
 
     players::create_human_player("tester1");
     players::create_human_player("tester2");
     players::add_entity_for_player("tester1", shooter_id);
     players::add_entity_for_player("tester1", samurai_id);
+    players::add_entity_for_player("tester1", droid_id);
 
     auto saberhand_id = entity_manager::create<saberhand>();
     auto native_id = entity_manager::create<native>();
     auto troll_id = entity_manager::create<troll>();
     board::insert(board::to_index(12, 3), saberhand_id);
     board::insert(board::to_index(12, 5), native_id);
-    board::insert(board::to_index(2, 4), troll_id);
+    board::insert(board::to_index(12, 7), troll_id);
 
     players::add_entity_for_player("tester2", saberhand_id);
     players::add_entity_for_player("tester2", native_id);
@@ -211,7 +216,7 @@ void skirmish(game& game) {
     creator_helper::create_neutral_many<tree>({pos(4, 4), pos(5, 4), pos(4, 5), pos(4, 6)});
     creator_helper::create_neutral_many<stone>({pos(1, 1), pos(5, 5)});
 
-    if_all_die({shooter_id, samurai_id}, [&]() {
+    if_all_die({shooter_id, samurai_id, droid_id}, [&]() {
         std::cout << "tester 2 win\n";
         game.defeat();
     });

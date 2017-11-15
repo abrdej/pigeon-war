@@ -1,6 +1,7 @@
 #include <entities/tree.h>
 #include <entities/samurai_rat.h>
 #include <entities/troll.h>
+#include <entities/droid.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -57,5 +58,8 @@ void bitmap_center::load()
     add_entity_image<troll>("troll.png");
     add_entity_image<bludgeon>("hello.png");
     add_entity_image<rage>("hello.png");
+    add_entity_image<droid>("droid.png");
+    add_entity_image<laser>("laser.png");
+    add_entity_image<teleport>("teleport.png");
 }
 }

@@ -3,7 +3,7 @@
 #include "abilities/moveable.h"
 
 path_finder::path_finder(bool all_fields)
-	: start_index_(-1)
+		: start_index_(-1)
 {
 	board::for_each([this, &all_fields](size_t entity_id, size_t col, size_t row) {
 		auto rows_n = board::rows_n;
@@ -78,81 +78,80 @@ size_t path_finder::distance_to(size_t index)
 
 namespace board_helper
 {
-	void calc_straight(size_t from_index, std::vector<size_t>& movements,
-		std::vector<size_t>& costs, size_t range)
+void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vector<size_t>& costs, size_t range, bool skip_obstacles)
+{
+	movements.clear();
+	costs.clear();
+
+	auto fld = board::to_col_row(from_index);
+	for (size_t i = fld.first - 1; i != -1; --i)
 	{
-		movements.clear();
-		costs.clear();
-
-		auto fld = board::to_col_row(from_index);
-		for (size_t i = fld.first - 1; i != -1; --i)
-		{
-			auto cost = fld.first - i;
-			if (cost > range)
-				break;
-			auto index = board::to_index(i, fld.second);
-			costs.push_back(cost);
-			movements.push_back(index);
-			if (!board::empty(index))
-				break;
-		}
-
-		for (size_t i = fld.first + 1; i < board::cols_n; ++i)
-		{
-			auto cost = i - fld.first;
-			if (cost > range)
-				break;
-
-			auto index = board::to_index(i, fld.second);
-			costs.push_back(cost);
-			movements.push_back(index);
-			if (!board::empty(index))
-				break;
-		}
-
-		for (size_t i = fld.second - 1; i != -1; --i)
-		{
-			auto cost = fld.second - i;
-			if (cost > range)
-				break;
-
-			auto index = board::to_index(fld.first, i);
-			costs.push_back(cost);
-			movements.push_back(index);
-			if (!board::empty(index))
-				break;
-		}
-
-		for (size_t i = fld.second + 1; i < board::rows_n; ++i)
-		{
-			auto cost = i - fld.second;
-			if (cost > range)
-				break;
-
-			auto index = board::to_index(fld.first, i);
-			costs.push_back(cost);
-			movements.push_back(index);
-			if (!board::empty(index))
-				break;
-		}
+		auto cost = fld.first - i;
+		if (cost > range)
+			break;
+		auto index = board::to_index(i, fld.second);
+		costs.push_back(cost);
+		movements.push_back(index);
+		if (!board::empty(index) && !skip_obstacles)
+			break;
 	}
 
-	void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool available)
+	for (size_t i = fld.first + 1; i < board::cols_n; ++i)
 	{
-		fields.clear();
-		auto fld = board::to_col_row(for_index);
-		
-		for (int col = -1; col <= 1; ++col)
-			for (int row = -1; row <= 1; ++row)
+		auto cost = i - fld.first;
+		if (cost > range)
+			break;
+
+		auto index = board::to_index(i, fld.second);
+		costs.push_back(cost);
+		movements.push_back(index);
+		if (!board::empty(index) && !skip_obstacles)
+			break;
+	}
+
+	for (size_t i = fld.second - 1; i != -1; --i)
+	{
+		auto cost = fld.second - i;
+		if (cost > range)
+			break;
+
+		auto index = board::to_index(fld.first, i);
+		costs.push_back(cost);
+		movements.push_back(index);
+		if (!board::empty(index) && !skip_obstacles)
+			break;
+	}
+
+	for (size_t i = fld.second + 1; i < board::rows_n; ++i)
+	{
+		auto cost = i - fld.second;
+		if (cost > range)
+			break;
+
+		auto index = board::to_index(fld.first, i);
+		costs.push_back(cost);
+		movements.push_back(index);
+		if (!board::empty(index) && !skip_obstacles)
+			break;
+	}
+}
+
+void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool available)
+{
+	fields.clear();
+	auto fld = board::to_col_row(for_index);
+
+	for (int col = -1; col <= 1; ++col)
+		for (int row = -1; row <= 1; ++row)
+		{
+			auto col_index = fld.first + col;
+			auto row_index = fld.second + row;
+			auto index = board::to_index(col_index, row_index);
+			if ((col || row) && col_index < board::cols_n
+				&& row_index < board::rows_n && (!available || board::empty(index)))
 			{
-				auto col_index = fld.first + col;
-				auto row_index = fld.second + row;
-				auto index = board::to_index(col_index, row_index);
-				if ((col || row) && col_index < board::cols_n
-					&& row_index < board::rows_n && (!available || board::empty(index)))
-				{
-					fields.push_back(board::to_index(col_index, row_index));
-				}
+				fields.push_back(board::to_index(col_index, row_index));
 			}
-	}
+		}
+}
 };
