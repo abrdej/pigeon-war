@@ -2,6 +2,7 @@
 #include <core/states.h>
 #include <animation/animation.h>
 #include "teleport.h"
+#include "core/board.h"
 
 teleport::teleport() {
 

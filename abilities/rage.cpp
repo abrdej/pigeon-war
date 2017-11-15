@@ -1,7 +1,10 @@
 #include <managers/health_manager.h>
 #include <core/states.h>
+#include <animation/animation.h>
 #include "rage.h"
 #include "damage_dealers.h"
+#include "managers/types_manager.h"
+#include <iostream>
 
 rage::rage(size_t id) : entity_id(id) {
 	onEveryTurn([this]() {
@@ -29,6 +32,8 @@ void rage::use() {
 	std::vector<size_t> around_fields_ids;
 	board_helper::neighboring_fields(use_from_index, around_fields_ids, false);
 
+	play_animation(use_from_index);
+
 	for (auto&& field_id : around_fields_ids) {
 		if (!board::empty(field_id)) {
 			damage_dealers::standard_damage_dealer(damage_, field_id);
@@ -36,6 +41,19 @@ void rage::use() {
 	}
 }
 
-void rage::play_animation() {
+void rage::play_animation(size_t use_from_index) {
 
+	auto entity_id = board::take(use_from_index);
+	auto type = types_manager::component_for(entity_id);
+
+	auto from_cr = board::to_col_row(use_from_index);
+	from_cr.first -= 1;
+	from_cr.second -= 1;
+
+	animation::player<animation::flash_bitmap>::launch(
+			animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
+									std::chrono::milliseconds(150),
+									"troll_rage.png"));
+	animation::base_player::play();
+	board::give_back(entity_id, use_from_index);
 }

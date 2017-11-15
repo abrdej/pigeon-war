@@ -1,4 +1,5 @@
 #include <animation/animation.h>
+#include "managers/types_manager.h"
 #include "sword_blow.h"
 #include "core/states.h"
 #include "damage_dealers.h"

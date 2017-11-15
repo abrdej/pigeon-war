@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 #include <algorithm>
-#include "core/board.h"
+//#include "core/board.h"
 
 class entity;
 

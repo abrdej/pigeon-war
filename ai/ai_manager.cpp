@@ -1,5 +1,6 @@
 #include "ai_manager.h"
 #include "core/states.h"
+#include "core/board.h"
 
 void ai_manager::perform_movement()
 {

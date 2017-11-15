@@ -3,6 +3,7 @@
 
 #include "core/players.h"
 #include "behavior_tree.h"
+
 class board;
 class entity_manager;
 class path_finder;
