@@ -14,7 +14,6 @@ public:
 	static const std::size_t rows_n = 10;
 	static const std::size_t empty_id = std::numeric_limits<std::size_t>::max();
 
-	static void prepare_board();
 	inline static void insert(size_t on_index, size_t entity_id)
 	{
 		fields_[on_index].push_back(entity_id);

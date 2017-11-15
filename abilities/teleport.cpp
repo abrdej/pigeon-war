@@ -26,6 +26,9 @@ void teleport::prepare(size_t for_index) {
 
 void teleport::use(size_t for_index, size_t index_on) {
 
+	if (used)
+		return;
+
 	auto entity_id = board::take(for_index);
 
 	animation::player<animation::flash_bitmap>::launch(

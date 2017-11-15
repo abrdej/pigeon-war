@@ -66,12 +66,13 @@ void game::on_button(size_t n)
 	if (n >= 0 && n <= 5)
 	{
 		auto selected_index = states::state_controller::selected_index_;
+
+		if (!players_funcs::player_entity(selected_index)) {
+			std::cout << "not player entity\n";
+			return;
+		}
+
 		auto entity_id = board::at(selected_index);
-
-//		if (!players_funcs::player_entity(entity_id)) {
-//			return;
-//		}
-
 		auto& entity_abilities = abilities_manager::component_for(entity_id);
 		auto entity_ability = entity_abilities.at(n);
 		if (entity_ability) {
@@ -82,12 +83,16 @@ void game::on_button(size_t n)
 	{
 		turn::turn_system::end_turn();
 		players::next_player();
+
+		states::state_controller::first_state(players_funcs::active_player_first_entity_index());
+
 		if (players::active_player_ai())
 		{
 			ai_manager::perform_movement();
 			turn::turn_system::end_turn();
-			players::next_player();
-			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
+			//players::next_player();
+			//states::state_controller::first_state(players_funcs::active_player_first_entity_index());
+			on_button(14);
 		}
 	}
 }
