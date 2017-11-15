@@ -366,6 +366,33 @@ abilities/invisibility.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.s
 .PHONY : abilities/invisibility.cpp.s
 
+abilities/laser.o: abilities/laser.cpp.o
+
+.PHONY : abilities/laser.o
+
+# target to build an object file
+abilities/laser.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o
+.PHONY : abilities/laser.cpp.o
+
+abilities/laser.i: abilities/laser.cpp.i
+
+.PHONY : abilities/laser.i
+
+# target to preprocess a source file
+abilities/laser.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/laser.cpp.i
+.PHONY : abilities/laser.cpp.i
+
+abilities/laser.s: abilities/laser.cpp.s
+
+.PHONY : abilities/laser.s
+
+# target to generate assembly for a file
+abilities/laser.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/laser.cpp.s
+.PHONY : abilities/laser.cpp.s
+
 abilities/moveable.o: abilities/moveable.cpp.o
 
 .PHONY : abilities/moveable.o
@@ -554,6 +581,33 @@ abilities/sword_blow.s: abilities/sword_blow.cpp.s
 abilities/sword_blow.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.s
 .PHONY : abilities/sword_blow.cpp.s
+
+abilities/teleport.o: abilities/teleport.cpp.o
+
+.PHONY : abilities/teleport.o
+
+# target to build an object file
+abilities/teleport.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o
+.PHONY : abilities/teleport.cpp.o
+
+abilities/teleport.i: abilities/teleport.cpp.i
+
+.PHONY : abilities/teleport.i
+
+# target to preprocess a source file
+abilities/teleport.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.i
+.PHONY : abilities/teleport.cpp.i
+
+abilities/teleport.s: abilities/teleport.cpp.s
+
+.PHONY : abilities/teleport.s
+
+# target to generate assembly for a file
+abilities/teleport.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.s
+.PHONY : abilities/teleport.cpp.s
 
 abilities/tongue_of_fire.o: abilities/tongue_of_fire.cpp.o
 
@@ -1482,6 +1536,9 @@ help:
 	@echo "... abilities/invisibility.o"
 	@echo "... abilities/invisibility.i"
 	@echo "... abilities/invisibility.s"
+	@echo "... abilities/laser.o"
+	@echo "... abilities/laser.i"
+	@echo "... abilities/laser.s"
 	@echo "... abilities/moveable.o"
 	@echo "... abilities/moveable.i"
 	@echo "... abilities/moveable.s"
@@ -1503,6 +1560,9 @@ help:
 	@echo "... abilities/sword_blow.o"
 	@echo "... abilities/sword_blow.i"
 	@echo "... abilities/sword_blow.s"
+	@echo "... abilities/teleport.o"
+	@echo "... abilities/teleport.i"
+	@echo "... abilities/teleport.s"
 	@echo "... abilities/tongue_of_fire.o"
 	@echo "... abilities/tongue_of_fire.i"
 	@echo "... abilities/tongue_of_fire.s"

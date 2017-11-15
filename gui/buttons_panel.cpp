@@ -51,13 +51,21 @@ size_t buttons_panel::hit_button(sf::Vector2i cursor) const
 
 void buttons_panel::set_buttons_for(size_t entity_id)
 {
-	auto& entity_abilities = abilities_manager::component_for(entity_id);
-	for (std::size_t i = 0; i < 5; ++i)
-	{
-		auto ability = entity_abilities.at(i);
-		if (ability) {
-			buttons_[i].icon(bitmap_center::get_image_for_entity(*ability));
-		} else {
+	if (entity_manager::alive(entity_id)) {
+		auto& entity_abilities = abilities_manager::component_for(entity_id);
+		for (std::size_t i = 0; i < 5; ++i)
+		{
+			auto ability = entity_abilities.at(i);
+			if (ability) {
+				buttons_[i].icon(bitmap_center::get_image_for_entity(*ability));
+			} else {
+				buttons_[i].remove_icon();
+			}
+		}
+		// this sometimes can happen
+	} else {
+		for (std::size_t i = 0; i < 5; ++i)
+		{
 			buttons_[i].remove_icon();
 		}
 	}

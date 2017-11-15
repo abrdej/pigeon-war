@@ -60,7 +60,8 @@ namespace view
                                                == entity_definition::directions::left ? sf::IntRect(60, 0, -60, 60)
                                                                                       : sf::IntRect(0, 0, 60, 60));
 
-                    data.health = healths_manager::component_for(entity_id).health;
+					const auto& healths_component = healths_manager::component_for(entity_id);
+                    data.health = healths_component.health;
                     position.x += view::constants::field_size / 4.f;
                     position.y -= view::constants::field_size / 4.f;
 

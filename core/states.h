@@ -5,9 +5,9 @@
 #include <vector>
 #include <functional>
 #include "path_finder.h"
-#include "abilities/moveable.h"
-#include "managers/entity_manager.h"
-#include "board.h"
+//#include "abilities/moveable.h"
+//#include "managers/entity_manager.h"
+//#include "board.h"
 
 namespace states
 {

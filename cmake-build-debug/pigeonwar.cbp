@@ -137,6 +137,12 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/invisibility.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/laser.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/laser.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/moveable.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -177,6 +183,12 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sword_blow.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/teleport.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/teleport.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.cpp">
@@ -249,6 +261,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/turn.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/droid.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/entity.h">

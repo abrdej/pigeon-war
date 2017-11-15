@@ -7,6 +7,7 @@
 struct health_field {
 	int health;
 	int base_health;
+	bool is_destructible{true};
 };
 
 static const int indestructible = std::numeric_limits<int>::max();
@@ -40,7 +41,11 @@ public:
 	}
 	static bool is_destructible(size_t entity_id) {
 		auto& health_pack = component_reference_for(entity_id);
-		return health_pack.base_health != indestructible;
+		return health_pack.is_destructible;
+	}
+	static bool set_destructible(size_t entity_id, bool value) {
+		auto& health_pack = component_reference_for(entity_id);
+		health_pack.is_destructible = value;
 	}
 	template <typename Callback>
 	static void on_receive_damage(size_t entity_id, Callback callback) {

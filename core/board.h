@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <vector>
 #include <array>
+#include "states.h"
 
 class board final
 {
@@ -14,7 +15,6 @@ public:
 	static const std::size_t rows_n = 10;
 	static const std::size_t empty_id = std::numeric_limits<std::size_t>::max();
 
-	static void prepare_board();
 	inline static void insert(size_t on_index, size_t entity_id)
 	{
 		fields_[on_index].push_back(entity_id);
@@ -33,6 +33,12 @@ public:
 	{
 		auto entity_id = fields_[from_index].back();
 		fields_[from_index].pop_back();
+		return entity_id;
+	}
+	inline static size_t take_bottom(size_t from_index)
+	{
+		auto entity_id = fields_[from_index].front();
+		fields_[from_index].erase(std::begin(fields_[from_index]));
 		return entity_id;
 	}
 	inline static void give_back(size_t entity_id, size_t to_index)
@@ -92,6 +98,9 @@ public:
 	inline static size_t to_index(size_t col, size_t row)
 	{
 		return col + row * board::cols_n;
+	}
+	inline static bool is_valid(std::size_t col, std::size_t row) {
+		return col >= 0 && col < cols_n && row >= 0 && row < rows_n;
 	}
 private:
 	static std::array<std::vector<std::size_t>, cols_n * rows_n> fields_;

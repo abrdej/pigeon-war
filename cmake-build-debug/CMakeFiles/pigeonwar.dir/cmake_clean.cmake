@@ -48,6 +48,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o"
   "CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o"
   "CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o"
+  "CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o"
+  "CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o"
   "pigeonwar.pdb"
   "pigeonwar"
 )

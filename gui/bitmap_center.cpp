@@ -1,8 +1,8 @@
 #include <entities/tree.h>
 #include <entities/samurai_rat.h>
 #include <entities/troll.h>
+#include <entities/droid.h>
 #include <entities/mouse.h>
-#include <abilities/poisoned_missile.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -22,7 +22,7 @@
 
 namespace view
 {
-std::unordered_map<std::type_index, const bitmap_center::bitmap_type> bitmap_center::bitmaps_;
+std::unordered_map<std::type_index, bitmap_center::bitmap_type> bitmap_center::bitmaps_;
 bitmap_center::bitmap_type bitmap_center::grass_move_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_attack_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_damage_bitmap;
@@ -42,7 +42,7 @@ void bitmap_center::load()
     add_entity_image<moveable>("moving.png");
     add_entity_image<wolf>("wolf.png");
     add_entity_image<werewolf>("werewolf.png");
-    add_entity_image<drain>("hello.png");
+    add_entity_image<drain>("sabers.png");
     add_entity_image<basic_melee_attack>("damage.png");
     add_entity_image<animation::bum>("bum.png");
     add_entity_image<animation::claws>("claws.png");
@@ -61,5 +61,8 @@ void bitmap_center::load()
     add_entity_image<rage>("hello.png");
     add_entity_image<mouse>("rattati.png");
     add_entity_image<poisoned_missile>("poisoned_missile.png");
+    add_entity_image<droid>("droid.png");
+    add_entity_image<laser>("poisoned_missile.png");
+    add_entity_image<teleport>("bum.png");
 }
 }

@@ -52,6 +52,49 @@ set(SOURCE_FILES main.cpp
         core/players.cpp
         core/board.cpp
         entities/shooter.cpp
-        managers/entity_remover.cpp managers/entity_remover.h utils/scenario_helper.h scenarios/scenarios.h scenarios/scenarios.cpp entities/tree.cpp entities/tree.h entities/samurai_rat.h abilities/sword_blow.cpp abilities/sword_blow.h abilities/poison.cpp abilities/poison.h entities/troll.h abilities/bludgeon.h abilities/bludgeon.cpp abilities/rage.cpp abilities/rage.h managers/health_manager.cpp entities/mouse.h abilities/poisoned_missile.cpp abilities/poisoned_missile.h)
+        managers/entity_remover.cpp
+        managers/entity_remover.h
+        utils/scenario_helper.h
+        scenarios/scenarios.h
+        scenarios/scenarios.cpp
+        entities/tree.cpp entities/tree.h
+        entities/samurai_rat.h
+        abilities/sword_blow.cpp
+        abilities/sword_blow.h
+        abilities/poison.cpp
+        abilities/poison.h
+        entities/troll.h
+        abilities/bludgeon.h
+        abilities/bludgeon.cpp
+        abilities/rage.cpp
+        abilities/rage.h
+        managers/health_manager.cpp
+        entities/mouse.h
+        abilities/poisoned_missile.cpp
+        abilities/poisoned_missile.h
+        managers/entity_remover.cpp
+        managers/entity_remover.h
+        utils/scenario_helper.h
+        scenarios/scenarios.h
+        scenarios/scenarios.cpp
+        entities/tree.cpp
+        entities/tree.h
+        entities/samurai_rat.h
+        abilities/sword_blow.cpp
+        abilities/sword_blow.h
+        abilities/poison.cpp
+        abilities/poison.h
+        entities/troll.h
+        abilities/bludgeon.h
+        abilities/bludgeon.cpp
+        abilities/rage.cpp
+        abilities/rage.h
+        managers/health_manager.cpp
+        entities/droid.h
+        abilities/laser.cpp
+        abilities/laser.h
+        abilities/teleport.cpp
+        abilities/teleport.h)
+
 add_executable(pigeonwar ${SOURCE_FILES})
 target_link_libraries(pigeonwar ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

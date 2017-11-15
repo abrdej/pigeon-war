@@ -1233,6 +1233,54 @@ CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.provides: CMakeFiles/p
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o
 
 
+CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: CMakeFiles/pigeonwar.dir/flags.make
+CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../abilities/laser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o -c /home/abrdej/Projekty/pigeonwar/abilities/laser.cpp
+
+CMakeFiles/pigeonwar.dir/abilities/laser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/laser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abrdej/Projekty/pigeonwar/abilities/laser.cpp > CMakeFiles/pigeonwar.dir/abilities/laser.cpp.i
+
+CMakeFiles/pigeonwar.dir/abilities/laser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/laser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abrdej/Projekty/pigeonwar/abilities/laser.cpp -o CMakeFiles/pigeonwar.dir/abilities/laser.cpp.s
+
+CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o.requires:
+
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o.requires
+
+CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o.provides: CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o.provides.build
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o.provides
+
+CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o
+
+
+CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: CMakeFiles/pigeonwar.dir/flags.make
+CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: ../abilities/teleport.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o -c /home/abrdej/Projekty/pigeonwar/abilities/teleport.cpp
+
+CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abrdej/Projekty/pigeonwar/abilities/teleport.cpp > CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.i
+
+CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abrdej/Projekty/pigeonwar/abilities/teleport.cpp -o CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.s
+
+CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o.requires:
+
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o.requires
+
+CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o.provides: CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o.provides.build
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o.provides
+
+CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o
+
+
 # Object files for target pigeonwar
 pigeonwar_OBJECTS = \
 "CMakeFiles/pigeonwar.dir/main.cpp.o" \
@@ -1283,7 +1331,9 @@ pigeonwar_OBJECTS = \
 "CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o" \
 "CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o" \
 "CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o" \
-"CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o"
+"CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o" \
+"CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o" \
+"CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o"
 
 # External object files for target pigeonwar
 pigeonwar_EXTERNAL_OBJECTS =
@@ -1337,6 +1387,8 @@ pigeonwar: CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o
+pigeonwar: CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o
+pigeonwar: CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/build.make
 pigeonwar: /usr/local/lib/libsfml-network.so
 pigeonwar: /usr/local/lib/libsfml-audio.so
@@ -1344,7 +1396,7 @@ pigeonwar: /usr/local/lib/libsfml-graphics.so
 pigeonwar: /usr/local/lib/libsfml-window.so
 pigeonwar: /usr/local/lib/libsfml-system.so
 pigeonwar: CMakeFiles/pigeonwar.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Linking CXX executable pigeonwar"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Linking CXX executable pigeonwar"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pigeonwar.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -1401,6 +1453,8 @@ CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/bludgeon.c
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.requires
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.requires
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.requires
+CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o.requires
+CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o.requires
 
 .PHONY : CMakeFiles/pigeonwar.dir/requires
 

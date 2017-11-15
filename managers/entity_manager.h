@@ -9,6 +9,7 @@
 #include "entities/entity.h"
 #include "abilities/abilities.h"
 #include "abilities/damage_receivers.h"
+#include "abilities_manager.h"
 #include "health_manager.h"
 #include "names_manager.h"
 #include "managers/abilities_manager.h"
@@ -17,6 +18,7 @@
 #include "types_manager.h"
 #include "ai/ai_manager.h"
 #include "entity_remover.h"
+#include "core/board.h"
 
 class entity_manager final
 {

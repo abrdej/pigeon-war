@@ -2,6 +2,7 @@
 #include <animation/animation.h>
 #include "bludgeon.h"
 #include "damage_dealers.h"
+#include "managers/types_manager.h"
 
 bludgeon::bludgeon() {
 	onEveryTurn([this](){
@@ -32,36 +33,59 @@ void bludgeon::use(size_t index_on)
 	used_ = true;
 	auto used_from_index = states::state_controller::selected_index_;
 
-	auto col_row_from = board::to_col_row(used_from_index);
-	auto col_row_on = board::to_col_row(index_on);
+	auto from_pos = board::to_col_row(used_from_index);
+	auto on_pos = board::to_col_row(index_on);
 
-	int x = col_row_from.first - col_row_on.first;
-	int y = col_row_from.second - col_row_on.second;
+	int x = from_pos.first - on_pos.first;
+	int y = from_pos.second - on_pos.second;
 
-	auto push_to_index = board::to_index(col_row_on.first - x, col_row_on.second - y);
+	int push_x = on_pos.first - x;
+	int push_y = on_pos.second - y;
 
-	play_animation(used_from_index, index_on, push_to_index);
+	auto push_to_index = board::to_index(push_x, push_y);
+	auto set_on_index = index_on;
+
+	if (!board::is_valid(push_x, push_y)) { // || !board::empty(push_to_index)) {
+		push_to_index = index_on;
+		set_on_index = used_from_index;
+	}
+
+	play_animation(used_from_index, index_on, set_on_index, push_to_index);
 
 	damage_dealers::standard_damage_dealer(damage_, push_to_index);
 
-	states::state_controller::selected_index_ = index_on;
+	states::state_controller::selected_index_ = set_on_index;
 }
 
-void bludgeon::play_animation(size_t from_index, size_t to_index, size_t push_to_index)
+void bludgeon::play_animation(size_t from_index, size_t to_index, size_t set_on_index, size_t push_to_index)
 {
 	auto entity_id = board::take(from_index);
-	auto enemy_id = board::take(to_index);
 
 	auto type = types_manager::component_for(entity_id);
-	auto enemy_type = types_manager::component_for(enemy_id);
+
 
 	animation::player<animation::move>::launch(animation::move(from_index, to_index, type));
 	animation::base_player::play();
 	board::give_back(entity_id, to_index);
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "bum.png"));
 	animation::base_player::play();
-	animation::player<animation::move>::launch(animation::move(to_index, push_to_index, enemy_type));
-	animation::base_player::play();
-	board::give_back(enemy_id, push_to_index);
+
+	if (from_index == set_on_index) {
+		entity_id = board::take(to_index);
+		animation::player<animation::move>::launch(animation::move(to_index, set_on_index, type));
+		animation::base_player::play();
+		board::give_back(entity_id, set_on_index);
+
+		//board::give_back(enemy_id, to_index);
+
+	} else {
+
+		auto enemy_id = board::take_bottom(to_index);
+		auto enemy_type = types_manager::component_for(enemy_id);
+
+		animation::player<animation::move>::launch(animation::move(to_index, push_to_index, enemy_type));
+		animation::base_player::play();
+		board::give_back(enemy_id, push_to_index);
+	}
 }
 
