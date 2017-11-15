@@ -168,7 +168,9 @@ void skirmish(game& game) {
 
     auto saberhand_id = entity_manager::create<saberhand>();
     auto native_id = entity_manager::create<native>();
-    auto troll_id = entity_manager::create<troll>();
+//    auto troll_id = entity_manager::create<troll>();
+    auto troll_id = entity_manager::create<mouse>();
+
     board::insert(board::to_index(12, 3), saberhand_id);
     board::insert(board::to_index(12, 5), native_id);
     board::insert(board::to_index(12, 7), troll_id);
@@ -228,5 +230,5 @@ void skirmish(game& game) {
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {
-    skirmish(game);
+    saurions_web_s(game);
 }

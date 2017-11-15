@@ -24,17 +24,17 @@ void invisibility::prepare(size_t for_index)
 
 void invisibility::use(size_t on_index)
 {
-	used_ = true;
+	if (used_)
+        return;
+
+    used_ = true;
 
     hide_me();
 
 	receiver = turn::turn_system::every_turn(std::make_shared<std::function<void()>>([this](){
 			++turn_counter_;
 
-			//if (turn_counter_ == 1) {
-			//	hide_me();
-			//}
-			if (turn_counter_ == 3) {
+			if (turn_counter_ == 2) {
 				show_me();
 				receiver.reset();
 			}

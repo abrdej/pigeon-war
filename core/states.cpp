@@ -21,8 +21,11 @@ void state_controller::first_state(size_t select_from_index)
 	size_t selected_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(selected_index);
 	auto& entity_abilities = abilities_manager::component_for(entity_id);
-	(*entity_abilities.at(0))(states::state_controller::selected_index_);
 
+	auto moveable = entity_abilities.at(0);
+	if (moveable) {
+		moveable->operator()(states::state_controller::selected_index_);
+	}
 }
 
 void state_controller::wait_for_action(const std::function<void(size_t index)>& caller)

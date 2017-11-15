@@ -90,9 +90,9 @@ void game::on_button(size_t n)
 		{
 			ai_manager::perform_movement();
 			turn::turn_system::end_turn();
-			//players::next_player();
-			//states::state_controller::first_state(players_funcs::active_player_first_entity_index());
-			on_button(14);
+			players::next_player();
+			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
+			//on_button(14);
 		}
 	}
 }
