@@ -23,6 +23,7 @@ CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -34,7 +35,7 @@ CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -115,6 +116,41 @@ CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o
  /usr/local/include/SFML/Window/Window.hpp
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/damage_receivers.h
+ ..//abilities/moveable.h
+ ..//ai/ai_manager.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/event_center.h
+ ..//core/module_holder.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//managers/abilities_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/board.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ /home/abrdej/Projekty/pigeonwar/abilities/ability.h
+ /home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp
+ /home/abrdej/Projekty/pigeonwar/abilities/bludgeon.h
+ /home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o
  ..//core/board.h
  /home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp
@@ -135,13 +171,14 @@ CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -162,13 +199,14 @@ CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -193,7 +231,7 @@ CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
- ..//managers/health_component.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -205,7 +243,7 @@ CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -304,6 +342,7 @@ CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../ai/ai.h
@@ -313,7 +352,7 @@ CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -339,6 +378,7 @@ CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o
  ..//entities/saberhand.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../ai/ai.h
@@ -348,7 +388,7 @@ CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -373,6 +413,7 @@ CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -383,7 +424,7 @@ CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -397,6 +438,74 @@ CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o
  ../core/players.h
  /home/abrdej/Projekty/pigeonwar/abilities/poison.cpp
  /home/abrdej/Projekty/pigeonwar/abilities/poison.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/damage_receivers.h
+ ..//abilities/moveable.h
+ ..//ai/ai_manager.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/event_center.h
+ ..//core/module_holder.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//managers/abilities_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/board.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ /home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
+ /home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.cpp
+ /home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.h
+CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/damage_receivers.h
+ ..//abilities/moveable.h
+ ..//ai/ai_manager.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/event_center.h
+ ..//core/module_holder.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//managers/abilities_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/board.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ /home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
+ /home/abrdej/Projekty/pigeonwar/abilities/rage.cpp
+ /home/abrdej/Projekty/pigeonwar/abilities/rage.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -418,6 +527,7 @@ CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -429,7 +539,7 @@ CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -528,6 +638,7 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../ai/ai.h
@@ -538,7 +649,7 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -653,6 +764,7 @@ CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../ai/ai.h
@@ -662,7 +774,7 @@ CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -688,6 +800,7 @@ CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../ai/ai.h
@@ -698,7 +811,7 @@ CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -796,6 +909,7 @@ CMakeFiles/pigeonwar.dir/ai/ai.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../core/board.h
@@ -803,7 +917,7 @@ CMakeFiles/pigeonwar.dir/ai/ai.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -826,6 +940,7 @@ CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../core/board.h
@@ -833,7 +948,7 @@ CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -861,7 +976,6 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
- ..//entities/params.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
  ..//gui/buttons_panel.h
@@ -871,7 +985,7 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h
  ..//managers/entity_manager.h
- ..//managers/health_component.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -885,7 +999,7 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o
  ../gui/my_button.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -981,7 +1095,6 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
- ..//entities/params.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
  ..//gui/drawer.h
@@ -989,7 +1102,7 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h
  ..//managers/entity_manager.h
- ..//managers/health_component.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -1002,7 +1115,7 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o
  ../gui/my_button.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -1097,13 +1210,14 @@ CMakeFiles/pigeonwar.dir/core/board.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -1140,6 +1254,7 @@ CMakeFiles/pigeonwar.dir/core/game.cpp.o
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
  ..//managers/entity_remover.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//scenarios/scenarios.h
  ..//utils/creator_helper.h
@@ -1151,7 +1266,7 @@ CMakeFiles/pigeonwar.dir/core/game.cpp.o
  ../entities/entity.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -1187,12 +1302,13 @@ CMakeFiles/pigeonwar.dir/core/players.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -1213,6 +1329,7 @@ CMakeFiles/pigeonwar.dir/core/states.cpp.o
  ..//entities/entity.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../ai/ai.h
@@ -1220,7 +1337,7 @@ CMakeFiles/pigeonwar.dir/core/states.cpp.o
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -1246,20 +1363,28 @@ CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o
  ..//core/module_holder.h
  ..//core/signals.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ../core/players.h
+ ../managers/entity_remover.h
  /home/abrdej/Projekty/pigeonwar/entities/entity.h
- /home/abrdej/Projekty/pigeonwar/entities/params.h
  /home/abrdej/Projekty/pigeonwar/entities/shooter.cpp
  /home/abrdej/Projekty/pigeonwar/entities/shooter.h
 CMakeFiles/pigeonwar.dir/entities/tree.cpp.o
  ..//abilities/abilities.h
  ..//core/module_holder.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ../managers/entity_remover.h
  /home/abrdej/Projekty/pigeonwar/entities/entity.h
  /home/abrdej/Projekty/pigeonwar/entities/tree.cpp
  /home/abrdej/Projekty/pigeonwar/entities/tree.h
 CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o
  ..//abilities/abilities.h
  ..//core/module_holder.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ../managers/entity_remover.h
  /home/abrdej/Projekty/pigeonwar/entities/entity.h
  /home/abrdej/Projekty/pigeonwar/entities/werewolf.cpp
  /home/abrdej/Projekty/pigeonwar/entities/werewolf.h
@@ -1273,19 +1398,24 @@ CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o
  ..//core/module_holder.h
  ..//core/signals.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ../core/players.h
+ ../managers/entity_remover.h
  /home/abrdej/Projekty/pigeonwar/entities/entity.h
- /home/abrdej/Projekty/pigeonwar/entities/params.h
  /home/abrdej/Projekty/pigeonwar/entities/wolf.cpp
  /home/abrdej/Projekty/pigeonwar/entities/wolf.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o
  ..//abilities/abilities.h
  ..//abilities/ability.h
  ..//abilities/basic_melee_attack.h
+ ..//abilities/bludgeon.h
  ..//abilities/drain.h
  ..//abilities/grenade.h
  ..//abilities/invisibility.h
  ..//abilities/moveable.h
+ ..//abilities/poisoned_missile.h
+ ..//abilities/rage.h
  ..//abilities/sabers.h
  ..//abilities/shoot.h
  ..//abilities/sword_blow.h
@@ -1297,6 +1427,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o
  ..//core/signals.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/mouse.h
  ..//entities/native.h
  ..//entities/saberhand.h
  ..//entities/samurai_rat.h
@@ -1305,11 +1436,16 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o
  ..//entities/shooter.h
  ..//entities/stone.h
  ..//entities/tree.h
+ ..//entities/troll.h
  ..//entities/werewolf.h
  ..//entities/wolf.h
  ..//gui/bitmap_center.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ../abilities/ability.h
  ../core/players.h
  ../entities/entity.h
+ ../managers/entity_remover.h
  /home/abrdej/Projekty/pigeonwar/gui/bitmap_center.cpp
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics/Color.hpp
@@ -1420,13 +1556,14 @@ CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o
  ..//gui/bitmap_center.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -1522,14 +1659,13 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
- ..//entities/params.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
  ..//gui/view_constants.h
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h
  ..//managers/entity_manager.h
- ..//managers/health_component.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -1541,7 +1677,7 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o
  ../gui/my_button.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -1637,7 +1773,6 @@ CMakeFiles/pigeonwar.dir/gui/gui.cpp.o
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
- ..//entities/params.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
  ..//gui/buttons_panel.h
@@ -1646,7 +1781,7 @@ CMakeFiles/pigeonwar.dir/gui/gui.cpp.o
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h
  ..//managers/entity_manager.h
- ..//managers/health_component.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -1659,7 +1794,7 @@ CMakeFiles/pigeonwar.dir/gui/gui.cpp.o
  ../gui/my_button.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -1908,7 +2043,6 @@ CMakeFiles/pigeonwar.dir/main.cpp.o
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
- ..//entities/params.h
  ..//gui/board_panel.h
  ..//gui/buttons_panel.h
  ..//gui/my_button.h
@@ -1916,7 +2050,7 @@ CMakeFiles/pigeonwar.dir/main.cpp.o
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h
  ..//managers/entity_manager.h
- ..//managers/health_component.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
@@ -1929,7 +2063,7 @@ CMakeFiles/pigeonwar.dir/main.cpp.o
  ../gui/my_button.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -2030,6 +2164,8 @@ CMakeFiles/pigeonwar.dir/managers/directions_manager.cpp.o
  ..//abilities/abilities.h
  ..//core/module_holder.h
  ..//entities/entity.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  /home/abrdej/Projekty/pigeonwar/managers/directions_manager.cpp
  /home/abrdej/Projekty/pigeonwar/managers/directions_manager.h
  /home/abrdej/Projekty/pigeonwar/managers/entity_remover.h
@@ -2048,6 +2184,7 @@ CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o
  ..//core/turn.h
  ..//entities/entity.h
  ..//managers/abilities_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ../ai/ai.h
  ../ai/behavior_tree.h
@@ -2056,13 +2193,18 @@ CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o
  /home/abrdej/Projekty/pigeonwar/managers/entity_manager.cpp
  /home/abrdej/Projekty/pigeonwar/managers/entity_manager.h
  /home/abrdej/Projekty/pigeonwar/managers/entity_remover.h
- /home/abrdej/Projekty/pigeonwar/managers/health_component.h
+ /home/abrdej/Projekty/pigeonwar/managers/health_manager.h
  /home/abrdej/Projekty/pigeonwar/managers/managers.h
  /home/abrdej/Projekty/pigeonwar/managers/names_manager.h
  /home/abrdej/Projekty/pigeonwar/managers/types_manager.h
 CMakeFiles/pigeonwar.dir/managers/entity_remover.cpp.o
  /home/abrdej/Projekty/pigeonwar/managers/entity_remover.cpp
  /home/abrdej/Projekty/pigeonwar/managers/entity_remover.h
+CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o
+ ..//managers/managers.h
+ ../managers/entity_remover.h
+ /home/abrdej/Projekty/pigeonwar/managers/health_manager.cpp
+ /home/abrdej/Projekty/pigeonwar/managers/health_manager.h
 CMakeFiles/pigeonwar.dir/managers/names_manager.cpp.o
  /home/abrdej/Projekty/pigeonwar/managers/entity_remover.h
  /home/abrdej/Projekty/pigeonwar/managers/managers.h
@@ -2076,11 +2218,14 @@ CMakeFiles/pigeonwar.dir/managers/types_manager.cpp.o
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/bludgeon.h
  ..//abilities/damage_dealers.h
  ..//abilities/damage_receivers.h
  ..//abilities/drain.h
  ..//abilities/invisibility.h
  ..//abilities/moveable.h
+ ..//abilities/poisoned_missile.h
+ ..//abilities/rage.h
  ..//abilities/sabers.h
  ..//abilities/sword_blow.h
  ..//abilities/tongue_of_fire.h
@@ -2093,6 +2238,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
  ..//core/signals.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/mouse.h
  ..//entities/native.h
  ..//entities/saberhand.h
  ..//entities/samurai_rat.h
@@ -2101,20 +2247,23 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
  ..//entities/shooter.h
  ..//entities/stone.h
  ..//entities/tree.h
+ ..//entities/troll.h
  ..//entities/wolf.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
  ..//managers/entity_remover.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/creator_helper.h
  ..//utils/scenario_helper.h
+ ../abilities/ability.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
  ../entities/entity.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
@@ -2137,6 +2286,7 @@ CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o
  ..//entities/tree.h
  ..//managers/abilities_manager.h
  ..//managers/entity_manager.h
+ ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/creator_helper.h
  ../ai/ai.h
@@ -2145,7 +2295,7 @@ CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o
  ../entities/entity.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
- ../managers/health_component.h
+ ../managers/health_manager.h
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h

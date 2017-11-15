@@ -13,7 +13,7 @@ struct rage final : public ability, turn_events_helper::every_turn_callback_help
 
 	void prepare(size_t for_index) override {}
 	void use();
-	void play_animation();
+	void play_animation(size_t for_index);
 
 private:
 	static const size_t range_ = 1;

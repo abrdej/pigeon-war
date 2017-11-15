@@ -1137,6 +1137,102 @@ CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o.provides: CMakeFiles/pigeonwar.d
 CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o
 
 
+CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: CMakeFiles/pigeonwar.dir/flags.make
+CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../abilities/bludgeon.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o -c /home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp
+
+CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp > CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.i
+
+CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp -o CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.s
+
+CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o.requires:
+
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o.requires
+
+CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o.provides: CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o.provides.build
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o.provides
+
+CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o
+
+
+CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: CMakeFiles/pigeonwar.dir/flags.make
+CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../abilities/rage.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o -c /home/abrdej/Projekty/pigeonwar/abilities/rage.cpp
+
+CMakeFiles/pigeonwar.dir/abilities/rage.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/rage.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abrdej/Projekty/pigeonwar/abilities/rage.cpp > CMakeFiles/pigeonwar.dir/abilities/rage.cpp.i
+
+CMakeFiles/pigeonwar.dir/abilities/rage.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/rage.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abrdej/Projekty/pigeonwar/abilities/rage.cpp -o CMakeFiles/pigeonwar.dir/abilities/rage.cpp.s
+
+CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.requires:
+
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.requires
+
+CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.provides: CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.provides.build
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.provides
+
+CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o
+
+
+CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o: CMakeFiles/pigeonwar.dir/flags.make
+CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o: ../managers/health_manager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o -c /home/abrdej/Projekty/pigeonwar/managers/health_manager.cpp
+
+CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abrdej/Projekty/pigeonwar/managers/health_manager.cpp > CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.i
+
+CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abrdej/Projekty/pigeonwar/managers/health_manager.cpp -o CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.s
+
+CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.requires:
+
+.PHONY : CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.requires
+
+CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.provides: CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.provides.build
+.PHONY : CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.provides
+
+CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o
+
+
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: CMakeFiles/pigeonwar.dir/flags.make
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../abilities/poisoned_missile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o -c /home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.cpp
+
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.cpp > CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.i
+
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.cpp -o CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.s
+
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.requires:
+
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.requires
+
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.provides: CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.provides.build
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.provides
+
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o
+
+
 # Object files for target pigeonwar
 pigeonwar_OBJECTS = \
 "CMakeFiles/pigeonwar.dir/main.cpp.o" \
@@ -1183,7 +1279,11 @@ pigeonwar_OBJECTS = \
 "CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o" \
 "CMakeFiles/pigeonwar.dir/entities/tree.cpp.o" \
 "CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o" \
-"CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o"
+"CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o" \
+"CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o" \
+"CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o" \
+"CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o" \
+"CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o"
 
 # External object files for target pigeonwar
 pigeonwar_EXTERNAL_OBJECTS =
@@ -1233,6 +1333,10 @@ pigeonwar: CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/entities/tree.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o
+pigeonwar: CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o
+pigeonwar: CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o
+pigeonwar: CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o
+pigeonwar: CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/build.make
 pigeonwar: /usr/local/lib/libsfml-network.so
 pigeonwar: /usr/local/lib/libsfml-audio.so
@@ -1240,7 +1344,7 @@ pigeonwar: /usr/local/lib/libsfml-graphics.so
 pigeonwar: /usr/local/lib/libsfml-window.so
 pigeonwar: /usr/local/lib/libsfml-system.so
 pigeonwar: CMakeFiles/pigeonwar.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Linking CXX executable pigeonwar"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Linking CXX executable pigeonwar"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pigeonwar.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -1293,6 +1397,10 @@ CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/scenarios/scenarios.
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/entities/tree.cpp.o.requires
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o.requires
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o.requires
+CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o.requires
+CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o.requires
+CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o.requires
+CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o.requires
 
 .PHONY : CMakeFiles/pigeonwar.dir/requires
 

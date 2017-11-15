@@ -1,5 +1,6 @@
 #include <managers/health_manager.h>
 #include <core/states.h>
+#include <animation/animation.h>
 #include "rage.h"
 #include "damage_dealers.h"
 
@@ -36,6 +37,14 @@ void rage::use() {
 	}
 }
 
-void rage::play_animation() {
+void rage::play_animation(size_t for_index) {
+
+	auto ii = board::to_col_row(for_index);
+
+	animation::player<animation::flash_bitmap>::launch(
+			animation::flash_bitmap(board::to_index(ii.first - 1, ii.second - 1),
+									std::chrono::milliseconds(150),
+									"troll_angry.png"));
+	animation::base_player::play();
 
 }
