@@ -63,7 +63,7 @@ void game::on_board(size_t col, size_t row)
 
 void game::on_button(size_t n)
 {
-	if (n >= 0 && n <= 5)
+	if (n >= 0 && n <= 3) // 4 is passive
 	{
 		auto selected_index = states::state_controller::selected_index_;
 
@@ -90,9 +90,9 @@ void game::on_button(size_t n)
 		{
 			ai_manager::perform_movement();
 			turn::turn_system::end_turn();
-			//players::next_player();
-			//states::state_controller::first_state(players_funcs::active_player_first_entity_index());
-			on_button(14);
+			players::next_player();
+			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
+			//on_button(14);
 		}
 	}
 }

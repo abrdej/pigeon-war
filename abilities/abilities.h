@@ -12,7 +12,7 @@ class ability;
 class abilities final
 {
 public:
-	enum class ability_types { moving = 0, offensive, special, passive, defensive };
+	enum class ability_types { moving = 0, offensive, special, defensive, passive };
 
 	void add_ability(ability_types type, const std::shared_ptr<ability>& ability_ptr)
 	{

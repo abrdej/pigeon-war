@@ -16,48 +16,14 @@
 
 namespace view
 {
-
-struct entity_drawer {
-
-	sf::Sprite sprite;
-	int health;
-	sf::Vector2f health_pos;
-
-	entity_drawer() {
-
-	}
-
-	void prepare(std::size_t entity_id, const sf::Vector2f& pos) {
-
-		sprite.setTexture(bitmap_center::get_image_for_entity(types_manager::component_for(entity_id)));
-
-		sprite.setPosition(pos);
-		sprite.setTextureRect(directions_manager::component_for(entity_id)
-							  == entity_definition::directions::left ? sf::IntRect(60, 0, -60, 60)
-																	 : sf::IntRect(0, 0, 60, 60));
-
-		health = healths_manager::component_for(entity_id).health;
-		health_pos = pos;
-		health_pos.x += view::constants::field_size / 4.f;
-		health_pos.y -= view::constants::field_size / 4.f;
-	}
-
-	void draw(sf::RenderWindow& window) {
-
-		window.draw(sprite
-
-	}
-
-};
-
-class entities_renderer
-{
-	struct render_data
+	class entities_renderer
 	{
-		sf::Sprite sprite;
-		int health;
-		sf::Vector2f health_pos;
-	};
+		struct render_data
+		{
+			sf::Sprite sprite;
+			int health;
+			sf::Vector2f health_pos;
+		};
 
 public:
 	entities_renderer()
@@ -83,9 +49,6 @@ public:
 		board::for_each([this, &window, &last_col, &last_row](size_t entity_id, size_t col, size_t row) {
 			if (entity_id != -1) {
 
-				entity_drawing_manager::drawer_for(entity_id).prepare(sf::Vector2f(board_indexies_to_point(col, row)));
-				entity_drawing_manager::drawer_for(entity_id).draw(window)
-
 				render_data data{};
 				data.sprite.setTexture(bitmap_center::get_image_for_entity(
 						types_manager::component_for(entity_id)));
@@ -99,6 +62,10 @@ public:
 				data.health = healths_manager::component_for(entity_id).health;
 				position.x += view::constants::field_size / 4.f;
 				position.y -= view::constants::field_size / 4.f;
+					const auto& healths_component = healths_manager::component_for(entity_id);
+                    data.health = healths_component.health;
+                    position.x += view::constants::field_size / 4.f;
+                    position.y -= view::constants::field_size / 4.f;
 
 				if (last_col == col && last_row == row) {
 					position.x += view::constants::field_size / 4.f;

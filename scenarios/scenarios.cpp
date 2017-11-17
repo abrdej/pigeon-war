@@ -1,6 +1,9 @@
 #include <entities/samurai_rat.h>
 #include <entities/troll.h>
+#include <entities/mouse.h>
 #include <entities/droid.h>
+#include <entities/werewolf.h>
+#include <entities/grenadier.h>
 #include "scenarios.h"
 #include "core/game.h"
 #include "abilities/damage_dealers.h"
@@ -151,7 +154,8 @@ void wolves_dinner(game& game) {
 
 void skirmish(game& game) {
 
-    auto shooter_id = entity_manager::create<shooter>();
+//    auto shooter_id = entity_manager::create<shooter>();
+    auto shooter_id = entity_manager::create<grenadier>();
     auto samurai_id = entity_manager::create<samurai_rat>();
     auto droid_id = entity_manager::create<droid>();
 
@@ -167,7 +171,10 @@ void skirmish(game& game) {
 
     auto saberhand_id = entity_manager::create<saberhand>();
     auto native_id = entity_manager::create<native>();
-    auto troll_id = entity_manager::create<troll>();
+//    auto troll_id = entity_manager::create<troll>();
+    auto troll_id = entity_manager::create<mouse>();
+//    auto troll_id = entity_manager::create<werewolf>();
+
     board::insert(board::to_index(12, 3), saberhand_id);
     board::insert(board::to_index(12, 5), native_id);
     board::insert(board::to_index(12, 7), troll_id);

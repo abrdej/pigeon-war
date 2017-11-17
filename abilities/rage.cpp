@@ -1,10 +1,10 @@
 #include <managers/health_manager.h>
 #include <core/states.h>
-#include <animation/animation.h>
 #include "rage.h"
 #include "damage_dealers.h"
 #include "managers/types_manager.h"
 #include <iostream>
+#include <animation/animation.h>
 
 rage::rage(size_t id) : entity_id(id) {
 	onEveryTurn([this]() {

@@ -10,6 +10,7 @@ struct stone final
 		entity_definition entity_def(typeid(stone));
 		entity_def.name = "Kamie�";
 		entity_def.health_pack.base_health = indestructible;
+		entity_def.health_pack.is_destructible = false;
 		return entity_def;
 	}
 };

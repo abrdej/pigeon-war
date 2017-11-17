@@ -177,6 +177,33 @@ abilities/basic_melee_attack.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.s
 .PHONY : abilities/basic_melee_attack.cpp.s
 
+abilities/bludgeon.o: abilities/bludgeon.cpp.o
+
+.PHONY : abilities/bludgeon.o
+
+# target to build an object file
+abilities/bludgeon.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o
+.PHONY : abilities/bludgeon.cpp.o
+
+abilities/bludgeon.i: abilities/bludgeon.cpp.i
+
+.PHONY : abilities/bludgeon.i
+
+# target to preprocess a source file
+abilities/bludgeon.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.i
+.PHONY : abilities/bludgeon.cpp.i
+
+abilities/bludgeon.s: abilities/bludgeon.cpp.s
+
+.PHONY : abilities/bludgeon.s
+
+# target to generate assembly for a file
+abilities/bludgeon.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.s
+.PHONY : abilities/bludgeon.cpp.s
+
 abilities/bullet.o: abilities/bullet.cpp.o
 
 .PHONY : abilities/bullet.o
@@ -339,6 +366,33 @@ abilities/invisibility.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.s
 .PHONY : abilities/invisibility.cpp.s
 
+abilities/laser.o: abilities/laser.cpp.o
+
+.PHONY : abilities/laser.o
+
+# target to build an object file
+abilities/laser.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o
+.PHONY : abilities/laser.cpp.o
+
+abilities/laser.i: abilities/laser.cpp.i
+
+.PHONY : abilities/laser.i
+
+# target to preprocess a source file
+abilities/laser.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/laser.cpp.i
+.PHONY : abilities/laser.cpp.i
+
+abilities/laser.s: abilities/laser.cpp.s
+
+.PHONY : abilities/laser.s
+
+# target to generate assembly for a file
+abilities/laser.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/laser.cpp.s
+.PHONY : abilities/laser.cpp.s
+
 abilities/moveable.o: abilities/moveable.cpp.o
 
 .PHONY : abilities/moveable.o
@@ -392,6 +446,60 @@ abilities/poison.s: abilities/poison.cpp.s
 abilities/poison.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/poison.cpp.s
 .PHONY : abilities/poison.cpp.s
+
+abilities/poisoned_missile.o: abilities/poisoned_missile.cpp.o
+
+.PHONY : abilities/poisoned_missile.o
+
+# target to build an object file
+abilities/poisoned_missile.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o
+.PHONY : abilities/poisoned_missile.cpp.o
+
+abilities/poisoned_missile.i: abilities/poisoned_missile.cpp.i
+
+.PHONY : abilities/poisoned_missile.i
+
+# target to preprocess a source file
+abilities/poisoned_missile.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.i
+.PHONY : abilities/poisoned_missile.cpp.i
+
+abilities/poisoned_missile.s: abilities/poisoned_missile.cpp.s
+
+.PHONY : abilities/poisoned_missile.s
+
+# target to generate assembly for a file
+abilities/poisoned_missile.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.s
+.PHONY : abilities/poisoned_missile.cpp.s
+
+abilities/rage.o: abilities/rage.cpp.o
+
+.PHONY : abilities/rage.o
+
+# target to build an object file
+abilities/rage.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o
+.PHONY : abilities/rage.cpp.o
+
+abilities/rage.i: abilities/rage.cpp.i
+
+.PHONY : abilities/rage.i
+
+# target to preprocess a source file
+abilities/rage.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/rage.cpp.i
+.PHONY : abilities/rage.cpp.i
+
+abilities/rage.s: abilities/rage.cpp.s
+
+.PHONY : abilities/rage.s
+
+# target to generate assembly for a file
+abilities/rage.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/rage.cpp.s
+.PHONY : abilities/rage.cpp.s
 
 abilities/sabers.o: abilities/sabers.cpp.o
 
@@ -473,6 +581,33 @@ abilities/sword_blow.s: abilities/sword_blow.cpp.s
 abilities/sword_blow.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.s
 .PHONY : abilities/sword_blow.cpp.s
+
+abilities/teleport.o: abilities/teleport.cpp.o
+
+.PHONY : abilities/teleport.o
+
+# target to build an object file
+abilities/teleport.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o
+.PHONY : abilities/teleport.cpp.o
+
+abilities/teleport.i: abilities/teleport.cpp.i
+
+.PHONY : abilities/teleport.i
+
+# target to preprocess a source file
+abilities/teleport.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.i
+.PHONY : abilities/teleport.cpp.i
+
+abilities/teleport.s: abilities/teleport.cpp.s
+
+.PHONY : abilities/teleport.s
+
+# target to generate assembly for a file
+abilities/teleport.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.s
+.PHONY : abilities/teleport.cpp.s
 
 abilities/tongue_of_fire.o: abilities/tongue_of_fire.cpp.o
 
@@ -1230,6 +1365,33 @@ managers/entity_remover.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/managers/entity_remover.cpp.s
 .PHONY : managers/entity_remover.cpp.s
 
+managers/health_manager.o: managers/health_manager.cpp.o
+
+.PHONY : managers/health_manager.o
+
+# target to build an object file
+managers/health_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.o
+.PHONY : managers/health_manager.cpp.o
+
+managers/health_manager.i: managers/health_manager.cpp.i
+
+.PHONY : managers/health_manager.i
+
+# target to preprocess a source file
+managers/health_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.i
+.PHONY : managers/health_manager.cpp.i
+
+managers/health_manager.s: managers/health_manager.cpp.s
+
+.PHONY : managers/health_manager.s
+
+# target to generate assembly for a file
+managers/health_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.s
+.PHONY : managers/health_manager.cpp.s
+
 managers/names_manager.o: managers/names_manager.cpp.o
 
 .PHONY : managers/names_manager.o
@@ -1353,6 +1515,9 @@ help:
 	@echo "... abilities/basic_melee_attack.o"
 	@echo "... abilities/basic_melee_attack.i"
 	@echo "... abilities/basic_melee_attack.s"
+	@echo "... abilities/bludgeon.o"
+	@echo "... abilities/bludgeon.i"
+	@echo "... abilities/bludgeon.s"
 	@echo "... abilities/bullet.o"
 	@echo "... abilities/bullet.i"
 	@echo "... abilities/bullet.s"
@@ -1371,12 +1536,21 @@ help:
 	@echo "... abilities/invisibility.o"
 	@echo "... abilities/invisibility.i"
 	@echo "... abilities/invisibility.s"
+	@echo "... abilities/laser.o"
+	@echo "... abilities/laser.i"
+	@echo "... abilities/laser.s"
 	@echo "... abilities/moveable.o"
 	@echo "... abilities/moveable.i"
 	@echo "... abilities/moveable.s"
 	@echo "... abilities/poison.o"
 	@echo "... abilities/poison.i"
 	@echo "... abilities/poison.s"
+	@echo "... abilities/poisoned_missile.o"
+	@echo "... abilities/poisoned_missile.i"
+	@echo "... abilities/poisoned_missile.s"
+	@echo "... abilities/rage.o"
+	@echo "... abilities/rage.i"
+	@echo "... abilities/rage.s"
 	@echo "... abilities/sabers.o"
 	@echo "... abilities/sabers.i"
 	@echo "... abilities/sabers.s"
@@ -1386,6 +1560,9 @@ help:
 	@echo "... abilities/sword_blow.o"
 	@echo "... abilities/sword_blow.i"
 	@echo "... abilities/sword_blow.s"
+	@echo "... abilities/teleport.o"
+	@echo "... abilities/teleport.i"
+	@echo "... abilities/teleport.s"
 	@echo "... abilities/tongue_of_fire.o"
 	@echo "... abilities/tongue_of_fire.i"
 	@echo "... abilities/tongue_of_fire.s"
@@ -1470,6 +1647,9 @@ help:
 	@echo "... managers/entity_remover.o"
 	@echo "... managers/entity_remover.i"
 	@echo "... managers/entity_remover.s"
+	@echo "... managers/health_manager.o"
+	@echo "... managers/health_manager.i"
+	@echo "... managers/health_manager.s"
 	@echo "... managers/names_manager.o"
 	@echo "... managers/names_manager.i"
 	@echo "... managers/names_manager.s"

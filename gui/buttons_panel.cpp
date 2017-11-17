@@ -59,7 +59,7 @@ void buttons_panel::set_buttons_for(size_t entity_id)
 			if (ability) {
 				buttons_[i].icon(bitmap_center::get_image_for_entity(*ability));
 			} else {
-
+				buttons_[i].remove_icon();
 			}
 		}
 		// this sometimes can happen

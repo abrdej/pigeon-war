@@ -98,6 +98,12 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/basic_melee_attack.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -131,6 +137,12 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/invisibility.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/laser.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/laser.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/moveable.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -141,6 +153,18 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poison.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/rage.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/rage.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sabers.cpp">
@@ -159,6 +183,12 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sword_blow.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/teleport.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/teleport.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.cpp">
@@ -233,7 +263,13 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/turn.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/droid.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/entity.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/mouse.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/samurai_rat.h">
@@ -249,6 +285,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/tree.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/troll.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/werewolf.cpp">
@@ -330,6 +369,12 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_remover.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/health_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/health_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/names_manager.cpp">

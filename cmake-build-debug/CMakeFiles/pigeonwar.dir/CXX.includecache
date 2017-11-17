@@ -26,6 +26,12 @@ memory
 abilities/ability.h
 ../abilities/abilities/ability.h
 
+..//abilities/bludgeon.h
+core/turn.h
+-
+ability.h
+../abilities/ability.h
+
 ..//abilities/bullet.h
 memory
 -
@@ -51,10 +57,20 @@ vector
 -
 
 ..//abilities/invisibility.h
+core/turn.h
+-
+SFML/Graphics/Texture.hpp
+-
 abilities/ability.h
 ../abilities/abilities/ability.h
 core/event_center.h
 ../abilities/core/event_center.h
+
+..//abilities/laser.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
 
 ..//abilities/moveable.h
 abilities/ability.h
@@ -67,6 +83,18 @@ functional
 -
 core/turn.h
 ../abilities/core/turn.h
+
+..//abilities/poisoned_missile.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
+..//abilities/rage.h
+core/turn.h
+-
+abilities/ability.h
+../abilities/abilities/ability.h
 
 ..//abilities/sabers.h
 abilities/ability.h
@@ -87,6 +115,10 @@ abilities/ability.h
 ../abilities/abilities/ability.h
 core/turn.h
 ../abilities/core/turn.h
+
+..//abilities/teleport.h
+abilities/ability.h
+../abilities/abilities/ability.h
 
 ..//abilities/tongue_of_fire.h
 abilities/ability.h
@@ -173,6 +205,8 @@ vector
 -
 array
 -
+states.h
+../core/states.h
 
 ..//core/event_center.h
 functional
@@ -217,8 +251,6 @@ memory
 -
 algorithm
 -
-core/board.h
-../core/core/board.h
 
 ..//core/signals.h
 functional
@@ -237,12 +269,6 @@ functional
 -
 path_finder.h
 ../core/path_finder.h
-abilities/moveable.h
-../core/abilities/moveable.h
-managers/entity_manager.h
-../core/managers/entity_manager.h
-board.h
-../core/board.h
 
 ..//core/turn.h
 vector
@@ -256,6 +282,18 @@ players.h
 core/signals.h
 ../core/core/signals.h
 
+..//entities/droid.h
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/laser.h
+../entities/abilities/laser.h
+abilities/moveable.h
+-
+abilities/teleport.h
+-
+
 ..//entities/entity.h
 limits
 -
@@ -263,6 +301,18 @@ core/module_holder.h
 ../entities/core/module_holder.h
 abilities/abilities.h
 ../entities/abilities/abilities.h
+managers/health_manager.h
+../entities/managers/health_manager.h
+
+..//entities/mouse.h
+abilities/poisoned_missile.h
+-
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+../entities/abilities/moveable.h
 
 ..//entities/native.h
 entity.h
@@ -271,8 +321,6 @@ abilities/abilities.h
 ../entities/abilities/abilities.h
 abilities/drain.h
 ../entities/abilities/drain.h
-
-..//entities/params.h
 
 ..//entities/saberhand.h
 entities/entity.h
@@ -311,6 +359,16 @@ entity.h
 ../entities/entity.h
 
 ..//entities/tree.h
+entity.h
+../entities/entity.h
+
+..//entities/troll.h
+abilities/moveable.h
+-
+abilities/bludgeon.h
+-
+abilities/rage.h
+-
 entity.h
 ../entities/entity.h
 
@@ -365,14 +423,12 @@ core/states.h
 ../gui/core/states.h
 core/game.h
 ../gui/core/game.h
-entities/params.h
-../gui/entities/params.h
 gui/view_constants.h
 ../gui/gui/view_constants.h
 gui/board_panel.h
 ../gui/gui/board_panel.h
-managers/health_component.h
-../gui/managers/health_component.h
+managers/health_manager.h
+../gui/managers/health_manager.h
 managers/directions_manager.h
 ../gui/managers/directions_manager.h
 managers/types_manager.h
@@ -417,18 +473,10 @@ SFML/Graphics.hpp
 ..//managers/abilities_manager.h
 managers.h
 ../managers/managers.h
-core/board.h
-../managers/core/board.h
-abilities/abilities.h
-../managers/abilities/abilities.h
-abilities/ability.h
-../managers/abilities/ability.h
 abilities/moveable.h
 ../managers/abilities/moveable.h
-unordered_map
--
-vector
--
+abilities/abilities.h
+../managers/abilities/abilities.h
 
 ..//managers/directions_manager.h
 managers.h
@@ -457,8 +505,10 @@ abilities/abilities.h
 ../managers/abilities/abilities.h
 abilities/damage_receivers.h
 ../managers/abilities/damage_receivers.h
-health_component.h
-../managers/health_component.h
+abilities_manager.h
+../managers/abilities_manager.h
+health_manager.h
+../managers/health_manager.h
 names_manager.h
 ../managers/names_manager.h
 managers/abilities_manager.h
@@ -473,6 +523,8 @@ ai/ai_manager.h
 ../managers/ai/ai_manager.h
 entity_remover.h
 ../managers/entity_remover.h
+core/board.h
+../managers/core/board.h
 
 ..//managers/entity_remover.h
 functional
@@ -482,9 +534,11 @@ vector
 unordered_map
 -
 
-..//managers/health_component.h
+..//managers/health_manager.h
 managers/managers.h
 ../managers/managers/managers.h
+limits
+-
 
 ..//managers/managers.h
 unordered_map
@@ -544,6 +598,10 @@ managers/entity_remover.h
 SFML/Graphics.hpp
 -
 
+../abilities/ability.h
+memory
+-
+
 ../ai/ai.h
 core/players.h
 ../ai/core/players.h
@@ -566,18 +624,6 @@ typeindex
 chrono
 -
 
-../core/board.h
-memory
--
-functional
--
-algorithm
--
-vector
--
-array
--
-
 ../core/path_finder.h
 utils/graph.h
 ../core/utils/graph.h
@@ -597,8 +643,16 @@ memory
 -
 algorithm
 -
-core/board.h
-../core/core/board.h
+
+../core/states.h
+utility
+-
+vector
+-
+functional
+-
+path_finder.h
+../core/path_finder.h
 
 ../entities/entity.h
 limits
@@ -607,6 +661,8 @@ core/module_holder.h
 ../entities/core/module_holder.h
 abilities/abilities.h
 ../entities/abilities/abilities.h
+managers/health_manager.h
+../entities/managers/health_manager.h
 
 ../gui/drawer.h
 SFML/Graphics.hpp
@@ -623,14 +679,12 @@ core/states.h
 ../gui/core/states.h
 core/game.h
 ../gui/core/game.h
-entities/params.h
-../gui/entities/params.h
 gui/view_constants.h
 ../gui/gui/view_constants.h
 gui/board_panel.h
 ../gui/gui/board_panel.h
-managers/health_component.h
-../gui/managers/health_component.h
+managers/health_manager.h
+../gui/managers/health_manager.h
 managers/directions_manager.h
 ../gui/managers/directions_manager.h
 managers/types_manager.h
@@ -641,6 +695,14 @@ SFML/Graphics.hpp
 -
 functional
 -
+
+../managers/abilities_manager.h
+managers.h
+../managers/managers.h
+abilities/moveable.h
+../managers/abilities/moveable.h
+abilities/abilities.h
+../managers/abilities/abilities.h
 
 ../managers/directions_manager.h
 managers.h
@@ -660,9 +722,11 @@ vector
 unordered_map
 -
 
-../managers/health_component.h
+../managers/health_manager.h
 managers/managers.h
 ../managers/managers/managers.h
+limits
+-
 
 ../managers/managers.h
 unordered_map
@@ -728,6 +792,24 @@ managers/types_manager.h
 abilities/ability.h
 /home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
 
+/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp
+core/states.h
+-
+animation/animation.h
+-
+bludgeon.h
+/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.h
+damage_dealers.h
+/home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
+managers/types_manager.h
+/home/abrdej/Projekty/pigeonwar/abilities/managers/types_manager.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.h
+core/turn.h
+-
+ability.h
+/home/abrdej/Projekty/pigeonwar/abilities/ability.h
+
 /home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp
 bullet.h
 /home/abrdej/Projekty/pigeonwar/abilities/bullet.h
@@ -785,8 +867,8 @@ animation/animation_impl.h
 /home/abrdej/Projekty/pigeonwar/abilities/animation/animation_impl.h
 damage_dealers.h
 /home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
-managers/health_component.h
-/home/abrdej/Projekty/pigeonwar/abilities/managers/health_component.h
+managers/health_manager.h
+/home/abrdej/Projekty/pigeonwar/abilities/managers/health_manager.h
 managers/types_manager.h
 /home/abrdej/Projekty/pigeonwar/abilities/managers/types_manager.h
 
@@ -827,12 +909,34 @@ entities/saberhand.h
 /home/abrdej/Projekty/pigeonwar/abilities/entities/saberhand.h
 core/states.h
 /home/abrdej/Projekty/pigeonwar/abilities/core/states.h
+gui/bitmap_center.h
+/home/abrdej/Projekty/pigeonwar/abilities/gui/bitmap_center.h
 
 /home/abrdej/Projekty/pigeonwar/abilities/invisibility.h
+core/turn.h
+-
+SFML/Graphics/Texture.hpp
+-
 abilities/ability.h
 /home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
 core/event_center.h
 /home/abrdej/Projekty/pigeonwar/abilities/core/event_center.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/laser.cpp
+laser.h
+/home/abrdej/Projekty/pigeonwar/abilities/laser.h
+damage_dealers.h
+/home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
+core/states.h
+-
+animation/animation.h
+-
+
+/home/abrdej/Projekty/pigeonwar/abilities/laser.h
+abilities/ability.h
+/home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
+core/turn.h
+/home/abrdej/Projekty/pigeonwar/abilities/core/turn.h
 
 /home/abrdej/Projekty/pigeonwar/abilities/moveable.cpp
 moveable.h
@@ -873,6 +977,44 @@ vector
 -
 core/turn.h
 /home/abrdej/Projekty/pigeonwar/abilities/core/turn.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.cpp
+core/states.h
+-
+animation/animation.h
+-
+poisoned_missile.h
+/home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.h
+damage_dealers.h
+/home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.h
+abilities/ability.h
+/home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
+core/turn.h
+/home/abrdej/Projekty/pigeonwar/abilities/core/turn.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/rage.cpp
+managers/health_manager.h
+-
+core/states.h
+-
+rage.h
+/home/abrdej/Projekty/pigeonwar/abilities/rage.h
+damage_dealers.h
+/home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
+managers/types_manager.h
+/home/abrdej/Projekty/pigeonwar/abilities/managers/types_manager.h
+iostream
+-
+animation/animation.h
+-
+
+/home/abrdej/Projekty/pigeonwar/abilities/rage.h
+core/turn.h
+-
+abilities/ability.h
+/home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
 
 /home/abrdej/Projekty/pigeonwar/abilities/sabers.cpp
 sabers.h
@@ -931,6 +1073,8 @@ core/turn.h
 /home/abrdej/Projekty/pigeonwar/abilities/sword_blow.cpp
 animation/animation.h
 -
+managers/types_manager.h
+/home/abrdej/Projekty/pigeonwar/abilities/managers/types_manager.h
 sword_blow.h
 /home/abrdej/Projekty/pigeonwar/abilities/sword_blow.h
 core/states.h
@@ -943,6 +1087,22 @@ abilities/ability.h
 /home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
 core/turn.h
 /home/abrdej/Projekty/pigeonwar/abilities/core/turn.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/teleport.cpp
+core/path_finder.h
+-
+core/states.h
+-
+animation/animation.h
+-
+teleport.h
+/home/abrdej/Projekty/pigeonwar/abilities/teleport.h
+core/board.h
+/home/abrdej/Projekty/pigeonwar/abilities/core/board.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/teleport.h
+abilities/ability.h
+/home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
 
 /home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.cpp
 tongue_of_fire.h
@@ -1005,6 +1165,8 @@ ai_manager.h
 /home/abrdej/Projekty/pigeonwar/ai/ai_manager.h
 core/states.h
 /home/abrdej/Projekty/pigeonwar/ai/core/states.h
+core/board.h
+/home/abrdej/Projekty/pigeonwar/ai/core/board.h
 
 /home/abrdej/Projekty/pigeonwar/ai/ai_manager.h
 memory
@@ -1125,6 +1287,8 @@ vector
 -
 array
 -
+states.h
+/home/abrdej/Projekty/pigeonwar/core/states.h
 
 /home/abrdej/Projekty/pigeonwar/core/event_center.h
 functional
@@ -1223,8 +1387,6 @@ memory
 -
 algorithm
 -
-core/board.h
-/home/abrdej/Projekty/pigeonwar/core/core/board.h
 
 /home/abrdej/Projekty/pigeonwar/core/states.cpp
 states.h
@@ -1247,12 +1409,6 @@ functional
 -
 path_finder.h
 /home/abrdej/Projekty/pigeonwar/core/path_finder.h
-abilities/moveable.h
-/home/abrdej/Projekty/pigeonwar/core/abilities/moveable.h
-managers/entity_manager.h
-/home/abrdej/Projekty/pigeonwar/core/managers/entity_manager.h
-board.h
-/home/abrdej/Projekty/pigeonwar/core/board.h
 
 /home/abrdej/Projekty/pigeonwar/core/turn.cpp
 turn.h
@@ -1279,14 +1435,12 @@ core/module_holder.h
 /home/abrdej/Projekty/pigeonwar/entities/core/module_holder.h
 abilities/abilities.h
 /home/abrdej/Projekty/pigeonwar/entities/abilities/abilities.h
-
-/home/abrdej/Projekty/pigeonwar/entities/params.h
+managers/health_manager.h
+/home/abrdej/Projekty/pigeonwar/entities/managers/health_manager.h
 
 /home/abrdej/Projekty/pigeonwar/entities/shooter.cpp
 shooter.h
 /home/abrdej/Projekty/pigeonwar/entities/shooter.h
-params.h
-/home/abrdej/Projekty/pigeonwar/entities/params.h
 abilities/moveable.h
 /home/abrdej/Projekty/pigeonwar/entities/abilities/moveable.h
 abilities/abilities.h
@@ -1319,8 +1473,6 @@ entity.h
 /home/abrdej/Projekty/pigeonwar/entities/wolf.cpp
 wolf.h
 /home/abrdej/Projekty/pigeonwar/entities/wolf.h
-params.h
-/home/abrdej/Projekty/pigeonwar/entities/params.h
 abilities/abilities.h
 /home/abrdej/Projekty/pigeonwar/entities/abilities/abilities.h
 abilities/moveable.h
@@ -1336,6 +1488,12 @@ entity.h
 entities/tree.h
 -
 entities/samurai_rat.h
+-
+entities/troll.h
+-
+entities/droid.h
+-
+entities/mouse.h
 -
 gui/bitmap_center.h
 /home/abrdej/Projekty/pigeonwar/gui/gui/bitmap_center.h
@@ -1449,14 +1607,12 @@ core/states.h
 /home/abrdej/Projekty/pigeonwar/gui/core/states.h
 core/game.h
 /home/abrdej/Projekty/pigeonwar/gui/core/game.h
-entities/params.h
-/home/abrdej/Projekty/pigeonwar/gui/entities/params.h
 gui/view_constants.h
 /home/abrdej/Projekty/pigeonwar/gui/gui/view_constants.h
 gui/board_panel.h
 /home/abrdej/Projekty/pigeonwar/gui/gui/board_panel.h
-managers/health_component.h
-/home/abrdej/Projekty/pigeonwar/gui/managers/health_component.h
+managers/health_manager.h
+/home/abrdej/Projekty/pigeonwar/gui/managers/health_manager.h
 managers/directions_manager.h
 /home/abrdej/Projekty/pigeonwar/gui/managers/directions_manager.h
 managers/types_manager.h
@@ -1505,8 +1661,6 @@ board.h
 /home/abrdej/Projekty/pigeonwar/gui/board.h
 entity.h
 /home/abrdej/Projekty/pigeonwar/gui/entity.h
-params.h
-/home/abrdej/Projekty/pigeonwar/gui/params.h
 
 /home/abrdej/Projekty/pigeonwar/gui/labels_panel.h
 nana/gui.hpp
@@ -1547,18 +1701,10 @@ abilities_manager.h
 /home/abrdej/Projekty/pigeonwar/managers/abilities_manager.h
 managers.h
 /home/abrdej/Projekty/pigeonwar/managers/managers.h
-core/board.h
-/home/abrdej/Projekty/pigeonwar/managers/core/board.h
-abilities/abilities.h
-/home/abrdej/Projekty/pigeonwar/managers/abilities/abilities.h
-abilities/ability.h
-/home/abrdej/Projekty/pigeonwar/managers/abilities/ability.h
 abilities/moveable.h
 /home/abrdej/Projekty/pigeonwar/managers/abilities/moveable.h
-unordered_map
--
-vector
--
+abilities/abilities.h
+/home/abrdej/Projekty/pigeonwar/managers/abilities/abilities.h
 
 /home/abrdej/Projekty/pigeonwar/managers/directions_manager.cpp
 directions_manager.h
@@ -1595,8 +1741,10 @@ abilities/abilities.h
 /home/abrdej/Projekty/pigeonwar/managers/abilities/abilities.h
 abilities/damage_receivers.h
 /home/abrdej/Projekty/pigeonwar/managers/abilities/damage_receivers.h
-health_component.h
-/home/abrdej/Projekty/pigeonwar/managers/health_component.h
+abilities_manager.h
+/home/abrdej/Projekty/pigeonwar/managers/abilities_manager.h
+health_manager.h
+/home/abrdej/Projekty/pigeonwar/managers/health_manager.h
 names_manager.h
 /home/abrdej/Projekty/pigeonwar/managers/names_manager.h
 managers/abilities_manager.h
@@ -1611,6 +1759,8 @@ ai/ai_manager.h
 /home/abrdej/Projekty/pigeonwar/managers/ai/ai_manager.h
 entity_remover.h
 /home/abrdej/Projekty/pigeonwar/managers/entity_remover.h
+core/board.h
+/home/abrdej/Projekty/pigeonwar/managers/core/board.h
 
 /home/abrdej/Projekty/pigeonwar/managers/entity_remover.cpp
 entity_remover.h
@@ -1624,9 +1774,15 @@ vector
 unordered_map
 -
 
-/home/abrdej/Projekty/pigeonwar/managers/health_component.h
+/home/abrdej/Projekty/pigeonwar/managers/health_manager.cpp
+health_manager.h
+/home/abrdej/Projekty/pigeonwar/managers/health_manager.h
+
+/home/abrdej/Projekty/pigeonwar/managers/health_manager.h
 managers/managers.h
 /home/abrdej/Projekty/pigeonwar/managers/managers/managers.h
+limits
+-
 
 /home/abrdej/Projekty/pigeonwar/managers/managers.h
 unordered_map
@@ -1671,6 +1827,12 @@ typeindex
 /home/abrdej/Projekty/pigeonwar/scenarios/scenarios.cpp
 entities/samurai_rat.h
 -
+entities/troll.h
+-
+entities/mouse.h
+-
+entities/droid.h
+-
 scenarios.h
 /home/abrdej/Projekty/pigeonwar/scenarios/scenarios.h
 core/game.h
@@ -1695,6 +1857,8 @@ entities/saberhand.h
 /home/abrdej/Projekty/pigeonwar/scenarios/entities/saberhand.h
 entities/stone.h
 /home/abrdej/Projekty/pigeonwar/scenarios/entities/stone.h
+entities/saurions_web.h
+/home/abrdej/Projekty/pigeonwar/scenarios/entities/saurions_web.h
 utils/creator_helper.h
 /home/abrdej/Projekty/pigeonwar/scenarios/utils/creator_helper.h
 utils/scenario_helper.h

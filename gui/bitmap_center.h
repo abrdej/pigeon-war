@@ -24,6 +24,15 @@ namespace view
 
 			bitmaps_.emplace(std::type_index(typeid(std::decay_t<Entity>)), bm);
 		}
+		template <typename Entity>
+		static void change_entity_image(const path_type& image_path)
+		{
+			bitmap_type bm;
+			if (!bm.loadFromFile(image_path))
+				throw std::exception();
+
+			bitmaps_[std::type_index(typeid(std::decay_t<Entity>))] = bm;
+		}
 		static const bitmap_type& get_image_for_entity(const std::type_index& object_type)
 		{
 			return bitmaps_.at(object_type);
@@ -39,7 +48,7 @@ namespace view
 			return bitmaps_.at(std::type_index(typeid(std::decay_t<Entity>)));
 		}
 	private:
-		static std::unordered_map<std::type_index, const bitmap_type> bitmaps_;
+		static std::unordered_map<std::type_index, bitmap_type> bitmaps_;
 	public:
 		static bitmap_type grass_move_bitmap;
 		static bitmap_type grass_attack_bitmap;
