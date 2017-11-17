@@ -27,7 +27,6 @@ set(SOURCE_FILES main.cpp
         gui/buttons_panel.cpp
         utils/creator_helper.cpp
         abilities/damage_dealer.cpp
-        abilities/damage_receivers.cpp
         managers/directions_manager.cpp
         abilities/drain.cpp
         gui/drawer.cpp

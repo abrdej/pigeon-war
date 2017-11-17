@@ -8,7 +8,6 @@
 #include <unordered_set>
 #include "entities/entity.h"
 #include "abilities/abilities.h"
-#include "abilities/damage_receivers.h"
 #include "abilities_manager.h"
 #include "health_manager.h"
 #include "names_manager.h"
