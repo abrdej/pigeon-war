@@ -31,16 +31,27 @@ void laser::use(size_t index_on) {
 
 	auto used_from_index = states::state_controller::selected_index_;
 
-	auto from_pos = board::to_col_row(index_on);
-	auto to_pos = board::to_col_row(used_from_index);
+	auto from_pos = board::to_pos(index_on);
+	auto to_pos = board::to_pos(used_from_index);
 
 	int hor_diff = static_cast<int>(from_pos.first) - static_cast<int>(to_pos.first);
 	int ver_diff = static_cast<int>(from_pos.second) - static_cast<int>(to_pos.second);
 
-	play_animation(used_from_index, index_on);
+	int xx = 0;
+	int yy = 0;
 
 	if (hor_diff != 0) {
-		for (int x = hor_diff > 0 ? 1 : -1; abs(x) <= abs(hor_diff); x = hor_diff > 0 ? x + 1 : x - 1) {
+		xx = (hor_diff > 0 ? 1 : -1) * range_;
+	} else {
+		yy = (ver_diff > 0 ? 1 : -1) * range_;
+	}
+
+	auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
+
+	play_animation(used_from_index, index_to_move);
+
+	if (hor_diff != 0) {
+		for (int x = hor_diff > 0 ? 1 : -1; abs(x) <= abs(range_); x = hor_diff > 0 ? x + 1 : x - 1) {
 
 			auto index = board::to_index(to_pos.first + x, to_pos.second);
 
@@ -48,7 +59,7 @@ void laser::use(size_t index_on) {
 				damage_dealers::standard_damage_dealer(damage_, index);
 		}
 	} else {
-		for (int y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(ver_diff); y = ver_diff > 0 ? y + 1 : y - 1) {
+		for (int y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range_); y = ver_diff > 0 ? y + 1 : y - 1) {
 
 			auto index = board::to_index(to_pos.first, to_pos.second + y);
 

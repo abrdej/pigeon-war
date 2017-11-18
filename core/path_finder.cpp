@@ -83,7 +83,7 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 	movements.clear();
 	costs.clear();
 
-	auto fld = board::to_col_row(from_index);
+	auto fld = board::to_pos(from_index);
 	for (size_t i = fld.first - 1; i != -1; --i)
 	{
 		auto cost = fld.first - i;
@@ -139,7 +139,7 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool available)
 {
 	fields.clear();
-	auto fld = board::to_col_row(for_index);
+	auto fld = board::to_pos(for_index);
 
 	for (int col = -1; col <= 1; ++col)
 		for (int row = -1; row <= 1; ++row)
@@ -154,4 +154,13 @@ void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool avai
 			}
 		}
 }
+
+void all_free(std::vector<size_t>& fields) {
+	for (size_t index = 0; index < board::rows_n * board::cols_n; ++index) {
+		if (board::empty(index)) {
+			fields.push_back(index);
+		}
+	}
+}
+
 };

@@ -1,15 +1,12 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <memory>
 #include <functional>
 #include <algorithm>
 #include <vector>
 #include <array>
-#include "states.h"
 
-class board final
-{
+class board final {
 public:
 	static const std::size_t cols_n = 15;
 	static const std::size_t rows_n = 10;
@@ -81,7 +78,7 @@ public:
 	inline static void for_each(const std::function<void(size_t entity_id, size_t col, size_t row)>& func) {
 		for (size_t i = 0; i < fields_.size(); ++i)
 		{
-			auto col_row = to_col_row(i);
+			auto col_row = to_pos(i);
             if (fields_[i].empty()) {
                 func(empty_id, col_row.first, col_row.second);
             } else {
@@ -91,7 +88,7 @@ public:
             }
 		}
 	}
-	inline static std::pair<size_t, size_t> to_col_row(size_t index)
+	inline static std::pair<size_t, size_t> to_pos(size_t index)
 	{
 		return std::make_pair(index % board::cols_n, index / board::cols_n);
 	}
@@ -103,7 +100,7 @@ public:
 		return col >= 0 && col < cols_n && row >= 0 && row < rows_n;
 	}
 private:
-	static std::array<std::vector<std::size_t>, cols_n * rows_n> fields_;
+    static std::array<std::vector<std::size_t>, cols_n * rows_n> fields_;
 };
 
 #endif

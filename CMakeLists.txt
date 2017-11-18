@@ -10,6 +10,12 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 find_package(SFML 2 REQUIRED network audio graphics window system)
 include_directories(${SFML_INCLUDE_DIR})
 
+set(BOOST_ROOT /usr/local/src/boost_1_45_0)
+set(BOOST_INCLUDEDIR=/usr/local/include/boost)
+
+find_package(Boost)
+include_directories(${Boost_INCLUDE_DIRS})
+
 set(SOURCE_FILES main.cpp
         entities/entity.h
         managers/abilities_manager.cpp
@@ -93,7 +99,7 @@ set(SOURCE_FILES main.cpp
         abilities/laser.cpp
         abilities/laser.h
         abilities/teleport.cpp
-        abilities/teleport.h abilities/wolf_herd.cpp abilities/wolf_herd.h abilities/dodge.cpp abilities/dodge.h entities/grenadier.h abilities/bomb.cpp abilities/bomb.h)
+        abilities/teleport.h abilities/wolf_herd.cpp abilities/wolf_herd.h abilities/dodge.cpp abilities/dodge.h entities/grenadier.h abilities/bomb.cpp abilities/bomb.h entities/destroyer.h abilities/armor.cpp abilities/armor.h abilities/blow_the_ax.cpp abilities/blow_the_ax.h)
 
 add_executable(pigeonwar ${SOURCE_FILES})
 target_link_libraries(pigeonwar ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

@@ -92,16 +92,34 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/ability.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/armor.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/armor.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/basic_melee_attack.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/basic_melee_attack.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/blow_the_ax.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/blow_the_ax.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bomb.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bomb.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp">
@@ -113,10 +131,10 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/damage_dealer.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/damage_receivers.cpp">
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/dodge.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/damage_receivers.h">
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/dodge.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/drain.cpp">
@@ -197,6 +215,12 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/wolf_herd.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/wolf_herd.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -263,10 +287,16 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/turn.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/destroyer.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/droid.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/entity.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/grenadier.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/mouse.h">

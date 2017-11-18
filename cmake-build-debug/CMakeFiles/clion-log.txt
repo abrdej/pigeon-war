@@ -1,5 +1,6 @@
 /home/abrdej/Programy/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/abrdej/Projekty/pigeonwar
 -- Found SFML 2.4.2 in /usr/local/include
+-- Boost version: 1.66.0
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/abrdej/Projekty/pigeonwar/cmake-build-debug

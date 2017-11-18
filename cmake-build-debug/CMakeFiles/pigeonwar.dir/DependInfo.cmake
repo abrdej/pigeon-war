@@ -5,11 +5,14 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/abrdej/Projekty/pigeonwar/abilities/ability.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/ability.cpp.o"
+  "/home/abrdej/Projekty/pigeonwar/abilities/armor.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/armor.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/basic_melee_attack.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o"
+  "/home/abrdej/Projekty/pigeonwar/abilities/blow_the_ax.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o"
+  "/home/abrdej/Projekty/pigeonwar/abilities/bomb.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/damage_dealer.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o"
-  "/home/abrdej/Projekty/pigeonwar/abilities/damage_receivers.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o"
+  "/home/abrdej/Projekty/pigeonwar/abilities/dodge.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/drain.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/grenade.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/invisibility.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o"
@@ -23,6 +26,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/abrdej/Projekty/pigeonwar/abilities/sword_blow.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/teleport.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o"
+  "/home/abrdej/Projekty/pigeonwar/abilities/wolf_herd.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/ai/ai.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/ai/ai.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/ai/ai_manager.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o"
   "/home/abrdej/Projekty/pigeonwar/animation/animation.cpp" "/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles/pigeonwar.dir/animation/animation.cpp.o"

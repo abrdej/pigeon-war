@@ -5,6 +5,7 @@
 #include <entities/mouse.h>
 #include <entities/grenadier.h>
 #include <abilities/bomb.h>
+#include <entities/destroyer.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -44,7 +45,7 @@ void bitmap_center::load()
     add_entity_image<moveable>("moving.png");
     add_entity_image<wolf>("wolf.png");
     add_entity_image<werewolf>("werewolf.png");
-    add_entity_image<drain>("sabers.png");
+    add_entity_image<drain>("wolfwere_claws.png");
     add_entity_image<basic_melee_attack>("damage.png");
     add_entity_image<animation::bum>("bum.png");
     add_entity_image<animation::claws>("claws.png");
@@ -59,7 +60,7 @@ void bitmap_center::load()
     add_entity_image<samurai_rat>("samurai_rat.png");
     add_entity_image<sword_blow>("sword_blow.png");
     add_entity_image<troll>("troll.png");
-    add_entity_image<bludgeon>("hello.png");
+    add_entity_image<bludgeon>("bludgeon.png");
     add_entity_image<rage>("hello.png");
     add_entity_image<mouse>("rattati.png");
     add_entity_image<poisoned_missile>("poisoned_missile.png");
@@ -71,5 +72,9 @@ void bitmap_center::load()
     add_entity_image<bomb>("bomb.png");
     add_entity_image<bomb_instance>("bomb.png");
     add_entity_image<bomb_detonation>("bomb.png");
+    add_entity_image<wolf_herd>("wolf_herd.png");
+    add_entity_image<destroyer>("destroyer.png");
+    add_entity_image<armor>("armor.png");
+    add_entity_image<blow_the_ax>("blow_the_ax.png");
 }
 }

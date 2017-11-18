@@ -10,7 +10,7 @@ class moveable;
 class path_finder
 {
 public:
-	path_finder(bool all_fields = false);
+	explicit path_finder(bool all_fields = false);
 	void calc(size_t from_index);
 
 	size_t find_first_satisfy_conditions(size_t from_index,
@@ -39,6 +39,8 @@ void calc_straight(size_t from_index,
 				   bool skip_obstacles = false);
 
 void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool available);
+
+void all_free(std::vector<size_t>& fields);
 };
 
 #endif

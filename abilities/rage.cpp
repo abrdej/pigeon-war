@@ -46,7 +46,7 @@ void rage::play_animation(size_t use_from_index) {
 	auto entity_id = board::take(use_from_index);
 	auto type = types_manager::component_for(entity_id);
 
-	auto from_cr = board::to_col_row(use_from_index);
+	auto from_cr = board::to_pos(use_from_index);
 	from_cr.first -= 1;
 	from_cr.second -= 1;
 

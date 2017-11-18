@@ -46,8 +46,8 @@ void moveable::move(size_t index_to)
 		auto move_cost = states::state_controller::possible_movements_costs_[result - begin_it];
 		use_move(move_cost);
 		
-		int from_col = board::to_col_row(move_from_index).first;
-		int to_col = board::to_col_row(index_to).first;
+		int from_col = board::to_pos(move_from_index).first;
+		int to_col = board::to_pos(index_to).first;
 		if (from_col != to_col)
 			if (from_col - to_col < 0)
 				directions_manager::turn_right(entity_id);

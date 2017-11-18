@@ -2,7 +2,6 @@
 #define TONGUE_OF_FIRE_H
 
 #include "abilities/ability.h"
-#include "core/event_center.h"
 #include "core/turn.h"
 
 class tongue_of_fire final : public ability, protected turn_events_helper::every_turn_callback_helper

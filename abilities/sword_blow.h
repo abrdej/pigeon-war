@@ -14,7 +14,7 @@ public:
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);
-    void play_sword_blow_animation(size_t from_index, size_t to_index);
+    void play_sword_blow_animation(size_t from_index);
 
 private:
     static const size_t range_ = 1;

@@ -1,5 +1,7 @@
 #include "wolf_herd.h"
 #include <core/states.h>
+#include <entities/wolf.h>
+#include <managers/entity_manager.h>
 
 void wolf_herd::prepare(size_t for_index) {
 
@@ -19,14 +21,25 @@ void wolf_herd::use(size_t index_on) {
 
 	used_ = true;
 
-//	auto shooter_id = entity_manager::create<shooter>();
-//	auto samurai_id = entity_manager::create<samurai_rat>();
-//	auto droid_id = entity_manager::create<droid>();
-//
-//	board::insert(board::to_index(2, 3), shooter_id);
-//	board::insert(board::to_index(2, 5), samurai_id);
-//	board::insert(board::to_index(2, 7), droid_id);
-//
-//	players::add_entity_for_player("tester2", saberhand_id);
+	std::vector<size_t> neightbords;
+	board_helper::neighboring_fields(index_on, neightbords, true);
 
+	std::random_device rd;
+	std::default_random_engine dre(rd());
+
+	auto num_of_wolves = std::min<int>(neightbords.size(), max_number_of_wolf);
+
+	for (int n = 0; n < num_of_wolves; ++n) {
+
+		std::uniform_int_distribution<int> uniform_dist(0, neightbords.size() - 1);
+
+		int place_idx = uniform_dist(dre);
+
+		auto wolf_id = entity_manager::create<wolf>();
+		auto player_name = players::active_player_name();
+		players::add_entity_for_player(player_name, wolf_id);
+		board::insert(neightbords[place_idx], wolf_id);
+
+		neightbords.erase(neightbords.begin() + place_idx);
+	}
 }

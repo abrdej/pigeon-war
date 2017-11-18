@@ -1,5 +1,6 @@
 #include <core/states.h>
 #include <animation/animation.h>
+#include <managers/entity_manager.h>
 #include "poisoned_missile.h"
 #include "damage_dealers.h"
 
@@ -40,19 +41,21 @@ void poisoned_missile::use(size_t index_on) {
 
     auto enemy_id = board::at(index_on);
 
-    static int p_id = 0;
+    auto receiver = std::make_shared<std::function<void()>>([this, enemy_id, counter = 0]() mutable {
+        if (entity_manager::alive(enemy_id)) {
+            auto index = board::index_for(enemy_id);
+            damage_dealers::standard_damage_dealer(poison_power_, index);
 
-    auto receiver = std::make_shared<std::function<void()>>([id = p_id, this, enemy_id, counter = 0]() mutable {
-        auto index = board::index_for(enemy_id);
-        damage_dealers::standard_damage_dealer(poison_power_, index);
-        if (++counter == poison_last_) {
-            rec[id].reset();
+            if (++counter == poison_last_) {
+                rec[enemy_id].reset();
+            }
+
+        } else {
+            rec[enemy_id].reset();
         }
     });
-    rec[p_id] = receiver;
+    rec[enemy_id] = receiver;
     turn::turn_system::every_turn(receiver);
-
-    p_id++;
 
     used = true;
 }
@@ -65,6 +68,6 @@ void poisoned_missile::play_animation(size_t from_index, size_t to_index) {
             (animation::move(from_index, to_index, typeid(*this)));
     animation::base_player::play();
     animation::player<animation::flash_bitmap>::launch
-            (animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "bum.png"));
+            (animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "poisoned_missile_splush.png"));
     animation::base_player::play();
 }

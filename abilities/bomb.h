@@ -14,7 +14,7 @@
 
 class bomb_detonation final : public ability {
 public:
-	bomb_detonation(std::size_t bomb_id) : bomb_id(bomb_id) {}
+	explicit bomb_detonation(std::size_t bomb_id) : bomb_id(bomb_id) {}
 	void prepare(size_t for_index) override;
 	void use(size_t for_index);
 private:

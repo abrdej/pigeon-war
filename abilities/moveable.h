@@ -2,8 +2,6 @@
 #define MOVEABLE_H
 
 #include "abilities/ability.h"
-#include "core/event_center.h"
-#include <memory>
 #include <functional>
 #include "core/turn.h"
 
@@ -11,7 +9,7 @@ class moveable final : public ability,
 	protected turn_events_helper::every_turn_callback_helper
 {
 public:
-	moveable(size_t range)
+	explicit moveable(size_t range)
 		: range_(range),
 		  actual_range_(range)
 	{
@@ -20,8 +18,8 @@ public:
 		});
 	}
 private:
-	virtual void prepare(size_t for_index) override;
-	bool moved() const { return actual_range_ == 0; }
+	void prepare(size_t for_index) override;
+	//bool moved() const { return actual_range_ == 0; }
 	size_t range() const { return actual_range_; }
 	void use_move(size_t n)
 	{

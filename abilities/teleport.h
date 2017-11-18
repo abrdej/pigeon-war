@@ -10,14 +10,13 @@
 class teleport final : public ability
 {
 public:
-	teleport();
+	teleport() = default;
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t for_index, size_t index_on);
 
 private:
 	bool used{false};
-	int range_{20};
 };
 
 

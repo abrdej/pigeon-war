@@ -33,8 +33,8 @@ void bludgeon::use(size_t index_on)
 	used_ = true;
 	auto used_from_index = states::state_controller::selected_index_;
 
-	auto from_pos = board::to_col_row(used_from_index);
-	auto on_pos = board::to_col_row(index_on);
+	auto from_pos = board::to_pos(used_from_index);
+	auto on_pos = board::to_pos(index_on);
 
 	int x = from_pos.first - on_pos.first;
 	int y = from_pos.second - on_pos.second;

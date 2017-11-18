@@ -4,6 +4,13 @@
 CMakeFiles/pigeonwar.dir/abilities/ability.cpp.o: ../abilities/ability.cpp
 CMakeFiles/pigeonwar.dir/abilities/ability.cpp.o: ../abilities/ability.h
 
+CMakeFiles/pigeonwar.dir/abilities/armor.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/abilities/armor.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/abilities/armor.cpp.o: ../managers/entity_remover.h
+CMakeFiles/pigeonwar.dir/abilities/armor.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/abilities/armor.cpp.o: ../abilities/armor.cpp
+CMakeFiles/pigeonwar.dir/abilities/armor.cpp.o: ../abilities/armor.h
+
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../animation/animation_impl.h
@@ -14,7 +21,6 @@ CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../managers/types_m
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: ../abilities/basic_melee_attack.cpp
@@ -95,6 +101,19 @@ CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: /usr/local/include/
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: /usr/local/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../animation/animation.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../core/board.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../core/states.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../managers/types_manager.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../utils/graph.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../core/path_finder.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../managers/entity_remover.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../abilities/blow_the_ax.cpp
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../abilities/blow_the_ax.h
+CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o: ../abilities/damage_dealers.h
+
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../core/board.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../core/signals.h
@@ -104,7 +123,6 @@ CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../managers/types_manager.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../abilities/ability.h
@@ -112,21 +130,49 @@ CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../abilities/bludgeon.cpp
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../abilities/bludgeon.h
 CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.o: ../abilities/damage_dealers.h
 
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../abilities/abilities.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../abilities/moveable.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../ai/ai_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../animation/animation.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../core/board.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../core/module_holder.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../core/players.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../core/signals.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../core/states.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../core/turn.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../entities/entity.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/abilities_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/entity_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../utils/graph.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../ai/ai.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../ai/behavior_tree.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../core/path_finder.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../core/players.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/abilities_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/directions_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/entity_remover.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/names_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../managers/types_manager.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../abilities/bomb.cpp
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../abilities/bomb.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../abilities/damage_dealers.h
+CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o: ../abilities/moveable.h
+
 CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o: ../utils/graph.h
-CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o: ../abilities/bullet.cpp
 CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o: ../abilities/bullet.h
 
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../core/signals.h
@@ -136,12 +182,9 @@ CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../managers/abilities_ma
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../managers/entity_manager.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../managers/managers.h
-CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../ai/behavior_tree.h
-CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../managers/directions_manager.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../managers/entity_remover.h
@@ -152,37 +195,14 @@ CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../managers/types_manage
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../abilities/damage_dealer.cpp
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.o: ../abilities/damage_dealers.h
 
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../abilities/abilities.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../abilities/damage_receivers.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../abilities/moveable.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../ai/ai_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/event_center.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/module_holder.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/signals.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/turn.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../entities/entity.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/abilities_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/entity_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/health_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/managers.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../utils/graph.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../ai/ai.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../ai/behavior_tree.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../core/states.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/abilities_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/directions_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/entity_remover.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/health_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/managers.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/names_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../managers/types_manager.h
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../abilities/damage_receivers.cpp
-CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o: ../abilities/damage_receivers.h
+CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o: ../animation/animation.h
+CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o: ../core/board.h
+CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o: ../managers/entity_remover.h
+CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o: ../abilities/dodge.cpp
+CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o: ../abilities/dodge.h
 
 CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../animation/animation.h
@@ -199,7 +219,6 @@ CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o: ../abilities/bullet.h
@@ -287,20 +306,17 @@ CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o: ../abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o: ../abilities/grenade.cpp
 CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o: ../abilities/grenade.h
 
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../abilities/invisibility.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../abilities/sabers.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../core/signals.h
@@ -318,7 +334,6 @@ CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../ai/behavior_tree.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../managers/directions_manager.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.o: ../managers/entity_remover.h
@@ -351,7 +366,6 @@ CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../core/turn.h
 CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../abilities/laser.cpp
 CMakeFiles/pigeonwar.dir/abilities/laser.cpp.o: ../abilities/laser.h
@@ -360,7 +374,6 @@ CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../core/signals.h
@@ -374,7 +387,6 @@ CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../managers/types_manager.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.o: ../abilities/moveable.cpp
@@ -387,16 +399,34 @@ CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o: ../abilities/poison.cpp
 CMakeFiles/pigeonwar.dir/abilities/poison.cpp.o: ../abilities/poison.h
 
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../abilities/moveable.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/board.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/module_holder.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/signals.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/turn.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../entities/entity.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/abilities_manager.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/entity_manager.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../utils/graph.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../ai/ai.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../ai/behavior_tree.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../core/states.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/abilities_manager.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/directions_manager.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/entity_remover.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/names_manager.h
+CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../managers/types_manager.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../abilities/poisoned_missile.cpp
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.o: ../abilities/poisoned_missile.h
@@ -413,7 +443,6 @@ CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../managers/types_manager.h
 CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o: ../abilities/damage_dealers.h
@@ -435,7 +464,6 @@ CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o: ../abilities/sabers.cpp
@@ -527,7 +555,6 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o: ../abilities/bullet.h
 CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o: ../abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.o: ../abilities/shoot.cpp
@@ -633,7 +660,6 @@ CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o: ../managers/types_manager.h
 CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.o: ../abilities/damage_dealers.h
@@ -647,7 +673,6 @@ CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: ../abilities/teleport.cpp
 CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.o: ../abilities/teleport.h
 
@@ -655,7 +680,6 @@ CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../animation/animation_impl.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../core/signals.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../core/states.h
@@ -664,7 +688,6 @@ CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../abilities/bullet.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: ../abilities/tongue_of_fire.cpp
@@ -743,11 +766,42 @@ CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: /usr/local/include/SFML
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: /usr/local/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../abilities/abilities.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../abilities/moveable.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../ai/ai_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../core/board.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../core/module_holder.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../core/players.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../core/signals.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../core/states.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../core/turn.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../entities/entity.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../entities/wolf.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/abilities_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/entity_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../utils/graph.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../ai/ai.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../ai/behavior_tree.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../core/path_finder.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../core/players.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../entities/entity.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/abilities_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/directions_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/entity_remover.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/names_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../managers/types_manager.h
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../abilities/wolf_herd.cpp
+CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o: ../abilities/wolf_herd.h
+
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../core/signals.h
@@ -757,7 +811,6 @@ CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.o: ../ai/ai.cpp
@@ -770,7 +823,6 @@ CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/ai/ai_manager.cpp.o: ../ai/ai_manager.cpp
@@ -782,13 +834,11 @@ CMakeFiles/pigeonwar.dir/animation/animation.cpp.o: ../animation/animation.h
 
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../abilities/shoot.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../animation/animation_impl.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../core/game.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../core/players.h
@@ -814,7 +864,6 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../ai/behavior_tree.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../gui/drawer.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../gui/my_button.h
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: ../managers/abilities_manager.h
@@ -903,12 +952,10 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o: /usr/local/include/SFML
 
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../abilities/shoot.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../core/game.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../core/players.h
@@ -932,7 +979,6 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../ai/behavior_tree.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../gui/my_button.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: ../managers/directions_manager.h
@@ -1020,11 +1066,9 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o: /usr/local/include/
 
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/signals.h
@@ -1034,12 +1078,9 @@ CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../managers/entity_manager.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../managers/managers.h
-CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../ai/behavior_tree.h
-CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../managers/directions_manager.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../managers/entity_remover.h
@@ -1052,17 +1093,16 @@ CMakeFiles/pigeonwar.dir/core/board.cpp.o: ../core/board.cpp
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/damage_dealers.h
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/drain.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/invisibility.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/sabers.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/tongue_of_fire.h
+CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../abilities/wolf_herd.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/players.h
@@ -1101,23 +1141,9 @@ CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/game.cpp
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/game.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/core/game.cpp.o: ../core/states.h
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Config.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Graphics/Color.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Graphics/Export.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Graphics/Image.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Graphics/Rect.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Graphics/Rect.inl
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Graphics/Texture.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/System/Export.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/System/NonCopyable.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/System/Vector2.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/System/Vector2.inl
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Window/Export.hpp
-CMakeFiles/pigeonwar.dir/core/game.cpp.o: /usr/local/include/SFML/Window/GlResource.hpp
 
 CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../abilities/moveable.h
-CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../core/signals.h
 CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../core/turn.h
 CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../utils/graph.h
@@ -1125,15 +1151,12 @@ CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../core/board.h
 CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../core/path_finder.cpp
 CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/core/path_finder.cpp.o: ../core/states.h
 
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../core/signals.h
@@ -1143,11 +1166,8 @@ CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../managers/entity_manager.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../managers/managers.h
-CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../ai/behavior_tree.h
-CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../managers/directions_manager.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../managers/entity_remover.h
@@ -1160,11 +1180,9 @@ CMakeFiles/pigeonwar.dir/core/players.cpp.o: ../core/players.h
 
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../core/signals.h
@@ -1191,7 +1209,6 @@ CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../core/states.cpp
 CMakeFiles/pigeonwar.dir/core/states.cpp.o: ../core/states.h
 
 CMakeFiles/pigeonwar.dir/core/turn.cpp.o: ../core/signals.h
-CMakeFiles/pigeonwar.dir/core/turn.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/core/turn.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/core/turn.cpp.o: ../core/turn.cpp
 CMakeFiles/pigeonwar.dir/core/turn.cpp.o: ../core/turn.h
@@ -1201,7 +1218,6 @@ CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o: ../abilities/grenade.h
 CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o: ../abilities/shoot.h
-CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o: ../core/signals.h
 CMakeFiles/pigeonwar.dir/entities/shooter.cpp.o: ../core/turn.h
@@ -1223,9 +1239,16 @@ CMakeFiles/pigeonwar.dir/entities/tree.cpp.o: ../entities/tree.cpp
 CMakeFiles/pigeonwar.dir/entities/tree.cpp.o: ../entities/tree.h
 
 CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../abilities/abilities.h
+CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../abilities/drain.h
+CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../abilities/moveable.h
+CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../abilities/wolf_herd.h
 CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../core/module_holder.h
+CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../core/signals.h
+CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../core/turn.h
 CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../entities/entity.h
 CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.o: ../entities/werewolf.cpp
@@ -1235,7 +1258,6 @@ CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../abilities/basic_melee_attack.h
 CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../abilities/moveable.h
-CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../core/signals.h
 CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../core/turn.h
@@ -1249,8 +1271,12 @@ CMakeFiles/pigeonwar.dir/entities/wolf.cpp.o: ../entities/wolf.h
 
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/armor.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/basic_melee_attack.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/blow_the_ax.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/bludgeon.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/bomb.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/dodge.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/drain.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/grenade.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/invisibility.h
@@ -1263,13 +1289,18 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/shoot.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/sword_blow.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/teleport.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/tongue_of_fire.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/wolf_herd.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../animation/animation.h
-CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../core/event_center.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../core/board.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../core/module_holder.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../core/signals.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../core/turn.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/destroyer.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/droid.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/entity.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/grenadier.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/mouse.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/native.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/saberhand.h
@@ -1283,12 +1314,23 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/troll.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/werewolf.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/wolf.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../gui/bitmap_center.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/abilities_manager.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/entity_manager.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../abilities/moveable.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../ai/ai.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../ai/behavior_tree.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../entities/entity.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/abilities_manager.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/directions_manager.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/entity_remover.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/health_manager.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/managers.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/names_manager.h
+CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../managers/types_manager.h
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: ../gui/bitmap_center.cpp
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: /usr/local/include/SFML/Graphics/Color.hpp
@@ -1305,9 +1347,6 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: /usr/local/include/SFML/Window
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o: /usr/local/include/SFML/Window/GlResource.hpp
 
 CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.o: ../utils/graph.h
-CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.o: ../core/path_finder.h
-CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.o: ../gui/board_panel.cpp
 CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.o: ../gui/board_panel.h
 CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.o: ../gui/my_button.h
@@ -1388,12 +1427,10 @@ CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.o: /usr/local/include/SFML/Window/W
 
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../abilities/shoot.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../core/signals.h
@@ -1404,12 +1441,9 @@ CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../managers/abilities_manager.
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../managers/entity_manager.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../managers/managers.h
-CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../ai/behavior_tree.h
-CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../managers/directions_manager.h
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: ../managers/entity_remover.h
@@ -1497,11 +1531,9 @@ CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o: /usr/local/include/SFML/Window
 
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../core/game.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../core/players.h
@@ -1523,7 +1555,6 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../ai/behavior_tree.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../gui/my_button.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: ../managers/directions_manager.h
@@ -1610,13 +1641,11 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o: /usr/local/include/SFML/Window/Window
 
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../animation/animation_impl.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../animation/animations_objects.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../core/game.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../core/players.h
@@ -1641,7 +1670,6 @@ CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../ai/behavior_tree.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../gui/my_button.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.o: ../managers/directions_manager.h
@@ -1883,12 +1911,10 @@ CMakeFiles/pigeonwar.dir/gui/my_button.cpp.o: /usr/local/include/SFML/Window/Win
 
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/main.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../animation/animation_impl.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/main.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../core/signals.h
@@ -1911,7 +1937,6 @@ CMakeFiles/pigeonwar.dir/main.cpp.o: ../ai/behavior_tree.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../animation/animation.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/main.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../gui/my_button.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/main.cpp.o: ../managers/directions_manager.h
@@ -2004,7 +2029,6 @@ CMakeFiles/pigeonwar.dir/main.cpp.o: /usr/local/include/SFML/Window/WindowStyle.
 CMakeFiles/pigeonwar.dir/managers/abilities_manager.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/managers/abilities_manager.cpp.o: ../abilities/ability.h
 CMakeFiles/pigeonwar.dir/managers/abilities_manager.cpp.o: ../abilities/moveable.h
-CMakeFiles/pigeonwar.dir/managers/abilities_manager.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/managers/abilities_manager.cpp.o: ../core/signals.h
 CMakeFiles/pigeonwar.dir/managers/abilities_manager.cpp.o: ../core/turn.h
 CMakeFiles/pigeonwar.dir/managers/abilities_manager.cpp.o: ../core/players.h
@@ -2025,11 +2049,9 @@ CMakeFiles/pigeonwar.dir/managers/directions_manager.cpp.o: ../managers/managers
 
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../core/signals.h
@@ -2038,12 +2060,9 @@ CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../entities/entity.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../managers/managers.h
-CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../ai/behavior_tree.h
-CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../managers/directions_manager.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.o: ../managers/entity_manager.cpp
@@ -2074,9 +2093,12 @@ CMakeFiles/pigeonwar.dir/managers/types_manager.cpp.o: ../managers/types_manager
 
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/armor.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/blow_the_ax.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/bludgeon.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/bomb.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/damage_dealers.h
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/damage_receivers.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/dodge.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/drain.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/invisibility.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/laser.h
@@ -2087,16 +2109,18 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/sabers.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/sword_blow.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/teleport.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/tongue_of_fire.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/wolf_herd.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/game.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/signals.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/turn.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/destroyer.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/droid.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/entity.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/grenadier.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/mouse.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/native.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/saberhand.h
@@ -2107,6 +2131,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/shooter.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/stone.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/tree.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/troll.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/werewolf.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/wolf.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/entity_manager.h
@@ -2114,14 +2139,12 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../utils/creator_helper.h
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../utils/scenario_helper.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/ability.h
+CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../ai/behavior_tree.h
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../entities/entity.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/directions_manager.h
@@ -2132,27 +2155,12 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/names_manager.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../managers/types_manager.h
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../scenarios/scenarios.cpp
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: ../scenarios/scenarios.h
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Config.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Graphics/Color.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Graphics/Export.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Graphics/Image.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Graphics/Rect.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Graphics/Rect.inl
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Graphics/Texture.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/System/Export.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/System/NonCopyable.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/System/Vector2.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/System/Vector2.inl
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Window/Export.hpp
-CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o: /usr/local/include/SFML/Window/GlResource.hpp
 
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../abilities/abilities.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../abilities/ability.h
-CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../abilities/damage_receivers.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../abilities/moveable.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../ai/ai_manager.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../core/board.h
-CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../core/event_center.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../core/module_holder.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../core/players.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../core/signals.h
@@ -2165,12 +2173,9 @@ CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../managers/entity_manager.
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../managers/health_manager.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../managers/managers.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../utils/creator_helper.h
-CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../utils/graph.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../ai/ai.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../ai/behavior_tree.h
-CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../core/path_finder.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../core/players.h
-CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../core/states.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../entities/entity.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../managers/abilities_manager.h
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o: ../managers/directions_manager.h

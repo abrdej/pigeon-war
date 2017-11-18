@@ -150,6 +150,33 @@ abilities/ability.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/ability.cpp.s
 .PHONY : abilities/ability.cpp.s
 
+abilities/armor.o: abilities/armor.cpp.o
+
+.PHONY : abilities/armor.o
+
+# target to build an object file
+abilities/armor.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/armor.cpp.o
+.PHONY : abilities/armor.cpp.o
+
+abilities/armor.i: abilities/armor.cpp.i
+
+.PHONY : abilities/armor.i
+
+# target to preprocess a source file
+abilities/armor.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/armor.cpp.i
+.PHONY : abilities/armor.cpp.i
+
+abilities/armor.s: abilities/armor.cpp.s
+
+.PHONY : abilities/armor.s
+
+# target to generate assembly for a file
+abilities/armor.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/armor.cpp.s
+.PHONY : abilities/armor.cpp.s
+
 abilities/basic_melee_attack.o: abilities/basic_melee_attack.cpp.o
 
 .PHONY : abilities/basic_melee_attack.o
@@ -177,6 +204,33 @@ abilities/basic_melee_attack.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.s
 .PHONY : abilities/basic_melee_attack.cpp.s
 
+abilities/blow_the_ax.o: abilities/blow_the_ax.cpp.o
+
+.PHONY : abilities/blow_the_ax.o
+
+# target to build an object file
+abilities/blow_the_ax.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o
+.PHONY : abilities/blow_the_ax.cpp.o
+
+abilities/blow_the_ax.i: abilities/blow_the_ax.cpp.i
+
+.PHONY : abilities/blow_the_ax.i
+
+# target to preprocess a source file
+abilities/blow_the_ax.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.i
+.PHONY : abilities/blow_the_ax.cpp.i
+
+abilities/blow_the_ax.s: abilities/blow_the_ax.cpp.s
+
+.PHONY : abilities/blow_the_ax.s
+
+# target to generate assembly for a file
+abilities/blow_the_ax.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.s
+.PHONY : abilities/blow_the_ax.cpp.s
+
 abilities/bludgeon.o: abilities/bludgeon.cpp.o
 
 .PHONY : abilities/bludgeon.o
@@ -203,6 +257,33 @@ abilities/bludgeon.s: abilities/bludgeon.cpp.s
 abilities/bludgeon.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.s
 .PHONY : abilities/bludgeon.cpp.s
+
+abilities/bomb.o: abilities/bomb.cpp.o
+
+.PHONY : abilities/bomb.o
+
+# target to build an object file
+abilities/bomb.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o
+.PHONY : abilities/bomb.cpp.o
+
+abilities/bomb.i: abilities/bomb.cpp.i
+
+.PHONY : abilities/bomb.i
+
+# target to preprocess a source file
+abilities/bomb.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.i
+.PHONY : abilities/bomb.cpp.i
+
+abilities/bomb.s: abilities/bomb.cpp.s
+
+.PHONY : abilities/bomb.s
+
+# target to generate assembly for a file
+abilities/bomb.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.s
+.PHONY : abilities/bomb.cpp.s
 
 abilities/bullet.o: abilities/bullet.cpp.o
 
@@ -258,32 +339,32 @@ abilities/damage_dealer.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.s
 .PHONY : abilities/damage_dealer.cpp.s
 
-abilities/damage_receivers.o: abilities/damage_receivers.cpp.o
+abilities/dodge.o: abilities/dodge.cpp.o
 
-.PHONY : abilities/damage_receivers.o
+.PHONY : abilities/dodge.o
 
 # target to build an object file
-abilities/damage_receivers.cpp.o:
-	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.o
-.PHONY : abilities/damage_receivers.cpp.o
+abilities/dodge.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.o
+.PHONY : abilities/dodge.cpp.o
 
-abilities/damage_receivers.i: abilities/damage_receivers.cpp.i
+abilities/dodge.i: abilities/dodge.cpp.i
 
-.PHONY : abilities/damage_receivers.i
+.PHONY : abilities/dodge.i
 
 # target to preprocess a source file
-abilities/damage_receivers.cpp.i:
-	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.i
-.PHONY : abilities/damage_receivers.cpp.i
+abilities/dodge.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.i
+.PHONY : abilities/dodge.cpp.i
 
-abilities/damage_receivers.s: abilities/damage_receivers.cpp.s
+abilities/dodge.s: abilities/dodge.cpp.s
 
-.PHONY : abilities/damage_receivers.s
+.PHONY : abilities/dodge.s
 
 # target to generate assembly for a file
-abilities/damage_receivers.cpp.s:
-	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/damage_receivers.cpp.s
-.PHONY : abilities/damage_receivers.cpp.s
+abilities/dodge.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.s
+.PHONY : abilities/dodge.cpp.s
 
 abilities/drain.o: abilities/drain.cpp.o
 
@@ -635,6 +716,33 @@ abilities/tongue_of_fire.s: abilities/tongue_of_fire.cpp.s
 abilities/tongue_of_fire.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.s
 .PHONY : abilities/tongue_of_fire.cpp.s
+
+abilities/wolf_herd.o: abilities/wolf_herd.cpp.o
+
+.PHONY : abilities/wolf_herd.o
+
+# target to build an object file
+abilities/wolf_herd.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.o
+.PHONY : abilities/wolf_herd.cpp.o
+
+abilities/wolf_herd.i: abilities/wolf_herd.cpp.i
+
+.PHONY : abilities/wolf_herd.i
+
+# target to preprocess a source file
+abilities/wolf_herd.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.i
+.PHONY : abilities/wolf_herd.cpp.i
+
+abilities/wolf_herd.s: abilities/wolf_herd.cpp.s
+
+.PHONY : abilities/wolf_herd.s
+
+# target to generate assembly for a file
+abilities/wolf_herd.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.s
+.PHONY : abilities/wolf_herd.cpp.s
 
 ai/ai.o: ai/ai.cpp.o
 
@@ -1512,21 +1620,30 @@ help:
 	@echo "... abilities/ability.o"
 	@echo "... abilities/ability.i"
 	@echo "... abilities/ability.s"
+	@echo "... abilities/armor.o"
+	@echo "... abilities/armor.i"
+	@echo "... abilities/armor.s"
 	@echo "... abilities/basic_melee_attack.o"
 	@echo "... abilities/basic_melee_attack.i"
 	@echo "... abilities/basic_melee_attack.s"
+	@echo "... abilities/blow_the_ax.o"
+	@echo "... abilities/blow_the_ax.i"
+	@echo "... abilities/blow_the_ax.s"
 	@echo "... abilities/bludgeon.o"
 	@echo "... abilities/bludgeon.i"
 	@echo "... abilities/bludgeon.s"
+	@echo "... abilities/bomb.o"
+	@echo "... abilities/bomb.i"
+	@echo "... abilities/bomb.s"
 	@echo "... abilities/bullet.o"
 	@echo "... abilities/bullet.i"
 	@echo "... abilities/bullet.s"
 	@echo "... abilities/damage_dealer.o"
 	@echo "... abilities/damage_dealer.i"
 	@echo "... abilities/damage_dealer.s"
-	@echo "... abilities/damage_receivers.o"
-	@echo "... abilities/damage_receivers.i"
-	@echo "... abilities/damage_receivers.s"
+	@echo "... abilities/dodge.o"
+	@echo "... abilities/dodge.i"
+	@echo "... abilities/dodge.s"
 	@echo "... abilities/drain.o"
 	@echo "... abilities/drain.i"
 	@echo "... abilities/drain.s"
@@ -1566,6 +1683,9 @@ help:
 	@echo "... abilities/tongue_of_fire.o"
 	@echo "... abilities/tongue_of_fire.i"
 	@echo "... abilities/tongue_of_fire.s"
+	@echo "... abilities/wolf_herd.o"
+	@echo "... abilities/wolf_herd.i"
+	@echo "... abilities/wolf_herd.s"
 	@echo "... ai/ai.o"
 	@echo "... ai/ai.i"
 	@echo "... ai/ai.s"

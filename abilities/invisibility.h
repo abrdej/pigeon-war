@@ -1,10 +1,8 @@
 #ifndef INVISIBILITY_H
 #define INVISIBILITY_H
 
-#include <core/turn.h>
-#include <SFML/Graphics/Texture.hpp>
 #include "abilities/ability.h"
-#include "core/event_center.h"
+#include "core/turn.h"
 
 class invisibility final : public ability 
 {

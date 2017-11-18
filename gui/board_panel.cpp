@@ -77,13 +77,13 @@ namespace view
 
 	board_panel::point_type board_index_to_point(size_t index)
 	{
-		auto indexies = board::to_col_row(index);
+		auto indexies = board::to_pos(index);
 		return board_indexies_to_point(indexies.first, indexies.second);
 	}
 
 	board_panel::rect_type board_index_to_rectangle(size_t index)
 	{
-		auto indexies = board::to_col_row(index);
+		auto indexies = board::to_pos(index);
 		return board_indexies_to_rectangle(indexies.first, indexies.second);
 	}
 
@@ -186,7 +186,7 @@ namespace view
 
 	nana::rectangle board_index_to_rectangle(size_t index)
 	{
-		auto indexies = board::to_col_row(index);
+		auto indexies = board::to_pos(index);
 		return board_indexies_to_rectangle(indexies.first, indexies.second);
 	}
 

@@ -14,6 +14,7 @@ public:
 
 private:
 	bool used_{false};
+	int max_number_of_wolf{2};
 };
 
 
