@@ -43,10 +43,16 @@ namespace view
 
 	std::pair<size_t, size_t> board_panel::hit_field(const point_type& cursor) const
 	{
-		auto top_right_board_point = cursor; //  -constants::top_left_point;
-		size_t col = top_right_board_point.x / constants::field_size;
-		size_t row = top_right_board_point.y / constants::field_size;
-		return std::make_pair(col, row);
+//		auto top_right_board_point = cursor; //  -constants::top_left_point;
+//		size_t col = top_right_board_point.x / constants::field_size;
+//		size_t row = top_right_board_point.y / constants::field_size;
+//		return std::make_pair(col, row);
+		for (std::size_t i = 0; i < buttons_.size(); ++i) {
+			if (buttons_[i].is_hit(cursor)) {
+				return index_to_indexies(i);
+			}
+		}
+		return std::pair<size_t, size_t>();
 	}
 
 	board_panel::point_type board_indexies_to_point(size_t col, size_t row)

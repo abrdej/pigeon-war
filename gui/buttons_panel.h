@@ -9,42 +9,36 @@ class entity_manager;
 
 namespace view
 {
-	class buttons_panel final
-	{
-	public:
-		void prepare();
-		void draw(sf::RenderWindow& window);
-		bool is_hit(sf::Vector2i cursor) const;
-		size_t hit_button(sf::Vector2i cursor) const;
-		void set_buttons_for(size_t entity_id);
+class buttons_panel final
+{
+public:
+    void prepare();
+    void draw(sf::RenderWindow& window);
+    bool is_hit(sf::Vector2i cursor) const;
+    size_t hit_button(sf::Vector2i cursor) const;
+    void set_buttons_for(size_t entity_id);
+    void set_name_for(size_t entity_id);
 
-	private:
-		std::vector<my_button> buttons_;
-		std::vector<sf::Sprite> sprites_;
-		static sf::Texture end_turn_bitmap_;
-	};
+    void set_hint_for(const sf::Vector2f& pos, std::size_t hint_idx);
+    void remove_hint();
+
+    void draw_hint(sf::RenderWindow& window);
+
+private:
+    std::vector<my_button> buttons_;
+    std::vector<sf::Sprite> sprites_;
+    static sf::Texture end_turn_bitmap_;
+
+    sf::Font name_font;
+    std::string entity_name;
+    sf::Sprite entity_logo;
+
+    std::array<std::string, 5> hints;
+    static const std::size_t no_hint = std::numeric_limits<std::size_t>::max();
+    std::size_t hint_button_idx{no_hint};
+    sf::Vector2f hint_pos;
 };
 
-/*
-#include <nana\gui.hpp>
-#include "my_button.h"
+}
 
-class entity;
-
-namespace view
-{
-	class buttons_panel final
-	{
-	public:
-		void prepare();
-		void draw(nana::paint::graphics& graph);
-		bool is_hit(const nana::point& cursor) const;
-		size_t hit_button(const nana::point& cursor) const;
-		void set_buttons_for(const entity& entity);
-
-	private:
-		std::vector<my_button> buttons_;
-		std::vector<nana::paint::image> icons_;
-	};
-};*/
 #endif

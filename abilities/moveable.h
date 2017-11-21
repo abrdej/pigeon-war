@@ -6,7 +6,7 @@
 #include "core/turn.h"
 
 class moveable final : public ability,
-	protected turn_events_helper::every_turn_callback_helper
+	turn_events_helper::every_turn_callback_helper
 {
 public:
 	explicit moveable(size_t range)

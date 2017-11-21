@@ -19,7 +19,7 @@ public:
 	void use(size_t for_index);
 private:
 	std::size_t bomb_id;
-	int damage{6};
+	int damage{5};
 };
 
 struct bomb_instance {
@@ -41,7 +41,7 @@ public:
 	void use(size_t index_on);
 
 private:
-	bool used{false};
+	int bombs_to_throw{2};
 	int range{2};
 	boost::circular_buffer<std::shared_ptr<std::size_t>> bombs;
 };

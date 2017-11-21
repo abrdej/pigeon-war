@@ -68,13 +68,11 @@ void saurions_web_s(game& game) {
     board::insert(board::to_index(12, 4), saurion_web_id);
     players::add_entity_for_player("enemy", saurion_web_id);
 
-    auto callback = std::make_shared<std::function<void()>>([native_id]() {
+    auto web_poison_to_native = turn::turn_system::every_round([native_id]() {
         std::cout << "recaive damage\n";
         auto damage = healths_manager::receive_damage(native_id, 4);
         damage_dealers::play_change_health_animation(board::to_index(12, 4), damage);
     });
-
-    auto web_poison_to_native = turn::turn_system::every_turn(callback);
 
     entity_remover::add_remover(saurion_web_id, [native_id, web_poison_to_native]() mutable {
         web_poison_to_native.reset();
@@ -153,67 +151,35 @@ void wolves_dinner(game& game) {
     });
 }
 
+
+#include <boost/fusion/container/vector.hpp>
+#include <boost/fusion/algorithm/iteration/for_each.hpp>
+#include <core/states.h>
+#include <entities/treant.h>
+#include <entities/fire.h>
+#include <entities/balloon.h>
+
+using Entites = boost::fusion::vector<shooter,
+        destroyer,
+        samurai_rat,
+        droid,
+        saberhand,
+        native,
+        troll,
+        mouse,
+        werewolf,
+        grenadier,
+        treant>;
+
+struct OwnerCallback {
+    std::shared_ptr<std::function<void()>> owner;
+};
+
 void skirmish(game& game) {
 
-    players::create_human_player("tester1");
-    players::create_human_player("tester2");
-
-    auto shooter_id = entity_manager::create<shooter>();
-    auto grenadier_id = entity_manager::create<destroyer>();
-    auto samurai_id = entity_manager::create<samurai_rat>();
-    auto droid_id = entity_manager::create<droid>();
-
-    board::insert(board::to_index(2, 2), shooter_id);
-    board::insert(board::to_index(2, 4), grenadier_id);
-    board::insert(board::to_index(2, 6), samurai_id);
-    board::insert(board::to_index(2, 8), droid_id);
-
-
-    players::add_entity_for_player("tester1", shooter_id);
-    players::add_entity_for_player("tester1", samurai_id);
-    players::add_entity_for_player("tester1", grenadier_id);
-    players::add_entity_for_player("tester1", droid_id);
-
-    auto saberhand_id = entity_manager::create<saberhand>();
-//    auto native_id = entity_manager::create<native>();
-    auto troll_id = entity_manager::create<troll>();
-    auto mouse_id = entity_manager::create<mouse>();
-    auto werewolf_id = entity_manager::create<werewolf>();
-
-    board::insert(board::to_index(12, 2), saberhand_id);
-    board::insert(board::to_index(12, 4), mouse_id);
-    board::insert(board::to_index(12, 6), troll_id);
-    board::insert(board::to_index(12, 8), werewolf_id);
-
-    players::add_entity_for_player("tester2", saberhand_id);
-    players::add_entity_for_player("tester2", troll_id);
-    players::add_entity_for_player("tester2", mouse_id);
-    players::add_entity_for_player("tester2", werewolf_id);
-
-//    auto ai_sequence = behavior_tree::helper::Sequence<
-//            ai::behavior_tree_tasks::blackboard,
-//            ai::behavior_tree_tasks::attack_enemy,
-//            ai::behavior_tree_tasks::go_close_to,
-//            ai::behavior_tree_tasks::find_nearest_enemy
-//    >::create();
-
     using creator_helper::pos;
-//    std::vector<std::pair<std::size_t, std::size_t>> wolves_positions = {
-//            pos(5, 6),
-//            pos(9, 7),
-//            pos(12, 2),
-//            pos(12, 6),
-//            pos(8, 2)
-//
-//    };
-//    std::vector<std::size_t> enemies_ids;
-//    for (auto&& wolf_pos : wolves_positions) {
-//        auto wolf_id = entity_manager::create(entity_helper::turned_left(wolf::create()));
-//        ai_manager::add_component(wolf_id, ai_sequence);
-//        board::insert(board::to_index(wolf_pos.first, wolf_pos.second), wolf_id);
-//        players::add_entity_for_player("enemy", wolf_id);
-//        enemies_ids.push_back(wolf_id);
-//    }
+
+    creator_helper::create_neutral_many<fire>({pos(7, 4)});
 
     std::vector<std::pair<std::size_t, std::size_t>> trees_positions;
     for (int i = 0; i < board::cols_n; ++i) {
@@ -223,23 +189,124 @@ void skirmish(game& game) {
             }
         }
     }
-    creator_helper::create_neutral_many<tree>(trees_positions);
-    creator_helper::create_neutral_many<tree>({pos(7, 1), pos(8, 1), pos(9, 1), pos(9, 2)});
-    creator_helper::create_neutral_many<tree>({pos(8, 8), pos(9, 8), pos(8, 6), pos(9, 6),
-                                               pos(10, 8), pos(11, 8), pos(10, 7), pos(11, 7)});
-    creator_helper::create_neutral_many<tree>({pos(4, 4), pos(5, 4), pos(4, 5), pos(4, 6)});
-    creator_helper::create_neutral_many<stone>({pos(1, 1), pos(5, 5)});
 
-    if_all_die({shooter_id, samurai_id, droid_id, grenadier_id}, [&]() {
-        std::cout << "tester 2 win\n";
-        game.defeat();
+    creator_helper::create_neutral_many<tree>(trees_positions);
+    creator_helper::create_neutral_many<tree>({pos(8, 1), pos(9, 1), pos(10, 1), pos(10, 2)});
+    creator_helper::create_neutral_many<tree>({pos(10, 7), pos(11, 7), pos(10, 8), pos(11, 8)});
+    creator_helper::create_neutral_many<tree>({pos(3, 1), pos(3, 2), pos(4, 1), pos(4, 2), pos(3, 5), pos(3, 6)});
+    creator_helper::create_neutral_many<tree>({pos(5, 8), pos(6, 8)});
+    creator_helper::create_neutral_many<stone>({pos(1, 1), pos(4, 5)});
+
+
+    std::vector<std::pair<std::size_t, std::size_t>> init_positions = {
+            pos(5, 2),
+            pos(6, 2),
+            pos(7, 2),
+            pos(8, 2),
+            pos(9, 2),
+            pos(9, 3),
+            pos(9, 4),
+            pos(9, 5),
+            pos(9, 6),
+            pos(8, 6),
+            pos(7, 6),
+            pos(6, 6),
+            pos(5, 6),
+            pos(5, 5),
+            pos(5, 4),
+            pos(5, 3)
+    };
+
+    std::array<std::pair<std::size_t, std::size_t>, 8> positions = {
+            pos(2, 2),
+            pos(12, 2),
+            pos(2, 4),
+            pos(12, 4),
+            pos(2, 6),
+            pos(12, 6),
+            pos(2, 8),
+            pos(12, 8)
+    };
+
+    std::array<std::string, 2> players = {"tester1", "tester2"};
+    for (auto&& player : players) {
+        players::create_human_player(player);
+    }
+
+    std::size_t i = 0;
+
+    std::unordered_set<std::size_t> entities_to_choose;
+
+    boost::fusion::for_each(Entites{}, [&i, &entities_to_choose, &init_positions](auto x) {
+        using EntityType = decltype(x);
+        auto id = entity_manager::create<EntityType>();
+
+        auto pos = init_positions[i++];
+        board::insert(board::to_index(pos.first, pos.second), id);
+
+        entities_to_choose.insert(id);
     });
-    if_all_die({saberhand_id, mouse_id, troll_id, werewolf_id}, [&]() {
-        std::cout << "tester 1 win\n";
-        game.victory();
+
+    int entities_for_player = 4;
+    int selections = 0;
+
+    std::shared_ptr<OwnerCallback> holder = std::make_shared<OwnerCallback>();
+
+    auto create_entities_container = [](){
+        return std::unordered_map<std::string, std::vector<std::size_t>>();
+    };
+
+    auto add_entity_for_player = turn::turn_system::every_turn([=, entities = create_entities_container()]() mutable {
+
+        auto entity_id = board::take(states::state_controller::selected_index_);
+
+        entities[players[selections % 2]].push_back(entity_id);
+
+        auto pos = positions[selections];
+        auto new_index = board::to_index(pos.first, pos.second);
+        board::give_back(entity_id, new_index);
+        states::state_controller::selected_index_ = new_index;
+
+        entities_to_choose.erase(entity_id);
+
+        ++selections;
+
+        if (selections == entities_for_player * 2) {
+
+            for (auto&& entity_to_remove : entities_to_choose) {
+                entity_manager::destroy(entity_to_remove);
+            }
+
+            for (auto&& player_pack : entities) {
+                for (auto&& id : player_pack.second) {
+                    players::add_entity_for_player(player_pack.first, id);
+                }
+            }
+            for (auto&& player_pack : entities) {
+                if_all_die(player_pack.second, [&]() {
+                    std::cout << player_pack.first << " win!!!\n";
+                    game.defeat();
+                });
+            }
+
+            entities.clear();
+
+            holder.reset();
+        }
+
     });
+
+    holder->owner = add_entity_for_player;
+}
+
+void strategy(game& game) {
+    auto balloon_id = entity_manager::create<balloon>();
+    board::insert(board::to_index(2, 5), balloon_id);
+    players::create_human_player("tester");
+
+    players::add_entity_for_player("tester", balloon_id);
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {
-    skirmish(game);
+    strategy(game);
 }

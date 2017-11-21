@@ -26,7 +26,7 @@ void bomb_detonation::use(size_t for_index) {
 	for (auto& index : neightbords)
 	{
 		if (!board::empty(index))
-			damage_dealers::standard_damage_dealer(damage, index);
+			damage_dealers::standard_damage_dealer(damage, board::at(index));
 	}
 
 	entity_manager::destroy(bomb_id);
@@ -35,7 +35,7 @@ void bomb_detonation::use(size_t for_index) {
 bomb::bomb() : bombs(2) {
 
 	onEveryTurn([this](){
-		used = false;
+		bombs_to_throw = 2;
 	});
 }
 
@@ -59,11 +59,11 @@ void bomb::prepare(size_t for_index) {
 
 void bomb::use(size_t index) {
 
-	if (used) {
+	if (bombs_to_throw == 0) {
 		return;
 	}
 
-	used = true;
+	--bombs_to_throw;
 
 	auto bomb_id = entity_manager::create<bomb_instance>();
 	auto player = players::active_player_name();

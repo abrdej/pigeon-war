@@ -41,7 +41,6 @@ private:
 	sf::RenderWindow window_;
 	board_panel board_panel_;
 	buttons_panel buttons_panel_;
-	//labels_panel labels_panel_;
 	animation::player_impl animation_player_impl_;
 	std::unique_ptr<board_drawer> board_drawer_;
 	entities_renderer entities_renderer_;

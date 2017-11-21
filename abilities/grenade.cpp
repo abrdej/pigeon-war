@@ -41,12 +41,12 @@ void grenade::use(size_t index_on)
 
 	play_animation(used_from_index, index_on, neightbords);
 
-	damage_dealers::standard_damage_dealer(damage_, index_on);
+	damage_dealers::standard_damage_dealer(damage_, board::at(index_on));
 
 	for (auto& index : neightbords)
 	{
 		if (!board::empty(index))
-			damage_dealers::standard_damage_dealer(damage_ / 2, index);
+			damage_dealers::standard_damage_dealer(damage_ / 2, board::at(index));
 	}
 	// show damage animation // for example. -9 dmg
 }

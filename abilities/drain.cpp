@@ -40,7 +40,7 @@ void drain::use(size_t index_on)
 
 	play_animation(used_from_index, index_on);
 	
-	auto dealt_damage = damage_dealers::standard_damage_dealer(damage_, index_on);
+	auto dealt_damage = damage_dealers::standard_damage_dealer(damage_, board::at(index_on));
 
 	auto entity_id = board::at(used_from_index);
 	auto amount_of_health = std::min<int>(drain_, dealt_damage);

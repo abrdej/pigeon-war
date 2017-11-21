@@ -31,14 +31,14 @@ void invisibility::use(size_t on_index)
 
     hide_me();
 
-	receiver = turn::turn_system::every_turn(std::make_shared<std::function<void()>>([this](){
-			++turn_counter_;
+	receiver = turn::turn_system::every_round([this]() {
+        ++turn_counter_;
 
-			if (turn_counter_ == 2) {
-				show_me();
-				receiver.reset();
-			}
-	}));
+        if (turn_counter_ == 2) {
+            show_me();
+            receiver.reset();
+        }
+    });
 }
 
 void invisibility::hide_me()

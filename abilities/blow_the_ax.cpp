@@ -4,6 +4,12 @@
 #include "damage_dealers.h"
 #include "managers/types_manager.h"
 
+blow_the_ax::blow_the_ax() {
+    onEveryTurn([this]() {
+        used = false;
+    });
+}
+
 void blow_the_ax::prepare(size_t for_index) {
 
     states::state_controller::selected_index_ = for_index;
@@ -21,6 +27,9 @@ void blow_the_ax::prepare(size_t for_index) {
 
 void blow_the_ax::use(size_t index_on) {
 
+    if (used)
+        return;
+
     auto used_from_index = states::state_controller::selected_index_;
 
     auto entity_id = board::take(used_from_index);
@@ -33,5 +42,7 @@ void blow_the_ax::use(size_t index_on) {
     animation::base_player::play();
     board::give_back(entity_id, used_from_index);
 
-    damage_dealers::standard_damage_dealer(damage, index_on);
+    damage_dealers::standard_damage_dealer(damage, board::at(index_on));
+
+    used = true;
 }

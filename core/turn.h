@@ -16,10 +16,12 @@ public:
 
 	static void end_turn();
 	static void on_turn(size_t turn_n, const std::function<void()>& task);
-	static every_turn_signal_type::strong_receiver every_turn(const every_turn_signal_type::strong_receiver& task);
+	static every_turn_signal_type::strong_receiver every_round(std::function<void()> callback);
+	static every_turn_signal_type::strong_receiver every_turn(std::function<void()> callback);
 private:
 	static size_t turn_n_;
 	static std::unordered_multimap<size_t, std::function<void()>> tasks_;
+	static every_turn_signal_type every_round_signal_;
 	static every_turn_signal_type every_turn_signal_;
 };
 };
@@ -35,8 +37,7 @@ protected:
 	template <typename Callback>
 	void onEveryTurn(Callback callback)
 	{
-		end_turn_receiver_ = turn::turn_system::every_turn(
-				std::make_shared<std::function<void()>>(callback));
+		end_turn_receiver_ = turn::turn_system::every_round(callback);
 	}
 private:
 	turn::turn_system::every_turn_signal_type::strong_receiver end_turn_receiver_;

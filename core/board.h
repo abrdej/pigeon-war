@@ -47,7 +47,7 @@ public:
         auto& field = fields_[at_index];
         if (field.empty())
             return empty_id;
-		return fields_[at_index].back();
+		return field.back();
 	}
 	inline static bool empty(size_t at_index)
 	{
@@ -58,7 +58,13 @@ public:
 		auto it = std::find_if(std::begin(fields_), std::end(fields_), [entity_id](auto field){
             if (field.empty())
                 return false;
-			return field.back() == entity_id;
+            for (auto&& item : field) {
+                if (item == entity_id) {
+                    return true;
+                }
+            }
+            return false;
+			//return field.back() == entity_id;
 		});
 		if (it != std::end(fields_))
 			return it - std::begin(fields_);

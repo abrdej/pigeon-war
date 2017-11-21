@@ -14,9 +14,11 @@ public:
 	using bitmap_type = sf::Texture;
 
 	my_button(const point_type& center, size_t size, const std::function<void()>& callback = nullptr);
-	my_button(const rect_type& rect, const std::function<void()>& callback = nullptr);
+	explicit my_button(const rect_type& rect, const std::function<void()>& callback = nullptr);
 
-	inline bool is_hit(const point_type& pt);
+	inline bool is_hit(const point_type& pt) const {
+		return position_.contains(pt);
+	}
 	void draw(sf::RenderWindow& window);
 	void add_callback(const std::function<void()>& func = nullptr);
 	void icon(const bitmap_type& img);

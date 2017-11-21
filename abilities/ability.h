@@ -14,6 +14,9 @@ public:
 	{
 		prepare(index);
 	}
+	virtual std::string hint() const {
+		return "hint";
+	}
 private:
 	virtual void prepare(size_t for_index) = 0;
 protected:

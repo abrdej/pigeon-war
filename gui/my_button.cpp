@@ -20,11 +20,6 @@ void my_button::add_callback(const std::function<void()>& func)
 	callback_ = func;
 }
 
-inline bool my_button::is_hit(const point_type& pt)
-{
-	return position_.contains(pt);
-}
-
 void my_button::draw(sf::RenderWindow& window)
 {
 	sprite_.setPosition(sf::Vector2f(position_.left, position_.top));

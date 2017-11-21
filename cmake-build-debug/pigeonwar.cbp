@@ -122,6 +122,18 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bomb.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_barrack.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_barrack.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_cannon.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_cannon.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -141,6 +153,12 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/drain.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/entangling.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/entangling.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/grenade.cpp">
@@ -183,6 +201,12 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/rage.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/recovery.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/recovery.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sabers.cpp">
@@ -287,6 +311,12 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/turn.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/balloon.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/cannon.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/destroyer.h">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -294,6 +324,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/entity.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/fire.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/grenadier.h">
@@ -309,6 +342,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/shooter.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/treant.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/tree.cpp">
@@ -350,22 +386,31 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/buttons_panel.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawable.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawable.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawer.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawer.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawing_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawing_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/entity_drawer.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/gui.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/gui.h">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/labels_panel.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/labels_panel.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/my_button.cpp">

@@ -52,7 +52,7 @@ void bludgeon::use(size_t index_on)
 
 	play_animation(used_from_index, index_on, set_on_index, push_to_index);
 
-	damage_dealers::standard_damage_dealer(damage_, push_to_index);
+	damage_dealers::standard_damage_dealer(damage_, board::at(push_to_index));
 
 	states::state_controller::selected_index_ = set_on_index;
 }
@@ -80,7 +80,7 @@ void bludgeon::play_animation(size_t from_index, size_t to_index, size_t set_on_
 
 	} else {
 
-		auto enemy_id = board::take_bottom(to_index);
+		auto enemy_id = board::take(to_index); //
 		auto enemy_type = types_manager::component_for(enemy_id);
 
 		animation::player<animation::move>::launch(animation::move(to_index, push_to_index, enemy_type));

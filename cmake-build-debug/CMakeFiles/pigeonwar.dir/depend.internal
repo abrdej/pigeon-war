@@ -104,10 +104,13 @@ CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.o
 CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.o
  ..//animation/animation.h
  ..//core/board.h
+ ..//core/signals.h
  ..//core/states.h
+ ..//core/turn.h
  ..//managers/types_manager.h
  ..//utils/graph.h
  ../core/path_finder.h
+ ../core/players.h
  ../managers/entity_remover.h
  ../managers/managers.h
  /home/abrdej/Projekty/pigeonwar/abilities/ability.h
@@ -163,6 +166,72 @@ CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.o
  /home/abrdej/Projekty/pigeonwar/abilities/bomb.h
  /home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
  /home/abrdej/Projekty/pigeonwar/abilities/moveable.h
+CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/moveable.h
+ ..//ai/ai_manager.h
+ ..//core/board.h
+ ..//core/module_holder.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//managers/abilities_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
+ ../managers/abilities_manager.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ /home/abrdej/Projekty/pigeonwar/abilities/build_barrack.cpp
+ /home/abrdej/Projekty/pigeonwar/abilities/build_barrack.h
+CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.o
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
+ ..//ai/ai_manager.h
+ ..//core/board.h
+ ..//core/module_holder.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/cannon.h
+ ..//entities/entity.h
+ ..//managers/abilities_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
+ ../entities/shooter.h
+ ../managers/abilities_manager.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ /home/abrdej/Projekty/pigeonwar/abilities/build_cannon.cpp
+ /home/abrdej/Projekty/pigeonwar/abilities/build_cannon.h
 CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.o
  ..//core/board.h
  /home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp
@@ -299,6 +368,38 @@ CMakeFiles/pigeonwar.dir/abilities/drain.cpp.o
  /usr/local/include/SFML/Window/Window.hpp
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.o
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/moveable.h
+ ..//ai/ai_manager.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/module_holder.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//managers/abilities_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/abilities_manager.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ /home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
+ /home/abrdej/Projekty/pigeonwar/abilities/entangling.cpp
+ /home/abrdej/Projekty/pigeonwar/abilities/entangling.h
 CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.o
  ..//abilities/ability.h
  ..//animation/animation.h
@@ -449,6 +550,18 @@ CMakeFiles/pigeonwar.dir/abilities/rage.cpp.o
  /home/abrdej/Projekty/pigeonwar/abilities/damage_dealers.h
  /home/abrdej/Projekty/pigeonwar/abilities/rage.cpp
  /home/abrdej/Projekty/pigeonwar/abilities/rage.h
+CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.o
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ /home/abrdej/Projekty/pigeonwar/abilities/recovery.cpp
+ /home/abrdej/Projekty/pigeonwar/abilities/recovery.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.o
  ..//abilities/ability.h
  ..//abilities/bullet.h
@@ -865,8 +978,14 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.o
  ../ai/behavior_tree.h
  ../core/path_finder.h
  ../core/players.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
  ../gui/drawer.h
+ ../gui/drawing_manager.h
+ ../gui/entity_drawer.h
  ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -980,7 +1099,13 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.o
  ../ai/behavior_tree.h
  ../core/path_finder.h
  ../core/players.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawing_manager.h
+ ../gui/entity_drawer.h
  ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -1277,14 +1402,18 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o
  ..//abilities/blow_the_ax.h
  ..//abilities/bludgeon.h
  ..//abilities/bomb.h
+ ..//abilities/build_barrack.h
+ ..//abilities/build_cannon.h
  ..//abilities/dodge.h
  ..//abilities/drain.h
+ ..//abilities/entangling.h
  ..//abilities/grenade.h
  ..//abilities/invisibility.h
  ..//abilities/laser.h
  ..//abilities/moveable.h
  ..//abilities/poisoned_missile.h
  ..//abilities/rage.h
+ ..//abilities/recovery.h
  ..//abilities/sabers.h
  ..//abilities/shoot.h
  ..//abilities/sword_blow.h
@@ -1298,9 +1427,12 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o
  ..//core/players.h
  ..//core/signals.h
  ..//core/turn.h
+ ..//entities/balloon.h
+ ..//entities/cannon.h
  ..//entities/destroyer.h
  ..//entities/droid.h
  ..//entities/entity.h
+ ..//entities/fire.h
  ..//entities/grenadier.h
  ..//entities/mouse.h
  ..//entities/native.h
@@ -1310,6 +1442,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o
  ..//entities/saurions_web.h
  ..//entities/shooter.h
  ..//entities/stone.h
+ ..//entities/treant.h
  ..//entities/tree.h
  ..//entities/troll.h
  ..//entities/werewolf.h
@@ -1325,6 +1458,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.o
  ../ai/behavior_tree.h
  ../core/players.h
  ../entities/entity.h
+ ../entities/shooter.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -1529,6 +1663,41 @@ CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.o
  /usr/local/include/SFML/Window/Window.hpp
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/pigeonwar.dir/gui/drawable.cpp.o
+ /home/abrdej/Projekty/pigeonwar/gui/drawable.cpp
+ /home/abrdej/Projekty/pigeonwar/gui/drawable.h
+ /usr/local/include/SFML/Config.hpp
+ /usr/local/include/SFML/Graphics/BlendMode.hpp
+ /usr/local/include/SFML/Graphics/Color.hpp
+ /usr/local/include/SFML/Graphics/Export.hpp
+ /usr/local/include/SFML/Graphics/Image.hpp
+ /usr/local/include/SFML/Graphics/PrimitiveType.hpp
+ /usr/local/include/SFML/Graphics/Rect.hpp
+ /usr/local/include/SFML/Graphics/Rect.inl
+ /usr/local/include/SFML/Graphics/RenderStates.hpp
+ /usr/local/include/SFML/Graphics/RenderTarget.hpp
+ /usr/local/include/SFML/Graphics/RenderWindow.hpp
+ /usr/local/include/SFML/Graphics/Transform.hpp
+ /usr/local/include/SFML/Graphics/Vertex.hpp
+ /usr/local/include/SFML/Graphics/View.hpp
+ /usr/local/include/SFML/System/Clock.hpp
+ /usr/local/include/SFML/System/Export.hpp
+ /usr/local/include/SFML/System/NonCopyable.hpp
+ /usr/local/include/SFML/System/String.hpp
+ /usr/local/include/SFML/System/String.inl
+ /usr/local/include/SFML/System/Time.hpp
+ /usr/local/include/SFML/System/Utf.hpp
+ /usr/local/include/SFML/System/Utf.inl
+ /usr/local/include/SFML/System/Vector2.hpp
+ /usr/local/include/SFML/System/Vector2.inl
+ /usr/local/include/SFML/Window/ContextSettings.hpp
+ /usr/local/include/SFML/Window/Cursor.hpp
+ /usr/local/include/SFML/Window/Export.hpp
+ /usr/local/include/SFML/Window/GlResource.hpp
+ /usr/local/include/SFML/Window/VideoMode.hpp
+ /usr/local/include/SFML/Window/Window.hpp
+ /usr/local/include/SFML/Window/WindowHandle.hpp
+ /usr/local/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -1564,8 +1733,106 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.o
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ /home/abrdej/Projekty/pigeonwar/gui/bitmap_center.h
+ /home/abrdej/Projekty/pigeonwar/gui/board_panel.h
+ /home/abrdej/Projekty/pigeonwar/gui/drawable.h
  /home/abrdej/Projekty/pigeonwar/gui/drawer.cpp
  /home/abrdej/Projekty/pigeonwar/gui/drawer.h
+ /home/abrdej/Projekty/pigeonwar/gui/drawing_manager.h
+ /home/abrdej/Projekty/pigeonwar/gui/entity_drawer.h
+ /home/abrdej/Projekty/pigeonwar/gui/view_constants.h
+ /usr/local/include/SFML/Config.hpp
+ /usr/local/include/SFML/Graphics.hpp
+ /usr/local/include/SFML/Graphics/BlendMode.hpp
+ /usr/local/include/SFML/Graphics/CircleShape.hpp
+ /usr/local/include/SFML/Graphics/Color.hpp
+ /usr/local/include/SFML/Graphics/ConvexShape.hpp
+ /usr/local/include/SFML/Graphics/Drawable.hpp
+ /usr/local/include/SFML/Graphics/Export.hpp
+ /usr/local/include/SFML/Graphics/Font.hpp
+ /usr/local/include/SFML/Graphics/Glsl.hpp
+ /usr/local/include/SFML/Graphics/Glsl.inl
+ /usr/local/include/SFML/Graphics/Glyph.hpp
+ /usr/local/include/SFML/Graphics/Image.hpp
+ /usr/local/include/SFML/Graphics/PrimitiveType.hpp
+ /usr/local/include/SFML/Graphics/Rect.hpp
+ /usr/local/include/SFML/Graphics/Rect.inl
+ /usr/local/include/SFML/Graphics/RectangleShape.hpp
+ /usr/local/include/SFML/Graphics/RenderStates.hpp
+ /usr/local/include/SFML/Graphics/RenderTarget.hpp
+ /usr/local/include/SFML/Graphics/RenderTexture.hpp
+ /usr/local/include/SFML/Graphics/RenderWindow.hpp
+ /usr/local/include/SFML/Graphics/Shader.hpp
+ /usr/local/include/SFML/Graphics/Shape.hpp
+ /usr/local/include/SFML/Graphics/Sprite.hpp
+ /usr/local/include/SFML/Graphics/Text.hpp
+ /usr/local/include/SFML/Graphics/Texture.hpp
+ /usr/local/include/SFML/Graphics/Transform.hpp
+ /usr/local/include/SFML/Graphics/Transformable.hpp
+ /usr/local/include/SFML/Graphics/Vertex.hpp
+ /usr/local/include/SFML/Graphics/VertexArray.hpp
+ /usr/local/include/SFML/Graphics/View.hpp
+ /usr/local/include/SFML/System.hpp
+ /usr/local/include/SFML/System/Clock.hpp
+ /usr/local/include/SFML/System/Err.hpp
+ /usr/local/include/SFML/System/Export.hpp
+ /usr/local/include/SFML/System/FileInputStream.hpp
+ /usr/local/include/SFML/System/InputStream.hpp
+ /usr/local/include/SFML/System/Lock.hpp
+ /usr/local/include/SFML/System/MemoryInputStream.hpp
+ /usr/local/include/SFML/System/Mutex.hpp
+ /usr/local/include/SFML/System/NonCopyable.hpp
+ /usr/local/include/SFML/System/Sleep.hpp
+ /usr/local/include/SFML/System/String.hpp
+ /usr/local/include/SFML/System/String.inl
+ /usr/local/include/SFML/System/Thread.hpp
+ /usr/local/include/SFML/System/Thread.inl
+ /usr/local/include/SFML/System/ThreadLocal.hpp
+ /usr/local/include/SFML/System/ThreadLocalPtr.hpp
+ /usr/local/include/SFML/System/ThreadLocalPtr.inl
+ /usr/local/include/SFML/System/Time.hpp
+ /usr/local/include/SFML/System/Utf.hpp
+ /usr/local/include/SFML/System/Utf.inl
+ /usr/local/include/SFML/System/Vector2.hpp
+ /usr/local/include/SFML/System/Vector2.inl
+ /usr/local/include/SFML/System/Vector3.hpp
+ /usr/local/include/SFML/System/Vector3.inl
+ /usr/local/include/SFML/Window.hpp
+ /usr/local/include/SFML/Window/Clipboard.hpp
+ /usr/local/include/SFML/Window/Context.hpp
+ /usr/local/include/SFML/Window/ContextSettings.hpp
+ /usr/local/include/SFML/Window/Cursor.hpp
+ /usr/local/include/SFML/Window/Event.hpp
+ /usr/local/include/SFML/Window/Export.hpp
+ /usr/local/include/SFML/Window/GlResource.hpp
+ /usr/local/include/SFML/Window/Joystick.hpp
+ /usr/local/include/SFML/Window/Keyboard.hpp
+ /usr/local/include/SFML/Window/Mouse.hpp
+ /usr/local/include/SFML/Window/Sensor.hpp
+ /usr/local/include/SFML/Window/Touch.hpp
+ /usr/local/include/SFML/Window/VideoMode.hpp
+ /usr/local/include/SFML/Window/Window.hpp
+ /usr/local/include/SFML/Window/WindowHandle.hpp
+ /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.o
+ ..//abilities/abilities.h
+ ..//core/board.h
+ ..//core/module_holder.h
+ ..//entities/entity.h
+ ..//managers/directions_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ /home/abrdej/Projekty/pigeonwar/gui/bitmap_center.h
+ /home/abrdej/Projekty/pigeonwar/gui/board_panel.h
+ /home/abrdej/Projekty/pigeonwar/gui/drawable.h
+ /home/abrdej/Projekty/pigeonwar/gui/drawing_manager.cpp
+ /home/abrdej/Projekty/pigeonwar/gui/drawing_manager.h
+ /home/abrdej/Projekty/pigeonwar/gui/entity_drawer.h
+ /home/abrdej/Projekty/pigeonwar/gui/my_button.h
+ /home/abrdej/Projekty/pigeonwar/gui/view_constants.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -1679,86 +1946,14 @@ CMakeFiles/pigeonwar.dir/gui/gui.cpp.o
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ /home/abrdej/Projekty/pigeonwar/gui/bitmap_center.h
+ /home/abrdej/Projekty/pigeonwar/gui/board_panel.h
+ /home/abrdej/Projekty/pigeonwar/gui/drawable.h
  /home/abrdej/Projekty/pigeonwar/gui/drawer.h
+ /home/abrdej/Projekty/pigeonwar/gui/drawing_manager.h
+ /home/abrdej/Projekty/pigeonwar/gui/entity_drawer.h
  /home/abrdej/Projekty/pigeonwar/gui/gui.cpp
  /home/abrdej/Projekty/pigeonwar/gui/gui.h
- /home/abrdej/Projekty/pigeonwar/gui/view_constants.h
- /usr/local/include/SFML/Config.hpp
- /usr/local/include/SFML/Graphics.hpp
- /usr/local/include/SFML/Graphics/BlendMode.hpp
- /usr/local/include/SFML/Graphics/CircleShape.hpp
- /usr/local/include/SFML/Graphics/Color.hpp
- /usr/local/include/SFML/Graphics/ConvexShape.hpp
- /usr/local/include/SFML/Graphics/Drawable.hpp
- /usr/local/include/SFML/Graphics/Export.hpp
- /usr/local/include/SFML/Graphics/Font.hpp
- /usr/local/include/SFML/Graphics/Glsl.hpp
- /usr/local/include/SFML/Graphics/Glsl.inl
- /usr/local/include/SFML/Graphics/Glyph.hpp
- /usr/local/include/SFML/Graphics/Image.hpp
- /usr/local/include/SFML/Graphics/PrimitiveType.hpp
- /usr/local/include/SFML/Graphics/Rect.hpp
- /usr/local/include/SFML/Graphics/Rect.inl
- /usr/local/include/SFML/Graphics/RectangleShape.hpp
- /usr/local/include/SFML/Graphics/RenderStates.hpp
- /usr/local/include/SFML/Graphics/RenderTarget.hpp
- /usr/local/include/SFML/Graphics/RenderTexture.hpp
- /usr/local/include/SFML/Graphics/RenderWindow.hpp
- /usr/local/include/SFML/Graphics/Shader.hpp
- /usr/local/include/SFML/Graphics/Shape.hpp
- /usr/local/include/SFML/Graphics/Sprite.hpp
- /usr/local/include/SFML/Graphics/Text.hpp
- /usr/local/include/SFML/Graphics/Texture.hpp
- /usr/local/include/SFML/Graphics/Transform.hpp
- /usr/local/include/SFML/Graphics/Transformable.hpp
- /usr/local/include/SFML/Graphics/Vertex.hpp
- /usr/local/include/SFML/Graphics/VertexArray.hpp
- /usr/local/include/SFML/Graphics/View.hpp
- /usr/local/include/SFML/System.hpp
- /usr/local/include/SFML/System/Clock.hpp
- /usr/local/include/SFML/System/Err.hpp
- /usr/local/include/SFML/System/Export.hpp
- /usr/local/include/SFML/System/FileInputStream.hpp
- /usr/local/include/SFML/System/InputStream.hpp
- /usr/local/include/SFML/System/Lock.hpp
- /usr/local/include/SFML/System/MemoryInputStream.hpp
- /usr/local/include/SFML/System/Mutex.hpp
- /usr/local/include/SFML/System/NonCopyable.hpp
- /usr/local/include/SFML/System/Sleep.hpp
- /usr/local/include/SFML/System/String.hpp
- /usr/local/include/SFML/System/String.inl
- /usr/local/include/SFML/System/Thread.hpp
- /usr/local/include/SFML/System/Thread.inl
- /usr/local/include/SFML/System/ThreadLocal.hpp
- /usr/local/include/SFML/System/ThreadLocalPtr.hpp
- /usr/local/include/SFML/System/ThreadLocalPtr.inl
- /usr/local/include/SFML/System/Time.hpp
- /usr/local/include/SFML/System/Utf.hpp
- /usr/local/include/SFML/System/Utf.inl
- /usr/local/include/SFML/System/Vector2.hpp
- /usr/local/include/SFML/System/Vector2.inl
- /usr/local/include/SFML/System/Vector3.hpp
- /usr/local/include/SFML/System/Vector3.inl
- /usr/local/include/SFML/Window.hpp
- /usr/local/include/SFML/Window/Clipboard.hpp
- /usr/local/include/SFML/Window/Context.hpp
- /usr/local/include/SFML/Window/ContextSettings.hpp
- /usr/local/include/SFML/Window/Cursor.hpp
- /usr/local/include/SFML/Window/Event.hpp
- /usr/local/include/SFML/Window/Export.hpp
- /usr/local/include/SFML/Window/GlResource.hpp
- /usr/local/include/SFML/Window/Joystick.hpp
- /usr/local/include/SFML/Window/Keyboard.hpp
- /usr/local/include/SFML/Window/Mouse.hpp
- /usr/local/include/SFML/Window/Sensor.hpp
- /usr/local/include/SFML/Window/Touch.hpp
- /usr/local/include/SFML/Window/VideoMode.hpp
- /usr/local/include/SFML/Window/Window.hpp
- /usr/local/include/SFML/Window/WindowHandle.hpp
- /usr/local/include/SFML/Window/WindowStyle.hpp
-CMakeFiles/pigeonwar.dir/gui/labels_panel.cpp.o
- /home/abrdej/Projekty/pigeonwar/gui/labels_panel.cpp
- /home/abrdej/Projekty/pigeonwar/gui/labels_panel.h
  /home/abrdej/Projekty/pigeonwar/gui/view_constants.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
@@ -1950,8 +2145,13 @@ CMakeFiles/pigeonwar.dir/main.cpp.o
  /home/abrdej/Projekty/pigeonwar/entities/entity.h
  /home/abrdej/Projekty/pigeonwar/entities/wolf.h
  /home/abrdej/Projekty/pigeonwar/gui/bitmap_center.h
+ /home/abrdej/Projekty/pigeonwar/gui/board_panel.h
+ /home/abrdej/Projekty/pigeonwar/gui/drawable.h
  /home/abrdej/Projekty/pigeonwar/gui/drawer.h
+ /home/abrdej/Projekty/pigeonwar/gui/drawing_manager.h
+ /home/abrdej/Projekty/pigeonwar/gui/entity_drawer.h
  /home/abrdej/Projekty/pigeonwar/gui/gui.h
+ /home/abrdej/Projekty/pigeonwar/gui/view_constants.h
  /home/abrdej/Projekty/pigeonwar/main.cpp
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
@@ -2098,14 +2298,18 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
  ..//abilities/blow_the_ax.h
  ..//abilities/bludgeon.h
  ..//abilities/bomb.h
+ ..//abilities/build_barrack.h
+ ..//abilities/build_cannon.h
  ..//abilities/damage_dealers.h
  ..//abilities/dodge.h
  ..//abilities/drain.h
+ ..//abilities/entangling.h
  ..//abilities/invisibility.h
  ..//abilities/laser.h
  ..//abilities/moveable.h
  ..//abilities/poisoned_missile.h
  ..//abilities/rage.h
+ ..//abilities/recovery.h
  ..//abilities/sabers.h
  ..//abilities/sword_blow.h
  ..//abilities/teleport.h
@@ -2117,10 +2321,13 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
  ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
+ ..//core/states.h
  ..//core/turn.h
+ ..//entities/balloon.h
  ..//entities/destroyer.h
  ..//entities/droid.h
  ..//entities/entity.h
+ ..//entities/fire.h
  ..//entities/grenadier.h
  ..//entities/mouse.h
  ..//entities/native.h
@@ -2130,6 +2337,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
  ..//entities/saurions_web.h
  ..//entities/shooter.h
  ..//entities/stone.h
+ ..//entities/treant.h
  ..//entities/tree.h
  ..//entities/troll.h
  ..//entities/werewolf.h
@@ -2140,11 +2348,13 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/creator_helper.h
+ ..//utils/graph.h
  ..//utils/scenario_helper.h
  ../abilities/ability.h
  ../abilities/moveable.h
  ../ai/ai.h
  ../ai/behavior_tree.h
+ ../core/path_finder.h
  ../core/players.h
  ../entities/entity.h
  ../managers/abilities_manager.h
@@ -2156,6 +2366,606 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.o
  ../managers/types_manager.h
  /home/abrdej/Projekty/pigeonwar/scenarios/scenarios.cpp
  /home/abrdej/Projekty/pigeonwar/scenarios/scenarios.h
+ /usr/local/include/boost/config.hpp
+ /usr/local/include/boost/config/compiler/borland.hpp
+ /usr/local/include/boost/config/compiler/clang.hpp
+ /usr/local/include/boost/config/compiler/codegear.hpp
+ /usr/local/include/boost/config/compiler/comeau.hpp
+ /usr/local/include/boost/config/compiler/common_edg.hpp
+ /usr/local/include/boost/config/compiler/compaq_cxx.hpp
+ /usr/local/include/boost/config/compiler/cray.hpp
+ /usr/local/include/boost/config/compiler/digitalmars.hpp
+ /usr/local/include/boost/config/compiler/gcc.hpp
+ /usr/local/include/boost/config/compiler/gcc_xml.hpp
+ /usr/local/include/boost/config/compiler/greenhills.hpp
+ /usr/local/include/boost/config/compiler/hp_acc.hpp
+ /usr/local/include/boost/config/compiler/intel.hpp
+ /usr/local/include/boost/config/compiler/kai.hpp
+ /usr/local/include/boost/config/compiler/metrowerks.hpp
+ /usr/local/include/boost/config/compiler/mpw.hpp
+ /usr/local/include/boost/config/compiler/nvcc.hpp
+ /usr/local/include/boost/config/compiler/pathscale.hpp
+ /usr/local/include/boost/config/compiler/pgi.hpp
+ /usr/local/include/boost/config/compiler/sgi_mipspro.hpp
+ /usr/local/include/boost/config/compiler/sunpro_cc.hpp
+ /usr/local/include/boost/config/compiler/vacpp.hpp
+ /usr/local/include/boost/config/compiler/visualc.hpp
+ /usr/local/include/boost/config/compiler/xlcpp.hpp
+ /usr/local/include/boost/config/compiler/xlcpp_zos.hpp
+ /usr/local/include/boost/config/detail/posix_features.hpp
+ /usr/local/include/boost/config/detail/select_compiler_config.hpp
+ /usr/local/include/boost/config/detail/select_platform_config.hpp
+ /usr/local/include/boost/config/detail/select_stdlib_config.hpp
+ /usr/local/include/boost/config/detail/suffix.hpp
+ /usr/local/include/boost/config/no_tr1/utility.hpp
+ /usr/local/include/boost/config/platform/aix.hpp
+ /usr/local/include/boost/config/platform/amigaos.hpp
+ /usr/local/include/boost/config/platform/beos.hpp
+ /usr/local/include/boost/config/platform/bsd.hpp
+ /usr/local/include/boost/config/platform/cray.hpp
+ /usr/local/include/boost/config/platform/cygwin.hpp
+ /usr/local/include/boost/config/platform/hpux.hpp
+ /usr/local/include/boost/config/platform/irix.hpp
+ /usr/local/include/boost/config/platform/linux.hpp
+ /usr/local/include/boost/config/platform/macos.hpp
+ /usr/local/include/boost/config/platform/qnxnto.hpp
+ /usr/local/include/boost/config/platform/solaris.hpp
+ /usr/local/include/boost/config/platform/symbian.hpp
+ /usr/local/include/boost/config/platform/vms.hpp
+ /usr/local/include/boost/config/platform/vxworks.hpp
+ /usr/local/include/boost/config/platform/win32.hpp
+ /usr/local/include/boost/config/platform/zos.hpp
+ /usr/local/include/boost/config/stdlib/dinkumware.hpp
+ /usr/local/include/boost/config/stdlib/libcomo.hpp
+ /usr/local/include/boost/config/stdlib/libcpp.hpp
+ /usr/local/include/boost/config/stdlib/libstdcpp3.hpp
+ /usr/local/include/boost/config/stdlib/modena.hpp
+ /usr/local/include/boost/config/stdlib/msl.hpp
+ /usr/local/include/boost/config/stdlib/roguewave.hpp
+ /usr/local/include/boost/config/stdlib/sgi.hpp
+ /usr/local/include/boost/config/stdlib/stlport.hpp
+ /usr/local/include/boost/config/stdlib/vacpp.hpp
+ /usr/local/include/boost/config/stdlib/xlcpp_zos.hpp
+ /usr/local/include/boost/config/user.hpp
+ /usr/local/include/boost/config/workaround.hpp
+ /usr/local/include/boost/core/addressof.hpp
+ /usr/local/include/boost/core/enable_if.hpp
+ /usr/local/include/boost/core/ref.hpp
+ /usr/local/include/boost/detail/workaround.hpp
+ /usr/local/include/boost/fusion/adapted/mpl/detail/begin_impl.hpp
+ /usr/local/include/boost/fusion/adapted/mpl/detail/end_impl.hpp
+ /usr/local/include/boost/fusion/adapted/mpl/mpl_iterator.hpp
+ /usr/local/include/boost/fusion/algorithm/iteration/detail/for_each.hpp
+ /usr/local/include/boost/fusion/algorithm/iteration/detail/segmented_for_each.hpp
+ /usr/local/include/boost/fusion/algorithm/iteration/for_each.hpp
+ /usr/local/include/boost/fusion/algorithm/iteration/for_each_fwd.hpp
+ /usr/local/include/boost/fusion/algorithm/transformation/push_back.hpp
+ /usr/local/include/boost/fusion/algorithm/transformation/push_front.hpp
+ /usr/local/include/boost/fusion/container/list/cons.hpp
+ /usr/local/include/boost/fusion/container/list/cons_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/cons_iterator.hpp
+ /usr/local/include/boost/fusion/container/list/detail/at_impl.hpp
+ /usr/local/include/boost/fusion/container/list/detail/begin_impl.hpp
+ /usr/local/include/boost/fusion/container/list/detail/cpp03/limits.hpp
+ /usr/local/include/boost/fusion/container/list/detail/cpp03/list_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/detail/cpp03/preprocessed/list10_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/detail/cpp03/preprocessed/list20_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/detail/cpp03/preprocessed/list30_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/detail/cpp03/preprocessed/list40_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/detail/cpp03/preprocessed/list50_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/detail/cpp03/preprocessed/list_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/detail/deref_impl.hpp
+ /usr/local/include/boost/fusion/container/list/detail/empty_impl.hpp
+ /usr/local/include/boost/fusion/container/list/detail/end_impl.hpp
+ /usr/local/include/boost/fusion/container/list/detail/equal_to_impl.hpp
+ /usr/local/include/boost/fusion/container/list/detail/next_impl.hpp
+ /usr/local/include/boost/fusion/container/list/detail/reverse_cons.hpp
+ /usr/local/include/boost/fusion/container/list/detail/value_at_impl.hpp
+ /usr/local/include/boost/fusion/container/list/detail/value_of_impl.hpp
+ /usr/local/include/boost/fusion/container/list/list_fwd.hpp
+ /usr/local/include/boost/fusion/container/list/nil.hpp
+ /usr/local/include/boost/fusion/container/vector.hpp
+ /usr/local/include/boost/fusion/container/vector/convert.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/advance_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/as_vector.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/at_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/begin_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/config.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/convert_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/as_vector.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/limits.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/as_vector.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/as_vector10.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/as_vector20.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/as_vector30.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/as_vector40.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/as_vector50.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector10.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector10_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector20.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector20_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector30.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector30_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector40.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector40_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector50.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector50_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser10.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser20.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser30.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser40.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser50.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vector_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector10.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector10_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector20.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector20_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector30.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector30_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector40.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector40_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector50.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/preprocessed/vvector50_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/value_at_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector10.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector10_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector20.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector20_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector30.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector30_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector40.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector40_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector50.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector50_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector_forward_ctor.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/cpp03/vector_n_chooser.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/deref_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/distance_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/end_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/equal_to_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/next_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/prior_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/value_at_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/detail/value_of_impl.hpp
+ /usr/local/include/boost/fusion/container/vector/vector.hpp
+ /usr/local/include/boost/fusion/container/vector/vector_fwd.hpp
+ /usr/local/include/boost/fusion/container/vector/vector_iterator.hpp
+ /usr/local/include/boost/fusion/iterator/advance.hpp
+ /usr/local/include/boost/fusion/iterator/deref.hpp
+ /usr/local/include/boost/fusion/iterator/deref_data.hpp
+ /usr/local/include/boost/fusion/iterator/detail/adapt_deref_traits.hpp
+ /usr/local/include/boost/fusion/iterator/detail/adapt_value_traits.hpp
+ /usr/local/include/boost/fusion/iterator/detail/advance.hpp
+ /usr/local/include/boost/fusion/iterator/detail/distance.hpp
+ /usr/local/include/boost/fusion/iterator/detail/segment_sequence.hpp
+ /usr/local/include/boost/fusion/iterator/detail/segmented_equal_to.hpp
+ /usr/local/include/boost/fusion/iterator/detail/segmented_iterator.hpp
+ /usr/local/include/boost/fusion/iterator/detail/segmented_next_impl.hpp
+ /usr/local/include/boost/fusion/iterator/distance.hpp
+ /usr/local/include/boost/fusion/iterator/equal_to.hpp
+ /usr/local/include/boost/fusion/iterator/iterator_facade.hpp
+ /usr/local/include/boost/fusion/iterator/key_of.hpp
+ /usr/local/include/boost/fusion/iterator/mpl/convert_iterator.hpp
+ /usr/local/include/boost/fusion/iterator/mpl/fusion_iterator.hpp
+ /usr/local/include/boost/fusion/iterator/next.hpp
+ /usr/local/include/boost/fusion/iterator/prior.hpp
+ /usr/local/include/boost/fusion/iterator/segmented_iterator.hpp
+ /usr/local/include/boost/fusion/iterator/value_of.hpp
+ /usr/local/include/boost/fusion/iterator/value_of_data.hpp
+ /usr/local/include/boost/fusion/mpl/begin.hpp
+ /usr/local/include/boost/fusion/mpl/end.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/begin.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/detail/segmented_begin.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/detail/segmented_begin_impl.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/detail/segmented_end.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/detail/segmented_end_impl.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/detail/segmented_size.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/empty.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/end.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/segments.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/size.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic/value_at.hpp
+ /usr/local/include/boost/fusion/sequence/intrinsic_fwd.hpp
+ /usr/local/include/boost/fusion/support/category_of.hpp
+ /usr/local/include/boost/fusion/support/config.hpp
+ /usr/local/include/boost/fusion/support/detail/access.hpp
+ /usr/local/include/boost/fusion/support/detail/and.hpp
+ /usr/local/include/boost/fusion/support/detail/as_fusion_element.hpp
+ /usr/local/include/boost/fusion/support/detail/category_of.hpp
+ /usr/local/include/boost/fusion/support/detail/enabler.hpp
+ /usr/local/include/boost/fusion/support/detail/index_sequence.hpp
+ /usr/local/include/boost/fusion/support/detail/is_mpl_sequence.hpp
+ /usr/local/include/boost/fusion/support/detail/is_view.hpp
+ /usr/local/include/boost/fusion/support/detail/mpl_iterator_category.hpp
+ /usr/local/include/boost/fusion/support/detail/pp_round.hpp
+ /usr/local/include/boost/fusion/support/detail/segmented_fold_until_impl.hpp
+ /usr/local/include/boost/fusion/support/is_iterator.hpp
+ /usr/local/include/boost/fusion/support/is_segmented.hpp
+ /usr/local/include/boost/fusion/support/is_sequence.hpp
+ /usr/local/include/boost/fusion/support/is_view.hpp
+ /usr/local/include/boost/fusion/support/iterator_base.hpp
+ /usr/local/include/boost/fusion/support/segmented_fold_until.hpp
+ /usr/local/include/boost/fusion/support/sequence_base.hpp
+ /usr/local/include/boost/fusion/support/tag_of.hpp
+ /usr/local/include/boost/fusion/support/tag_of_fwd.hpp
+ /usr/local/include/boost/fusion/support/void.hpp
+ /usr/local/include/boost/fusion/view/iterator_range.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/detail/at_impl.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/detail/begin_impl.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/detail/end_impl.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/detail/is_segmented_impl.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/detail/segmented_iterator_range.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/detail/segments_impl.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/detail/size_impl.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/detail/value_at_impl.hpp
+ /usr/local/include/boost/fusion/view/iterator_range/iterator_range.hpp
+ /usr/local/include/boost/fusion/view/joint_view/detail/begin_impl.hpp
+ /usr/local/include/boost/fusion/view/joint_view/detail/deref_data_impl.hpp
+ /usr/local/include/boost/fusion/view/joint_view/detail/deref_impl.hpp
+ /usr/local/include/boost/fusion/view/joint_view/detail/end_impl.hpp
+ /usr/local/include/boost/fusion/view/joint_view/detail/key_of_impl.hpp
+ /usr/local/include/boost/fusion/view/joint_view/detail/next_impl.hpp
+ /usr/local/include/boost/fusion/view/joint_view/detail/value_of_data_impl.hpp
+ /usr/local/include/boost/fusion/view/joint_view/detail/value_of_impl.hpp
+ /usr/local/include/boost/fusion/view/joint_view/joint_view.hpp
+ /usr/local/include/boost/fusion/view/joint_view/joint_view_fwd.hpp
+ /usr/local/include/boost/fusion/view/joint_view/joint_view_iterator.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/advance_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/at_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/begin_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/deref_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/distance_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/end_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/equal_to_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/next_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/prior_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/size_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/value_at_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/detail/value_of_impl.hpp
+ /usr/local/include/boost/fusion/view/single_view/single_view.hpp
+ /usr/local/include/boost/fusion/view/single_view/single_view_iterator.hpp
+ /usr/local/include/boost/mpl/O1_size.hpp
+ /usr/local/include/boost/mpl/O1_size_fwd.hpp
+ /usr/local/include/boost/mpl/advance.hpp
+ /usr/local/include/boost/mpl/advance_fwd.hpp
+ /usr/local/include/boost/mpl/and.hpp
+ /usr/local/include/boost/mpl/apply.hpp
+ /usr/local/include/boost/mpl/apply_fwd.hpp
+ /usr/local/include/boost/mpl/apply_wrap.hpp
+ /usr/local/include/boost/mpl/arg.hpp
+ /usr/local/include/boost/mpl/arg_fwd.hpp
+ /usr/local/include/boost/mpl/assert.hpp
+ /usr/local/include/boost/mpl/at.hpp
+ /usr/local/include/boost/mpl/at_fwd.hpp
+ /usr/local/include/boost/mpl/aux_/O1_size_impl.hpp
+ /usr/local/include/boost/mpl/aux_/adl_barrier.hpp
+ /usr/local/include/boost/mpl/aux_/advance_backward.hpp
+ /usr/local/include/boost/mpl/aux_/advance_forward.hpp
+ /usr/local/include/boost/mpl/aux_/arg_typedef.hpp
+ /usr/local/include/boost/mpl/aux_/arithmetic_op.hpp
+ /usr/local/include/boost/mpl/aux_/arity.hpp
+ /usr/local/include/boost/mpl/aux_/arity_spec.hpp
+ /usr/local/include/boost/mpl/aux_/at_impl.hpp
+ /usr/local/include/boost/mpl/aux_/begin_end_impl.hpp
+ /usr/local/include/boost/mpl/aux_/common_name_wknd.hpp
+ /usr/local/include/boost/mpl/aux_/comparison_op.hpp
+ /usr/local/include/boost/mpl/aux_/config/adl.hpp
+ /usr/local/include/boost/mpl/aux_/config/arrays.hpp
+ /usr/local/include/boost/mpl/aux_/config/bcc.hpp
+ /usr/local/include/boost/mpl/aux_/config/bind.hpp
+ /usr/local/include/boost/mpl/aux_/config/compiler.hpp
+ /usr/local/include/boost/mpl/aux_/config/ctps.hpp
+ /usr/local/include/boost/mpl/aux_/config/dmc_ambiguous_ctps.hpp
+ /usr/local/include/boost/mpl/aux_/config/dtp.hpp
+ /usr/local/include/boost/mpl/aux_/config/eti.hpp
+ /usr/local/include/boost/mpl/aux_/config/forwarding.hpp
+ /usr/local/include/boost/mpl/aux_/config/gcc.hpp
+ /usr/local/include/boost/mpl/aux_/config/gpu.hpp
+ /usr/local/include/boost/mpl/aux_/config/has_apply.hpp
+ /usr/local/include/boost/mpl/aux_/config/has_xxx.hpp
+ /usr/local/include/boost/mpl/aux_/config/integral.hpp
+ /usr/local/include/boost/mpl/aux_/config/intel.hpp
+ /usr/local/include/boost/mpl/aux_/config/lambda.hpp
+ /usr/local/include/boost/mpl/aux_/config/msvc.hpp
+ /usr/local/include/boost/mpl/aux_/config/msvc_typename.hpp
+ /usr/local/include/boost/mpl/aux_/config/nttp.hpp
+ /usr/local/include/boost/mpl/aux_/config/overload_resolution.hpp
+ /usr/local/include/boost/mpl/aux_/config/pp_counter.hpp
+ /usr/local/include/boost/mpl/aux_/config/preprocessor.hpp
+ /usr/local/include/boost/mpl/aux_/config/static_constant.hpp
+ /usr/local/include/boost/mpl/aux_/config/ttp.hpp
+ /usr/local/include/boost/mpl/aux_/config/typeof.hpp
+ /usr/local/include/boost/mpl/aux_/config/use_preprocessed.hpp
+ /usr/local/include/boost/mpl/aux_/config/workaround.hpp
+ /usr/local/include/boost/mpl/aux_/count_args.hpp
+ /usr/local/include/boost/mpl/aux_/fold_impl.hpp
+ /usr/local/include/boost/mpl/aux_/fold_impl_body.hpp
+ /usr/local/include/boost/mpl/aux_/full_lambda.hpp
+ /usr/local/include/boost/mpl/aux_/has_apply.hpp
+ /usr/local/include/boost/mpl/aux_/has_begin.hpp
+ /usr/local/include/boost/mpl/aux_/has_rebind.hpp
+ /usr/local/include/boost/mpl/aux_/has_size.hpp
+ /usr/local/include/boost/mpl/aux_/has_tag.hpp
+ /usr/local/include/boost/mpl/aux_/has_type.hpp
+ /usr/local/include/boost/mpl/aux_/include_preprocessed.hpp
+ /usr/local/include/boost/mpl/aux_/integral_wrapper.hpp
+ /usr/local/include/boost/mpl/aux_/is_msvc_eti_arg.hpp
+ /usr/local/include/boost/mpl/aux_/iter_fold_impl.hpp
+ /usr/local/include/boost/mpl/aux_/lambda_arity_param.hpp
+ /usr/local/include/boost/mpl/aux_/lambda_no_ctps.hpp
+ /usr/local/include/boost/mpl/aux_/lambda_support.hpp
+ /usr/local/include/boost/mpl/aux_/largest_int.hpp
+ /usr/local/include/boost/mpl/aux_/logical_op.hpp
+ /usr/local/include/boost/mpl/aux_/msvc_dtw.hpp
+ /usr/local/include/boost/mpl/aux_/msvc_eti_base.hpp
+ /usr/local/include/boost/mpl/aux_/msvc_is_class.hpp
+ /usr/local/include/boost/mpl/aux_/msvc_never_true.hpp
+ /usr/local/include/boost/mpl/aux_/msvc_type.hpp
+ /usr/local/include/boost/mpl/aux_/na.hpp
+ /usr/local/include/boost/mpl/aux_/na_assert.hpp
+ /usr/local/include/boost/mpl/aux_/na_fwd.hpp
+ /usr/local/include/boost/mpl/aux_/na_spec.hpp
+ /usr/local/include/boost/mpl/aux_/nested_type_wknd.hpp
+ /usr/local/include/boost/mpl/aux_/nttp_decl.hpp
+ /usr/local/include/boost/mpl/aux_/numeric_cast_utils.hpp
+ /usr/local/include/boost/mpl/aux_/numeric_op.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/add.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/default_params.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/enum.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/ext_params.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/filter_params.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/params.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/partial_spec_params.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/range.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/repeat.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/sub.hpp
+ /usr/local/include/boost/mpl/aux_/preprocessor/tuple.hpp
+ /usr/local/include/boost/mpl/aux_/static_cast.hpp
+ /usr/local/include/boost/mpl/aux_/template_arity.hpp
+ /usr/local/include/boost/mpl/aux_/template_arity_fwd.hpp
+ /usr/local/include/boost/mpl/aux_/traits_lambda_spec.hpp
+ /usr/local/include/boost/mpl/aux_/type_wrapper.hpp
+ /usr/local/include/boost/mpl/aux_/value_wknd.hpp
+ /usr/local/include/boost/mpl/aux_/yes_no.hpp
+ /usr/local/include/boost/mpl/back_fwd.hpp
+ /usr/local/include/boost/mpl/begin.hpp
+ /usr/local/include/boost/mpl/begin_end.hpp
+ /usr/local/include/boost/mpl/begin_end_fwd.hpp
+ /usr/local/include/boost/mpl/bind.hpp
+ /usr/local/include/boost/mpl/bind_fwd.hpp
+ /usr/local/include/boost/mpl/bool.hpp
+ /usr/local/include/boost/mpl/bool_fwd.hpp
+ /usr/local/include/boost/mpl/clear_fwd.hpp
+ /usr/local/include/boost/mpl/deref.hpp
+ /usr/local/include/boost/mpl/distance.hpp
+ /usr/local/include/boost/mpl/distance_fwd.hpp
+ /usr/local/include/boost/mpl/empty_base.hpp
+ /usr/local/include/boost/mpl/empty_fwd.hpp
+ /usr/local/include/boost/mpl/end.hpp
+ /usr/local/include/boost/mpl/equal_to.hpp
+ /usr/local/include/boost/mpl/eval_if.hpp
+ /usr/local/include/boost/mpl/fold.hpp
+ /usr/local/include/boost/mpl/front_fwd.hpp
+ /usr/local/include/boost/mpl/has_xxx.hpp
+ /usr/local/include/boost/mpl/identity.hpp
+ /usr/local/include/boost/mpl/if.hpp
+ /usr/local/include/boost/mpl/inherit.hpp
+ /usr/local/include/boost/mpl/int.hpp
+ /usr/local/include/boost/mpl/int_fwd.hpp
+ /usr/local/include/boost/mpl/integral_c.hpp
+ /usr/local/include/boost/mpl/integral_c_fwd.hpp
+ /usr/local/include/boost/mpl/integral_c_tag.hpp
+ /usr/local/include/boost/mpl/is_placeholder.hpp
+ /usr/local/include/boost/mpl/is_sequence.hpp
+ /usr/local/include/boost/mpl/iter_fold.hpp
+ /usr/local/include/boost/mpl/iterator_range.hpp
+ /usr/local/include/boost/mpl/iterator_tags.hpp
+ /usr/local/include/boost/mpl/lambda.hpp
+ /usr/local/include/boost/mpl/lambda_fwd.hpp
+ /usr/local/include/boost/mpl/less.hpp
+ /usr/local/include/boost/mpl/limits/arity.hpp
+ /usr/local/include/boost/mpl/limits/unrolling.hpp
+ /usr/local/include/boost/mpl/long.hpp
+ /usr/local/include/boost/mpl/long_fwd.hpp
+ /usr/local/include/boost/mpl/minus.hpp
+ /usr/local/include/boost/mpl/negate.hpp
+ /usr/local/include/boost/mpl/next.hpp
+ /usr/local/include/boost/mpl/next_prior.hpp
+ /usr/local/include/boost/mpl/not.hpp
+ /usr/local/include/boost/mpl/numeric_cast.hpp
+ /usr/local/include/boost/mpl/or.hpp
+ /usr/local/include/boost/mpl/placeholders.hpp
+ /usr/local/include/boost/mpl/plus.hpp
+ /usr/local/include/boost/mpl/pop_back_fwd.hpp
+ /usr/local/include/boost/mpl/pop_front_fwd.hpp
+ /usr/local/include/boost/mpl/prior.hpp
+ /usr/local/include/boost/mpl/protect.hpp
+ /usr/local/include/boost/mpl/push_back_fwd.hpp
+ /usr/local/include/boost/mpl/push_front_fwd.hpp
+ /usr/local/include/boost/mpl/quote.hpp
+ /usr/local/include/boost/mpl/sequence_tag.hpp
+ /usr/local/include/boost/mpl/sequence_tag_fwd.hpp
+ /usr/local/include/boost/mpl/size_fwd.hpp
+ /usr/local/include/boost/mpl/size_t.hpp
+ /usr/local/include/boost/mpl/size_t_fwd.hpp
+ /usr/local/include/boost/mpl/tag.hpp
+ /usr/local/include/boost/mpl/vector/aux_/O1_size.hpp
+ /usr/local/include/boost/mpl/vector/aux_/at.hpp
+ /usr/local/include/boost/mpl/vector/aux_/back.hpp
+ /usr/local/include/boost/mpl/vector/aux_/begin_end.hpp
+ /usr/local/include/boost/mpl/vector/aux_/clear.hpp
+ /usr/local/include/boost/mpl/vector/aux_/empty.hpp
+ /usr/local/include/boost/mpl/vector/aux_/front.hpp
+ /usr/local/include/boost/mpl/vector/aux_/include_preprocessed.hpp
+ /usr/local/include/boost/mpl/vector/aux_/item.hpp
+ /usr/local/include/boost/mpl/vector/aux_/iterator.hpp
+ /usr/local/include/boost/mpl/vector/aux_/pop_back.hpp
+ /usr/local/include/boost/mpl/vector/aux_/pop_front.hpp
+ /usr/local/include/boost/mpl/vector/aux_/push_back.hpp
+ /usr/local/include/boost/mpl/vector/aux_/push_front.hpp
+ /usr/local/include/boost/mpl/vector/aux_/size.hpp
+ /usr/local/include/boost/mpl/vector/aux_/tag.hpp
+ /usr/local/include/boost/mpl/vector/aux_/vector0.hpp
+ /usr/local/include/boost/mpl/vector/vector0.hpp
+ /usr/local/include/boost/mpl/vector/vector10.hpp
+ /usr/local/include/boost/mpl/vector/vector20.hpp
+ /usr/local/include/boost/mpl/vector/vector30.hpp
+ /usr/local/include/boost/mpl/vector/vector40.hpp
+ /usr/local/include/boost/mpl/vector/vector50.hpp
+ /usr/local/include/boost/mpl/void.hpp
+ /usr/local/include/boost/mpl/void_fwd.hpp
+ /usr/local/include/boost/preprocessor/arithmetic/add.hpp
+ /usr/local/include/boost/preprocessor/arithmetic/dec.hpp
+ /usr/local/include/boost/preprocessor/arithmetic/inc.hpp
+ /usr/local/include/boost/preprocessor/arithmetic/sub.hpp
+ /usr/local/include/boost/preprocessor/array/data.hpp
+ /usr/local/include/boost/preprocessor/array/elem.hpp
+ /usr/local/include/boost/preprocessor/array/size.hpp
+ /usr/local/include/boost/preprocessor/cat.hpp
+ /usr/local/include/boost/preprocessor/comma_if.hpp
+ /usr/local/include/boost/preprocessor/comparison/less.hpp
+ /usr/local/include/boost/preprocessor/comparison/less_equal.hpp
+ /usr/local/include/boost/preprocessor/comparison/not_equal.hpp
+ /usr/local/include/boost/preprocessor/config/config.hpp
+ /usr/local/include/boost/preprocessor/control/detail/dmc/while.hpp
+ /usr/local/include/boost/preprocessor/control/detail/edg/while.hpp
+ /usr/local/include/boost/preprocessor/control/detail/msvc/while.hpp
+ /usr/local/include/boost/preprocessor/control/detail/while.hpp
+ /usr/local/include/boost/preprocessor/control/expr_if.hpp
+ /usr/local/include/boost/preprocessor/control/expr_iif.hpp
+ /usr/local/include/boost/preprocessor/control/if.hpp
+ /usr/local/include/boost/preprocessor/control/iif.hpp
+ /usr/local/include/boost/preprocessor/control/while.hpp
+ /usr/local/include/boost/preprocessor/debug/error.hpp
+ /usr/local/include/boost/preprocessor/dec.hpp
+ /usr/local/include/boost/preprocessor/detail/auto_rec.hpp
+ /usr/local/include/boost/preprocessor/detail/check.hpp
+ /usr/local/include/boost/preprocessor/detail/dmc/auto_rec.hpp
+ /usr/local/include/boost/preprocessor/detail/is_binary.hpp
+ /usr/local/include/boost/preprocessor/detail/split.hpp
+ /usr/local/include/boost/preprocessor/empty.hpp
+ /usr/local/include/boost/preprocessor/enum_shifted_params.hpp
+ /usr/local/include/boost/preprocessor/expr_if.hpp
+ /usr/local/include/boost/preprocessor/facilities/detail/is_empty.hpp
+ /usr/local/include/boost/preprocessor/facilities/empty.hpp
+ /usr/local/include/boost/preprocessor/facilities/expand.hpp
+ /usr/local/include/boost/preprocessor/facilities/identity.hpp
+ /usr/local/include/boost/preprocessor/facilities/intercept.hpp
+ /usr/local/include/boost/preprocessor/facilities/is_1.hpp
+ /usr/local/include/boost/preprocessor/facilities/is_empty.hpp
+ /usr/local/include/boost/preprocessor/facilities/is_empty_variadic.hpp
+ /usr/local/include/boost/preprocessor/facilities/overload.hpp
+ /usr/local/include/boost/preprocessor/identity.hpp
+ /usr/local/include/boost/preprocessor/inc.hpp
+ /usr/local/include/boost/preprocessor/iterate.hpp
+ /usr/local/include/boost/preprocessor/iteration/iterate.hpp
+ /usr/local/include/boost/preprocessor/list/adt.hpp
+ /usr/local/include/boost/preprocessor/list/detail/dmc/fold_left.hpp
+ /usr/local/include/boost/preprocessor/list/detail/edg/fold_left.hpp
+ /usr/local/include/boost/preprocessor/list/detail/edg/fold_right.hpp
+ /usr/local/include/boost/preprocessor/list/detail/fold_left.hpp
+ /usr/local/include/boost/preprocessor/list/detail/fold_right.hpp
+ /usr/local/include/boost/preprocessor/list/fold_left.hpp
+ /usr/local/include/boost/preprocessor/list/fold_right.hpp
+ /usr/local/include/boost/preprocessor/list/for_each_i.hpp
+ /usr/local/include/boost/preprocessor/list/reverse.hpp
+ /usr/local/include/boost/preprocessor/logical/and.hpp
+ /usr/local/include/boost/preprocessor/logical/bitand.hpp
+ /usr/local/include/boost/preprocessor/logical/bool.hpp
+ /usr/local/include/boost/preprocessor/logical/compl.hpp
+ /usr/local/include/boost/preprocessor/logical/not.hpp
+ /usr/local/include/boost/preprocessor/punctuation/comma.hpp
+ /usr/local/include/boost/preprocessor/punctuation/comma_if.hpp
+ /usr/local/include/boost/preprocessor/punctuation/detail/is_begin_parens.hpp
+ /usr/local/include/boost/preprocessor/punctuation/is_begin_parens.hpp
+ /usr/local/include/boost/preprocessor/repeat.hpp
+ /usr/local/include/boost/preprocessor/repetition/detail/dmc/for.hpp
+ /usr/local/include/boost/preprocessor/repetition/detail/edg/for.hpp
+ /usr/local/include/boost/preprocessor/repetition/detail/for.hpp
+ /usr/local/include/boost/preprocessor/repetition/detail/msvc/for.hpp
+ /usr/local/include/boost/preprocessor/repetition/enum.hpp
+ /usr/local/include/boost/preprocessor/repetition/enum_binary_params.hpp
+ /usr/local/include/boost/preprocessor/repetition/enum_params.hpp
+ /usr/local/include/boost/preprocessor/repetition/enum_params_with_a_default.hpp
+ /usr/local/include/boost/preprocessor/repetition/enum_shifted.hpp
+ /usr/local/include/boost/preprocessor/repetition/enum_shifted_params.hpp
+ /usr/local/include/boost/preprocessor/repetition/enum_trailing_params.hpp
+ /usr/local/include/boost/preprocessor/repetition/for.hpp
+ /usr/local/include/boost/preprocessor/repetition/repeat.hpp
+ /usr/local/include/boost/preprocessor/repetition/repeat_from_to.hpp
+ /usr/local/include/boost/preprocessor/seq/detail/is_empty.hpp
+ /usr/local/include/boost/preprocessor/seq/detail/split.hpp
+ /usr/local/include/boost/preprocessor/seq/elem.hpp
+ /usr/local/include/boost/preprocessor/seq/first_n.hpp
+ /usr/local/include/boost/preprocessor/seq/fold_left.hpp
+ /usr/local/include/boost/preprocessor/seq/rest_n.hpp
+ /usr/local/include/boost/preprocessor/seq/seq.hpp
+ /usr/local/include/boost/preprocessor/seq/size.hpp
+ /usr/local/include/boost/preprocessor/seq/subseq.hpp
+ /usr/local/include/boost/preprocessor/slot/detail/def.hpp
+ /usr/local/include/boost/preprocessor/slot/slot.hpp
+ /usr/local/include/boost/preprocessor/stringize.hpp
+ /usr/local/include/boost/preprocessor/tuple/detail/is_single_return.hpp
+ /usr/local/include/boost/preprocessor/tuple/eat.hpp
+ /usr/local/include/boost/preprocessor/tuple/elem.hpp
+ /usr/local/include/boost/preprocessor/tuple/rem.hpp
+ /usr/local/include/boost/preprocessor/tuple/size.hpp
+ /usr/local/include/boost/preprocessor/tuple/to_list.hpp
+ /usr/local/include/boost/preprocessor/variadic/elem.hpp
+ /usr/local/include/boost/preprocessor/variadic/size.hpp
+ /usr/local/include/boost/ref.hpp
+ /usr/local/include/boost/static_assert.hpp
+ /usr/local/include/boost/type_traits/add_const.hpp
+ /usr/local/include/boost/type_traits/add_lvalue_reference.hpp
+ /usr/local/include/boost/type_traits/add_reference.hpp
+ /usr/local/include/boost/type_traits/add_rvalue_reference.hpp
+ /usr/local/include/boost/type_traits/declval.hpp
+ /usr/local/include/boost/type_traits/detail/config.hpp
+ /usr/local/include/boost/type_traits/detail/is_function_ptr_helper.hpp
+ /usr/local/include/boost/type_traits/detail/is_function_ptr_tester.hpp
+ /usr/local/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp
+ /usr/local/include/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp
+ /usr/local/include/boost/type_traits/detail/yes_no_type.hpp
+ /usr/local/include/boost/type_traits/integral_constant.hpp
+ /usr/local/include/boost/type_traits/intrinsics.hpp
+ /usr/local/include/boost/type_traits/is_abstract.hpp
+ /usr/local/include/boost/type_traits/is_arithmetic.hpp
+ /usr/local/include/boost/type_traits/is_array.hpp
+ /usr/local/include/boost/type_traits/is_base_and_derived.hpp
+ /usr/local/include/boost/type_traits/is_base_of.hpp
+ /usr/local/include/boost/type_traits/is_class.hpp
+ /usr/local/include/boost/type_traits/is_const.hpp
+ /usr/local/include/boost/type_traits/is_convertible.hpp
+ /usr/local/include/boost/type_traits/is_empty.hpp
+ /usr/local/include/boost/type_traits/is_enum.hpp
+ /usr/local/include/boost/type_traits/is_floating_point.hpp
+ /usr/local/include/boost/type_traits/is_function.hpp
+ /usr/local/include/boost/type_traits/is_integral.hpp
+ /usr/local/include/boost/type_traits/is_lvalue_reference.hpp
+ /usr/local/include/boost/type_traits/is_member_function_pointer.hpp
+ /usr/local/include/boost/type_traits/is_member_pointer.hpp
+ /usr/local/include/boost/type_traits/is_pointer.hpp
+ /usr/local/include/boost/type_traits/is_polymorphic.hpp
+ /usr/local/include/boost/type_traits/is_reference.hpp
+ /usr/local/include/boost/type_traits/is_rvalue_reference.hpp
+ /usr/local/include/boost/type_traits/is_same.hpp
+ /usr/local/include/boost/type_traits/is_scalar.hpp
+ /usr/local/include/boost/type_traits/is_union.hpp
+ /usr/local/include/boost/type_traits/is_void.hpp
+ /usr/local/include/boost/type_traits/is_volatile.hpp
+ /usr/local/include/boost/type_traits/remove_const.hpp
+ /usr/local/include/boost/type_traits/remove_cv.hpp
+ /usr/local/include/boost/type_traits/remove_reference.hpp
+ /usr/local/include/boost/utility/declval.hpp
+ /usr/local/include/boost/utility/detail/result_of_iterate.hpp
+ /usr/local/include/boost/utility/enable_if.hpp
+ /usr/local/include/boost/utility/result_of.hpp
+ /usr/local/include/boost/version.hpp
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.o
  ..//abilities/abilities.h
  ..//abilities/ability.h

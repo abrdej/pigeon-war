@@ -68,7 +68,7 @@ void sabers::use(size_t index_on)
 
 	play_animation(used_from_index, index_on);
 
-	damage_dealers::standard_damage_dealer(damage_, index_on);
+	damage_dealers::standard_damage_dealer(damage_, board::at(index_on));
 
 	// show damage animation // for example. -9 dmg
 	//states::state_controller::target_fields(states::target_types::non);

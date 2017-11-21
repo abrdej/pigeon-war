@@ -41,7 +41,6 @@ set(SOURCE_FILES main.cpp
         gui/gui.cpp
         abilities/grenade.cpp
         abilities/invisibility.cpp
-        gui/labels_panel.cpp
         abilities/moveable.cpp
         gui/my_button.cpp
         entities/wolf.cpp
@@ -99,7 +98,7 @@ set(SOURCE_FILES main.cpp
         abilities/laser.cpp
         abilities/laser.h
         abilities/teleport.cpp
-        abilities/teleport.h abilities/wolf_herd.cpp abilities/wolf_herd.h abilities/dodge.cpp abilities/dodge.h entities/grenadier.h abilities/bomb.cpp abilities/bomb.h entities/destroyer.h abilities/armor.cpp abilities/armor.h abilities/blow_the_ax.cpp abilities/blow_the_ax.h)
+        abilities/teleport.h abilities/wolf_herd.cpp abilities/wolf_herd.h abilities/dodge.cpp abilities/dodge.h entities/grenadier.h abilities/bomb.cpp abilities/bomb.h entities/destroyer.h abilities/armor.cpp abilities/armor.h abilities/blow_the_ax.cpp abilities/blow_the_ax.h gui/drawable.cpp gui/drawable.h gui/drawing_manager.cpp gui/drawing_manager.h gui/entity_drawer.h entities/treant.h abilities/entangling.cpp abilities/entangling.h abilities/recovery.cpp abilities/recovery.h entities/fire.h entities/balloon.h abilities/build_cannon.cpp abilities/build_cannon.h entities/cannon.h abilities/build_barrack.cpp abilities/build_barrack.h)
 
 add_executable(pigeonwar ${SOURCE_FILES})
 target_link_libraries(pigeonwar ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

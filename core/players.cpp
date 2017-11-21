@@ -95,7 +95,10 @@ std::size_t active_player_first_entity_index()
 {
 	std::vector<std::size_t> indexies;
 	players_funcs::player_entities_indexes(players::active_player_name(), indexies);
-	return indexies[0];
+	if (!indexies.empty()) {
+		return indexies[0];
+	}
+	return std::numeric_limits<std::size_t>::max();
 }
 
 }

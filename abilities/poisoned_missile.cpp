@@ -37,14 +37,13 @@ void poisoned_missile::use(size_t index_on) {
 
     play_animation(used_from_index, index_on);
 
-    damage_dealers::standard_damage_dealer(damage_, index_on);
+    damage_dealers::standard_damage_dealer(damage_, board::at(index_on));
 
     auto enemy_id = board::at(index_on);
 
-    auto receiver = std::make_shared<std::function<void()>>([this, enemy_id, counter = 0]() mutable {
+    rec[enemy_id] = turn::turn_system::every_round([this, enemy_id, counter = 0]() mutable {
         if (entity_manager::alive(enemy_id)) {
-            auto index = board::index_for(enemy_id);
-            damage_dealers::standard_damage_dealer(poison_power_, index);
+            damage_dealers::standard_damage_dealer(poison_power_, enemy_id);
 
             if (++counter == poison_last_) {
                 rec[enemy_id].reset();
@@ -54,8 +53,6 @@ void poisoned_missile::use(size_t index_on) {
             rec[enemy_id].reset();
         }
     });
-    rec[enemy_id] = receiver;
-    turn::turn_system::every_turn(receiver);
 
     used = true;
 }

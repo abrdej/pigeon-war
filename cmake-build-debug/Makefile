@@ -285,6 +285,60 @@ abilities/bomb.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.s
 .PHONY : abilities/bomb.cpp.s
 
+abilities/build_barrack.o: abilities/build_barrack.cpp.o
+
+.PHONY : abilities/build_barrack.o
+
+# target to build an object file
+abilities/build_barrack.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o
+.PHONY : abilities/build_barrack.cpp.o
+
+abilities/build_barrack.i: abilities/build_barrack.cpp.i
+
+.PHONY : abilities/build_barrack.i
+
+# target to preprocess a source file
+abilities/build_barrack.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.i
+.PHONY : abilities/build_barrack.cpp.i
+
+abilities/build_barrack.s: abilities/build_barrack.cpp.s
+
+.PHONY : abilities/build_barrack.s
+
+# target to generate assembly for a file
+abilities/build_barrack.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.s
+.PHONY : abilities/build_barrack.cpp.s
+
+abilities/build_cannon.o: abilities/build_cannon.cpp.o
+
+.PHONY : abilities/build_cannon.o
+
+# target to build an object file
+abilities/build_cannon.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.o
+.PHONY : abilities/build_cannon.cpp.o
+
+abilities/build_cannon.i: abilities/build_cannon.cpp.i
+
+.PHONY : abilities/build_cannon.i
+
+# target to preprocess a source file
+abilities/build_cannon.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.i
+.PHONY : abilities/build_cannon.cpp.i
+
+abilities/build_cannon.s: abilities/build_cannon.cpp.s
+
+.PHONY : abilities/build_cannon.s
+
+# target to generate assembly for a file
+abilities/build_cannon.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.s
+.PHONY : abilities/build_cannon.cpp.s
+
 abilities/bullet.o: abilities/bullet.cpp.o
 
 .PHONY : abilities/bullet.o
@@ -392,6 +446,33 @@ abilities/drain.s: abilities/drain.cpp.s
 abilities/drain.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/drain.cpp.s
 .PHONY : abilities/drain.cpp.s
+
+abilities/entangling.o: abilities/entangling.cpp.o
+
+.PHONY : abilities/entangling.o
+
+# target to build an object file
+abilities/entangling.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.o
+.PHONY : abilities/entangling.cpp.o
+
+abilities/entangling.i: abilities/entangling.cpp.i
+
+.PHONY : abilities/entangling.i
+
+# target to preprocess a source file
+abilities/entangling.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.i
+.PHONY : abilities/entangling.cpp.i
+
+abilities/entangling.s: abilities/entangling.cpp.s
+
+.PHONY : abilities/entangling.s
+
+# target to generate assembly for a file
+abilities/entangling.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.s
+.PHONY : abilities/entangling.cpp.s
 
 abilities/grenade.o: abilities/grenade.cpp.o
 
@@ -581,6 +662,33 @@ abilities/rage.s: abilities/rage.cpp.s
 abilities/rage.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/rage.cpp.s
 .PHONY : abilities/rage.cpp.s
+
+abilities/recovery.o: abilities/recovery.cpp.o
+
+.PHONY : abilities/recovery.o
+
+# target to build an object file
+abilities/recovery.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.o
+.PHONY : abilities/recovery.cpp.o
+
+abilities/recovery.i: abilities/recovery.cpp.i
+
+.PHONY : abilities/recovery.i
+
+# target to preprocess a source file
+abilities/recovery.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.i
+.PHONY : abilities/recovery.cpp.i
+
+abilities/recovery.s: abilities/recovery.cpp.s
+
+.PHONY : abilities/recovery.s
+
+# target to generate assembly for a file
+abilities/recovery.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.s
+.PHONY : abilities/recovery.cpp.s
 
 abilities/sabers.o: abilities/sabers.cpp.o
 
@@ -1230,6 +1338,33 @@ gui/buttons_panel.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.s
 .PHONY : gui/buttons_panel.cpp.s
 
+gui/drawable.o: gui/drawable.cpp.o
+
+.PHONY : gui/drawable.o
+
+# target to build an object file
+gui/drawable.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/drawable.cpp.o
+.PHONY : gui/drawable.cpp.o
+
+gui/drawable.i: gui/drawable.cpp.i
+
+.PHONY : gui/drawable.i
+
+# target to preprocess a source file
+gui/drawable.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/drawable.cpp.i
+.PHONY : gui/drawable.cpp.i
+
+gui/drawable.s: gui/drawable.cpp.s
+
+.PHONY : gui/drawable.s
+
+# target to generate assembly for a file
+gui/drawable.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/drawable.cpp.s
+.PHONY : gui/drawable.cpp.s
+
 gui/drawer.o: gui/drawer.cpp.o
 
 .PHONY : gui/drawer.o
@@ -1257,6 +1392,33 @@ gui/drawer.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/drawer.cpp.s
 .PHONY : gui/drawer.cpp.s
 
+gui/drawing_manager.o: gui/drawing_manager.cpp.o
+
+.PHONY : gui/drawing_manager.o
+
+# target to build an object file
+gui/drawing_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.o
+.PHONY : gui/drawing_manager.cpp.o
+
+gui/drawing_manager.i: gui/drawing_manager.cpp.i
+
+.PHONY : gui/drawing_manager.i
+
+# target to preprocess a source file
+gui/drawing_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.i
+.PHONY : gui/drawing_manager.cpp.i
+
+gui/drawing_manager.s: gui/drawing_manager.cpp.s
+
+.PHONY : gui/drawing_manager.s
+
+# target to generate assembly for a file
+gui/drawing_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.s
+.PHONY : gui/drawing_manager.cpp.s
+
 gui/gui.o: gui/gui.cpp.o
 
 .PHONY : gui/gui.o
@@ -1283,33 +1445,6 @@ gui/gui.s: gui/gui.cpp.s
 gui/gui.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/gui.cpp.s
 .PHONY : gui/gui.cpp.s
-
-gui/labels_panel.o: gui/labels_panel.cpp.o
-
-.PHONY : gui/labels_panel.o
-
-# target to build an object file
-gui/labels_panel.cpp.o:
-	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/labels_panel.cpp.o
-.PHONY : gui/labels_panel.cpp.o
-
-gui/labels_panel.i: gui/labels_panel.cpp.i
-
-.PHONY : gui/labels_panel.i
-
-# target to preprocess a source file
-gui/labels_panel.cpp.i:
-	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/labels_panel.cpp.i
-.PHONY : gui/labels_panel.cpp.i
-
-gui/labels_panel.s: gui/labels_panel.cpp.s
-
-.PHONY : gui/labels_panel.s
-
-# target to generate assembly for a file
-gui/labels_panel.cpp.s:
-	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/gui/labels_panel.cpp.s
-.PHONY : gui/labels_panel.cpp.s
 
 gui/my_button.o: gui/my_button.cpp.o
 
@@ -1635,6 +1770,12 @@ help:
 	@echo "... abilities/bomb.o"
 	@echo "... abilities/bomb.i"
 	@echo "... abilities/bomb.s"
+	@echo "... abilities/build_barrack.o"
+	@echo "... abilities/build_barrack.i"
+	@echo "... abilities/build_barrack.s"
+	@echo "... abilities/build_cannon.o"
+	@echo "... abilities/build_cannon.i"
+	@echo "... abilities/build_cannon.s"
 	@echo "... abilities/bullet.o"
 	@echo "... abilities/bullet.i"
 	@echo "... abilities/bullet.s"
@@ -1647,6 +1788,9 @@ help:
 	@echo "... abilities/drain.o"
 	@echo "... abilities/drain.i"
 	@echo "... abilities/drain.s"
+	@echo "... abilities/entangling.o"
+	@echo "... abilities/entangling.i"
+	@echo "... abilities/entangling.s"
 	@echo "... abilities/grenade.o"
 	@echo "... abilities/grenade.i"
 	@echo "... abilities/grenade.s"
@@ -1668,6 +1812,9 @@ help:
 	@echo "... abilities/rage.o"
 	@echo "... abilities/rage.i"
 	@echo "... abilities/rage.s"
+	@echo "... abilities/recovery.o"
+	@echo "... abilities/recovery.i"
+	@echo "... abilities/recovery.s"
 	@echo "... abilities/sabers.o"
 	@echo "... abilities/sabers.i"
 	@echo "... abilities/sabers.s"
@@ -1740,15 +1887,18 @@ help:
 	@echo "... gui/buttons_panel.o"
 	@echo "... gui/buttons_panel.i"
 	@echo "... gui/buttons_panel.s"
+	@echo "... gui/drawable.o"
+	@echo "... gui/drawable.i"
+	@echo "... gui/drawable.s"
 	@echo "... gui/drawer.o"
 	@echo "... gui/drawer.i"
 	@echo "... gui/drawer.s"
+	@echo "... gui/drawing_manager.o"
+	@echo "... gui/drawing_manager.i"
+	@echo "... gui/drawing_manager.s"
 	@echo "... gui/gui.o"
 	@echo "... gui/gui.i"
 	@echo "... gui/gui.s"
-	@echo "... gui/labels_panel.o"
-	@echo "... gui/labels_panel.i"
-	@echo "... gui/labels_panel.s"
 	@echo "... gui/my_button.o"
 	@echo "... gui/my_button.i"
 	@echo "... gui/my_button.s"

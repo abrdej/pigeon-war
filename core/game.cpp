@@ -79,7 +79,7 @@ void game::on_button(size_t n)
 			entity_ability->operator()(states::state_controller::selected_index_);
 		}
 	}
-	if (n == 14)
+	if (n == 5)
 	{
 		turn::turn_system::end_turn();
 		players::next_player();

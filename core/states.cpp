@@ -17,6 +17,9 @@ std::function<void(size_t)> state_controller::caller_;
 
 void state_controller::first_state(size_t select_from_index)
 {
+	if (select_from_index == no_selected_index)
+		return;
+
 	selected_index_ = select_from_index;
 	size_t selected_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(selected_index);

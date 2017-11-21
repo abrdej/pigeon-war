@@ -23,9 +23,10 @@ void play_change_health_animation(size_t to_index, int change_health)
 	animation::base_player::play();
 }
 
-int standard_damage_dealer(int damage, size_t to_index)
+int standard_damage_dealer(int damage, size_t enemy_id)
 {
-	auto enemy_id = board::at(to_index);
+	//auto enemy_id = board::at(to_index);
+	auto enemy_index = board::index_for(enemy_id);
 
 	if (!healths_manager::is_destructible(enemy_id)) {
 		return 0;
@@ -34,7 +35,7 @@ int standard_damage_dealer(int damage, size_t to_index)
 	auto rand_damage = random_damage(damage);
 	auto dealt_damage = healths_manager::receive_damage(enemy_id, rand_damage);
 
-	play_change_health_animation(to_index, -dealt_damage);
+	play_change_health_animation(enemy_index, -dealt_damage);
 
 	if (healths_manager::component_for(enemy_id).health <= 0)
 		entity_manager::destroy(enemy_id);

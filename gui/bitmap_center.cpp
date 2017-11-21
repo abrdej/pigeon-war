@@ -6,6 +6,10 @@
 #include <entities/grenadier.h>
 #include <abilities/bomb.h>
 #include <entities/destroyer.h>
+#include <entities/treant.h>
+#include <entities/fire.h>
+#include <entities/balloon.h>
+#include <entities/cannon.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -76,5 +80,15 @@ void bitmap_center::load()
     add_entity_image<destroyer>("destroyer.png");
     add_entity_image<armor>("armor.png");
     add_entity_image<blow_the_ax>("blow_the_ax.png");
+    add_entity_image<treant>("treant.png");
+    add_entity_image<entangling_instance>("entangling.png");
+    add_entity_image<entangling>("entangling.png");
+    add_entity_image<entangling_life_suck>("entangling.png");
+    add_entity_image<recovery>("recovery.png");
+    add_entity_image<fire>("fire.png");
+    add_entity_image<balloon>("balloon.png");
+    add_entity_image<build_cannon>("cannon.png");
+    add_entity_image<cannon>("cannon.png");
+    add_entity_image<build_barrack>("barrack.png");
 }
 }
