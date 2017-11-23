@@ -9,7 +9,7 @@ recovery::recovery(std::size_t id) : entity_id(id) {
         no_damage_counter = 0;
     });
 
-    onEveryTurn([this](){
+    onEveryRound([this]() {
         ++no_damage_counter;
 
         auto this_index = board::index_for(entity_id);
@@ -23,7 +23,7 @@ recovery::recovery(std::size_t id) : entity_id(id) {
             auto health_pack = healths_manager::component_for(entity_id);
 
             //auto final_recovery = std::min<int>(recovery_amount_per_turn,
-             //                                   health_pack.base_health - health_pack.health);
+            //                                   health_pack.base_health - health_pack.health);
 
             if (recovery_amount_per_turn > 0) {
                 healths_manager::receive_damage(entity_id, -recovery_amount_per_turn);
@@ -31,7 +31,8 @@ recovery::recovery(std::size_t id) : entity_id(id) {
                 auto index = board::index_for(entity_id);
 
                 animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index,
-                                                                                           std::chrono::milliseconds(150),
+                                                                                           std::chrono::milliseconds(
+                                                                                                   150),
                                                                                            "healthing.png"));
                 animation::base_player::play();
             }

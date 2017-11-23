@@ -5,7 +5,7 @@
 #include "managers/types_manager.h"
 
 bludgeon::bludgeon() {
-	onEveryTurn([this](){
+	onEveryRound([this]() {
 		used_ = false;
 	});
 }

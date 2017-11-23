@@ -39,7 +39,7 @@ struct entity_drawer : drawable {
         text.setFont(font);
         text.setString(std::to_string(entity_health));
         text.setCharacterSize(18);
-        text.setFillColor(sf::Color::Black);
+        text.setColor(sf::Color::Black);
         text.setPosition(position);
         window.draw(text);
     }

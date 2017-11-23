@@ -7,7 +7,7 @@
 #include <animation/animation.h>
 
 rage::rage(size_t id) : entity_id(id) {
-	onEveryTurn([this]() {
+	onEveryRound([this]() {
 		damage_this_turn = 0;
 	});
 

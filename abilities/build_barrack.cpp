@@ -6,7 +6,7 @@
 #include "build_barrack.h"
 
 build_barrack::build_barrack() {
-    onEveryTurn([this]() {
+    onEveryRound([this]() {
         built = false;
     });
 }

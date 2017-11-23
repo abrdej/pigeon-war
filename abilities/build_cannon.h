@@ -14,11 +14,11 @@ public:
     void prepare(size_t for_index) override;
     void use(size_t index_on);
 
-    static constexpr abilities::ability_types type = abilities::ability_types::special;
-
-    std::string get_bitmap_key() const {
-        return "cannon";
-    }
+//    static constexpr abilities::ability_types type = abilities::ability_types::special;
+//
+//    std::string get_bitmap_key() const {
+//        return "cannon";
+//    }
 
 //    void callback() {
 //        auto pos = board::to_pos(states::state_controller::selected_index_);

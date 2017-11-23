@@ -12,7 +12,7 @@
 
 drain::drain()
 {
-	onEveryTurn([this](){
+	onEveryRound([this]() {
 		used = false;
 	});
 }

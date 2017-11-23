@@ -312,5 +312,5 @@ void strategy(game& game) {
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {
-    strategy(game);
+    skirmish(game);
 }

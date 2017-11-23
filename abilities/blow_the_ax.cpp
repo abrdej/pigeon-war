@@ -5,7 +5,7 @@
 #include "managers/types_manager.h"
 
 blow_the_ax::blow_the_ax() {
-    onEveryTurn([this]() {
+    onEveryRound([this]() {
         used = false;
     });
 }

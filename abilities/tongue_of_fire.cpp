@@ -11,7 +11,7 @@
 tongue_of_fire::tongue_of_fire()
 	: used_(false)
 {
-	onEveryTurn([this](){
+	onEveryRound([this]() {
 		refresh_usable();
 	});
 }

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 #include <unordered_map>
 #include "players.h"
 #include "core/signals.h"
@@ -35,18 +36,39 @@ protected:
 	using callback_type = turn::turn_system::every_turn_signal_type::callback;
 
 	template <typename Callback>
+	void onEveryRound(Callback callback)
+	{
+		end_round_receiver_ = turn::turn_system::every_round(callback);
+	}
+	template <typename Callback>
 	void onEveryTurn(Callback callback)
 	{
-		end_turn_receiver_ = turn::turn_system::every_round(callback);
+		end_turn_receiver_ = turn::turn_system::every_turn(callback);
+	}
+	template <typename Callback>
+	void onTwoTurns(Callback callback)
+	{
+		every_turns_receiver_ = turn::turn_system::every_turn([this, callback]() {
+
+			std::cout << state << "\n";
+
+			if (state) {
+				callback();
+			}
+			state = !state;
+		});
 	}
 private:
+	bool state{false};
+	turn::turn_system::every_turn_signal_type::strong_receiver end_round_receiver_;
 	turn::turn_system::every_turn_signal_type::strong_receiver end_turn_receiver_;
+	turn::turn_system::every_turn_signal_type::strong_receiver every_turns_receiver_;
 };
 
-struct on_every_turn : every_turn_callback_helper {
+struct on_every_round : every_turn_callback_helper {
 	template <typename Callback>
-	explicit on_every_turn(Callback callback) {
-		onEveryTurn(callback);
+	explicit on_every_round(Callback callback) {
+		onEveryRound(callback);
 	}
 };
 

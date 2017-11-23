@@ -17,7 +17,7 @@ public:
 		  actual_range_(range),
           type(type)
 	{
-		onEveryTurn([this](){
+		onEveryRound([this]() {
 			refresh_range();
 		});
 	}

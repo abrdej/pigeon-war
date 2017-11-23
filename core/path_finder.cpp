@@ -91,11 +91,11 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 			break;
 		auto index = board::to_index(i, fld.second);
 
-		if (!board::empty(index) && !skip_obstacles)
-			break;
-
 		costs.push_back(cost);
 		movements.push_back(index);
+
+		if (!board::empty(index) && !skip_obstacles)
+			break;
 	}
 
 	for (size_t i = fld.first + 1; i < board::cols_n; ++i)
@@ -106,11 +106,11 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 
 		auto index = board::to_index(i, fld.second);
 
-		if (!board::empty(index) && !skip_obstacles)
-			break;
-
 		costs.push_back(cost);
 		movements.push_back(index);
+
+		if (!board::empty(index) && !skip_obstacles)
+			break;
 	}
 
 	for (size_t i = fld.second - 1; i != -1; --i)
@@ -121,11 +121,11 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 
 		auto index = board::to_index(fld.first, i);
 
-		if (!board::empty(index) && !skip_obstacles)
-			break;
-
 		costs.push_back(cost);
 		movements.push_back(index);
+
+		if (!board::empty(index) && !skip_obstacles)
+			break;
 	}
 
 	for (size_t i = fld.second + 1; i < board::rows_n; ++i)
@@ -136,11 +136,11 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 
 		auto index = board::to_index(fld.first, i);
 
-		if (!board::empty(index) && !skip_obstacles)
-			break;
-
 		costs.push_back(cost);
 		movements.push_back(index);
+
+		if (!board::empty(index) && !skip_obstacles)
+			break;
 	}
 }
 

@@ -84,9 +84,9 @@ void buttons_panel::set_buttons_for(size_t entity_id)
                 hints[i].clear();
 			}
 
-            if (entity_abilities.has_ability(i)) {
-                buttons_[i].icon(bitmap_center::get_bitmap(entity_abilities.get_bitmap_key(i)));
-            }
+//            if (entity_abilities.has_ability(i)) {
+//                buttons_[i].icon(bitmap_center::get_bitmap(entity_abilities.get_bitmap_key(i)));
+//            }
 		}
 		// this sometimes can happen
 	} else {
@@ -124,7 +124,7 @@ void buttons_panel::draw_hint(sf::RenderWindow& window) {
     sf::Text name;
     name.setFont(name_font);
     name.setCharacterSize(18);
-    name.setFillColor(sf::Color::White);
+    name.setColor(sf::Color::White);
     name.setPosition(sf::Vector2f(constants::field_size / 4,
                                   constants::top_left_point.y + (board::rows_n + 1) * constants::field_size + constants::field_size / 8));
     name.setString(entity_name);
@@ -134,7 +134,7 @@ void buttons_panel::draw_hint(sf::RenderWindow& window) {
         sf::Text hint;
         hint.setFont(name_font);
         hint.setCharacterSize(18);
-        hint.setFillColor(sf::Color::White);
+        hint.setColor(sf::Color::White);
         hint.setPosition(hint_pos + sf::Vector2f(constants::field_size / 2, 0.f));
         hint.setString(hints[hint_button_idx]);
         window.draw(hint);

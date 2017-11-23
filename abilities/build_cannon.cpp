@@ -5,7 +5,7 @@
 #include "build_cannon.h"
 
 build_cannon::build_cannon() {
-    onEveryTurn([this]() {
+    onEveryRound([this]() {
         built = false;
     });
 }

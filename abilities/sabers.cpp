@@ -10,7 +10,7 @@
 
 sabers::sabers()
 {
-	onEveryTurn([this](){
+	onEveryRound([this]() {
 		used = false;
 	});
 }

@@ -6,7 +6,7 @@
 
 
 poisoned_missile::poisoned_missile() {
-    onEveryTurn([this](){
+    onEveryRound([this]() {
         used = false;
     });
 }

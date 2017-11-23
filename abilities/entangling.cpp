@@ -5,7 +5,7 @@
 #include <animation/animation.h>
 
 entangling_life_suck::entangling_life_suck() {
-    onEveryTurn([this]() {
+    onEveryRound([this]() {
         int dealed_damage = 0;
         if (entity_manager::alive(enemy_id)) {
             dealed_damage = damage_dealers::standard_damage_dealer(damage, enemy_id);
@@ -22,7 +22,8 @@ entangling_life_suck::entangling_life_suck() {
                 auto index = board::index_for(caster_id);
 
                 animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index,
-                                                                                           std::chrono::milliseconds(150),
+                                                                                           std::chrono::milliseconds(
+                                                                                                   150),
                                                                                            "healthing.png"));
                 animation::base_player::play();
             }
@@ -31,7 +32,7 @@ entangling_life_suck::entangling_life_suck() {
 }
 
 entangling::entangling(std::size_t id) : entity_id(id) {
-    onEveryTurn([this]() {
+    onEveryRound([this]() {
         used = false;
     });
 }
@@ -50,6 +51,7 @@ void entangling::prepare(size_t for_index) {
 void entangling::use(size_t index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
+    auto caster_id = board::at(used_from_index);
 
     auto entangling_id = entity_manager::create<entangling_instance>();
     auto player = players::active_player_name();
@@ -60,7 +62,7 @@ void entangling::use(size_t index_on) {
     auto enemy_id = board::at(index_on);
     auto life_suck = std::static_pointer_cast<entangling_life_suck>(ability);
     life_suck->set_enemy_id(enemy_id);
-    life_suck->set_caster_id(enemy_id);
+    life_suck->set_caster_id(caster_id);
 
     board::insert(index_on, entangling_id);
 

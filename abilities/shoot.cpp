@@ -12,7 +12,7 @@
 shoot::shoot()
 	: bullets_(bullets_n)
 {
-	onEveryTurn([this](){
+	onEveryRound([this]() {
 		refresh_usable();
 	});
 }

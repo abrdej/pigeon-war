@@ -4,7 +4,7 @@
 #include <animation/animation.h>
 
 laser::laser() {
-	onEveryTurn([this](){
+	onEveryRound([this]() {
 		used = false;
 	});
 }

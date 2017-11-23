@@ -5,7 +5,7 @@
 #include "damage_dealers.h"
 
 sword_blow::sword_blow() {
-    onEveryTurn([this](){
+    onEveryRound([this]() {
         used = false;
     });
 }
