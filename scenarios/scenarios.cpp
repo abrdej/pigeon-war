@@ -158,6 +158,7 @@ void wolves_dinner(game& game) {
 #include <entities/treant.h>
 #include <entities/fire.h>
 #include <entities/balloon.h>
+#include <entities/fissure.h>
 
 using Entites = boost::fusion::vector<shooter,
         destroyer,
@@ -305,6 +306,9 @@ void strategy(game& game) {
     players::create_human_player("tester");
 
     players::add_entity_for_player("tester", balloon_id);
+
+    using creator_helper::pos;
+    creator_helper::create_neutral_many<fissure>({pos(5, 5)});
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {

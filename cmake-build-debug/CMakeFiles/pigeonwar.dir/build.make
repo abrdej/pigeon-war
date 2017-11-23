@@ -1497,6 +1497,54 @@ CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o.provides: CMakeFiles/pige
 CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o
 
 
+CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o: CMakeFiles/pigeonwar.dir/flags.make
+CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o: ../abilities/possible_movement.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o -c /home/abrdej/Projekty/pigeonwar/abilities/possible_movement.cpp
+
+CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abrdej/Projekty/pigeonwar/abilities/possible_movement.cpp > CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.i
+
+CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abrdej/Projekty/pigeonwar/abilities/possible_movement.cpp -o CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.s
+
+CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o.requires:
+
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o.requires
+
+CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o.provides: CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o.provides.build
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o.provides
+
+CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o
+
+
+CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o: CMakeFiles/pigeonwar.dir/flags.make
+CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o: ../abilities/builder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o -c /home/abrdej/Projekty/pigeonwar/abilities/builder.cpp
+
+CMakeFiles/pigeonwar.dir/abilities/builder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/builder.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abrdej/Projekty/pigeonwar/abilities/builder.cpp > CMakeFiles/pigeonwar.dir/abilities/builder.cpp.i
+
+CMakeFiles/pigeonwar.dir/abilities/builder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/builder.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abrdej/Projekty/pigeonwar/abilities/builder.cpp -o CMakeFiles/pigeonwar.dir/abilities/builder.cpp.s
+
+CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o.requires:
+
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o.requires
+
+CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o.provides: CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o.provides.build
+.PHONY : CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o.provides
+
+CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o.provides.build: CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o
+
+
 # Object files for target pigeonwar
 pigeonwar_OBJECTS = \
 "CMakeFiles/pigeonwar.dir/main.cpp.o" \
@@ -1558,7 +1606,9 @@ pigeonwar_OBJECTS = \
 "CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.o" \
 "CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.o" \
 "CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.o" \
-"CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o"
+"CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o" \
+"CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o" \
+"CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o"
 
 # External object files for target pigeonwar
 pigeonwar_EXTERNAL_OBJECTS =
@@ -1623,6 +1673,8 @@ pigeonwar: CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o
+pigeonwar: CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o
+pigeonwar: CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o
 pigeonwar: CMakeFiles/pigeonwar.dir/build.make
 pigeonwar: /usr/local/lib/libsfml-network.so
 pigeonwar: /usr/local/lib/libsfml-audio.so
@@ -1630,7 +1682,7 @@ pigeonwar: /usr/local/lib/libsfml-graphics.so
 pigeonwar: /usr/local/lib/libsfml-window.so
 pigeonwar: /usr/local/lib/libsfml-system.so
 pigeonwar: CMakeFiles/pigeonwar.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Linking CXX executable pigeonwar"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abrdej/Projekty/pigeonwar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Linking CXX executable pigeonwar"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pigeonwar.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -1698,6 +1750,8 @@ CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/entangling
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.o.requires
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.o.requires
 CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o.requires
+CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o.requires
+CMakeFiles/pigeonwar.dir/requires: CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o.requires
 
 .PHONY : CMakeFiles/pigeonwar.dir/requires
 

@@ -2,6 +2,7 @@
 #include <core/board.h>
 #include <entities/shooter.h>
 #include <managers/entity_manager.h>
+#include <entities/barrack.h>
 #include "build_barrack.h"
 
 build_barrack::build_barrack() {
@@ -32,9 +33,9 @@ void build_barrack::use(size_t index_on) {
     if (built)
         return;
 
-    auto cannon_id = entity_manager::create<shooter>();
+    auto barrack_id = entity_manager::create<barrack>();
     auto player = players::active_player_name();
-    players::add_entity_for_player(player, cannon_id);
+    players::add_entity_for_player(player, barrack_id);
 
-    board::insert(index_on, cannon_id);
+    board::insert(index_on, barrack_id);
 }

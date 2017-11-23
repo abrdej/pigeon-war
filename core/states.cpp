@@ -2,6 +2,7 @@
 #include "board.h"
 #include "managers/entity_manager.h"
 #include "abilities/abilities.h"
+#include "abilities/ability.h"
 #include "managers/abilities_manager.h"
 
 namespace states
@@ -44,8 +45,8 @@ void state_controller::do_action(size_t index)
 
 bool state_controller::is_possible_movement(size_t index)
 {
-	auto end_it = std::end(states::state_controller::possible_movements_);
 	auto begin_it = std::begin(states::state_controller::possible_movements_);
+	auto end_it = std::end(states::state_controller::possible_movements_);
 	auto result = std::find(begin_it, end_it, index);
 	return result != end_it;
 }

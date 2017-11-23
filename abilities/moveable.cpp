@@ -11,11 +11,19 @@ void moveable::prepare(size_t for_index)
 	states::state_controller::selected_index_ = for_index;
 	states::state_controller::actual_state_ = states::states_types::wait_for_action;
 
-	path_finder path_finder;
-	path_finder.calc(for_index);
-	path_finder.get_possible_movements(states::state_controller::possible_movements_,
-		states::state_controller::possible_movements_costs_,
-		range());
+    if (type == types::path) {
+        path_finder path_finder;
+        path_finder.calc(for_index);
+        path_finder.get_possible_movements(states::state_controller::possible_movements_,
+                                           states::state_controller::possible_movements_costs_,
+                                           range());
+
+    } else if (type == types::straight) {
+        board_helper::calc_straight(states::state_controller::selected_index_,
+                                states::state_controller::possible_movements_,
+                                states::state_controller::possible_movements_costs_,
+                                range());
+    }
 
 	states::state_controller::actual_targeting_type_ = states::target_types::moving;
 	states::state_controller::wait_for_action([this](size_t index)

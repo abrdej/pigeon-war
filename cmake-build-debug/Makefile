@@ -339,6 +339,33 @@ abilities/build_cannon.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.s
 .PHONY : abilities/build_cannon.cpp.s
 
+abilities/builder.o: abilities/builder.cpp.o
+
+.PHONY : abilities/builder.o
+
+# target to build an object file
+abilities/builder.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o
+.PHONY : abilities/builder.cpp.o
+
+abilities/builder.i: abilities/builder.cpp.i
+
+.PHONY : abilities/builder.i
+
+# target to preprocess a source file
+abilities/builder.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/builder.cpp.i
+.PHONY : abilities/builder.cpp.i
+
+abilities/builder.s: abilities/builder.cpp.s
+
+.PHONY : abilities/builder.s
+
+# target to generate assembly for a file
+abilities/builder.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/builder.cpp.s
+.PHONY : abilities/builder.cpp.s
+
 abilities/bullet.o: abilities/bullet.cpp.o
 
 .PHONY : abilities/bullet.o
@@ -635,6 +662,33 @@ abilities/poisoned_missile.s: abilities/poisoned_missile.cpp.s
 abilities/poisoned_missile.cpp.s:
 	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.s
 .PHONY : abilities/poisoned_missile.cpp.s
+
+abilities/possible_movement.o: abilities/possible_movement.cpp.o
+
+.PHONY : abilities/possible_movement.o
+
+# target to build an object file
+abilities/possible_movement.cpp.o:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o
+.PHONY : abilities/possible_movement.cpp.o
+
+abilities/possible_movement.i: abilities/possible_movement.cpp.i
+
+.PHONY : abilities/possible_movement.i
+
+# target to preprocess a source file
+abilities/possible_movement.cpp.i:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.i
+.PHONY : abilities/possible_movement.cpp.i
+
+abilities/possible_movement.s: abilities/possible_movement.cpp.s
+
+.PHONY : abilities/possible_movement.s
+
+# target to generate assembly for a file
+abilities/possible_movement.cpp.s:
+	$(MAKE) -f CMakeFiles/pigeonwar.dir/build.make CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.s
+.PHONY : abilities/possible_movement.cpp.s
 
 abilities/rage.o: abilities/rage.cpp.o
 
@@ -1776,6 +1830,9 @@ help:
 	@echo "... abilities/build_cannon.o"
 	@echo "... abilities/build_cannon.i"
 	@echo "... abilities/build_cannon.s"
+	@echo "... abilities/builder.o"
+	@echo "... abilities/builder.i"
+	@echo "... abilities/builder.s"
 	@echo "... abilities/bullet.o"
 	@echo "... abilities/bullet.i"
 	@echo "... abilities/bullet.s"
@@ -1809,6 +1866,9 @@ help:
 	@echo "... abilities/poisoned_missile.o"
 	@echo "... abilities/poisoned_missile.i"
 	@echo "... abilities/poisoned_missile.s"
+	@echo "... abilities/possible_movement.o"
+	@echo "... abilities/possible_movement.i"
+	@echo "... abilities/possible_movement.s"
 	@echo "... abilities/rage.o"
 	@echo "... abilities/rage.i"
 	@echo "... abilities/rage.s"

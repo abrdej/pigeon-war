@@ -39,6 +39,10 @@ bool players::enemy_entity(player_id_type player_id, std::size_t entity_id)
 	return relation_map_[entity_id] != player_id && relation_map_[entity_id] != neutral_id;
 }
 
+bool players::neutral_entity(size_t entity_id) {
+	return relation_map_[entity_id] == neutral_id;
+}
+
 const players::player_id_type& players::active_player_name()
 {
 	return players_[active_player_].first;
@@ -88,6 +92,13 @@ bool enemy_entity(std::size_t entity_index)
 	auto entity_id = board::at(entity_index);
 	if (entity_id != -1)
 		return players::enemy_entity(players::active_player_name(), entity_id);
+	return false;
+}
+
+bool neutral_entity(std::size_t entity_index) {
+	auto entity_id = board::at(entity_index);
+	if (entity_id != -1)
+		return players::neutral_entity(entity_id);
 	return false;
 }
 

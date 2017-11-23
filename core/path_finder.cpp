@@ -45,15 +45,15 @@ size_t path_finder::find_first_satisfy_conditions(size_t from_index, const std::
 	return breadth_search(graph_, from_index, distance_map_, sequence_map_, condition_fn);
 }
 
-void path_finder::get_possible_movements(std::vector<size_t>& movements, std::vector<size_t>& costs, size_t range)
+void path_finder::get_possible_movements(std::vector<size_t>& movements, std::vector<size_t>& costs, int range)
 {
 	movements.clear();
 	costs.clear();
 	for (auto& elem : distance_map_)
 		if (elem.second <= range && elem.second != 0)
 		{
-			movements.push_back(elem.first);
-			costs.push_back(elem.second);
+			movements.emplace_back(elem.first);
+			costs.emplace_back(elem.second);
 		}
 }
 
@@ -78,7 +78,7 @@ size_t path_finder::distance_to(size_t index)
 
 namespace board_helper
 {
-void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vector<size_t>& costs, size_t range, bool skip_obstacles)
+void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vector<size_t>& costs, int range, bool skip_obstacles)
 {
 	movements.clear();
 	costs.clear();
@@ -90,10 +90,12 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 		if (cost > range)
 			break;
 		auto index = board::to_index(i, fld.second);
-		costs.push_back(cost);
-		movements.push_back(index);
+
 		if (!board::empty(index) && !skip_obstacles)
 			break;
+
+		costs.push_back(cost);
+		movements.push_back(index);
 	}
 
 	for (size_t i = fld.first + 1; i < board::cols_n; ++i)
@@ -103,10 +105,12 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 			break;
 
 		auto index = board::to_index(i, fld.second);
-		costs.push_back(cost);
-		movements.push_back(index);
+
 		if (!board::empty(index) && !skip_obstacles)
 			break;
+
+		costs.push_back(cost);
+		movements.push_back(index);
 	}
 
 	for (size_t i = fld.second - 1; i != -1; --i)
@@ -116,10 +120,12 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 			break;
 
 		auto index = board::to_index(fld.first, i);
-		costs.push_back(cost);
-		movements.push_back(index);
+
 		if (!board::empty(index) && !skip_obstacles)
 			break;
+
+		costs.push_back(cost);
+		movements.push_back(index);
 	}
 
 	for (size_t i = fld.second + 1; i < board::rows_n; ++i)
@@ -129,10 +135,12 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 			break;
 
 		auto index = board::to_index(fld.first, i);
-		costs.push_back(cost);
-		movements.push_back(index);
+
 		if (!board::empty(index) && !skip_obstacles)
 			break;
+
+		costs.push_back(cost);
+		movements.push_back(index);
 	}
 }
 

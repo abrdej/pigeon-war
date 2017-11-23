@@ -2,16 +2,20 @@
 #define MOVEABLE_H
 
 #include "abilities/ability.h"
-#include <functional>
+#include "possible_movement.h"
 #include "core/turn.h"
+#include <functional>
 
-class moveable final : public ability,
-	turn_events_helper::every_turn_callback_helper
-{
+class moveable final : public ability, turn_events_helper::every_turn_callback_helper {
 public:
-	explicit moveable(size_t range)
+    enum class types {
+        path,
+        straight
+    };
+	explicit moveable(size_t range, types type = types::path)
 		: range_(range),
-		  actual_range_(range)
+		  actual_range_(range),
+          type(type)
 	{
 		onEveryTurn([this](){
 			refresh_range();
@@ -19,7 +23,6 @@ public:
 	}
 private:
 	void prepare(size_t for_index) override;
-	//bool moved() const { return actual_range_ == 0; }
 	size_t range() const { return actual_range_; }
 	void use_move(size_t n)
 	{
@@ -34,6 +37,9 @@ private:
 private:
 	size_t range_;
 	size_t actual_range_;
+    types type;
 };
+
+
 
 #endif

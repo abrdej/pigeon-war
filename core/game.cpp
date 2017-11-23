@@ -74,10 +74,16 @@ void game::on_button(size_t n)
 
 		auto entity_id = board::at(selected_index);
 		auto& entity_abilities = abilities_manager::component_for(entity_id);
-		auto entity_ability = entity_abilities.at(n);
-		if (entity_ability) {
-			entity_ability->operator()(states::state_controller::selected_index_);
+
+		auto ability_callback = entity_abilities.get_callback(n);
+		if (ability_callback) {
+			ability_callback();
 		}
+
+//		auto entity_ability = entity_abilities.at(n);
+//		if (entity_ability) {
+//			entity_ability->operator()(states::state_controller::selected_index_);
+//		}
 	}
 	if (n == 5)
 	{
@@ -107,6 +113,13 @@ bool game::valid_target(size_t target_index) const
 		return players_funcs::player_entity(target_index);
 	else if (states::state_controller::actual_targeting_type_ == states::target_types::caster)
 		return target_index == states::state_controller::selected_index_;
+	else if (states::state_controller::actual_targeting_type_ == states::target_types::neutral) {
+        std::cout << "neutral: " << players_funcs::neutral_entity(target_index) << "\n";
+        return players_funcs::neutral_entity(target_index);
+    }
+    else if (states::state_controller::actual_targeting_type_ == states::target_types::all) {
+        return true;
+    }
 	return false;
 }
 

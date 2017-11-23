@@ -20,6 +20,7 @@ public:
 	static void add_neutral_entity(size_t entity_id);
 	static bool player_entity(player_id_type player_id, size_t entity_id);
 	static bool enemy_entity(player_id_type player_id, size_t entity_id);
+	static bool neutral_entity(size_t entity_id);
 	static const player_id_type& active_player_name();
 	static bool active_player_ai();
 	static void next_player();
@@ -38,6 +39,7 @@ void player_entities_indexes(const players::player_id_type& player_name, std::ve
 void enemy_entities_indexes(const players::player_id_type& player_name, std::vector<std::size_t>& indexies);
 bool player_entity(std::size_t entity_index);
 bool enemy_entity(std::size_t entity_index);
+bool neutral_entity(std::size_t entity_index);
 std::size_t active_player_first_entity_index();
 
 }

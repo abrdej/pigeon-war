@@ -19,7 +19,7 @@ iostream
 -
 
 ..//abilities/ability.h
-memory
+iostream
 -
 
 ..//abilities/armor.h
@@ -68,6 +68,18 @@ core/turn.h
 abilities/ability.h
 ../abilities/abilities/ability.h
 
+..//abilities/builder.h
+abilities/ability.h
+-
+core/turn.h
+-
+core/states.h
+-
+core/board.h
+-
+managers/entity_manager.h
+-
+
 ..//abilities/bullet.h
 memory
 -
@@ -115,10 +127,12 @@ core/turn.h
 ..//abilities/moveable.h
 abilities/ability.h
 ../abilities/abilities/ability.h
-functional
--
+possible_movement.h
+../abilities/possible_movement.h
 core/turn.h
 ../abilities/core/turn.h
+functional
+-
 
 ..//abilities/poisoned_missile.h
 abilities/ability.h
@@ -315,10 +329,24 @@ abilities/build_cannon.h
 -
 abilities/build_barrack.h
 -
+abilities/builder.h
+-
 entity.h
 ../entities/entity.h
 abilities/moveable.h
 ../entities/abilities/moveable.h
+barrack.h
+../entities/barrack.h
+drilling_rig.h
+../entities/drilling_rig.h
+
+..//entities/barrack.h
+entity.h
+../entities/entity.h
+abilities/builder.h
+../entities/abilities/builder.h
+shooter.h
+../entities/shooter.h
 
 ..//entities/cannon.h
 abilities/shoot.h
@@ -365,6 +393,10 @@ managers/health_manager.h
 ../entities/managers/health_manager.h
 
 ..//entities/fire.h
+entity.h
+../entities/entity.h
+
+..//entities/fissure.h
 entity.h
 ../entities/entity.h
 
@@ -479,6 +511,8 @@ unordered_map
 -
 typeindex
 -
+iostream
+-
 SFML/Graphics/Texture.hpp
 -
 typeindex
@@ -565,8 +599,6 @@ SFML/Graphics.hpp
 ..//managers/abilities_manager.h
 managers.h
 ../managers/managers.h
-abilities/moveable.h
-../managers/abilities/moveable.h
 abilities/abilities.h
 ../managers/abilities/abilities.h
 
@@ -689,16 +721,20 @@ SFML/Graphics.hpp
 -
 
 ../abilities/ability.h
-memory
+iostream
 -
 
 ../abilities/moveable.h
 abilities/ability.h
 ../abilities/abilities/ability.h
-functional
--
+possible_movement.h
+../abilities/possible_movement.h
 core/turn.h
 ../abilities/core/turn.h
+functional
+-
+
+../abilities/possible_movement.h
 
 ../ai/ai.h
 core/players.h
@@ -742,6 +778,18 @@ memory
 algorithm
 -
 
+../entities/barrack.h
+entity.h
+../entities/entity.h
+abilities/builder.h
+../entities/abilities/builder.h
+shooter.h
+../entities/shooter.h
+
+../entities/drilling_rig.h
+entity.h
+../entities/entity.h
+
 ../entities/entity.h
 limits
 -
@@ -760,6 +808,8 @@ entity.h
 unordered_map
 -
 typeindex
+-
+iostream
 -
 SFML/Graphics/Texture.hpp
 -
@@ -851,8 +901,6 @@ SFML/Graphics.hpp
 ../managers/abilities_manager.h
 managers.h
 ../managers/managers.h
-abilities/moveable.h
-../managers/abilities/moveable.h
 abilities/abilities.h
 ../managers/abilities/abilities.h
 
@@ -917,7 +965,7 @@ ability.h
 /home/abrdej/Projekty/pigeonwar/abilities/ability.h
 
 /home/abrdej/Projekty/pigeonwar/abilities/ability.h
-memory
+iostream
 -
 
 /home/abrdej/Projekty/pigeonwar/abilities/armor.cpp
@@ -1027,6 +1075,8 @@ entities/shooter.h
 -
 managers/entity_manager.h
 -
+entities/barrack.h
+-
 build_barrack.h
 /home/abrdej/Projekty/pigeonwar/abilities/build_barrack.h
 
@@ -1053,6 +1103,22 @@ core/turn.h
 -
 abilities/ability.h
 /home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/builder.cpp
+builder.h
+/home/abrdej/Projekty/pigeonwar/abilities/builder.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/builder.h
+abilities/ability.h
+-
+core/turn.h
+-
+core/states.h
+-
+core/board.h
+-
+managers/entity_manager.h
+-
 
 /home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp
 bullet.h
@@ -1221,10 +1287,12 @@ managers/types_manager.h
 /home/abrdej/Projekty/pigeonwar/abilities/moveable.h
 abilities/ability.h
 /home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
-functional
--
+possible_movement.h
+/home/abrdej/Projekty/pigeonwar/abilities/possible_movement.h
 core/turn.h
 /home/abrdej/Projekty/pigeonwar/abilities/core/turn.h
+functional
+-
 
 /home/abrdej/Projekty/pigeonwar/abilities/poison.cpp
 poison.h
@@ -1255,6 +1323,12 @@ abilities/ability.h
 /home/abrdej/Projekty/pigeonwar/abilities/abilities/ability.h
 core/turn.h
 /home/abrdej/Projekty/pigeonwar/abilities/core/turn.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/possible_movement.cpp
+possible_movement.h
+/home/abrdej/Projekty/pigeonwar/abilities/possible_movement.h
+
+/home/abrdej/Projekty/pigeonwar/abilities/possible_movement.h
 
 /home/abrdej/Projekty/pigeonwar/abilities/rage.cpp
 managers/health_manager.h
@@ -1423,6 +1497,8 @@ abilities/ability.h
 /home/abrdej/Projekty/pigeonwar/ai/ai.cpp
 ai.h
 /home/abrdej/Projekty/pigeonwar/ai/ai.h
+abilities/ability.h
+/home/abrdej/Projekty/pigeonwar/ai/abilities/ability.h
 core/players.h
 /home/abrdej/Projekty/pigeonwar/ai/core/players.h
 core/board.h
@@ -1671,6 +1747,8 @@ managers/entity_manager.h
 /home/abrdej/Projekty/pigeonwar/core/managers/entity_manager.h
 abilities/abilities.h
 /home/abrdej/Projekty/pigeonwar/core/abilities/abilities.h
+abilities/ability.h
+/home/abrdej/Projekty/pigeonwar/core/abilities/ability.h
 managers/abilities_manager.h
 /home/abrdej/Projekty/pigeonwar/core/managers/abilities_manager.h
 
@@ -1789,6 +1867,10 @@ entities/balloon.h
 -
 entities/cannon.h
 -
+entities/barrack.h
+-
+entities/fissure.h
+-
 gui/bitmap_center.h
 /home/abrdej/Projekty/pigeonwar/gui/gui/bitmap_center.h
 animation/animation.h
@@ -1824,6 +1906,8 @@ entities/native.h
 unordered_map
 -
 typeindex
+-
+iostream
 -
 SFML/Graphics/Texture.hpp
 -
@@ -2021,8 +2105,6 @@ abilities_manager.h
 /home/abrdej/Projekty/pigeonwar/managers/abilities_manager.h
 managers.h
 /home/abrdej/Projekty/pigeonwar/managers/managers.h
-abilities/moveable.h
-/home/abrdej/Projekty/pigeonwar/managers/abilities/moveable.h
 abilities/abilities.h
 /home/abrdej/Projekty/pigeonwar/managers/abilities/abilities.h
 
@@ -2198,6 +2280,8 @@ entities/treant.h
 entities/fire.h
 -
 entities/balloon.h
+-
+entities/fissure.h
 -
 
 /home/abrdej/Projekty/pigeonwar/scenarios/scenarios.h

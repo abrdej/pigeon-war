@@ -134,6 +134,12 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_cannon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/builder.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/builder.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -195,6 +201,12 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/possible_movement.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/possible_movement.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/rage.cpp">
@@ -314,10 +326,16 @@
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/balloon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/barrack.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/cannon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/destroyer.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/drilling_rig.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/droid.h">
@@ -327,6 +345,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/fire.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/fissure.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/grenadier.h">

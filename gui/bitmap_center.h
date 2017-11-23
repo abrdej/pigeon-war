@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include <typeindex>
+#include <iostream>
 #include <SFML/Graphics/Texture.hpp>
 
 namespace view
@@ -12,8 +13,19 @@ namespace view
 	public:
 		using bitmap_type = sf::Texture;
 		using path_type = std::string;
+		using key_type = std::string;
 
 		static void load();
+
+		static void add_bitmap(const key_type& key, const path_type& path) {
+            bitmap_type bitmap;
+            if (!bitmap.loadFromFile(path))
+                std::cerr << "Could not load bitmap file: " << path << "\n";
+			bb.emplace(key, bitmap);
+		}
+		static const bitmap_type& get_bitmap(const key_type& key) {
+			return bb.at(key);
+		}
 
 		template <typename Entity>
 		static void add_entity_image(const path_type& image_path)
@@ -49,6 +61,7 @@ namespace view
 		}
 	private:
 		static std::unordered_map<std::type_index, bitmap_type> bitmaps_;
+		static std::unordered_map<key_type, bitmap_type> bb;
 	public:
 		static bitmap_type grass_move_bitmap;
 		static bitmap_type grass_attack_bitmap;

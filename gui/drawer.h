@@ -166,6 +166,8 @@ private:
 				sprite.setTexture(bitmap_center::grass_damage_bitmap);
 			else
 				sprite.setTexture(bitmap_center::grass_attack_bitmap);
+		} else {
+			sprite.setTexture(bitmap_center::grass_move_bitmap);
 		}
 
 		auto pos = board_index_to_point(index);

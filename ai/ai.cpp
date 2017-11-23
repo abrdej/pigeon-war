@@ -1,5 +1,5 @@
 #include "ai.h"
-
+#include "abilities/ability.h"
 #include "core/players.h"
 #include "core/board.h"
 #include "core/states.h"

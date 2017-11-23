@@ -18,7 +18,7 @@ public:
 
 	void get_possible_movements(std::vector<size_t>& movements,
 								std::vector<size_t>& costs,
-								size_t range);
+								int range);
 
 	size_t distance_to(size_t index);
 	void path_to(size_t index, std::vector<size_t>& path);
@@ -35,7 +35,7 @@ namespace board_helper
 void calc_straight(size_t from_index,
 				   std::vector<size_t>& movements,
 				   std::vector<size_t>& costs,
-				   size_t range,
+				   int range,
 				   bool skip_obstacles = false);
 
 void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool available);

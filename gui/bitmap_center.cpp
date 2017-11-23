@@ -10,6 +10,8 @@
 #include <entities/fire.h>
 #include <entities/balloon.h>
 #include <entities/cannon.h>
+#include <entities/barrack.h>
+#include <entities/fissure.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -30,6 +32,7 @@
 namespace view
 {
 std::unordered_map<std::type_index, bitmap_center::bitmap_type> bitmap_center::bitmaps_;
+std::unordered_map<bitmap_center::key_type, bitmap_center::bitmap_type> bitmap_center::bb;
 bitmap_center::bitmap_type bitmap_center::grass_move_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_attack_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_damage_bitmap;
@@ -42,7 +45,7 @@ void bitmap_center::load()
     grass_damage_bitmap.loadFromFile("grass_damage.png");
     grass_selected_bitmap.loadFromFile("grass_sel.png");
 
-    add_entity_image<shooter>("pigeon.png");
+    add_entity_image<shooter>("shooter.png");
     add_entity_image<saberhand>("saberhand.png");
     add_entity_image<shoot>("bullet.png");
     add_entity_image<grenade>("grenade.png");
@@ -90,5 +93,13 @@ void bitmap_center::load()
     add_entity_image<build_cannon>("cannon.png");
     add_entity_image<cannon>("cannon.png");
     add_entity_image<build_barrack>("barrack.png");
+    add_entity_image<barrack>("barrack.png");
+    add_entity_image<builder<barrack>>("barrack.png");
+    add_entity_image<builder<shooter>>("shooter.png");
+    add_entity_image<builder<drilling_rig>>("drilling_rig.png");
+    add_entity_image<drilling_rig>("drilling_rig.png");
+    add_entity_image<fissure>("fissure.png");
+
+    add_bitmap("barrack", "barrack.png");
 }
 }

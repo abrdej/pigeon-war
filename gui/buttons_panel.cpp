@@ -83,6 +83,10 @@ void buttons_panel::set_buttons_for(size_t entity_id)
 				buttons_[i].remove_icon();
                 hints[i].clear();
 			}
+
+            if (entity_abilities.has_ability(i)) {
+                buttons_[i].icon(bitmap_center::get_bitmap(entity_abilities.get_bitmap_key(i)));
+            }
 		}
 		// this sometimes can happen
 	} else {

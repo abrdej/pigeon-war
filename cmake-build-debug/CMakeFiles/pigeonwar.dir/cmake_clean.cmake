@@ -59,6 +59,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.o"
   "CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.o"
   "CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.o"
+  "CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.o"
+  "CMakeFiles/pigeonwar.dir/abilities/builder.cpp.o"
   "pigeonwar.pdb"
   "pigeonwar"
 )

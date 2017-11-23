@@ -1,15 +1,14 @@
 #ifndef ABILITY_H
 #define ABILITY_H
 
-#include <memory>
+#include <iostream>
 
-class board;
-class ability : public std::enable_shared_from_this<ability>
+class ability //: public std::enable_shared_from_this<ability>
 {
 protected:
-	virtual ~ability(){}
+	virtual ~ability() = default;
 public:
-	enum class types { moving, attack, helping, passive };
+	//enum class types { moving, attack, helping, passive };
 	void operator()(size_t index)
 	{
 		prepare(index);
@@ -20,7 +19,7 @@ public:
 private:
 	virtual void prepare(size_t for_index) = 0;
 protected:
-	types type_;
+	//types type_;
 };
 
 #endif
