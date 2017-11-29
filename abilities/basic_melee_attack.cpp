@@ -11,7 +11,9 @@
 
 basic_melee_attack::basic_melee_attack()
 {
-
+	onEveryRound([this]() {
+		used = false;
+	});
 }
 
 void basic_melee_attack::prepare(size_t for_index)
@@ -28,6 +30,10 @@ void basic_melee_attack::prepare(size_t for_index)
 
 void basic_melee_attack::use(size_t index_on)
 {
+	if (used) {
+		return;
+	}
+
 	auto used_from_index = states::state_controller::selected_index_;
 
 	play_animation(used_from_index, index_on);
@@ -35,6 +41,8 @@ void basic_melee_attack::use(size_t index_on)
 	auto enemy_id = board::at(index_on);
 
 	damage_dealers::standard_damage_dealer(damage_, enemy_id);
+
+	used = true;
 
 	// show damage animation // for example. -9 dmg
 	//states::state_controller::target_fields(states::target_types::non);

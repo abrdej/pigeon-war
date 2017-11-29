@@ -2,8 +2,9 @@
 #define BASIC_MELEE_ATTACK_H
 
 #include "abilities/ability.h"
+#include "core/turn.h"
 
-class basic_melee_attack final : public ability
+class basic_melee_attack final : public ability, protected turn_events_helper::every_turn_callback_helper
 {
 public:
 	basic_melee_attack();
@@ -15,6 +16,7 @@ private:
 private:
 	static const size_t range_ = 1;
 	static const size_t damage_ = 4;
+	bool used{false};
 };
 
 #endif

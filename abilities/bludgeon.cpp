@@ -31,6 +31,7 @@ void bludgeon::use(size_t index_on)
 		return;
 
 	used_ = true;
+
 	auto used_from_index = states::state_controller::selected_index_;
 
 	auto from_pos = board::to_pos(used_from_index);
@@ -59,33 +60,38 @@ void bludgeon::use(size_t index_on)
 
 void bludgeon::play_animation(size_t from_index, size_t to_index, size_t set_on_index, size_t push_to_index)
 {
+	bool with_push = from_index != set_on_index;
+
 	auto entity_id = board::take(from_index);
-
 	auto type = types_manager::component_for(entity_id);
-
 
 	animation::player<animation::move>::launch(animation::move(from_index, to_index, type));
 	animation::base_player::play();
+
 	board::give_back(entity_id, to_index);
+
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "bum.png"));
 	animation::base_player::play();
 
-	if (from_index == set_on_index) {
+	if (with_push) {
 		entity_id = board::take(to_index);
-		animation::player<animation::move>::launch(animation::move(to_index, set_on_index, type));
-		animation::base_player::play();
+
+		auto enemy_id = board::take(to_index);
+
 		board::give_back(entity_id, set_on_index);
 
-		//board::give_back(enemy_id, to_index);
-
-	} else {
-
-		auto enemy_id = board::take(to_index); //
 		auto enemy_type = types_manager::component_for(enemy_id);
-
 		animation::player<animation::move>::launch(animation::move(to_index, push_to_index, enemy_type));
 		animation::base_player::play();
 		board::give_back(enemy_id, push_to_index);
+
+
+	} else {
+
+		animation::player<animation::move>::launch(animation::move(to_index, from_index, type));
+		animation::base_player::play();
+
+		board::give_back(entity_id, from_index);
 	}
 }
 
