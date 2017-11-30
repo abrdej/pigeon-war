@@ -35,12 +35,13 @@ void basic_melee_attack::use(size_t index_on)
 	}
 
 	auto used_from_index = states::state_controller::selected_index_;
+	auto caster_id = board::at(index_on);
 
 	play_animation(used_from_index, index_on);
 
 	auto enemy_id = board::at(index_on);
 
-	damage_dealers::standard_damage_dealer(damage_, enemy_id);
+	damage_dealers::standard_damage_dealer(damage_, enemy_id, caster_id);
 
 	used = true;
 

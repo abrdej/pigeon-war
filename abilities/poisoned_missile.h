@@ -27,5 +27,4 @@ private:
     std::unordered_map<int, std::shared_ptr<std::function<void()>>> rec;
 };
 
-
 #endif //PIGEONWAR_POISONED_MISSILE_H

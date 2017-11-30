@@ -33,6 +33,7 @@ void bludgeon::use(size_t index_on)
 	used_ = true;
 
 	auto used_from_index = states::state_controller::selected_index_;
+	auto entity_id = board::at(used_from_index);
 
 	auto from_pos = board::to_pos(used_from_index);
 	auto on_pos = board::to_pos(index_on);
@@ -53,7 +54,7 @@ void bludgeon::use(size_t index_on)
 
 	play_animation(used_from_index, index_on, set_on_index, push_to_index);
 
-	damage_dealers::standard_damage_dealer(damage_, board::at(push_to_index));
+	damage_dealers::standard_damage_dealer(damage_, board::at(push_to_index), entity_id);
 
 	states::state_controller::selected_index_ = set_on_index;
 }
@@ -84,7 +85,6 @@ void bludgeon::play_animation(size_t from_index, size_t to_index, size_t set_on_
 		animation::player<animation::move>::launch(animation::move(to_index, push_to_index, enemy_type));
 		animation::base_player::play();
 		board::give_back(enemy_id, push_to_index);
-
 
 	} else {
 

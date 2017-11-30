@@ -19,7 +19,7 @@ private:
 
 private:
 	static const size_t range_ = 3;
-	static const size_t damage_ = 7;
+	static const size_t damage_ = 8;
 	bool used{false};
 };
 
