@@ -42,7 +42,7 @@ void blow_the_ax::use(size_t index_on) {
     animation::base_player::play();
     board::give_back(entity_id, used_from_index);
 
-    damage_dealers::standard_damage_dealer(damage, board::at(index_on));
+    damage_dealers::standard_damage_dealer(damage, board::at(index_on), entity_id);
 
     used = true;
 }

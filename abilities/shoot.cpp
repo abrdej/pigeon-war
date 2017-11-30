@@ -41,10 +41,11 @@ void shoot::use(size_t index_on)
 
 	--bullets_;
 	auto used_from_index = states::state_controller::selected_index_;
+	auto entity_id = board::at(used_from_index);
 
 	play_bullet_animation(used_from_index, index_on);
 
-	damage_dealers::standard_damage_dealer(damage_, board::at(index_on));
+	damage_dealers::standard_damage_dealer(damage_, board::at(index_on), entity_id);
 }
 
 void shoot::play_bullet_animation(size_t from_index, size_t to_index)

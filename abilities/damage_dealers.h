@@ -5,11 +5,11 @@
 
 namespace damage_dealers
 {
-	int random_damage(size_t damage);
 
-	void play_change_health_animation(size_t to_index, int change_health);
+int random_damage(size_t damage);
 
-	int standard_damage_dealer(int damage, size_t enemy_id);
+int standard_damage_dealer(int damage, size_t enemy_id, size_t attacker_id);
+
 };
 
 #endif

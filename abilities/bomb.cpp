@@ -56,7 +56,7 @@ void bomb_detonation::use(size_t for_index) {
 	for (auto& index : neightbords)
 	{
 		if (!board::empty(index)) {
-			damage_dealers::standard_damage_dealer(damage, board::at(index));
+			damage_dealers::standard_damage_dealer(damage, board::at(index), healths_manager::no_attacker);
 		}
 
 	}
@@ -90,7 +90,7 @@ void bomb_detonation(std::size_t bomb_id, int damage) {
 	for (auto& index : neightbords)
 	{
 		if (!board::empty(index)) {
-			damage_dealers::standard_damage_dealer(damage, board::at(index));
+			damage_dealers::standard_damage_dealer(damage, board::at(index), healths_manager::no_attacker);
 		}
 
 	}

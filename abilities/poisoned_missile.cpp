@@ -34,16 +34,17 @@ void poisoned_missile::use(size_t index_on) {
         return;
 
     auto used_from_index = states::state_controller::selected_index_;
+    auto entity_id = board::at(used_from_index);
 
     play_animation(used_from_index, index_on);
 
-    damage_dealers::standard_damage_dealer(damage_, board::at(index_on));
+    damage_dealers::standard_damage_dealer(damage_, board::at(index_on), entity_id);
 
     auto enemy_id = board::at(index_on);
 
-    rec[enemy_id] = turn::turn_system::every_round([this, enemy_id, counter = 0]() mutable {
+    rec[enemy_id] = turn::turn_system::every_round([this, entity_id, enemy_id, counter = 0]() mutable {
         if (entity_manager::alive(enemy_id)) {
-            damage_dealers::standard_damage_dealer(poison_power_, enemy_id);
+            damage_dealers::standard_damage_dealer(poison_power_, enemy_id, entity_id);
 
             if (++counter == poison_last_) {
                 rec[enemy_id].reset();

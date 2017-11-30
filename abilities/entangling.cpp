@@ -8,7 +8,7 @@ entangling_life_suck::entangling_life_suck() {
     onEveryRound([this]() {
         int dealed_damage = 0;
         if (entity_manager::alive(enemy_id)) {
-            dealed_damage = damage_dealers::standard_damage_dealer(damage, enemy_id);
+            dealed_damage = damage_dealers::standard_damage_dealer(damage, enemy_id, caster_id);
         }
 
         if (entity_manager::alive(caster_id)) {
@@ -17,7 +17,7 @@ entangling_life_suck::entangling_life_suck() {
 
 
             if (final_recovery > 0) {
-                healths_manager::receive_damage(caster_id, -final_recovery);
+                healths_manager::receive_damage(caster_id, healths_manager::no_attacker, -final_recovery);
 
                 auto index = board::index_for(caster_id);
 
@@ -66,5 +66,5 @@ void entangling::use(size_t index_on) {
 
     board::insert(index_on, entangling_id);
 
-    damage_dealers::standard_damage_dealer(damage_, enemy_id);
+    damage_dealers::standard_damage_dealer(damage_, enemy_id, caster_id);
 }

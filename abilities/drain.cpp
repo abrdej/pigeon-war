@@ -37,14 +37,15 @@ void drain::use(size_t index_on)
 	}
 
 	auto used_from_index = states::state_controller::selected_index_;
+	auto entity_id = board::at(used_from_index);
 
 	play_animation(used_from_index, index_on);
 	
-	auto dealt_damage = damage_dealers::standard_damage_dealer(damage_, board::at(index_on));
+	auto dealt_damage = damage_dealers::standard_damage_dealer(damage_, board::at(index_on), entity_id);
 
-	auto entity_id = board::at(used_from_index);
+
 	auto amount_of_health = std::min<int>(drain_, dealt_damage);
-	healths_manager::receive_damage(entity_id, -amount_of_health);
+	healths_manager::receive_damage(entity_id, healths_manager::no_attacker, -amount_of_health);
 	used = true;
 
 	// show damage animation // for example. -9 dmg

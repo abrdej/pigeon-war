@@ -12,6 +12,8 @@
 #include <entities/cannon.h>
 #include <entities/barrack.h>
 #include <entities/fissure.h>
+#include <entities/thrower.h>
+#include <abilities/counterattack.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -101,6 +103,9 @@ void bitmap_center::load()
     add_entity_image<builder<drilling_rig>>("drilling_rig.png");
     add_entity_image<drilling_rig>("drilling_rig.png");
     add_entity_image<fissure>("fissure.png");
+    add_entity_image<thrower>("mouse.png");
+    add_entity_image<flame_thrower>("flame_thrower.png");
+    add_entity_image<counterattack>("native.png");
 
     add_bitmap("barrack", "barrack.png");
 

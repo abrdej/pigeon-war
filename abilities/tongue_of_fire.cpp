@@ -39,10 +39,11 @@ void tongue_of_fire::use(size_t index_on)
 
 	used_ = true;
 	auto used_from_index = states::state_controller::selected_index_;
+	auto entity_id = board::at(used_from_index);
 
 	play_bullet_animation(used_from_index, index_on);
 
-	damage_dealers::standard_damage_dealer(damage_, board::at(index_on));
+	damage_dealers::standard_damage_dealer(damage_, board::at(index_on), entity_id);
 
 	// show damage animation // for example. -9 dmg
 }

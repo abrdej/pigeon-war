@@ -20,7 +20,7 @@ rage::rage(size_t id) : entity_id(id) {
 			std::cout << "used\n";
 			use();
 		}
-	});
+	}, healths_manager::on_receive_damage_policy::after);
 }
 
 void rage::use() {
@@ -36,7 +36,7 @@ void rage::use() {
 
 	for (auto&& field_id : around_fields_ids) {
 		if (!board::empty(field_id)) {
-			damage_dealers::standard_damage_dealer(damage_, board::at(field_id));
+			damage_dealers::standard_damage_dealer(damage_, board::at(field_id), entity_id);
 		}
 	}
 }
