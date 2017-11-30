@@ -3,6 +3,7 @@
 
 #include "my_button.h"
 #include <SFML/Graphics.hpp>
+#include <array>
 
 class entity;
 class entity_manager;

@@ -5,12 +5,14 @@ include_directories(${CMAKE_SOURCE_DIR})
 
 set(CMAKE_CXX_STANDARD 14)
 
+set(SFML_ROOT "C:/Biblioteki/SFML-2.4.2")
+
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 find_package(SFML 2 REQUIRED network audio graphics window system)
 include_directories(${SFML_INCLUDE_DIR})
 
-set(BOOST_ROOT /usr/local/src/boost_1_45_0)
+set(BOOST_ROOT "C:/local/boost_1_65_1")
 set(BOOST_INCLUDEDIR=/usr/local/include/boost)
 
 find_package(Boost)

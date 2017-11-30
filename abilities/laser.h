@@ -18,8 +18,8 @@ private:
 	void play_animation(size_t from_index, size_t to_index);
 
 private:
-	static const size_t range_ = 3;
-	static const size_t damage_ = 7;
+	static const int range_ = 3;
+	static const int damage_ = 7;
 	bool used{false};
 };
 

@@ -4,506 +4,506 @@
 	<Project>
 		<Option title="pigeonwar"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="gcc"/>
+		<Option compiler="msvc8"/>
 		<Option virtualFolders="CMake Files\;CMake Files\cmake_modules\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
+				<Option working_dir="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="rebuild_cache">
-				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="pigeonwar">
-				<Option output="/home/abrdej/Projekty/pigeonwar/cmake-build-debug/pigeonwar" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
+				<Option output="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/pigeonwar.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="gcc"/>
+				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="/home/abrdej/Projekty/pigeonwar"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="C:/Users/abrde/Documents/Projekty/pigeon-war"/>
+					<Add directory="C:/Biblioteki/SFML-2.4.2/include"/>
+					<Add directory="C:/local/boost_1_65_1"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 pigeonwar"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 pigeonwar"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="pigeonwar/fast">
-				<Option output="/home/abrdej/Projekty/pigeonwar/cmake-build-debug/pigeonwar" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/abrdej/Projekty/pigeonwar/cmake-build-debug"/>
+				<Option output="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/pigeonwar.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="gcc"/>
+				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="/home/abrdej/Projekty/pigeonwar"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="C:/Users/abrde/Documents/Projekty/pigeon-war"/>
+					<Add directory="C:/Biblioteki/SFML-2.4.2/include"/>
+					<Add directory="C:/local/boost_1_65_1"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 pigeonwar/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/abrdej/Projekty/pigeonwar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 pigeonwar/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/ability.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/ability.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/armor.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/armor.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/armor.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/armor.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/basic_melee_attack.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/basic_melee_attack.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/basic_melee_attack.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/basic_melee_attack.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/blow_the_ax.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/blow_the_ax.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/blow_the_ax.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/blow_the_ax.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bludgeon.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bludgeon.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bludgeon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bomb.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bomb.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bomb.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bomb.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_barrack.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_barrack.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_barrack.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_barrack.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_cannon.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_cannon.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/build_cannon.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_cannon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/builder.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/builder.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/builder.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/builder.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bullet.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/bullet.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/damage_dealer.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealer.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/dodge.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/dodge.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/dodge.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/dodge.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/drain.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/drain.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/drain.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/drain.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/entangling.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/entangling.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/entangling.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/entangling.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/grenade.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/grenade.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/invisibility.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/invisibility.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/laser.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/laser.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/moveable.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/moveable.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poison.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poison.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/poisoned_missile.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/possible_movement.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/possible_movement.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/rage.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/rage.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/rage.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/rage.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/recovery.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/recovery.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/recovery.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/recovery.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sabers.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sabers.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sabers.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sabers.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/shoot.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/shoot.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sword_blow.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sword_blow.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/sword_blow.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sword_blow.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/teleport.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/teleport.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/teleport.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/teleport.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/tongue_of_fire.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/tongue_of_fire.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/tongue_of_fire.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/wolf_herd.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/wolf_herd.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/abilities/wolf_herd.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/wolf_herd.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/ai/ai.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/ai/ai.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai_manager.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/ai/ai_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/ai/ai_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/ai/ai_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animation.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animation.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animation.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animation.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animation_impl.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animation_impl.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animation_impl.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animation_impl.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animations_objects.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animations_objects.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/animation/animations_objects.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animations_objects.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/board.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/board.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/board.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/board.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/game.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/game.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/game.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/game.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/path_finder.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/path_finder.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/path_finder.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/path_finder.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/players.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/players.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/players.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/players.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/states.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/states.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/states.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/states.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/turn.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/turn.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/core/turn.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/turn.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/balloon.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/balloon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/barrack.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/barrack.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/cannon.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/cannon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/destroyer.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/destroyer.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/drilling_rig.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/drilling_rig.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/droid.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/droid.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/entity.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/entity.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/fire.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/fire.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/fissure.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/fissure.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/grenadier.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/grenadier.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/mouse.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/mouse.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/samurai_rat.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/samurai_rat.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/shooter.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/shooter.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/shooter.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/shooter.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/treant.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/treant.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/tree.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/tree.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/tree.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/tree.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/troll.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/troll.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/werewolf.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/werewolf.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/werewolf.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/werewolf.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/wolf.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/wolf.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/entities/wolf.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/wolf.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/bitmap_center.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmap_center.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/bitmap_center.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmap_center.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/board_panel.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/board_panel.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/buttons_panel.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/buttons_panel.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/buttons_panel.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/buttons_panel.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawable.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawable.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawer.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawer.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawing_manager.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/drawing_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/entity_drawer.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/gui.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/gui.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/my_button.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/my_button.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/gui/my_button.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/my_button.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/main.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/main.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/abilities_manager.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/abilities_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/abilities_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/abilities_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/directions_manager.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/directions_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/directions_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/directions_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_manager.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_remover.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_remover.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/entity_remover.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_remover.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/health_manager.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/health_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/health_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/health_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/names_manager.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/names_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/names_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/names_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/types_manager.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/types_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/managers/types_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/types_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/scenarios/scenarios.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/scenarios/scenarios.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/utils/creator_helper.cpp">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/utils/creator_helper.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/utils/creator_helper.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/utils/creator_helper.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/utils/scenario_helper.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/utils/scenario_helper.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/CMakeLists.txt">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/abrdej/Projekty/pigeonwar/cmake_modules/FindSFML.cmake">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake_modules/FindSFML.cmake">
 			<Option virtualFolder="CMake Files\cmake_modules\"/>
 		</Unit>
 	</Project>

@@ -51,7 +51,7 @@ void laser::use(size_t index_on) {
 	play_animation(used_from_index, index_to_move);
 
 	if (hor_diff != 0) {
-		for (int x = hor_diff > 0 ? 1 : -1; abs(x) <= abs(range_); x = hor_diff > 0 ? x + 1 : x - 1) {
+		for (int x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range_); x = hor_diff > 0 ? x + 1 : x - 1) {
 
 			auto index = board::to_index(to_pos.first + x, to_pos.second);
 

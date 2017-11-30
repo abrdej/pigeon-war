@@ -32,7 +32,8 @@ namespace view
 		{
 			bitmap_type bm;
 			if (!bm.loadFromFile(image_path))
-				throw std::exception();
+				std::cout << "Error loaded: " << image_path << "\n";
+				//throw std::exception();
 
 			bitmaps_.emplace(std::type_index(typeid(std::decay_t<Entity>)), bm);
 		}

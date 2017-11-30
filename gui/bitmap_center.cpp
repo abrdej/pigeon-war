@@ -40,6 +40,8 @@ bitmap_center::bitmap_type bitmap_center::grass_selected_bitmap;
 
 void bitmap_center::load()
 {
+    std::cout << "Load\n";
+
     grass_move_bitmap.loadFromFile("grass_move.png");
     grass_attack_bitmap.loadFromFile("grass_attack.png");
     grass_damage_bitmap.loadFromFile("grass_damage.png");
@@ -101,5 +103,7 @@ void bitmap_center::load()
     add_entity_image<fissure>("fissure.png");
 
     add_bitmap("barrack", "barrack.png");
+
+    std::cout << "End load\n";
 }
 }

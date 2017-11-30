@@ -3,6 +3,7 @@
 
 #include "managers/managers.h"
 #include <limits>
+#include <algorithm>
 
 struct health_field {
 	int health;
@@ -18,7 +19,7 @@ class healths_manager : public base_manager<health_field, health_field>
 		damage_receiver() {
 			impl = [](health_field& health_pack, int damage) {
 
-				auto final_damage = std::min(health_pack.health, damage);
+				auto final_damage = (std::min)(health_pack.health, damage);
 				health_pack.health -= final_damage;
 
 				return final_damage;

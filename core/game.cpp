@@ -23,7 +23,9 @@
 #include <iostream>
 
 game::game() {
+	std::cout << "here1\n";
 	create_scenario(*this, "saurions_web");
+	std::cout << "here2\n";
 }
 
 void game::on_board(size_t col, size_t row)

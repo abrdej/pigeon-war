@@ -2,6 +2,7 @@
 #include <core/states.h>
 #include <entities/wolf.h>
 #include <managers/entity_manager.h>
+#include <random>
 
 void wolf_herd::prepare(size_t for_index) {
 
