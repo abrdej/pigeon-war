@@ -5,7 +5,7 @@
 
 recovery::recovery(std::size_t id) : entity_id(id) {
 
-    healths_manager::on_receive_damage(entity_id, [this]() {
+    healths_manager::on_receive_damage(entity_id, [this](const damage_pack&) {
         no_damage_counter = 0;
     }, healths_manager::on_receive_damage_policy::after);
 
@@ -26,7 +26,9 @@ recovery::recovery(std::size_t id) : entity_id(id) {
             //                                   health_pack.base_health - health_pack.health);
 
             if (recovery_amount_per_turn > 0) {
-                healths_manager::receive_damage(entity_id, healths_manager::no_attacker, -recovery_amount_per_turn);
+                healths_manager::receive_damage(damage_pack(-recovery_amount_per_turn,
+                                                            damage_types::UNDEFINED,
+                                                            entity_id));
 
                 auto index = board::index_for(entity_id);
 

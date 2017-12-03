@@ -17,7 +17,7 @@ private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);
 
-    int damage{15};
+    int damage{12};
     bool used{false};
 };
 

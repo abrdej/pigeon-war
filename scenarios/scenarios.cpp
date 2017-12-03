@@ -70,7 +70,7 @@ void saurions_web_s(game& game) {
 
     auto web_poison_to_native = turn::turn_system::every_round([native_id]() {
         std::cout << "recaive damage\n";
-        auto damage = healths_manager::receive_damage(native_id, healths_manager::no_attacker, 4);
+        auto damage = healths_manager::receive_damage(damage_pack(4, damage_types::UNDEFINED, native_id));
 //        damage_dealers::play_change_health_animation(board::to_index(12, 4), damage);
     });
 
@@ -160,6 +160,9 @@ void wolves_dinner(game& game) {
 #include <entities/balloon.h>
 #include <entities/fissure.h>
 #include <entities/thrower.h>
+#include <entities/guardian.h>
+#include <entities/creature.h>
+#include <entities/handthrower.h>
 
 using Entites = boost::fusion::vector<shooter,
         destroyer,
@@ -172,7 +175,10 @@ using Entites = boost::fusion::vector<shooter,
         werewolf,
         grenadier,
         treant,
-        thrower>;
+        thrower,
+        guardian,
+        creature,
+        handthrower>;
 
 struct OwnerCallback {
     std::shared_ptr<std::function<void()>> owner;

@@ -13,9 +13,9 @@ counterattack::counterattack(std::size_t entity_id)
 		used = false;
 	});
 
-	healths_manager::on_receive_damage_with_attacker(entity_id, [this](size_t attacker_id) {
+	healths_manager::on_receive_damage(entity_id, [this](const damage_pack& dmg) {
 
-		auto enemy_index = board::index_for(attacker_id);
+		auto enemy_index = board::index_for(dmg.damage_dealer_id);
 
 		std::vector<std::size_t> neighbors;
 		board_helper::neighboring_fields(board::index_for(this->entity_id),
@@ -43,7 +43,7 @@ void counterattack::use(size_t index_on) {
 
 	play_animation(entity_index, index_on);
 
-	damage_dealers::standard_damage_dealer(damage, enemy_id, entity_id);
+	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
 
 	used = true;
 }

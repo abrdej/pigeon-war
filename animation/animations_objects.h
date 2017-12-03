@@ -66,7 +66,7 @@ namespace animation
 	class change_health_animation
 	{
 	public:
-		change_health_animation(change_health change_health_data);
+		explicit change_health_animation(change_health change_health_data);
 		void draw(sf::RenderWindow& window);
 		bool run();
 	private:

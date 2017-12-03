@@ -57,7 +57,7 @@ void laser::use(size_t index_on) {
 			auto index = board::to_index(to_pos.first + x, to_pos.second);
 
 			if (!board::empty(index))
-				damage_dealers::standard_damage_dealer(damage_, board::at(index), entity_id);
+				damage_dealers::standard_damage_dealer(special_damage(damage_, board::at(index), entity_id));
 		}
 	} else {
 		for (int y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range_); y = ver_diff > 0 ? y + 1 : y - 1) {
@@ -65,7 +65,7 @@ void laser::use(size_t index_on) {
 			auto index = board::to_index(to_pos.first, to_pos.second + y);
 
 			if (!board::empty(index))
-				damage_dealers::standard_damage_dealer(damage_, board::at(index), entity_id);
+				damage_dealers::standard_damage_dealer(special_damage(damage_, board::at(index), entity_id));
 		}
 	}
 

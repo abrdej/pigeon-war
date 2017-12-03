@@ -146,6 +146,18 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/counterattack.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/counterattack.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealer.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -167,10 +179,22 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/entangling.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/flame_thrower.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/flame_thrower.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.cpp">
@@ -209,6 +233,12 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/rage.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -227,10 +257,28 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sabers.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sword_blow.cpp">
@@ -332,6 +380,9 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/cannon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/creature.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/destroyer.h">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -353,6 +404,12 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/grenadier.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/guardian.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/handthrower.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/mouse.h">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -363,6 +420,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/shooter.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/thrower.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/treant.h">
@@ -447,6 +507,12 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/abilities_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/additions_manager.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/additions_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/directions_manager.cpp">

@@ -86,9 +86,25 @@ managers/entity_manager.h
 memory
 -
 
+..//abilities/chopper.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+boost/circular_buffer.hpp
+-
+
+..//abilities/counterattack.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/damage_dealers.h
 core/board.h
 ../abilities/core/board.h
+managers/health_manager.h
+../abilities/managers/health_manager.h
 
 ..//abilities/dodge.h
 ability.h
@@ -108,11 +124,23 @@ entities/entity.h
 abilities/ability.h
 ../abilities/abilities/ability.h
 
+..//abilities/flame_thrower.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/grenade.h
 abilities/ability.h
 ../abilities/abilities/ability.h
 vector
 -
+
+..//abilities/handcannon.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
 
 ..//abilities/invisibility.h
 abilities/ability.h
@@ -142,6 +170,12 @@ abilities/ability.h
 core/turn.h
 ../abilities/core/turn.h
 
+..//abilities/protection_field.h
+core/turn.h
+-
+ability.h
+../abilities/ability.h
+
 ..//abilities/rage.h
 core/turn.h
 -
@@ -162,11 +196,27 @@ vector
 core/turn.h
 ../abilities/core/turn.h
 
+..//abilities/shield.h
+ability.h
+../abilities/ability.h
+
 ..//abilities/shoot.h
 abilities/ability.h
 ../abilities/abilities/ability.h
 core/turn.h
 ../abilities/core/turn.h
+
+..//abilities/spear.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
+..//abilities/spiral_of_fire.h
+abilities/ability.h
+../abilities/abilities/ability.h
+vector
+-
 
 ..//abilities/sword_blow.h
 abilities/ability.h
@@ -218,14 +268,6 @@ chrono
 animation.h
 ../animation/animation.h
 SFML/Graphics.hpp
--
-thread
--
-algorithm
--
-animation.h
-../animation/animation.h
-nana/gui.hpp
 -
 thread
 -
@@ -362,6 +404,18 @@ abilities/moveable.h
 shooter.h
 ../entities/shooter.h
 
+..//entities/creature.h
+abilities/chopper.h
+-
+abilities/spiral_of_fire.h
+-
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+../entities/abilities/moveable.h
+
 ..//entities/destroyer.h
 abilities/armor.h
 -
@@ -416,6 +470,30 @@ abilities/abilities.h
 abilities/moveable.h
 ../entities/abilities/moveable.h
 
+..//entities/guardian.h
+abilities/spear.h
+-
+abilities/shield.h
+-
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+../entities/abilities/moveable.h
+
+..//entities/handthrower.h
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+../entities/abilities/moveable.h
+abilities/handcannon.h
+../entities/abilities/handcannon.h
+abilities/protection_field.h
+../entities/abilities/protection_field.h
+
 ..//entities/mouse.h
 abilities/poisoned_missile.h
 -
@@ -433,6 +511,8 @@ abilities/abilities.h
 ../entities/abilities/abilities.h
 abilities/drain.h
 ../entities/abilities/drain.h
+abilities/counterattack.h
+../entities/abilities/counterattack.h
 
 ..//entities/saberhand.h
 entities/entity.h
@@ -471,6 +551,16 @@ entity.h
 ..//entities/stone.h
 entity.h
 ../entities/entity.h
+
+..//entities/thrower.h
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+../entities/abilities/moveable.h
+abilities/flame_thrower.h
+-
 
 ..//entities/treant.h
 abilities/entangling.h
@@ -608,6 +698,14 @@ managers.h
 abilities/abilities.h
 ../managers/abilities/abilities.h
 
+..//managers/additions_manager.h
+managers.h
+../managers/managers.h
+memory
+-
+typeindex
+-
+
 ..//managers/directions_manager.h
 managers.h
 ../managers/managers.h
@@ -668,6 +766,10 @@ managers/managers.h
 limits
 -
 algorithm
+-
+animation/animation.h
+-
+core/board.h
 -
 
 ..//managers/managers.h
@@ -936,6 +1038,10 @@ managers/managers.h
 limits
 -
 algorithm
+-
+animation/animation.h
+-
+core/board.h
 -
 
 ../managers/managers.h
@@ -1954,6 +2060,54 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
 memory
 -
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.cpp
+core/states.h
+-
+core/board.h
+-
+entities/creature.h
+-
+gui/bitmap_center.h
+-
+managers/abilities_manager.h
+-
+chopper.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+managers/types_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/types_manager.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+boost/circular_buffer.hpp
+-
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/counterattack.cpp
+counterattack.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/counterattack.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+managers/health_manager.h
+-
+core/states.h
+-
+core/board.h
+-
+animation/animation.h
+-
+managers/types_manager.h
+-
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/counterattack.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealer.cpp
 damage_dealers.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
@@ -1967,6 +2121,8 @@ random
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
 core/board.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/board.h
+managers/health_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/health_manager.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/dodge.cpp
 dodge.h
@@ -2032,6 +2188,24 @@ entities/entity.h
 abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/flame_thrower.cpp
+flame_thrower.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/flame_thrower.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+core/path_finder.h
+-
+core/states.h
+-
+animation/animation.h
+-
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/flame_thrower.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.cpp
 grenade.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.h
@@ -2051,6 +2225,20 @@ abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 vector
 -
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.cpp
+core/states.h
+-
+handcannon.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.cpp
 invisibility.h
@@ -2133,6 +2321,8 @@ animation/animation.h
 -
 managers/entity_manager.h
 -
+managers/additions_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/additions_manager.h
 poisoned_missile.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.h
 damage_dealers.h
@@ -2149,6 +2339,22 @@ possible_movement.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.cpp
+managers/health_manager.h
+-
+core/states.h
+-
+protection_field.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.h
+core/turn.h
+-
+ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/rage.cpp
 managers/health_manager.h
@@ -2216,6 +2422,16 @@ vector
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.cpp
+managers/health_manager.h
+-
+shield.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.h
+ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.cpp
 shoot.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.h
@@ -2241,6 +2457,48 @@ abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.cpp
+core/states.h
+-
+managers/types_manager.h
+-
+spear.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.cpp
+core/states.h
+-
+core/board.h
+-
+entities/creature.h
+-
+gui/bitmap_center.h
+-
+managers/managers.h
+-
+spiral_of_fire.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+managers/types_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/types_manager.h
+managers/abilities_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/abilities_manager.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+vector
+-
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sword_blow.cpp
 animation/animation.h
@@ -2412,14 +2670,6 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animation_impl.h
 animation.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animation.h
 SFML/Graphics.hpp
--
-thread
--
-algorithm
--
-animation.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animation.h
-nana/gui.hpp
 -
 thread
 -
@@ -2695,6 +2945,20 @@ entities/barrack.h
 -
 entities/fissure.h
 -
+entities/thrower.h
+-
+abilities/counterattack.h
+-
+entities/guardian.h
+-
+entities/creature.h
+-
+abilities/spiral_of_fire.h
+-
+entities/handthrower.h
+-
+abilities/handcannon.h
+-
 gui/bitmap_center.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui/bitmap_center.h
 animation/animation.h
@@ -2926,6 +3190,18 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/managers.h
 abilities/abilities.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/managers/abilities/abilities.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/managers/additions_manager.cpp
+additions_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/managers/additions_manager.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/managers/additions_manager.h
+managers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/managers/managers.h
+memory
+-
+typeindex
+-
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/managers/directions_manager.cpp
 directions_manager.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/managers/directions_manager.h
@@ -3002,6 +3278,10 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/managers/managers.h
 limits
 -
 algorithm
+-
+animation/animation.h
+-
+core/board.h
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/managers/managers.h
@@ -3102,6 +3382,14 @@ entities/fire.h
 entities/balloon.h
 -
 entities/fissure.h
+-
+entities/thrower.h
+-
+entities/guardian.h
+-
+entities/creature.h
+-
+entities/handthrower.h
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.h

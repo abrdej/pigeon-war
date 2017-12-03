@@ -5,6 +5,8 @@ CMakeFiles/pigeonwar.dir/abilities/ability.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
 CMakeFiles/pigeonwar.dir/abilities/armor.cpp.obj
+ ..//animation/animation.h
+ ..//core/board.h
  ..//managers/health_manager.h
  ..//managers/managers.h
  ../managers/entity_remover.h
@@ -20,6 +22,8 @@ CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
  ../animation/animation.h
@@ -108,6 +112,8 @@ CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
  ../core/path_finder.h
@@ -124,6 +130,8 @@ CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
  ../core/path_finder.h
@@ -574,6 +582,7 @@ CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.obj
  ..//abilities/ability.h
  ..//abilities/builder.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -609,6 +618,7 @@ CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.obj
  ..//abilities/moveable.h
  ..//abilities/shoot.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -642,6 +652,7 @@ CMakeFiles/pigeonwar.dir/abilities/builder.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -671,6 +682,467 @@ CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.obj
  ..//core/board.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
+CMakeFiles/pigeonwar.dir/abilities/chopper.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/chopper.h
+ ..//abilities/moveable.h
+ ..//abilities/spiral_of_fire.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/module_holder.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/creature.h
+ ..//gui/bitmap_center.h
+ ..//managers/abilities_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../abilities/possible_movement.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/local/boost_1_65_1/boost/assert.hpp
+ C:/local/boost_1_65_1/boost/call_traits.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer/base.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer/debug.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer/details.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer/space_optimized.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer_fwd.hpp
+ C:/local/boost_1_65_1/boost/concept/assert.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/backward_compatibility.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/borland.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/concept_def.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/concept_undef.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/general.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/has_constraints.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/msvc.hpp
+ C:/local/boost_1_65_1/boost/concept/usage.hpp
+ C:/local/boost_1_65_1/boost/concept_check.hpp
+ C:/local/boost_1_65_1/boost/config.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/borland.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/clang.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/codegear.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/comeau.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/common_edg.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/compaq_cxx.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/cray.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/digitalmars.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/gcc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/gcc_xml.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/greenhills.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/hp_acc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/intel.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/kai.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/metrowerks.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/mpw.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/nvcc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/pathscale.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/pgi.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/sgi_mipspro.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/sunpro_cc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/vacpp.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/visualc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/xlcpp.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/xlcpp_zos.hpp
+ C:/local/boost_1_65_1/boost/config/detail/posix_features.hpp
+ C:/local/boost_1_65_1/boost/config/detail/select_compiler_config.hpp
+ C:/local/boost_1_65_1/boost/config/detail/select_platform_config.hpp
+ C:/local/boost_1_65_1/boost/config/detail/select_stdlib_config.hpp
+ C:/local/boost_1_65_1/boost/config/detail/suffix.hpp
+ C:/local/boost_1_65_1/boost/config/no_tr1/utility.hpp
+ C:/local/boost_1_65_1/boost/config/platform/aix.hpp
+ C:/local/boost_1_65_1/boost/config/platform/amigaos.hpp
+ C:/local/boost_1_65_1/boost/config/platform/beos.hpp
+ C:/local/boost_1_65_1/boost/config/platform/bsd.hpp
+ C:/local/boost_1_65_1/boost/config/platform/cray.hpp
+ C:/local/boost_1_65_1/boost/config/platform/cygwin.hpp
+ C:/local/boost_1_65_1/boost/config/platform/hpux.hpp
+ C:/local/boost_1_65_1/boost/config/platform/irix.hpp
+ C:/local/boost_1_65_1/boost/config/platform/linux.hpp
+ C:/local/boost_1_65_1/boost/config/platform/macos.hpp
+ C:/local/boost_1_65_1/boost/config/platform/qnxnto.hpp
+ C:/local/boost_1_65_1/boost/config/platform/solaris.hpp
+ C:/local/boost_1_65_1/boost/config/platform/symbian.hpp
+ C:/local/boost_1_65_1/boost/config/platform/vms.hpp
+ C:/local/boost_1_65_1/boost/config/platform/vxworks.hpp
+ C:/local/boost_1_65_1/boost/config/platform/win32.hpp
+ C:/local/boost_1_65_1/boost/config/platform/zos.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/dinkumware.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/libcomo.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/libcpp.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/libstdcpp3.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/modena.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/msl.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/roguewave.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/sgi.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/stlport.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/vacpp.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/xlcpp_zos.hpp
+ C:/local/boost_1_65_1/boost/config/user.hpp
+ C:/local/boost_1_65_1/boost/config/workaround.hpp
+ C:/local/boost_1_65_1/boost/container/allocator_traits.hpp
+ C:/local/boost_1_65_1/boost/container/container_fwd.hpp
+ C:/local/boost_1_65_1/boost/container/detail/config_begin.hpp
+ C:/local/boost_1_65_1/boost/container/detail/config_end.hpp
+ C:/local/boost_1_65_1/boost/container/detail/mpl.hpp
+ C:/local/boost_1_65_1/boost/container/detail/placement_new.hpp
+ C:/local/boost_1_65_1/boost/container/detail/std_fwd.hpp
+ C:/local/boost_1_65_1/boost/container/detail/type_traits.hpp
+ C:/local/boost_1_65_1/boost/container/detail/workaround.hpp
+ C:/local/boost_1_65_1/boost/core/addressof.hpp
+ C:/local/boost_1_65_1/boost/core/enable_if.hpp
+ C:/local/boost_1_65_1/boost/core/no_exceptions_support.hpp
+ C:/local/boost_1_65_1/boost/core/noncopyable.hpp
+ C:/local/boost_1_65_1/boost/core/pointer_traits.hpp
+ C:/local/boost_1_65_1/boost/current_function.hpp
+ C:/local/boost_1_65_1/boost/detail/call_traits.hpp
+ C:/local/boost_1_65_1/boost/detail/indirect_traits.hpp
+ C:/local/boost_1_65_1/boost/detail/iterator.hpp
+ C:/local/boost_1_65_1/boost/detail/no_exceptions_support.hpp
+ C:/local/boost_1_65_1/boost/detail/workaround.hpp
+ C:/local/boost_1_65_1/boost/exception/exception.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/config_begin.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/config_end.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/has_member_function_callable_with.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/mpl.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/workaround.hpp
+ C:/local/boost_1_65_1/boost/intrusive/pointer_rebind.hpp
+ C:/local/boost_1_65_1/boost/intrusive/pointer_traits.hpp
+ C:/local/boost_1_65_1/boost/iterator.hpp
+ C:/local/boost_1_65_1/boost/iterator/detail/config_def.hpp
+ C:/local/boost_1_65_1/boost/iterator/detail/config_undef.hpp
+ C:/local/boost_1_65_1/boost/iterator/detail/enable_if.hpp
+ C:/local/boost_1_65_1/boost/iterator/detail/facade_iterator_category.hpp
+ C:/local/boost_1_65_1/boost/iterator/interoperable.hpp
+ C:/local/boost_1_65_1/boost/iterator/iterator_adaptor.hpp
+ C:/local/boost_1_65_1/boost/iterator/iterator_categories.hpp
+ C:/local/boost_1_65_1/boost/iterator/iterator_facade.hpp
+ C:/local/boost_1_65_1/boost/iterator/iterator_traits.hpp
+ C:/local/boost_1_65_1/boost/iterator/reverse_iterator.hpp
+ C:/local/boost_1_65_1/boost/limits.hpp
+ C:/local/boost_1_65_1/boost/move/adl_move_swap.hpp
+ C:/local/boost_1_65_1/boost/move/algo/move.hpp
+ C:/local/boost_1_65_1/boost/move/algorithm.hpp
+ C:/local/boost_1_65_1/boost/move/core.hpp
+ C:/local/boost_1_65_1/boost/move/detail/config_begin.hpp
+ C:/local/boost_1_65_1/boost/move/detail/config_end.hpp
+ C:/local/boost_1_65_1/boost/move/detail/fwd_macros.hpp
+ C:/local/boost_1_65_1/boost/move/detail/iterator_to_raw_pointer.hpp
+ C:/local/boost_1_65_1/boost/move/detail/iterator_traits.hpp
+ C:/local/boost_1_65_1/boost/move/detail/meta_utils.hpp
+ C:/local/boost_1_65_1/boost/move/detail/meta_utils_core.hpp
+ C:/local/boost_1_65_1/boost/move/detail/pointer_element.hpp
+ C:/local/boost_1_65_1/boost/move/detail/std_ns_begin.hpp
+ C:/local/boost_1_65_1/boost/move/detail/std_ns_end.hpp
+ C:/local/boost_1_65_1/boost/move/detail/to_raw_pointer.hpp
+ C:/local/boost_1_65_1/boost/move/detail/type_traits.hpp
+ C:/local/boost_1_65_1/boost/move/detail/workaround.hpp
+ C:/local/boost_1_65_1/boost/move/iterator.hpp
+ C:/local/boost_1_65_1/boost/move/move.hpp
+ C:/local/boost_1_65_1/boost/move/traits.hpp
+ C:/local/boost_1_65_1/boost/move/utility.hpp
+ C:/local/boost_1_65_1/boost/move/utility_core.hpp
+ C:/local/boost_1_65_1/boost/mpl/always.hpp
+ C:/local/boost_1_65_1/boost/mpl/and.hpp
+ C:/local/boost_1_65_1/boost/mpl/apply.hpp
+ C:/local/boost_1_65_1/boost/mpl/apply_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/apply_wrap.hpp
+ C:/local/boost_1_65_1/boost/mpl/arg.hpp
+ C:/local/boost_1_65_1/boost/mpl/arg_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/assert.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/adl_barrier.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/arg_typedef.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/arity.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/arity_spec.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/common_name_wknd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/adl.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/arrays.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/bcc.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/bind.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/compiler.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/ctps.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/dmc_ambiguous_ctps.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/dtp.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/eti.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/gcc.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/gpu.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/has_apply.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/has_xxx.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/integral.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/intel.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/lambda.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/msvc.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/msvc_typename.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/nttp.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/overload_resolution.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/pp_counter.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/preprocessor.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/static_constant.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/ttp.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/use_preprocessed.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/workaround.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/count_args.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/full_lambda.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/has_apply.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/has_rebind.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/has_type.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/include_preprocessed.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/integral_wrapper.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/lambda_arity_param.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/lambda_no_ctps.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/lambda_support.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/logical_op.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/msvc_dtw.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/msvc_is_class.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/msvc_never_true.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/na.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/na_assert.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/na_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/na_spec.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/nested_type_wknd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/nttp_decl.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/add.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/def_params_tail.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/default_params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/enum.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/ext_params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/filter_params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/partial_spec_params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/range.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/repeat.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/sub.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/tuple.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/static_cast.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/template_arity.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/template_arity_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/type_wrapper.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/value_wknd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/yes_no.hpp
+ C:/local/boost_1_65_1/boost/mpl/bind.hpp
+ C:/local/boost_1_65_1/boost/mpl/bind_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/bool.hpp
+ C:/local/boost_1_65_1/boost/mpl/bool_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/eval_if.hpp
+ C:/local/boost_1_65_1/boost/mpl/has_xxx.hpp
+ C:/local/boost_1_65_1/boost/mpl/identity.hpp
+ C:/local/boost_1_65_1/boost/mpl/if.hpp
+ C:/local/boost_1_65_1/boost/mpl/int.hpp
+ C:/local/boost_1_65_1/boost/mpl/int_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/integral_c_tag.hpp
+ C:/local/boost_1_65_1/boost/mpl/is_placeholder.hpp
+ C:/local/boost_1_65_1/boost/mpl/lambda.hpp
+ C:/local/boost_1_65_1/boost/mpl/lambda_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/limits/arity.hpp
+ C:/local/boost_1_65_1/boost/mpl/next.hpp
+ C:/local/boost_1_65_1/boost/mpl/next_prior.hpp
+ C:/local/boost_1_65_1/boost/mpl/not.hpp
+ C:/local/boost_1_65_1/boost/mpl/or.hpp
+ C:/local/boost_1_65_1/boost/mpl/placeholders.hpp
+ C:/local/boost_1_65_1/boost/mpl/protect.hpp
+ C:/local/boost_1_65_1/boost/mpl/quote.hpp
+ C:/local/boost_1_65_1/boost/mpl/void.hpp
+ C:/local/boost_1_65_1/boost/mpl/void_fwd.hpp
+ C:/local/boost_1_65_1/boost/noncopyable.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/arithmetic/add.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/arithmetic/dec.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/arithmetic/inc.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/arithmetic/sub.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/array/data.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/array/elem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/array/size.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/cat.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/comma_if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/comparison/not_equal.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/config/config.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/detail/dmc/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/detail/edg/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/detail/msvc/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/detail/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/expr_if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/expr_iif.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/iif.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/debug/error.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/dec.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/auto_rec.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/check.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/dmc/auto_rec.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/is_binary.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/split.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/enum_shifted_params.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/expr_if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/detail/is_empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/expand.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/identity.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/is_1.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/is_empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/is_empty_variadic.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/overload.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/identity.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/inc.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/iterate.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/iteration/iterate.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/adt.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/dmc/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/edg/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/edg/fold_right.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/fold_right.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/fold_right.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/for_each_i.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/reverse.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/logical/and.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/logical/bitand.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/logical/bool.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/logical/compl.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/punctuation/comma.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/punctuation/comma_if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/punctuation/detail/is_begin_parens.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/punctuation/is_begin_parens.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repeat.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/detail/dmc/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/detail/edg/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/detail/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/detail/msvc/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/enum_params.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/enum_shifted_params.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/enum_trailing_params.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/repeat.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/detail/is_empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/detail/split.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/elem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/enum.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/first_n.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/for_each_i.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/rest_n.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/seq.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/size.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/subseq.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/slot/detail/def.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/slot/slot.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/stringize.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/detail/is_single_return.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/eat.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/elem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/rem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/size.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/to_list.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/variadic/elem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/variadic/size.hpp
+ C:/local/boost_1_65_1/boost/static_assert.hpp
+ C:/local/boost_1_65_1/boost/throw_exception.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_const.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_lvalue_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_rvalue_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/conditional.hpp
+ C:/local/boost_1_65_1/boost/type_traits/conversion_traits.hpp
+ C:/local/boost_1_65_1/boost/type_traits/declval.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/config.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/is_function_ptr_helper.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/is_function_ptr_tester.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/yes_no_type.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_nothrow_assign.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_nothrow_copy.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_assign.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_constructor.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_copy.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_destructor.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_move_assign.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_move_constructor.hpp
+ C:/local/boost_1_65_1/boost/type_traits/integral_constant.hpp
+ C:/local/boost_1_65_1/boost/type_traits/intrinsics.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_abstract.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_arithmetic.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_array.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_assignable.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_base_and_derived.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_class.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_const.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_constructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_convertible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_copy_constructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_default_constructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_destructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_empty.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_enum.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_floating_point.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_function.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_integral.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_lvalue_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_member_function_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_member_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_nothrow_move_assignable.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_nothrow_move_constructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_pod.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_polymorphic.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_rvalue_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_same.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_scalar.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_stateless.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_union.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_void.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_volatile.hpp
+ C:/local/boost_1_65_1/boost/type_traits/remove_const.hpp
+ C:/local/boost_1_65_1/boost/type_traits/remove_cv.hpp
+ C:/local/boost_1_65_1/boost/type_traits/remove_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/remove_reference.hpp
+ C:/local/boost_1_65_1/boost/utility/addressof.hpp
+ C:/local/boost_1_65_1/boost/utility/enable_if.hpp
+ C:/local/boost_1_65_1/boost/version.hpp
+CMakeFiles/pigeonwar.dir/abilities/counterattack.cpp.obj
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/counterattack.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/counterattack.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.obj
  ..//abilities/abilities.h
  ..//ai/ai_manager.h
@@ -827,17 +1299,53 @@ CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/entangling.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/entangling.h
+CMakeFiles/pigeonwar.dir/abilities/flame_thrower.cpp.obj
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/path_finder.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/flame_thrower.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/flame_thrower.h
 CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.obj
  ..//abilities/ability.h
  ..//animation/animation.h
  ..//core/board.h
  ..//core/path_finder.h
  ..//core/states.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//utils/graph.h
  ../core/path_finder.h
+ ../managers/entity_remover.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.h
+CMakeFiles/pigeonwar.dir/abilities/handcannon.cpp.obj
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -845,6 +1353,7 @@ CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj
  ..//abilities/moveable.h
  ..//abilities/sabers.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -893,9 +1402,12 @@ CMakeFiles/pigeonwar.dir/abilities/laser.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//utils/graph.h
  ../core/path_finder.h
  ../core/players.h
+ ../managers/entity_remover.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.h
@@ -942,6 +1454,7 @@ CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj
  ..//core/turn.h
  ..//entities/entity.h
  ..//managers/abilities_manager.h
+ ..//managers/additions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
@@ -963,6 +1476,22 @@ CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj
 CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
+CMakeFiles/pigeonwar.dir/abilities/protection_field.cpp.obj
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.h
 CMakeFiles/pigeonwar.dir/abilities/rage.cpp.obj
  ..//abilities/ability.h
  ..//animation/animation.h
@@ -1004,6 +1533,8 @@ CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
  ../animation/animation.h
@@ -1084,6 +1615,15 @@ CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sabers.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sabers.h
+CMakeFiles/pigeonwar.dir/abilities/shield.cpp.obj
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ../managers/entity_remover.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.h
 CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj
  ..//abilities/ability.h
  ..//animation/animation.h
@@ -1094,10 +1634,13 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//utils/graph.h
  ../animation/animation.h
  ../core/path_finder.h
  ../core/players.h
+ ../managers/entity_remover.h
  C:/Biblioteki/SFML-2.4.2/include/SFML/Audio.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Audio/AlResource.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Audio/Export.hpp
@@ -1190,6 +1733,467 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.h
+CMakeFiles/pigeonwar.dir/abilities/spear.cpp.obj
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.h
+CMakeFiles/pigeonwar.dir/abilities/spiral_of_fire.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/chopper.h
+ ..//abilities/moveable.h
+ ..//abilities/spiral_of_fire.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/module_holder.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/creature.h
+ ..//gui/bitmap_center.h
+ ..//managers/abilities_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../abilities/possible_movement.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.h
+ C:/local/boost_1_65_1/boost/assert.hpp
+ C:/local/boost_1_65_1/boost/call_traits.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer/base.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer/debug.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer/details.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer/space_optimized.hpp
+ C:/local/boost_1_65_1/boost/circular_buffer_fwd.hpp
+ C:/local/boost_1_65_1/boost/concept/assert.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/backward_compatibility.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/borland.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/concept_def.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/concept_undef.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/general.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/has_constraints.hpp
+ C:/local/boost_1_65_1/boost/concept/detail/msvc.hpp
+ C:/local/boost_1_65_1/boost/concept/usage.hpp
+ C:/local/boost_1_65_1/boost/concept_check.hpp
+ C:/local/boost_1_65_1/boost/config.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/borland.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/clang.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/codegear.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/comeau.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/common_edg.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/compaq_cxx.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/cray.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/digitalmars.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/gcc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/gcc_xml.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/greenhills.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/hp_acc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/intel.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/kai.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/metrowerks.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/mpw.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/nvcc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/pathscale.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/pgi.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/sgi_mipspro.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/sunpro_cc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/vacpp.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/visualc.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/xlcpp.hpp
+ C:/local/boost_1_65_1/boost/config/compiler/xlcpp_zos.hpp
+ C:/local/boost_1_65_1/boost/config/detail/posix_features.hpp
+ C:/local/boost_1_65_1/boost/config/detail/select_compiler_config.hpp
+ C:/local/boost_1_65_1/boost/config/detail/select_platform_config.hpp
+ C:/local/boost_1_65_1/boost/config/detail/select_stdlib_config.hpp
+ C:/local/boost_1_65_1/boost/config/detail/suffix.hpp
+ C:/local/boost_1_65_1/boost/config/no_tr1/utility.hpp
+ C:/local/boost_1_65_1/boost/config/platform/aix.hpp
+ C:/local/boost_1_65_1/boost/config/platform/amigaos.hpp
+ C:/local/boost_1_65_1/boost/config/platform/beos.hpp
+ C:/local/boost_1_65_1/boost/config/platform/bsd.hpp
+ C:/local/boost_1_65_1/boost/config/platform/cray.hpp
+ C:/local/boost_1_65_1/boost/config/platform/cygwin.hpp
+ C:/local/boost_1_65_1/boost/config/platform/hpux.hpp
+ C:/local/boost_1_65_1/boost/config/platform/irix.hpp
+ C:/local/boost_1_65_1/boost/config/platform/linux.hpp
+ C:/local/boost_1_65_1/boost/config/platform/macos.hpp
+ C:/local/boost_1_65_1/boost/config/platform/qnxnto.hpp
+ C:/local/boost_1_65_1/boost/config/platform/solaris.hpp
+ C:/local/boost_1_65_1/boost/config/platform/symbian.hpp
+ C:/local/boost_1_65_1/boost/config/platform/vms.hpp
+ C:/local/boost_1_65_1/boost/config/platform/vxworks.hpp
+ C:/local/boost_1_65_1/boost/config/platform/win32.hpp
+ C:/local/boost_1_65_1/boost/config/platform/zos.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/dinkumware.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/libcomo.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/libcpp.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/libstdcpp3.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/modena.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/msl.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/roguewave.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/sgi.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/stlport.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/vacpp.hpp
+ C:/local/boost_1_65_1/boost/config/stdlib/xlcpp_zos.hpp
+ C:/local/boost_1_65_1/boost/config/user.hpp
+ C:/local/boost_1_65_1/boost/config/workaround.hpp
+ C:/local/boost_1_65_1/boost/container/allocator_traits.hpp
+ C:/local/boost_1_65_1/boost/container/container_fwd.hpp
+ C:/local/boost_1_65_1/boost/container/detail/config_begin.hpp
+ C:/local/boost_1_65_1/boost/container/detail/config_end.hpp
+ C:/local/boost_1_65_1/boost/container/detail/mpl.hpp
+ C:/local/boost_1_65_1/boost/container/detail/placement_new.hpp
+ C:/local/boost_1_65_1/boost/container/detail/std_fwd.hpp
+ C:/local/boost_1_65_1/boost/container/detail/type_traits.hpp
+ C:/local/boost_1_65_1/boost/container/detail/workaround.hpp
+ C:/local/boost_1_65_1/boost/core/addressof.hpp
+ C:/local/boost_1_65_1/boost/core/enable_if.hpp
+ C:/local/boost_1_65_1/boost/core/no_exceptions_support.hpp
+ C:/local/boost_1_65_1/boost/core/noncopyable.hpp
+ C:/local/boost_1_65_1/boost/core/pointer_traits.hpp
+ C:/local/boost_1_65_1/boost/current_function.hpp
+ C:/local/boost_1_65_1/boost/detail/call_traits.hpp
+ C:/local/boost_1_65_1/boost/detail/indirect_traits.hpp
+ C:/local/boost_1_65_1/boost/detail/iterator.hpp
+ C:/local/boost_1_65_1/boost/detail/no_exceptions_support.hpp
+ C:/local/boost_1_65_1/boost/detail/workaround.hpp
+ C:/local/boost_1_65_1/boost/exception/exception.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/config_begin.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/config_end.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/has_member_function_callable_with.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/mpl.hpp
+ C:/local/boost_1_65_1/boost/intrusive/detail/workaround.hpp
+ C:/local/boost_1_65_1/boost/intrusive/pointer_rebind.hpp
+ C:/local/boost_1_65_1/boost/intrusive/pointer_traits.hpp
+ C:/local/boost_1_65_1/boost/iterator.hpp
+ C:/local/boost_1_65_1/boost/iterator/detail/config_def.hpp
+ C:/local/boost_1_65_1/boost/iterator/detail/config_undef.hpp
+ C:/local/boost_1_65_1/boost/iterator/detail/enable_if.hpp
+ C:/local/boost_1_65_1/boost/iterator/detail/facade_iterator_category.hpp
+ C:/local/boost_1_65_1/boost/iterator/interoperable.hpp
+ C:/local/boost_1_65_1/boost/iterator/iterator_adaptor.hpp
+ C:/local/boost_1_65_1/boost/iterator/iterator_categories.hpp
+ C:/local/boost_1_65_1/boost/iterator/iterator_facade.hpp
+ C:/local/boost_1_65_1/boost/iterator/iterator_traits.hpp
+ C:/local/boost_1_65_1/boost/iterator/reverse_iterator.hpp
+ C:/local/boost_1_65_1/boost/limits.hpp
+ C:/local/boost_1_65_1/boost/move/adl_move_swap.hpp
+ C:/local/boost_1_65_1/boost/move/algo/move.hpp
+ C:/local/boost_1_65_1/boost/move/algorithm.hpp
+ C:/local/boost_1_65_1/boost/move/core.hpp
+ C:/local/boost_1_65_1/boost/move/detail/config_begin.hpp
+ C:/local/boost_1_65_1/boost/move/detail/config_end.hpp
+ C:/local/boost_1_65_1/boost/move/detail/fwd_macros.hpp
+ C:/local/boost_1_65_1/boost/move/detail/iterator_to_raw_pointer.hpp
+ C:/local/boost_1_65_1/boost/move/detail/iterator_traits.hpp
+ C:/local/boost_1_65_1/boost/move/detail/meta_utils.hpp
+ C:/local/boost_1_65_1/boost/move/detail/meta_utils_core.hpp
+ C:/local/boost_1_65_1/boost/move/detail/pointer_element.hpp
+ C:/local/boost_1_65_1/boost/move/detail/std_ns_begin.hpp
+ C:/local/boost_1_65_1/boost/move/detail/std_ns_end.hpp
+ C:/local/boost_1_65_1/boost/move/detail/to_raw_pointer.hpp
+ C:/local/boost_1_65_1/boost/move/detail/type_traits.hpp
+ C:/local/boost_1_65_1/boost/move/detail/workaround.hpp
+ C:/local/boost_1_65_1/boost/move/iterator.hpp
+ C:/local/boost_1_65_1/boost/move/move.hpp
+ C:/local/boost_1_65_1/boost/move/traits.hpp
+ C:/local/boost_1_65_1/boost/move/utility.hpp
+ C:/local/boost_1_65_1/boost/move/utility_core.hpp
+ C:/local/boost_1_65_1/boost/mpl/always.hpp
+ C:/local/boost_1_65_1/boost/mpl/and.hpp
+ C:/local/boost_1_65_1/boost/mpl/apply.hpp
+ C:/local/boost_1_65_1/boost/mpl/apply_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/apply_wrap.hpp
+ C:/local/boost_1_65_1/boost/mpl/arg.hpp
+ C:/local/boost_1_65_1/boost/mpl/arg_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/assert.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/adl_barrier.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/arg_typedef.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/arity.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/arity_spec.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/common_name_wknd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/adl.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/arrays.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/bcc.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/bind.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/compiler.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/ctps.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/dmc_ambiguous_ctps.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/dtp.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/eti.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/gcc.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/gpu.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/has_apply.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/has_xxx.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/integral.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/intel.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/lambda.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/msvc.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/msvc_typename.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/nttp.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/overload_resolution.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/pp_counter.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/preprocessor.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/static_constant.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/ttp.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/use_preprocessed.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/config/workaround.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/count_args.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/full_lambda.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/has_apply.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/has_rebind.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/has_type.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/include_preprocessed.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/integral_wrapper.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/lambda_arity_param.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/lambda_no_ctps.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/lambda_support.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/logical_op.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/msvc_dtw.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/msvc_is_class.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/msvc_never_true.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/na.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/na_assert.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/na_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/na_spec.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/nested_type_wknd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/nttp_decl.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/add.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/def_params_tail.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/default_params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/enum.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/ext_params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/filter_params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/partial_spec_params.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/range.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/repeat.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/sub.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/preprocessor/tuple.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/static_cast.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/template_arity.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/template_arity_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/type_wrapper.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/value_wknd.hpp
+ C:/local/boost_1_65_1/boost/mpl/aux_/yes_no.hpp
+ C:/local/boost_1_65_1/boost/mpl/bind.hpp
+ C:/local/boost_1_65_1/boost/mpl/bind_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/bool.hpp
+ C:/local/boost_1_65_1/boost/mpl/bool_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/eval_if.hpp
+ C:/local/boost_1_65_1/boost/mpl/has_xxx.hpp
+ C:/local/boost_1_65_1/boost/mpl/identity.hpp
+ C:/local/boost_1_65_1/boost/mpl/if.hpp
+ C:/local/boost_1_65_1/boost/mpl/int.hpp
+ C:/local/boost_1_65_1/boost/mpl/int_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/integral_c_tag.hpp
+ C:/local/boost_1_65_1/boost/mpl/is_placeholder.hpp
+ C:/local/boost_1_65_1/boost/mpl/lambda.hpp
+ C:/local/boost_1_65_1/boost/mpl/lambda_fwd.hpp
+ C:/local/boost_1_65_1/boost/mpl/limits/arity.hpp
+ C:/local/boost_1_65_1/boost/mpl/next.hpp
+ C:/local/boost_1_65_1/boost/mpl/next_prior.hpp
+ C:/local/boost_1_65_1/boost/mpl/not.hpp
+ C:/local/boost_1_65_1/boost/mpl/or.hpp
+ C:/local/boost_1_65_1/boost/mpl/placeholders.hpp
+ C:/local/boost_1_65_1/boost/mpl/protect.hpp
+ C:/local/boost_1_65_1/boost/mpl/quote.hpp
+ C:/local/boost_1_65_1/boost/mpl/void.hpp
+ C:/local/boost_1_65_1/boost/mpl/void_fwd.hpp
+ C:/local/boost_1_65_1/boost/noncopyable.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/arithmetic/add.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/arithmetic/dec.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/arithmetic/inc.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/arithmetic/sub.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/array/data.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/array/elem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/array/size.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/cat.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/comma_if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/comparison/not_equal.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/config/config.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/detail/dmc/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/detail/edg/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/detail/msvc/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/detail/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/expr_if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/expr_iif.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/iif.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/control/while.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/debug/error.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/dec.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/auto_rec.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/check.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/dmc/auto_rec.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/is_binary.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/detail/split.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/enum_shifted_params.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/expr_if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/detail/is_empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/expand.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/identity.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/is_1.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/is_empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/is_empty_variadic.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/facilities/overload.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/identity.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/inc.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/iterate.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/iteration/iterate.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/adt.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/dmc/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/edg/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/edg/fold_right.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/detail/fold_right.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/fold_right.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/for_each_i.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/list/reverse.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/logical/and.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/logical/bitand.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/logical/bool.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/logical/compl.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/punctuation/comma.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/punctuation/comma_if.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/punctuation/detail/is_begin_parens.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/punctuation/is_begin_parens.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repeat.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/detail/dmc/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/detail/edg/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/detail/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/detail/msvc/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/enum_params.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/enum_shifted_params.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/enum_trailing_params.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/for.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/repetition/repeat.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/detail/is_empty.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/detail/split.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/elem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/enum.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/first_n.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/fold_left.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/for_each_i.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/rest_n.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/seq.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/size.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/seq/subseq.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/slot/detail/def.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/slot/slot.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/stringize.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/detail/is_single_return.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/eat.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/elem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/rem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/size.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/tuple/to_list.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/variadic/elem.hpp
+ C:/local/boost_1_65_1/boost/preprocessor/variadic/size.hpp
+ C:/local/boost_1_65_1/boost/static_assert.hpp
+ C:/local/boost_1_65_1/boost/throw_exception.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_const.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_lvalue_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/add_rvalue_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/conditional.hpp
+ C:/local/boost_1_65_1/boost/type_traits/conversion_traits.hpp
+ C:/local/boost_1_65_1/boost/type_traits/declval.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/config.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/is_function_ptr_helper.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/is_function_ptr_tester.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp
+ C:/local/boost_1_65_1/boost/type_traits/detail/yes_no_type.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_nothrow_assign.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_nothrow_copy.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_assign.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_constructor.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_copy.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_destructor.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_move_assign.hpp
+ C:/local/boost_1_65_1/boost/type_traits/has_trivial_move_constructor.hpp
+ C:/local/boost_1_65_1/boost/type_traits/integral_constant.hpp
+ C:/local/boost_1_65_1/boost/type_traits/intrinsics.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_abstract.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_arithmetic.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_array.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_assignable.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_base_and_derived.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_class.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_const.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_constructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_convertible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_copy_constructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_default_constructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_destructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_empty.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_enum.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_floating_point.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_function.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_integral.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_lvalue_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_member_function_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_member_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_nothrow_move_assignable.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_nothrow_move_constructible.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_pod.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_polymorphic.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_rvalue_reference.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_same.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_scalar.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_stateless.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_union.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_void.hpp
+ C:/local/boost_1_65_1/boost/type_traits/is_volatile.hpp
+ C:/local/boost_1_65_1/boost/type_traits/remove_const.hpp
+ C:/local/boost_1_65_1/boost/type_traits/remove_cv.hpp
+ C:/local/boost_1_65_1/boost/type_traits/remove_pointer.hpp
+ C:/local/boost_1_65_1/boost/type_traits/remove_reference.hpp
+ C:/local/boost_1_65_1/boost/utility/addressof.hpp
+ C:/local/boost_1_65_1/boost/utility/enable_if.hpp
+ C:/local/boost_1_65_1/boost/version.hpp
 CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.obj
  ..//abilities/ability.h
  ..//animation/animation.h
@@ -1197,6 +2201,8 @@ CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
  ../core/path_finder.h
@@ -1225,10 +2231,13 @@ CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
  ..//utils/graph.h
  ../animation/animation.h
  ../core/path_finder.h
  ../core/players.h
+ ../managers/entity_remover.h
  C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
@@ -1308,6 +2317,7 @@ CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -1367,6 +2377,7 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.obj
  ..//abilities/ability.h
  ..//abilities/shoot.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//animation/animation_impl.h
  ..//core/board.h
  ..//core/game.h
@@ -1488,6 +2499,7 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.obj
  ..//abilities/ability.h
  ..//abilities/shoot.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/game.h
  ..//core/module_holder.h
@@ -1603,6 +2615,7 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.obj
 CMakeFiles/pigeonwar.dir/core/board.cpp.obj
  ..//abilities/abilities.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -1624,6 +2637,7 @@ CMakeFiles/pigeonwar.dir/core/board.cpp.obj
 CMakeFiles/pigeonwar.dir/core/game.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/counterattack.h
  ..//abilities/damage_dealers.h
  ..//abilities/drain.h
  ..//abilities/invisibility.h
@@ -1688,6 +2702,7 @@ CMakeFiles/pigeonwar.dir/core/path_finder.cpp.obj
 CMakeFiles/pigeonwar.dir/core/players.cpp.obj
  ..//abilities/abilities.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -1711,6 +2726,7 @@ CMakeFiles/pigeonwar.dir/core/states.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -1744,6 +2760,8 @@ CMakeFiles/pigeonwar.dir/entities/shooter.cpp.obj
  ..//abilities/grenade.h
  ..//abilities/moveable.h
  ..//abilities/shoot.h
+ ..//animation/animation.h
+ ..//core/board.h
  ..//core/module_holder.h
  ..//core/signals.h
  ..//core/turn.h
@@ -1757,6 +2775,8 @@ CMakeFiles/pigeonwar.dir/entities/shooter.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/entities/shooter.h
 CMakeFiles/pigeonwar.dir/entities/tree.cpp.obj
  ..//abilities/abilities.h
+ ..//animation/animation.h
+ ..//core/board.h
  ..//core/module_holder.h
  ..//managers/health_manager.h
  ..//managers/managers.h
@@ -1770,6 +2790,8 @@ CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.obj
  ..//abilities/drain.h
  ..//abilities/moveable.h
  ..//abilities/wolf_herd.h
+ ..//animation/animation.h
+ ..//core/board.h
  ..//core/module_holder.h
  ..//core/signals.h
  ..//core/turn.h
@@ -1786,6 +2808,8 @@ CMakeFiles/pigeonwar.dir/entities/wolf.cpp.obj
  ..//abilities/ability.h
  ..//abilities/basic_melee_attack.h
  ..//abilities/moveable.h
+ ..//animation/animation.h
+ ..//core/board.h
  ..//core/module_holder.h
  ..//core/signals.h
  ..//core/turn.h
@@ -1808,18 +2832,26 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//abilities/build_barrack.h
  ..//abilities/build_cannon.h
  ..//abilities/builder.h
+ ..//abilities/chopper.h
+ ..//abilities/counterattack.h
  ..//abilities/dodge.h
  ..//abilities/drain.h
  ..//abilities/entangling.h
+ ..//abilities/flame_thrower.h
  ..//abilities/grenade.h
+ ..//abilities/handcannon.h
  ..//abilities/invisibility.h
  ..//abilities/laser.h
  ..//abilities/moveable.h
  ..//abilities/poisoned_missile.h
+ ..//abilities/protection_field.h
  ..//abilities/rage.h
  ..//abilities/recovery.h
  ..//abilities/sabers.h
+ ..//abilities/shield.h
  ..//abilities/shoot.h
+ ..//abilities/spear.h
+ ..//abilities/spiral_of_fire.h
  ..//abilities/sword_blow.h
  ..//abilities/teleport.h
  ..//abilities/tongue_of_fire.h
@@ -1835,12 +2867,15 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//entities/balloon.h
  ..//entities/barrack.h
  ..//entities/cannon.h
+ ..//entities/creature.h
  ..//entities/destroyer.h
  ..//entities/droid.h
  ..//entities/entity.h
  ..//entities/fire.h
  ..//entities/fissure.h
  ..//entities/grenadier.h
+ ..//entities/guardian.h
+ ..//entities/handthrower.h
  ..//entities/mouse.h
  ..//entities/native.h
  ..//entities/saberhand.h
@@ -1849,6 +2884,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//entities/saurions_web.h
  ..//entities/shooter.h
  ..//entities/stone.h
+ ..//entities/thrower.h
  ..//entities/treant.h
  ..//entities/tree.h
  ..//entities/troll.h
@@ -2376,6 +3412,7 @@ CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.obj
  ..//abilities/ability.h
  ..//abilities/shoot.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -2509,6 +3546,7 @@ CMakeFiles/pigeonwar.dir/gui/drawable.cpp.obj
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.obj
  ..//abilities/abilities.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/game.h
  ..//core/module_holder.h
@@ -2617,6 +3655,7 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/view_constants.h
 CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj
  ..//abilities/abilities.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//entities/entity.h
@@ -2708,6 +3747,7 @@ CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.obj
  ..//abilities/abilities.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//animation/animation_impl.h
  ..//animation/animations_objects.h
  ..//core/board.h
@@ -2897,6 +3937,7 @@ CMakeFiles/pigeonwar.dir/gui/my_button.cpp.obj
 CMakeFiles/pigeonwar.dir/main.cpp.obj
  ..//abilities/abilities.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//animation/animation_impl.h
  ..//core/board.h
  ..//core/game.h
@@ -3014,8 +4055,15 @@ CMakeFiles/pigeonwar.dir/managers/abilities_manager.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/abilities_manager.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_remover.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/managers.h
+CMakeFiles/pigeonwar.dir/managers/additions_manager.cpp.obj
+ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/additions_manager.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/additions_manager.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_remover.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/managers.h
 CMakeFiles/pigeonwar.dir/managers/directions_manager.cpp.obj
  ..//abilities/abilities.h
+ ..//animation/animation.h
+ ..//core/board.h
  ..//core/module_holder.h
  ..//entities/entity.h
  ..//managers/health_manager.h
@@ -3027,6 +4075,7 @@ CMakeFiles/pigeonwar.dir/managers/directions_manager.cpp.obj
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.obj
  ..//abilities/abilities.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h
@@ -3049,6 +4098,8 @@ CMakeFiles/pigeonwar.dir/managers/entity_remover.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_remover.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_remover.h
 CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.obj
+ ..//animation/animation.h
+ ..//core/board.h
  ..//managers/managers.h
  ../managers/entity_remover.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/health_manager.cpp
@@ -3073,22 +4124,31 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//abilities/build_barrack.h
  ..//abilities/build_cannon.h
  ..//abilities/builder.h
+ ..//abilities/chopper.h
+ ..//abilities/counterattack.h
  ..//abilities/damage_dealers.h
  ..//abilities/dodge.h
  ..//abilities/drain.h
  ..//abilities/entangling.h
+ ..//abilities/flame_thrower.h
+ ..//abilities/handcannon.h
  ..//abilities/invisibility.h
  ..//abilities/laser.h
  ..//abilities/moveable.h
  ..//abilities/poisoned_missile.h
+ ..//abilities/protection_field.h
  ..//abilities/rage.h
  ..//abilities/recovery.h
  ..//abilities/sabers.h
+ ..//abilities/shield.h
+ ..//abilities/spear.h
+ ..//abilities/spiral_of_fire.h
  ..//abilities/sword_blow.h
  ..//abilities/teleport.h
  ..//abilities/tongue_of_fire.h
  ..//abilities/wolf_herd.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/game.h
  ..//core/module_holder.h
@@ -3097,12 +4157,15 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//core/states.h
  ..//core/turn.h
  ..//entities/balloon.h
+ ..//entities/creature.h
  ..//entities/destroyer.h
  ..//entities/droid.h
  ..//entities/entity.h
  ..//entities/fire.h
  ..//entities/fissure.h
  ..//entities/grenadier.h
+ ..//entities/guardian.h
+ ..//entities/handthrower.h
  ..//entities/mouse.h
  ..//entities/native.h
  ..//entities/saberhand.h
@@ -3111,6 +4174,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//entities/saurions_web.h
  ..//entities/shooter.h
  ..//entities/stone.h
+ ..//entities/thrower.h
  ..//entities/treant.h
  ..//entities/tree.h
  ..//entities/troll.h
@@ -3851,6 +4915,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.obj
  ..//abilities/abilities.h
  ..//ai/ai_manager.h
+ ..//animation/animation.h
  ..//core/board.h
  ..//core/module_holder.h
  ..//core/players.h

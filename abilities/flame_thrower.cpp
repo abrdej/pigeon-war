@@ -48,12 +48,12 @@ void flame_thrower::use(size_t index_on) {
 
 	play_animation(used_from_index, index_on, neightbords);
 
-	damage_dealers::standard_damage_dealer(real_damage, board::at(index_on), entity_id);
+	damage_dealers::standard_damage_dealer(ranged_damage(real_damage, board::at(index_on), entity_id));
 
 	for (auto& index : neightbords)
 	{
 		if (!board::empty(index))
-			damage_dealers::standard_damage_dealer(real_damage, board::at(index), entity_id);
+			damage_dealers::standard_damage_dealer(ranged_damage(real_damage, board::at(index), entity_id));
 	}
 
 	++counter;

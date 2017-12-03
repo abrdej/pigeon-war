@@ -13,7 +13,7 @@ public:
 
 private:
     void prepare(size_t for_index) override {}
-    int max_damage{5};
+    int max_damage{6};
 };
 
 

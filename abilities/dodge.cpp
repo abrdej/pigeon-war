@@ -6,7 +6,7 @@
 
 dodge::dodge(std::size_t entity_id) {
 
-	healths_manager::set_damage_receiver(entity_id, [this, entity_id, counter = 0](health_field& health_pack, int damage) mutable {
+	healths_manager::set_damage_receiver(entity_id, [this, entity_id, counter = 0](health_field& health_pack, const damage_pack& dmg) mutable {
 
 		std::cout << "my damage receiver\n";
 
@@ -28,7 +28,7 @@ dodge::dodge(std::size_t entity_id) {
 			return 0;
 
 		} else {
-			auto final_damage = std::min(health_pack.health, damage);
+			auto final_damage = std::min(health_pack.health, dmg.damage_value);
 			health_pack.health -= final_damage;
 
 			return final_damage;

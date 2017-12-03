@@ -43,7 +43,7 @@ void tongue_of_fire::use(size_t index_on)
 
 	play_bullet_animation(used_from_index, index_on);
 
-	damage_dealers::standard_damage_dealer(damage_, board::at(index_on), entity_id);
+	damage_dealers::standard_damage_dealer(ranged_damage(damage_, board::at(index_on), entity_id));
 
 	// show damage animation // for example. -9 dmg
 }

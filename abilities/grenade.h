@@ -16,7 +16,7 @@ private:
 
 private:
 	static const size_t range_ = 3;
-	static const size_t damage_ = 15;
+	static const size_t damage_ = 12;
 	bool used_;
 };
 

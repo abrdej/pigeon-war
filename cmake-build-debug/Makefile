@@ -394,6 +394,60 @@ abilities\bullet.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\bullet.cpp.s
 .PHONY : abilities\bullet.cpp.s
 
+abilities\chopper.obj: abilities\chopper.cpp.obj
+
+.PHONY : abilities\chopper.obj
+
+# target to build an object file
+abilities\chopper.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj
+.PHONY : abilities\chopper.cpp.obj
+
+abilities\chopper.i: abilities\chopper.cpp.i
+
+.PHONY : abilities\chopper.i
+
+# target to preprocess a source file
+abilities\chopper.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.i
+.PHONY : abilities\chopper.cpp.i
+
+abilities\chopper.s: abilities\chopper.cpp.s
+
+.PHONY : abilities\chopper.s
+
+# target to generate assembly for a file
+abilities\chopper.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.s
+.PHONY : abilities\chopper.cpp.s
+
+abilities\counterattack.obj: abilities\counterattack.cpp.obj
+
+.PHONY : abilities\counterattack.obj
+
+# target to build an object file
+abilities\counterattack.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\counterattack.cpp.obj
+.PHONY : abilities\counterattack.cpp.obj
+
+abilities\counterattack.i: abilities\counterattack.cpp.i
+
+.PHONY : abilities\counterattack.i
+
+# target to preprocess a source file
+abilities\counterattack.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\counterattack.cpp.i
+.PHONY : abilities\counterattack.cpp.i
+
+abilities\counterattack.s: abilities\counterattack.cpp.s
+
+.PHONY : abilities\counterattack.s
+
+# target to generate assembly for a file
+abilities\counterattack.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\counterattack.cpp.s
+.PHONY : abilities\counterattack.cpp.s
+
 abilities\damage_dealer.obj: abilities\damage_dealer.cpp.obj
 
 .PHONY : abilities\damage_dealer.obj
@@ -502,6 +556,33 @@ abilities\entangling.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.s
 .PHONY : abilities\entangling.cpp.s
 
+abilities\flame_thrower.obj: abilities\flame_thrower.cpp.obj
+
+.PHONY : abilities\flame_thrower.obj
+
+# target to build an object file
+abilities\flame_thrower.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\flame_thrower.cpp.obj
+.PHONY : abilities\flame_thrower.cpp.obj
+
+abilities\flame_thrower.i: abilities\flame_thrower.cpp.i
+
+.PHONY : abilities\flame_thrower.i
+
+# target to preprocess a source file
+abilities\flame_thrower.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\flame_thrower.cpp.i
+.PHONY : abilities\flame_thrower.cpp.i
+
+abilities\flame_thrower.s: abilities\flame_thrower.cpp.s
+
+.PHONY : abilities\flame_thrower.s
+
+# target to generate assembly for a file
+abilities\flame_thrower.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\flame_thrower.cpp.s
+.PHONY : abilities\flame_thrower.cpp.s
+
 abilities\grenade.obj: abilities\grenade.cpp.obj
 
 .PHONY : abilities\grenade.obj
@@ -528,6 +609,33 @@ abilities\grenade.s: abilities\grenade.cpp.s
 abilities\grenade.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\grenade.cpp.s
 .PHONY : abilities\grenade.cpp.s
+
+abilities\handcannon.obj: abilities\handcannon.cpp.obj
+
+.PHONY : abilities\handcannon.obj
+
+# target to build an object file
+abilities\handcannon.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj
+.PHONY : abilities\handcannon.cpp.obj
+
+abilities\handcannon.i: abilities\handcannon.cpp.i
+
+.PHONY : abilities\handcannon.i
+
+# target to preprocess a source file
+abilities\handcannon.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.i
+.PHONY : abilities\handcannon.cpp.i
+
+abilities\handcannon.s: abilities\handcannon.cpp.s
+
+.PHONY : abilities\handcannon.s
+
+# target to generate assembly for a file
+abilities\handcannon.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.s
+.PHONY : abilities\handcannon.cpp.s
 
 abilities\invisibility.obj: abilities\invisibility.cpp.obj
 
@@ -691,6 +799,33 @@ abilities\possible_movement.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.s
 .PHONY : abilities\possible_movement.cpp.s
 
+abilities\protection_field.obj: abilities\protection_field.cpp.obj
+
+.PHONY : abilities\protection_field.obj
+
+# target to build an object file
+abilities\protection_field.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj
+.PHONY : abilities\protection_field.cpp.obj
+
+abilities\protection_field.i: abilities\protection_field.cpp.i
+
+.PHONY : abilities\protection_field.i
+
+# target to preprocess a source file
+abilities\protection_field.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.i
+.PHONY : abilities\protection_field.cpp.i
+
+abilities\protection_field.s: abilities\protection_field.cpp.s
+
+.PHONY : abilities\protection_field.s
+
+# target to generate assembly for a file
+abilities\protection_field.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.s
+.PHONY : abilities\protection_field.cpp.s
+
 abilities\rage.obj: abilities\rage.cpp.obj
 
 .PHONY : abilities\rage.obj
@@ -772,6 +907,33 @@ abilities\sabers.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\sabers.cpp.s
 .PHONY : abilities\sabers.cpp.s
 
+abilities\shield.obj: abilities\shield.cpp.obj
+
+.PHONY : abilities\shield.obj
+
+# target to build an object file
+abilities\shield.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shield.cpp.obj
+.PHONY : abilities\shield.cpp.obj
+
+abilities\shield.i: abilities\shield.cpp.i
+
+.PHONY : abilities\shield.i
+
+# target to preprocess a source file
+abilities\shield.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shield.cpp.i
+.PHONY : abilities\shield.cpp.i
+
+abilities\shield.s: abilities\shield.cpp.s
+
+.PHONY : abilities\shield.s
+
+# target to generate assembly for a file
+abilities\shield.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shield.cpp.s
+.PHONY : abilities\shield.cpp.s
+
 abilities\shoot.obj: abilities\shoot.cpp.obj
 
 .PHONY : abilities\shoot.obj
@@ -798,6 +960,60 @@ abilities\shoot.s: abilities\shoot.cpp.s
 abilities\shoot.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.s
 .PHONY : abilities\shoot.cpp.s
+
+abilities\spear.obj: abilities\spear.cpp.obj
+
+.PHONY : abilities\spear.obj
+
+# target to build an object file
+abilities\spear.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spear.cpp.obj
+.PHONY : abilities\spear.cpp.obj
+
+abilities\spear.i: abilities\spear.cpp.i
+
+.PHONY : abilities\spear.i
+
+# target to preprocess a source file
+abilities\spear.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spear.cpp.i
+.PHONY : abilities\spear.cpp.i
+
+abilities\spear.s: abilities\spear.cpp.s
+
+.PHONY : abilities\spear.s
+
+# target to generate assembly for a file
+abilities\spear.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spear.cpp.s
+.PHONY : abilities\spear.cpp.s
+
+abilities\spiral_of_fire.obj: abilities\spiral_of_fire.cpp.obj
+
+.PHONY : abilities\spiral_of_fire.obj
+
+# target to build an object file
+abilities\spiral_of_fire.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj
+.PHONY : abilities\spiral_of_fire.cpp.obj
+
+abilities\spiral_of_fire.i: abilities\spiral_of_fire.cpp.i
+
+.PHONY : abilities\spiral_of_fire.i
+
+# target to preprocess a source file
+abilities\spiral_of_fire.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.i
+.PHONY : abilities\spiral_of_fire.cpp.i
+
+abilities\spiral_of_fire.s: abilities\spiral_of_fire.cpp.s
+
+.PHONY : abilities\spiral_of_fire.s
+
+# target to generate assembly for a file
+abilities\spiral_of_fire.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.s
+.PHONY : abilities\spiral_of_fire.cpp.s
 
 abilities\sword_blow.obj: abilities\sword_blow.cpp.obj
 
@@ -1582,6 +1798,33 @@ managers\abilities_manager.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\abilities_manager.cpp.s
 .PHONY : managers\abilities_manager.cpp.s
 
+managers\additions_manager.obj: managers\additions_manager.cpp.obj
+
+.PHONY : managers\additions_manager.obj
+
+# target to build an object file
+managers\additions_manager.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\additions_manager.cpp.obj
+.PHONY : managers\additions_manager.cpp.obj
+
+managers\additions_manager.i: managers\additions_manager.cpp.i
+
+.PHONY : managers\additions_manager.i
+
+# target to preprocess a source file
+managers\additions_manager.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\additions_manager.cpp.i
+.PHONY : managers\additions_manager.cpp.i
+
+managers\additions_manager.s: managers\additions_manager.cpp.s
+
+.PHONY : managers\additions_manager.s
+
+# target to generate assembly for a file
+managers\additions_manager.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\additions_manager.cpp.s
+.PHONY : managers\additions_manager.cpp.s
+
 managers\directions_manager.obj: managers\directions_manager.cpp.obj
 
 .PHONY : managers\directions_manager.obj
@@ -1837,6 +2080,12 @@ help:
 	@echo ... abilities/bullet.obj
 	@echo ... abilities/bullet.i
 	@echo ... abilities/bullet.s
+	@echo ... abilities/chopper.obj
+	@echo ... abilities/chopper.i
+	@echo ... abilities/chopper.s
+	@echo ... abilities/counterattack.obj
+	@echo ... abilities/counterattack.i
+	@echo ... abilities/counterattack.s
 	@echo ... abilities/damage_dealer.obj
 	@echo ... abilities/damage_dealer.i
 	@echo ... abilities/damage_dealer.s
@@ -1849,9 +2098,15 @@ help:
 	@echo ... abilities/entangling.obj
 	@echo ... abilities/entangling.i
 	@echo ... abilities/entangling.s
+	@echo ... abilities/flame_thrower.obj
+	@echo ... abilities/flame_thrower.i
+	@echo ... abilities/flame_thrower.s
 	@echo ... abilities/grenade.obj
 	@echo ... abilities/grenade.i
 	@echo ... abilities/grenade.s
+	@echo ... abilities/handcannon.obj
+	@echo ... abilities/handcannon.i
+	@echo ... abilities/handcannon.s
 	@echo ... abilities/invisibility.obj
 	@echo ... abilities/invisibility.i
 	@echo ... abilities/invisibility.s
@@ -1870,6 +2125,9 @@ help:
 	@echo ... abilities/possible_movement.obj
 	@echo ... abilities/possible_movement.i
 	@echo ... abilities/possible_movement.s
+	@echo ... abilities/protection_field.obj
+	@echo ... abilities/protection_field.i
+	@echo ... abilities/protection_field.s
 	@echo ... abilities/rage.obj
 	@echo ... abilities/rage.i
 	@echo ... abilities/rage.s
@@ -1879,9 +2137,18 @@ help:
 	@echo ... abilities/sabers.obj
 	@echo ... abilities/sabers.i
 	@echo ... abilities/sabers.s
+	@echo ... abilities/shield.obj
+	@echo ... abilities/shield.i
+	@echo ... abilities/shield.s
 	@echo ... abilities/shoot.obj
 	@echo ... abilities/shoot.i
 	@echo ... abilities/shoot.s
+	@echo ... abilities/spear.obj
+	@echo ... abilities/spear.i
+	@echo ... abilities/spear.s
+	@echo ... abilities/spiral_of_fire.obj
+	@echo ... abilities/spiral_of_fire.i
+	@echo ... abilities/spiral_of_fire.s
 	@echo ... abilities/sword_blow.obj
 	@echo ... abilities/sword_blow.i
 	@echo ... abilities/sword_blow.s
@@ -1969,6 +2236,9 @@ help:
 	@echo ... managers/abilities_manager.obj
 	@echo ... managers/abilities_manager.i
 	@echo ... managers/abilities_manager.s
+	@echo ... managers/additions_manager.obj
+	@echo ... managers/additions_manager.i
+	@echo ... managers/additions_manager.s
 	@echo ... managers/directions_manager.obj
 	@echo ... managers/directions_manager.i
 	@echo ... managers/directions_manager.s

@@ -11,47 +11,22 @@
 
 namespace animation
 {
-	player_impl::player_impl(const std::function<void()>& updater)
+player_impl::player_impl(const std::function<void()>& updater)
 		: updater_(updater)
-	{
-	}
-
-	void player_impl::run()
-	{
-		while (true)
-		{
-			if (run_frame())
-				break;
-
-			updater_();
-			std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		}
-		drawers_.clear();
-		runners_.clear();
-	}
-};
-
-/*
-namespace animation
 {
-	player_impl::player_impl(const std::function<void()>& updater)
-		: updater_(updater)
+}
+
+void player_impl::run()
+{
+	while (true)
 	{
+		if (run_frame())
+			break;
+
+		updater_();
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
-
-	void player_impl::run()
-	{
-		while (true)
-		{
-			if (run_frame())
-				break;
-
-			updater_();
-			std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		}
-		drawers_.clear();
-		runners_.clear();
-	}
-
-	
-};*/
+	drawers_.clear();
+	runners_.clear();
+}
+};

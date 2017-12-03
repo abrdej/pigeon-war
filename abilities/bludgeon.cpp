@@ -54,7 +54,7 @@ void bludgeon::use(size_t index_on)
 
 	play_animation(used_from_index, index_on, set_on_index, push_to_index);
 
-	damage_dealers::standard_damage_dealer(damage_, board::at(push_to_index), entity_id);
+	damage_dealers::standard_damage_dealer(melee_damage(damage_, board::at(push_to_index), entity_id));
 
 	states::state_controller::selected_index_ = set_on_index;
 }

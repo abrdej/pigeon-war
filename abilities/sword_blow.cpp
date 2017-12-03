@@ -43,7 +43,7 @@ void sword_blow::use(size_t index_on) {
 
     for (auto&& field_id : around_fields_ids) {
         if (!board::empty(field_id)) {
-            auto damage = damage_dealers::standard_damage_dealer(damage_, board::at(field_id), entity_id);
+            auto damage = damage_dealers::standard_damage_dealer(melee_damage(damage_, board::at(field_id), entity_id));
             if (damage != 0) {
                 ++hit_entities_counter;
             }
@@ -54,7 +54,7 @@ void sword_blow::use(size_t index_on) {
         play_sword_blow_animation(used_from_index);
         for (auto&& field_id : around_fields_ids) {
             if (!board::empty(field_id)) {
-                damage_dealers::standard_damage_dealer(damage_, board::at(field_id), entity_id);
+                damage_dealers::standard_damage_dealer(melee_damage(damage_, board::at(field_id), entity_id));
             }
         }
     }

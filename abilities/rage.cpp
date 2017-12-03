@@ -11,7 +11,7 @@ rage::rage(size_t id) : entity_id(id) {
 		damage_this_turn = 0;
 	});
 
-	healths_manager::on_receive_damage(entity_id, [this]() {
+	healths_manager::on_receive_damage(entity_id, [this](const damage_pack&) {
 
 		std::cout << "on receive damage\n";
 
@@ -36,7 +36,7 @@ void rage::use() {
 
 	for (auto&& field_id : around_fields_ids) {
 		if (!board::empty(field_id)) {
-			damage_dealers::standard_damage_dealer(damage_, board::at(field_id), entity_id);
+			damage_dealers::standard_damage_dealer(melee_damage(damage_, board::at(field_id), entity_id));
 		}
 	}
 }

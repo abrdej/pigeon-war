@@ -19,17 +19,19 @@ int random_damage(int damage)
 }
 
 
-int damage_dealers::standard_damage_dealer(int damage, size_t enemy_id, size_t attacker_id)
+int damage_dealers::standard_damage_dealer(const damage_pack& dmg)
 {
-	if (!healths_manager::is_destructible(enemy_id)) {
+	if (!healths_manager::is_destructible(dmg.damage_receiver_id)) {
 		return 0;
 	}
 
-	auto rand_damage = random_damage(damage);
-	auto dealt_damage = healths_manager::receive_damage(enemy_id, attacker_id, rand_damage);
+	damage_pack dmg_up = dmg;
 
-	if (healths_manager::component_for(enemy_id).health <= 0)
-		entity_manager::destroy(enemy_id);
+	dmg_up.damage_value = random_damage(dmg.damage_value);
+	auto dealt_damage = healths_manager::receive_damage(dmg_up);
+
+	if (healths_manager::component_for(dmg.damage_receiver_id).health <= 0)
+		entity_manager::destroy(dmg.damage_receiver_id);
 
 	return dealt_damage;
 }

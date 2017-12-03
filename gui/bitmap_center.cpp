@@ -14,6 +14,11 @@
 #include <entities/fissure.h>
 #include <entities/thrower.h>
 #include <abilities/counterattack.h>
+#include <entities/guardian.h>
+#include <entities/creature.h>
+#include <abilities/spiral_of_fire.h>
+#include <entities/handthrower.h>
+#include <abilities/handcannon.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -106,6 +111,15 @@ void bitmap_center::load()
     add_entity_image<thrower>("mouse.png");
     add_entity_image<flame_thrower>("flame_thrower.png");
     add_entity_image<counterattack>("native.png");
+    add_entity_image<guardian>("guardian.png");
+    add_entity_image<spear>("spear.png");
+    add_entity_image<shield>("shield.png");
+    add_entity_image<creature>("creature.png");
+    add_entity_image<chopper>("chopper.png");
+    add_entity_image<spiral_of_fire>("spiral_of_fire.png");
+    add_entity_image<handthrower>("handthrower.png");
+    add_entity_image<handcannon>("handcannon.png");
+    add_entity_image<protection_field>("protection_field.png");
 
     add_bitmap("barrack", "barrack.png");
 

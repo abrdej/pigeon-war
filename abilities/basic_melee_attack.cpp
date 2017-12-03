@@ -41,7 +41,7 @@ void basic_melee_attack::use(size_t index_on)
 
 	auto enemy_id = board::at(index_on);
 
-	damage_dealers::standard_damage_dealer(damage_, enemy_id, caster_id);
+	damage_dealers::standard_damage_dealer(melee_damage(damage_, enemy_id, caster_id));
 
 	used = true;
 
