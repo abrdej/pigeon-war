@@ -18,6 +18,7 @@
 #include "entities/saberhand.h"
 #include "entities/stone.h"
 #include "entities/saurions_web.h"
+#include "entities/warrior.h"
 #include "utils/creator_helper.h"
 #include "utils/scenario_helper.h"
 
@@ -163,6 +164,7 @@ void wolves_dinner(game& game) {
 #include <entities/guardian.h>
 #include <entities/creature.h>
 #include <entities/handthrower.h>
+#include <entities/robot.h>
 
 using Entites = boost::fusion::vector<shooter,
         destroyer,
@@ -174,11 +176,13 @@ using Entites = boost::fusion::vector<shooter,
         mouse,
         werewolf,
         grenadier,
-        treant,
+        //treant,
         thrower,
         guardian,
         creature,
-        handthrower>;
+        warrior,
+        handthrower,
+        robot>;
 
 struct OwnerCallback {
     std::shared_ptr<std::function<void()>> owner;

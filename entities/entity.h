@@ -2,7 +2,6 @@
 #define ENTITY_H
 
 #include <limits>
-#include "core/module_holder.h"
 #include "abilities/abilities.h"
 #include "managers/health_manager.h"
 
@@ -32,23 +31,4 @@ inline entity_definition turned_left(entity_definition&& data)
 }
 };
 
-/*
-class entity : public molude_holder
-{
-protected:
-	entity()
-		: turn_(turn_types::right) {}
-	virtual ~entity(){}
-
-public:
-	enum class turn_types { right, left };
-	std::wstring name() const { return name_; }
-	turn_types turn() const { return turn_; }
-	void turn(turn_types to_turn) { turn_ = to_turn; }
-
-protected:
-	std::wstring name_;
-	turn_types turn_;
-};
-*/
 #endif

@@ -11,7 +11,7 @@ public:
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t index_on);
-	void play_bullet_animation(size_t from_index, size_t to_index);
+	void play_bullet_animation(std::size_t entity_id, size_t from_index, size_t to_index);
 	void refresh_usable();
 
 private:

@@ -1168,39 +1168,9 @@ CMakeFiles\pigeonwar.dir\core\players.cpp.obj.provides: CMakeFiles\pigeonwar.dir
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\core\players.cpp.obj
 
 
-CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
-CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj: ..\entities\shooter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/pigeonwar.dir/entities/shooter.cpp.obj"
-	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\entities\shooter.cpp
-<<
-
-CMakeFiles\pigeonwar.dir\entities\shooter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/entities/shooter.cpp.i"
-	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe > CMakeFiles\pigeonwar.dir\entities\shooter.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abrde\Documents\Projekty\pigeon-war\entities\shooter.cpp
-<<
-
-CMakeFiles\pigeonwar.dir\entities\shooter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/entities/shooter.cpp.s"
-	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\pigeonwar.dir\entities\shooter.cpp.s /c C:\Users\abrde\Documents\Projekty\pigeon-war\entities\shooter.cpp
-<<
-
-CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj.requires:
-
-.PHONY : CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj.requires
-
-CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj.provides: CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj.provides.build
-.PHONY : CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj.provides
-
-CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj
-
-
 CMakeFiles\pigeonwar.dir\managers\entity_remover.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\managers\entity_remover.cpp.obj: ..\managers\entity_remover.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/pigeonwar.dir/managers/entity_remover.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/pigeonwar.dir/managers/entity_remover.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\managers\entity_remover.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\managers\entity_remover.cpp
 <<
@@ -1230,7 +1200,7 @@ CMakeFiles\pigeonwar.dir\managers\entity_remover.cpp.obj.provides.build: CMakeFi
 
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\scenarios\scenarios.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\scenarios\scenarios.cpp
 <<
@@ -1260,7 +1230,7 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj.provides.build: CMakeFiles\
 
 CMakeFiles\pigeonwar.dir\entities\tree.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\entities\tree.cpp.obj: ..\entities\tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/pigeonwar.dir/entities/tree.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/pigeonwar.dir/entities/tree.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\entities\tree.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\entities\tree.cpp
 <<
@@ -1290,7 +1260,7 @@ CMakeFiles\pigeonwar.dir\entities\tree.cpp.obj.provides.build: CMakeFiles\pigeon
 
 CMakeFiles\pigeonwar.dir\abilities\sword_blow.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\sword_blow.cpp.obj: ..\abilities\sword_blow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/sword_blow.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\sword_blow.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\sword_blow.cpp
 <<
@@ -1320,7 +1290,7 @@ CMakeFiles\pigeonwar.dir\abilities\sword_blow.cpp.obj.provides.build: CMakeFiles
 
 CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj: ..\abilities\poison.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/poison.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/poison.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\poison.cpp
 <<
@@ -1350,7 +1320,7 @@ CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj.provides.build: CMakeFiles\pig
 
 CMakeFiles\pigeonwar.dir\abilities\bludgeon.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\bludgeon.cpp.obj: ..\abilities\bludgeon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\bludgeon.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\bludgeon.cpp
 <<
@@ -1380,7 +1350,7 @@ CMakeFiles\pigeonwar.dir\abilities\bludgeon.cpp.obj.provides.build: CMakeFiles\p
 
 CMakeFiles\pigeonwar.dir\abilities\rage.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\rage.cpp.obj: ..\abilities\rage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/rage.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/rage.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\rage.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\rage.cpp
 <<
@@ -1410,7 +1380,7 @@ CMakeFiles\pigeonwar.dir\abilities\rage.cpp.obj.provides.build: CMakeFiles\pigeo
 
 CMakeFiles\pigeonwar.dir\managers\health_manager.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\managers\health_manager.cpp.obj: ..\managers\health_manager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/pigeonwar.dir/managers/health_manager.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\managers\health_manager.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\managers\health_manager.cpp
 <<
@@ -1440,7 +1410,7 @@ CMakeFiles\pigeonwar.dir\managers\health_manager.cpp.obj.provides.build: CMakeFi
 
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\abilities\poisoned_missile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\poisoned_missile.cpp
 <<
@@ -1470,7 +1440,7 @@ CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj.provides.build: CMak
 
 CMakeFiles\pigeonwar.dir\abilities\laser.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\laser.cpp.obj: ..\abilities\laser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/laser.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/laser.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\laser.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\laser.cpp
 <<
@@ -1500,7 +1470,7 @@ CMakeFiles\pigeonwar.dir\abilities\laser.cpp.obj.provides.build: CMakeFiles\pige
 
 CMakeFiles\pigeonwar.dir\abilities\teleport.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\teleport.cpp.obj: ..\abilities\teleport.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/teleport.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\teleport.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\teleport.cpp
 <<
@@ -1530,7 +1500,7 @@ CMakeFiles\pigeonwar.dir\abilities\teleport.cpp.obj.provides.build: CMakeFiles\p
 
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\abilities\wolf_herd.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\wolf_herd.cpp
 <<
@@ -1560,7 +1530,7 @@ CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj.provides.build: CMakeFiles\
 
 CMakeFiles\pigeonwar.dir\abilities\dodge.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\dodge.cpp.obj: ..\abilities\dodge.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\dodge.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\dodge.cpp
 <<
@@ -1590,7 +1560,7 @@ CMakeFiles\pigeonwar.dir\abilities\dodge.cpp.obj.provides.build: CMakeFiles\pige
 
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\abilities\bomb.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\bomb.cpp
 <<
@@ -1620,7 +1590,7 @@ CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj.provides.build: CMakeFiles\pigeo
 
 CMakeFiles\pigeonwar.dir\abilities\armor.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\armor.cpp.obj: ..\abilities\armor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/armor.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/armor.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\armor.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\armor.cpp
 <<
@@ -1650,7 +1620,7 @@ CMakeFiles\pigeonwar.dir\abilities\armor.cpp.obj.provides.build: CMakeFiles\pige
 
 CMakeFiles\pigeonwar.dir\abilities\blow_the_ax.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\blow_the_ax.cpp.obj: ..\abilities\blow_the_ax.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\blow_the_ax.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\blow_the_ax.cpp
 <<
@@ -1680,7 +1650,7 @@ CMakeFiles\pigeonwar.dir\abilities\blow_the_ax.cpp.obj.provides.build: CMakeFile
 
 CMakeFiles\pigeonwar.dir\gui\drawable.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\gui\drawable.cpp.obj: ..\gui\drawable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/pigeonwar.dir/gui/drawable.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/pigeonwar.dir/gui/drawable.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\gui\drawable.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\gui\drawable.cpp
 <<
@@ -1710,7 +1680,7 @@ CMakeFiles\pigeonwar.dir\gui\drawable.cpp.obj.provides.build: CMakeFiles\pigeonw
 
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\gui\drawing_manager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\gui\drawing_manager.cpp
 <<
@@ -1740,7 +1710,7 @@ CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj.provides.build: CMakeFiles\
 
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\abilities\entangling.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\entangling.cpp
 <<
@@ -1770,7 +1740,7 @@ CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj.provides.build: CMakeFiles
 
 CMakeFiles\pigeonwar.dir\abilities\recovery.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\recovery.cpp.obj: ..\abilities\recovery.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\recovery.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\recovery.cpp
 <<
@@ -1800,7 +1770,7 @@ CMakeFiles\pigeonwar.dir\abilities\recovery.cpp.obj.provides.build: CMakeFiles\p
 
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\abilities\build_cannon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\build_cannon.cpp
 <<
@@ -1830,7 +1800,7 @@ CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj.provides.build: CMakeFil
 
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\abilities\build_barrack.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\build_barrack.cpp
 <<
@@ -1860,7 +1830,7 @@ CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj.provides.build: CMakeFi
 
 CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.obj: ..\abilities\possible_movement.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\possible_movement.cpp
 <<
@@ -1890,7 +1860,7 @@ CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.obj.provides.build: CMa
 
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\abilities\builder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/builder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/builder.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\builder.cpp
 <<
@@ -1920,7 +1890,7 @@ CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj.provides.build: CMakeFiles\pi
 
 CMakeFiles\pigeonwar.dir\abilities\flame_thrower.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\flame_thrower.cpp.obj: ..\abilities\flame_thrower.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/flame_thrower.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/flame_thrower.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\flame_thrower.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\flame_thrower.cpp
 <<
@@ -1950,7 +1920,7 @@ CMakeFiles\pigeonwar.dir\abilities\flame_thrower.cpp.obj.provides.build: CMakeFi
 
 CMakeFiles\pigeonwar.dir\abilities\counterattack.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\counterattack.cpp.obj: ..\abilities\counterattack.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/counterattack.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/counterattack.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\counterattack.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\counterattack.cpp
 <<
@@ -1980,7 +1950,7 @@ CMakeFiles\pigeonwar.dir\abilities\counterattack.cpp.obj.provides.build: CMakeFi
 
 CMakeFiles\pigeonwar.dir\abilities\spear.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\spear.cpp.obj: ..\abilities\spear.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/spear.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/spear.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\spear.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\spear.cpp
 <<
@@ -2010,7 +1980,7 @@ CMakeFiles\pigeonwar.dir\abilities\spear.cpp.obj.provides.build: CMakeFiles\pige
 
 CMakeFiles\pigeonwar.dir\abilities\shield.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\shield.cpp.obj: ..\abilities\shield.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/shield.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/shield.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\shield.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\shield.cpp
 <<
@@ -2040,7 +2010,7 @@ CMakeFiles\pigeonwar.dir\abilities\shield.cpp.obj.provides.build: CMakeFiles\pig
 
 CMakeFiles\pigeonwar.dir\managers\additions_manager.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\managers\additions_manager.cpp.obj: ..\managers\additions_manager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/pigeonwar.dir/managers/additions_manager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/pigeonwar.dir/managers/additions_manager.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\managers\additions_manager.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\managers\additions_manager.cpp
 <<
@@ -2070,7 +2040,7 @@ CMakeFiles\pigeonwar.dir\managers\additions_manager.cpp.obj.provides.build: CMak
 
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\abilities\chopper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/chopper.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/chopper.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\chopper.cpp
 <<
@@ -2100,7 +2070,7 @@ CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj.provides.build: CMakeFiles\pi
 
 CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\abilities\spiral_of_fire.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/spiral_of_fire.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/spiral_of_fire.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\spiral_of_fire.cpp
 <<
@@ -2130,7 +2100,7 @@ CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj.provides.build: CMakeF
 
 CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj: ..\abilities\handcannon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/handcannon.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/handcannon.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\handcannon.cpp
 <<
@@ -2160,7 +2130,7 @@ CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj.provides.build: CMakeFiles
 
 CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
 CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj: ..\abilities\protection_field.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/protection_field.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/protection_field.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\protection_field.cpp
 <<
@@ -2186,6 +2156,126 @@ CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj.provides: CMakeFiles
 .PHONY : CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj.provides
 
 CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj
+
+
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\managers\animation_manager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/pigeonwar.dir/managers/animation_manager.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\managers\animation_manager.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/managers/animation_manager.cpp.i"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe > CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abrde\Documents\Projekty\pigeon-war\managers\animation_manager.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/managers/animation_manager.cpp.s"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.s /c C:\Users\abrde\Documents\Projekty\pigeon-war\managers\animation_manager.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj.requires:
+
+.PHONY : CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj.requires
+
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj.provides: CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj.provides.build
+.PHONY : CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj.provides
+
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj
+
+
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\gui\drawer_factory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/pigeonwar.dir/gui/drawer_factory.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\gui\drawer_factory.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/gui/drawer_factory.cpp.i"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe > CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abrde\Documents\Projekty\pigeon-war\gui\drawer_factory.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/gui/drawer_factory.cpp.s"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.s /c C:\Users\abrde\Documents\Projekty\pigeon-war\gui\drawer_factory.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj.requires:
+
+.PHONY : CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj.requires
+
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj.provides: CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj.provides.build
+.PHONY : CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj.provides
+
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj
+
+
+CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
+CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj: ..\abilities\warrior_blow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/warrior_blow.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\warrior_blow.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/warrior_blow.cpp.i"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe > CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\warrior_blow.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/warrior_blow.cpp.s"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.s /c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\warrior_blow.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj.requires:
+
+.PHONY : CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj.requires
+
+CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj.provides: CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj.provides.build
+.PHONY : CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj.provides
+
+CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj
+
+
+CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
+CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\abilities\immortality.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/immortality.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\immortality.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/immortality.cpp.i"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe > CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\immortality.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/immortality.cpp.s"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\pigeonwar.dir\abilities\immortality.cpp.s /c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\immortality.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj.requires:
+
+.PHONY : CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj.requires
+
+CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj.provides: CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj.provides.build
+.PHONY : CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj.provides
+
+CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj
 
 
 # Object files for target pigeonwar
@@ -2227,7 +2317,6 @@ pigeonwar_OBJECTS = \
 "CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\managers\names_manager.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\core\players.cpp.obj" \
-"CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\managers\entity_remover.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\entities\tree.cpp.obj" \
@@ -2260,7 +2349,11 @@ pigeonwar_OBJECTS = \
 "CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj" \
-"CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj"
+"CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj" \
+"CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj" \
+"CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj" \
+"CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj" \
+"CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj"
 
 # External object files for target pigeonwar
 pigeonwar_EXTERNAL_OBJECTS =
@@ -2302,7 +2395,6 @@ pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\sabers.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\managers\names_manager.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\core\players.cpp.obj
-pigeonwar.exe: CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\managers\entity_remover.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\entities\tree.cpp.obj
@@ -2336,6 +2428,10 @@ pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj
+pigeonwar.exe: CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj
+pigeonwar.exe: CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj
+pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj
+pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\build.make
 pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-network-d.lib
 pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-audio-d.lib
@@ -2343,7 +2439,7 @@ pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-graphics-d.lib
 pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-window-d.lib
 pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-system-d.lib
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Linking CXX executable pigeonwar.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Linking CXX executable pigeonwar.exe"
 	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\pigeonwar.dir --manifests  -- C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\pigeonwar.dir\objects1.rsp @<<
  /out:pigeonwar.exe /implib:pigeonwar.lib /pdb:C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\pigeonwar.pdb /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console C:\Biblioteki\SFML-2.4.2\lib\sfml-network-d.lib C:\Biblioteki\SFML-2.4.2\lib\sfml-audio-d.lib C:\Biblioteki\SFML-2.4.2\lib\sfml-graphics-d.lib C:\Biblioteki\SFML-2.4.2\lib\sfml-window-d.lib C:\Biblioteki\SFML-2.4.2\lib\sfml-system-d.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
@@ -2390,7 +2486,6 @@ CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\sabers.cpp
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\managers\names_manager.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\core\players.cpp.obj.requires
-CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\managers\entity_remover.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\entities\tree.cpp.obj.requires
@@ -2424,6 +2519,10 @@ CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\chopper.cp
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj.requires
+CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj.requires
+CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj.requires
+CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj.requires
+CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj.requires
 
 .PHONY : CMakeFiles\pigeonwar.dir\requires
 

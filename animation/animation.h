@@ -5,6 +5,7 @@
 #include <functional>
 #include <typeindex>
 #include <chrono>
+#include <vector>
 
 namespace animation
 {
@@ -67,6 +68,14 @@ struct move
 	size_t from_index;
 	size_t to_index;
 	std::type_index object_type;
+};
+
+struct move_at_path {
+	move_at_path(std::size_t start_index, std::vector<std::size_t> path, std::type_index object_type)
+			: path(std::move(path)), start_index(start_index), object_type(object_type) {}
+	std::vector<std::size_t> path;
+	std::type_index object_type;
+	std::size_t start_index;
 };
 
 struct move_entity

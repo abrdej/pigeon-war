@@ -58,7 +58,6 @@ void bomb_detonation::use(size_t for_index) {
 		if (!board::empty(index)) {
 			damage_dealers::standard_damage_dealer(special_damage(damage, board::at(index)));
 		}
-
 	}
 
 	entity_manager::destroy(bomb_id);

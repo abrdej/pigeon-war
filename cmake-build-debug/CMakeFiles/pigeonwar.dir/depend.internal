@@ -145,24 +145,38 @@ CMakeFiles/pigeonwar.dir/abilities/bludgeon.cpp.obj
 CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
  ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -170,6 +184,77 @@ CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bomb.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bomb.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
@@ -581,10 +666,12 @@ CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
  ..//abilities/builder.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
@@ -592,45 +679,13 @@ CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.obj
  ..//entities/barrack.h
  ..//entities/entity.h
  ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
- ..//utils/graph.h
- ../ai/ai.h
- ../ai/behavior_tree.h
- ../core/path_finder.h
- ../core/players.h
- ../entities/entity.h
- ../entities/shooter.h
- ../managers/abilities_manager.h
- ../managers/directions_manager.h
- ../managers/entity_remover.h
- ../managers/health_manager.h
- ../managers/managers.h
- ../managers/names_manager.h
- ../managers/types_manager.h
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_barrack.cpp
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_barrack.h
-CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.obj
- ..//abilities/abilities.h
- ..//abilities/ability.h
- ..//abilities/moveable.h
- ..//abilities/shoot.h
- ..//ai/ai_manager.h
- ..//animation/animation.h
- ..//core/board.h
- ..//core/module_holder.h
- ..//core/players.h
- ..//core/signals.h
- ..//core/states.h
- ..//core/turn.h
- ..//entities/cannon.h
- ..//entities/entity.h
- ..//managers/abilities_manager.h
- ..//managers/entity_manager.h
- ..//managers/health_manager.h
- ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
  ../abilities/possible_movement.h
  ../ai/ai.h
@@ -639,6 +694,13 @@ CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.obj
  ../core/players.h
  ../entities/entity.h
  ../entities/shooter.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -646,29 +708,233 @@ CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_barrack.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_barrack.h
+CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
+ ..//ai/ai_manager.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/cannon.h
+ ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
+ ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../abilities/possible_movement.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
+ ../entities/shooter.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
+ ../managers/abilities_manager.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_cannon.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/build_cannon.h
 CMakeFiles/pigeonwar.dir/abilities/builder.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
  ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -676,6 +942,77 @@ CMakeFiles/pigeonwar.dir/abilities/builder.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/builder.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/builder.h
 CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.obj
@@ -690,7 +1027,6 @@ CMakeFiles/pigeonwar.dir/abilities/chopper.cpp.obj
  ..//abilities/spiral_of_fire.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
@@ -1145,18 +1481,37 @@ CMakeFiles/pigeonwar.dir/abilities/counterattack.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
+ ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -1164,6 +1519,77 @@ CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealer.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.obj
@@ -1271,24 +1697,39 @@ CMakeFiles/pigeonwar.dir/abilities/drain.cpp.obj
 CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
  ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -1296,6 +1737,77 @@ CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/entangling.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/entangling.h
@@ -1346,33 +1858,39 @@ CMakeFiles/pigeonwar.dir/abilities/handcannon.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h
-CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj
+CMakeFiles/pigeonwar.dir/abilities/immortality.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
- ..//abilities/invisibility.h
+ ..//abilities/grenade.h
  ..//abilities/moveable.h
- ..//abilities/sabers.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
- ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
- ..//entities/saberhand.h
- ..//gui/bitmap_center.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
- ..//utils/graph.h
+ ..//managers/types_manager.h
  ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
- ../core/path_finder.h
  ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -1381,18 +1899,197 @@ CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj
  ../managers/names_manager.h
  ../managers/types_manager.h
  C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
  C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/immortality.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/immortality.h
+CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/invisibility.h
+ ..//abilities/moveable.h
+ ..//abilities/sabers.h
+ ..//abilities/shoot.h
+ ..//ai/ai_manager.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//entities/saberhand.h
+ ..//entities/shooter.h
+ ..//gui/bitmap_center.h
+ ..//gui/drawing_manager.h
+ ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../abilities/possible_movement.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
+ ../managers/abilities_manager.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.h
 CMakeFiles/pigeonwar.dir/abilities/laser.cpp.obj
@@ -1416,7 +2113,6 @@ CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.obj
  ..//abilities/ability.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/path_finder.h
  ..//core/signals.h
  ..//core/states.h
@@ -1444,25 +2140,40 @@ CMakeFiles/pigeonwar.dir/abilities/poison.cpp.obj
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
  ..//managers/additions_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
  ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -1470,6 +2181,77 @@ CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.h
@@ -1625,7 +2407,11 @@ CMakeFiles/pigeonwar.dir/abilities/shield.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.h
 CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj
+ ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//animation/animation.h
  ..//animation/animation_impl.h
  ..//audio/audio_impl.h
@@ -1634,13 +2420,28 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
+ ..//managers/directions_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../animation/animation.h
  ../core/path_finder.h
  ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/entity_remover.h
+ ../managers/managers.h
  C:/Biblioteki/SFML-2.4.2/include/SFML/Audio.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Audio/AlResource.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Audio/Export.hpp
@@ -1759,7 +2560,6 @@ CMakeFiles/pigeonwar.dir/abilities/spiral_of_fire.cpp.obj
  ..//abilities/spiral_of_fire.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
@@ -2313,26 +3113,61 @@ CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/tongue_of_fire.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/tongue_of_fire.h
+CMakeFiles/pigeonwar.dir/abilities/warrior_blow.cpp.obj
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/warrior_blow.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/warrior_blow.h
 CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
  ..//core/states.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//entities/wolf.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
+ ../core/players.h
  ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -2340,6 +3175,77 @@ CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/wolf_herd.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/wolf_herd.h
 CMakeFiles/pigeonwar.dir/ai/ai.cpp.obj
@@ -2375,21 +3281,24 @@ CMakeFiles/pigeonwar.dir/animation/animation.cpp.obj
 CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
  ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//animation/animation_impl.h
  ..//core/board.h
  ..//core/game.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
  ..//gui/buttons_panel.h
+ ..//gui/drawing_manager.h
  ..//gui/gui.h
  ..//gui/my_button.h
  ..//gui/view_constants.h
@@ -2401,14 +3310,17 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.obj
  ..//managers/types_manager.h
  ..//utils/graph.h
  ..//utils/utility.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
  ../core/players.h
+ ../entities/entity.h
  ../gui/bitmap_center.h
  ../gui/board_panel.h
  ../gui/drawable.h
  ../gui/drawer.h
+ ../gui/drawer_factory.h
  ../gui/drawing_manager.h
  ../gui/entity_drawer.h
  ../gui/my_button.h
@@ -2497,20 +3409,23 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.obj
 CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
  ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
  ..//core/game.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
  ..//gui/drawer.h
+ ..//gui/drawing_manager.h
  ..//gui/view_constants.h
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h
@@ -2520,13 +3435,16 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.obj
  ..//managers/types_manager.h
  ..//utils/graph.h
  ..//utils/utility.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
  ../core/players.h
+ ../entities/entity.h
  ../gui/bitmap_center.h
  ../gui/board_panel.h
  ../gui/drawable.h
+ ../gui/drawer_factory.h
  ../gui/drawing_manager.h
  ../gui/entity_drawer.h
  ../gui/my_button.h
@@ -2614,18 +3532,37 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animations_objects.h
 CMakeFiles/pigeonwar.dir/core/board.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
+ ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -2633,6 +3570,77 @@ CMakeFiles/pigeonwar.dir/core/board.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/board.cpp
 CMakeFiles/pigeonwar.dir/core/game.cpp.obj
  ..//abilities/abilities.h
@@ -2640,16 +3648,17 @@ CMakeFiles/pigeonwar.dir/core/game.cpp.obj
  ..//abilities/counterattack.h
  ..//abilities/damage_dealers.h
  ..//abilities/drain.h
+ ..//abilities/grenade.h
  ..//abilities/invisibility.h
  ..//abilities/moveable.h
  ..//abilities/sabers.h
+ ..//abilities/shoot.h
  ..//abilities/tongue_of_fire.h
  ..//abilities/wolf_herd.h
  ..//ai/ai.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/path_finder.h
  ..//core/players.h
  ..//core/signals.h
@@ -2659,15 +3668,19 @@ CMakeFiles/pigeonwar.dir/core/game.cpp.obj
  ..//entities/saberhand.h
  ..//entities/saurian.h
  ..//entities/saurions_web.h
+ ..//entities/shooter.h
  ..//entities/stone.h
  ..//entities/werewolf.h
  ..//entities/wolf.h
+ ..//gui/drawing_manager.h
  ..//gui/effects_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/entity_remover.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//scenarios/scenarios.h
  ..//utils/creator_helper.h
  ..//utils/graph.h
@@ -2677,6 +3690,13 @@ CMakeFiles/pigeonwar.dir/core/game.cpp.obj
  ../ai/behavior_tree.h
  ../core/players.h
  ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -2684,6 +3704,77 @@ CMakeFiles/pigeonwar.dir/core/game.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/game.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/game.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/path_finder.h
@@ -2701,18 +3792,36 @@ CMakeFiles/pigeonwar.dir/core/path_finder.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/path_finder.h
 CMakeFiles/pigeonwar.dir/core/players.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -2720,24 +3829,113 @@ CMakeFiles/pigeonwar.dir/core/players.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/players.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/players.h
 CMakeFiles/pigeonwar.dir/core/states.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
+ ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -2745,6 +3943,77 @@ CMakeFiles/pigeonwar.dir/core/states.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/board.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/path_finder.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/states.cpp
@@ -2754,30 +4023,10 @@ CMakeFiles/pigeonwar.dir/core/turn.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/players.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/turn.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/turn.h
-CMakeFiles/pigeonwar.dir/entities/shooter.cpp.obj
- ..//abilities/abilities.h
- ..//abilities/ability.h
- ..//abilities/grenade.h
- ..//abilities/moveable.h
- ..//abilities/shoot.h
- ..//animation/animation.h
- ..//core/board.h
- ..//core/module_holder.h
- ..//core/signals.h
- ..//core/turn.h
- ..//managers/health_manager.h
- ..//managers/managers.h
- ../abilities/possible_movement.h
- ../core/players.h
- ../managers/entity_remover.h
- C:/Users/abrde/Documents/Projekty/pigeon-war/entities/entity.h
- C:/Users/abrde/Documents/Projekty/pigeon-war/entities/shooter.cpp
- C:/Users/abrde/Documents/Projekty/pigeon-war/entities/shooter.h
 CMakeFiles/pigeonwar.dir/entities/tree.cpp.obj
  ..//abilities/abilities.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//managers/health_manager.h
  ..//managers/managers.h
  ../managers/entity_remover.h
@@ -2792,7 +4041,6 @@ CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.obj
  ..//abilities/wolf_herd.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/signals.h
  ..//core/turn.h
  ..//managers/health_manager.h
@@ -2810,7 +4058,6 @@ CMakeFiles/pigeonwar.dir/entities/wolf.cpp.obj
  ..//abilities/moveable.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/signals.h
  ..//core/turn.h
  ..//managers/health_manager.h
@@ -2840,6 +4087,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//abilities/flame_thrower.h
  ..//abilities/grenade.h
  ..//abilities/handcannon.h
+ ..//abilities/immortality.h
  ..//abilities/invisibility.h
  ..//abilities/laser.h
  ..//abilities/moveable.h
@@ -2855,11 +4103,11 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//abilities/sword_blow.h
  ..//abilities/teleport.h
  ..//abilities/tongue_of_fire.h
+ ..//abilities/warrior_blow.h
  ..//abilities/wolf_herd.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
@@ -2878,6 +4126,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//entities/handthrower.h
  ..//entities/mouse.h
  ..//entities/native.h
+ ..//entities/robot.h
  ..//entities/saberhand.h
  ..//entities/samurai_rat.h
  ..//entities/saurian.h
@@ -2888,13 +4137,17 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//entities/treant.h
  ..//entities/tree.h
  ..//entities/troll.h
+ ..//entities/warrior.h
  ..//entities/werewolf.h
  ..//entities/wolf.h
  ..//gui/bitmap_center.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/graph.h
  ../abilities/ability.h
  ../abilities/moveable.h
@@ -2907,6 +4160,13 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ../entities/drilling_rig.h
  ../entities/entity.h
  ../entities/shooter.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -2915,18 +4175,76 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ../managers/names_manager.h
  ../managers/types_manager.h
  C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
  C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmap_center.cpp
  C:/local/boost_1_65_1/boost/assert.hpp
  C:/local/boost_1_65_1/boost/call_traits.hpp
@@ -3410,23 +4728,35 @@ CMakeFiles/pigeonwar.dir/gui/board_panel.cpp.obj
 CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
  ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//gui/bitmap_center.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -3545,16 +4875,23 @@ CMakeFiles/pigeonwar.dir/gui/drawable.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.h
 CMakeFiles/pigeonwar.dir/gui/drawer.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
  ..//core/game.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
  ..//core/states.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
+ ..//gui/drawing_manager.h
  ..//gui/view_constants.h
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h
@@ -3563,9 +4900,12 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
  ../gui/my_button.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
@@ -3650,19 +4990,29 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer_factory.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/view_constants.h
-CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj
+CMakeFiles/pigeonwar.dir/gui/drawer_factory.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
+ ..//core/signals.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//managers/directions_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
+ ../abilities/possible_movement.h
+ ../core/players.h
+ ../entities/entity.h
  ../managers/entity_remover.h
  ../managers/managers.h
  C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
@@ -3739,6 +5089,107 @@ CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmap_center.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer_factory.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer_factory.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/my_button.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/view_constants.h
+CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//managers/directions_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ../abilities/possible_movement.h
+ ../core/players.h
+ ../entities/entity.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmap_center.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer_factory.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.h
@@ -3746,19 +5197,26 @@ CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/view_constants.h
 CMakeFiles/pigeonwar.dir/gui/gui.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//animation/animation_impl.h
  ..//animation/animations_objects.h
  ..//core/board.h
  ..//core/game.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
  ..//core/states.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
  ..//gui/buttons_panel.h
+ ..//gui/drawing_manager.h
  ..//gui/my_button.h
  ..//gui/view_constants.h
  ..//managers/abilities_manager.h
@@ -3768,10 +5226,13 @@ CMakeFiles/pigeonwar.dir/gui/gui.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../animation/animation.h
  ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
  ../gui/my_button.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
@@ -3855,6 +5316,7 @@ CMakeFiles/pigeonwar.dir/gui/gui.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer_factory.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui.cpp
@@ -3936,18 +5398,25 @@ CMakeFiles/pigeonwar.dir/gui/my_button.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/my_button.h
 CMakeFiles/pigeonwar.dir/main.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//animation/animation_impl.h
  ..//core/board.h
  ..//core/game.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
  ..//core/states.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//gui/bitmap_center.h
  ..//gui/board_panel.h
  ..//gui/buttons_panel.h
+ ..//gui/drawing_manager.h
  ..//gui/my_button.h
  ..//gui/view_constants.h
  ..//managers/abilities_manager.h
@@ -3957,10 +5426,13 @@ CMakeFiles/pigeonwar.dir/main.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../animation/animation.h
  ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
  ../gui/my_button.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
@@ -4044,6 +5516,7 @@ CMakeFiles/pigeonwar.dir/main.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer_factory.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui.h
@@ -4060,11 +5533,112 @@ CMakeFiles/pigeonwar.dir/managers/additions_manager.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/additions_manager.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_remover.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/managers.h
+CMakeFiles/pigeonwar.dir/managers/animation_manager.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
+ ..//managers/directions_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ../abilities/possible_movement.h
+ ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/animation_manager.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/animation_manager.h
 CMakeFiles/pigeonwar.dir/managers/directions_manager.cpp.obj
  ..//abilities/abilities.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//entities/entity.h
  ..//managers/health_manager.h
  ..//managers/managers.h
@@ -4074,17 +5648,107 @@ CMakeFiles/pigeonwar.dir/managers/directions_manager.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/managers.h
 CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
+ ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/abilities_manager.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/directions_manager.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/managers/entity_manager.cpp
@@ -4131,7 +5795,9 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//abilities/drain.h
  ..//abilities/entangling.h
  ..//abilities/flame_thrower.h
+ ..//abilities/grenade.h
  ..//abilities/handcannon.h
+ ..//abilities/immortality.h
  ..//abilities/invisibility.h
  ..//abilities/laser.h
  ..//abilities/moveable.h
@@ -4141,17 +5807,18 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//abilities/recovery.h
  ..//abilities/sabers.h
  ..//abilities/shield.h
+ ..//abilities/shoot.h
  ..//abilities/spear.h
  ..//abilities/spiral_of_fire.h
  ..//abilities/sword_blow.h
  ..//abilities/teleport.h
  ..//abilities/tongue_of_fire.h
+ ..//abilities/warrior_blow.h
  ..//abilities/wolf_herd.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
  ..//core/game.h
- ..//core/module_holder.h
  ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
@@ -4168,6 +5835,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//entities/handthrower.h
  ..//entities/mouse.h
  ..//entities/native.h
+ ..//entities/robot.h
  ..//entities/saberhand.h
  ..//entities/samurai_rat.h
  ..//entities/saurian.h
@@ -4178,13 +5846,17 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//entities/treant.h
  ..//entities/tree.h
  ..//entities/troll.h
+ ..//entities/warrior.h
  ..//entities/werewolf.h
  ..//entities/wolf.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/entity_remover.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/creator_helper.h
  ..//utils/graph.h
  ..//utils/scenario_helper.h
@@ -4199,6 +5871,13 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ../entities/drilling_rig.h
  ../entities/entity.h
  ../entities/shooter.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -4206,6 +5885,77 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.h
  C:/local/boost_1_65_1/boost/assert.hpp
@@ -4914,22 +6664,40 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  C:/local/boost_1_65_1/boost/version.hpp
 CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.obj
  ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
  ..//ai/ai_manager.h
  ..//animation/animation.h
  ..//core/board.h
- ..//core/module_holder.h
  ..//core/players.h
+ ..//core/signals.h
+ ..//core/turn.h
  ..//entities/entity.h
+ ..//entities/shooter.h
  ..//entities/stone.h
  ..//entities/tree.h
+ ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
  ..//managers/entity_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
+ ..//managers/types_manager.h
  ..//utils/creator_helper.h
+ ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
+ ../core/players.h
  ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
  ../managers/abilities_manager.h
  ../managers/directions_manager.h
  ../managers/entity_remover.h
@@ -4937,4 +6705,75 @@ CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.obj
  ../managers/managers.h
  ../managers/names_manager.h
  ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/utils/creator_helper.cpp

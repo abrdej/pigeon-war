@@ -10,52 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eaec677-7eb0-494a-b31d-7d5abdea7a5d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/chopper.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/chopper.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/handcannon.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/handcannon.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/protection_field.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/protection_field.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/shield.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/shield.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/spear.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/spear.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/spiral_of_fire.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/spiral_of_fire.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/entities/creature.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/entities/guardian.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/entities/handthrower.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/managers/additions_manager.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/managers/additions_manager.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/immortality.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/immortality.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/warrior_blow.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/abilities/warrior_blow.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/entities/robot.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/entities/warrior.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gui/drawer_factory.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gui/drawer_factory.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gui/shooter_drawing.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/managers/animation_manager.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/managers/animation_manager.h" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/entities/shooter.cpp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/armor.cpp" afterPath="$PROJECT_DIR$/abilities/armor.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/armor.h" afterPath="$PROJECT_DIR$/abilities/armor.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/basic_melee_attack.cpp" afterPath="$PROJECT_DIR$/abilities/basic_melee_attack.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/blow_the_ax.cpp" afterPath="$PROJECT_DIR$/abilities/blow_the_ax.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/blow_the_ax.h" afterPath="$PROJECT_DIR$/abilities/blow_the_ax.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/bludgeon.cpp" afterPath="$PROJECT_DIR$/abilities/bludgeon.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/bomb.cpp" afterPath="$PROJECT_DIR$/abilities/bomb.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/counterattack.cpp" afterPath="$PROJECT_DIR$/abilities/counterattack.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/damage_dealer.cpp" afterPath="$PROJECT_DIR$/abilities/damage_dealer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/damage_dealers.h" afterPath="$PROJECT_DIR$/abilities/damage_dealers.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/dodge.cpp" afterPath="$PROJECT_DIR$/abilities/dodge.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/drain.cpp" afterPath="$PROJECT_DIR$/abilities/drain.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/entangling.cpp" afterPath="$PROJECT_DIR$/abilities/entangling.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/flame_thrower.cpp" afterPath="$PROJECT_DIR$/abilities/flame_thrower.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/grenade.cpp" afterPath="$PROJECT_DIR$/abilities/grenade.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/grenade.h" afterPath="$PROJECT_DIR$/abilities/grenade.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/laser.cpp" afterPath="$PROJECT_DIR$/abilities/laser.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/poisoned_missile.cpp" afterPath="$PROJECT_DIR$/abilities/poisoned_missile.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/poisoned_missile.h" afterPath="$PROJECT_DIR$/abilities/poisoned_missile.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/rage.cpp" afterPath="$PROJECT_DIR$/abilities/rage.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/recovery.cpp" afterPath="$PROJECT_DIR$/abilities/recovery.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/sabers.cpp" afterPath="$PROJECT_DIR$/abilities/sabers.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/shoot.cpp" afterPath="$PROJECT_DIR$/abilities/shoot.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/sword_blow.cpp" afterPath="$PROJECT_DIR$/abilities/sword_blow.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/tongue_of_fire.cpp" afterPath="$PROJECT_DIR$/abilities/tongue_of_fire.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/animation/animation_impl.cpp" afterPath="$PROJECT_DIR$/animation/animation_impl.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/animation/animation_impl.h" afterPath="$PROJECT_DIR$/animation/animation_impl.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/abilities/shoot.h" afterPath="$PROJECT_DIR$/abilities/shoot.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/animation/animation.h" afterPath="$PROJECT_DIR$/animation/animation.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/animation/animations_objects.cpp" afterPath="$PROJECT_DIR$/animation/animations_objects.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/animation/animations_objects.h" afterPath="$PROJECT_DIR$/animation/animations_objects.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
@@ -69,10 +42,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/pigeonwar.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/pigeonwar.cbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/destroyer.h" afterPath="$PROJECT_DIR$/entities/destroyer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/entity.h" afterPath="$PROJECT_DIR$/entities/entity.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/shooter.h" afterPath="$PROJECT_DIR$/entities/shooter.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui/bitmap_center.cpp" afterPath="$PROJECT_DIR$/gui/bitmap_center.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/managers/health_manager.cpp" afterPath="$PROJECT_DIR$/managers/health_manager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/managers/health_manager.h" afterPath="$PROJECT_DIR$/managers/health_manager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui/bitmap_center.h" afterPath="$PROJECT_DIR$/gui/bitmap_center.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui/drawable.cpp" afterPath="$PROJECT_DIR$/gui/drawable.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui/drawing_manager.h" afterPath="$PROJECT_DIR$/gui/drawing_manager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui/gui.cpp" afterPath="$PROJECT_DIR$/gui/gui.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/managers/entity_manager.h" afterPath="$PROJECT_DIR$/managers/entity_manager.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenarios/scenarios.cpp" afterPath="$PROJECT_DIR$/scenarios/scenarios.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -86,47 +63,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="protection_field.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/abilities/protection_field.h">
+      <file leaf-file-name="scenarios.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scenarios/scenarios.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="420">
+              <caret line="184" column="13" lean-forward="false" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="13" />
               <folding>
-                <element signature="e#117#139#0" expanded="true" />
+                <element signature="e#0#33#0" expanded="true" />
+                <element signature="e#6141#6185#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="protection_field.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/abilities/protection_field.cpp">
+      <file leaf-file-name="shooter.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/entities/shooter.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
+            <state relative-caret-position="147">
+              <caret line="11" column="46" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="robot.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/entities/robot.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="12" />
               <folding>
-                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#93#112#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="handcannon.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/abilities/handcannon.cpp">
+      <file leaf-file-name="bitmap_center.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gui/bitmap_center.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="41" column="46" lean-forward="true" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flame_thrower.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/abilities/flame_thrower.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="55" column="108" lean-forward="false" selection-start-line="55" selection-start-column="108" selection-end-line="55" selection-end-column="108" />
+            <state relative-caret-position="564">
+              <caret line="127" column="35" lean-forward="false" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -142,42 +118,20 @@
       <find>entity_id</find>
       <find>buttons_</find>
       <find>fired_counter;</find>
+      <find>MouseButtonEvent</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/abilities/damage_dealer.cpp" />
-        <option value="$PROJECT_DIR$/managers/health_manager.cpp" />
-        <option value="$PROJECT_DIR$/abilities/basic_melee_attack.cpp" />
-        <option value="$PROJECT_DIR$/abilities/grenade.cpp" />
-        <option value="$PROJECT_DIR$/abilities/tongue_of_fire.cpp" />
-        <option value="$PROJECT_DIR$/abilities/shoot.cpp" />
-        <option value="$PROJECT_DIR$/abilities/sabers.cpp" />
-        <option value="$PROJECT_DIR$/abilities/sword_blow.cpp" />
-        <option value="$PROJECT_DIR$/abilities/bludgeon.cpp" />
-        <option value="$PROJECT_DIR$/abilities/rage.cpp" />
-        <option value="$PROJECT_DIR$/abilities/recovery.cpp" />
-        <option value="$PROJECT_DIR$/abilities/laser.cpp" />
-        <option value="$PROJECT_DIR$/abilities/bomb.cpp" />
-        <option value="$PROJECT_DIR$/abilities/blow_the_ax.cpp" />
-        <option value="$PROJECT_DIR$/abilities/entangling.cpp" />
-        <option value="$PROJECT_DIR$/abilities/drain.cpp" />
-        <option value="$PROJECT_DIR$/abilities/flame_thrower.cpp" />
-        <option value="$PROJECT_DIR$/abilities/counterattack.cpp" />
-        <option value="$PROJECT_DIR$/abilities/shield.h" />
-        <option value="$PROJECT_DIR$/abilities/armor.cpp" />
-        <option value="$PROJECT_DIR$/abilities/dodge.cpp" />
-        <option value="$PROJECT_DIR$/abilities/shield.cpp" />
-        <option value="$PROJECT_DIR$/animation/animation_impl.h" />
-        <option value="$PROJECT_DIR$/animation/animation_impl.cpp" />
-        <option value="$PROJECT_DIR$/animation/animations_objects.h" />
-        <option value="$PROJECT_DIR$/animation/animations_objects.cpp" />
-        <option value="$PROJECT_DIR$/abilities/spear.h" />
-        <option value="$PROJECT_DIR$/entities/guardian.h" />
         <option value="$PROJECT_DIR$/managers/health_manager.h" />
         <option value="$PROJECT_DIR$/abilities/poisoned_missile.h" />
         <option value="$PROJECT_DIR$/abilities/poisoned_missile.cpp" />
@@ -190,17 +144,45 @@
         <option value="$PROJECT_DIR$/abilities/spear.cpp" />
         <option value="$PROJECT_DIR$/abilities/chopper.h" />
         <option value="$PROJECT_DIR$/abilities/chopper.cpp" />
-        <option value="$PROJECT_DIR$/scenarios/scenarios.cpp" />
         <option value="$PROJECT_DIR$/abilities/cannon.h" />
         <option value="$PROJECT_DIR$/abilities/cannon.cpp" />
         <option value="$PROJECT_DIR$/abilities/handcannon.cpp" />
         <option value="$PROJECT_DIR$/abilities/handcannon.h" />
         <option value="$PROJECT_DIR$/abilities/blow_the_ax.h" />
         <option value="$PROJECT_DIR$/abilities/armor.h" />
-        <option value="$PROJECT_DIR$/gui/bitmap_center.cpp" />
         <option value="$PROJECT_DIR$/entities/handthrower.h" />
         <option value="$PROJECT_DIR$/abilities/protection_field.h" />
         <option value="$PROJECT_DIR$/abilities/protection_field.cpp" />
+        <option value="$PROJECT_DIR$/gui/gui.cpp" />
+        <option value="$PROJECT_DIR$/animation/animation.h" />
+        <option value="$PROJECT_DIR$/animation/animations_objects.h" />
+        <option value="$PROJECT_DIR$/animation/animations_objects.cpp" />
+        <option value="$PROJECT_DIR$/abilities/moveable.cpp" />
+        <option value="$PROJECT_DIR$/gui/drawable.cpp" />
+        <option value="$PROJECT_DIR$/managers/animation_manager.cpp" />
+        <option value="$PROJECT_DIR$/managers/animation_manager.h" />
+        <option value="$PROJECT_DIR$/entities/shooter.cpp" />
+        <option value="$PROJECT_DIR$/gui/bitmap_center.h" />
+        <option value="$PROJECT_DIR$/abilities/shoot.h" />
+        <option value="$PROJECT_DIR$/gui/drawer.h" />
+        <option value="$PROJECT_DIR$/abilities/shoot.cpp" />
+        <option value="$PROJECT_DIR$/gui/drawer_factory.cpp" />
+        <option value="$PROJECT_DIR$/gui/drawer_factory.h" />
+        <option value="$PROJECT_DIR$/gui/drawing_manager.h" />
+        <option value="$PROJECT_DIR$/gui/shooter_drawing.h" />
+        <option value="$PROJECT_DIR$/managers/entity_manager.h" />
+        <option value="$PROJECT_DIR$/entities/entity.h" />
+        <option value="$PROJECT_DIR$/abilities/warrior_blow.h" />
+        <option value="$PROJECT_DIR$/abilities/damage_dealer.cpp" />
+        <option value="$PROJECT_DIR$/abilities/bomb.cpp" />
+        <option value="$PROJECT_DIR$/abilities/immortality.h" />
+        <option value="$PROJECT_DIR$/entities/warrior.h" />
+        <option value="$PROJECT_DIR$/abilities/immortality.cpp" />
+        <option value="$PROJECT_DIR$/abilities/warrior_blow.cpp" />
+        <option value="$PROJECT_DIR$/entities/shooter.h" />
+        <option value="$PROJECT_DIR$/entities/robo.h" />
+        <option value="$PROJECT_DIR$/scenarios/scenarios.cpp" />
+        <option value="$PROJECT_DIR$/gui/bitmap_center.cpp" />
       </list>
     </option>
   </component>
@@ -211,9 +193,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="563" />
-    <option name="y" value="218" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-15" />
     <option name="width" value="1849" />
     <option name="height" value="1032" />
   </component>
@@ -382,17 +363,21 @@
       <workItem from="1511999849207" duration="2054000" />
       <workItem from="1512076736493" duration="4394000" />
       <workItem from="1512157105466" duration="16231000" />
-      <workItem from="1512325957227" duration="1949000" />
+      <workItem from="1512325957227" duration="2207000" />
+      <workItem from="1512411497533" duration="2976000" />
+      <workItem from="1512417486330" duration="11071000" />
+      <workItem from="1512428957199" duration="1263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117513000" />
+    <option name="totallyTimeSpent" value="133081000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785088" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -429,331 +414,232 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gui/bitmap_center.h">
+    <entry file="file://C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-735">
-          <caret line="34" column="68" lean-forward="false" selection-start-line="34" selection-start-column="68" selection-end-line="34" selection-end-column="68" />
-          <folding />
+        <state relative-caret-position="487">
+          <caret line="190" column="21" lean-forward="false" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/entities/grenadier.h">
+    <entry file="file://$PROJECT_DIR$/utils/graph.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="25" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.11.25503/include/functional">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="611" column="0" lean-forward="false" selection-start-line="611" selection-start-column="0" selection-end-line="611" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/shield.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#36#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/animation/animation_impl.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="78" column="4" lean-forward="false" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
-          <folding>
-            <element signature="e#1893#1937#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/animation/animation_impl.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+        <state relative-caret-position="-4453">
+          <caret line="45" column="6" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/animation/animations_objects.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="68" column="19" lean-forward="false" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
+        <state relative-caret-position="21">
+          <caret line="45" column="49" lean-forward="false" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/abilities/moveable.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1449">
+          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/drawable.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/animation/animations_objects.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="130" column="0" lean-forward="true" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="378">
+          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/damage_dealer.cpp">
+    <entry file="file://$PROJECT_DIR$/animation/animation_impl.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="837">
+          <caret line="78" column="4" lean-forward="false" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.11.25503/include/memory">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="1711" column="0" lean-forward="false" selection-start-line="1711" selection-start-column="0" selection-end-line="1711" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/managers/abilities_manager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="8" column="2" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/managers/additions_manager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/managers/health_manager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="116" column="50" lean-forward="false" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/managers/managers.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="15" column="66" lean-forward="false" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/poisoned_missile.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/managers/additions_manager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#119#140#0" expanded="false" />
-            <element signature="e#282#294#0" expanded="false" />
-            <element signature="e#381#393#0" expanded="false" />
-            <element signature="e#492#522#0" expanded="false" />
-            <element signature="e#633#645#0" expanded="false" />
-            <element signature="e#802#832#0" expanded="false" />
-            <element signature="e#1114#1126#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/poisoned_missile.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="64" column="16" lean-forward="true" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/basic_melee_attack.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="19" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/basic_melee_attack.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="61" column="44" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="61" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/invisibility.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="47" column="86" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/dodge.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/shield.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/grenade.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/invisibility.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/laser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="78" column="35" lean-forward="true" selection-start-line="76" selection-start-column="4" selection-end-line="78" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/counterattack.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="60" column="44" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/spiral_of_fire.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="e#113#143#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/creature.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="23" column="119" lean-forward="true" selection-start-line="23" selection-start-column="119" selection-end-line="23" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/guardian.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/grenade.h">
+    <entry file="file://$PROJECT_DIR$/animation/animation_impl.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/animation/animation.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.11.25503/include/chrono">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="623" column="36" lean-forward="true" selection-start-line="623" selection-start-column="36" selection-end-line="623" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/gui.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/gui.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="115" column="76" lean-forward="false" selection-start-line="115" selection-start-column="76" selection-end-line="115" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/animation/animation.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2202">
+          <caret line="133" column="2" lean-forward="false" selection-start-line="133" selection-start-column="2" selection-end-line="133" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/drawing_manager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/managers/animation_manager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/drawable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="11" column="47" lean-forward="true" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/shooter.cpp" />
+    <entry file="file://$PROJECT_DIR$/gui/bitmap_center.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="68" column="39" lean-forward="false" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/spiral_of_fire.cpp">
+    <entry file="file://$PROJECT_DIR$/managers/types_manager.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1617">
-          <caret line="77" column="47" lean-forward="false" selection-start-line="77" selection-start-column="47" selection-end-line="77" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="147">
+          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/spear.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/spear.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/chopper.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-          <folding>
-            <element signature="e#99#129#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/chopper.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="73" column="5" lean-forward="false" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/destroyer.h">
+    <entry file="file://$PROJECT_DIR$/gui/drawer_factory.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#102#130#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/scenarios.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="180" column="21" lean-forward="true" selection-start-line="180" selection-start-column="21" selection-end-line="180" selection-end-column="21" />
-          <folding>
-            <element signature="e#6111#6155#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/shoot.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="21" selection-end-column="2" />
-          <folding />
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/abilities/shoot.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="60" column="35" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="361">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/blow_the_ax.h">
+    <entry file="file://$PROJECT_DIR$/abilities/shoot.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/drawer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="48" column="11" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/drawing_manager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/drawer_factory.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="30" column="9" lean-forward="false" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+          <folding>
+            <element signature="e#113#130#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/managers/animation_manager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/entity_drawer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/shooter_drawing.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="16" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/managers/directions_manager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/entity.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/guardian.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="26" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/abilities/basic_melee_attack.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding />
+          <caret line="19" column="2" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="19" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/abilities/basic_melee_attack.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="61" column="44" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="61" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -761,6 +647,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="16" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/abilities/bomb.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/turn.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/abilities/immortality.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="71" lean-forward="false" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="71" />
+          <folding>
+            <element signature="e#107#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/managers/managers.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="30" column="47" lean-forward="true" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/turn.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="819">
+          <caret line="39" column="52" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -768,90 +692,111 @@
     <entry file="file://$PROJECT_DIR$/abilities/armor.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="11" selection-end-column="7" />
+          <caret line="5" column="83" lean-forward="false" selection-start-line="5" selection-start-column="83" selection-end-line="5" selection-end-column="83" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/bomb.h">
+    <entry file="file://$PROJECT_DIR$/managers/entity_manager.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" column="102" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/bitmap_center.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="119" column="26" lean-forward="false" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/handthrower.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/handcannon.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="35" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="21" selection-end-column="35" />
+        <state relative-caret-position="1281">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
-            <element signature="e#105#135#0" expanded="true" />
+            <element signature="e#51#68#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/protection_field.h">
+    <entry file="file://$PROJECT_DIR$/abilities/damage_dealer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="e#117#139#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/animation/animation.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-248">
-          <caret line="60" column="4" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
+        <state relative-caret-position="714">
+          <caret line="34" column="56" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/protection_field.cpp">
+    <entry file="file://$PROJECT_DIR$/managers/health_manager.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
+        <state relative-caret-position="210">
+          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/warrior.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="48" lean-forward="false" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+          <folding>
+            <element signature="e#99#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/abilities/warrior_blow.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/abilities/immortality.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/flame_thrower.cpp">
+    <entry file="file://$PROJECT_DIR$/abilities/warrior_blow.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="55" column="108" lean-forward="false" selection-start-line="55" selection-start-column="108" selection-end-line="55" selection-end-column="108" />
+        <state relative-caret-position="441">
+          <caret line="22" column="41" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/abilities/handcannon.cpp">
+    <entry file="file://$PROJECT_DIR$/entities/shooter.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="41" column="46" lean-forward="true" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+        <state relative-caret-position="147">
+          <caret line="11" column="46" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/robot.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="12" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#93#112#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scenarios/scenarios.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="184" column="13" lean-forward="false" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#6141#6185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/bitmap_center.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="127" column="35" lean-forward="false" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
