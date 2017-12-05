@@ -18,7 +18,7 @@ public:
     {
         entity_definition entity_def(typeid(guardian));
         entity_def.name = "Strażnik";
-        entity_def.health_pack.base_health = 55;
+        entity_def.health_pack.base_health = 65;
         entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
         entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<spear>(id));
         entity_def.entity_abilities.add_ability(abilities::ability_types::passive, std::make_shared<shield>(id));

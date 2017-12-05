@@ -24,10 +24,10 @@ private:
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    static const size_t range_ = 4;
-    static const size_t damage_ = 6;
-    static const int poison_power_ = 3;
-    static const int poison_last_ = 3;
+    const size_t range_{4};
+    const size_t damage_{6};
+    const int poison_power_{3};
+    const int poison_last_{3};
     bool used{false};
 
     std::unordered_map<int, std::shared_ptr<std::function<void()>>> rec;

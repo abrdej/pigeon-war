@@ -46,9 +46,9 @@ void drain::use(size_t index_on)
 																		   board::at(index_on),
 																		   entity_id));
 
-	auto amount_of_health = std::min<int>(drain_, dealt_damage);
-	healths_manager::receive_damage(healing(amount_of_health,
-											entity_id));
+	//auto amount_of_health = std::min<int>(drain_, dealt_damage);
+	//healths_manager::receive_damage(healing(amount_of_health,
+	//										entity_id));
 	used = true;
 }
 
