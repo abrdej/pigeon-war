@@ -7,12 +7,11 @@
 
 namespace states
 {
-size_t state_controller::selected_index_ = -1;
+size_t state_controller::selected_index_ = no_selected_index;
 states_types state_controller::actual_state_ = states_types::waiting;
 target_types state_controller::actual_targeting_type_ = target_types::non;
 
 std::vector<size_t> state_controller::possible_movements_;
-std::vector<size_t> state_controller::movements_ranges_;
 std::vector<size_t> state_controller::possible_movements_costs_;
 std::function<void(size_t)> state_controller::caller_;
 

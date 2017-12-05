@@ -218,11 +218,21 @@ abilities/ability.h
 core/turn.h
 ../abilities/core/turn.h
 
+..//abilities/spider_web.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/spiral_of_fire.h
 abilities/ability.h
 ../abilities/abilities/ability.h
 vector
 -
+
+..//abilities/surroundings.h
+ability.h
+../abilities/ability.h
 
 ..//abilities/sword_blow.h
 abilities/ability.h
@@ -563,6 +573,18 @@ abilities/shoot.h
 ../entities/abilities/shoot.h
 abilities/grenade.h
 ../entities/abilities/grenade.h
+
+..//entities/spider.h
+abilities/surroundings.h
+-
+entity.h
+../entities/entity.h
+abilities/moveable.h
+../entities/abilities/moveable.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/spider_web.h
+../entities/abilities/spider_web.h
 
 ..//entities/stone.h
 entity.h
@@ -2546,6 +2568,24 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.cpp
+core/states.h
+-
+managers/entity_manager.h
+-
+managers/additions_manager.h
+-
+spider_web.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.cpp
 core/states.h
 -
@@ -2571,6 +2611,20 @@ abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 vector
 -
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/surroundings.cpp
+managers/health_manager.h
+-
+core/path_finder.h
+-
+core/players.h
+-
+surroundings.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/surroundings.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/surroundings.h
+ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sword_blow.cpp
 animation/animation.h
@@ -2806,6 +2860,18 @@ vector
 array
 -
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/core/command_manager.cpp
+abilities/moveable.h
+-
+command_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/core/command_manager.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/core/command_manager.h
+functional
+-
+queue
+-
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/core/game.cpp
 game.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/core/game.h
@@ -3026,6 +3092,8 @@ abilities/handcannon.h
 entities/warrior.h
 -
 entities/robot.h
+-
+entities/spider.h
 -
 gui/bitmap_center.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui/bitmap_center.h
@@ -3488,6 +3556,8 @@ entities/creature.h
 entities/handthrower.h
 -
 entities/robot.h
+-
+entities/spider.h
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.h

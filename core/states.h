@@ -25,9 +25,8 @@ public:
 	static states_types actual_state_;
 	static target_types actual_targeting_type_;
 	static std::vector<size_t> possible_movements_;
-	static std::vector<size_t> movements_ranges_;
 	static std::vector<size_t> possible_movements_costs_;
-	static std::function<void(size_t)> caller_;
+	static std::function<void(std::size_t)> caller_;
 };
 };
 

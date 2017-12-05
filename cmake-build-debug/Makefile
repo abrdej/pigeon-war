@@ -1015,6 +1015,33 @@ abilities\spear.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spear.cpp.s
 .PHONY : abilities\spear.cpp.s
 
+abilities\spider_web.obj: abilities\spider_web.cpp.obj
+
+.PHONY : abilities\spider_web.obj
+
+# target to build an object file
+abilities\spider_web.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj
+.PHONY : abilities\spider_web.cpp.obj
+
+abilities\spider_web.i: abilities\spider_web.cpp.i
+
+.PHONY : abilities\spider_web.i
+
+# target to preprocess a source file
+abilities\spider_web.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.i
+.PHONY : abilities\spider_web.cpp.i
+
+abilities\spider_web.s: abilities\spider_web.cpp.s
+
+.PHONY : abilities\spider_web.s
+
+# target to generate assembly for a file
+abilities\spider_web.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.s
+.PHONY : abilities\spider_web.cpp.s
+
 abilities\spiral_of_fire.obj: abilities\spiral_of_fire.cpp.obj
 
 .PHONY : abilities\spiral_of_fire.obj
@@ -1041,6 +1068,33 @@ abilities\spiral_of_fire.s: abilities\spiral_of_fire.cpp.s
 abilities\spiral_of_fire.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.s
 .PHONY : abilities\spiral_of_fire.cpp.s
+
+abilities\surroundings.obj: abilities\surroundings.cpp.obj
+
+.PHONY : abilities\surroundings.obj
+
+# target to build an object file
+abilities\surroundings.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.obj
+.PHONY : abilities\surroundings.cpp.obj
+
+abilities\surroundings.i: abilities\surroundings.cpp.i
+
+.PHONY : abilities\surroundings.i
+
+# target to preprocess a source file
+abilities\surroundings.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.i
+.PHONY : abilities\surroundings.cpp.i
+
+abilities\surroundings.s: abilities\surroundings.cpp.s
+
+.PHONY : abilities\surroundings.s
+
+# target to generate assembly for a file
+abilities\surroundings.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.s
+.PHONY : abilities\surroundings.cpp.s
 
 abilities\sword_blow.obj: abilities\sword_blow.cpp.obj
 
@@ -1338,6 +1392,33 @@ core\board.s: core\board.cpp.s
 core\board.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\core\board.cpp.s
 .PHONY : core\board.cpp.s
+
+core\command_manager.obj: core\command_manager.cpp.obj
+
+.PHONY : core\command_manager.obj
+
+# target to build an object file
+core\command_manager.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj
+.PHONY : core\command_manager.cpp.obj
+
+core\command_manager.i: core\command_manager.cpp.i
+
+.PHONY : core\command_manager.i
+
+# target to preprocess a source file
+core\command_manager.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\core\command_manager.cpp.i
+.PHONY : core\command_manager.cpp.i
+
+core\command_manager.s: core\command_manager.cpp.s
+
+.PHONY : core\command_manager.s
+
+# target to generate assembly for a file
+core\command_manager.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\core\command_manager.cpp.s
+.PHONY : core\command_manager.cpp.s
 
 core\game.obj: core\game.cpp.obj
 
@@ -2230,9 +2311,15 @@ help:
 	@echo ... abilities/spear.obj
 	@echo ... abilities/spear.i
 	@echo ... abilities/spear.s
+	@echo ... abilities/spider_web.obj
+	@echo ... abilities/spider_web.i
+	@echo ... abilities/spider_web.s
 	@echo ... abilities/spiral_of_fire.obj
 	@echo ... abilities/spiral_of_fire.i
 	@echo ... abilities/spiral_of_fire.s
+	@echo ... abilities/surroundings.obj
+	@echo ... abilities/surroundings.i
+	@echo ... abilities/surroundings.s
 	@echo ... abilities/sword_blow.obj
 	@echo ... abilities/sword_blow.i
 	@echo ... abilities/sword_blow.s
@@ -2266,6 +2353,9 @@ help:
 	@echo ... core/board.obj
 	@echo ... core/board.i
 	@echo ... core/board.s
+	@echo ... core/command_manager.obj
+	@echo ... core/command_manager.i
+	@echo ... core/command_manager.s
 	@echo ... core/game.obj
 	@echo ... core/game.i
 	@echo ... core/game.s

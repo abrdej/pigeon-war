@@ -21,6 +21,7 @@
 #include <abilities/handcannon.h>
 #include <entities/warrior.h>
 #include <entities/robot.h>
+#include <entities/spider.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -126,6 +127,9 @@ void bitmap_center::load()
     add_entity_image<warrior_blow>("warrior_blow.png");
     add_entity_image<immortality>("warrior_immortal.png");
     add_entity_image<robot>("spider.png");
+    add_entity_image<spider>("spider.png");
+    add_entity_image<spider_web>("web.png");
+    add_entity_image<surroundings>("spider.png");
 
 
     // bitmaps

@@ -44,12 +44,12 @@ void shoot::use(size_t index_on)
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	play_bullet_animation(entity_id, used_from_index, index_on);
+    play_animation(entity_id, used_from_index, index_on);
 
 	damage_dealers::standard_damage_dealer(ranged_damage(damage_, board::at(index_on), entity_id));
 }
 
-void shoot::play_bullet_animation(std::size_t entity_id, size_t from_index, size_t to_index)
+void shoot::play_animation(std::size_t entity_id, size_t from_index, size_t to_index)
 {
 //	auto animator = animation_manager::animator_for<shooter_animator>(entity_id);
 //	animator->set_shoot(std::chrono::milliseconds(50));
