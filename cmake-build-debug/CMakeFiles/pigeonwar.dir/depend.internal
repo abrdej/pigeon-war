@@ -1592,6 +1592,123 @@ CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealer.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+CMakeFiles/pigeonwar.dir/abilities/detonation.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
+ ..//ai/ai_manager.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/path_finder.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
+ ..//managers/abilities_manager.h
+ ..//managers/directions_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../abilities/possible_movement.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/view_constants.h
+ ../managers/abilities_manager.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/detonation.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/detonation.h
 CMakeFiles/pigeonwar.dir/abilities/dodge.cpp.obj
  ..//animation/animation.h
  ..//core/board.h
@@ -4220,6 +4337,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//abilities/builder.h
  ..//abilities/chopper.h
  ..//abilities/counterattack.h
+ ..//abilities/detonation.h
  ..//abilities/dodge.h
  ..//abilities/drain.h
  ..//abilities/entangling.h
@@ -5933,6 +6051,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//abilities/chopper.h
  ..//abilities/counterattack.h
  ..//abilities/damage_dealers.h
+ ..//abilities/detonation.h
  ..//abilities/dodge.h
  ..//abilities/drain.h
  ..//abilities/entangling.h

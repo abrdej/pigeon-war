@@ -161,6 +161,12 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealer.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/detonation.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/detonation.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/dodge.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>

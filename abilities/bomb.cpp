@@ -97,51 +97,10 @@ void bomb_detonation(std::size_t bomb_id, int damage) {
 	entity_manager::destroy(bomb_id);
 }
 
-bomb::bomb() : bombs(3) {
+bomb::bomb() {
 
 	onEveryRound([this]() {
-		bombs_to_throw = 2;
-	});
-
-	onTwoTurns([this]() {
-
-		//static int counter = 0;
-
-		//if (counter++ % 2 == 0) {
-
-			std::unordered_map<std::size_t, int> damages;
-
-			for (auto&& bomb : bombs) {
-				if (bomb.second) {
-
-					damages[*bomb.first] = 5;
-
-					auto index = board::index_for(*bomb.first);
-
-					std::vector<size_t> neightbords;
-					board_helper::neighboring_fields(index, neightbords, false);
-
-					for (auto& idx : neightbords) {
-						auto id = board::at(idx);
-						auto it = std::find_if(bombs.begin(), bombs.end(), [id](auto& pack) {
-							return *pack.first == id;
-						});
-						if (it != bombs.end()) {
-							damages[*bomb.first] += 5;
-						}
-					}
-				}
-			}
-
-			for (auto&& bomb : bombs) {
-				if (bomb.second) {
-					bomb_detonation(*bomb.first, damages[*bomb.first]);
-				}
-			}
-			for (auto&& bomb : bombs) {
-				bomb.second = true;
-			}
-		//}
+		used = false;
 	});
 }
 
@@ -150,13 +109,13 @@ void bomb::prepare(size_t for_index) {
 	states::state_controller::selected_index_ = for_index;
 	states::state_controller::actual_state_ = states::states_types::wait_for_action;
 
-	path_finder path_finder;
+	path_finder path_finder(true);
 	path_finder.calc(for_index);
 	path_finder.get_possible_movements(states::state_controller::possible_movements_,
 									   states::state_controller::possible_movements_costs_,
 									   range);
 
-	states::state_controller::actual_targeting_type_ = states::target_types::moving;
+	states::state_controller::actual_targeting_type_ = states::target_types::enemy;
 	states::state_controller::wait_for_action([this](size_t index)
 											  {
 												  return use(index);
@@ -165,25 +124,69 @@ void bomb::prepare(size_t for_index) {
 
 void bomb::use(size_t index) {
 
-	if (bombs_to_throw == 0) {
+	if (used) {
 		return;
 	}
 
-	--bombs_to_throw;
+	auto used_from_index = states::state_controller::selected_index_;
+	auto entity_id = board::at(used_from_index);
 
-	auto bomb_id = entity_manager::create<bomb_instance>();
+	animation::player<animation::move>::launch(animation::move(used_from_index, index, typeid(*this)));
+	animation::base_player::play();
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index, std::chrono::milliseconds(150), "bum.png"));
+	animation::base_player::play();
 
-//	auto ability = abilities_manager::component_for(bomb_id).type(abilities::ability_types::passive);
-//	std::shared_ptr<bomb_detonation> bd = std::static_pointer_cast<bomb_detonation>(ability);
-//	bd->set_bomb_buffer(&bombs);
+	damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index), entity_id));
 
-	auto player = players::active_player_name();
-	players::add_entity_for_player(player, bomb_id);
+	std::size_t next_index = index;
 
-	board::insert(index, bomb_id);
+	std::unordered_set<std::size_t> visited_indexes;
+	visited_indexes.insert(next_index);
 
-	bombs.push_back(std::make_pair(std::shared_ptr<std::size_t>(new std::size_t(bomb_id), [](std::size_t *id){
-		entity_manager::destroy(*id);
-		delete id;
-	}), false));
+	while (next_index != std::numeric_limits<std::size_t>::max()) {
+
+		auto from_index = next_index;
+
+		next_index = find_min_health_jump(next_index, visited_indexes);
+
+		if (next_index == std::numeric_limits<std::size_t>::max()) {
+			break;
+		}
+
+		animation::player<animation::move>::launch(animation::move(from_index, next_index, typeid(*this)));
+		animation::base_player::play();
+		animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(next_index, std::chrono::milliseconds(150), "bum.png"));
+		animation::base_player::play();
+
+		damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(next_index), entity_id));
+
+		visited_indexes.insert(next_index);
+	}
+
+	used = true;
+}
+
+std::size_t bomb::find_min_health_jump(std::size_t from_index, std::unordered_set<std::size_t>& visited_indexes) {
+	std::vector<std::size_t> neighbors;
+	board_helper::neighboring_fields(from_index, neighbors, false);
+
+	std::size_t min_health_index = std::numeric_limits<std::size_t>::max();
+	int min_health = std::numeric_limits<int>::max();
+
+	for (std::size_t i  = 0; i < neighbors.size(); ++i) {
+		if (!board::empty(neighbors[i]) && visited_indexes.find(neighbors[i]) == std::end(visited_indexes)) {
+
+			auto neighbor_id = board::at(neighbors[i]);
+			auto health_pack = healths_manager::component_for(neighbor_id);
+
+			if (health_pack.health < min_health) {
+				min_health_index = i;
+				min_health = health_pack.health;
+			}
+		}
+	}
+	if (min_health_index != std::numeric_limits<std::size_t>::max())
+		return neighbors[min_health_index];
+	else
+		return std::numeric_limits<std::size_t>::max();
 }

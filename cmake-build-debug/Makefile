@@ -475,6 +475,33 @@ abilities\damage_dealer.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.s
 .PHONY : abilities\damage_dealer.cpp.s
 
+abilities\detonation.obj: abilities\detonation.cpp.obj
+
+.PHONY : abilities\detonation.obj
+
+# target to build an object file
+abilities\detonation.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj
+.PHONY : abilities\detonation.cpp.obj
+
+abilities\detonation.i: abilities\detonation.cpp.i
+
+.PHONY : abilities\detonation.i
+
+# target to preprocess a source file
+abilities\detonation.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.i
+.PHONY : abilities\detonation.cpp.i
+
+abilities\detonation.s: abilities\detonation.cpp.s
+
+.PHONY : abilities\detonation.s
+
+# target to generate assembly for a file
+abilities\detonation.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.s
+.PHONY : abilities\detonation.cpp.s
+
 abilities\dodge.obj: abilities\dodge.cpp.obj
 
 .PHONY : abilities\dodge.obj
@@ -2251,6 +2278,9 @@ help:
 	@echo ... abilities/damage_dealer.obj
 	@echo ... abilities/damage_dealer.i
 	@echo ... abilities/damage_dealer.s
+	@echo ... abilities/detonation.obj
+	@echo ... abilities/detonation.i
+	@echo ... abilities/detonation.s
 	@echo ... abilities/dodge.obj
 	@echo ... abilities/dodge.i
 	@echo ... abilities/dodge.s

@@ -130,6 +130,7 @@ void bitmap_center::load()
     add_entity_image<spider>("spider.png");
     add_entity_image<spider_web>("web.png");
     add_entity_image<surroundings>("spider.png");
+    add_entity_image<detonation>("detonation.png");
 
 
     // bitmaps

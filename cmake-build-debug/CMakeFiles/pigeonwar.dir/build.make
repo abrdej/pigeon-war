@@ -2368,6 +2368,36 @@ CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.obj.provides: CMakeFiles\pig
 CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.obj
 
 
+CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: CMakeFiles\pigeonwar.dir\flags.make
+CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\abilities\detonation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/pigeonwar.dir/abilities/detonation.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj /FdCMakeFiles\pigeonwar.dir\ /FS -c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\detonation.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pigeonwar.dir/abilities/detonation.cpp.i"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe > CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\detonation.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pigeonwar.dir/abilities/detonation.cpp.s"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\pigeonwar.dir\abilities\detonation.cpp.s /c C:\Users\abrde\Documents\Projekty\pigeon-war\abilities\detonation.cpp
+<<
+
+CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj.requires:
+
+.PHONY : CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj.requires
+
+CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj.provides: CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj.provides.build
+.PHONY : CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj.provides
+
+CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj.provides.build: CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj
+
+
 # Object files for target pigeonwar
 pigeonwar_OBJECTS = \
 "CMakeFiles\pigeonwar.dir\main.cpp.obj" \
@@ -2446,7 +2476,8 @@ pigeonwar_OBJECTS = \
 "CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj" \
 "CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj" \
-"CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.obj"
+"CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.obj" \
+"CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj"
 
 # External object files for target pigeonwar
 pigeonwar_EXTERNAL_OBJECTS =
@@ -2528,6 +2559,7 @@ pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.obj
+pigeonwar.exe: CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\build.make
 pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-network-d.lib
 pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-audio-d.lib
@@ -2535,7 +2567,7 @@ pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-graphics-d.lib
 pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-window-d.lib
 pigeonwar.exe: C:\Biblioteki\SFML-2.4.2\lib\sfml-system-d.lib
 pigeonwar.exe: CMakeFiles\pigeonwar.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Linking CXX executable pigeonwar.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Linking CXX executable pigeonwar.exe"
 	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\pigeonwar.dir --manifests  -- C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1411~1.255\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\pigeonwar.dir\objects1.rsp @<<
  /out:pigeonwar.exe /implib:pigeonwar.lib /pdb:C:\Users\abrde\Documents\Projekty\pigeon-war\cmake-build-debug\pigeonwar.pdb /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console C:\Biblioteki\SFML-2.4.2\lib\sfml-network-d.lib C:\Biblioteki\SFML-2.4.2\lib\sfml-audio-d.lib C:\Biblioteki\SFML-2.4.2\lib\sfml-graphics-d.lib C:\Biblioteki\SFML-2.4.2\lib\sfml-window-d.lib C:\Biblioteki\SFML-2.4.2\lib\sfml-system-d.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
@@ -2622,6 +2654,7 @@ CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\immortalit
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj.requires
 CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\surroundings.cpp.obj.requires
+CMakeFiles\pigeonwar.dir\requires: CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj.requires
 
 .PHONY : CMakeFiles\pigeonwar.dir\requires
 

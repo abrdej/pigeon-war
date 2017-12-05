@@ -48,9 +48,11 @@ public:
 	void use(size_t index_on);
 
 private:
-	int bombs_to_throw{2};
-	int range{2};
-	boost::circular_buffer<std::pair<std::shared_ptr<std::size_t>, bool>> bombs;
+	std::size_t find_min_health_jump(std::size_t from_index, std::unordered_set<std::size_t>& visited_indexes);
+
+	bool used{false};
+	int range{3};
+	int damage{7};
 };
 
 

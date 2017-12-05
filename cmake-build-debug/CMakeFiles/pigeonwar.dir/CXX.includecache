@@ -106,6 +106,12 @@ core/board.h
 managers/health_manager.h
 ../abilities/managers/health_manager.h
 
+..//abilities/detonation.h
+ability.h
+../abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/dodge.h
 ability.h
 ../abilities/ability.h
@@ -468,6 +474,8 @@ entity.h
 abilities/poisoned_missile.h
 -
 abilities/bomb.h
+-
+abilities/detonation.h
 -
 entity.h
 ../entities/entity.h
@@ -2199,6 +2207,24 @@ core/board.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/board.h
 managers/health_manager.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/health_manager.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/detonation.cpp
+managers/health_manager.h
+-
+managers/entity_manager.h
+-
+core/path_finder.h
+-
+detonation.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/detonation.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/detonation.h
+ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/dodge.cpp
 dodge.h
