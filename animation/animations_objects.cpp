@@ -47,6 +47,40 @@ bool move_object_animation::run()
 	return false;
 }
 
+move_at_path_object_animation::move_at_path_object_animation(move_at_path move_data)
+    : object_type_(move_data.object_type), path(move_data.path), from_index(move_data.start_index) {
+    path_index = 0;
+}
+
+void move_at_path_object_animation::draw(sf::RenderWindow& window) {
+    if (move_animation)
+        move_animation->draw(window);
+}
+
+bool move_at_path_object_animation::run() {
+
+    if (path_index == path.size()) {
+        return true;
+    }
+
+    to_index = path[path_index];
+
+    if (!move_animation) {
+        move move_data(from_index, to_index, object_type_);
+        move_animation = new move_object_animation(move_data);
+    }
+
+    if (!move_animation->run()) {
+        return false;
+    } else {
+        from_index = to_index;
+        ++path_index;
+        delete move_animation;
+        move_animation = nullptr;
+        return false;
+    }
+}
+
 move_object_animation2::move_object_animation2(move_entity move_data)
 		: index_from_(move_data.from_index),
 		  index_to_(move_data.to_index),
@@ -128,6 +162,7 @@ change_health_animation::change_health_animation(change_health change_health_dat
 void change_health_animation::draw(sf::RenderWindow& window)
 {
 	sf::Color color = change_by_ < 0 ? sf::Color(210, 20, 15) : sf::Color(15, 210, 20);
+	color = (change_by_ == 0) ? sf::Color(15, 20, 210) : color;
 
 	sf::Text text;
 	text.setFont(font_);

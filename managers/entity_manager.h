@@ -13,6 +13,7 @@
 #include "names_manager.h"
 #include "managers/abilities_manager.h"
 #include <functional>
+#include <gui/drawing_manager.h>
 #include "directions_manager.h"
 #include "types_manager.h"
 #include "ai/ai_manager.h"
@@ -44,6 +45,8 @@ public:
 		names_manager::add_component(entity_id, entity_def.name);
 		abilities_manager::add_component(entity_id, entity_def.entity_abilities);
 		directions_manager::add_component(entity_id, entity_def.direction);
+
+		drawing_manager::add_component(entity_id, drawer_factory::make_drawer_for(entity_id));
 
 		return entity_id++;
 	}

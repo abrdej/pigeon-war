@@ -41,14 +41,14 @@ void gui::run()
 
 void gui::update()
 {
-	sf::Event event;
+	sf::Event event{};
 	while (window_.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
 			window_.close();
 		else if (event.type == sf::Event::MouseButtonReleased)
 		{
-			auto mouse_position = sf::Mouse::getPosition(window_);
+			sf::Vector2i mouse_position(event.mouseButton.x, event.mouseButton.y);
 			on_mouse_click(mouse_position);
 		}
 

@@ -637,6 +637,33 @@ abilities\handcannon.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.s
 .PHONY : abilities\handcannon.cpp.s
 
+abilities\immortality.obj: abilities\immortality.cpp.obj
+
+.PHONY : abilities\immortality.obj
+
+# target to build an object file
+abilities\immortality.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj
+.PHONY : abilities\immortality.cpp.obj
+
+abilities\immortality.i: abilities\immortality.cpp.i
+
+.PHONY : abilities\immortality.i
+
+# target to preprocess a source file
+abilities\immortality.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.i
+.PHONY : abilities\immortality.cpp.i
+
+abilities\immortality.s: abilities\immortality.cpp.s
+
+.PHONY : abilities\immortality.s
+
+# target to generate assembly for a file
+abilities\immortality.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.s
+.PHONY : abilities\immortality.cpp.s
+
 abilities\invisibility.obj: abilities\invisibility.cpp.obj
 
 .PHONY : abilities\invisibility.obj
@@ -1096,6 +1123,33 @@ abilities\tongue_of_fire.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.s
 .PHONY : abilities\tongue_of_fire.cpp.s
 
+abilities\warrior_blow.obj: abilities\warrior_blow.cpp.obj
+
+.PHONY : abilities\warrior_blow.obj
+
+# target to build an object file
+abilities\warrior_blow.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.obj
+.PHONY : abilities\warrior_blow.cpp.obj
+
+abilities\warrior_blow.i: abilities\warrior_blow.cpp.i
+
+.PHONY : abilities\warrior_blow.i
+
+# target to preprocess a source file
+abilities\warrior_blow.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.i
+.PHONY : abilities\warrior_blow.cpp.i
+
+abilities\warrior_blow.s: abilities\warrior_blow.cpp.s
+
+.PHONY : abilities\warrior_blow.s
+
+# target to generate assembly for a file
+abilities\warrior_blow.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\warrior_blow.cpp.s
+.PHONY : abilities\warrior_blow.cpp.s
+
 abilities\wolf_herd.obj: abilities\wolf_herd.cpp.obj
 
 .PHONY : abilities\wolf_herd.obj
@@ -1420,33 +1474,6 @@ core\turn.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\core\turn.cpp.s
 .PHONY : core\turn.cpp.s
 
-entities\shooter.obj: entities\shooter.cpp.obj
-
-.PHONY : entities\shooter.obj
-
-# target to build an object file
-entities\shooter.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\shooter.cpp.obj
-.PHONY : entities\shooter.cpp.obj
-
-entities\shooter.i: entities\shooter.cpp.i
-
-.PHONY : entities\shooter.i
-
-# target to preprocess a source file
-entities\shooter.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\shooter.cpp.i
-.PHONY : entities\shooter.cpp.i
-
-entities\shooter.s: entities\shooter.cpp.s
-
-.PHONY : entities\shooter.s
-
-# target to generate assembly for a file
-entities\shooter.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\shooter.cpp.s
-.PHONY : entities\shooter.cpp.s
-
 entities\tree.obj: entities\tree.cpp.obj
 
 .PHONY : entities\tree.obj
@@ -1663,6 +1690,33 @@ gui\drawer.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer.cpp.s
 .PHONY : gui\drawer.cpp.s
 
+gui\drawer_factory.obj: gui\drawer_factory.cpp.obj
+
+.PHONY : gui\drawer_factory.obj
+
+# target to build an object file
+gui\drawer_factory.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj
+.PHONY : gui\drawer_factory.cpp.obj
+
+gui\drawer_factory.i: gui\drawer_factory.cpp.i
+
+.PHONY : gui\drawer_factory.i
+
+# target to preprocess a source file
+gui\drawer_factory.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.i
+.PHONY : gui\drawer_factory.cpp.i
+
+gui\drawer_factory.s: gui\drawer_factory.cpp.s
+
+.PHONY : gui\drawer_factory.s
+
+# target to generate assembly for a file
+gui\drawer_factory.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.s
+.PHONY : gui\drawer_factory.cpp.s
+
 gui\drawing_manager.obj: gui\drawing_manager.cpp.obj
 
 .PHONY : gui\drawing_manager.obj
@@ -1824,6 +1878,33 @@ managers\additions_manager.s: managers\additions_manager.cpp.s
 managers\additions_manager.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\additions_manager.cpp.s
 .PHONY : managers\additions_manager.cpp.s
+
+managers\animation_manager.obj: managers\animation_manager.cpp.obj
+
+.PHONY : managers\animation_manager.obj
+
+# target to build an object file
+managers\animation_manager.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj
+.PHONY : managers\animation_manager.cpp.obj
+
+managers\animation_manager.i: managers\animation_manager.cpp.i
+
+.PHONY : managers\animation_manager.i
+
+# target to preprocess a source file
+managers\animation_manager.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.i
+.PHONY : managers\animation_manager.cpp.i
+
+managers\animation_manager.s: managers\animation_manager.cpp.s
+
+.PHONY : managers\animation_manager.s
+
+# target to generate assembly for a file
+managers\animation_manager.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.s
+.PHONY : managers\animation_manager.cpp.s
 
 managers\directions_manager.obj: managers\directions_manager.cpp.obj
 
@@ -2107,6 +2188,9 @@ help:
 	@echo ... abilities/handcannon.obj
 	@echo ... abilities/handcannon.i
 	@echo ... abilities/handcannon.s
+	@echo ... abilities/immortality.obj
+	@echo ... abilities/immortality.i
+	@echo ... abilities/immortality.s
 	@echo ... abilities/invisibility.obj
 	@echo ... abilities/invisibility.i
 	@echo ... abilities/invisibility.s
@@ -2158,6 +2242,9 @@ help:
 	@echo ... abilities/tongue_of_fire.obj
 	@echo ... abilities/tongue_of_fire.i
 	@echo ... abilities/tongue_of_fire.s
+	@echo ... abilities/warrior_blow.obj
+	@echo ... abilities/warrior_blow.i
+	@echo ... abilities/warrior_blow.s
 	@echo ... abilities/wolf_herd.obj
 	@echo ... abilities/wolf_herd.i
 	@echo ... abilities/wolf_herd.s
@@ -2194,9 +2281,6 @@ help:
 	@echo ... core/turn.obj
 	@echo ... core/turn.i
 	@echo ... core/turn.s
-	@echo ... entities/shooter.obj
-	@echo ... entities/shooter.i
-	@echo ... entities/shooter.s
 	@echo ... entities/tree.obj
 	@echo ... entities/tree.i
 	@echo ... entities/tree.s
@@ -2221,6 +2305,9 @@ help:
 	@echo ... gui/drawer.obj
 	@echo ... gui/drawer.i
 	@echo ... gui/drawer.s
+	@echo ... gui/drawer_factory.obj
+	@echo ... gui/drawer_factory.i
+	@echo ... gui/drawer_factory.s
 	@echo ... gui/drawing_manager.obj
 	@echo ... gui/drawing_manager.i
 	@echo ... gui/drawing_manager.s
@@ -2239,6 +2326,9 @@ help:
 	@echo ... managers/additions_manager.obj
 	@echo ... managers/additions_manager.i
 	@echo ... managers/additions_manager.s
+	@echo ... managers/animation_manager.obj
+	@echo ... managers/animation_manager.i
+	@echo ... managers/animation_manager.s
 	@echo ... managers/directions_manager.obj
 	@echo ... managers/directions_manager.i
 	@echo ... managers/directions_manager.s

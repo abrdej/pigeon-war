@@ -16,13 +16,13 @@ void moveable::prepare(size_t for_index)
         path_finder.calc(for_index);
         path_finder.get_possible_movements(states::state_controller::possible_movements_,
                                            states::state_controller::possible_movements_costs_,
-                                           range());
+										   used ? 0 : range_);
 
     } else if (type == types::straight) {
         board_helper::calc_straight(states::state_controller::selected_index_,
                                 states::state_controller::possible_movements_,
                                 states::state_controller::possible_movements_costs_,
-                                range());
+									used ? 0 : range_);
     }
 
 	states::state_controller::actual_targeting_type_ = states::target_types::moving;
@@ -34,6 +34,10 @@ void moveable::prepare(size_t for_index)
 
 void moveable::move(size_t index_to)
 {
+	if (used) {
+		return;
+	}
+
 	auto move_from_index = states::state_controller::selected_index_;
 
 	auto end_it = std::end(states::state_controller::possible_movements_);
@@ -52,7 +56,7 @@ void moveable::move(size_t index_to)
 		states::state_controller::selected_index_ = selected_index_backup;
 
 		auto move_cost = states::state_controller::possible_movements_costs_[result - begin_it];
-		use_move(move_cost);
+		//use_move(move_cost);
 		
 		int from_col = board::to_pos(move_from_index).first;
 		int to_col = board::to_pos(index_to).first;
@@ -66,6 +70,8 @@ void moveable::move(size_t index_to)
 
 		states::state_controller::selected_index_ = index_to;
 		states::state_controller::possible_movements_.clear();
-		prepare(index_to);
+		//prepare(index_to);
+
+		used = true;
 	}
 }

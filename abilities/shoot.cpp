@@ -1,3 +1,4 @@
+#include <gui/drawing_manager.h>
 #include "shoot.h"
 
 #include "core/path_finder.h"
@@ -43,21 +44,28 @@ void shoot::use(size_t index_on)
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	play_bullet_animation(used_from_index, index_on);
+	play_bullet_animation(entity_id, used_from_index, index_on);
 
 	damage_dealers::standard_damage_dealer(ranged_damage(damage_, board::at(index_on), entity_id));
 }
 
-void shoot::play_bullet_animation(size_t from_index, size_t to_index)
+void shoot::play_bullet_animation(std::size_t entity_id, size_t from_index, size_t to_index)
 {
-	animation::player<animation::flash_bitmap>::launch
-		(animation::flash_bitmap(to_index, std::chrono::milliseconds(50), "shoot.png"));
-	animation::base_player::play();
+//	auto animator = animation_manager::animator_for<shooter_animator>(entity_id);
+//	animator->set_shoot(std::chrono::milliseconds(50));
+//	animation_manager::pull_animations();
+
+	auto drawer = drawing_manager::component_for(entity_id);
+
+
+//	animation::player<animation::flash_bitmap>::launch
+//			(animation::flash_bitmap(to_index, std::chrono::milliseconds(50), "shoot.png"));
+//	animation::base_player::play();
 	animation::player<animation::move>::launch
-		(animation::move(from_index, to_index, typeid(*this)));
+			(animation::move(from_index, to_index, typeid(*this)));
 	animation::base_player::play();
 	animation::player<animation::flash_bitmap>::launch
-		(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "bum.png"));
+			(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "bum.png"));
 	animation::base_player::play();
 }
 

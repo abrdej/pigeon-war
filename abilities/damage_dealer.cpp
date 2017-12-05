@@ -30,7 +30,8 @@ int damage_dealers::standard_damage_dealer(const damage_pack& dmg)
 	dmg_up.damage_value = random_damage(dmg.damage_value);
 	auto dealt_damage = healths_manager::receive_damage(dmg_up);
 
-	if (healths_manager::component_for(dmg.damage_receiver_id).health <= 0)
+	auto&& health_pack = healths_manager::component_for(dmg.damage_receiver_id);
+	if (health_pack.health <= 0 && health_pack.is_destructible)
 		entity_manager::destroy(dmg.damage_receiver_id);
 
 	return dealt_damage;
