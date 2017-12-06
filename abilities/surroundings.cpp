@@ -15,15 +15,20 @@ surroundings::surroundings(std::size_t entity_id) {
         int enemies_in_neighborhood = 0;
         for (auto&& neighbor : neighbors) {
             if (!board::empty(neighbor)) {
-                auto neighbor_id = board::at(index);
-                if (players_funcs::enemy_entity(neighbor_id)) {
+                if (players_funcs::player_entity(board::index_for(entity_id)) && players_funcs::enemy_entity(neighbor)) {
+                    ++enemies_in_neighborhood;
+
+                } else if (!players_funcs::player_entity(board::index_for(entity_id)) && players_funcs::player_entity(neighbor)) {
                     ++enemies_in_neighborhood;
                 }
             }
         }
 
         auto final_damage = std::min(health_pack.health,
-                                              std::max(min_damage, dmg.damage_value - enemies_in_neighborhood * damage_reduction));
+                                     std::max(min_damage, dmg.damage_value - enemies_in_neighborhood * damage_reduction));
+
+        std::cout << "enemies_in_neighborhood: " << enemies_in_neighborhood << "\n";
+
         health_pack.health -= final_damage;
 
         return final_damage;

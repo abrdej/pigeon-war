@@ -90,6 +90,9 @@ class healths_manager : public base_manager<health_field, health_field>
 			impl = callback;
 			return *this;
 		}
+		operator std::function<int(health_field&, const damage_pack&)>() {
+			return impl;
+		}
 		int operator()(health_field& entity_id, const damage_pack& dmg) {
 			return impl(entity_id, dmg);
 		}
@@ -156,6 +159,9 @@ public:
 	template <typename DamageReceiver>
 	static void set_damage_receiver(size_t entity_id, DamageReceiver damage_receiver) {
 		damage_receivers[entity_id] = damage_receiver;
+	}
+	static std::function<int(health_field&, const damage_pack&)> get_damage_receiver(size_t entity_id) {
+		return damage_receivers[entity_id];
 	}
 
 	template <typename Callback>

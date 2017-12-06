@@ -20,6 +20,7 @@ private:
 private:
 	static const int range_ = 3;
 	static const int damage_ = 8;
+	const int bonus_damage = 1;
 	bool used{false};
 };
 
