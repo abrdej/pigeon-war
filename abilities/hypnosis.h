@@ -8,13 +8,6 @@
 #include "abilities/ability.h"
 #include "core/turn.h"
 
-struct hypnosis_effect {
-	hypnosis_effect(std::size_t receiver_entity_id);
-	std::shared_ptr<std::function<void()>> rec;
-	std::function<void()> destroyer;
-	std::shared_ptr<ability> moveable_backup;
-};
-
 class hypnosis final : public ability
 {
 public:
@@ -26,7 +19,7 @@ private:
 
 private:
 	bool used{false};
-	const int range{5};
+	const int range{4};
 };
 
 #endif //PIGEONWAR_HYPNOSIS_H

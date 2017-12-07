@@ -4,11 +4,6 @@
 #include "spider_web.h"
 #include "damage_dealers.h"
 
-spider_web_slowdown::spider_web_slowdown(float slow_down_to, int slow_last, std::size_t receiver_entity_id) {
-
-
-}
-
 spider_web::spider_web(std::size_t entity_id) : entity_id(entity_id) {
     onEveryRound([this]() {
         used = false;
@@ -78,11 +73,11 @@ void spider_web::use(size_t index_on) {
 
         if (++counter == slow_last) {
 
-            auto& ab = abilities_manager::component_for(enemy_id);
-            ab.add_ability(abilities::ability_types::moving, moveable_backup);
-
-            additions_manager::remove_component(enemy_id,
-                                                "slow_down");
+			auto& ab = abilities_manager::component_for(enemy_id);
+			ab.add_ability(abilities::ability_types::moving, moveable_backup);
+			
+			additions_manager::remove_component(enemy_id,
+				"slow_down");            
         }
     });
 

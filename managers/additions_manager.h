@@ -54,7 +54,19 @@ struct additions_manager : base_manager<addition, addition&> {
     static inline void add_component(std::size_t entity_id,
                                      const std::string& name,
                                      std::shared_ptr<T> x) {
-        map_[entity_id].put_named(name, x);
+
+		auto it = map_.find(entity_id);
+		if (it != std::end(map_)) {
+			it->second.put_named(name, x);
+		}
+		else {
+			it = map_.emplace(entity_id, addition()).first;
+			it->second.put_named(name, x);
+			entity_remover::add_remover(entity_id, [entity_id]() {
+				map_.erase(entity_id);
+			});
+		}
+        //map_[entity_id].put_named(name, x);		
     }
 
     static void remove_component(std::size_t entity_id, const std::string& name) {

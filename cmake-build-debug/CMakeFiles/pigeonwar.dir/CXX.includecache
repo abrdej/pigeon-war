@@ -82,10 +82,6 @@ core/board.h
 managers/entity_manager.h
 -
 
-..//abilities/bullet.h
-memory
--
-
 ..//abilities/chopper.h
 abilities/ability.h
 ../abilities/abilities/ability.h
@@ -148,6 +144,12 @@ abilities/ability.h
 core/turn.h
 ../abilities/core/turn.h
 
+..//abilities/hypnosis.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/immortality.h
 ability.h
 ../abilities/ability.h
@@ -166,11 +168,15 @@ abilities/ability.h
 core/turn.h
 ../abilities/core/turn.h
 
+..//abilities/magic_bullet.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/moveable.h
 abilities/ability.h
 ../abilities/abilities/ability.h
-possible_movement.h
-../abilities/possible_movement.h
 core/turn.h
 ../abilities/core/turn.h
 functional
@@ -514,6 +520,16 @@ abilities/handcannon.h
 abilities/protection_field.h
 ../entities/abilities/protection_field.h
 
+..//entities/monk.h
+abilities/magic_bullet.h
+-
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+../entities/abilities/moveable.h
+
 ..//entities/mouse.h
 abilities/poisoned_missile.h
 -
@@ -589,6 +605,8 @@ abilities/grenade.h
 ../entities/abilities/grenade.h
 
 ..//entities/sniper.h
+abilities/hypnosis.h
+-
 entity.h
 ../entities/entity.h
 abilities/moveable.h
@@ -927,14 +945,10 @@ iostream
 ../abilities/moveable.h
 abilities/ability.h
 ../abilities/abilities/ability.h
-possible_movement.h
-../abilities/possible_movement.h
 core/turn.h
 ../abilities/core/turn.h
 functional
 -
-
-../abilities/possible_movement.h
 
 ../ai/ai.h
 core/players.h
@@ -1107,6 +1121,8 @@ board_panel.h
 ../gui/board_panel.h
 view_constants.h
 ../gui/view_constants.h
+core/players.h
+../gui/core/players.h
 
 ../gui/my_button.h
 SFML/Graphics.hpp
@@ -2041,8 +2057,6 @@ core/states.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/states.h
 core/board.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/board.h
-bullet.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
 animation/animation.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/animation/animation.h
 animation/animation_impl.h
@@ -2178,20 +2192,6 @@ core/board.h
 managers/entity_manager.h
 -
 
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.cpp
-bullet.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
-core/board.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/board.h
-thread
--
-chrono
--
-
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
-memory
--
-
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.cpp
 core/states.h
 -
@@ -2299,8 +2299,6 @@ core/states.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/states.h
 core/board.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/board.h
-bullet.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
 animation/animation.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/animation/animation.h
 animation/animation_impl.h
@@ -2390,6 +2388,26 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/hypnosis.cpp
+core/states.h
+-
+core/board.h
+-
+managers/additions_manager.h
+-
+managers/abilities_manager.h
+-
+managers/entity_manager.h
+-
+hypnosis.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/hypnosis.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/hypnosis.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/immortality.cpp
 managers/health_manager.h
 -
@@ -2442,6 +2460,20 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/magic_bullet.cpp
+core/states.h
+-
+magic_bullet.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/magic_bullet.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/magic_bullet.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.cpp
 moveable.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.h
@@ -2461,24 +2493,10 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/types_manager.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.h
 abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
-possible_movement.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 functional
 -
-
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.cpp
-poison.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.h
-
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.h
-abilities/ability.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
-vector
--
-core/turn.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.cpp
 core/states.h
@@ -2499,12 +2517,6 @@ abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
-
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.cpp
-possible_movement.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
-
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.cpp
 managers/health_manager.h
@@ -2569,8 +2581,6 @@ core/states.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/states.h
 core/board.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/board.h
-abilities/bullet.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/bullet.h
 animation/animation.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/animation/animation.h
 animation/animation_impl.h
@@ -2611,8 +2621,6 @@ core/states.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/states.h
 core/board.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/board.h
-bullet.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
 animation/animation.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/animation/animation.h
 animation/animation_impl.h
@@ -2759,8 +2767,6 @@ core/states.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/states.h
 core/board.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/board.h
-bullet.h
-C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
 animation/animation.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/animation/animation.h
 animation/animation_impl.h
@@ -3189,6 +3195,8 @@ entities/sniper.h
 -
 abilities/sniper_shot.h
 -
+entities/monk.h
+-
 gui/bitmap_center.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui/bitmap_center.h
 animation/animation.h
@@ -3373,6 +3381,8 @@ board_panel.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.h
 view_constants.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/view_constants.h
+core/players.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/core/players.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui.cpp
 gui.h
@@ -3684,6 +3694,8 @@ entities/robot.h
 entities/spider.h
 -
 entities/sniper.h
+-
+entities/monk.h
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.h

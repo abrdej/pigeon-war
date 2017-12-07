@@ -8,13 +8,6 @@
 #include "abilities/ability.h"
 #include "core/turn.h"
 
-struct spider_web_slowdown {
-    spider_web_slowdown(float slow_down_to, int slow_last, std::size_t receiver_entity_id);
-    std::shared_ptr<std::function<void()>> rec;
-    std::function<void()> destroyer;
-    std::shared_ptr<ability> moveable_backup;
-};
-
 class spider_web final : public ability, protected turn_events_helper::every_turn_callback_helper
 {
 public:
