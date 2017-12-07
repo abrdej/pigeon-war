@@ -1015,6 +1015,33 @@ abilities\shoot.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.s
 .PHONY : abilities\shoot.cpp.s
 
+abilities\sniper_shot.obj: abilities\sniper_shot.cpp.obj
+
+.PHONY : abilities\sniper_shot.obj
+
+# target to build an object file
+abilities\sniper_shot.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj
+.PHONY : abilities\sniper_shot.cpp.obj
+
+abilities\sniper_shot.i: abilities\sniper_shot.cpp.i
+
+.PHONY : abilities\sniper_shot.i
+
+# target to preprocess a source file
+abilities\sniper_shot.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.i
+.PHONY : abilities\sniper_shot.cpp.i
+
+abilities\sniper_shot.s: abilities\sniper_shot.cpp.s
+
+.PHONY : abilities\sniper_shot.s
+
+# target to generate assembly for a file
+abilities\sniper_shot.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.s
+.PHONY : abilities\sniper_shot.cpp.s
+
 abilities\spear.obj: abilities\spear.cpp.obj
 
 .PHONY : abilities\spear.obj
@@ -2338,6 +2365,9 @@ help:
 	@echo ... abilities/shoot.obj
 	@echo ... abilities/shoot.i
 	@echo ... abilities/shoot.s
+	@echo ... abilities/sniper_shot.obj
+	@echo ... abilities/sniper_shot.i
+	@echo ... abilities/sniper_shot.s
 	@echo ... abilities/spear.obj
 	@echo ... abilities/spear.i
 	@echo ... abilities/spear.s

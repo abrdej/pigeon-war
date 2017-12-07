@@ -22,6 +22,8 @@
 #include <entities/warrior.h>
 #include <entities/robot.h>
 #include <entities/spider.h>
+#include <entities/sniper.h>
+#include <abilities/sniper_shot.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -42,7 +44,7 @@
 namespace view
 {
 std::unordered_map<std::type_index, bitmap_center::bitmap_type> bitmap_center::bitmaps_;
-//std::unordered_map<BitmapKey, bitmap_center::bitmap_type> bitmap_center::bb;
+std::unordered_map<bitmap_center::key_type, bitmap_center::bitmap_type> bitmap_center::bb;
 bitmap_center::bitmap_type bitmap_center::grass_move_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_attack_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_damage_bitmap;
@@ -131,11 +133,13 @@ void bitmap_center::load()
     add_entity_image<spider_web>("web.png");
     add_entity_image<surroundings>("spider.png");
     add_entity_image<detonation>("detonation.png");
+    add_entity_image<sniper>("sniper.png");
+    add_entity_image<sniper_shot>("sniper_shoot.png");
 
 
     // bitmaps
-//    add_bitmap(BitmapKey::shooter, "shooter.png");
-//    add_bitmap(BitmapKey::shooter_shoot, "shooter_shoot.png");
+    add_bitmap("shooter", "shooter.png");
+    add_bitmap("shooter_shoot", "shooter_shoot.png");
 
     std::cout << "End load\n";
 }

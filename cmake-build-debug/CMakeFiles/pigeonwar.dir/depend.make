@@ -175,6 +175,7 @@ CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\managers\directions_manager.h
@@ -699,6 +700,7 @@ CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\managers\directions_manager.h
@@ -817,6 +819,7 @@ CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\managers\directions_manager.h
@@ -933,6 +936,7 @@ CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\managers\directions_manager.h
@@ -1510,6 +1514,7 @@ CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\managers\directions_manager.h
@@ -1625,6 +1630,7 @@ CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\managers\directions_manager.h
@@ -1845,6 +1851,7 @@ CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\managers\directions_manager.h
@@ -2006,6 +2013,7 @@ CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\managers\directions_manager.h
@@ -2127,6 +2135,7 @@ CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\managers\directions_manager.h
@@ -2289,6 +2298,7 @@ CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\managers\directions_manager.h
@@ -2539,6 +2549,7 @@ CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\turn.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\entities\entity.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\entities\shooter.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\gui\drawing_manager.h
+CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\animation_manager.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\directions_manager.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\managers.h
@@ -2555,6 +2566,7 @@ CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\entity_remover.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\managers.h
@@ -2651,6 +2663,22 @@ CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\abilities\damage_dealers.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\abilities\shoot.cpp
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\abilities\shoot.h
 
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\abilities\ability.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\animation\animation.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\core\board.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\core\signals.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\core\states.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\core\turn.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\managers\health_manager.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\managers\managers.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\utils\graph.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\core\path_finder.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\core\players.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\managers\entity_remover.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\abilities\damage_dealers.h
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\abilities\sniper_shot.cpp
+CMakeFiles\pigeonwar.dir\abilities\sniper_shot.cpp.obj: ..\abilities\sniper_shot.h
+
 CMakeFiles\pigeonwar.dir\abilities\spear.cpp.obj: ..\abilities\ability.h
 CMakeFiles\pigeonwar.dir\abilities\spear.cpp.obj: ..\animation\animation.h
 CMakeFiles\pigeonwar.dir\abilities\spear.cpp.obj: ..\core\board.h
@@ -2704,6 +2732,7 @@ CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\managers\directions_manager.h
@@ -3413,6 +3442,7 @@ CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\managers\directions_manager.h
@@ -3570,6 +3600,7 @@ CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\gui\drawer_factory
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\managers\directions_manager.h
@@ -3694,6 +3725,7 @@ CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\gui\drawer_fac
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\managers\directions_manager.h
@@ -3808,6 +3840,7 @@ CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\managers\directions_manager.h
@@ -3951,6 +3984,7 @@ CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\managers\directions_manager.h
@@ -4076,6 +4110,7 @@ CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\managers\directions_manager.h
@@ -4190,6 +4225,7 @@ CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\managers\directions_manager.h
@@ -4354,6 +4390,7 @@ CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\recovery.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\sabers.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\shield.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\shoot.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\sniper_shot.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\spear.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\spider_web.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\spiral_of_fire.h
@@ -4390,6 +4427,7 @@ CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\samurai_rat.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\saurian.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\saurions_web.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\shooter.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\sniper.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\spider.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\stone.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\thrower.h
@@ -4425,6 +4463,7 @@ CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\managers\directions_manager.h
@@ -5016,6 +5055,7 @@ CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\gui\board_panel.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\gui\entity_drawer.h
+CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\managers\directions_manager.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\managers\entity_remover.h
@@ -5252,6 +5292,7 @@ CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\gui\drawer.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\gui\entity_drawer.h
+CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\gui\view_constants.h
 
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\abilities\abilities.h
@@ -5352,6 +5393,7 @@ CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\gui\drawer_factory.cpp
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\gui\view_constants.h
 
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\abilities\abilities.h
@@ -5453,6 +5495,7 @@ CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\gui\drawing_manager.cpp
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\gui\view_constants.h
 
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\abilities\abilities.h
@@ -5479,6 +5522,7 @@ CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\my_button.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\managers\abilities_manager.h
+CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\managers\animation_manager.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\managers\directions_manager.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\managers\entity_manager.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\managers\health_manager.h
@@ -5580,6 +5624,7 @@ CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\gui.cpp
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\gui.h
+CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\gui\view_constants.h
 
 CMakeFiles\pigeonwar.dir\gui\my_button.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Config.hpp
@@ -5779,6 +5824,7 @@ CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\gui\gui.h
+CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\main.cpp
 
@@ -5818,6 +5864,7 @@ CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\managers\entity_remover.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\managers\managers.h
@@ -5936,6 +5983,7 @@ CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Config.hpp
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics.hpp
@@ -6068,6 +6116,7 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\recovery.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\sabers.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\shield.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\shoot.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\sniper_shot.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\spear.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\spider_web.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\spiral_of_fire.h
@@ -6103,6 +6152,7 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\samurai_rat.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\saurian.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\saurions_web.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\shooter.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\sniper.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\spider.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\stone.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\thrower.h
@@ -6140,6 +6190,7 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\managers\directions_manager.h
@@ -6960,6 +7011,7 @@ CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\gui\drawable.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\gui\drawer_factory.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\gui\entity_drawer.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\gui\shooter_drawing.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\gui\view_constants.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\managers\directions_manager.h

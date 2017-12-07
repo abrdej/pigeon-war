@@ -166,6 +166,7 @@ void wolves_dinner(game& game) {
 #include <entities/handthrower.h>
 #include <entities/robot.h>
 #include <entities/spider.h>
+#include <entities/sniper.h>
 
 using Entites = boost::fusion::vector<shooter,
         destroyer,
@@ -173,7 +174,8 @@ using Entites = boost::fusion::vector<shooter,
         droid,
         saberhand,
         native,
-        troll,
+        //troll,
+        sniper,
         mouse,
         werewolf,
         grenadier,

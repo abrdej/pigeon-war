@@ -4,6 +4,7 @@
 #include "core/game.h"
 #include "drawer.h"
 #include "animation/animations_objects.h"
+#include "managers/animation_manager.h"
 #include <algorithm>
 #include <chrono>
 

@@ -218,6 +218,12 @@ abilities/ability.h
 core/turn.h
 ../abilities/core/turn.h
 
+..//abilities/sniper_shot.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/spear.h
 abilities/ability.h
 ../abilities/abilities/ability.h
@@ -582,6 +588,14 @@ abilities/shoot.h
 abilities/grenade.h
 ../entities/abilities/grenade.h
 
+..//entities/sniper.h
+entity.h
+../entities/entity.h
+abilities/moveable.h
+../entities/abilities/moveable.h
+abilities/sniper_shot.h
+../entities/abilities/sniper_shot.h
+
 ..//entities/spider.h
 abilities/surroundings.h
 -
@@ -769,6 +783,16 @@ memory
 -
 typeindex
 -
+
+..//managers/animation_manager.h
+cstdio
+-
+functional
+-
+queue
+-
+gui/drawing_manager.h
+../managers/gui/drawing_manager.h
 
 ..//managers/directions_manager.h
 managers.h
@@ -1047,6 +1071,8 @@ entity_drawer.h
 ../gui/entity_drawer.h
 managers/types_manager.h
 ../gui/managers/types_manager.h
+shooter_drawing.h
+../gui/shooter_drawing.h
 entities/shooter.h
 ../gui/entities/shooter.h
 
@@ -1087,6 +1113,28 @@ SFML/Graphics.hpp
 -
 functional
 -
+
+../gui/shooter_drawing.h
+SFML/Graphics/Sprite.hpp
+-
+managers/health_manager.h
+-
+SFML/Graphics/Text.hpp
+-
+core/board.h
+-
+managers/directions_manager.h
+../gui/managers/directions_manager.h
+managers/types_manager.h
+../gui/managers/types_manager.h
+bitmap_center.h
+../gui/bitmap_center.h
+drawable.h
+../gui/drawable.h
+board_panel.h
+../gui/board_panel.h
+view_constants.h
+../gui/view_constants.h
 
 ../gui/view_constants.h
 SFML/Graphics.hpp
@@ -2553,6 +2601,8 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.cpp
 gui/drawing_manager.h
 -
+managers/animation_manager.h
+-
 shoot.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.h
 core/path_finder.h
@@ -2573,6 +2623,20 @@ audio/audio_impl.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/audio/audio_impl.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sniper_shot.cpp
+core/states.h
+-
+sniper_shot.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sniper_shot.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sniper_shot.h
 abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
@@ -3121,6 +3185,10 @@ entities/robot.h
 -
 entities/spider.h
 -
+entities/sniper.h
+-
+abilities/sniper_shot.h
+-
 gui/bitmap_center.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui/bitmap_center.h
 animation/animation.h
@@ -3265,6 +3333,8 @@ entity_drawer.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.h
 managers/types_manager.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/managers/types_manager.h
+shooter_drawing.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/shooter_drawing.h
 entities/shooter.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entities/shooter.h
 
@@ -3315,6 +3385,8 @@ drawer.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer.h
 animation/animations_objects.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/animation/animations_objects.h
+managers/animation_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/managers/animation_manager.h
 algorithm
 -
 chrono
@@ -3347,6 +3419,28 @@ SFML/Graphics.hpp
 -
 functional
 -
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/shooter_drawing.h
+SFML/Graphics/Sprite.hpp
+-
+managers/health_manager.h
+-
+SFML/Graphics/Text.hpp
+-
+core/board.h
+-
+managers/directions_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/managers/directions_manager.h
+managers/types_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/managers/types_manager.h
+bitmap_center.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmap_center.h
+drawable.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawable.h
+board_panel.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.h
+view_constants.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/gui/view_constants.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/view_constants.h
 SFML/Graphics.hpp
@@ -3384,6 +3478,10 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/managers/animation_manager.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/managers/animation_manager.h
 cstdio
+-
+functional
+-
+queue
 -
 gui/drawing_manager.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/managers/gui/drawing_manager.h
@@ -3584,6 +3682,8 @@ entities/handthrower.h
 entities/robot.h
 -
 entities/spider.h
+-
+entities/sniper.h
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.h

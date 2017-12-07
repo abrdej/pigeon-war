@@ -37,6 +37,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sabers.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/shield.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj"
+  "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sniper_shot.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/sniper_shot.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/spear.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/spider_web.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spiral_of_fire.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/spiral_of_fire.cpp.obj"

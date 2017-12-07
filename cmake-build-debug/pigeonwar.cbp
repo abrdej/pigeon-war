@@ -281,6 +281,12 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sniper_shot.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/sniper_shot.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spear.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -453,6 +459,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/samurai_rat.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/sniper.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/spider.h">

@@ -77,6 +77,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pigeonwar.dir/abilities/spider_web.cpp.obj"
   "CMakeFiles/pigeonwar.dir/abilities/surroundings.cpp.obj"
   "CMakeFiles/pigeonwar.dir/abilities/detonation.cpp.obj"
+  "CMakeFiles/pigeonwar.dir/abilities/sniper_shot.cpp.obj"
   "pigeonwar.pdb"
   "pigeonwar.exe"
   "pigeonwar.exe.manifest"

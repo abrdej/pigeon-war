@@ -1,4 +1,5 @@
 #include <gui/drawing_manager.h>
+#include <managers/animation_manager.h>
 #include "shoot.h"
 
 #include "core/path_finder.h"
@@ -55,7 +56,17 @@ void shoot::play_animation(std::size_t entity_id, size_t from_index, size_t to_i
 //	animator->set_shoot(std::chrono::milliseconds(50));
 //	animation_manager::pull_animations();
 
-	auto drawer = drawing_manager::component_for(entity_id);
+//    animation_manager::push_animation(0.f, [this, entity_id]() {
+//        auto drawer = drawing_manager::typed_drawer_for<shooter_drawer>(entity_id);
+//        drawer->set_state(shooter_drawer::States::shoot);
+//        std::cout << "shoot\n";
+//    });
+//    animation_manager::push_animation(0.1f, [this, entity_id]() {
+//        auto drawer = drawing_manager::typed_drawer_for<shooter_drawer>(entity_id);
+//        drawer->set_state(shooter_drawer::States::normal);
+//        std::cout << "back to normal\n";
+//    });
+//    animation_manager::pull_animations();
 
 
 //	animation::player<animation::flash_bitmap>::launch

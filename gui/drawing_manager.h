@@ -12,12 +12,12 @@
 
 struct drawing_manager : base_manager<drawable::ptr_type, drawable::ptr_type> {
     static drawable::ptr_type drawer_for(std::size_t entity_id) {
-               //auto drawer = map_[entity_id];
-        // if (!drawer) {
-        //     drawer = drawer_factory::make_drawer_for(entity_id);
-        // }
-
         return map_.at(entity_id);
+    }
+
+    template <typename Drawer>
+    static std::shared_ptr<Drawer> typed_drawer_for(std::size_t entity_id) {
+        return std::static_pointer_cast<Drawer>(map_.at(entity_id));
     }
 };
 
