@@ -21,8 +21,8 @@ private:
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    static const int range = 3;
-    static const int damage = 12;
+    const int range = 3;
+    const int damage = 12;
     bool can_be_used{false};
 
     friend class chopper;

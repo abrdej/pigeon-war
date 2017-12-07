@@ -16,9 +16,9 @@ struct rage final : public ability, turn_events_helper::every_turn_callback_help
 	void play_animation(size_t use_from_index);
 
 private:
-	static const size_t range_ = 1;
-	static const size_t damage_ = 10;
-	static const size_t required_damage = 2;
+	const int range = 1;
+	const int damage = 10;
+	const int required_damage = 2;
 	size_t damage_this_turn{0};
 	size_t entity_id;
 };

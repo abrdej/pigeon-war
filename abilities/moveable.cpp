@@ -16,13 +16,13 @@ void moveable::prepare(size_t for_index)
         path_finder.calc(for_index);
         path_finder.get_possible_movements(states::state_controller::possible_movements_,
                                            states::state_controller::possible_movements_costs_,
-										   used ? 0 : range_);
+										   used ? 0 : range);
 
     } else if (type == types::straight) {
         board_helper::calc_straight(states::state_controller::selected_index_,
                                 states::state_controller::possible_movements_,
                                 states::state_controller::possible_movements_costs_,
-									used ? 0 : range_);
+									used ? 0 : range);
     }
 
 	states::state_controller::actual_targeting_type_ = states::target_types::moving;

@@ -3,12 +3,11 @@
 
 #include <iostream>
 
-class ability //: public std::enable_shared_from_this<ability>
+class ability
 {
 protected:
 	virtual ~ability() = default;
 public:
-	//enum class types { moving, attack, helping, passive };
 	void operator()(size_t index)
 	{
 		prepare(index);
@@ -18,8 +17,6 @@ public:
 	}
 private:
 	virtual void prepare(size_t for_index) = 0;
-protected:
-	//types type_;
 };
 
 #endif

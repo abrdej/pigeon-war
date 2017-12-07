@@ -66,5 +66,5 @@ void entangling::use(size_t index_on) {
 
     board::insert(index_on, entangling_id);
 
-    damage_dealers::standard_damage_dealer(magic_damage(damage_, enemy_id, caster_id));
+    damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, caster_id));
 }

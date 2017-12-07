@@ -15,7 +15,7 @@ public:
 private:
     void prepare(size_t for_index) override {}
     std::size_t entity_id;
-    turn::turn_system::every_turn_signal_type::strong_receiver receiver;
+    turn::turn_system::strong_receiver receiver;
 };
 
 #endif //PIGEONWAR_IMMORTALITY_H

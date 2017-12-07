@@ -28,9 +28,30 @@ struct addition {
     void destroy() {
         data.erase(std::type_index(typeid(T)));
     }
+
+    std::unordered_map<std::string, std::shared_ptr<void>> named_data;
+
+    template <typename T>
+    std::shared_ptr<T> get_named(const std::string& name) {
+        return std::static_pointer_cast<T>(named_data.at(name));
+    }
+    template <typename T>
+    const std::shared_ptr<T> get_named(const std::string& name) const {
+        return std::static_pointer_cast<T>(named_data.at(name));
+    }
+    template <typename T, typename... Args>
+    void put_named(const std::string& name, const std::shared_ptr<T>& x) {
+        named_data[name] = x;
+    };
+
+
+
+
 };
 
 struct additions_manager : base_manager<addition, addition&> {
+
+    static std::unordered_map<std::size_t, addition> named_map;
 
     template <typename T, typename... Args>
     static inline void add_component(std::size_t entity_id, Args&&... args) {
@@ -39,6 +60,13 @@ struct additions_manager : base_manager<addition, addition&> {
         elem->destroyer = [entity_id]() {
             map_[entity_id].destroy<T>();
         };
+    }
+
+    template <typename T>
+    static inline void add_component(std::size_t entity_id,
+                                     const std::string& name,
+                                     T x) {
+        named_map[entity_id].put_named(name, x);
     }
 
     template <typename T>

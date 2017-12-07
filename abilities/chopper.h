@@ -21,9 +21,9 @@ private:
     void play_animation(size_t index_from, size_t index_on);
 
 private:
-    static const size_t range = 1;
-    static const size_t no_fired_damage = 5;
-    static const size_t fired_damage = 10;
+    const int range = 1;
+    const int no_fired_damage = 5;
+    const int fired_damage = 10;
     std::size_t entity_id;
     bool used{false};
     int damage{no_fired_damage};

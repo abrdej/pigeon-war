@@ -18,9 +18,9 @@ private:
 	void play_animation(size_t from_index, size_t to_index, const std::vector<size_t>& neightbords);
 
 private:
-	static const size_t range_ = 4;
-	static const size_t damage_ = 5;
-	static const size_t damage_bonus = 4;
+	const int range = 4;
+	const int damage = 5;
+	const int damage_bonus = 4;
 	bool used{false};
 	int counter = 0;
 };

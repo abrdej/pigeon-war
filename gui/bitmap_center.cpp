@@ -135,12 +135,10 @@ void bitmap_center::load()
     add_entity_image<detonation>("detonation.png");
     add_entity_image<sniper>("sniper.png");
     add_entity_image<sniper_shot>("sniper_shoot.png");
-
+    add_entity_image<hypnosis>("field_shoot.png");
 
     // bitmaps
     add_bitmap("shooter", "shooter.png");
     add_bitmap("shooter_shoot", "shooter_shoot.png");
-
-    std::cout << "End load\n";
 }
 }

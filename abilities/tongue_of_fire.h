@@ -14,9 +14,9 @@ private:
 	void play_bullet_animation(size_t from_index, size_t to_index);
 	void refresh_usable();
 private:
-	static const size_t range_ = 7;
-	static const size_t damage_ = 9;
-	bool used_;
+	const int range = 7;
+	const int damage = 9;
+	bool used;
 };
 
 #endif

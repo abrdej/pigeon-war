@@ -25,9 +25,11 @@ void state_controller::first_state(size_t select_from_index)
 	auto entity_id = board::at(selected_index);
 	auto& entity_abilities = abilities_manager::component_for(entity_id);
 
-	auto moveable = entity_abilities.at(0);
-	if (moveable) {
-		moveable->operator()(states::state_controller::selected_index_);
+	if (entity_abilities.is_active) {
+		auto moveable = entity_abilities.at(0);
+		if (moveable) {
+			moveable->operator()(states::state_controller::selected_index_);
+		}
 	}
 }
 
@@ -49,4 +51,4 @@ bool state_controller::is_possible_movement(size_t index)
 	auto result = std::find(begin_it, end_it, index);
 	return result != end_it;
 }
-};
+}

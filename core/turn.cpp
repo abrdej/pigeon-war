@@ -6,8 +6,8 @@ namespace turn
 size_t turn_system::turn_n_ = 0;
 std::unordered_multimap<size_t, std::function<void()>> turn_system::tasks_;
 
-turn_system::every_turn_signal_type turn_system::every_round_signal_;
-turn_system::every_turn_signal_type turn_system::every_turn_signal_;
+turn_system::signal_type turn_system::every_round_signal_;
+turn_system::signal_type turn_system::every_turn_signal_;
 
 void turn_system::end_turn()
 {
@@ -31,16 +31,30 @@ void turn_system::on_turn(size_t turn_n, const std::function<void()>& task)
 	tasks_.insert(std::make_pair(turn_n, task));
 }
 
-turn_system::every_turn_signal_type::strong_receiver
-turn_system::every_round(std::function<void()> callback)
+turn_system::strong_receiver turn_system::every_round(std::function<void()> callback)
 {
-	return every_round_signal_.add_receiver(std::make_shared<std::function<void()>>(callback));
+	auto wrapper = [callback](holder) {
+		callback();
+	};
+	return every_round_signal_.add_receiver(std::make_shared<std::function<void(holder)>>(wrapper));
 }
 
-turn_system::every_turn_signal_type::strong_receiver
-turn_system::every_turn(std::function<void()> callback)
+turn_system::strong_receiver turn_system::every_turn(std::function<void()> callback)
 {
-	return every_turn_signal_.add_receiver(std::make_shared<std::function<void()>>(callback));
+	auto wrapper = [callback](holder) {
+		callback();
+	};
+	return every_turn_signal_.add_receiver(std::make_shared<std::function<void(holder)>>(wrapper));
+}
+
+turn_system::strong_receiver turn_system::every_round(std::function<void(holder)> callback)
+{
+	return every_round_signal_.add_receiver(std::make_shared<std::function<void(holder)>>(callback));
+}
+
+turn_system::strong_receiver turn_system::every_turn(std::function<void(holder)> callback)
+{
+	return every_turn_signal_.add_receiver(std::make_shared<std::function<void(holder)>>(callback));
 }
 
 };

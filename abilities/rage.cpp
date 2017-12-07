@@ -36,7 +36,7 @@ void rage::use() {
 
 	for (auto&& field_id : around_fields_ids) {
 		if (!board::empty(field_id)) {
-			damage_dealers::standard_damage_dealer(melee_damage(damage_, board::at(field_id), entity_id));
+			damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(field_id), entity_id));
 		}
 	}
 }

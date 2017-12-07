@@ -6,27 +6,7 @@
 
 spider_web_slowdown::spider_web_slowdown(float slow_down_to, int slow_last, std::size_t receiver_entity_id) {
 
-    auto& abilities = abilities_manager::component_for(receiver_entity_id);
-    moveable_backup =  abilities.type(abilities::ability_types::moving);
-    abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(slow_down_to));
 
-    rec = turn::turn_system::every_round([this, slow_down_to, slow_last, receiver_entity_id, counter = 0]() mutable {
-
-        if (entity_manager::alive(receiver_entity_id)) {
-            if (++counter == slow_last) {
-
-                auto& ab = abilities_manager::component_for(receiver_entity_id);
-                ab.add_ability(abilities::ability_types::moving, moveable_backup);
-
-                rec.reset();
-                destroyer();
-            }
-
-        } else {
-            rec.reset();
-            destroyer();
-        }
-    });
 }
 
 spider_web::spider_web(std::size_t entity_id) : entity_id(entity_id) {
@@ -89,7 +69,23 @@ void spider_web::use(size_t index_on) {
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, entity_id));
 
-    additions_manager::add_component<spider_web_slowdown>(enemy_id, 1, 2, enemy_id);
+    auto& abilities = abilities_manager::component_for(enemy_id);
+    auto moveable_backup =  abilities.type(abilities::ability_types::moving);
+    abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(1));
+
+    auto slow_down_receiver =
+            turn::turn_system::every_round([this, slow_last = 2, enemy_id, moveable_backup, counter = 0](turn::turn_system::holder holder) mutable {
+
+        if (++counter == slow_last) {
+
+            auto& ab = abilities_manager::component_for(enemy_id);
+            ab.add_ability(abilities::ability_types::moving, moveable_backup);
+
+            holder = nullptr;
+        }
+    });
+
+    additions_manager::add_component(enemy_id, "slow_down", slow_down_receiver);
 
     used = true;
 }

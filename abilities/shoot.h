@@ -15,10 +15,10 @@ private:
 	void refresh_usable();
 
 private:
-	static const size_t range_ = 3;
-	static const size_t damage_ = 6;
-	static const size_t bullets_n = 2;
-	size_t bullets_;
+	const int range = 3;
+	const int damage = 6;
+	const int bullets_n = 2;
+	size_t bullets;
 };
 
 #endif

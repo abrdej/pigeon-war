@@ -17,8 +17,8 @@ private:
     void play_sword_blow_animation(size_t from_index);
 
 private:
-    static const size_t range_ = 1;
-    static const size_t damage_ = 10;
+    const int range = 1;
+    const int damage = 10;
     bool used{false};
 };
 

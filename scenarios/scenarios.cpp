@@ -188,7 +188,7 @@ using Entites = boost::fusion::vector<shooter,
         spider>;
 
 struct OwnerCallback {
-    std::shared_ptr<std::function<void()>> owner;
+    turn::turn_system::strong_receiver owner;
 };
 
 void skirmish(game& game) {

@@ -16,7 +16,7 @@ void bludgeon::prepare(size_t for_index)
 
 	board_helper::calc_straight(for_index, states::state_controller::possible_movements_,
 								states::state_controller::possible_movements_costs_,
-								range_);
+								range);
 
 	states::state_controller::actual_targeting_type_ = states::target_types::enemy;
 	states::state_controller::wait_for_action([this](size_t index)
@@ -54,7 +54,7 @@ void bludgeon::use(size_t index_on)
 
 	play_animation(used_from_index, index_on, set_on_index, push_to_index);
 
-	damage_dealers::standard_damage_dealer(melee_damage(damage_, board::at(push_to_index), entity_id));
+	damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(push_to_index), entity_id));
 
 	states::state_controller::selected_index_ = set_on_index;
 }

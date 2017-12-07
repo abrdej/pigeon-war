@@ -2,7 +2,6 @@
 #define MOVEABLE_H
 
 #include "abilities/ability.h"
-#include "possible_movement.h"
 #include "core/turn.h"
 #include <functional>
 
@@ -12,8 +11,8 @@ public:
         path,
         straight
     };
-	explicit moveable(size_t range, types type = types::path)
-		: range_(range),
+	explicit moveable(int range, types type = types::path)
+		: range(range),
           type(type) {
 		onEveryRound([this]() {
 			used = false;
@@ -25,7 +24,7 @@ private:
 	void move(size_t index_to);
 
 private:
-	size_t range_;
+	int range;
 	bool used{false};
     types type;
 };

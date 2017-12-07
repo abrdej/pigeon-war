@@ -44,8 +44,8 @@ private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);
 
-    static const size_t range_ = 2;
-    static const size_t damage_ = 5;
+    const int range = 2;
+    const int damage = 5;
     bool used{false};
     std::size_t entity_id;
 };

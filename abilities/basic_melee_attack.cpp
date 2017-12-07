@@ -3,7 +3,6 @@
 #include "core/path_finder.h"
 #include "core/states.h"
 #include "core/board.h"
-#include "bullet.h"
 #include "animation/animation.h"
 #include "animation/animation_impl.h"
 #include "damage_dealers.h"
@@ -41,7 +40,7 @@ void basic_melee_attack::use(size_t index_on)
 
 	auto enemy_id = board::at(index_on);
 
-	damage_dealers::standard_damage_dealer(melee_damage(damage_, enemy_id, caster_id));
+	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 
 	used = true;
 

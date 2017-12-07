@@ -15,8 +15,8 @@ private:
 	void play_animation(size_t from_index, size_t to_index, const std::vector<size_t>& neightbords);
 
 private:
-	static const size_t range_ = 3;
-	static const size_t damage_ = 12;
+	const int range = 3;
+	const int damage = 12;
 	bool used_;
 };
 

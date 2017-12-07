@@ -5,11 +5,12 @@
 #include <memory>
 #include <vector>
 
-template <typename... Args>
+//template <typename... Args>
 class signal
 {
 public:
-	using callback = std::function<void(Args...)>;
+	using holder = std::shared_ptr<void>;
+	using callback = std::function<void(holder)>;
 	using weak_receiver = std::weak_ptr<callback>;
 	using strong_receiver = std::shared_ptr<callback>;
 	using receiver_vector = std::vector<weak_receiver>;
@@ -20,12 +21,14 @@ public:
 		return rec;
 	}
 
-	void send_event(Args... args)
+	void send_event()
 	{
 		for (auto& receiver : receivers_)
 		{
-			if (!receiver.expired())
-				(*receiver.lock())(args...);
+			if (!receiver.expired()) {
+				auto ptr = receiver.lock();
+				(*ptr)(ptr);
+			}
 		}
 		receivers_.erase(std::remove_if(std::begin(receivers_),
 			std::end(receivers_), [](const weak_receiver& receiver)

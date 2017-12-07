@@ -5,14 +5,13 @@
 #include "core/path_finder.h"
 #include "core/states.h"
 #include "core/board.h"
-#include "bullet.h"
 #include "animation/animation.h"
 #include "animation/animation_impl.h"
 #include "damage_dealers.h"
 #include "audio/audio_impl.h"
 
 shoot::shoot()
-	: bullets_(bullets_n)
+	: bullets(bullets_n)
 {
 	onEveryRound([this]() {
 		refresh_usable();
@@ -25,7 +24,7 @@ void shoot::prepare(size_t for_index)
 
 	board_helper::calc_straight(for_index, states::state_controller::possible_movements_,
 		states::state_controller::possible_movements_costs_,
-		range_);
+		range);
 	
 	states::state_controller::actual_targeting_type_ = states::target_types::enemy;
 	states::state_controller::wait_for_action([this](size_t index)
@@ -36,18 +35,18 @@ void shoot::prepare(size_t for_index)
 
 void shoot::use(size_t index_on)
 {
-	if (bullets_ == 0)
+	if (bullets == 0)
 		return;
 
 	audio::shoot_sound();
 
-	--bullets_;
+	--bullets;
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
     play_animation(entity_id, used_from_index, index_on);
 
-	damage_dealers::standard_damage_dealer(ranged_damage(damage_, board::at(index_on), entity_id));
+	damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
 }
 
 void shoot::play_animation(std::size_t entity_id, size_t from_index, size_t to_index)
@@ -82,5 +81,5 @@ void shoot::play_animation(std::size_t entity_id, size_t from_index, size_t to_i
 
 void shoot::refresh_usable()
 {
-	bullets_ = bullets_n;
+	bullets = bullets_n;
 }

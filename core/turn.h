@@ -10,20 +10,31 @@
 
 namespace turn
 {
+
+// turn_system is responsible to send events releted to turns
+// there are some kinds of event
+//
+
 class turn_system
 {
 public:
-	using every_turn_signal_type = signal<>;
+	using signal_type = signal;
+	using holder = signal_type::holder;
+	using strong_receiver = signal_type::strong_receiver;
+	using callback = signal_type::callback;
 
 	static void end_turn();
 	static void on_turn(size_t turn_n, const std::function<void()>& task);
-	static every_turn_signal_type::strong_receiver every_round(std::function<void()> callback);
-	static every_turn_signal_type::strong_receiver every_turn(std::function<void()> callback);
+	static strong_receiver every_round(std::function<void(holder)> callback);
+	static strong_receiver every_turn(std::function<void(holder)> callback);
+	static strong_receiver every_round(std::function<void()> callback);
+	static strong_receiver every_turn(std::function<void()> callback);
+
 private:
 	static size_t turn_n_;
 	static std::unordered_multimap<size_t, std::function<void()>> tasks_;
-	static every_turn_signal_type every_round_signal_;
-	static every_turn_signal_type every_turn_signal_;
+	static signal_type every_round_signal_;
+	static signal_type every_turn_signal_;
 };
 };
 
@@ -33,7 +44,7 @@ namespace turn_events_helper
 class every_turn_callback_helper
 {
 protected:
-	using callback_type = turn::turn_system::every_turn_signal_type::callback;
+	using callback_type = turn::turn_system::callback;
 
 	template <typename Callback>
 	void onEveryRound(Callback callback)
@@ -60,9 +71,9 @@ protected:
 	}
 private:
 	bool state{false};
-	turn::turn_system::every_turn_signal_type::strong_receiver end_round_receiver_;
-	turn::turn_system::every_turn_signal_type::strong_receiver end_turn_receiver_;
-	turn::turn_system::every_turn_signal_type::strong_receiver every_turns_receiver_;
+	turn::turn_system::strong_receiver end_round_receiver_;
+	turn::turn_system::strong_receiver end_turn_receiver_;
+	turn::turn_system::strong_receiver every_turns_receiver_;
 };
 
 struct on_every_round : every_turn_callback_helper {

@@ -18,7 +18,7 @@ void flame_thrower::prepare(size_t for_index) {
 	path_finder.calc(for_index);
 	path_finder.get_possible_movements(states::state_controller::possible_movements_,
 									   states::state_controller::possible_movements_costs_,
-									   range_);
+									   range);
 
 	states::state_controller::actual_targeting_type_ = states::target_types::enemy;
 	states::state_controller::wait_for_action([this](size_t index)
@@ -32,7 +32,7 @@ void flame_thrower::use(size_t index_on) {
 	if (used)
 		return;
 
-	int real_damage = damage_;
+	int real_damage = damage;
 
 	if (counter == 2) {
 		real_damage += damage_bonus;

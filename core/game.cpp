@@ -77,14 +77,11 @@ void game::on_button(size_t n)
 		auto entity_id = board::at(selected_index);
 		auto& entity_abilities = abilities_manager::component_for(entity_id);
 
-//		auto ability_callback = entity_abilities.get_callback(n);
-//		if (ability_callback) {
-//			ability_callback();
-//		}
-
-		auto entity_ability = entity_abilities.at(n);
-		if (entity_ability) {
-			entity_ability->operator()(states::state_controller::selected_index_);
+		if (entity_abilities.is_active) {
+			auto entity_ability = entity_abilities.at(n);
+			if (entity_ability) {
+				entity_ability->operator()(states::state_controller::selected_index_);
+			}
 		}
 	}
 	if (n == 5)

@@ -18,9 +18,9 @@ private:
     void play_animation(size_t index_from, size_t index_on);
 
 private:
-    static const size_t range = 1;
-    static const size_t damage = 10;
-    static const size_t damage_per_factor = 2;
+    const size_t range = 1;
+    const size_t damage = 10;
+    const size_t damage_per_factor = 2;
     bool used{false};
 };
 

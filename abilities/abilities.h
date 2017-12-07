@@ -14,6 +14,8 @@ class abilities final
 public:
 	enum class ability_types { moving = 0, offensive, special, defensive, passive };
 
+	bool is_active{true};
+
 	void add_ability(ability_types type, const std::shared_ptr<ability>& ability_ptr)
 	{
         abilities_[static_cast<int>(type)] = ability_ptr;
@@ -67,6 +69,7 @@ public:
 	}
 private:
 	std::unordered_map<int, std::shared_ptr<ability>> abilities_;
+
 //	std::unordered_map<int, std::shared_ptr<void>> holder;
 //	std::unordered_map<int, std::function<void()>> callbacks;
 //	std::unordered_map<int, std::function<std::string()>> bitmaps;

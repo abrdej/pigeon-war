@@ -19,9 +19,9 @@ private:
 	void refresh_usable();
 
 private:
-	static const size_t range_ = 1;
-	static const size_t damage_ = 6;
-	static const size_t throw_range_ = 1;
+	const int range = 1;
+	const int damage = 6;
+	const int throw_range = 1;
 	bool used_{false};
 };
 

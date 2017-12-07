@@ -18,7 +18,7 @@ private:
 	size_t entity_id;
 	size_t index{0};
 	size_t turn_counter_{0};
-	using receiver_type = turn::turn_system::every_turn_signal_type::strong_receiver;
+	using receiver_type = turn::turn_system::strong_receiver;
 	receiver_type receiver;
 };
 

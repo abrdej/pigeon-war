@@ -3,7 +3,6 @@
 #include "core/path_finder.h"
 #include "core/states.h"
 #include "core/board.h"
-#include "bullet.h"
 #include "animation/animation.h"
 #include "animation/animation_impl.h"
 #include "damage_dealers.h"
@@ -41,7 +40,7 @@ void drain::use(size_t index_on)
 
 	play_animation(used_from_index, index_on);
 	
-	auto dealt_damage = damage_dealers::standard_damage_dealer(damage_pack(damage_,
+	auto dealt_damage = damage_dealers::standard_damage_dealer(damage_pack(damage,
 																		   damage_types::MELEE,
 																		   board::at(index_on),
 																		   entity_id));

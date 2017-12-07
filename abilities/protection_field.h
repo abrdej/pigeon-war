@@ -18,8 +18,8 @@ private:
     void play_animation(size_t from_index, size_t to_index);
     bool is_active{true};
     bool used{false};
-    static const size_t range = 3;
-    static const size_t damage = 16;
+    const int range = 3;
+    const int damage = 16;
 };
 
 #endif //PIGEONWAR_PROTECTION_FIELD_H

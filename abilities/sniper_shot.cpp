@@ -12,9 +12,27 @@ void sniper_shot::prepare(size_t for_index) {
 
     states::state_controller::selected_index_ = for_index;
 
-    board_helper::calc_straight(for_index, states::state_controller::possible_movements_,
-                                states::state_controller::possible_movements_costs_,
-                                range);
+    bool enemy_close = false;
+
+    std::vector<size_t> neighbors;
+    board_helper::neighboring_fields(for_index, neighbors, false);
+    for (auto& neighbor_index : neighbors)
+    {
+        if (!board::empty(neighbor_index) && players_funcs::enemy_entity(neighbor_index)) {
+            enemy_close = true;
+            break;
+        }
+    }
+
+    if (!enemy_close) {
+        board_helper::calc_straight(for_index, states::state_controller::possible_movements_,
+                                    states::state_controller::possible_movements_costs_,
+                                    range);
+
+    } else {
+        states::state_controller::possible_movements_.clear();
+        states::state_controller::possible_movements_costs_.clear();
+    }
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
     states::state_controller::wait_for_action([this](size_t index)

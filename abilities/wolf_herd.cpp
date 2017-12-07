@@ -17,10 +17,10 @@ void wolf_herd::prepare(size_t for_index) {
 
 void wolf_herd::use(size_t index_on) {
 
-	if (used_)
+	if (used)
 		return;
 
-	used_ = true;
+	used = true;
 
 	std::vector<size_t> neightbords;
 	board_helper::neighboring_fields(index_on, neightbords, true);

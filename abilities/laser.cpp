@@ -15,7 +15,7 @@ void laser::prepare(size_t for_index) {
 
 	board_helper::calc_straight(for_index, states::state_controller::possible_movements_,
 								states::state_controller::possible_movements_costs_,
-								range_, true);
+								range, true);
 
 	states::state_controller::actual_targeting_type_ = states::target_types::enemy;
 	states::state_controller::wait_for_action([this](size_t index)
@@ -42,9 +42,9 @@ void laser::use(size_t index_on) {
 	int yy = 0;
 
 	if (hor_diff != 0) {
-		xx = (hor_diff > 0 ? 1 : -1) * range_;
+		xx = (hor_diff > 0 ? 1 : -1) * range;
 	} else {
-		yy = (ver_diff > 0 ? 1 : -1) * range_;
+		yy = (ver_diff > 0 ? 1 : -1) * range;
 	}
 
 	auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
@@ -52,13 +52,13 @@ void laser::use(size_t index_on) {
 	play_animation(used_from_index, index_to_move);
 
 	if (hor_diff != 0) {
-		for (int x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range_); x = hor_diff > 0 ? x + 1 : x - 1) {
+		for (int x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range); x = hor_diff > 0 ? x + 1 : x - 1) {
 
 			auto index = board::to_index(to_pos.first + x, to_pos.second);
 
 			if (!board::empty(index)) {
 				auto enemy_id = board::at(index);
-				damage_dealers::standard_damage_dealer(special_damage(damage_, enemy_id, entity_id));
+				damage_dealers::standard_damage_dealer(special_damage(damage, enemy_id, entity_id));
 
 				auto dmg_receiver = healths_manager::get_damage_receiver(enemy_id);
 
@@ -67,22 +67,26 @@ void laser::use(size_t index_on) {
 
 														 auto damage = dmg_receiver(health_pack, dmg);
 
-														 auto final_bonus_damage = std::min(health_pack.health, bonus_damage);
+														 if (damage > 0) {
+															 auto final_bonus_damage = std::min(health_pack.health, bonus_damage);
 
-														 health_pack.health -= final_bonus_damage;
+															 health_pack.health -= final_bonus_damage;
 
-														 return damage + final_bonus_damage;
+															 damage += final_bonus_damage;
+														 }
+
+														 return damage;
 													 });
 			}
 		}
 	} else {
-		for (int y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range_); y = ver_diff > 0 ? y + 1 : y - 1) {
+		for (int y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range); y = ver_diff > 0 ? y + 1 : y - 1) {
 
 			auto index = board::to_index(to_pos.first, to_pos.second + y);
 
 			if (!board::empty(index)) {
 				auto enemy_id = board::at(index);
-				damage_dealers::standard_damage_dealer(special_damage(damage_, board::at(index), entity_id));
+				damage_dealers::standard_damage_dealer(special_damage(damage, board::at(index), entity_id));
 
 				auto dmg_receiver = healths_manager::get_damage_receiver(enemy_id);
 

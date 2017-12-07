@@ -15,9 +15,9 @@ private:
 	void play_animation(size_t index_from, size_t index_on);
 
 private:
-	static const size_t range_ = 1;
-	static const size_t damage_ = 10;
-	static const size_t drain_ = 4;
+	const int range = 1;
+	const int damage = 10;
+	const int drain_amount = 4;
 	bool used{false};
 };
 

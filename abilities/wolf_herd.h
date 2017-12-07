@@ -13,7 +13,7 @@ public:
 	void use(size_t index_on);
 
 private:
-	bool used_{false};
+	bool used{false};
 	int max_number_of_wolf{2};
 };
 
