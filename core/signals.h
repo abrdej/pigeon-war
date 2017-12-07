@@ -9,8 +9,7 @@
 class signal
 {
 public:
-	using holder = std::shared_ptr<void>;
-	using callback = std::function<void(holder)>;
+	using callback = std::function<void()>;
 	using weak_receiver = std::weak_ptr<callback>;
 	using strong_receiver = std::shared_ptr<callback>;
 	using receiver_vector = std::vector<weak_receiver>;
@@ -26,8 +25,7 @@ public:
 		for (auto& receiver : receivers_)
 		{
 			if (!receiver.expired()) {
-				auto ptr = receiver.lock();
-				(*ptr)(ptr);
+				(*receiver.lock())();
 			}
 		}
 		receivers_.erase(std::remove_if(std::begin(receivers_),

@@ -33,28 +33,12 @@ void turn_system::on_turn(size_t turn_n, const std::function<void()>& task)
 
 turn_system::strong_receiver turn_system::every_round(std::function<void()> callback)
 {
-	auto wrapper = [callback](holder) {
-		callback();
-	};
-	return every_round_signal_.add_receiver(std::make_shared<std::function<void(holder)>>(wrapper));
+	return every_round_signal_.add_receiver(std::make_shared<std::function<void()>>(callback));
 }
 
 turn_system::strong_receiver turn_system::every_turn(std::function<void()> callback)
 {
-	auto wrapper = [callback](holder) {
-		callback();
-	};
-	return every_turn_signal_.add_receiver(std::make_shared<std::function<void(holder)>>(wrapper));
-}
-
-turn_system::strong_receiver turn_system::every_round(std::function<void(holder)> callback)
-{
-	return every_round_signal_.add_receiver(std::make_shared<std::function<void(holder)>>(callback));
-}
-
-turn_system::strong_receiver turn_system::every_turn(std::function<void(holder)> callback)
-{
-	return every_turn_signal_.add_receiver(std::make_shared<std::function<void(holder)>>(callback));
+	return every_turn_signal_.add_receiver(std::make_shared<std::function<void()>>(callback));
 }
 
 };

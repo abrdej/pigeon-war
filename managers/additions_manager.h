@@ -43,36 +43,28 @@ struct addition {
     void put_named(const std::string& name, const std::shared_ptr<T>& x) {
         named_data[name] = x;
     };
-
-
-
-
+    void destroy_named(const std::string& name) {
+        named_data.erase(name);
+    }
 };
 
 struct additions_manager : base_manager<addition, addition&> {
-
-    static std::unordered_map<std::size_t, addition> named_map;
-
-    template <typename T, typename... Args>
-    static inline void add_component(std::size_t entity_id, Args&&... args) {
-        auto elem = std::make_shared<T>(args...);
-        map_[entity_id].put<T>(elem);
-        elem->destroyer = [entity_id]() {
-            map_[entity_id].destroy<T>();
-        };
-    }
-
+    
     template <typename T>
     static inline void add_component(std::size_t entity_id,
                                      const std::string& name,
-                                     T x) {
-        named_map[entity_id].put_named(name, x);
+                                     std::shared_ptr<T> x) {
+        map_[entity_id].put_named(name, x);
     }
 
-    template <typename T>
-    static inline void get_component(std::size_t entity_id) {
-        map_[entity_id].get<T>();
+    static void remove_component(std::size_t entity_id, const std::string& name) {
+        map_[entity_id].destroy_named(name);
     }
+
+//    template <typename T>
+//    static inline void get_component(std::size_t entity_id) {
+//        map_[entity_id].get<T>();
+//    }
 };
 
 

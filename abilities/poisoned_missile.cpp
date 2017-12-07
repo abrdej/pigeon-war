@@ -61,15 +61,15 @@ void poisoned_missile::use(size_t index_on) {
     auto enemy_id = board::at(index_on);
 
     auto poison_receiver =
-            turn::turn_system::every_round([this, enemy_id, counter = 0, pl = poison_last](turn::turn_system::holder holder) mutable {
+            turn::turn_system::every_round([this, enemy_id, counter = 0, pl = poison_last]() mutable {
 
                 damage_dealers::standard_damage_dealer(special_damage(5, enemy_id));
                 if (++counter == pl) {
-                    std::cout << "reset: " << holder.use_count() << "\n";
-                    holder = nullptr;
+                    additions_manager::remove_component(enemy_id,
+                                                        "poison");
                 }
-                std::cout << "counter: " << counter << "\n";
     });
+
 
     additions_manager::add_component(enemy_id,
                                      "poison",

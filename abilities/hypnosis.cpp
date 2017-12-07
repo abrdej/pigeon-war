@@ -63,13 +63,14 @@ void hypnosis::use(size_t index_on) {
 	auto& abilities = abilities_manager::component_for(enemy_id);
 	abilities.is_active = false;
 
-	auto hypnosis_receiver = turn::turn_system::every_turn([this, enemy_id, counter = 0](turn::turn_system::holder holder) mutable {
+	auto hypnosis_receiver = turn::turn_system::every_turn([this, enemy_id, counter = 0]() mutable {
 		if (++counter == 2) {
 
 			auto& inner_abilities = abilities_manager::component_for(enemy_id);
 			inner_abilities.is_active = true;
 
-			holder = nullptr;
+			additions_manager::remove_component(enemy_id,
+												"hypnosis");
 		}
 	});
 

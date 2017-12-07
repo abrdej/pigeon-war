@@ -19,14 +19,12 @@ class turn_system
 {
 public:
 	using signal_type = signal;
-	using holder = signal_type::holder;
 	using strong_receiver = signal_type::strong_receiver;
+	using weak_receiver = signal_type::weak_receiver;
 	using callback = signal_type::callback;
 
 	static void end_turn();
 	static void on_turn(size_t turn_n, const std::function<void()>& task);
-	static strong_receiver every_round(std::function<void(holder)> callback);
-	static strong_receiver every_turn(std::function<void(holder)> callback);
 	static strong_receiver every_round(std::function<void()> callback);
 	static strong_receiver every_turn(std::function<void()> callback);
 
