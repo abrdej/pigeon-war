@@ -20,6 +20,7 @@ public:
 		entity_def.health_pack.base_health = 40;
 		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
 		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<flame_thrower>());
+		entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<long_range_missile>());
 		return entity_def;
 	}
 };

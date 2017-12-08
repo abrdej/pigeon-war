@@ -25,6 +25,7 @@
 #include <entities/sniper.h>
 #include <abilities/sniper_shot.h>
 #include <entities/monk.h>
+#include <abilities/long_range_missile.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -129,7 +130,7 @@ void bitmap_center::load()
     add_entity_image<warrior>("warrior.png");
     add_entity_image<warrior_blow>("warrior_blow.png");
     add_entity_image<immortality>("warrior_immortal.png");
-    add_entity_image<robot>("spider.png");
+    add_entity_image<robot>("robot.png");
     add_entity_image<spider>("spider.png");
     add_entity_image<spider_web>("web.png");
     add_entity_image<surroundings>("spider.png");
@@ -140,6 +141,7 @@ void bitmap_center::load()
     add_entity_image<monk>("monk.png");
     add_entity_image<magic_bullet>("magic_bullet.png");
     add_entity_image<jaw_spider>("jaw_spider.png");
+    add_entity_image<long_range_missile>("flame_thrower.png");
 
     // bitmaps
     add_bitmap("shooter", "shooter.png");

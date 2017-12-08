@@ -6,6 +6,7 @@
 #define PIGEONWAR_MOUSE_H
 
 #include <abilities/poisoned_missile.h>
+#include <abilities/long_range_missile.h>
 #include "entity.h"
 #include "abilities/abilities.h"
 #include "abilities/moveable.h"
