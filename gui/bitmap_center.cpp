@@ -24,6 +24,7 @@
 #include <entities/spider.h>
 #include <entities/sniper.h>
 #include <abilities/sniper_shot.h>
+#include <entities/monk.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -136,6 +137,9 @@ void bitmap_center::load()
     add_entity_image<sniper>("sniper.png");
     add_entity_image<sniper_shot>("sniper_shoot.png");
     add_entity_image<hypnosis>("field_shoot.png");
+    add_entity_image<monk>("monk.png");
+    add_entity_image<magic_bullet>("magic_bullet.png");
+    add_entity_image<jaw_spider>("jaw_spider.png");
 
     // bitmaps
     add_bitmap("shooter", "shooter.png");

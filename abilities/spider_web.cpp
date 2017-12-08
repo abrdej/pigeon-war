@@ -3,13 +3,9 @@
 #include <managers/additions_manager.h>
 #include "spider_web.h"
 #include "damage_dealers.h"
+#include "jaw_spider.h"
 
-spider_web_slowdown::spider_web_slowdown(float slow_down_to, int slow_last, std::size_t receiver_entity_id) {
-
-
-}
-
-spider_web::spider_web(std::size_t entity_id) : entity_id(entity_id) {
+spider_web::spider_web(std::size_t entity_id) : caster_id(entity_id) {
     onEveryRound([this]() {
         used = false;
     });
@@ -67,26 +63,34 @@ void spider_web::use(size_t index_on) {
 
     board::give_back(enemy_id, land_index);
 
-    damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, entity_id));
+    damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, caster_id));
 
-    auto& abilities = abilities_manager::component_for(enemy_id);
-    auto moveable_backup =  abilities.type(abilities::ability_types::moving);
-    abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(1));
+    auto& enemy_abilities = abilities_manager::component_for(enemy_id);
+    auto moveable_backup =  enemy_abilities.type(abilities::ability_types::moving);
+    enemy_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(1));
 
     auto slow_down_receiver =
             turn::turn_system::every_round([this, slow_last = 2, enemy_id, moveable_backup, counter = 0]() mutable {
 
         if (++counter == slow_last) {
 
-            auto& ab = abilities_manager::component_for(enemy_id);
-            ab.add_ability(abilities::ability_types::moving, moveable_backup);
-
-            additions_manager::remove_component(enemy_id,
-                                                "slow_down");
+			auto& inner_enemy_abilities = abilities_manager::component_for(enemy_id);
+            inner_enemy_abilities.add_ability(abilities::ability_types::moving, moveable_backup);
+			
+			additions_manager::remove_component(enemy_id,
+				"spider_web_effect");
         }
     });
 
-    additions_manager::add_component(enemy_id, "slow_down", slow_down_receiver);
+    additions_manager::add_component(enemy_id, "spider_web_effect", slow_down_receiver);
 
+    used = true;
+
+    auto& caster_abilities = abilities_manager::component_for(caster_id);
+    auto jaw_spider_ptr = std::static_pointer_cast<jaw_spider>(caster_abilities.type(abilities::ability_types::offensive));
+    jaw_spider_ptr->set_used();
+}
+
+void spider_web::set_used() {
     used = true;
 }

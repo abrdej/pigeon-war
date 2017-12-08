@@ -18,8 +18,9 @@ private:
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    const int range = 2;
+    const int range = 3;
     const int damage = 8;
+    const int bonus_damage = 5;
     bool used{false};
 };
 

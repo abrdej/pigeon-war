@@ -5,24 +5,6 @@
 #include "poisoned_missile.h"
 #include "damage_dealers.h"
 
-poisoned_missile_callback::poisoned_missile_callback(int poison_damage, int poison_last, std::size_t receiver_entity_id) {
-
-//    rec = turn::turn_system::every_round([this, poison_damage, poison_last, receiver_entity_id, counter = 0]() mutable {
-//        if (entity_manager::alive(receiver_entity_id)) {
-//            damage_dealers::standard_damage_dealer(special_damage(poison_damage, receiver_entity_id));
-//
-//            if (++counter == poison_last) {
-//                rec.reset();
-//                destroyer();
-//            }
-//
-//        } else {
-//            rec.reset();
-//            destroyer();
-//        }
-//    });
-}
-
 poisoned_missile::poisoned_missile() {
     onEveryRound([this]() {
         used = false;

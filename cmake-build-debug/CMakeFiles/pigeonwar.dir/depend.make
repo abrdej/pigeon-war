@@ -103,7 +103,6 @@ CMakeFiles\pigeonwar.dir\abilities\basic_melee_attack.cpp.obj: C:\Biblioteki\SFM
 CMakeFiles\pigeonwar.dir\abilities\basic_melee_attack.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowStyle.hpp
 CMakeFiles\pigeonwar.dir\abilities\basic_melee_attack.cpp.obj: ..\abilities\basic_melee_attack.cpp
 CMakeFiles\pigeonwar.dir\abilities\basic_melee_attack.cpp.obj: ..\abilities\basic_melee_attack.h
-CMakeFiles\pigeonwar.dir\abilities\basic_melee_attack.cpp.obj: ..\abilities\bullet.h
 CMakeFiles\pigeonwar.dir\abilities\basic_melee_attack.cpp.obj: ..\abilities\damage_dealers.h
 
 CMakeFiles\pigeonwar.dir\abilities\blow_the_ax.cpp.obj: ..\animation\animation.h
@@ -259,7 +258,6 @@ CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\abilities\bomb.cpp
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\abilities\bomb.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\abilities\damage_dealers.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\abilities\moveable.h
-CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: C:\local\boost_1_65_1\boost\assert.hpp
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: C:\local\boost_1_65_1\boost\call_traits.hpp
 CMakeFiles\pigeonwar.dir\abilities\bomb.cpp.obj: C:\local\boost_1_65_1\boost\circular_buffer.hpp
@@ -687,7 +685,6 @@ CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\managers\health_man
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\build_barrack.cpp.obj: ..\core\path_finder.h
@@ -806,7 +803,6 @@ CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\managers\health_mana
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\build_cannon.cpp.obj: ..\core\path_finder.h
@@ -924,7 +920,6 @@ CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\core\path_finder.h
@@ -1019,10 +1014,6 @@ CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: C:\Biblioteki\SFML-2.4.2\inc
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\abilities\builder.cpp
 CMakeFiles\pigeonwar.dir\abilities\builder.cpp.obj: ..\abilities\builder.h
 
-CMakeFiles\pigeonwar.dir\abilities\bullet.cpp.obj: ..\core\board.h
-CMakeFiles\pigeonwar.dir\abilities\bullet.cpp.obj: ..\abilities\bullet.cpp
-CMakeFiles\pigeonwar.dir\abilities\bullet.cpp.obj: ..\abilities\bullet.h
-
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\abilities\abilities.h
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\abilities\ability.h
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\abilities\chopper.h
@@ -1040,7 +1031,6 @@ CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\core\path_finder.h
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\abilities\chopper.cpp.obj: ..\entities\entity.h
@@ -1503,7 +1493,6 @@ CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\managers\entity_man
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\damage_dealer.cpp.obj: ..\core\players.h
@@ -1619,7 +1608,6 @@ CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\managers\health_manage
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\detonation.cpp.obj: ..\core\players.h
@@ -1812,7 +1800,6 @@ CMakeFiles\pigeonwar.dir\abilities\drain.cpp.obj: C:\Biblioteki\SFML-2.4.2\inclu
 CMakeFiles\pigeonwar.dir\abilities\drain.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Window.hpp
 CMakeFiles\pigeonwar.dir\abilities\drain.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowHandle.hpp
 CMakeFiles\pigeonwar.dir\abilities\drain.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowStyle.hpp
-CMakeFiles\pigeonwar.dir\abilities\drain.cpp.obj: ..\abilities\bullet.h
 CMakeFiles\pigeonwar.dir\abilities\drain.cpp.obj: ..\abilities\damage_dealers.h
 CMakeFiles\pigeonwar.dir\abilities\drain.cpp.obj: ..\abilities\drain.cpp
 CMakeFiles\pigeonwar.dir\abilities\drain.cpp.obj: ..\abilities\drain.h
@@ -1839,7 +1826,6 @@ CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\managers\health_manage
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\entangling.cpp.obj: ..\core\path_finder.h
@@ -1982,6 +1968,123 @@ CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj: ..\abilities\damage_deale
 CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj: ..\abilities\handcannon.cpp
 CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.obj: ..\abilities\handcannon.h
 
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\abilities\abilities.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\abilities\ability.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\abilities\grenade.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\abilities\moveable.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\abilities\shoot.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\ai\ai_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\animation\animation.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\core\board.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\core\players.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\core\signals.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\core\states.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\core\turn.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\entities\entity.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\entities\shooter.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\drawing_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\abilities_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\additions_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\directions_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\entity_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\health_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\managers.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\types_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\utils\graph.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\ai\ai.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\ai\behavior_tree.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\core\path_finder.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\core\players.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\entities\entity.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\bitmap_center.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\board_panel.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\drawable.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\drawer_factory.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\entity_drawer.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\my_button.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\shooter_drawing.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\gui\view_constants.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\abilities_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\directions_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\entity_remover.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\health_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\managers.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\names_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\managers\types_manager.h
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Config.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\BlendMode.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\CircleShape.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Color.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\ConvexShape.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Drawable.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Export.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Font.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Glsl.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Glsl.inl
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Glyph.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Image.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\PrimitiveType.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Rect.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Rect.inl
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\RectangleShape.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\RenderStates.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\RenderTarget.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\RenderTexture.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\RenderWindow.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Shader.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Shape.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Sprite.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Text.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Texture.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Transform.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Transformable.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\Vertex.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\VertexArray.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Graphics\View.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Clock.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Err.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Export.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\FileInputStream.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\InputStream.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Lock.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\MemoryInputStream.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Mutex.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\NonCopyable.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Sleep.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\String.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\String.inl
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Thread.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Thread.inl
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\ThreadLocal.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\ThreadLocalPtr.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\ThreadLocalPtr.inl
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Time.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Utf.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Utf.inl
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Vector2.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Vector2.inl
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Vector3.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\System\Vector3.inl
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Context.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\ContextSettings.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Event.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Export.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\GlResource.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Joystick.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Keyboard.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Mouse.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Sensor.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Touch.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\VideoMode.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Window.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowHandle.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowStyle.hpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\abilities\hypnosis.cpp
+CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj: ..\abilities\hypnosis.h
+
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\abilities\abilities.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\abilities\ability.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\abilities\grenade.h
@@ -2002,7 +2105,6 @@ CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\managers\entity_manag
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.obj: ..\core\players.h
@@ -2123,7 +2225,6 @@ CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\managers\health_mana
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.obj: ..\core\path_finder.h
@@ -2234,6 +2335,22 @@ CMakeFiles\pigeonwar.dir\abilities\laser.cpp.obj: ..\abilities\damage_dealers.h
 CMakeFiles\pigeonwar.dir\abilities\laser.cpp.obj: ..\abilities\laser.cpp
 CMakeFiles\pigeonwar.dir\abilities\laser.cpp.obj: ..\abilities\laser.h
 
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\abilities\ability.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\animation\animation.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\core\board.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\core\signals.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\core\states.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\core\turn.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\managers\health_manager.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\managers\managers.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\utils\graph.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\core\path_finder.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\core\players.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\managers\entity_remover.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\abilities\damage_dealers.h
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\abilities\magic_bullet.cpp
+CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj: ..\abilities\magic_bullet.h
+
 CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.obj: ..\abilities\abilities.h
 CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.obj: ..\abilities\ability.h
 CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.obj: ..\animation\animation.h
@@ -2254,14 +2371,6 @@ CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.obj: ..\managers\entity_remover.
 CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.obj: ..\abilities\moveable.cpp
 CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.obj: ..\abilities\moveable.h
-CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.obj: ..\abilities\possible_movement.h
-
-CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj: ..\abilities\ability.h
-CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj: ..\core\signals.h
-CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj: ..\core\turn.h
-CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj: ..\core\players.h
-CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj: ..\abilities\poison.cpp
-CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj: ..\abilities\poison.h
 
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\abilities\abilities.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\abilities\ability.h
@@ -2286,7 +2395,6 @@ CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\managers\health_
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\core\path_finder.h
@@ -2382,9 +2490,6 @@ CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\abilities\damage
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\abilities\poisoned_missile.cpp
 CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.obj: ..\abilities\poisoned_missile.h
 
-CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.obj: ..\abilities\possible_movement.cpp
-CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.obj: ..\abilities\possible_movement.h
-
 CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj: ..\animation\animation.h
 CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj: ..\core\board.h
 CMakeFiles\pigeonwar.dir\abilities\protection_field.cpp.obj: ..\core\signals.h
@@ -2432,7 +2537,6 @@ CMakeFiles\pigeonwar.dir\abilities\recovery.cpp.obj: ..\abilities\recovery.cpp
 CMakeFiles\pigeonwar.dir\abilities\recovery.cpp.obj: ..\abilities\recovery.h
 
 CMakeFiles\pigeonwar.dir\abilities\sabers.cpp.obj: ..\abilities\ability.h
-CMakeFiles\pigeonwar.dir\abilities\sabers.cpp.obj: ..\abilities\bullet.h
 CMakeFiles\pigeonwar.dir\abilities\sabers.cpp.obj: ..\abilities\damage_dealers.h
 CMakeFiles\pigeonwar.dir\abilities\sabers.cpp.obj: ..\animation\animation.h
 CMakeFiles\pigeonwar.dir\abilities\sabers.cpp.obj: ..\animation\animation_impl.h
@@ -2543,6 +2647,7 @@ CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\animation\animation_impl.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\audio\audio_impl.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\board.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\path_finder.h
+CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\signals.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\states.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\turn.h
@@ -2555,7 +2660,6 @@ CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\animation\animation.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\path_finder.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\core\players.h
@@ -2658,7 +2762,6 @@ CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: C:\Biblioteki\SFML-2.4.2\inclu
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Window.hpp
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowHandle.hpp
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowStyle.hpp
-CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\abilities\bullet.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\abilities\damage_dealers.h
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\abilities\shoot.cpp
 CMakeFiles\pigeonwar.dir\abilities\shoot.cpp.obj: ..\abilities\shoot.h
@@ -2720,7 +2823,6 @@ CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\managers\health_manage
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\spider_web.cpp.obj: ..\core\path_finder.h
@@ -2833,7 +2935,6 @@ CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\managers\health_ma
 CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\core\path_finder.h
 CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\abilities\spiral_of_fire.cpp.obj: ..\entities\entity.h
@@ -3384,7 +3485,6 @@ CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.obj: C:\Biblioteki\SFML-2.
 CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\Window.hpp
 CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowHandle.hpp
 CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.obj: C:\Biblioteki\SFML-2.4.2\include\SFML\Window\WindowStyle.hpp
-CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.obj: ..\abilities\bullet.h
 CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.obj: ..\abilities\damage_dealers.h
 CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.obj: ..\abilities\tongue_of_fire.cpp
 CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.obj: ..\abilities\tongue_of_fire.h
@@ -3430,7 +3530,6 @@ CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\managers\health_manager
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.obj: ..\core\path_finder.h
@@ -3586,7 +3685,6 @@ CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\managers\managers.
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\utils\graph.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\utils\utility.h
-CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\animation\animation_impl.cpp.obj: ..\core\path_finder.h
@@ -3712,7 +3810,6 @@ CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\managers\manag
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\utils\graph.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\utils\utility.h
-CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\animation\animations_objects.cpp.obj: ..\core\path_finder.h
@@ -3829,7 +3926,6 @@ CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\managers\entity_manager.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\core\board.cpp.obj: ..\core\players.h
@@ -3926,7 +4022,6 @@ CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj: ..\abilities\ability.h
 CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj: ..\abilities\moveable.h
 CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj: ..\core\signals.h
 CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj: ..\core\turn.h
-CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj: ..\core\command_manager.cpp
 CMakeFiles\pigeonwar.dir\core\command_manager.cpp.obj: ..\core\command_manager.h
@@ -3973,7 +4068,6 @@ CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\scenarios\scenarios.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\utils\creator_helper.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\utils\graph.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\utils\scenario_helper.h
-CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\core\game.cpp.obj: ..\core\players.h
@@ -4074,7 +4168,6 @@ CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj: ..\abilities\moveable.h
 CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj: ..\core\signals.h
 CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj: ..\core\turn.h
 CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj: ..\core\board.h
 CMakeFiles\pigeonwar.dir\core\path_finder.cpp.obj: ..\core\path_finder.cpp
@@ -4100,7 +4193,6 @@ CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\managers\entity_manager.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\core\players.cpp.obj: ..\entities\entity.h
@@ -4214,7 +4306,6 @@ CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\core\states.cpp.obj: ..\core\players.h
@@ -4336,7 +4427,6 @@ CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj: ..\core\signals.h
 CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj: ..\core\turn.h
 CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj: ..\managers\managers.h
-CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj: ..\managers\entity_remover.h
 CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj: ..\entities\entity.h
@@ -4353,7 +4443,6 @@ CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj: ..\core\signals.h
 CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj: ..\core\turn.h
 CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj: ..\managers\managers.h
-CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj: ..\managers\entity_remover.h
 CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj: ..\entities\entity.h
@@ -4379,9 +4468,11 @@ CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\entangling.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\flame_thrower.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\grenade.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\handcannon.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\hypnosis.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\immortality.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\invisibility.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\laser.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\magic_bullet.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\moveable.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\poisoned_missile.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\protection_field.h
@@ -4419,6 +4510,7 @@ CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\fissure.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\grenadier.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\guardian.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\handthrower.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\monk.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\mouse.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\native.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\robot.h
@@ -4448,7 +4540,6 @@ CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\utils\graph.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\ability.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\moveable.h
-CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\core\path_finder.h
@@ -5045,7 +5136,6 @@ CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\managers\entity_manager.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\gui\buttons_panel.cpp.obj: ..\core\players.h
@@ -5199,7 +5289,6 @@ CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\gui\drawer.cpp.obj: ..\core\path_finder.h
@@ -5302,6 +5391,7 @@ CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\abilities\moveable.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\abilities\shoot.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\animation\animation.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\core\board.h
+CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\core\signals.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\core\turn.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\entities\entity.h
@@ -5310,7 +5400,6 @@ CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\managers\directions_mana
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\entities\entity.h
 CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj: ..\managers\entity_remover.h
@@ -5403,6 +5492,7 @@ CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\abilities\moveable.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\abilities\shoot.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\animation\animation.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\core\board.h
+CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\core\signals.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\core\turn.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\entities\entity.h
@@ -5411,7 +5501,6 @@ CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\managers\directions_man
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\entities\entity.h
 CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.obj: ..\managers\entity_remover.h
@@ -5529,7 +5618,6 @@ CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\gui\gui.cpp.obj: ..\animation\animation.h
@@ -5730,7 +5818,6 @@ CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\utils\graph.h
-CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\main.cpp.obj: ..\animation\animation.h
@@ -5846,6 +5933,7 @@ CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\abilities\moveab
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\abilities\shoot.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\animation\animation.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\core\board.h
+CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\core\signals.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\core\turn.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\entities\entity.h
@@ -5855,7 +5943,6 @@ CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\managers\directi
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\core\players.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\entities\entity.h
 CMakeFiles\pigeonwar.dir\managers\animation_manager.cpp.obj: ..\gui\bitmap_center.h
@@ -5972,7 +6059,6 @@ CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\managers\directions
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\managers\health_manager.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\managers\types_manager.h
-CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\managers\entity_manager.cpp.obj: ..\core\players.h
@@ -6105,9 +6191,11 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\entangling.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\flame_thrower.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\grenade.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\handcannon.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\hypnosis.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\immortality.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\invisibility.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\laser.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\magic_bullet.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\moveable.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\poisoned_missile.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\protection_field.h
@@ -6144,6 +6232,7 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\fissure.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\grenadier.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\guardian.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\handthrower.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\monk.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\mouse.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\native.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\robot.h
@@ -6175,7 +6264,6 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\utils\graph.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\utils\scenario_helper.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\ability.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\moveable.h
-CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\core\path_finder.h
@@ -7000,7 +7088,6 @@ CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\managers\health_manage
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\managers\managers.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\managers\types_manager.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\utils\creator_helper.h
-CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\abilities\possible_movement.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\ai\ai.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\ai\behavior_tree.h
 CMakeFiles\pigeonwar.dir\utils\creator_helper.cpp.obj: ..\core\players.h

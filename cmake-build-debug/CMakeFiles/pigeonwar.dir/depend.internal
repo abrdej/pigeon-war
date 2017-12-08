@@ -104,7 +104,6 @@ CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/basic_melee_attack.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/basic_melee_attack.h
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.obj
  ..//animation/animation.h
@@ -260,7 +259,6 @@ CMakeFiles/pigeonwar.dir/abilities/bomb.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bomb.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.h
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
  C:/local/boost_1_65_1/boost/assert.hpp
  C:/local/boost_1_65_1/boost/call_traits.hpp
  C:/local/boost_1_65_1/boost/circular_buffer.hpp
@@ -688,7 +686,6 @@ CMakeFiles/pigeonwar.dir/abilities/build_barrack.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -807,7 +804,6 @@ CMakeFiles/pigeonwar.dir/abilities/build_cannon.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -925,7 +921,6 @@ CMakeFiles/pigeonwar.dir/abilities/builder.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -1019,10 +1014,6 @@ CMakeFiles/pigeonwar.dir/abilities/builder.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/builder.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/builder.h
-CMakeFiles/pigeonwar.dir/abilities/bullet.cpp.obj
- ..//core/board.h
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.cpp
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
 CMakeFiles/pigeonwar.dir/abilities/chopper.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -1041,7 +1032,6 @@ CMakeFiles/pigeonwar.dir/abilities/chopper.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../core/path_finder.h
  ../core/players.h
  ../entities/entity.h
@@ -1504,7 +1494,6 @@ CMakeFiles/pigeonwar.dir/abilities/damage_dealer.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
@@ -1620,7 +1609,6 @@ CMakeFiles/pigeonwar.dir/abilities/detonation.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
@@ -1813,7 +1801,6 @@ CMakeFiles/pigeonwar.dir/abilities/drain.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/drain.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/drain.h
@@ -1840,7 +1827,6 @@ CMakeFiles/pigeonwar.dir/abilities/entangling.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -1982,6 +1968,123 @@ CMakeFiles/pigeonwar.dir/abilities/handcannon.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h
+CMakeFiles/pigeonwar.dir/abilities/hypnosis.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//abilities/grenade.h
+ ..//abilities/moveable.h
+ ..//abilities/shoot.h
+ ..//ai/ai_manager.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/players.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//entities/entity.h
+ ..//entities/shooter.h
+ ..//gui/drawing_manager.h
+ ..//managers/abilities_manager.h
+ ..//managers/additions_manager.h
+ ..//managers/directions_manager.h
+ ..//managers/entity_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../ai/ai.h
+ ../ai/behavior_tree.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../entities/entity.h
+ ../gui/bitmap_center.h
+ ../gui/board_panel.h
+ ../gui/drawable.h
+ ../gui/drawer_factory.h
+ ../gui/entity_drawer.h
+ ../gui/my_button.h
+ ../gui/shooter_drawing.h
+ ../gui/view_constants.h
+ ../managers/abilities_manager.h
+ ../managers/directions_manager.h
+ ../managers/entity_remover.h
+ ../managers/health_manager.h
+ ../managers/managers.h
+ ../managers/names_manager.h
+ ../managers/types_manager.h
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Config.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/BlendMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/CircleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Color.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/ConvexShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Drawable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Font.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glsl.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Glyph.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Image.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Rect.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RectangleShape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderStates.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTarget.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderTexture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/RenderWindow.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shader.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Shape.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Sprite.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Text.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Texture.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transform.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Transformable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/Vertex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/VertexArray.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Graphics/View.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Clock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Err.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/FileInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/InputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Lock.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/MemoryInputStream.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Mutex.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/NonCopyable.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Sleep.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/String.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Thread.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocal.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/ThreadLocalPtr.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Time.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Utf.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector2.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/System/Vector3.inl
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Context.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/ContextSettings.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Event.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Export.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/GlResource.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Joystick.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Keyboard.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Mouse.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Sensor.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Touch.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/VideoMode.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
+ C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/hypnosis.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/hypnosis.h
 CMakeFiles/pigeonwar.dir/abilities/immortality.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -2003,7 +2106,6 @@ CMakeFiles/pigeonwar.dir/abilities/immortality.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
@@ -2124,7 +2226,6 @@ CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -2234,6 +2335,22 @@ CMakeFiles/pigeonwar.dir/abilities/laser.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.h
+CMakeFiles/pigeonwar.dir/abilities/magic_bullet.cpp.obj
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/magic_bullet.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/magic_bullet.h
 CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -2255,14 +2372,6 @@ CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.obj
  ../managers/managers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.h
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
-CMakeFiles/pigeonwar.dir/abilities/poison.cpp.obj
- ..//abilities/ability.h
- ..//core/signals.h
- ..//core/turn.h
- ../core/players.h
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.cpp
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.h
 CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -2287,7 +2396,6 @@ CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -2382,9 +2490,6 @@ CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.h
-CMakeFiles/pigeonwar.dir/abilities/possible_movement.cpp.obj
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.cpp
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h
 CMakeFiles/pigeonwar.dir/abilities/protection_field.cpp.obj
  ..//animation/animation.h
  ..//core/board.h
@@ -2433,7 +2538,6 @@ CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/recovery.h
 CMakeFiles/pigeonwar.dir/abilities/sabers.cpp.obj
  ..//abilities/ability.h
- ..//abilities/bullet.h
  ..//abilities/damage_dealers.h
  ..//animation/animation.h
  ..//animation/animation_impl.h
@@ -2544,6 +2648,7 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj
  ..//audio/audio_impl.h
  ..//core/board.h
  ..//core/path_finder.h
+ ..//core/players.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
@@ -2556,7 +2661,6 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../animation/animation.h
  ../core/path_finder.h
  ../core/players.h
@@ -2659,7 +2763,6 @@ CMakeFiles/pigeonwar.dir/abilities/shoot.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.h
@@ -2721,7 +2824,6 @@ CMakeFiles/pigeonwar.dir/abilities/spider_web.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -2834,7 +2936,6 @@ CMakeFiles/pigeonwar.dir/abilities/spiral_of_fire.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../core/path_finder.h
  ../core/players.h
  ../entities/entity.h
@@ -3385,7 +3486,6 @@ CMakeFiles/pigeonwar.dir/abilities/tongue_of_fire.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/Window.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
- C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/tongue_of_fire.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/tongue_of_fire.h
@@ -3431,7 +3531,6 @@ CMakeFiles/pigeonwar.dir/abilities/wolf_herd.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -3587,7 +3686,6 @@ CMakeFiles/pigeonwar.dir/animation/animation_impl.cpp.obj
  ..//managers/types_manager.h
  ..//utils/graph.h
  ..//utils/utility.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -3713,7 +3811,6 @@ CMakeFiles/pigeonwar.dir/animation/animations_objects.cpp.obj
  ..//managers/types_manager.h
  ..//utils/graph.h
  ..//utils/utility.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -3830,7 +3927,6 @@ CMakeFiles/pigeonwar.dir/core/board.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
@@ -3927,7 +4023,6 @@ CMakeFiles/pigeonwar.dir/core/command_manager.cpp.obj
  ..//abilities/moveable.h
  ..//core/signals.h
  ..//core/turn.h
- ../abilities/possible_movement.h
  ../core/players.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/command_manager.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/command_manager.h
@@ -3974,7 +4069,6 @@ CMakeFiles/pigeonwar.dir/core/game.cpp.obj
  ..//utils/creator_helper.h
  ..//utils/graph.h
  ..//utils/scenario_helper.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
@@ -4075,7 +4169,6 @@ CMakeFiles/pigeonwar.dir/core/path_finder.cpp.obj
  ..//core/signals.h
  ..//core/turn.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../core/players.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/board.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/core/path_finder.cpp
@@ -4101,7 +4194,6 @@ CMakeFiles/pigeonwar.dir/core/players.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../entities/entity.h
@@ -4215,7 +4307,6 @@ CMakeFiles/pigeonwar.dir/core/states.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
@@ -4337,7 +4428,6 @@ CMakeFiles/pigeonwar.dir/entities/werewolf.cpp.obj
  ..//core/turn.h
  ..//managers/health_manager.h
  ..//managers/managers.h
- ../abilities/possible_movement.h
  ../core/players.h
  ../managers/entity_remover.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/entities/entity.h
@@ -4354,7 +4444,6 @@ CMakeFiles/pigeonwar.dir/entities/wolf.cpp.obj
  ..//core/turn.h
  ..//managers/health_manager.h
  ..//managers/managers.h
- ../abilities/possible_movement.h
  ../core/players.h
  ../managers/entity_remover.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/entities/entity.h
@@ -4380,9 +4469,11 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//abilities/flame_thrower.h
  ..//abilities/grenade.h
  ..//abilities/handcannon.h
+ ..//abilities/hypnosis.h
  ..//abilities/immortality.h
  ..//abilities/invisibility.h
  ..//abilities/laser.h
+ ..//abilities/magic_bullet.h
  ..//abilities/moveable.h
  ..//abilities/poisoned_missile.h
  ..//abilities/protection_field.h
@@ -4420,6 +4511,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//entities/grenadier.h
  ..//entities/guardian.h
  ..//entities/handthrower.h
+ ..//entities/monk.h
  ..//entities/mouse.h
  ..//entities/native.h
  ..//entities/robot.h
@@ -4449,7 +4541,6 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//utils/graph.h
  ../abilities/ability.h
  ../abilities/moveable.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -5046,7 +5137,6 @@ CMakeFiles/pigeonwar.dir/gui/buttons_panel.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
@@ -5200,7 +5290,6 @@ CMakeFiles/pigeonwar.dir/gui/drawer.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -5303,6 +5392,7 @@ CMakeFiles/pigeonwar.dir/gui/drawer_factory.cpp.obj
  ..//abilities/shoot.h
  ..//animation/animation.h
  ..//core/board.h
+ ..//core/players.h
  ..//core/signals.h
  ..//core/turn.h
  ..//entities/entity.h
@@ -5311,7 +5401,6 @@ CMakeFiles/pigeonwar.dir/gui/drawer_factory.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../core/players.h
  ../entities/entity.h
  ../managers/entity_remover.h
@@ -5404,6 +5493,7 @@ CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj
  ..//abilities/shoot.h
  ..//animation/animation.h
  ..//core/board.h
+ ..//core/players.h
  ..//core/signals.h
  ..//core/turn.h
  ..//entities/entity.h
@@ -5412,7 +5502,6 @@ CMakeFiles/pigeonwar.dir/gui/drawing_manager.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../core/players.h
  ../entities/entity.h
  ../managers/entity_remover.h
@@ -5530,7 +5619,6 @@ CMakeFiles/pigeonwar.dir/gui/gui.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../animation/animation.h
@@ -5731,7 +5819,6 @@ CMakeFiles/pigeonwar.dir/main.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/graph.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../animation/animation.h
@@ -5847,6 +5934,7 @@ CMakeFiles/pigeonwar.dir/managers/animation_manager.cpp.obj
  ..//abilities/shoot.h
  ..//animation/animation.h
  ..//core/board.h
+ ..//core/players.h
  ..//core/signals.h
  ..//core/turn.h
  ..//entities/entity.h
@@ -5856,7 +5944,6 @@ CMakeFiles/pigeonwar.dir/managers/animation_manager.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../core/players.h
  ../entities/entity.h
  ../gui/bitmap_center.h
@@ -5973,7 +6060,6 @@ CMakeFiles/pigeonwar.dir/managers/entity_manager.cpp.obj
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//managers/types_manager.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h
@@ -6106,9 +6192,11 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//abilities/flame_thrower.h
  ..//abilities/grenade.h
  ..//abilities/handcannon.h
+ ..//abilities/hypnosis.h
  ..//abilities/immortality.h
  ..//abilities/invisibility.h
  ..//abilities/laser.h
+ ..//abilities/magic_bullet.h
  ..//abilities/moveable.h
  ..//abilities/poisoned_missile.h
  ..//abilities/protection_field.h
@@ -6145,6 +6233,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//entities/grenadier.h
  ..//entities/guardian.h
  ..//entities/handthrower.h
+ ..//entities/monk.h
  ..//entities/mouse.h
  ..//entities/native.h
  ..//entities/robot.h
@@ -6176,7 +6265,6 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//utils/scenario_helper.h
  ../abilities/ability.h
  ../abilities/moveable.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/path_finder.h
@@ -7001,7 +7089,6 @@ CMakeFiles/pigeonwar.dir/utils/creator_helper.cpp.obj
  ..//managers/managers.h
  ..//managers/types_manager.h
  ..//utils/creator_helper.h
- ../abilities/possible_movement.h
  ../ai/ai.h
  ../ai/behavior_tree.h
  ../core/players.h

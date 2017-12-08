@@ -58,6 +58,10 @@ void players::next_player()
 	active_player_ = (++active_player_) % players_.size();
 }
 
+players::player_id_type players::player_for_entity(size_t entity_id) {
+	return relation_map_[entity_id];
+}
+
 namespace players_funcs
 {
 

@@ -7,11 +7,11 @@ namespace damage_dealers {
 
 int random_damage(int damage)
 {
-	auto dist = static_cast<int>(std::round(damage * 0.2f));
+	//auto dist = static_cast<int>(std::round(damage * 0.2f));
 
 	std::random_device rd;
 	std::default_random_engine dre(rd());
-	std::uniform_int_distribution<int> uniform_dist(-dist, dist);
+	std::uniform_int_distribution<int> uniform_dist(-1, 1);
 	int random = uniform_dist(dre);
 	return damage + random;
 }

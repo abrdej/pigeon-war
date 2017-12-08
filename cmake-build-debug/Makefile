@@ -367,33 +367,6 @@ abilities\builder.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\builder.cpp.s
 .PHONY : abilities\builder.cpp.s
 
-abilities\bullet.obj: abilities\bullet.cpp.obj
-
-.PHONY : abilities\bullet.obj
-
-# target to build an object file
-abilities\bullet.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\bullet.cpp.obj
-.PHONY : abilities\bullet.cpp.obj
-
-abilities\bullet.i: abilities\bullet.cpp.i
-
-.PHONY : abilities\bullet.i
-
-# target to preprocess a source file
-abilities\bullet.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\bullet.cpp.i
-.PHONY : abilities\bullet.cpp.i
-
-abilities\bullet.s: abilities\bullet.cpp.s
-
-.PHONY : abilities\bullet.s
-
-# target to generate assembly for a file
-abilities\bullet.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\bullet.cpp.s
-.PHONY : abilities\bullet.cpp.s
-
 abilities\chopper.obj: abilities\chopper.cpp.obj
 
 .PHONY : abilities\chopper.obj
@@ -664,6 +637,33 @@ abilities\handcannon.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\handcannon.cpp.s
 .PHONY : abilities\handcannon.cpp.s
 
+abilities\hypnosis.obj: abilities\hypnosis.cpp.obj
+
+.PHONY : abilities\hypnosis.obj
+
+# target to build an object file
+abilities\hypnosis.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.obj
+.PHONY : abilities\hypnosis.cpp.obj
+
+abilities\hypnosis.i: abilities\hypnosis.cpp.i
+
+.PHONY : abilities\hypnosis.i
+
+# target to preprocess a source file
+abilities\hypnosis.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.i
+.PHONY : abilities\hypnosis.cpp.i
+
+abilities\hypnosis.s: abilities\hypnosis.cpp.s
+
+.PHONY : abilities\hypnosis.s
+
+# target to generate assembly for a file
+abilities\hypnosis.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\hypnosis.cpp.s
+.PHONY : abilities\hypnosis.cpp.s
+
 abilities\immortality.obj: abilities\immortality.cpp.obj
 
 .PHONY : abilities\immortality.obj
@@ -745,6 +745,33 @@ abilities\laser.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\laser.cpp.s
 .PHONY : abilities\laser.cpp.s
 
+abilities\magic_bullet.obj: abilities\magic_bullet.cpp.obj
+
+.PHONY : abilities\magic_bullet.obj
+
+# target to build an object file
+abilities\magic_bullet.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.obj
+.PHONY : abilities\magic_bullet.cpp.obj
+
+abilities\magic_bullet.i: abilities\magic_bullet.cpp.i
+
+.PHONY : abilities\magic_bullet.i
+
+# target to preprocess a source file
+abilities\magic_bullet.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.i
+.PHONY : abilities\magic_bullet.cpp.i
+
+abilities\magic_bullet.s: abilities\magic_bullet.cpp.s
+
+.PHONY : abilities\magic_bullet.s
+
+# target to generate assembly for a file
+abilities\magic_bullet.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\magic_bullet.cpp.s
+.PHONY : abilities\magic_bullet.cpp.s
+
 abilities\moveable.obj: abilities\moveable.cpp.obj
 
 .PHONY : abilities\moveable.obj
@@ -772,33 +799,6 @@ abilities\moveable.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\moveable.cpp.s
 .PHONY : abilities\moveable.cpp.s
 
-abilities\poison.obj: abilities\poison.cpp.obj
-
-.PHONY : abilities\poison.obj
-
-# target to build an object file
-abilities\poison.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\poison.cpp.obj
-.PHONY : abilities\poison.cpp.obj
-
-abilities\poison.i: abilities\poison.cpp.i
-
-.PHONY : abilities\poison.i
-
-# target to preprocess a source file
-abilities\poison.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\poison.cpp.i
-.PHONY : abilities\poison.cpp.i
-
-abilities\poison.s: abilities\poison.cpp.s
-
-.PHONY : abilities\poison.s
-
-# target to generate assembly for a file
-abilities\poison.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\poison.cpp.s
-.PHONY : abilities\poison.cpp.s
-
 abilities\poisoned_missile.obj: abilities\poisoned_missile.cpp.obj
 
 .PHONY : abilities\poisoned_missile.obj
@@ -825,33 +825,6 @@ abilities\poisoned_missile.s: abilities\poisoned_missile.cpp.s
 abilities\poisoned_missile.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.s
 .PHONY : abilities\poisoned_missile.cpp.s
-
-abilities\possible_movement.obj: abilities\possible_movement.cpp.obj
-
-.PHONY : abilities\possible_movement.obj
-
-# target to build an object file
-abilities\possible_movement.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.obj
-.PHONY : abilities\possible_movement.cpp.obj
-
-abilities\possible_movement.i: abilities\possible_movement.cpp.i
-
-.PHONY : abilities\possible_movement.i
-
-# target to preprocess a source file
-abilities\possible_movement.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.i
-.PHONY : abilities\possible_movement.cpp.i
-
-abilities\possible_movement.s: abilities\possible_movement.cpp.s
-
-.PHONY : abilities\possible_movement.s
-
-# target to generate assembly for a file
-abilities\possible_movement.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\possible_movement.cpp.s
-.PHONY : abilities\possible_movement.cpp.s
 
 abilities\protection_field.obj: abilities\protection_field.cpp.obj
 
@@ -2293,9 +2266,6 @@ help:
 	@echo ... abilities/builder.obj
 	@echo ... abilities/builder.i
 	@echo ... abilities/builder.s
-	@echo ... abilities/bullet.obj
-	@echo ... abilities/bullet.i
-	@echo ... abilities/bullet.s
 	@echo ... abilities/chopper.obj
 	@echo ... abilities/chopper.i
 	@echo ... abilities/chopper.s
@@ -2326,6 +2296,9 @@ help:
 	@echo ... abilities/handcannon.obj
 	@echo ... abilities/handcannon.i
 	@echo ... abilities/handcannon.s
+	@echo ... abilities/hypnosis.obj
+	@echo ... abilities/hypnosis.i
+	@echo ... abilities/hypnosis.s
 	@echo ... abilities/immortality.obj
 	@echo ... abilities/immortality.i
 	@echo ... abilities/immortality.s
@@ -2335,18 +2308,15 @@ help:
 	@echo ... abilities/laser.obj
 	@echo ... abilities/laser.i
 	@echo ... abilities/laser.s
+	@echo ... abilities/magic_bullet.obj
+	@echo ... abilities/magic_bullet.i
+	@echo ... abilities/magic_bullet.s
 	@echo ... abilities/moveable.obj
 	@echo ... abilities/moveable.i
 	@echo ... abilities/moveable.s
-	@echo ... abilities/poison.obj
-	@echo ... abilities/poison.i
-	@echo ... abilities/poison.s
 	@echo ... abilities/poisoned_missile.obj
 	@echo ... abilities/poisoned_missile.i
 	@echo ... abilities/poisoned_missile.s
-	@echo ... abilities/possible_movement.obj
-	@echo ... abilities/possible_movement.i
-	@echo ... abilities/possible_movement.s
 	@echo ... abilities/protection_field.obj
 	@echo ... abilities/protection_field.i
 	@echo ... abilities/protection_field.s

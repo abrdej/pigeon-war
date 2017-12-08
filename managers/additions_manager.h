@@ -46,6 +46,9 @@ struct addition {
     void destroy_named(const std::string& name) {
         named_data.erase(name);
     }
+	bool has(const std::string& name) const {
+		return named_data.find(name) != std::end(named_data);
+	}
 };
 
 struct additions_manager : base_manager<addition, addition&> {
@@ -72,6 +75,10 @@ struct additions_manager : base_manager<addition, addition&> {
     static void remove_component(std::size_t entity_id, const std::string& name) {
         map_[entity_id].destroy_named(name);
     }
+
+	static bool has_component(std::size_t entity_id, const std::string& name) {
+		return map_[entity_id].has(name);
+	}
 
 //    template <typename T>
 //    static inline void get_component(std::size_t entity_id) {

@@ -140,12 +140,6 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/builder.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/bullet.h">
-			<Option target="pigeonwar"/>
-		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/chopper.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -203,6 +197,12 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/hypnosis.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/hypnosis.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/immortality.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -221,28 +221,22 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/magic_bullet.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/magic_bullet.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poison.h">
-			<Option target="pigeonwar"/>
-		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.h">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_movement.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.cpp">
@@ -450,6 +444,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/handthrower.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/monk.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/mouse.h">

@@ -5,8 +5,10 @@
 
 protection_field::protection_field(std::size_t entity_id) {
 
-    onEveryRound([this]() {
-        is_active = true;
+    onEveryTurn([this, entity_id]() {
+        if (players::active_player_name() == players::player_for_entity(entity_id)) {
+            is_active = true;
+        }
     });
 
     healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {

@@ -34,7 +34,7 @@ void basic_melee_attack::use(size_t index_on)
 	}
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto caster_id = board::at(index_on);
+	auto caster_id = board::at(used_from_index);
 
 	play_animation(used_from_index, index_on);
 

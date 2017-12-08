@@ -6,7 +6,6 @@
 #include <vector>
 #include <memory>
 #include <algorithm>
-//#include "core/board.h"
 
 class entity;
 
@@ -24,6 +23,7 @@ public:
 	static const player_id_type& active_player_name();
 	static bool active_player_ai();
 	static void next_player();
+	static player_id_type player_for_entity(size_t entity_id);
 
 private:
 	static std::vector<std::pair<player_id_type, bool>> players_;

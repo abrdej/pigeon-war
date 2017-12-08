@@ -4,31 +4,6 @@
 #include <managers/abilities_manager.h>
 #include <managers/entity_manager.h>
 #include "hypnosis.h"
-#include "abilities.h"
-
-hypnosis_effect::hypnosis_effect(std::size_t receiver_entity_id) {
-
-//	auto& abilities = abilities_manager::component_for(receiver_entity_id);
-//	abilities.is_active = false;
-//
-//	rec = turn::turn_system::every_turn([this, receiver_entity_id, counter = 0]() mutable {
-//
-//		if (entity_manager::alive(receiver_entity_id)) {
-//			if (++counter == 2) {
-//
-//				auto& inner_abilities = abilities_manager::component_for(receiver_entity_id);
-//				inner_abilities.is_active = true;
-//
-//				rec.reset();
-//				destroyer();
-//			}
-//
-//		} else {
-//			rec.reset();
-//			destroyer();
-//		}
-//	});
-}
 
 hypnosis::hypnosis() {
 

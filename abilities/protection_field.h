@@ -12,6 +12,10 @@ class protection_field : public ability, protected turn_events_helper::every_tur
 public:
     explicit protection_field(std::size_t entity_id);
 
+	bool active() const {
+		return is_active;
+	}
+
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

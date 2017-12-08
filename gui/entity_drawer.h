@@ -15,6 +15,7 @@
 #include "drawable.h"
 #include "board_panel.h"
 #include "view_constants.h"
+#include "core/players.h"
 
 struct entity_drawer : drawable {
 
@@ -30,7 +31,7 @@ struct entity_drawer : drawable {
         sprite.setTexture(view::bitmap_center::get_image_for_entity(types_manager::component_for(entity_id)));
     }
 
-    void render_text(int entity_health, sf::Vector2f position, sf::RenderWindow& window)
+    void render_text(int entity_health, sf::Vector2f position, std::size_t entity_id, sf::RenderWindow& window)
     {
         if (entity_health == indestructible)
             return;
@@ -39,9 +40,24 @@ struct entity_drawer : drawable {
         text.setFont(font);
         text.setString(std::to_string(entity_health));
         text.setCharacterSize(18);
-        text.setColor(sf::Color::Black);
+
+        if (players::player_for_entity(entity_id) == "tester1") {
+            text.setColor(sf::Color(0, 51, 102));
+        } else if (players::player_for_entity(entity_id) == "tester2") {
+            text.setColor(sf::Color(102, 0, 0));
+        } else {
+            text.setColor(sf::Color(32, 32, 32));
+        }
+
         text.setPosition(position);
+
+        //sf::FloatRect backgroundRect = text.getLocalBounds();
+        //sf::CircleShape background(backgroundRect.width);
+        //background.setFillColor(sf::Color::Red);
+
+        //window.draw(background, text.getTransform());
         window.draw(text);
+
     }
 
     void draw(sf::RenderWindow& window) override {
@@ -62,7 +78,7 @@ struct entity_drawer : drawable {
         health_pos.y -= view::constants::field_size / 4.f;
 
         window.draw(sprite);
-        render_text(health, health_pos, window);
+        render_text(health, health_pos, entity_id, window);
     }
 };
 

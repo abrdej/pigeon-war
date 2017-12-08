@@ -19,8 +19,8 @@ private:
 
 private:
     const int range{10};
-    const int damage{8};
-    const int additional_damage{4};
+    const int damage{10};
+    const int additional_damage{10};
     bool used{false};
 };
 
