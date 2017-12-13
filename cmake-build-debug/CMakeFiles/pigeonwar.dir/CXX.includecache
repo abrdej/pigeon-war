@@ -22,6 +22,14 @@ iostream
 iostream
 -
 
+..//abilities/absorption.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+-
+unordered_map
+-
+
 ..//abilities/armor.h
 ability.h
 ../abilities/ability.h
@@ -156,13 +164,31 @@ ability.h
 core/turn.h
 ../abilities/core/turn.h
 
+..//abilities/interception.h
+ability.h
+../abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/invisibility.h
 abilities/ability.h
 ../abilities/abilities/ability.h
 core/turn.h
 ../abilities/core/turn.h
 
+..//abilities/jaw_spider.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
 ..//abilities/laser.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
+..//abilities/long_range_missile.h
 abilities/ability.h
 ../abilities/abilities/ability.h
 core/turn.h
@@ -183,6 +209,14 @@ functional
 -
 
 ..//abilities/poisoned_missile.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
+
+..//abilities/power_circle.h
+managers/health_manager.h
+-
 abilities/ability.h
 ../abilities/abilities/ability.h
 core/turn.h
@@ -396,6 +430,18 @@ players.h
 core/signals.h
 ../core/core/signals.h
 
+..//entities/absorber.h
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+-
+abilities/absorption.h
+-
+abilities/power_circle.h
+-
+
 ..//entities/balloon.h
 abilities/build_cannon.h
 -
@@ -533,6 +579,8 @@ abilities/moveable.h
 ..//entities/mouse.h
 abilities/poisoned_missile.h
 -
+abilities/long_range_missile.h
+-
 entity.h
 ../entities/entity.h
 abilities/abilities.h
@@ -549,6 +597,16 @@ abilities/drain.h
 ../entities/abilities/drain.h
 abilities/counterattack.h
 ../entities/abilities/counterattack.h
+
+..//entities/ninja.h
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+../entities/abilities/moveable.h
+abilities/interception.h
+../entities/abilities/interception.h
 
 ..//entities/robot.h
 entity.h
@@ -616,6 +674,8 @@ abilities/sniper_shot.h
 
 ..//entities/spider.h
 abilities/surroundings.h
+-
+abilities/jaw_spider.h
 -
 entity.h
 ../entities/entity.h
@@ -2030,12 +2090,46 @@ SFML/Config.hpp
 
 C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities.h
+vector
+-
+memory
+-
+unordered_map
+-
+cassert
+-
+iostream
+-
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.cpp
 ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
 iostream
+-
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/absorption.cpp
+core/states.h
+-
+animation/animation.h
+-
+core/board.h
+-
+managers/health_manager.h
+-
+absorption.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/absorption.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/absorption.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+-
+unordered_map
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/armor.cpp
@@ -2377,10 +2471,16 @@ vector
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.cpp
 core/states.h
 -
+managers/abilities_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/abilities_manager.h
 handcannon.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h
 damage_dealers.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+abilities.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities.h
+protection_field.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h
 abilities/ability.h
@@ -2424,6 +2524,30 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/interception.cpp
+interception.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/interception.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+animation/animation.h
+-
+core/board.h
+-
+managers/health_manager.h
+-
+core/path_finder.h
+-
+core/states.h
+-
+managers/types_manager.h
+-
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/interception.h
+ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.cpp
 invisibility.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.h
@@ -2444,6 +2568,30 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/jaw_spider.cpp
+core/states.h
+-
+core/board.h
+-
+managers/health_manager.h
+-
+managers/abilities_manager.h
+-
+managers/additions_manager.h
+-
+jaw_spider.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/jaw_spider.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+spider_web.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/jaw_spider.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.cpp
 laser.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.h
@@ -2455,6 +2603,22 @@ animation/animation.h
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/long_range_missile.cpp
+core/states.h
+-
+core/board.h
+-
+long_range_missile.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/long_range_missile.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/long_range_missile.h
 abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
@@ -2513,6 +2677,28 @@ damage_dealers.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/power_circle.cpp
+core/states.h
+-
+core/board.h
+-
+managers/abilities_manager.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/managers/abilities_manager.h
+power_circle.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/power_circle.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+absorption.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/absorption.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/power_circle.h
+managers/health_manager.h
+-
 abilities/ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
 core/turn.h
@@ -2677,6 +2863,8 @@ spider_web.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.h
 damage_dealers.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+jaw_spider.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/jaw_spider.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.h
 abilities/ability.h
@@ -3197,6 +3385,12 @@ abilities/sniper_shot.h
 -
 entities/monk.h
 -
+abilities/long_range_missile.h
+-
+entities/ninja.h
+-
+entities/absorber.h
+-
 gui/bitmap_center.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui/bitmap_center.h
 animation/animation.h
@@ -3696,6 +3890,10 @@ entities/spider.h
 entities/sniper.h
 -
 entities/monk.h
+-
+entities/ninja.h
+-
+entities/absorber.h
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.h

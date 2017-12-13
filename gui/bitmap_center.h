@@ -68,6 +68,8 @@ public:
 	static bitmap_type grass_attack_bitmap;
 	static bitmap_type grass_damage_bitmap;
 	static bitmap_type grass_selected_bitmap;
+	static bitmap_type grass_friendly_bitmap;
+	static bitmap_type grass_boost_bitmap;
 };
 };
 

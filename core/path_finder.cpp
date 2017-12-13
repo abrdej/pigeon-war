@@ -149,7 +149,7 @@ void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool avai
 	fields.clear();
 	auto fld = board::to_pos(for_index);
 
-	for (int col = -1; col <= 1; ++col)
+	for (int col = -1; col <= 1; ++col) {
 		for (int row = -1; row <= 1; ++row)
 		{
 			auto col_index = fld.first + col;
@@ -161,6 +161,28 @@ void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool avai
 				fields.push_back(board::to_index(col_index, row_index));
 			}
 		}
+	}
+}
+
+void circle(size_t for_index, std::vector<size_t>& fields, bool available) {
+
+	fields.clear();
+	auto fld = board::to_pos(for_index);
+
+	for (int col = -2; col <= 2; ++col) {
+		for (int row = -2; row <= 2; ++row) {
+			if (abs(col) == 2 || abs(row) == 2) {
+				auto col_index = fld.first + col;
+				auto row_index = fld.second + row;
+				auto index = board::to_index(col_index, row_index);
+				if ((col || row) && col_index < board::cols_n
+					&& row_index < board::rows_n && (!available || board::empty(index)))
+				{
+					fields.push_back(board::to_index(col_index, row_index));
+				}
+			}
+		}
+	}
 }
 
 void all_free(std::vector<size_t>& fields) {

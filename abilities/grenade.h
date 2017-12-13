@@ -7,7 +7,7 @@
 class grenade final : public ability
 {
 public:
-	grenade();
+	grenade() = default;
 
 private:
 	void prepare(size_t for_index) override;
@@ -17,7 +17,7 @@ private:
 private:
 	const int range = 3;
 	const int damage = 12;
-	bool used_;
+	bool used_{false};
 };
 
 #endif

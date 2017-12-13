@@ -26,6 +26,8 @@
 #include <abilities/sniper_shot.h>
 #include <entities/monk.h>
 #include <abilities/long_range_missile.h>
+#include <entities/ninja.h>
+#include <entities/absorber.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -51,6 +53,8 @@ bitmap_center::bitmap_type bitmap_center::grass_move_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_attack_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_damage_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_selected_bitmap;
+bitmap_center::bitmap_type bitmap_center::grass_friendly_bitmap;
+bitmap_center::bitmap_type bitmap_center::grass_boost_bitmap;
 
 void bitmap_center::load()
 {
@@ -60,6 +64,8 @@ void bitmap_center::load()
     grass_attack_bitmap.loadFromFile("grass_attack.png");
     grass_damage_bitmap.loadFromFile("grass_damage.png");
     grass_selected_bitmap.loadFromFile("grass_sel.png");
+    grass_friendly_bitmap.loadFromFile("grass_friendly.png");
+    grass_boost_bitmap.loadFromFile("grass_boost.png");
 
     add_entity_image<shooter>("shooter.png");
     add_entity_image<saberhand>("saberhand.png");
@@ -142,6 +148,11 @@ void bitmap_center::load()
     add_entity_image<magic_bullet>("magic_bullet.png");
     add_entity_image<jaw_spider>("jaw_spider.png");
     add_entity_image<long_range_missile>("flame_thrower.png");
+    add_entity_image<ninja>("ninja.png");
+    add_entity_image<interception>("ninja.png");
+    add_entity_image<absorber>("absorber.png");
+    add_entity_image<absorption>("absorption.png");
+    add_entity_image<power_circle>("power_circle.png");
 
     // bitmaps
     add_bitmap("shooter", "shooter.png");

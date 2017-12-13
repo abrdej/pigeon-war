@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/ability.cpp.obj"
+  "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/absorption.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/absorption.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/armor.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/armor.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/basic_melee_attack.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/basic_melee_attack.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/blow_the_ax.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/blow_the_ax.cpp.obj"
@@ -25,11 +26,15 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/handcannon.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/hypnosis.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/hypnosis.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/immortality.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/immortality.cpp.obj"
+  "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/interception.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/interception.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj"
+  "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/jaw_spider.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/jaw_spider.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/laser.cpp.obj"
+  "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/long_range_missile.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/long_range_missile.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/magic_bullet.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/magic_bullet.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/moveable.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/moveable.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj"
+  "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/power_circle.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/power_circle.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/protection_field.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/rage.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/rage.cpp.obj"
   "C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/recovery.cpp" "C:/Users/abrde/Documents/Projekty/pigeon-war/cmake-build-debug/CMakeFiles/pigeonwar.dir/abilities/recovery.cpp.obj"

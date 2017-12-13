@@ -151,6 +151,33 @@ abilities\ability.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\ability.cpp.s
 .PHONY : abilities\ability.cpp.s
 
+abilities\absorption.obj: abilities\absorption.cpp.obj
+
+.PHONY : abilities\absorption.obj
+
+# target to build an object file
+abilities\absorption.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\absorption.cpp.obj
+.PHONY : abilities\absorption.cpp.obj
+
+abilities\absorption.i: abilities\absorption.cpp.i
+
+.PHONY : abilities\absorption.i
+
+# target to preprocess a source file
+abilities\absorption.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\absorption.cpp.i
+.PHONY : abilities\absorption.cpp.i
+
+abilities\absorption.s: abilities\absorption.cpp.s
+
+.PHONY : abilities\absorption.s
+
+# target to generate assembly for a file
+abilities\absorption.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\absorption.cpp.s
+.PHONY : abilities\absorption.cpp.s
+
 abilities\armor.obj: abilities\armor.cpp.obj
 
 .PHONY : abilities\armor.obj
@@ -691,6 +718,33 @@ abilities\immortality.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\immortality.cpp.s
 .PHONY : abilities\immortality.cpp.s
 
+abilities\interception.obj: abilities\interception.cpp.obj
+
+.PHONY : abilities\interception.obj
+
+# target to build an object file
+abilities\interception.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\interception.cpp.obj
+.PHONY : abilities\interception.cpp.obj
+
+abilities\interception.i: abilities\interception.cpp.i
+
+.PHONY : abilities\interception.i
+
+# target to preprocess a source file
+abilities\interception.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\interception.cpp.i
+.PHONY : abilities\interception.cpp.i
+
+abilities\interception.s: abilities\interception.cpp.s
+
+.PHONY : abilities\interception.s
+
+# target to generate assembly for a file
+abilities\interception.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\interception.cpp.s
+.PHONY : abilities\interception.cpp.s
+
 abilities\invisibility.obj: abilities\invisibility.cpp.obj
 
 .PHONY : abilities\invisibility.obj
@@ -718,6 +772,33 @@ abilities\invisibility.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\invisibility.cpp.s
 .PHONY : abilities\invisibility.cpp.s
 
+abilities\jaw_spider.obj: abilities\jaw_spider.cpp.obj
+
+.PHONY : abilities\jaw_spider.obj
+
+# target to build an object file
+abilities\jaw_spider.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\jaw_spider.cpp.obj
+.PHONY : abilities\jaw_spider.cpp.obj
+
+abilities\jaw_spider.i: abilities\jaw_spider.cpp.i
+
+.PHONY : abilities\jaw_spider.i
+
+# target to preprocess a source file
+abilities\jaw_spider.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\jaw_spider.cpp.i
+.PHONY : abilities\jaw_spider.cpp.i
+
+abilities\jaw_spider.s: abilities\jaw_spider.cpp.s
+
+.PHONY : abilities\jaw_spider.s
+
+# target to generate assembly for a file
+abilities\jaw_spider.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\jaw_spider.cpp.s
+.PHONY : abilities\jaw_spider.cpp.s
+
 abilities\laser.obj: abilities\laser.cpp.obj
 
 .PHONY : abilities\laser.obj
@@ -744,6 +825,33 @@ abilities\laser.s: abilities\laser.cpp.s
 abilities\laser.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\laser.cpp.s
 .PHONY : abilities\laser.cpp.s
+
+abilities\long_range_missile.obj: abilities\long_range_missile.cpp.obj
+
+.PHONY : abilities\long_range_missile.obj
+
+# target to build an object file
+abilities\long_range_missile.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\long_range_missile.cpp.obj
+.PHONY : abilities\long_range_missile.cpp.obj
+
+abilities\long_range_missile.i: abilities\long_range_missile.cpp.i
+
+.PHONY : abilities\long_range_missile.i
+
+# target to preprocess a source file
+abilities\long_range_missile.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\long_range_missile.cpp.i
+.PHONY : abilities\long_range_missile.cpp.i
+
+abilities\long_range_missile.s: abilities\long_range_missile.cpp.s
+
+.PHONY : abilities\long_range_missile.s
+
+# target to generate assembly for a file
+abilities\long_range_missile.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\long_range_missile.cpp.s
+.PHONY : abilities\long_range_missile.cpp.s
 
 abilities\magic_bullet.obj: abilities\magic_bullet.cpp.obj
 
@@ -825,6 +933,33 @@ abilities\poisoned_missile.s: abilities\poisoned_missile.cpp.s
 abilities\poisoned_missile.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.s
 .PHONY : abilities\poisoned_missile.cpp.s
+
+abilities\power_circle.obj: abilities\power_circle.cpp.obj
+
+.PHONY : abilities\power_circle.obj
+
+# target to build an object file
+abilities\power_circle.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\power_circle.cpp.obj
+.PHONY : abilities\power_circle.cpp.obj
+
+abilities\power_circle.i: abilities\power_circle.cpp.i
+
+.PHONY : abilities\power_circle.i
+
+# target to preprocess a source file
+abilities\power_circle.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\power_circle.cpp.i
+.PHONY : abilities\power_circle.cpp.i
+
+abilities\power_circle.s: abilities\power_circle.cpp.s
+
+.PHONY : abilities\power_circle.s
+
+# target to generate assembly for a file
+abilities\power_circle.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\power_circle.cpp.s
+.PHONY : abilities\power_circle.cpp.s
 
 abilities\protection_field.obj: abilities\protection_field.cpp.obj
 
@@ -2242,6 +2377,9 @@ help:
 	@echo ... abilities/ability.obj
 	@echo ... abilities/ability.i
 	@echo ... abilities/ability.s
+	@echo ... abilities/absorption.obj
+	@echo ... abilities/absorption.i
+	@echo ... abilities/absorption.s
 	@echo ... abilities/armor.obj
 	@echo ... abilities/armor.i
 	@echo ... abilities/armor.s
@@ -2302,12 +2440,21 @@ help:
 	@echo ... abilities/immortality.obj
 	@echo ... abilities/immortality.i
 	@echo ... abilities/immortality.s
+	@echo ... abilities/interception.obj
+	@echo ... abilities/interception.i
+	@echo ... abilities/interception.s
 	@echo ... abilities/invisibility.obj
 	@echo ... abilities/invisibility.i
 	@echo ... abilities/invisibility.s
+	@echo ... abilities/jaw_spider.obj
+	@echo ... abilities/jaw_spider.i
+	@echo ... abilities/jaw_spider.s
 	@echo ... abilities/laser.obj
 	@echo ... abilities/laser.i
 	@echo ... abilities/laser.s
+	@echo ... abilities/long_range_missile.obj
+	@echo ... abilities/long_range_missile.i
+	@echo ... abilities/long_range_missile.s
 	@echo ... abilities/magic_bullet.obj
 	@echo ... abilities/magic_bullet.i
 	@echo ... abilities/magic_bullet.s
@@ -2317,6 +2464,9 @@ help:
 	@echo ... abilities/poisoned_missile.obj
 	@echo ... abilities/poisoned_missile.i
 	@echo ... abilities/poisoned_missile.s
+	@echo ... abilities/power_circle.obj
+	@echo ... abilities/power_circle.i
+	@echo ... abilities/power_circle.s
 	@echo ... abilities/protection_field.obj
 	@echo ... abilities/protection_field.i
 	@echo ... abilities/protection_field.s

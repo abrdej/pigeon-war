@@ -4,6 +4,22 @@
 CMakeFiles/pigeonwar.dir/abilities/ability.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+CMakeFiles/pigeonwar.dir/abilities/absorption.cpp.obj
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/absorption.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/absorption.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
 CMakeFiles/pigeonwar.dir/abilities/armor.cpp.obj
  ..//animation/animation.h
  ..//core/board.h
@@ -1953,21 +1969,27 @@ CMakeFiles/pigeonwar.dir/abilities/grenade.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/grenade.h
 CMakeFiles/pigeonwar.dir/abilities/handcannon.cpp.obj
+ ..//abilities/abilities.h
  ..//abilities/ability.h
  ..//animation/animation.h
  ..//core/board.h
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//managers/abilities_manager.h
  ..//managers/health_manager.h
  ..//managers/managers.h
  ..//utils/graph.h
  ../core/path_finder.h
  ../core/players.h
  ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/handcannon.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/protection_field.h
 CMakeFiles/pigeonwar.dir/abilities/hypnosis.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -2199,6 +2221,25 @@ CMakeFiles/pigeonwar.dir/abilities/immortality.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/immortality.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/immortality.h
+CMakeFiles/pigeonwar.dir/abilities/interception.cpp.obj
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/path_finder.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//managers/types_manager.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/interception.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/interception.h
 CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
@@ -2319,6 +2360,27 @@ CMakeFiles/pigeonwar.dir/abilities/invisibility.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/invisibility.h
+CMakeFiles/pigeonwar.dir/abilities/jaw_spider.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/abilities_manager.h
+ ..//managers/additions_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/jaw_spider.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/jaw_spider.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.h
 CMakeFiles/pigeonwar.dir/abilities/laser.cpp.obj
  ..//abilities/ability.h
  ..//animation/animation.h
@@ -2335,6 +2397,22 @@ CMakeFiles/pigeonwar.dir/abilities/laser.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/laser.h
+CMakeFiles/pigeonwar.dir/abilities/long_range_missile.cpp.obj
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/long_range_missile.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/long_range_missile.h
 CMakeFiles/pigeonwar.dir/abilities/magic_bullet.cpp.obj
  ..//abilities/ability.h
  ..//animation/animation.h
@@ -2490,6 +2568,26 @@ CMakeFiles/pigeonwar.dir/abilities/poisoned_missile.cpp.obj
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.h
+CMakeFiles/pigeonwar.dir/abilities/power_circle.cpp.obj
+ ..//abilities/abilities.h
+ ..//abilities/ability.h
+ ..//animation/animation.h
+ ..//core/board.h
+ ..//core/signals.h
+ ..//core/states.h
+ ..//core/turn.h
+ ..//managers/abilities_manager.h
+ ..//managers/health_manager.h
+ ..//managers/managers.h
+ ..//utils/graph.h
+ ../core/path_finder.h
+ ../core/players.h
+ ../managers/entity_remover.h
+ ../managers/managers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/absorption.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/power_circle.cpp
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/power_circle.h
 CMakeFiles/pigeonwar.dir/abilities/protection_field.cpp.obj
  ..//animation/animation.h
  ..//core/board.h
@@ -2916,6 +3014,7 @@ CMakeFiles/pigeonwar.dir/abilities/spider_web.cpp.obj
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowHandle.hpp
  C:/Biblioteki/SFML-2.4.2/include/SFML/Window/WindowStyle.hpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/jaw_spider.h
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.cpp
  C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/spider_web.h
 CMakeFiles/pigeonwar.dir/abilities/spiral_of_fire.cpp.obj
@@ -4452,6 +4551,7 @@ CMakeFiles/pigeonwar.dir/entities/wolf.cpp.obj
 CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/absorption.h
  ..//abilities/armor.h
  ..//abilities/basic_melee_attack.h
  ..//abilities/blow_the_ax.h
@@ -4471,11 +4571,15 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//abilities/handcannon.h
  ..//abilities/hypnosis.h
  ..//abilities/immortality.h
+ ..//abilities/interception.h
  ..//abilities/invisibility.h
+ ..//abilities/jaw_spider.h
  ..//abilities/laser.h
+ ..//abilities/long_range_missile.h
  ..//abilities/magic_bullet.h
  ..//abilities/moveable.h
  ..//abilities/poisoned_missile.h
+ ..//abilities/power_circle.h
  ..//abilities/protection_field.h
  ..//abilities/rage.h
  ..//abilities/recovery.h
@@ -4499,6 +4603,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//entities/absorber.h
  ..//entities/balloon.h
  ..//entities/barrack.h
  ..//entities/cannon.h
@@ -4514,6 +4619,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//entities/monk.h
  ..//entities/mouse.h
  ..//entities/native.h
+ ..//entities/ninja.h
  ..//entities/robot.h
  ..//entities/saberhand.h
  ..//entities/samurai_rat.h
@@ -6175,6 +6281,7 @@ CMakeFiles/pigeonwar.dir/managers/types_manager.cpp.obj
 CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//abilities/abilities.h
  ..//abilities/ability.h
+ ..//abilities/absorption.h
  ..//abilities/armor.h
  ..//abilities/blow_the_ax.h
  ..//abilities/bludgeon.h
@@ -6194,11 +6301,15 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//abilities/handcannon.h
  ..//abilities/hypnosis.h
  ..//abilities/immortality.h
+ ..//abilities/interception.h
  ..//abilities/invisibility.h
+ ..//abilities/jaw_spider.h
  ..//abilities/laser.h
+ ..//abilities/long_range_missile.h
  ..//abilities/magic_bullet.h
  ..//abilities/moveable.h
  ..//abilities/poisoned_missile.h
+ ..//abilities/power_circle.h
  ..//abilities/protection_field.h
  ..//abilities/rage.h
  ..//abilities/recovery.h
@@ -6223,6 +6334,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//core/signals.h
  ..//core/states.h
  ..//core/turn.h
+ ..//entities/absorber.h
  ..//entities/balloon.h
  ..//entities/creature.h
  ..//entities/destroyer.h
@@ -6236,6 +6348,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//entities/monk.h
  ..//entities/mouse.h
  ..//entities/native.h
+ ..//entities/ninja.h
  ..//entities/robot.h
  ..//entities/saberhand.h
  ..//entities/samurai_rat.h

@@ -166,7 +166,13 @@ private:
 				sprite.setTexture(bitmap_center::grass_damage_bitmap);
 			else
 				sprite.setTexture(bitmap_center::grass_attack_bitmap);
-		} else {
+		} else if (states::state_controller::actual_targeting_type_ == states::target_types::friendly)
+		{
+			if (game_.valid_target(index))
+				sprite.setTexture(bitmap_center::grass_boost_bitmap);
+			else
+				sprite.setTexture(bitmap_center::grass_friendly_bitmap);
+		}else {
 			sprite.setTexture(bitmap_center::grass_move_bitmap);
 		}
 

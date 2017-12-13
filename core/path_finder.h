@@ -40,6 +40,8 @@ void calc_straight(size_t from_index,
 
 void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool available);
 
+void circle(size_t for_index, std::vector<size_t>& fields, bool available);
+
 void all_free(std::vector<size_t>& fields);
 };
 

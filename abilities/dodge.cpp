@@ -8,8 +8,6 @@ dodge::dodge(std::size_t entity_id) {
 
 	healths_manager::set_damage_receiver(entity_id, [this, entity_id, counter = 0](health_field& health_pack, const damage_pack& dmg) mutable {
 
-		std::cout << "my damage receiver\n";
-
 		if (++counter == 3) {
 
 			counter = 0;
