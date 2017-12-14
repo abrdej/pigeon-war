@@ -530,6 +530,10 @@ abilities/abilities.h
 managers/health_manager.h
 ../entities/managers/health_manager.h
 
+..//entities/fir.h
+entity.h
+../entities/entity.h
+
 ..//entities/fire.h
 entity.h
 ../entities/entity.h
@@ -621,6 +625,8 @@ abilities/moveable.h
 ../entities/abilities/moveable.h
 abilities/interception.h
 ../entities/abilities/interception.h
+abilities/assassin_slash.h
+../entities/abilities/assassin_slash.h
 
 ..//entities/robot.h
 entity.h
@@ -738,6 +744,10 @@ abilities/rage.h
 entity.h
 ../entities/entity.h
 
+..//entities/wall.h
+entity.h
+../entities/entity.h
+
 ..//entities/warrior.h
 abilities/warrior_blow.h
 -
@@ -749,6 +759,10 @@ abilities/abilities.h
 ../entities/abilities/abilities.h
 abilities/moveable.h
 ../entities/abilities/moveable.h
+
+..//entities/water.h
+entity.h
+../entities/entity.h
 
 ..//entities/werewolf.h
 abilities/drain.h
@@ -763,6 +777,14 @@ abilities/moveable.h
 ..//entities/wolf.h
 entity.h
 ../entities/entity.h
+
+..//entities/wretch.h
+entity.h
+../entities/entity.h
+abilities/abilities.h
+../entities/abilities/abilities.h
+abilities/moveable.h
+../entities/abilities/moveable.h
 
 ..//gui/bitmap_center.h
 unordered_map
@@ -3443,6 +3465,14 @@ entities/ninja.h
 -
 entities/absorber.h
 -
+entities/water.h
+-
+entities/wall.h
+-
+entities/fir.h
+-
+entities/wretch.h
+-
 gui/bitmap_center.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/gui/gui/bitmap_center.h
 animation/animation.h
@@ -3946,6 +3976,14 @@ entities/monk.h
 entities/ninja.h
 -
 entities/absorber.h
+-
+entities/water.h
+-
+entities/wall.h
+-
+entities/fir.h
+-
+entities/wretch.h
 -
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.h

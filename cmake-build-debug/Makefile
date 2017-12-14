@@ -1393,6 +1393,33 @@ abilities\tongue_of_fire.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\tongue_of_fire.cpp.s
 .PHONY : abilities\tongue_of_fire.cpp.s
 
+abilities\vicious_circle.obj: abilities\vicious_circle.cpp.obj
+
+.PHONY : abilities\vicious_circle.obj
+
+# target to build an object file
+abilities\vicious_circle.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\vicious_circle.cpp.obj
+.PHONY : abilities\vicious_circle.cpp.obj
+
+abilities\vicious_circle.i: abilities\vicious_circle.cpp.i
+
+.PHONY : abilities\vicious_circle.i
+
+# target to preprocess a source file
+abilities\vicious_circle.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\vicious_circle.cpp.i
+.PHONY : abilities\vicious_circle.cpp.i
+
+abilities\vicious_circle.s: abilities\vicious_circle.cpp.s
+
+.PHONY : abilities\vicious_circle.s
+
+# target to generate assembly for a file
+abilities\vicious_circle.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\vicious_circle.cpp.s
+.PHONY : abilities\vicious_circle.cpp.s
+
 abilities\warrior_blow.obj: abilities\warrior_blow.cpp.obj
 
 .PHONY : abilities\warrior_blow.obj
@@ -1446,6 +1473,33 @@ abilities\wolf_herd.s: abilities\wolf_herd.cpp.s
 abilities\wolf_herd.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\wolf_herd.cpp.s
 .PHONY : abilities\wolf_herd.cpp.s
+
+abilities\wretch_moving.obj: abilities\wretch_moving.cpp.obj
+
+.PHONY : abilities\wretch_moving.obj
+
+# target to build an object file
+abilities\wretch_moving.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\wretch_moving.cpp.obj
+.PHONY : abilities\wretch_moving.cpp.obj
+
+abilities\wretch_moving.i: abilities\wretch_moving.cpp.i
+
+.PHONY : abilities\wretch_moving.i
+
+# target to preprocess a source file
+abilities\wretch_moving.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\wretch_moving.cpp.i
+.PHONY : abilities\wretch_moving.cpp.i
+
+abilities\wretch_moving.s: abilities\wretch_moving.cpp.s
+
+.PHONY : abilities\wretch_moving.s
+
+# target to generate assembly for a file
+abilities\wretch_moving.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\wretch_moving.cpp.s
+.PHONY : abilities\wretch_moving.cpp.s
 
 ai\ai.obj: ai\ai.cpp.obj
 
@@ -2569,12 +2623,18 @@ help:
 	@echo ... abilities/tongue_of_fire.obj
 	@echo ... abilities/tongue_of_fire.i
 	@echo ... abilities/tongue_of_fire.s
+	@echo ... abilities/vicious_circle.obj
+	@echo ... abilities/vicious_circle.i
+	@echo ... abilities/vicious_circle.s
 	@echo ... abilities/warrior_blow.obj
 	@echo ... abilities/warrior_blow.i
 	@echo ... abilities/warrior_blow.s
 	@echo ... abilities/wolf_herd.obj
 	@echo ... abilities/wolf_herd.i
 	@echo ... abilities/wolf_herd.s
+	@echo ... abilities/wretch_moving.obj
+	@echo ... abilities/wretch_moving.i
+	@echo ... abilities/wretch_moving.s
 	@echo ... ai/ai.obj
 	@echo ... ai/ai.i
 	@echo ... ai/ai.s

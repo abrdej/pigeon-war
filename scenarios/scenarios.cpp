@@ -170,6 +170,10 @@ void wolves_dinner(game& game) {
 #include <entities/monk.h>
 #include <entities/ninja.h>
 #include <entities/absorber.h>
+#include <entities/water.h>
+#include <entities/wall.h>
+#include <entities/fir.h>
+#include <entities/wretch.h>
 
 using Entites = boost::fusion::vector<shooter,
         destroyer,
@@ -188,7 +192,8 @@ using Entites = boost::fusion::vector<shooter,
 //        thrower,
         absorber,
         guardian,
-        creature,
+        //creature,
+        wretch,
         warrior,
         handthrower,
         spider>;
@@ -197,11 +202,20 @@ struct OwnerCallback {
     turn::turn_system::strong_receiver owner;
 };
 
+void create_trees_1() {
+    using creator_helper::pos;
+    creator_helper::create_neutral_many<tree>({pos(8, 1), pos(9, 1), pos(10, 1), pos(10, 2)});
+    creator_helper::create_neutral_many<tree>({pos(10, 7), pos(11, 7), pos(10, 8), pos(11, 8)});
+    creator_helper::create_neutral_many<tree>({pos(3, 1), pos(3, 2), pos(4, 1), pos(4, 2), pos(3, 5), pos(3, 6)});
+    creator_helper::create_neutral_many<tree>({pos(5, 8), pos(6, 8)});
+    creator_helper::create_neutral_many<stone>({pos(1, 1), pos(4, 5)});
+}
+
 void skirmish(game& game) {
 
     using creator_helper::pos;
 
-    creator_helper::create_neutral_many<fire>({pos(7, 4)});
+    //creator_helper::create_neutral_many<fire>({pos(7, 4)});
 
     std::vector<std::pair<std::size_t, std::size_t>> trees_positions;
     for (int i = 0; i < board::cols_n; ++i) {
@@ -211,13 +225,19 @@ void skirmish(game& game) {
             }
         }
     }
+    creator_helper::create_neutral_many<fir>(trees_positions);
 
-    creator_helper::create_neutral_many<tree>(trees_positions);
-    creator_helper::create_neutral_many<tree>({pos(8, 1), pos(9, 1), pos(10, 1), pos(10, 2)});
-    creator_helper::create_neutral_many<tree>({pos(10, 7), pos(11, 7), pos(10, 8), pos(11, 8)});
-    creator_helper::create_neutral_many<tree>({pos(3, 1), pos(3, 2), pos(4, 1), pos(4, 2), pos(3, 5), pos(3, 6)});
-    creator_helper::create_neutral_many<tree>({pos(5, 8), pos(6, 8)});
-    creator_helper::create_neutral_many<stone>({pos(1, 1), pos(4, 5)});
+    creator_helper::create_neutral_many<fir>({pos(6, 1), pos(7, 1), pos(6, 2), pos(7, 2)});
+    creator_helper::create_neutral_many<fir>({pos(10, 1), pos(11, 1), pos(10, 2), pos(11, 2)});
+    creator_helper::create_neutral_many<fir>({pos(7, 7), pos(8, 7), pos(7, 8), pos(8, 8)});
+    creator_helper::create_neutral_many<fir>({pos(3, 7), pos(4, 7), pos(3, 8), pos(4, 8)});
+
+
+    creator_helper::create_neutral_many<wall>({pos(4, 4), pos(4, 5)});
+    creator_helper::create_neutral_many<wall>({pos(10, 5), pos(10, 6)});
+
+    creator_helper::create_neutral_many<fir>({pos(6, 4), pos(7, 4), pos(6, 5), pos(7, 5)});
+
 
 
     std::vector<std::pair<std::size_t, std::size_t>> init_positions = {

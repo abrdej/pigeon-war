@@ -4748,6 +4748,7 @@ CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\creature.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\destroyer.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\droid.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\entity.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\fir.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\fire.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\fissure.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\grenadier.h
@@ -4770,9 +4771,12 @@ CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\thrower.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\treant.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\tree.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\troll.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\wall.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\warrior.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\water.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\werewolf.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\wolf.h
+CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\entities\wretch.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\gui\bitmap_center.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\gui\bitmap_center.cpp.obj: ..\managers\abilities_manager.h
@@ -6479,6 +6483,7 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\creature.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\destroyer.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\droid.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\entity.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\fir.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\fire.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\fissure.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\grenadier.h
@@ -6501,9 +6506,12 @@ CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\thrower.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\treant.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\tree.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\troll.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\wall.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\warrior.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\water.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\werewolf.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\wolf.h
+CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\entities\wretch.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\gui\drawing_manager.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\managers\abilities_manager.h
 CMakeFiles\pigeonwar.dir\scenarios\scenarios.cpp.obj: ..\managers\directions_manager.h

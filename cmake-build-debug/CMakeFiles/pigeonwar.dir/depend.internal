@@ -4749,6 +4749,7 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//entities/destroyer.h
  ..//entities/droid.h
  ..//entities/entity.h
+ ..//entities/fir.h
  ..//entities/fire.h
  ..//entities/fissure.h
  ..//entities/grenadier.h
@@ -4771,9 +4772,12 @@ CMakeFiles/pigeonwar.dir/gui/bitmap_center.cpp.obj
  ..//entities/treant.h
  ..//entities/tree.h
  ..//entities/troll.h
+ ..//entities/wall.h
  ..//entities/warrior.h
+ ..//entities/water.h
  ..//entities/werewolf.h
  ..//entities/wolf.h
+ ..//entities/wretch.h
  ..//gui/bitmap_center.h
  ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
@@ -6480,6 +6484,7 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//entities/destroyer.h
  ..//entities/droid.h
  ..//entities/entity.h
+ ..//entities/fir.h
  ..//entities/fire.h
  ..//entities/fissure.h
  ..//entities/grenadier.h
@@ -6502,9 +6507,12 @@ CMakeFiles/pigeonwar.dir/scenarios/scenarios.cpp.obj
  ..//entities/treant.h
  ..//entities/tree.h
  ..//entities/troll.h
+ ..//entities/wall.h
  ..//entities/warrior.h
+ ..//entities/water.h
  ..//entities/werewolf.h
  ..//entities/wolf.h
+ ..//entities/wretch.h
  ..//gui/drawing_manager.h
  ..//managers/abilities_manager.h
  ..//managers/directions_manager.h

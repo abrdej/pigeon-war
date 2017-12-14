@@ -365,6 +365,12 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/tongue_of_fire.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/vicious_circle.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/vicious_circle.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/warrior_blow.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -375,6 +381,12 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/wolf_herd.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/wretch_moving.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/wretch_moving.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/ai/ai.cpp">
@@ -476,6 +488,9 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/entity.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/fir.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/fire.h">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -527,7 +542,13 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/troll.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/wall.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/warrior.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/water.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/werewolf.cpp">
@@ -540,6 +561,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/wolf.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/wretch.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmap_center.cpp">

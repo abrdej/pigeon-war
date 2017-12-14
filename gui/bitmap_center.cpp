@@ -28,6 +28,10 @@
 #include <abilities/long_range_missile.h>
 #include <entities/ninja.h>
 #include <entities/absorber.h>
+#include <entities/water.h>
+#include <entities/wall.h>
+#include <entities/fir.h>
+#include <entities/wretch.h>
 #include "gui/bitmap_center.h"
 #include "animation/animation.h"
 #include "entities/shooter.h"
@@ -155,6 +159,10 @@ void bitmap_center::load()
     add_entity_image<absorber>("absorber.png");
     add_entity_image<absorption>("absorption.png");
     add_entity_image<power_circle>("power_circle.png");
+    add_entity_image<water>("water.png");
+    add_entity_image<wall>("wall.png");
+    add_entity_image<fir>("fir.png");
+    add_entity_image<wretch>("wretch.png");
 
     // bitmaps
     add_bitmap("shooter", "shooter.png");
