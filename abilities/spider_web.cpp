@@ -65,24 +65,26 @@ void spider_web::use(size_t index_on) {
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, caster_id));
 
-    auto& enemy_abilities = abilities_manager::component_for(enemy_id);
-    auto moveable_backup =  enemy_abilities.type(abilities::ability_types::moving);
-    enemy_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(1));
+    if (entity_manager::alive(enemy_id)) {
+        auto& enemy_abilities = abilities_manager::component_for(enemy_id);
+        auto moveable_backup =  enemy_abilities.type(abilities::ability_types::moving);
+        enemy_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(1));
 
-    auto slow_down_receiver =
-            turn::turn_system::every_round([this, slow_last = 2, enemy_id, moveable_backup, counter = 0]() mutable {
+        auto slow_down_receiver =
+                turn::turn_system::every_round([this, slow_last = 2, enemy_id, moveable_backup, counter = 0]() mutable {
 
-        if (++counter == slow_last) {
+                    if (++counter == slow_last) {
 
-			auto& inner_enemy_abilities = abilities_manager::component_for(enemy_id);
-            inner_enemy_abilities.add_ability(abilities::ability_types::moving, moveable_backup);
-			
-			additions_manager::remove_component(enemy_id,
-				"spider_web_effect");
-        }
-    });
+                        auto& inner_enemy_abilities = abilities_manager::component_for(enemy_id);
+                        inner_enemy_abilities.add_ability(abilities::ability_types::moving, moveable_backup);
 
-    additions_manager::add_component(enemy_id, "spider_web_effect", slow_down_receiver);
+                        additions_manager::remove_component(enemy_id,
+                                                            "spider_web_effect");
+                    }
+                });
+
+        additions_manager::add_component(enemy_id, "spider_web_effect", slow_down_receiver);
+    }
 
     used = true;
 

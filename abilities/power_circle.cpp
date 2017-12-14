@@ -25,10 +25,9 @@ power_circle::power_circle(std::size_t entity_id) {
 
             if (absorption_ptr->is_full()) {
                 bonus_active = true;
-                absorption_power = 0;
-                bonus_counter = 0;
             } else if (bonus_active && ++bonus_counter == max_bonus_counter) {
                 bonus_active = false;
+                absorption_power = 0;
                 bonus_counter = 0;
                 absorption_ptr->set_empty();
             }
@@ -74,7 +73,7 @@ power_circle::power_circle(std::size_t entity_id) {
 //                                                                 last_dmg.damage_value = dmg.damage_value - half_dmg;
 //                                                                 last_dmg.damage_receiver_id = entity_id;
 //
-//                                                                 absorption_power = std::max(absorption_power + last_dmg.damage_value,
+//                                                                 absorption_power = std::min(absorption_power + last_dmg.damage_value,
 //                                                                                             max_absorption_power);
 //
 //                                                                 last_dmg.damage_value = std::max(last_dmg.damage_value - damage_reduction, 0);

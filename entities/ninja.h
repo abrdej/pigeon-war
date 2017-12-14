@@ -11,6 +11,7 @@
 #include "abilities/abilities.h"
 #include "abilities/moveable.h"
 #include "abilities/interception.h"
+#include "abilities/assassin_slash.h"
 
 class ninja final
 {

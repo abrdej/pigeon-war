@@ -67,8 +67,10 @@ void absorption::use(size_t index_on) {
                                              last_dmg.damage_value = dmg.damage_value - half_dmg;
                                              last_dmg.damage_receiver_id = entity_id;
 
-                                             absorption_power = std::max(absorption_power + last_dmg.damage_value,
+                                             absorption_power = std::min(absorption_power + last_dmg.damage_value,
                                                                          max_absorption_power);
+
+                                             std::cout << "absorption_power: " << absorption_power << "\n";
 
 
                                              animation::player<animation::flash_bitmap>::launch
