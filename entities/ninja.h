@@ -5,6 +5,8 @@
 #ifndef PIGEONWAR_NINJA_H
 #define PIGEONWAR_NINJA_H
 
+#include <abilities/shiruken.h>
+#include <abilities/assassin_slash.h>
 #include "entity.h"
 #include "abilities/abilities.h"
 #include "abilities/moveable.h"
@@ -19,7 +21,8 @@ public:
         entity_def.name = "Ninja";
         entity_def.health_pack.base_health = 30;
         entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<interception>(id));
+        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<shiruken>());
+        entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<assassin_slash>(id));
         return entity_def;
     }
 };

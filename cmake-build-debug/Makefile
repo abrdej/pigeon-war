@@ -205,6 +205,33 @@ abilities\armor.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\armor.cpp.s
 .PHONY : abilities\armor.cpp.s
 
+abilities\assassin_slash.obj: abilities\assassin_slash.cpp.obj
+
+.PHONY : abilities\assassin_slash.obj
+
+# target to build an object file
+abilities\assassin_slash.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\assassin_slash.cpp.obj
+.PHONY : abilities\assassin_slash.cpp.obj
+
+abilities\assassin_slash.i: abilities\assassin_slash.cpp.i
+
+.PHONY : abilities\assassin_slash.i
+
+# target to preprocess a source file
+abilities\assassin_slash.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\assassin_slash.cpp.i
+.PHONY : abilities\assassin_slash.cpp.i
+
+abilities\assassin_slash.s: abilities\assassin_slash.cpp.s
+
+.PHONY : abilities\assassin_slash.s
+
+# target to generate assembly for a file
+abilities\assassin_slash.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\assassin_slash.cpp.s
+.PHONY : abilities\assassin_slash.cpp.s
+
 abilities\basic_melee_attack.obj: abilities\basic_melee_attack.cpp.obj
 
 .PHONY : abilities\basic_melee_attack.obj
@@ -1095,6 +1122,33 @@ abilities\shield.s: abilities\shield.cpp.s
 abilities\shield.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shield.cpp.s
 .PHONY : abilities\shield.cpp.s
+
+abilities\shiruken.obj: abilities\shiruken.cpp.obj
+
+.PHONY : abilities\shiruken.obj
+
+# target to build an object file
+abilities\shiruken.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shiruken.cpp.obj
+.PHONY : abilities\shiruken.cpp.obj
+
+abilities\shiruken.i: abilities\shiruken.cpp.i
+
+.PHONY : abilities\shiruken.i
+
+# target to preprocess a source file
+abilities\shiruken.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shiruken.cpp.i
+.PHONY : abilities\shiruken.cpp.i
+
+abilities\shiruken.s: abilities\shiruken.cpp.s
+
+.PHONY : abilities\shiruken.s
+
+# target to generate assembly for a file
+abilities\shiruken.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\shiruken.cpp.s
+.PHONY : abilities\shiruken.cpp.s
 
 abilities\shoot.obj: abilities\shoot.cpp.obj
 
@@ -2383,6 +2437,9 @@ help:
 	@echo ... abilities/armor.obj
 	@echo ... abilities/armor.i
 	@echo ... abilities/armor.s
+	@echo ... abilities/assassin_slash.obj
+	@echo ... abilities/assassin_slash.i
+	@echo ... abilities/assassin_slash.s
 	@echo ... abilities/basic_melee_attack.obj
 	@echo ... abilities/basic_melee_attack.i
 	@echo ... abilities/basic_melee_attack.s
@@ -2482,6 +2539,9 @@ help:
 	@echo ... abilities/shield.obj
 	@echo ... abilities/shield.i
 	@echo ... abilities/shield.s
+	@echo ... abilities/shiruken.obj
+	@echo ... abilities/shiruken.i
+	@echo ... abilities/shiruken.s
 	@echo ... abilities/shoot.obj
 	@echo ... abilities/shoot.i
 	@echo ... abilities/shoot.s

@@ -82,6 +82,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pigeonwar.dir/abilities/interception.cpp.obj"
   "CMakeFiles/pigeonwar.dir/abilities/absorption.cpp.obj"
   "CMakeFiles/pigeonwar.dir/abilities/power_circle.cpp.obj"
+  "CMakeFiles/pigeonwar.dir/abilities/shiruken.cpp.obj"
+  "CMakeFiles/pigeonwar.dir/abilities/assassin_slash.cpp.obj"
   "pigeonwar.pdb"
   "pigeonwar.exe"
   "pigeonwar.exe.manifest"

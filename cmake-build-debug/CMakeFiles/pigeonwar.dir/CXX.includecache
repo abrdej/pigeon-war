@@ -34,6 +34,10 @@ unordered_map
 ability.h
 ../abilities/ability.h
 
+..//abilities/assassin_slash.h
+abilities/ability.h
+../abilities/abilities/ability.h
+
 ..//abilities/basic_melee_attack.h
 abilities/ability.h
 ../abilities/abilities/ability.h
@@ -251,6 +255,12 @@ core/turn.h
 ..//abilities/shield.h
 ability.h
 ../abilities/ability.h
+
+..//abilities/shiruken.h
+abilities/ability.h
+../abilities/abilities/ability.h
+core/turn.h
+../abilities/core/turn.h
 
 ..//abilities/shoot.h
 abilities/ability.h
@@ -599,6 +609,10 @@ abilities/counterattack.h
 ../entities/abilities/counterattack.h
 
 ..//entities/ninja.h
+abilities/shiruken.h
+-
+abilities/assassin_slash.h
+-
 entity.h
 ../entities/entity.h
 abilities/abilities.h
@@ -2142,6 +2156,28 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/armor.h
 ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
 
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/assassin_slash.cpp
+core/states.h
+-
+core/board.h
+-
+core/players.h
+-
+managers/additions_manager.h
+-
+managers/types_manager.h
+-
+managers/entity_manager.h
+-
+assassin_slash.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/assassin_slash.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/assassin_slash.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/basic_melee_attack.cpp
 basic_melee_attack.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/basic_melee_attack.h
@@ -2793,6 +2829,22 @@ C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shield.h
 ability.h
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/ability.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shiruken.cpp
+core/states.h
+-
+managers/additions_manager.h
+-
+shiruken.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shiruken.h
+damage_dealers.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/damage_dealers.h
+
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shiruken.h
+abilities/ability.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/abilities/ability.h
+core/turn.h
+C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/core/turn.h
 
 C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/shoot.cpp
 gui/drawing_manager.h

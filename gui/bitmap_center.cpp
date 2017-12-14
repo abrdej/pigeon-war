@@ -148,7 +148,9 @@ void bitmap_center::load()
     add_entity_image<magic_bullet>("magic_bullet.png");
     add_entity_image<jaw_spider>("jaw_spider.png");
     add_entity_image<long_range_missile>("flame_thrower.png");
-    add_entity_image<ninja>("ninja.png");
+    add_entity_image<ninja>("ninja_shirukens.png");
+    add_entity_image<shiruken>("shiruken.png");
+    add_entity_image<assassin_slash>("assassin_slash.png");
     add_entity_image<interception>("ninja.png");
     add_entity_image<absorber>("absorber.png");
     add_entity_image<absorption>("absorption.png");
