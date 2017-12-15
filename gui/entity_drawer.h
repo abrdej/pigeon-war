@@ -69,8 +69,8 @@ struct entity_drawer : drawable {
         sprite.setPosition(position);
 
         sprite.setTextureRect(directions_manager::component_for(entity_id)
-										   == entity_definition::directions::left ? sf::IntRect(60, 0, -60, 60)
-																				  : sf::IntRect(0, 0, 60, 60));
+										   == directions::left ? sf::IntRect(60, 0, -60, 60)
+                                                               : sf::IntRect(0, 0, 60, 60));
 
         health = healths_manager::component_for(entity_id).health;
         health_pos = position;

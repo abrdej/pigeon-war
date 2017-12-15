@@ -25,7 +25,7 @@ private:
     sf::Vector2f end_pos_;
     sf::Vector2f translation_;
     double velocity_;
-    std::type_index object_type_;
+    std::size_t object_id;
     const sf::Texture& bitmap_;
     turn_types turn_;
 };
@@ -38,7 +38,7 @@ public:
     bool run();
 
 private:
-    std::type_index object_type_;
+    std::size_t object_id;
     std::vector<std::size_t> path;
     std::size_t from_index;
     std::size_t to_index;

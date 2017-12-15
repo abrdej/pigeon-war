@@ -1,5 +1,4 @@
 #include <animation/animation.h>
-#include "managers/types_manager.h"
 #include "sword_blow.h"
 #include "core/states.h"
 #include "damage_dealers.h"
@@ -63,8 +62,7 @@ void sword_blow::use(size_t index_on) {
 void sword_blow::play_sword_blow_animation(size_t from_index) {
 
     auto entity_id = board::take(from_index);
-    auto type = types_manager::component_for(entity_id);
-//    animation::player<animation::move>::launch(animation::move(index_from, index_on, type));
+//    animation::player<animation::move>::launch(animation::move(index_from, index_on, entity_id));
 //    animation::base_player::play();
 
     auto from_cr = board::to_pos(from_index);

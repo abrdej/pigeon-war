@@ -6,7 +6,6 @@
 #include "animation/animation.h"
 #include "animation/animation_impl.h"
 #include "damage_dealers.h"
-#include "managers/types_manager.h"
 
 basic_melee_attack::basic_melee_attack()
 {
@@ -51,12 +50,11 @@ void basic_melee_attack::use(size_t index_on)
 void basic_melee_attack::play_animation(size_t index_from, size_t index_on)
 {
 	auto entity_id = board::take(index_from);
-	auto type = types_manager::component_for(entity_id);
-	animation::player<animation::move>::launch(animation::move(index_from, index_on, type));
+	animation::player<animation::move>::launch(animation::move(index_from, index_on, entity_id));
 	animation::base_player::play();
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index_on, std::chrono::milliseconds(150), "claws.png"));
 	animation::base_player::play();
-	animation::player<animation::move>::launch(animation::move(index_on, index_from, type));
+	animation::player<animation::move>::launch(animation::move(index_on, index_from, entity_id));
 	animation::base_player::play();
 	board::give_back(entity_id, index_from);
 }

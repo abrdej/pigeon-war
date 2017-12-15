@@ -2,7 +2,6 @@
 #include <core/board.h>
 #include <core/players.h>
 #include <managers/additions_manager.h>
-#include <managers/types_manager.h>
 #include <managers/entity_manager.h>
 #include "assassin_slash.h"
 #include "damage_dealers.h"
@@ -86,12 +85,11 @@ void assassin_slash::use(size_t index_on) {
 
 void assassin_slash::play_animation(size_t from_index, size_t to_index) {
     auto entity_id = board::take(from_index);
-    auto type = types_manager::component_for(entity_id);
-    animation::player<animation::move>::launch(animation::move(from_index, to_index, type));
+    animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
     animation::base_player::play();
     animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "ninja_attack.png"));
     animation::base_player::play();
-    animation::player<animation::move>::launch(animation::move(to_index, from_index, type));
+    animation::player<animation::move>::launch(animation::move(to_index, from_index, entity_id));
     animation::base_player::play();
     board::give_back(entity_id, from_index);
 }

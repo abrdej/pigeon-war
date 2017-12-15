@@ -2,7 +2,6 @@
 #include <core/board.h>
 #include <animation/animation.h>
 #include <managers/directions_manager.h>
-#include <managers/types_manager.h>
 #include "wretch_moving.h"
 
 wretch_moving::wretch_moving(std::size_t entity_id) {
@@ -34,13 +33,20 @@ void wretch_moving::move(size_t index_to) {
         return;
     }
 
+    std::size_t i = 0;
+    for ( ; i < states::state_controller::possible_movements_.size(); ++i) {
+        if (states::state_controller::possible_movements_[i] == index_to)
+            break;
+    }
+    auto cost = states::state_controller::possible_movements_costs_[i];
+    std::cout << "cost: " << cost << "\n";
+
     auto move_from_index = states::state_controller::selected_index_;
 
     auto entity_id = board::take(move_from_index);
-    auto type = types_manager::component_for(entity_id);
 
     states::state_controller::selected_index_ = states::no_selected_index;
-    animation::player<animation::move>::launch(animation::move(move_from_index, index_to, type));
+    animation::player<animation::move>::launch(animation::move(move_from_index, index_to, entity_id));
     animation::base_player::play();
 
     int from_col = board::to_pos(move_from_index).first;

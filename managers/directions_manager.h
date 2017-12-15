@@ -2,20 +2,18 @@
 #define DIRECTIONS_MANAGER_H
 
 #include "managers.h"
-#include <unordered_map>
-#include <vector>
 #include "entities/entity.h"
 
-class directions_manager : public base_manager<entity_definition::directions, entity_definition::directions&>
+class directions_manager : public base_manager<directions, directions&>
 {
 public:
 	static inline void turn_left(size_t entity_id)
 	{
-		component_for(entity_id) = entity_definition::directions::left;
+		component_for(entity_id) = directions::left;
 	}
 	static inline void turn_right(size_t entity_id)
 	{
-		component_for(entity_id) = entity_definition::directions::right;
+		component_for(entity_id) = directions::right;
 	}
 };
 

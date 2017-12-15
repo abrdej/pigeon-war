@@ -2,7 +2,6 @@
 #include <animation/animation.h>
 #include "blow_the_ax.h"
 #include "damage_dealers.h"
-#include "managers/types_manager.h"
 
 blow_the_ax::blow_the_ax() {
     onEveryRound([this]() {
@@ -33,12 +32,11 @@ void blow_the_ax::use(size_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
 
     auto entity_id = board::take(used_from_index);
-    auto type = types_manager::component_for(entity_id);
-    animation::player<animation::move>::launch(animation::move(used_from_index, index_on, type));
+    animation::player<animation::move>::launch(animation::move(used_from_index, index_on, entity_id));
     animation::base_player::play();
     //animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index_on, std::chrono::milliseconds(150), "claws.png"));
     //animation::base_player::play();
-    animation::player<animation::move>::launch(animation::move(index_on, used_from_index, type));
+    animation::player<animation::move>::launch(animation::move(index_on, used_from_index, entity_id));
     animation::base_player::play();
     board::give_back(entity_id, used_from_index);
 

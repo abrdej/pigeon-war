@@ -18,7 +18,7 @@ private:
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    const int range{5};
+    const int range{4};
     int magic_power{0};
     int magic_power_accumulation_amount{10};
     int magic_power_drain_amount{5};

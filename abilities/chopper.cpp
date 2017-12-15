@@ -5,7 +5,6 @@
 #include <managers/abilities_manager.h>
 #include "chopper.h"
 #include "damage_dealers.h"
-#include "managers/types_manager.h"
 
 chopper::chopper(std::size_t entity_id) : entity_id(entity_id) {
     onEveryRound([this]() {
@@ -79,12 +78,11 @@ void chopper::use(size_t index_on) {
 void chopper::play_animation(size_t index_from, size_t index_on) {
 
     auto entity_id = board::take(index_from);
-    auto type = types_manager::component_for(entity_id);
-    animation::player<animation::move>::launch(animation::move(index_from, index_on, type));
+    animation::player<animation::move>::launch(animation::move(index_from, index_on, entity_id));
     animation::base_player::play();
     animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index_on, std::chrono::milliseconds(150), "creature_fired.png"));
     animation::base_player::play();
-    animation::player<animation::move>::launch(animation::move(index_on, index_from, type));
+    animation::player<animation::move>::launch(animation::move(index_on, index_from, entity_id));
     animation::base_player::play();
     board::give_back(entity_id, index_from);
 }

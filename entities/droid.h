@@ -18,7 +18,7 @@ public:
 	{
 		entity_definition entity_def(typeid(droid));
 		entity_def.name = "Droid";
-		entity_def.health_pack.base_health = 45;
+		entity_def.health_pack.base_health = 55;
 		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
 		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<laser>());
 		entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<teleport>());

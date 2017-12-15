@@ -163,6 +163,7 @@ void bitmap_center::load()
     add_entity_image<wall>("wall.png");
     add_entity_image<fir>("fir.png");
     add_entity_image<wretch>("wretch.png");
+    add_entity_image<wretch_moving>("moving.png");
 
     // bitmaps
     add_bitmap("shooter", "shooter.png");

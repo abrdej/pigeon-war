@@ -5,7 +5,6 @@
 #include <managers/managers.h>
 #include "spiral_of_fire.h"
 #include "damage_dealers.h"
-#include "managers/types_manager.h"
 #include "managers/abilities_manager.h"
 
 spiral_of_fire::spiral_of_fire() {
@@ -90,13 +89,12 @@ void spiral_of_fire::use(size_t index_on) {
 void spiral_of_fire::play_animation(size_t from_index, size_t to_index) {
 
     auto entity_id = board::take(from_index);
-    auto type = types_manager::component_for(entity_id);
 
     view::bitmap_center::change_entity_image<creature>("spiral_of_fire.png");
 
-    animation::player<animation::move>::launch(animation::move(from_index, to_index, type));
+    animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
     animation::base_player::play();
-    animation::player<animation::move>::launch(animation::move(to_index, from_index, type));
+    animation::player<animation::move>::launch(animation::move(to_index, from_index, entity_id));
     animation::base_player::play();
 
     view::bitmap_center::change_entity_image<creature>("creature.png");

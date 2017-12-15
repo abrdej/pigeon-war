@@ -4,7 +4,6 @@
 #include "core/board.h"
 #include "animation/animation.h"
 #include "managers/directions_manager.h"
-#include "managers/types_manager.h"
 
 void moveable::prepare(size_t for_index)
 {
@@ -67,8 +66,7 @@ void move_command::operator()() {
 
 	states::state_controller::selected_index_ = states::no_selected_index;
 
-	auto entity_type = types_manager::component_for(entity_id);
-	animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_type));
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
 	animation::base_player::play();
 
 	int from_col = board::to_pos(from_index).first;

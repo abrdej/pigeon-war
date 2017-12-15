@@ -59,22 +59,22 @@ std::unique_ptr<player<Animation>> player<Animation>::me_ = nullptr;
 
 struct move
 {
-	move(size_t fi, size_t ti, std::type_index object_type)
+	move(size_t fi, size_t ti, std::size_t id)
 			: from_index(fi),
 			  to_index(ti),
-			  object_type(object_type)
+			  object_id(id)
 	{
 	}
 	size_t from_index;
 	size_t to_index;
-	std::type_index object_type;
+	std::size_t object_id;
 };
 
 struct move_at_path {
-	move_at_path(std::size_t start_index, std::vector<std::size_t> path, std::type_index object_type)
-			: path(std::move(path)), start_index(start_index), object_type(object_type) {}
+	move_at_path(std::size_t start_index, std::vector<std::size_t> path, std::size_t object_id)
+			: path(std::move(path)), start_index(start_index), object_id(object_id) {}
 	std::vector<std::size_t> path;
-	std::type_index object_type;
+	std::size_t object_id;
 	std::size_t start_index;
 };
 

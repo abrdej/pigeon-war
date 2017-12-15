@@ -2,7 +2,6 @@
 #include <animation/animation.h>
 #include "bludgeon.h"
 #include "damage_dealers.h"
-#include "managers/types_manager.h"
 
 bludgeon::bludgeon() {
 	onEveryRound([this]() {
@@ -64,9 +63,8 @@ void bludgeon::play_animation(size_t from_index, size_t to_index, size_t set_on_
 	bool with_push = from_index != set_on_index;
 
 	auto entity_id = board::take(from_index);
-	auto type = types_manager::component_for(entity_id);
 
-	animation::player<animation::move>::launch(animation::move(from_index, to_index, type));
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
 	animation::base_player::play();
 
 	board::give_back(entity_id, to_index);
@@ -81,14 +79,13 @@ void bludgeon::play_animation(size_t from_index, size_t to_index, size_t set_on_
 
 		board::give_back(entity_id, set_on_index);
 
-		auto enemy_type = types_manager::component_for(enemy_id);
-		animation::player<animation::move>::launch(animation::move(to_index, push_to_index, enemy_type));
+		animation::player<animation::move>::launch(animation::move(to_index, push_to_index, enemy_id));
 		animation::base_player::play();
 		board::give_back(enemy_id, push_to_index);
 
 	} else {
 
-		animation::player<animation::move>::launch(animation::move(to_index, from_index, type));
+		animation::player<animation::move>::launch(animation::move(to_index, from_index, entity_id));
 		animation::base_player::play();
 
 		board::give_back(entity_id, from_index);

@@ -12,7 +12,6 @@
 #include "gui/board_panel.h"
 #include "managers/health_manager.h"
 #include "managers/directions_manager.h"
-#include "managers/types_manager.h"
 #include "drawing_manager.h"
 
 namespace view

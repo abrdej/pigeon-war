@@ -9,6 +9,7 @@
 #include "drawable.h"
 #include "entity_drawer.h"
 #include "drawer_factory.h"
+#include <SFML/Graphics.hpp>
 
 struct drawing_manager : base_manager<drawable::ptr_type, drawable::ptr_type> {
     static drawable::ptr_type drawer_for(std::size_t entity_id) {

@@ -10,8 +10,8 @@ namespace animation
 move_object_animation::move_object_animation(move move_data)
 		: index_from_(move_data.from_index),
 		  index_to_(move_data.to_index),
-		  object_type_(move_data.object_type),
-		  bitmap_(view::bitmap_center::get_image_for_entity(move_data.object_type))
+		  object_id(move_data.object_id),
+		  bitmap_(view::bitmap_center::get_image_for_entity(move_data.object_id))
 {
 	double time_step = 1.;
 	velocity_ = 20.;
@@ -48,7 +48,7 @@ bool move_object_animation::run()
 }
 
 move_at_path_object_animation::move_at_path_object_animation(move_at_path move_data)
-    : object_type_(move_data.object_type), path(move_data.path), from_index(move_data.start_index) {
+    : object_id(move_data.object_id), path(move_data.path), from_index(move_data.start_index) {
     path_index = 0;
 }
 
@@ -66,7 +66,7 @@ bool move_at_path_object_animation::run() {
     to_index = path[path_index];
 
     if (!move_animation) {
-        move move_data(from_index, to_index, object_type_);
+        move move_data(from_index, to_index, object_id);
         move_animation = new move_object_animation(move_data);
     }
 
