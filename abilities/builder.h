@@ -15,6 +15,10 @@ template <typename T>
 class builder : public ability, turn_events_helper::every_turn_callback_helper {
 public:
 
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::none;
+    }
+
     builder() {
         onEveryRound([this]() {
             built = false;

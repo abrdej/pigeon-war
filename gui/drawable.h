@@ -7,10 +7,12 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <memory>
+#include "bitmaps.h"
 
 struct drawable {
     using ptr_type = std::shared_ptr<drawable>;
     virtual void draw(sf::RenderWindow& window) = 0;
+    virtual bitmap_key get_bitmap_key() = 0;
 };
 
 

@@ -12,6 +12,11 @@ class jaw_spider final : public ability, protected turn_events_helper::every_tur
 {
 public:
 	jaw_spider();
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::jaw_spider;
+	}
+
 	void set_used();
 
 private:

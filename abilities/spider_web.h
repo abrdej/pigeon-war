@@ -12,6 +12,11 @@ class spider_web final : public ability, protected turn_events_helper::every_tur
 {
 public:
     explicit spider_web(std::size_t entity_id);
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::spider_web;
+	}
+
 	void set_used();
 
 private:

@@ -26,6 +26,9 @@ struct wretch final
         entity_def.name = "Wretch";
         entity_def.health_pack.base_health = 45;
         entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<wretch_moving>(id));
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::wretch);
+
         return entity_def;
     }
 };

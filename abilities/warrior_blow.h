@@ -12,6 +12,11 @@ class warrior_blow final : public ability, protected turn_events_helper::every_t
 {
 public:
     warrior_blow();
+
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::warrior_blow;
+    }
+
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

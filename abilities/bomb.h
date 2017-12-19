@@ -15,6 +15,11 @@
 class bomb_detonation final : public ability, protected turn_events_helper::every_turn_callback_helper {
 public:
 	explicit bomb_detonation(std::size_t bomb_id);
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::bomb_detonation;
+	}
+
 	void prepare(size_t for_index) override;
 	void look_for_bombs();
 	void use(size_t for_index);
@@ -44,6 +49,11 @@ struct bomb_instance {
 class bomb final : public ability, protected turn_events_helper::every_turn_callback_helper {
 public:
 	bomb();
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::bomb;
+	}
+
 	void prepare(size_t for_index) override;
 	void use(size_t index_on);
 

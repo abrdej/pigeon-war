@@ -14,9 +14,9 @@ sf::Texture buttons_panel::end_turn_bitmap_;
 
 void buttons_panel::prepare()
 {
-	size_t y_pos = constants::top_left_point.y + board::rows_n * constants::field_size;
+    auto y_pos = constants::top_left_point.y + board::rows_n * constants::field_size;
 
-    size_t x_pos = constants::top_left_point.x + 2 * constants::field_size + constants::field_size / 2;
+    auto x_pos = constants::top_left_point.x + 2 * constants::field_size + constants::field_size / 2;
 
 	for (size_t col = 0; col < 5; ++col)
 	{
@@ -30,10 +30,10 @@ void buttons_panel::prepare()
                                                constants::top_left_point.y + constants::field_size * board::rows_n,
                                                constants::field_size, constants::field_size));
 
-	end_turn_bitmap_.loadFromFile("end_turn.png");
+	end_turn_bitmap_.loadFromFile(resources_directory + "end_turn.png");
 	buttons_[buttons_.size() - 1].icon(end_turn_bitmap_);
 
-    name_font.loadFromFile("verdanab.ttf");
+    name_font.loadFromFile(resources_directory + "verdanab.ttf");
 }
 
 void buttons_panel::draw(sf::RenderWindow& window)
@@ -75,7 +75,7 @@ void buttons_panel::set_buttons_for(size_t entity_id)
 		{
 			auto ability = entity_abilities.at(i);
 			if (ability) {
-				buttons_[i].icon(bitmap_center::get_image_for_entity(*ability));
+				buttons_[i].icon(bitmap_center::get_bitmap(ability->get_bitmap_key()));
 
                 hints[i] = ability->hint();
 
@@ -101,7 +101,9 @@ void buttons_panel::set_name_for(size_t entity_id) {
     if (entity_manager::alive(entity_id)) {
         entity_name = names_manager::component_for(entity_id);
 
-        entity_logo.setTexture(view::bitmap_center::get_image_for_entity(types_manager::component_for(entity_id)));
+        auto bitmap_key = drawing_manager::get_bitmap_key_for(entity_id);
+
+        entity_logo.setTexture(view::bitmap_center::get_bitmap(bitmap_key));
         entity_logo.setPosition(sf::Vector2f(constants::field_size / 4,
                                              constants::top_left_point.y + (board::rows_n) * constants::field_size +
                                              constants::field_size / 8));

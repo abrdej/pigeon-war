@@ -12,6 +12,11 @@ class spear final : public ability, protected turn_events_helper::every_turn_cal
 {
 public:
     spear(std::size_t id);
+
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::spear;
+    }
+
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

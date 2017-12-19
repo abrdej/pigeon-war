@@ -14,6 +14,9 @@ struct fir {
         entity_def.name = "Fir";
         entity_def.health_pack.is_destructible = false;
         entity_def.health_pack.base_health = indestructible;
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::fir);
+
         return entity_def;
     }
 };

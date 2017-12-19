@@ -14,6 +14,10 @@ class vicious_circle final : public ability, protected turn_events_helper::every
 public:
     explicit vicious_circle(std::size_t entity_id);
 
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::vicious_circle;
+    }
+
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

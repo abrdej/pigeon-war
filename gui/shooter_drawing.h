@@ -36,10 +36,14 @@ struct shooter_drawer : drawable {
             : entity_id(entity_id) {
 
         font.loadFromFile("verdanab.ttf");
-        //sprite.setTexture(view::bitmap_center::get_image_for_entity(types_manager::component_for(entity_id)));
+        //sprite.setTexture(view::bitmap_center::get_bitmap_for_entity(types_manager::component_for(entity_id)));
 
         textures.push_back(view::bitmap_center::get_bitmap("shooter"));
         textures.push_back(view::bitmap_center::get_bitmap("shooter_shoot"));
+    }
+
+    bitmap_key get_bitmap_key() override {
+        return bitmap_key::shooter;
     }
 
     void set_state(const States& x) {

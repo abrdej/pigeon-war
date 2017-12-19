@@ -24,6 +24,9 @@ public:
         entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
         entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<shiruken>());
         entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<assassin_slash>(id));
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::ninja);
+
         return entity_def;
     }
 };

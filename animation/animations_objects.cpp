@@ -10,8 +10,7 @@ namespace animation
 move_object_animation::move_object_animation(move move_data)
 		: index_from_(move_data.from_index),
 		  index_to_(move_data.to_index),
-		  object_id(move_data.object_id),
-		  bitmap_(view::bitmap_center::get_image_for_entity(move_data.object_id))
+		  bitmap_(view::bitmap_center::get_bitmap(move_data.bitmap))
 {
 	double time_step = 1.;
 	velocity_ = 20.;
@@ -47,45 +46,45 @@ bool move_object_animation::run()
 	return false;
 }
 
-move_at_path_object_animation::move_at_path_object_animation(move_at_path move_data)
-    : object_id(move_data.object_id), path(move_data.path), from_index(move_data.start_index) {
-    path_index = 0;
-}
-
-void move_at_path_object_animation::draw(sf::RenderWindow& window) {
-    if (move_animation)
-        move_animation->draw(window);
-}
-
-bool move_at_path_object_animation::run() {
-
-    if (path_index == path.size()) {
-        return true;
-    }
-
-    to_index = path[path_index];
-
-    if (!move_animation) {
-        move move_data(from_index, to_index, object_id);
-        move_animation = new move_object_animation(move_data);
-    }
-
-    if (!move_animation->run()) {
-        return false;
-    } else {
-        from_index = to_index;
-        ++path_index;
-        delete move_animation;
-        move_animation = nullptr;
-        return false;
-    }
-}
+//move_at_path_object_animation::move_at_path_object_animation(move_at_path move_data)
+//    : path(move_data.path), from_index(move_data.start_index) {
+//    path_index = 0;
+//}
+//
+//void move_at_path_object_animation::draw(sf::RenderWindow& window) {
+//    if (move_animation)
+//        move_animation->draw(window);
+//}
+//
+//bool move_at_path_object_animation::run() {
+//
+//    if (path_index == path.size()) {
+//        return true;
+//    }
+//
+//    to_index = path[path_index];
+//
+//    if (!move_animation) {
+//        move move_data(from_index, to_index, object_id);
+//        move_animation = new move_object_animation(move_data);
+//    }
+//
+//    if (!move_animation->run()) {
+//        return false;
+//    } else {
+//        from_index = to_index;
+//        ++path_index;
+//        delete move_animation;
+//        move_animation = nullptr;
+//        return false;
+//    }
+//}
 
 move_object_animation2::move_object_animation2(move_entity move_data)
 		: index_from_(move_data.from_index),
 		  index_to_(move_data.to_index),
 		  entity_id_(move_data.entity_id)
-//bitmap_(view::bitmap_center::get_image_for_entity(move_data.object_type))
+//bitmap_(view::bitmap_center::get_bitmap_for_entity(move_data.object_type))
 //sprite_(view::board_drawer::draw_data_[move_data.entity_id].sprite_)
 {
 	double time_step = 1.;

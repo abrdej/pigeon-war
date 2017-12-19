@@ -12,6 +12,11 @@ class magic_bullet final : public ability, protected turn_events_helper::every_t
 {
 public:
     explicit magic_bullet(std::size_t entity_id);
+
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::magic_bullet;
+    }
+
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

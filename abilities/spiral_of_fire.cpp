@@ -3,6 +3,8 @@
 #include <entities/creature.h>
 #include <gui/bitmap_center.h>
 #include <managers/managers.h>
+#include <gui/entity_drawer.h>
+#include <gui/drawing_manager.h>
 #include "spiral_of_fire.h"
 #include "damage_dealers.h"
 #include "managers/abilities_manager.h"
@@ -90,14 +92,15 @@ void spiral_of_fire::play_animation(size_t from_index, size_t to_index) {
 
     auto entity_id = board::take(from_index);
 
-    view::bitmap_center::change_entity_image<creature>("spiral_of_fire.png");
+    auto drawer = drawing_manager::typed_drawer_for<entity_drawer>(entity_id);
+    drawer->change_bitmap(bitmap_key::spiral_of_fire);
 
     animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
     animation::base_player::play();
     animation::player<animation::move>::launch(animation::move(to_index, from_index, entity_id));
     animation::base_player::play();
 
-    view::bitmap_center::change_entity_image<creature>("creature.png");
+    drawer->change_bitmap(bitmap_key::creature);
 
     board::give_back(entity_id, from_index);
 }

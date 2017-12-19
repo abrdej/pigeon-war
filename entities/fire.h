@@ -15,6 +15,9 @@ struct fire final
 		entity_def.name = "Ognisko";
 		entity_def.health_pack.base_health = indestructible;
 		entity_def.health_pack.is_destructible = false;
+
+		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::fire);
+
 		return entity_def;
 	}
 };

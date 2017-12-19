@@ -11,6 +11,10 @@ class armor : public ability {
 public:
     explicit armor(std::size_t entity_id);
 
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::armor;
+    }
+
 private:
     void prepare(size_t for_index) override {}
     int max_damage{6};

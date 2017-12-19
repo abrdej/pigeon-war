@@ -57,7 +57,7 @@ public:
 //
 //
 //				render_data data{};
-//				data.sprite.setTexture(bitmap_center::get_image_for_entity(
+//				data.sprite.setTexture(bitmap_center::get_bitmap_for_entity(
 //						types_manager::component_for(entity_id)));
 //
 //				auto position = sf::Vector2f(board_indexies_to_point(col, row));

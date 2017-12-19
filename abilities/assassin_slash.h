@@ -11,6 +11,10 @@ class assassin_slash final : public ability {
 public:
 	explicit assassin_slash(std::size_t entity_id);
 
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::assassin_slash;
+	}
+
 private:
 	void prepare(size_t for_index);
 	void set_landing(size_t for_index);

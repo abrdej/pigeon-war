@@ -12,6 +12,11 @@ class recovery final : public ability, protected turn_events_helper::every_turn_
 {
 public:
     explicit recovery(std::size_t id);
+
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::recovery;
+    }
+
     void prepare(size_t for_index) override {};
 
 private:

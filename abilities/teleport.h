@@ -11,6 +11,10 @@ class teleport final : public ability
 {
 public:
 	teleport() = default;
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::teleport;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t for_index, size_t index_on);

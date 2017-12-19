@@ -17,6 +17,9 @@ public:
 		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
 		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<sabers>());
 		entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<invisibility>(id));
+
+		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::saberhand);
+
 		return entity_def;
 	}
 };

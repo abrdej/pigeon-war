@@ -3,6 +3,8 @@
 #include <entities/creature.h>
 #include <gui/bitmap_center.h>
 #include <managers/abilities_manager.h>
+#include <gui/entity_drawer.h>
+#include <gui/drawing_manager.h>
 #include "chopper.h"
 #include "damage_dealers.h"
 
@@ -88,7 +90,10 @@ void chopper::play_animation(size_t index_from, size_t index_on) {
 }
 
 void chopper::set_fired() {
-    view::bitmap_center::change_entity_image<creature>("creature_fired.png");
+
+    auto drawer = drawing_manager::typed_drawer_for<entity_drawer>(entity_id);
+    drawer->change_bitmap(bitmap_key::creature_fired);
+
     damage = fired_damage;
     fired = true;
 
@@ -98,7 +103,10 @@ void chopper::set_fired() {
 }
 
 void chopper::remove_fired() {
-    view::bitmap_center::change_entity_image<creature>("creature.png");
+
+    auto drawer = drawing_manager::typed_drawer_for<entity_drawer>(entity_id);
+    drawer->change_bitmap(bitmap_key::creature);
+
     damage = no_fired_damage;
     fired = false;
     last_attacked.clear();

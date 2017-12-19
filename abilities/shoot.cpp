@@ -72,7 +72,7 @@ void shoot::play_animation(std::size_t entity_id, size_t from_index, size_t to_i
 //			(animation::flash_bitmap(to_index, std::chrono::milliseconds(50), "shoot.png"));
 //	animation::base_player::play();
 	animation::player<animation::move>::launch
-			(animation::move(from_index, to_index, typeid(*this)));
+			(animation::move(from_index, to_index, bitmap_key::shoot));
 	animation::base_player::play();
 	animation::player<animation::flash_bitmap>::launch
 			(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "bum.png"));

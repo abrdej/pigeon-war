@@ -11,6 +11,9 @@ public:
 		entity_definition entity_def(typeid(saurions_web));
 		entity_def.name = "Paj�czyna jaszczura";
 		entity_def.health_pack.base_health = 20;
+
+		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::saurions_web);
+
 		return entity_def;
 	}
 };

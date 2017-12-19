@@ -4,6 +4,7 @@
 #include "spider_web.h"
 #include "damage_dealers.h"
 #include "jaw_spider.h"
+#include "moveable.h"
 
 spider_web::spider_web(std::size_t entity_id) : caster_id(entity_id) {
     onEveryRound([this]() {
@@ -46,14 +47,14 @@ void spider_web::use(size_t index_on) {
     auto land_index = board::to_index(pos_1.first + x, pos_1.second + y);
 
     animation::player<animation::move>::launch
-            (animation::move(used_from_index, index_on, typeid(*this)));
+            (animation::move(used_from_index, index_on, bitmap_key::spider_web));
     animation::base_player::play();
 
     auto enemy_id = board::take(index_on);
 
     if (index_on != land_index) {
         animation::player<animation::move>::launch
-                (animation::move(index_on, land_index, typeid(*this)));
+                (animation::move(index_on, land_index, bitmap_key::spider_web));
         animation::base_player::play();
     }
 

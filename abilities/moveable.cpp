@@ -40,10 +40,9 @@ void moveable::move(size_t index_to)
 	auto move_from_index = states::state_controller::selected_index_;
 
 	auto entity_id = board::take(move_from_index);
-	auto type = types_manager::component_for(entity_id);
 
 	states::state_controller::selected_index_ = states::no_selected_index;
-	animation::player<animation::move>::launch(animation::move(move_from_index, index_to, type));
+	animation::player<animation::move>::launch(animation::move(move_from_index, index_to, entity_id));
 	animation::base_player::play();
 
 	int from_col = board::to_pos(move_from_index).first;

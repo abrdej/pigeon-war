@@ -5,8 +5,6 @@
 #include <map>
 #include <functional>
 
-class moveable;
-
 class path_finder
 {
 public:

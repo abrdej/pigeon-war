@@ -8,6 +8,10 @@ class tongue_of_fire final : public ability, protected turn_events_helper::every
 {
 public:
 	tongue_of_fire();
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::tongue_of_fire;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t index_on);

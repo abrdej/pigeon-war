@@ -45,13 +45,16 @@ void invisibility::hide_me()
 {
 	index = board::index_for(entity_id);
 
-	view::bitmap_center::change_entity_image<saberhand>("saberhand_transparency.png");
+	auto drawer = drawing_manager::typed_drawer_for<entity_drawer>(entity_id);
+	drawer->change_bitmap(bitmap_key::saberhand_transparency);
 
     healths_manager::set_destructible(entity_id, false);
 }
 
 void invisibility::show_me()
 {
-	view::bitmap_center::change_entity_image<saberhand>("saberhand.png");
+	auto drawer = drawing_manager::typed_drawer_for<entity_drawer>(entity_id);
+	drawer->change_bitmap(bitmap_key::saberhand);
+
     healths_manager::set_destructible(entity_id, true);
 }

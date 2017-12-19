@@ -12,6 +12,9 @@ class sniper_shot final : public ability, protected turn_events_helper::every_tu
 {
 public:
     sniper_shot();
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::sniper_shot;
+    }
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

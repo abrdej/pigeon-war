@@ -26,13 +26,13 @@ private:
 board_panel::point_type board_indexies_to_point(size_t col, size_t row);
 board_panel::rect_type board_indexies_to_rectangle(size_t col, size_t row);
 board_panel::point_type board_indexies_to_point(double col, double row);
-board_panel::rect_type board_indexies_to_rectangle(double col, double row);
+board_panel::rect_type board_indexes_to_rectangle(double col, double row);
 
 board_panel::point_type board_index_to_point(size_t index);
 board_panel::rect_type board_index_to_rectangle(size_t index);
 
-size_t indexies_to_index(size_t row, size_t col);
-std::pair<size_t, size_t> index_to_indexies(size_t index);
+size_t indexes_to_index(size_t row, size_t col);
+std::pair<size_t, size_t> index_to_indexes(size_t index);
 };
 
 #endif

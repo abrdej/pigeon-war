@@ -5,6 +5,7 @@
 #ifndef PIGEONWAR_TREE_H
 #define PIGEONWAR_TREE_H
 
+#include <gui/entity_drawer.h>
 #include "entity.h"
 
 struct tree {
@@ -14,6 +15,9 @@ struct tree {
         entity_def.name = "Drzewo";
         entity_def.health_pack.is_destructible = false;
         entity_def.health_pack.base_health = indestructible;
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::tree);
+
         return entity_def;
     }
 };

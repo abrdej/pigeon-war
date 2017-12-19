@@ -23,6 +23,9 @@ struct spider final
         entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<jaw_spider>());
         entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<spider_web>(id));
         entity_def.entity_abilities.add_ability(abilities::ability_types::passive, std::make_shared<surroundings>(id));
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::spider);
+
         return entity_def;
     }
 };

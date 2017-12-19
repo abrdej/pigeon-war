@@ -9,6 +9,11 @@ class sabers final : public ability, protected turn_events_helper::every_turn_ca
 {
 public:
 	sabers();
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::sabers;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void target(size_t on);

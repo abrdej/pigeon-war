@@ -12,6 +12,10 @@ public:
 	void prepare(size_t for_index) override;
 	void use(size_t index_on);
 
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::wolf_herd;
+	}
+
 private:
 	bool used{false};
 	int max_number_of_wolf{2};

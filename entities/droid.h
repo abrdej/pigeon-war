@@ -10,6 +10,7 @@
 #include "abilities/laser.h"
 #include <abilities/moveable.h>
 #include <abilities/teleport.h>
+#include <gui/entity_drawer.h>
 
 class droid final
 {
@@ -22,6 +23,9 @@ public:
 		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
 		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<laser>());
 		entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<teleport>());
+
+		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::droid);
+
 		return entity_def;
 	}
 };

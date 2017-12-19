@@ -6,6 +6,9 @@
 #include <typeindex>
 #include <chrono>
 #include <vector>
+#include <gui/bitmap_center.h>
+#include <gui/drawing_manager.h>
+#include "gui/bitmaps.h"
 
 namespace animation
 {
@@ -62,19 +65,27 @@ struct move
 	move(size_t fi, size_t ti, std::size_t id)
 			: from_index(fi),
 			  to_index(ti),
-			  object_id(id)
+			  bitmap(drawing_manager::get_bitmap_key_for(id)) {
+	}
+	move(size_t fi, size_t ti, bitmap_key bitmap)
+			: from_index(fi),
+			  to_index(ti),
+			  bitmap(bitmap)
 	{
 	}
 	size_t from_index;
 	size_t to_index;
-	std::size_t object_id;
+	bitmap_key bitmap;
 };
 
 struct move_at_path {
 	move_at_path(std::size_t start_index, std::vector<std::size_t> path, std::size_t object_id)
-			: path(std::move(path)), start_index(start_index), object_id(object_id) {}
+			: path(std::move(path)), start_index(start_index), bitmap(drawing_manager::get_bitmap_key_for(object_id)) {
+	}
+	move_at_path(std::size_t start_index, std::vector<std::size_t> path, bitmap_key bitmap)
+			: path(std::move(path)), start_index(start_index), bitmap(bitmap) {}
 	std::vector<std::size_t> path;
-	std::size_t object_id;
+	bitmap_key bitmap;
 	std::size_t start_index;
 };
 

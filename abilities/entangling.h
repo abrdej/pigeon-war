@@ -11,6 +11,11 @@
 
 struct entangling_life_suck final : public ability, turn_events_helper::every_turn_callback_helper {
     explicit entangling_life_suck();
+
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::entangling_life_suck;
+    }
+
     void prepare(size_t for_index) override {}
     void set_enemy_id(std::size_t id) {
         enemy_id = id;
@@ -39,6 +44,10 @@ class entangling final : public ability, turn_events_helper::every_turn_callback
 {
 public:
     explicit entangling(std::size_t id);
+
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::entangling;
+    }
 
 private:
     void prepare(size_t for_index) override;

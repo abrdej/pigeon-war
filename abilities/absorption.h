@@ -14,17 +14,19 @@ public:
     explicit absorption(std::size_t entity_id);
     ~absorption() override;
 
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::absorption;
+    }
+
     bool is_full() const {
         return absorption_power == max_absorption_power;
     }
     void set_empty() {
         absorption_power = 0;
     }
-
     void increase_dmg_reduction() {
         ++damage_reduction;
     }
-
     void zero_dmg_reduction() {
         damage_reduction = 0;
     }

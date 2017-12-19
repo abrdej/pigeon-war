@@ -15,6 +15,10 @@ class spiral_of_fire final : public ability
 public:
     spiral_of_fire();
 
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::spiral_of_fire;
+    }
+
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

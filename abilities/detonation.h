@@ -12,6 +12,10 @@ class detonation : public ability {
 public:
     explicit detonation(std::size_t entity_id);
 
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::detonation;
+    }
+
 private:
     void prepare(size_t for_index) override {}
     std::size_t entity_id;

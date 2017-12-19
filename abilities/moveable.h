@@ -19,6 +19,10 @@ public:
 		});
 	}
 
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::moveable;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void move(size_t index_to);

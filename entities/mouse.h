@@ -21,6 +21,9 @@ public:
         entity_def.health_pack.base_health = 35;
         entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
         entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<poisoned_missile>());
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::mouse);
+
         return entity_def;
     }
 };

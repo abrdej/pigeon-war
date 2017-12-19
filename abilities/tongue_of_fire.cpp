@@ -51,7 +51,7 @@ void tongue_of_fire::play_bullet_animation(size_t from_index, size_t to_index)
 {
 	//animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index + 1, std::chrono::milliseconds(50), "shoot.png"));
 	//animation::base_player::play();
-	animation::player<animation::move>::launch(animation::move(from_index, to_index, typeid(*this)));
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, bitmap_key::tongue_of_fire));
 	animation::base_player::play();
 }
 

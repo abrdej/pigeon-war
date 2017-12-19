@@ -12,6 +12,10 @@ class protection_field : public ability, protected turn_events_helper::every_tur
 public:
     explicit protection_field(std::size_t entity_id);
 
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::protection_field;
+	}
+
 	bool active() const {
 		return is_active;
 	}

@@ -49,7 +49,7 @@ void grenade::use(size_t index_on)
 
 void grenade::play_animation(size_t from_index, size_t to_index, const std::vector<size_t>& neightbords)
 {
-	animation::player<animation::move>::launch(animation::move(from_index, to_index, typeid(*this)));
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, bitmap_key::grenade));
 	animation::base_player::play();
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "bum.png"));
 	for (auto& index : neightbords)

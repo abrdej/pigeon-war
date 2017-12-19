@@ -12,6 +12,11 @@ class long_range_missile final : public ability, protected turn_events_helper::e
 {
 public:
 	long_range_missile();
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::long_range_missile;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t index_on);

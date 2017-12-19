@@ -8,6 +8,11 @@ class invisibility final : public ability
 {
 public:
 	explicit invisibility(size_t id);
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::invisibility;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t on_index);

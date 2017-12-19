@@ -10,6 +10,9 @@
 class shield : public ability {
 public:
     explicit shield(std::size_t entity_id);
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::shield;
+    }
 
 private:
     void prepare(size_t for_index) override {}

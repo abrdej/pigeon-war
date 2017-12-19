@@ -71,7 +71,7 @@ void sniper_shot::use(size_t index_on) {
 
 void sniper_shot::play_animation(std::size_t entity_id, size_t from_index, size_t to_index) {
     animation::player<animation::move>::launch
-            (animation::move(from_index, to_index, typeid(*this)));
+            (animation::move(from_index, to_index, bitmap_key::sniper_shot));
     animation::base_player::play();
     animation::player<animation::flash_bitmap>::launch
             (animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "sniper_bum.png"));

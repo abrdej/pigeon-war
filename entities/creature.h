@@ -22,6 +22,9 @@ public:
         entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
         entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<chopper>(id));
         entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<spiral_of_fire>());
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::creature);
+
         return entity_def;
     }
 };

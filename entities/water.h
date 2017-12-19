@@ -14,6 +14,9 @@ struct water {
         entity_def.name = "Water";
         entity_def.health_pack.is_destructible = false;
         entity_def.health_pack.base_health = indestructible;
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::water);
+
         return entity_def;
     }
 };

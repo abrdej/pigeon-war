@@ -12,6 +12,11 @@ class laser final : public ability, protected turn_events_helper::every_turn_cal
 {
 public:
 	laser();
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::laser;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t index_on);

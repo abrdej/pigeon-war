@@ -8,6 +8,11 @@ class basic_melee_attack final : public ability, protected turn_events_helper::e
 {
 public:
 	basic_melee_attack();
+
+	bitmap_key get_bitmap_key() const override {
+		return bitmap_key::basic_melee_attack;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t index_on);

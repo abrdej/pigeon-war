@@ -1,8 +1,0 @@
-//
-// Created by abrde on 04.12.2017.
-//
-
-#ifndef PIGEONWAR_DRAWER_FACTORY_H
-#define PIGEONWAR_DRAWER_FACTORY_H
-
-#endif //PIGEONWAR_DRAWER_FACTORY_H

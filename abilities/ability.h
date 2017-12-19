@@ -2,6 +2,7 @@
 #define ABILITY_H
 
 #include <iostream>
+#include <gui/bitmaps.h>
 
 class ability
 {
@@ -15,6 +16,7 @@ public:
 	virtual std::string hint() const {
 		return "hint";
 	}
+	virtual bitmap_key get_bitmap_key() const = 0;
 private:
 	virtual void prepare(size_t for_index) = 0;
 };

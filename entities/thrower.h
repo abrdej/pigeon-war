@@ -21,6 +21,9 @@ public:
 		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
 		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<flame_thrower>());
 		entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<long_range_missile>());
+
+		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::thrower);
+
 		return entity_def;
 	}
 };

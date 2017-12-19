@@ -11,6 +11,9 @@
 class sword_blow final : public ability, protected turn_events_helper::every_turn_callback_helper {
 public:
     sword_blow();
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::sword_blow;
+    }
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

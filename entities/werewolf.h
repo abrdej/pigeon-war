@@ -3,6 +3,7 @@
 
 #include <abilities/drain.h>
 #include <abilities/wolf_herd.h>
+#include <gui/entity_drawer.h>
 #include "entity.h"
 #include "abilities/moveable.h"
 
@@ -16,6 +17,9 @@ struct werewolf final
 		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
 		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<drain>());
 		entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<wolf_herd>());
+
+		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::werewolf);
+
 		return entity_def;
 	}
 };

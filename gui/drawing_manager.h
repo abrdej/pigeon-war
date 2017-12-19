@@ -8,7 +8,6 @@
 #include <managers/managers.h>
 #include "drawable.h"
 #include "entity_drawer.h"
-#include "drawer_factory.h"
 #include <SFML/Graphics.hpp>
 
 struct drawing_manager : base_manager<drawable::ptr_type, drawable::ptr_type> {
@@ -20,6 +19,11 @@ struct drawing_manager : base_manager<drawable::ptr_type, drawable::ptr_type> {
     static std::shared_ptr<Drawer> typed_drawer_for(std::size_t entity_id) {
         return std::static_pointer_cast<Drawer>(map_.at(entity_id));
     }
+
+    static bitmap_key get_bitmap_key_for(std::size_t entity_id) {
+        return map_.at(entity_id)->get_bitmap_key();
+    }
+
 };
 
 

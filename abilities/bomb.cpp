@@ -131,7 +131,7 @@ void bomb::use(size_t index) {
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	animation::player<animation::move>::launch(animation::move(used_from_index, index, typeid(*this)));
+	animation::player<animation::move>::launch(animation::move(used_from_index, index, bitmap_key::bomb));
 	animation::base_player::play();
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index, std::chrono::milliseconds(150), "bum.png"));
 	animation::base_player::play();
@@ -153,7 +153,7 @@ void bomb::use(size_t index) {
 			break;
 		}
 
-		animation::player<animation::move>::launch(animation::move(from_index, next_index, typeid(*this)));
+		animation::player<animation::move>::launch(animation::move(from_index, next_index, bitmap_key::bomb));
 		animation::base_player::play();
 		animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(next_index, std::chrono::milliseconds(150), "bum.png"));
 		animation::base_player::play();

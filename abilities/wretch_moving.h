@@ -13,6 +13,10 @@ class wretch_moving final : public ability, turn_events_helper::every_turn_callb
 public:
     explicit wretch_moving(std::size_t entity_id);
 
+    bitmap_key get_bitmap_key() const override {
+        return bitmap_key::moveable;
+    }
+
 private:
     void prepare(size_t for_index) override;
     void move(size_t index_to);

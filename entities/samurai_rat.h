@@ -6,6 +6,7 @@
 #define PIGEONWAR_SAMURAI_RAT_H
 
 #include <abilities/dodge.h>
+#include <gui/entity_drawer.h>
 #include "entity.h"
 #include "abilities/moveable.h"
 #include "abilities/sword_blow.h"
@@ -20,6 +21,9 @@ struct samurai_rat final
 		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
 		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<sword_blow>());
 		entity_def.entity_abilities.add_ability(abilities::ability_types::passive, std::make_shared<dodge>(id));
+
+		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::samurai_rat);
+
 		return entity_def;
 	}
 };

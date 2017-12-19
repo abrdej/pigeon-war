@@ -19,6 +19,9 @@ struct robot final
         entity_def.name = "Robot";
         entity_def.health_pack.base_health = 45;
         entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::robot);
+
         return entity_def;
     }
 };

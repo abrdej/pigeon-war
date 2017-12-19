@@ -14,6 +14,9 @@ struct wall {
         entity_def.name = "Wall";
         entity_def.health_pack.is_destructible = false;
         entity_def.health_pack.base_health = indestructible;
+
+        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::wall);
+
         return entity_def;
     }
 };

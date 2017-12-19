@@ -51,7 +51,7 @@ void handcannon::use(size_t index_on) {
 void handcannon::play_animation(size_t from_index, size_t to_index) {
     animation::base_player::play();
     animation::player<animation::move>::launch
-            (animation::move(from_index, to_index, typeid(*this)));
+            (animation::move(from_index, to_index, bitmap_key::handcannon));
     animation::base_player::play();
     animation::player<animation::flash_bitmap>::launch
             (animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "handcannonbum.png"));

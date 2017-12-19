@@ -112,6 +112,6 @@ void laser::use(size_t index_on) {
 void laser::play_animation(size_t from_index, size_t to_index) {
 
 	animation::player<animation::move>::launch
-			(animation::move(from_index, to_index, typeid(*this)));
+			(animation::move(from_index, to_index, bitmap_key::laser));
 	animation::base_player::play();
 }

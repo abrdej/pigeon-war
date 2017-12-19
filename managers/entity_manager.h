@@ -46,6 +46,7 @@ public:
 		abilities_manager::add_component(entity_id, entity_def.entity_abilities);
 		directions_manager::add_component(entity_id, entity_def.direction);
 
+		assert((entity_def.drawer != nullptr) && "no entity drawer for object");
 		drawing_manager::add_component(entity_id, entity_def.drawer);
 
 		return entity_id++;
