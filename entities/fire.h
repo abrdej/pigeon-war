@@ -9,16 +9,16 @@
 
 struct fire final
 {
-	static entity_definition create(size_t id)
+	static auto create(size_t id)
 	{
-		entity_definition entity_def(typeid(fire));
-		entity_def.name = "Ognisko";
-		entity_def.health_pack.base_health = indestructible;
-		entity_def.health_pack.is_destructible = false;
+		base_components components;
+		entity_name(components) = "Fire";
+		entity_health(components).base_health = indestructible;
+		entity_health(components).is_destructible = false;
 
-		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::fire);
+		entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::fire);
 
-		return entity_def;
+		return components;
 	}
 };
 

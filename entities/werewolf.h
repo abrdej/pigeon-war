@@ -9,18 +9,18 @@
 
 struct werewolf final
 {
-	static entity_definition create(size_t id)
+	static auto create(size_t id)
 	{
-		entity_definition entity_def(typeid(werewolf));
-		entity_def.name = "Wilkołak";
-		entity_def.health_pack.base_health = 60;
-		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<drain>());
-		entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<wolf_herd>());
+		base_components components;
+		entity_name(components) = "Werewolf";
+		entity_health(components).base_health = 60;
+		entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+		entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<drain>());
+		entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<wolf_herd>());
 
-		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::werewolf);
+		entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::werewolf);
 
-		return entity_def;
+		return components;
 	}
 };
 

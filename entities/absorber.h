@@ -14,17 +14,17 @@
 class absorber final
 {
 public:
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(absorber));
-        entity_def.name = "Absorber";
-        entity_def.health_pack.base_health = 50;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<absorption>(id));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<power_circle>(id));
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::absorber);
+        base_components components;
+        entity_name(components) = "Absorber";
+        entity_health(components).base_health = 50;
+        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<absorption>(id));
+        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<power_circle>(id));
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::absorber);
 
-        return entity_def;
+        return components;
     }
 };
 

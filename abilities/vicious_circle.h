@@ -8,6 +8,7 @@
 #include <managers/health_manager.h>
 #include "abilities/ability.h"
 #include "core/turn.h"
+#include "possible_move_helper.h"
 
 class vicious_circle final : public ability, protected turn_events_helper::every_turn_callback_helper
 {
@@ -19,12 +20,11 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override;
+    STRAIGHT_PREPARE(ENEMY)
     void use(size_t index_on);
     void play_animation(size_t index_on);
 
-private:
-
+    int range{3};
 };
 
 #endif //PIGEONWAR_VICIOUS_CIRCLE_H

@@ -269,6 +269,12 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/poisoned_missile.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_move_helper.cpp">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/possible_move_helper.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/abilities/power_circle.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -536,9 +542,6 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/treant.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/tree.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/tree.h">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -552,18 +555,6 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/water.h">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/werewolf.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/werewolf.h">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/wolf.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/wolf.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/entities/wretch.h">
@@ -680,10 +671,7 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/names_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/types_manager.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/types_manager.h">
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/managers/power_manager.h">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/scenarios/scenarios.cpp">

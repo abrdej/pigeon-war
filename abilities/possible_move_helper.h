@@ -1,0 +1,49 @@
+//
+// Created by abrde on 20.12.2017.
+//
+
+#ifndef PIGEONWAR_POSSIBLE_MOVE_HELPER_H
+#define PIGEONWAR_POSSIBLE_MOVE_HELPER_H
+
+#include <core/path_finder.h>
+#include <core/states.h>
+#include "ability.h"
+
+#define ENEMY states::target_types::enemy
+#define MOVING states::target_types::moving
+
+#define PATH_FINDER_PREPARE(TARGET_TYPE) \
+void prepare(std::size_t for_index) override { \
+states::state_controller::selected_index_ = for_index; \
+    \
+path_finder path_finder(true); \
+path_finder.calc(for_index); \
+path_finder.get_possible_movements(states::state_controller::possible_movements_, \
+        states::state_controller::possible_movements_costs_, \
+        range); \
+\
+states::state_controller::actual_targeting_type_ = TARGET_TYPE; \
+states::state_controller::wait_for_action([this](size_t index) \
+{ \
+return use(index); \
+}); \
+} \
+
+
+#define STRAIGHT_PREPARE(TARGET_TYPE) \
+void prepare(std::size_t for_index) override { \
+states::state_controller::selected_index_ = for_index; \
+ \
+board_helper::calc_straight(for_index, states::state_controller::possible_movements_, \
+        states::state_controller::possible_movements_costs_, \
+        range); \
+ \
+states::state_controller::actual_targeting_type_ = TARGET_TYPE; \
+states::state_controller::wait_for_action([this](size_t index) \
+{ \
+return use(index); \
+}); \
+} \
+
+
+#endif //PIGEONWAR_POSSIBLE_MOVE_HELPER_H

@@ -12,18 +12,18 @@
 
 struct sniper final
 {
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(sniper));
-        entity_def.name = "Sniper";
-        entity_def.health_pack.base_health = 35;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<sniper_shot>());
-        entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<hypnosis>());
+        base_components components;
+        entity_name(components) = "Sniper";
+        entity_health(components).base_health = 35;
+        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<sniper_shot>());
+        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<hypnosis>());
 
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::sniper);
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::sniper);
 
-        return entity_def;
+        return components;
     }
 };
 

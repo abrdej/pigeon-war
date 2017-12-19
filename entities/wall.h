@@ -8,16 +8,16 @@
 #include "entity.h"
 
 struct wall {
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(wall));
-        entity_def.name = "Wall";
-        entity_def.health_pack.is_destructible = false;
-        entity_def.health_pack.base_health = indestructible;
+        base_components components;
+        entity_name(components) = "Wall";
+        entity_health(components).is_destructible = false;
+        entity_health(components).base_health = indestructible;
 
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::wall);
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::wall);
 
-        return entity_def;
+        return components;
     }
 };
 

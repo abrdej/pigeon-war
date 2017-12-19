@@ -11,12 +11,12 @@
 class drilling_rig final
 {
 public:
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(drilling_rig));
-        entity_def.name = "Szyb wiertniczy";
-        entity_def.health_pack.base_health = 45;
-        return entity_def;
+        base_components components;
+        entity_name(components) = "Szyb wiertniczy";
+        entity_health(components).base_health = 45;
+        return components;
     }
 };
 

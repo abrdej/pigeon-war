@@ -6,30 +6,28 @@
 #define PIGEONWAR_WRETCH_H
 
 #include <abilities/wretch_moving.h>
+#include <abilities/vicious_circle.h>
 #include "entity.h"
 #include "abilities/abilities.h"
 #include "abilities/moveable.h"
+#include "managers/power_manager.h"
 
 struct wretch final
 {
-
-
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        base_components components;
+        using components_type = std::tuple<name_field, health_field, abilities, directions, drawable::ptr_type, power_field>;
+
+        components_type components;
         entity_name(components) = "Wretch";
         entity_health(components).base_health = 45;
         entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<wretch_moving>(id));
+        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<vicious_circle>(id));
         entity_directions(components) = directions::left;
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::wretch);
+        entity_power(components).base_power = 20;
 
-        entity_definition entity_def(typeid(wretch));
-        entity_def.name = "Wretch";
-        entity_def.health_pack.base_health = 45;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<wretch_moving>(id));
-
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::wretch);
-
-        return entity_def;
+        return components;
     }
 };
 

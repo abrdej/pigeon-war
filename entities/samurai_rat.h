@@ -14,17 +14,17 @@
 
 struct samurai_rat final
 {
-	static entity_definition create(size_t id) {
-		entity_definition entity_def(typeid(samurai_rat));
-		entity_def.name = "Samuraj";
-		entity_def.health_pack.base_health = 45;
-		entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-		entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<sword_blow>());
-		entity_def.entity_abilities.add_ability(abilities::ability_types::passive, std::make_shared<dodge>(id));
+	static auto create(size_t id) {
+		base_components components;
+		entity_name(components) = "Samurai";
+		entity_health(components).base_health = 45;
+		entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+		entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<sword_blow>());
+		entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<dodge>(id));
 
-		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::samurai_rat);
+		entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::samurai_rat);
 
-		return entity_def;
+		return components;
 	}
 };
 

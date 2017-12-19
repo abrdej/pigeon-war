@@ -14,18 +14,18 @@
 class handthrower final
 {
 public:
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(handthrower));
-        entity_def.name = "Miotacz";
-        entity_def.health_pack.base_health = 45;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<handcannon>());
-        entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<protection_field>(id));
+        base_components components;
+        entity_name(components) = "Handthrower";
+        entity_health(components).base_health = 45;
+        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<handcannon>());
+        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<protection_field>(id));
 
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::handthrower);
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::handthrower);
 
-        return entity_def;
+        return components;
     }
 };
 

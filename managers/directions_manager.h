@@ -17,6 +17,11 @@ public:
 	}
 };
 
+template <>
+inline void add_component_of_type<directions>(std::size_t entity_id, const directions& component) {
+	directions_manager::add_component(entity_id, component);
+}
+
 
 
 #endif

@@ -42,4 +42,7 @@ protected:
 template <typename T, typename R>
 std::unordered_map<size_t, T> base_manager<T, R>::map_;
 
+template <typename T>
+void add_component_of_type(std::size_t, const T&);
+
 #endif

@@ -13,16 +13,16 @@
 
 struct robot final
 {
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(robot));
-        entity_def.name = "Robot";
-        entity_def.health_pack.base_health = 45;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+        base_components components;
+        entity_name(components) = "Robot";
+        entity_health(components).base_health = 45;
+        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
 
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::robot);
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::robot);
 
-        return entity_def;
+        return components;
     }
 };
 

@@ -15,16 +15,16 @@
 class grenadier final
 {
 public:
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(grenadier));
-        entity_def.name = "Granatnik";
-        entity_def.health_pack.base_health = 40;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<bomb>());
-        entity_def.entity_abilities.add_ability(abilities::ability_types::passive, std::make_shared<detonation>(id));
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::grenadier);
-        return entity_def;
+        base_components components;
+        entity_name(components) = "Grenadier";
+        entity_health(components).base_health = 40;
+        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<bomb>());
+        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<detonation>(id));
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::grenadier);
+        return components;
     }
 };
 

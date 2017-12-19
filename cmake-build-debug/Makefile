@@ -961,6 +961,33 @@ abilities\poisoned_missile.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\poisoned_missile.cpp.s
 .PHONY : abilities\poisoned_missile.cpp.s
 
+abilities\possible_move_helper.obj: abilities\possible_move_helper.cpp.obj
+
+.PHONY : abilities\possible_move_helper.obj
+
+# target to build an object file
+abilities\possible_move_helper.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\possible_move_helper.cpp.obj
+.PHONY : abilities\possible_move_helper.cpp.obj
+
+abilities\possible_move_helper.i: abilities\possible_move_helper.cpp.i
+
+.PHONY : abilities\possible_move_helper.i
+
+# target to preprocess a source file
+abilities\possible_move_helper.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\possible_move_helper.cpp.i
+.PHONY : abilities\possible_move_helper.cpp.i
+
+abilities\possible_move_helper.s: abilities\possible_move_helper.cpp.s
+
+.PHONY : abilities\possible_move_helper.s
+
+# target to generate assembly for a file
+abilities\possible_move_helper.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\abilities\possible_move_helper.cpp.s
+.PHONY : abilities\possible_move_helper.cpp.s
+
 abilities\power_circle.obj: abilities\power_circle.cpp.obj
 
 .PHONY : abilities\power_circle.obj
@@ -1825,87 +1852,6 @@ core\turn.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\core\turn.cpp.s
 .PHONY : core\turn.cpp.s
 
-entities\tree.obj: entities\tree.cpp.obj
-
-.PHONY : entities\tree.obj
-
-# target to build an object file
-entities\tree.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\tree.cpp.obj
-.PHONY : entities\tree.cpp.obj
-
-entities\tree.i: entities\tree.cpp.i
-
-.PHONY : entities\tree.i
-
-# target to preprocess a source file
-entities\tree.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\tree.cpp.i
-.PHONY : entities\tree.cpp.i
-
-entities\tree.s: entities\tree.cpp.s
-
-.PHONY : entities\tree.s
-
-# target to generate assembly for a file
-entities\tree.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\tree.cpp.s
-.PHONY : entities\tree.cpp.s
-
-entities\werewolf.obj: entities\werewolf.cpp.obj
-
-.PHONY : entities\werewolf.obj
-
-# target to build an object file
-entities\werewolf.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.obj
-.PHONY : entities\werewolf.cpp.obj
-
-entities\werewolf.i: entities\werewolf.cpp.i
-
-.PHONY : entities\werewolf.i
-
-# target to preprocess a source file
-entities\werewolf.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.i
-.PHONY : entities\werewolf.cpp.i
-
-entities\werewolf.s: entities\werewolf.cpp.s
-
-.PHONY : entities\werewolf.s
-
-# target to generate assembly for a file
-entities\werewolf.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\werewolf.cpp.s
-.PHONY : entities\werewolf.cpp.s
-
-entities\wolf.obj: entities\wolf.cpp.obj
-
-.PHONY : entities\wolf.obj
-
-# target to build an object file
-entities\wolf.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\wolf.cpp.obj
-.PHONY : entities\wolf.cpp.obj
-
-entities\wolf.i: entities\wolf.cpp.i
-
-.PHONY : entities\wolf.i
-
-# target to preprocess a source file
-entities\wolf.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\wolf.cpp.i
-.PHONY : entities\wolf.cpp.i
-
-entities\wolf.s: entities\wolf.cpp.s
-
-.PHONY : entities\wolf.s
-
-# target to generate assembly for a file
-entities\wolf.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\entities\wolf.cpp.s
-.PHONY : entities\wolf.cpp.s
-
 gui\bitmap_center.obj: gui\bitmap_center.cpp.obj
 
 .PHONY : gui\bitmap_center.obj
@@ -2392,33 +2338,6 @@ managers\names_manager.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\names_manager.cpp.s
 .PHONY : managers\names_manager.cpp.s
 
-managers\types_manager.obj: managers\types_manager.cpp.obj
-
-.PHONY : managers\types_manager.obj
-
-# target to build an object file
-managers\types_manager.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\types_manager.cpp.obj
-.PHONY : managers\types_manager.cpp.obj
-
-managers\types_manager.i: managers\types_manager.cpp.i
-
-.PHONY : managers\types_manager.i
-
-# target to preprocess a source file
-managers\types_manager.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\types_manager.cpp.i
-.PHONY : managers\types_manager.cpp.i
-
-managers\types_manager.s: managers\types_manager.cpp.s
-
-.PHONY : managers\types_manager.s
-
-# target to generate assembly for a file
-managers\types_manager.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\managers\types_manager.cpp.s
-.PHONY : managers\types_manager.cpp.s
-
 scenarios\scenarios.obj: scenarios\scenarios.cpp.obj
 
 .PHONY : scenarios\scenarios.obj
@@ -2575,6 +2494,9 @@ help:
 	@echo ... abilities/poisoned_missile.obj
 	@echo ... abilities/poisoned_missile.i
 	@echo ... abilities/poisoned_missile.s
+	@echo ... abilities/possible_move_helper.obj
+	@echo ... abilities/possible_move_helper.i
+	@echo ... abilities/possible_move_helper.s
 	@echo ... abilities/power_circle.obj
 	@echo ... abilities/power_circle.i
 	@echo ... abilities/power_circle.s
@@ -2671,15 +2593,6 @@ help:
 	@echo ... core/turn.obj
 	@echo ... core/turn.i
 	@echo ... core/turn.s
-	@echo ... entities/tree.obj
-	@echo ... entities/tree.i
-	@echo ... entities/tree.s
-	@echo ... entities/werewolf.obj
-	@echo ... entities/werewolf.i
-	@echo ... entities/werewolf.s
-	@echo ... entities/wolf.obj
-	@echo ... entities/wolf.i
-	@echo ... entities/wolf.s
 	@echo ... gui/bitmap_center.obj
 	@echo ... gui/bitmap_center.i
 	@echo ... gui/bitmap_center.s
@@ -2734,9 +2647,6 @@ help:
 	@echo ... managers/names_manager.obj
 	@echo ... managers/names_manager.i
 	@echo ... managers/names_manager.s
-	@echo ... managers/types_manager.obj
-	@echo ... managers/types_manager.i
-	@echo ... managers/types_manager.s
 	@echo ... scenarios/scenarios.obj
 	@echo ... scenarios/scenarios.i
 	@echo ... scenarios/scenarios.s

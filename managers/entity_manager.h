@@ -14,11 +14,19 @@
 #include "managers/abilities_manager.h"
 #include <functional>
 #include <gui/drawing_manager.h>
+#include <entities/wretch.h>
+#include <boost/fusion/algorithm/iteration/for_each.hpp>
+#include <entities/shooter.h>
 #include "directions_manager.h"
 #include "types_manager.h"
 #include "ai/ai_manager.h"
 #include "entity_remover.h"
 #include "core/board.h"
+
+template <typename... T>
+void add_components(std::size_t entity_id, const std::tuple<T...>& tuple) {
+	int t[] = {(add_component_of_type(entity_id, std::get<T>(tuple)), 0)...};
+}
 
 class entity_manager final
 {
@@ -31,23 +39,15 @@ class entity_manager final
 	}
 
 public:
-	template <typename EntityDef>
+	template <typename EntityComponents>
 	inline static size_t create()
 	{
 		auto entity_id = generate_id();
 
 		entities_.insert(entity_id);
 
-		auto entity_def = EntityDef::create(entity_id);
-
-		types_manager::add_component(entity_id, entity_def.type);
-		healths_manager::add_component(entity_id, entity_def.health_pack);
-		names_manager::add_component(entity_id, entity_def.name);
-		abilities_manager::add_component(entity_id, entity_def.entity_abilities);
-		directions_manager::add_component(entity_id, entity_def.direction);
-
-		assert((entity_def.drawer != nullptr) && "no entity drawer for object");
-		drawing_manager::add_component(entity_id, entity_def.drawer);
+		auto components = EntityComponents::create(entity_id);
+		add_components(entity_id, components);
 
 		return entity_id++;
 	}

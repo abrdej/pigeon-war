@@ -8,13 +8,13 @@
 #include "entity.h"
 
 struct fissure {
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(fissure));
-        entity_def.name = "Gejzer";
-        entity_def.health_pack.is_destructible = false;
-        entity_def.health_pack.base_health = indestructible;
-        return entity_def;
+        base_components components;
+        entity_name(components) = "Fissure";
+        entity_health(components).is_destructible = false;
+        entity_health(components).base_health = indestructible;
+        return components;
     }
 };
 

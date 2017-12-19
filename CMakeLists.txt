@@ -53,9 +53,6 @@ set(SOURCE_FILES main.cpp
         abilities/invisibility.cpp
         abilities/moveable.cpp
         gui/my_button.cpp
-        entities/wolf.cpp
-        entities/werewolf.cpp
-        managers/types_manager.cpp
         core/turn.cpp
         abilities/tongue_of_fire.cpp
         core/states.cpp
@@ -70,32 +67,20 @@ set(SOURCE_FILES main.cpp
         utils/scenario_helper.h
         scenarios/scenarios.h
         scenarios/scenarios.cpp
-        entities/tree.cpp entities/tree.h
-        entities/samurai_rat.h
+        entities/tree.h
         abilities/sword_blow.cpp
         abilities/sword_blow.h
-        entities/troll.h
         abilities/bludgeon.h
         abilities/bludgeon.cpp
-        abilities/rage.cpp
-        abilities/rage.h
-        managers/health_manager.cpp
         entities/mouse.h
         abilities/poisoned_missile.cpp
         abilities/poisoned_missile.h
         managers/entity_remover.cpp
         managers/entity_remover.h
         utils/scenario_helper.h
-        scenarios/scenarios.h
-        scenarios/scenarios.cpp
-        entities/tree.cpp
         entities/tree.h
         entities/samurai_rat.h
-        abilities/sword_blow.cpp
-        abilities/sword_blow.h
         entities/troll.h
-        abilities/bludgeon.h
-        abilities/bludgeon.cpp
         abilities/rage.cpp
         abilities/rage.h
         managers/health_manager.cpp
@@ -149,7 +134,7 @@ set(SOURCE_FILES main.cpp
         entities/barrack.h
         abilities/builder.cpp
         abilities/builder.h entities/drilling_rig.h entities/fissure.h entities/thrower.h abilities/flame_thrower.cpp abilities/flame_thrower.h abilities/counterattack.cpp abilities/counterattack.h entities/guardian.h abilities/spear.cpp abilities/spear.h abilities/shield.cpp abilities/shield.h managers/additions_manager.cpp managers/additions_manager.h entities/creature.h abilities/chopper.cpp abilities/chopper.h abilities/spiral_of_fire.cpp abilities/spiral_of_fire.h entities/handthrower.h abilities/handcannon.cpp abilities/handcannon.h abilities/protection_field.cpp abilities/protection_field.h gui/shooter_drawing.h managers/animation_manager.cpp managers/animation_manager.h
-        entities/warrior.h abilities/warrior_blow.cpp abilities/warrior_blow.h abilities/immortality.cpp abilities/immortality.h entities/robot.h core/command_manager.cpp core/command_manager.h abilities/spider_web.cpp abilities/spider_web.h entities/spider.h abilities/surroundings.cpp abilities/surroundings.h abilities/detonation.cpp abilities/detonation.h entities/sniper.h abilities/sniper_shot.cpp abilities/sniper_shot.h abilities/hypnosis.cpp abilities/hypnosis.h entities/monk.h abilities/magic_bullet.cpp abilities/magic_bullet.h abilities/jaw_spider.cpp abilities/jaw_spider.h abilities/long_range_missile.cpp abilities/long_range_missile.h entities/ninja.h abilities/interception.cpp abilities/interception.h entities/absorber.h abilities/absorption.cpp abilities/absorption.h abilities/power_circle.cpp abilities/power_circle.h abilities/shiruken.cpp abilities/shiruken.h abilities/assassin_slash.cpp abilities/assassin_slash.h abilities/assassin_slash.h entities/water.h entities/wall.h entities/fir.h entities/wretch.h abilities/vicious_circle.cpp abilities/vicious_circle.h abilities/wretch_moving.cpp abilities/wretch_moving.h gui/bitmaps.h config.h.in gui/entity_drawer.cpp)
+        entities/warrior.h abilities/warrior_blow.cpp abilities/warrior_blow.h abilities/immortality.cpp abilities/immortality.h entities/robot.h core/command_manager.cpp core/command_manager.h abilities/spider_web.cpp abilities/spider_web.h entities/spider.h abilities/surroundings.cpp abilities/surroundings.h abilities/detonation.cpp abilities/detonation.h entities/sniper.h abilities/sniper_shot.cpp abilities/sniper_shot.h abilities/hypnosis.cpp abilities/hypnosis.h entities/monk.h abilities/magic_bullet.cpp abilities/magic_bullet.h abilities/jaw_spider.cpp abilities/jaw_spider.h abilities/long_range_missile.cpp abilities/long_range_missile.h entities/ninja.h abilities/interception.cpp abilities/interception.h entities/absorber.h abilities/absorption.cpp abilities/absorption.h abilities/power_circle.cpp abilities/power_circle.h abilities/shiruken.cpp abilities/shiruken.h abilities/assassin_slash.cpp abilities/assassin_slash.h abilities/assassin_slash.h entities/water.h entities/wall.h entities/fir.h entities/wretch.h abilities/vicious_circle.cpp abilities/vicious_circle.h abilities/wretch_moving.cpp abilities/wretch_moving.h gui/bitmaps.h config.h.in gui/entity_drawer.cpp managers/power_manager.h abilities/possible_move_helper.h abilities/possible_move_helper.cpp)
 
 add_executable(pigeonwar ${SOURCE_FILES})
 target_link_libraries(pigeonwar ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

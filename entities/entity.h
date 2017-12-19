@@ -4,26 +4,14 @@
 #include <limits>
 #include "abilities/abilities.h"
 #include "managers/health_manager.h"
+#include "managers/power_manager.h"
+#include "managers/names_manager.h"
 #include "gui/drawable.h"
 #include <tuple>
 
 enum class directions { right, left };
 
-struct name_field {
-	std::string value;
-
-	name_field() = default;
-	explicit name_field(std::string x) : value(std::move(x)) {}
-	operator std::string() {
-		return value;
-	}
-	name_field& operator=(std::string x) {
-		this->value = std::move(x);
-		return *this;
-	}
-};
-
-using base_components = std::tuple<name_field, health_field, abilities, directions>;
+using base_components = std::tuple<name_field, health_field, abilities, directions, drawable::ptr_type>;
 
 template <typename Components>
 name_field& entity_name(Components& components) {
@@ -45,32 +33,14 @@ directions& entity_directions(Components& components) {
 	return std::get<directions>(components);
 }
 
-struct entity_definition
-{
-	explicit entity_definition(const std::type_index& type)
-			: type(type) {}
-	std::type_index type;
-	std::string name;
-	health_field health_pack;
-	abilities entity_abilities;
-	directions direction;
-	drawable::ptr_type drawer;
-};
-
-
-
-namespace entity_helper
-{
-inline entity_definition turned_right(entity_definition&& data)
-{
-	data.direction = directions::right;
-	return data;
+template <typename Components>
+drawable::ptr_type& entity_drawer_ptr(Components& components) {
+	return std::get<drawable::ptr_type>(components);
 }
-inline entity_definition turned_left(entity_definition&& data)
-{
-	data.direction = directions::left;
-	return data;
+
+template <typename Components>
+power_field& entity_power(Components& components) {
+	return std::get<power_field>(components);
 }
-};
 
 #endif

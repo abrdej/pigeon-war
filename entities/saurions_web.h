@@ -6,15 +6,15 @@
 class saurions_web final
 {
 public:
-	static entity_definition create(size_t id)
+	static auto create(size_t id)
 	{
-		entity_definition entity_def(typeid(saurions_web));
-		entity_def.name = "Paj�czyna jaszczura";
-		entity_def.health_pack.base_health = 20;
+		base_components components;
+		entity_name(components) = "Saurion Web";
+		entity_health(components).base_health = 20;
 
-		entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::saurions_web);
+		entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::saurions_web);
 
-		return entity_def;
+		return components;
 	}
 };
 

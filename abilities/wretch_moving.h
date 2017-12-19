@@ -22,8 +22,10 @@ private:
     void move(size_t index_to);
 
 private:
-    int max_range{5};
-    int range{5};
+    std::size_t entity_id;
+    int max_range{4};
+    int range{4};
+    const int power_decrease_for_cost{2};
     bool used{false};
 };
 

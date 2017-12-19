@@ -14,19 +14,19 @@
 
 struct spider final
 {
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(spider));
-        entity_def.name = "Pająk";
-        entity_def.health_pack.base_health = 45;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<jaw_spider>());
-        entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<spider_web>(id));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::passive, std::make_shared<surroundings>(id));
+        base_components components;
+        entity_name(components) = "Spider";
+        entity_health(components).base_health = 45;
+        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<jaw_spider>());
+        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<spider_web>(id));
+        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<surroundings>(id));
 
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::spider);
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::spider);
 
-        return entity_def;
+        return components;
     }
 };
 

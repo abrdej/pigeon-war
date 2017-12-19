@@ -159,5 +159,6 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::fir, "fir.png");
     add_bitmap(bitmap_key::wretch, "wretch.png");
     add_bitmap(bitmap_key::wretch_moving, "moving.png");
+    add_bitmap(bitmap_key::vicious_circle, "water.png");
 }
 }

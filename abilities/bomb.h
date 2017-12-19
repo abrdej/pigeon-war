@@ -35,14 +35,14 @@ private:
 };
 
 struct bomb_instance {
-	static entity_definition create(size_t id)
+	static auto create(size_t id)
 	{
-		entity_definition entity_def(typeid(bomb_instance));
-		entity_def.name = "Bomba";
-		entity_def.health_pack.base_health = indestructible;
-		entity_def.health_pack.is_destructible = false;
-		entity_def.entity_abilities.add_ability(abilities::ability_types::passive, std::make_shared<bomb_detonation>(id));
-		return entity_def;
+		base_components components;
+		entity_name(components) = "Bomba";
+		entity_health(components).base_health = indestructible;
+		entity_health(components).is_destructible = false;
+		entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<bomb_detonation>(id));
+		return components;
 	}
 };
 

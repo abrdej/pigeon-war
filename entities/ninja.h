@@ -16,18 +16,18 @@
 class ninja final
 {
 public:
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(ninja));
-        entity_def.name = "Ninja";
-        entity_def.health_pack.base_health = 30;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive, std::make_shared<shiruken>());
-        entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<assassin_slash>(id));
+        base_components components;
+        entity_name(components) = "Ninja";
+        entity_health(components).base_health = 30;
+        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<shiruken>());
+        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<assassin_slash>(id));
 
-        entity_def.drawer = std::make_shared<entity_drawer>(id, bitmap_key::ninja);
+        entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::ninja);
 
-        return entity_def;
+        return components;
     }
 };
 

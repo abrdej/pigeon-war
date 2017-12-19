@@ -133,7 +133,7 @@ public:
 			}
 		}
 
-		auto& health_pack = healths_manager::component_reference_for(dmg.damage_receiver_id);
+		auto& health_pack = component_reference_for(dmg.damage_receiver_id);
 		auto received_damage = damage_receivers[dmg.damage_receiver_id](health_pack, dmg);
 
 		auto enemy_index = board::index_for(dmg.damage_receiver_id);
@@ -169,5 +169,10 @@ public:
 		on_receive_damage_callbacks[entity_id].push_back(std::make_pair(policy, callback));
 	}
 };
+
+template <>
+inline void add_component_of_type<health_field>(std::size_t entity_id, const health_field& component) {
+	healths_manager::add_component(entity_id, component);
+}
 
 #endif

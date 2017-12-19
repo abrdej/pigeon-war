@@ -30,13 +30,13 @@ private:
 };
 
 struct entangling_instance {
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(entangling_instance));
-        entity_def.name = "Oplątanie";
-        entity_def.health_pack.base_health = 5;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::passive, std::make_shared<entangling_life_suck>());
-        return entity_def;
+        base_components components;
+        entity_name(components) = "Oplątanie";
+        entity_health(components).base_health = 5;
+        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<entangling_life_suck>());
+        return components;
     }
 };
 

@@ -16,24 +16,24 @@
 class balloon final
 {
 public:
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(balloon));
-        entity_def.name = "Balon";
-        entity_def.health_pack.base_health = 75;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::moving,
+        base_components components;
+        entity_name(components) = "Balon";
+        entity_health(components).base_health = 75;
+        entity_abilities(components).add_ability(abilities::ability_types::moving,
                                                 std::make_shared<moveable>(2, moveable::types::straight));
-        entity_def.entity_abilities.add_ability(abilities::ability_types::special,
+        entity_abilities(components).add_ability(abilities::ability_types::special,
                                                 std::make_shared<build_cannon>());
-        entity_def.entity_abilities.add_ability(abilities::ability_types::defensive,
+        entity_abilities(components).add_ability(abilities::ability_types::defensive,
                                                 std::make_shared<builder<barrack>>());
-        entity_def.entity_abilities.add_ability(abilities::ability_types::offensive,
+        entity_abilities(components).add_ability(abilities::ability_types::offensive,
                                                 std::make_shared<builder<drilling_rig>>());
 
-//        entity_def.entity_abilities.add<builder<barrack>>();
-//        entity_def.entity_abilities.add<build_cannon>();
+//        entity_abilities(components).add<builder<barrack>>();
+//        entity_abilities(components).add<build_cannon>();
 
-        return entity_def;
+        return components;
     }
 };
 

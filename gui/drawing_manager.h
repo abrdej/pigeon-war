@@ -26,5 +26,10 @@ struct drawing_manager : base_manager<drawable::ptr_type, drawable::ptr_type> {
 
 };
 
+template <>
+inline void add_component_of_type<drawable::ptr_type>(std::size_t entity_id, const drawable::ptr_type& component) {
+    drawing_manager::add_component(entity_id, component);
+}
+
 
 #endif //PIGEONWAR_DRAWING_MANAGER_H

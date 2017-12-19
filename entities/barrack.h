@@ -12,13 +12,13 @@
 class barrack final
 {
 public:
-    static entity_definition create(size_t id)
+    static auto create(size_t id)
     {
-        entity_definition entity_def(typeid(barrack));
-        entity_def.name = "Barak";
-        entity_def.health_pack.base_health = 55;
-        entity_def.entity_abilities.add_ability(abilities::ability_types::special, std::make_shared<builder<shooter>>());
-        return entity_def;
+        base_components components;
+        entity_name(components) = "Barak";
+        entity_health(components).base_health = 55;
+        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<builder<shooter>>());
+        return components;
     }
 };
 

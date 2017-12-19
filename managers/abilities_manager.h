@@ -8,4 +8,9 @@ struct abilities_manager : base_manager<abilities, abilities&>
 {
 };
 
+template <>
+inline void add_component_of_type<abilities>(std::size_t entity_id, const abilities& component) {
+    abilities_manager::add_component(entity_id, component);
+}
+
 #endif
