@@ -2041,33 +2041,6 @@ gui\drawer.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer.cpp.s
 .PHONY : gui\drawer.cpp.s
 
-gui\drawer_factory.obj: gui\drawer_factory.cpp.obj
-
-.PHONY : gui\drawer_factory.obj
-
-# target to build an object file
-gui\drawer_factory.cpp.obj:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.obj
-.PHONY : gui\drawer_factory.cpp.obj
-
-gui\drawer_factory.i: gui\drawer_factory.cpp.i
-
-.PHONY : gui\drawer_factory.i
-
-# target to preprocess a source file
-gui\drawer_factory.cpp.i:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.i
-.PHONY : gui\drawer_factory.cpp.i
-
-gui\drawer_factory.s: gui\drawer_factory.cpp.s
-
-.PHONY : gui\drawer_factory.s
-
-# target to generate assembly for a file
-gui\drawer_factory.cpp.s:
-	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawer_factory.cpp.s
-.PHONY : gui\drawer_factory.cpp.s
-
 gui\drawing_manager.obj: gui\drawing_manager.cpp.obj
 
 .PHONY : gui\drawing_manager.obj
@@ -2094,6 +2067,33 @@ gui\drawing_manager.s: gui\drawing_manager.cpp.s
 gui\drawing_manager.cpp.s:
 	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\drawing_manager.cpp.s
 .PHONY : gui\drawing_manager.cpp.s
+
+gui\entity_drawer.obj: gui\entity_drawer.cpp.obj
+
+.PHONY : gui\entity_drawer.obj
+
+# target to build an object file
+gui\entity_drawer.cpp.obj:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\entity_drawer.cpp.obj
+.PHONY : gui\entity_drawer.cpp.obj
+
+gui\entity_drawer.i: gui\entity_drawer.cpp.i
+
+.PHONY : gui\entity_drawer.i
+
+# target to preprocess a source file
+gui\entity_drawer.cpp.i:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\entity_drawer.cpp.i
+.PHONY : gui\entity_drawer.cpp.i
+
+gui\entity_drawer.s: gui\entity_drawer.cpp.s
+
+.PHONY : gui\entity_drawer.s
+
+# target to generate assembly for a file
+gui\entity_drawer.cpp.s:
+	$(MAKE) -f CMakeFiles\pigeonwar.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\pigeonwar.dir\gui\entity_drawer.cpp.s
+.PHONY : gui\entity_drawer.cpp.s
 
 gui\gui.obj: gui\gui.cpp.obj
 
@@ -2695,12 +2695,12 @@ help:
 	@echo ... gui/drawer.obj
 	@echo ... gui/drawer.i
 	@echo ... gui/drawer.s
-	@echo ... gui/drawer_factory.obj
-	@echo ... gui/drawer_factory.i
-	@echo ... gui/drawer_factory.s
 	@echo ... gui/drawing_manager.obj
 	@echo ... gui/drawing_manager.i
 	@echo ... gui/drawing_manager.s
+	@echo ... gui/entity_drawer.obj
+	@echo ... gui/entity_drawer.i
+	@echo ... gui/entity_drawer.s
 	@echo ... gui/gui.obj
 	@echo ... gui/gui.i
 	@echo ... gui/gui.s

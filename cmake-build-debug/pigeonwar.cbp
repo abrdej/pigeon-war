@@ -419,6 +419,9 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/animation/animations_objects.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/config.h.in">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/core/board.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -572,6 +575,9 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmap_center.h">
 			<Option target="pigeonwar"/>
 		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/bitmaps.h">
+			<Option target="pigeonwar"/>
+		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/board_panel.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
@@ -596,16 +602,13 @@
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer.h">
 			<Option target="pigeonwar"/>
 		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer_factory.cpp">
-			<Option target="pigeonwar"/>
-		</Unit>
-		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawer_factory.h">
-			<Option target="pigeonwar"/>
-		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/drawing_manager.h">
+			<Option target="pigeonwar"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.cpp">
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/gui/entity_drawer.h">
@@ -699,6 +702,9 @@
 			<Option target="pigeonwar"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/config.h.in">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 		<Unit filename="C:/Users/abrde/Documents/Projekty/pigeon-war/cmake_modules/FindSFML.cmake">
