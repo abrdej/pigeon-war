@@ -28,7 +28,7 @@ public:
 		return bitmaps.at(key);
 	}
 private:
-	static std::unordered_map<bitmap_key, bitmap_type> bitmaps;
+	static std::unordered_map<bitmap_key, bitmap_type, bitmaps_key_hash> bitmaps;
 public:
 	static bitmap_type grass_move_bitmap;
 	static bitmap_type grass_attack_bitmap;

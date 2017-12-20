@@ -51,7 +51,7 @@
 
 namespace view
 {
-std::unordered_map<bitmap_key, bitmap_center::bitmap_type> bitmap_center::bitmaps;
+std::unordered_map<bitmap_key, bitmap_center::bitmap_type, bitmaps_key_hash> bitmap_center::bitmaps;
 
 bitmap_center::bitmap_type bitmap_center::grass_move_bitmap;
 bitmap_center::bitmap_type bitmap_center::grass_attack_bitmap;
