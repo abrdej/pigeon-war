@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.5.1)
 project(pigeonwar)
 
+include_directories(${CMAKE_SOURCE_DIR}/client)
+include_directories(${CMAKE_SOURCE_DIR}/server)
 include_directories(${CMAKE_SOURCE_DIR})
+
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -27,114 +30,190 @@ endif()
 find_package(Boost)
 include_directories(${Boost_INCLUDE_DIRS})
 
-set(SOURCE_FILES main.cpp
-        entities/entity.h
-        managers/abilities_manager.cpp
-        abilities/ability.cpp
-        ai/ai.cpp
-        ai/ai_manager.cpp
-        animation/animation.cpp
-        animation/animation_impl.cpp
-        animation/animations_objects.cpp
-        abilities/basic_melee_attack.cpp
-        gui/bitmap_center.cpp
-        core/board.cpp
-        gui/board_panel.cpp
-        gui/buttons_panel.cpp
+set(SERVER_SOURCE_FILES
+        server/entities/entity.h
+        server/managers/abilities_manager.cpp
+        server/abilities/ability.cpp
+        server/ai/ai.cpp
+        server/ai/ai_manager.cpp
+        server/abilities/basic_melee_attack.cpp
+        server/core/board.cpp
         utils/creator_helper.cpp
-        abilities/damage_dealer.cpp
-        managers/directions_manager.cpp
-        abilities/drain.cpp
-        gui/drawer.cpp
-        managers/entity_manager.cpp
-        core/game.cpp
-        gui/gui.cpp
-        abilities/grenade.cpp
-        abilities/invisibility.cpp
-        abilities/moveable.cpp
-        gui/my_button.cpp
-        core/turn.cpp
-        abilities/tongue_of_fire.cpp
-        core/states.cpp
-        abilities/shoot.cpp
-        abilities/sabers.cpp
-        core/path_finder.cpp
-        managers/names_manager.cpp
-        core/players.cpp
-        core/board.cpp
-        managers/entity_remover.cpp
-        managers/entity_remover.h
+        server/abilities/damage_dealer.cpp
+        server/managers/directions_manager.cpp
+        server/abilities/drain.cpp
+        server/managers/entity_manager.cpp
+        server/core/game.cpp
+        server/abilities/grenade.cpp
+        server/abilities/invisibility.cpp
+        server/abilities/moveable.cpp
+        server/core/turn.cpp
+        server/abilities/tongue_of_fire.cpp
+        server/core/states_controller.cpp
+        server/abilities/shoot.cpp
+        server/abilities/sabers.cpp
+        server/core/path_finder.cpp
+        server/managers/names_manager.cpp
+        server/core/players.cpp
+        server/core/board.cpp
+        server/managers/entity_remover.cpp
+        server/managers/entity_remover.h
         utils/scenario_helper.h
-        scenarios/scenarios.h
-        scenarios/scenarios.cpp
-        entities/tree.h
-        abilities/sword_blow.cpp
-        abilities/sword_blow.h
-        abilities/bludgeon.h
-        abilities/bludgeon.cpp
-        entities/mouse.h
-        abilities/poisoned_missile.cpp
-        abilities/poisoned_missile.h
-        managers/entity_remover.cpp
-        managers/entity_remover.h
+        server/scenarios/scenarios.h
+        server/scenarios/scenarios.cpp
+        server/entities/tree.h
+        server/abilities/sword_blow.cpp
+        server/abilities/sword_blow.h
+        server/abilities/bludgeon.h
+        server/abilities/bludgeon.cpp
+        server/entities/mouse.h
+        server/abilities/poisoned_missile.cpp
+        server/abilities/poisoned_missile.h
+        server/managers/entity_remover.cpp
+        server/managers/entity_remover.h
         utils/scenario_helper.h
-        entities/tree.h
-        entities/samurai_rat.h
-        entities/troll.h
-        abilities/rage.cpp
-        abilities/rage.h
-        managers/health_manager.cpp
-        entities/droid.h
-        abilities/laser.cpp
-        abilities/laser.h
-        abilities/teleport.cpp
-        abilities/teleport.h
-        abilities/wolf_herd.cpp
-        abilities/wolf_herd.h
-        abilities/dodge.cpp
-        abilities/dodge.h
-        entities/grenadier.h
-        abilities/bomb.cpp
-        abilities/bomb.h
-        entities/destroyer.h
-        abilities/armor.cpp
-        abilities/armor.h
-        abilities/blow_the_ax.cpp
-        abilities/blow_the_ax.h
-        gui/drawable.cpp
-        gui/drawable.h
-        gui/drawing_manager.cpp
-        gui/drawing_manager.h
-        gui/entity_drawer.h
-        entities/treant.h
-        abilities/entangling.cpp
-        abilities/entangling.h
-        abilities/recovery.cpp
-        abilities/recovery.h
-        entities/fire.h
-        entities/balloon.h
-        abilities/build_cannon.cpp
-        abilities/build_cannon.h
-        entities/cannon.h
-        abilities/build_barrack.cpp
-        abilities/build_barrack.h
-        entities/barrack.h
-        abilities/teleport.h
-        abilities/wolf_herd.cpp
-        abilities/wolf_herd.h
-        abilities/dodge.cpp
-        abilities/dodge.h
-        entities/grenadier.h
-        abilities/bomb.cpp
-        abilities/bomb.h
-        entities/destroyer.h
-        abilities/armor.cpp
-        abilities/armor.h
-        abilities/blow_the_ax.cpp abilities/blow_the_ax.h gui/drawable.cpp gui/drawable.h gui/drawing_manager.cpp gui/drawing_manager.h gui/entity_drawer.h entities/treant.h abilities/entangling.cpp abilities/entangling.h abilities/recovery.cpp abilities/recovery.h entities/fire.h entities/balloon.h abilities/build_cannon.cpp abilities/build_cannon.h entities/cannon.h abilities/build_barrack.cpp abilities/build_barrack.h
-        entities/barrack.h
-        abilities/builder.cpp
-        abilities/builder.h entities/drilling_rig.h entities/fissure.h entities/thrower.h abilities/flame_thrower.cpp abilities/flame_thrower.h abilities/counterattack.cpp abilities/counterattack.h entities/guardian.h abilities/spear.cpp abilities/spear.h abilities/shield.cpp abilities/shield.h managers/additions_manager.cpp managers/additions_manager.h entities/creature.h abilities/chopper.cpp abilities/chopper.h abilities/spiral_of_fire.cpp abilities/spiral_of_fire.h entities/handthrower.h abilities/handcannon.cpp abilities/handcannon.h abilities/protection_field.cpp abilities/protection_field.h gui/shooter_drawing.h managers/animation_manager.cpp managers/animation_manager.h
-        entities/warrior.h abilities/warrior_blow.cpp abilities/warrior_blow.h abilities/immortality.cpp abilities/immortality.h entities/robot.h core/command_manager.cpp core/command_manager.h abilities/spider_web.cpp abilities/spider_web.h entities/spider.h abilities/surroundings.cpp abilities/surroundings.h abilities/detonation.cpp abilities/detonation.h entities/sniper.h abilities/sniper_shot.cpp abilities/sniper_shot.h abilities/hypnosis.cpp abilities/hypnosis.h entities/monk.h abilities/magic_bullet.cpp abilities/magic_bullet.h abilities/jaw_spider.cpp abilities/jaw_spider.h abilities/long_range_missile.cpp abilities/long_range_missile.h entities/ninja.h abilities/interception.cpp abilities/interception.h entities/absorber.h abilities/absorption.cpp abilities/absorption.h abilities/power_circle.cpp abilities/power_circle.h abilities/shiruken.cpp abilities/shiruken.h abilities/assassin_slash.cpp abilities/assassin_slash.h abilities/assassin_slash.h entities/water.h entities/wall.h entities/fir.h entities/wretch.h abilities/vicious_circle.cpp abilities/vicious_circle.h abilities/wretch_moving.cpp abilities/wretch_moving.h gui/bitmaps.h config.h.in gui/entity_drawer.cpp managers/power_manager.h abilities/possible_move_helper.h abilities/possible_move_helper.cpp)
+        server/entities/tree.h
+        server/entities/samurai_rat.h
+        server/entities/troll.h
+        server/abilities/rage.cpp
+        server/abilities/rage.h
+        server/managers/health_manager.cpp
+        server/entities/droid.h
+        server/abilities/laser.cpp
+        server/abilities/laser.h
+        server/abilities/teleport.cpp
+        server/abilities/teleport.h
+        server/abilities/wolf_herd.cpp
+        server/abilities/wolf_herd.h
+        server/abilities/dodge.cpp
+        server/abilities/dodge.h
+        server/entities/grenadier.h
+        server/abilities/bomb.cpp
+        server/abilities/bomb.h
+        server/entities/destroyer.h
+        server/abilities/armor.cpp
+        server/abilities/armor.h
+        server/abilities/blow_the_ax.cpp
+        server/abilities/blow_the_ax.h
+        server/entities/treant.h
+        server/abilities/entangling.cpp
+        server/abilities/entangling.h
+        server/abilities/recovery.cpp
+        server/abilities/recovery.h
+        server/entities/fire.h
+        server/entities/balloon.h
+        server/abilities/build_cannon.cpp
+        server/abilities/build_cannon.h
+        server/entities/cannon.h
+        server/abilities/build_barrack.cpp
+        server/abilities/build_barrack.h
+        server/entities/barrack.h
+        server/abilities/teleport.h
+        server/abilities/wolf_herd.cpp
+        server/abilities/wolf_herd.h
+        server/abilities/dodge.cpp
+        server/abilities/dodge.h
+        server/entities/grenadier.h
+        server/abilities/bomb.cpp
+        server/abilities/bomb.h
+        server/entities/destroyer.h
+        server/abilities/armor.cpp
+        server/abilities/armor.h
+        server/abilities/blow_the_ax.cpp server/abilities/blow_the_ax.h
+        server/entities/treant.h server/abilities/entangling.cpp
+        server/abilities/entangling.h server/abilities/recovery.cpp
+        server/abilities/recovery.h server/entities/fire.h
+        server/entities/balloon.h server/abilities/build_cannon.cpp
+        server/abilities/build_cannon.h server/entities/cannon.h
+        server/abilities/build_barrack.cpp server/abilities/build_barrack.h
+        server/entities/barrack.h
+        server/abilities/builder.cpp
+        server/abilities/builder.h
+        server/entities/drilling_rig.h server/entities/fissure.h server/entities/thrower.h
+        server/abilities/flame_thrower.cpp server/abilities/flame_thrower.h
+        server/abilities/counterattack.cpp server/abilities/counterattack.h
+        server/entities/guardian.h server/abilities/spear.cpp server/abilities/spear.h
+        server/abilities/shield.cpp server/abilities/shield.h server/managers/additions_manager.cpp
+        server/managers/additions_manager.h server/entities/creature.h server/abilities/chopper.cpp
+        server/abilities/chopper.h server/abilities/spiral_of_fire.cpp server/abilities/spiral_of_fire.h
+        server/entities/handthrower.h server/abilities/handcannon.cpp server/abilities/handcannon.h
+        server/abilities/protection_field.cpp server/abilities/protection_field.h
+        server/entities/warrior.h
+        server/abilities/warrior_blow.cpp
+        server/abilities/warrior_blow.h server/abilities/immortality.cpp
+        server/abilities/immortality.h server/entities/robot.h
+        server/abilities/spider_web.cpp server/abilities/spider_web.h server/entities/spider.h
+        server/abilities/surroundings.cpp server/abilities/surroundings.h server/abilities/detonation.cpp
+        server/abilities/detonation.h server/entities/sniper.h server/abilities/sniper_shot.cpp
+        server/abilities/sniper_shot.h server/abilities/hypnosis.cpp server/abilities/hypnosis.h
+        server/entities/monk.h server/abilities/magic_bullet.cpp server/abilities/magic_bullet.h
+        server/abilities/jaw_spider.cpp server/abilities/jaw_spider.h
+        server/abilities/long_range_missile.cpp server/abilities/long_range_missile.h
+        server/entities/ninja.h server/abilities/interception.cpp
+        server/abilities/interception.h server/entities/absorber.h
+        server/abilities/absorption.cpp server/abilities/absorption.h
+        server/abilities/power_circle.cpp server/abilities/power_circle.h
+        server/abilities/shiruken.cpp server/abilities/shiruken.h
+        server/abilities/assassin_slash.cpp server/abilities/assassin_slash.h
+        server/abilities/assassin_slash.h server/entities/water.h
+        server/entities/wall.h server/entities/fir.h server/entities/wretch.h
+        server/abilities/vicious_circle.cpp server/abilities/vicious_circle.h
+        server/abilities/wretch_moving.cpp server/abilities/wretch_moving.h
+        common/bitmaps.h config.h.in server/managers/power_manager.h server/abilities/possible_move_helper.h
+        server/abilities/possible_move_helper.cpp
+        server/managers/bitmap_field_manager.cpp server/managers/bitmap_field_manager.h
 
-add_executable(pigeonwar ${SOURCE_FILES})
-target_link_libraries(pigeonwar ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+        client/animation/animation.cpp
+        client/animation/animation.h
+        client/animation/animation_impl.cpp
+        client/animation/animation_impl.h
+        client/animation/animations_objects.cpp
+        client/animation/animations_objects.h
+        client/gui/board_panel.cpp
+        client/gui/bitmap_center.cpp
+        client/gui/my_button.cpp
+
+        server/core/animations_queue.cpp server/core/animations_queue.h)
+
+set(CLIENT_SOURCE_FILES
+        client/gui/bitmap_center.cpp
+        client/gui/bitmap_center.h
+        client/gui/board_panel.cpp
+        client/gui/board_panel.h
+        client/gui/buttons_panel.cpp
+        client/gui/buttons_panel.h
+        client/gui/drawable.cpp
+        client/gui/drawable.h
+        client/gui/drawer.cpp
+        client/gui/drawer.h
+        client/gui/drawing_manager.cpp
+        client/gui/drawing_manager.h
+        client/gui/entities_renderer.h
+        client/gui/entity_drawer.cpp
+        client/gui/entity_drawer.h
+        client/gui/my_button.cpp
+        client/gui/my_button.h
+        client/gui/pigeon_war_client.cpp
+        client/gui/pigeon_war_client.h
+        client/gui/shooter_drawing.h
+        client/gui/view_constants.h
+        client/animation/animation.cpp
+        client/animation/animation.h
+        client/animation/animation_impl.cpp
+        client/animation/animation_impl.h
+        client/animation/animations_objects.cpp
+        client/animation/animations_objects.h
+        common/health_field.h
+        common/bitmap_field.h
+        common/game_state.h
+        common/states.h
+        common/animations.h
+
+        server/managers/entity_remover.cpp
+        )
+
+add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
+target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} rpc pthread)
+
+add_executable(pigeonwar_server server/main.cpp ${SERVER_SOURCE_FILES})
+target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} rpc pthread)
