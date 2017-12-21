@@ -4,7 +4,6 @@
 #include "common/managers.h"
 #include <limits>
 #include <algorithm>
-#include <client/animation/animation.h>
 #include <core/board.h>
 #include <common/health_field.h>
 #include <common/animations.h>

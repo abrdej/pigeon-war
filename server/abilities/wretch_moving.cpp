@@ -1,6 +1,5 @@
 #include <core/states_controller.h>
 #include <core/board.h>
-#include <client/animation/animation.h>
 #include <managers/directions_manager.h>
 #include "wretch_moving.h"
 
@@ -55,8 +54,11 @@ void wretch_moving::move(size_t index_to) {
 
     states::state_controller::selected_index_ = states::no_selected_index;
 
-    animation::player<animation::move>::launch(animation::move(move_from_index, index_to, taken_id));
-    animation::base_player::play();
+    animations_queue::push_animation(animation_types::move,
+                                     move_from_index,
+                                     index_to,
+                                     taken_id,
+                                     bitmap_key::none);
 
     int from_col = board::to_pos(move_from_index).first;
     int to_col = board::to_pos(index_to).first;

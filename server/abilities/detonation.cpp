@@ -21,11 +21,11 @@ detonation::detonation(std::size_t entity_id) {
 
             board::take(board::index_for(entity_id));
 
-            animation::player<animation::flash_bitmap>::launch(
-                    animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
-                                            std::chrono::milliseconds(150),
-                                            "detonation_anim.png"));
-            animation::base_player::play();
+            animations_queue::push_animation(animation_types::flash_bitmap,
+                                             board::to_index(from_cr.first, from_cr.second),
+                                             150,
+                                             0,
+                                             bitmap_key::detonation_anim);
 
             for (auto& index : neighbors) {
                 if (!board::empty(index))

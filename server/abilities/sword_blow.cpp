@@ -1,4 +1,3 @@
-#include <client/animation/animation.h>
 #include "sword_blow.h"
 #include "core/states_controller.h"
 #include "damage_dealers.h"

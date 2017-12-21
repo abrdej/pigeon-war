@@ -163,15 +163,15 @@ set(SERVER_SOURCE_FILES
         server/abilities/possible_move_helper.cpp
         server/managers/bitmap_field_manager.cpp server/managers/bitmap_field_manager.h
 
-        client/animation/animation.cpp
-        client/animation/animation.h
-        client/animation/animation_impl.cpp
-        client/animation/animation_impl.h
-        client/animation/animations_objects.cpp
-        client/animation/animations_objects.h
-        client/gui/board_panel.cpp
-        client/gui/bitmap_center.cpp
-        client/gui/my_button.cpp
+#        client/animation/animation.cpp
+#        client/animation/animation.h
+#        client/animation/animation_impl.cpp
+#        client/animation/animation_impl.h
+#        client/animation/animations_objects.cpp
+#        client/animation/animations_objects.h
+#        client/gui/board_panel.cpp
+#        client/gui/bitmap_center.cpp
+#        client/gui/my_button.cpp
 
         server/core/animations_queue.cpp server/core/animations_queue.h)
 
@@ -193,8 +193,8 @@ set(CLIENT_SOURCE_FILES
         client/gui/entity_drawer.h
         client/gui/my_button.cpp
         client/gui/my_button.h
-        client/gui/pigeon_war_client.cpp
-        client/gui/pigeon_war_client.h
+        client/pigeon_war_client.cpp
+        client/pigeon_war_client.h
         client/gui/shooter_drawing.h
         client/gui/view_constants.h
         client/animation/animation.cpp

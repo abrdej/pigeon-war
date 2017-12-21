@@ -129,5 +129,9 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::field_shoot, "field_shoot.png");
     add_bitmap(bitmap_key::poisoned_missile_splush, "poisoned_missile_splush.png");
     add_bitmap(bitmap_key::absorber_orbit, "absorber_orbit2.png");
+    add_bitmap(bitmap_key::troll_rage, "troll_rage.png");
+    add_bitmap(bitmap_key::hello, "hello.png");
+    add_bitmap(bitmap_key::detonation_anim, "detonation_anim.png");
+    add_bitmap(bitmap_key::magic_suck, "magic_suck.png");
 }
 }

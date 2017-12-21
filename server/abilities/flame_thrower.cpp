@@ -2,7 +2,6 @@
 #include "damage_dealers.h"
 #include <core/path_finder.h>
 #include <core/states_controller.h>
-#include <client/animation/animation.h>
 
 flame_thrower::flame_thrower() {
 	onEveryRound([this]() {

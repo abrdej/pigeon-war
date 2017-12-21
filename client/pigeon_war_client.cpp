@@ -1,6 +1,6 @@
 #include "pigeon_war_client.h"
-#include "drawer.h"
-#include "view_constants.h"
+#include "gui/drawer.h"
+#include "gui/view_constants.h"
 #include "animation/animations_objects.h"
 #include <algorithm>
 #include <chrono>
@@ -27,7 +27,10 @@ void pigeon_war_client::run()
 {
 	client = std::make_unique<rpc::client>("127.0.0.1", 8080);
 
-	// this will fill state of game
+	player_id = client->call("get_player_id").as<int>();
+
+	std::cout << "Client player id: " << player_id << "\n";
+
 	state.board.fields_ = client->call("get_board").as<std::array<std::vector<std::size_t>, board::cols_n * board::rows_n>>();
 
 	state.entities_bitmaps = client->call("get_entities_bitmaps").as<decltype(state.entities_bitmaps)>();
@@ -37,8 +40,6 @@ void pigeon_war_client::run()
 	for (auto&& bitmap_pack : state.entities_bitmaps) {
 		drawing_manager::add_component(bitmap_pack.first, std::make_shared<entity_drawer>(bitmap_pack.first, bitmap_pack.second));
 	}
-
-	std::cout << "client initialized\n";
 
 	while (window_.isOpen())
 	{
@@ -149,6 +150,8 @@ void pigeon_war_client::on_button(size_t n)
 	state = client->call("get_game_state").as<decltype(state)>();
 
 	update_for_entity();
+
+	client->call("wait_for_turn");
 }
 
 void pigeon_war_client::prepare_animations()

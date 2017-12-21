@@ -1,5 +1,4 @@
 #include <core/states_controller.h>
-#include <client/animation/animation.h>
 #include <core/board.h>
 #include <managers/health_manager.h>
 #include "absorption.h"
@@ -72,11 +71,11 @@ void absorption::use(size_t index_on) {
 
                                              std::cout << "absorption_power: " << absorption_power << "\n";
 
-
-                                             animation::player<animation::flash_bitmap>::launch
-                                                     (animation::flash_bitmap(board::index_for(friendly_id),
-                                                                              std::chrono::milliseconds(150), "absorption.png"));
-                                             animation::base_player::play();
+                                             animations_queue::push_animation(animation_types::flash_bitmap,
+                                                                              board::index_for(friendly_id),
+                                                                              150,
+                                                                              0,
+                                                                              bitmap_key::absorption);
 
                                              damage_dealers::standard_damage_dealer(last_dmg);
 

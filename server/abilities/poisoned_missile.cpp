@@ -1,5 +1,4 @@
 #include <core/states_controller.h>
-#include <client/animation/animation.h>
 #include <managers/entity_manager.h>
 #include "managers/additions_manager.h"
 #include "poisoned_missile.h"

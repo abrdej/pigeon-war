@@ -1,5 +1,4 @@
 #include <core/states_controller.h>
-#include <client/animation/animation.h>
 #include "bludgeon.h"
 #include "damage_dealers.h"
 

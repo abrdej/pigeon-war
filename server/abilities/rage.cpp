@@ -3,7 +3,6 @@
 #include "rage.h"
 #include "damage_dealers.h"
 #include <iostream>
-#include <client/animation/animation.h>
 
 rage::rage(size_t id) : entity_id(id) {
 	onEveryRound([this]() {
@@ -48,10 +47,11 @@ void rage::play_animation(size_t use_from_index) {
 	from_cr.first -= 1;
 	from_cr.second -= 1;
 
-	animation::player<animation::flash_bitmap>::launch(
-			animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
-									std::chrono::milliseconds(150),
-									"troll_rage.png"));
-	animation::base_player::play();
+	animations_queue::push_animation(animation_types::flash_bitmap,
+									 board::to_index(from_cr.first, from_cr.second),
+									 150,
+									 0,
+									 bitmap_key::troll_rage);
+
 	board::give_back(entity_id, use_from_index);
 }

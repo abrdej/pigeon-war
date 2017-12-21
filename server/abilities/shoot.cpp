@@ -1,12 +1,9 @@
 #include <gui/drawing_manager.h>
 #include <core/animations_queue.h>
 #include "shoot.h"
-
 #include "core/path_finder.h"
 #include "core/states_controller.h"
 #include "core/board.h"
-#include "client/animation/animation.h"
-#include "client/animation/animation_impl.h"
 #include "damage_dealers.h"
 
 shoot::shoot()

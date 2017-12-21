@@ -3,7 +3,6 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <managers/entity_manager.h>
-#include <client/animation/animation.h>
 #include <unordered_map>
 
 bomb_detonation::bomb_detonation(std::size_t bomb_id) : bomb_id(bomb_id) {
@@ -37,8 +36,7 @@ void bomb_detonation::use(size_t for_index) {
 	std::vector<size_t> neightbords;
 	board_helper::neighboring_fields(for_index, neightbords, false);
 
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(for_index, std::chrono::milliseconds(150), "bum.png"));
-	animation::base_player::play();
+	animations_queue::push_animation(animation_types::flash_bitmap, for_index, 150, 0, bitmap_key::bum);
 
 	auto final_damage = damage;
 
@@ -70,8 +68,7 @@ void bomb_detonation(std::size_t bomb_id, int damage) {
 	std::vector<size_t> neightbords;
 	board_helper::neighboring_fields(index, neightbords, false);
 
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index, std::chrono::milliseconds(150), "bum.png"));
-	animation::base_player::play();
+	animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::bum);
 
 //	auto final_damage = damage;
 //
@@ -131,10 +128,8 @@ void bomb::use(size_t index) {
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	animation::player<animation::move>::launch(animation::move(used_from_index, index, bitmap_key::bomb));
-	animation::base_player::play();
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index, std::chrono::milliseconds(150), "bum.png"));
-	animation::base_player::play();
+	animations_queue::push_animation(animation_types::move, used_from_index, index, -1, bitmap_key::bomb);
+	animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::bum);
 
 	damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index), entity_id));
 
@@ -153,10 +148,8 @@ void bomb::use(size_t index) {
 			break;
 		}
 
-		animation::player<animation::move>::launch(animation::move(from_index, next_index, bitmap_key::bomb));
-		animation::base_player::play();
-		animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(next_index, std::chrono::milliseconds(150), "bum.png"));
-		animation::base_player::play();
+		animations_queue::push_animation(animation_types::move, from_index, next_index, -1, bitmap_key::bomb);
+		animations_queue::push_animation(animation_types::flash_bitmap, next_index, 150, 0, bitmap_key::bum);
 
 		damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(next_index), entity_id));
 

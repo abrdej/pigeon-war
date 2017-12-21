@@ -15,8 +15,12 @@ magic_bullet::magic_bullet(std::size_t entity_id) {
             {
                 if (!board::empty(index) && players_funcs::enemy_entity(index)) {
                     magic_power += magic_power_drain_amount;
-                    animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index, std::chrono::milliseconds(150), "magic_suck.png"));
-                    animation::base_player::play();
+
+                    animations_queue::push_animation(animation_types::flash_bitmap,
+                                                     index,
+                                                     150,
+                                                     0,
+                                                     bitmap_key::magic_suck);
                 }
             }
         }

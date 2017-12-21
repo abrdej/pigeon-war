@@ -1,5 +1,4 @@
 #include <managers/health_manager.h>
-#include <client/animation/animation.h>
 #include <core/board.h>
 #include "recovery.h"
 
@@ -37,8 +36,6 @@ recovery::recovery(std::size_t id) : entity_id(id) {
                                                  150,
                                                  -1,
                                                  bitmap_key::healthing);
-
-                animation::base_player::play();
             }
         }
 

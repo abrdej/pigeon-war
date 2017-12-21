@@ -1,7 +1,6 @@
 #include "dodge.h"
 #include "managers/health_manager.h"
 #include <iostream>
-#include <client/animation/animation.h>
 #include <core/board.h>
 
 dodge::dodge(std::size_t entity_id) {

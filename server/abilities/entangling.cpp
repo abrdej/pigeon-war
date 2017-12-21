@@ -2,7 +2,6 @@
 #include "damage_dealers.h"
 #include <core/states_controller.h>
 #include <managers/entity_manager.h>
-#include <client/animation/animation.h>
 
 entangling_life_suck::entangling_life_suck() {
     onEveryRound([this]() {
@@ -21,11 +20,11 @@ entangling_life_suck::entangling_life_suck() {
 
                 auto index = board::index_for(caster_id);
 
-                animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index,
-                                                                                           std::chrono::milliseconds(
-                                                                                                   150),
-                                                                                           "healthing.png"));
-                animation::base_player::play();
+                animations_queue::push_animation(animation_types::flash_bitmap,
+                                                 index,
+                                                 150,
+                                                 0,
+                                                 bitmap_key::healthing);
             }
         }
     });

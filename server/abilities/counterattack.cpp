@@ -3,7 +3,6 @@
 #include <managers/health_manager.h>
 #include <core/states_controller.h>
 #include <core/board.h>
-#include <client/animation/animation.h>
 
 counterattack::counterattack(std::size_t entity_id)
 		: entity_id(entity_id) {

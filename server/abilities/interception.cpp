@@ -1,6 +1,5 @@
 #include "interception.h"
 #include "damage_dealers.h"
-#include <client/animation/animation.h>
 #include <core/board.h>
 #include <managers/health_manager.h>
 #include <core/path_finder.h>
@@ -70,11 +69,24 @@ void interception::use(size_t index_on) {
 
 void interception::play_animation(size_t index_from, size_t index_on) {
     auto entity_id = board::take(index_from);
-    animation::player<animation::move>::launch(animation::move(index_from, index_on, entity_id));
-    animation::base_player::play();
-    animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index_on, std::chrono::milliseconds(150), "ninja.png"));
-    animation::base_player::play();
-    animation::player<animation::move>::launch(animation::move(index_on, index_from, entity_id));
-    animation::base_player::play();
+
+    animations_queue::push_animation(animation_types::move,
+                                     index_from,
+                                     index_on,
+                                     entity_id,
+                                     bitmap_key::none);
+
+    animations_queue::push_animation(animation_types::flash_bitmap,
+                                     index_on,
+                                     150,
+                                     0,
+                                     bitmap_key::ninja);
+
+    animations_queue::push_animation(animation_types::move,
+                                     index_on,
+                                     index_from,
+                                     entity_id,
+                                     bitmap_key::none);
+
     board::give_back(entity_id, index_from);
 }

@@ -23,6 +23,7 @@ enum class bitmap_key {
     bum,
 	shards,
     claws,
+	hello,
     stone,
     tree,
     saurian,
@@ -117,7 +118,10 @@ enum class bitmap_key {
 	magic_splash,
 	warrior_attack,
 	guardian_attack,
-	healthing
+	healthing,
+	troll_rage,
+	detonation_anim,
+	magic_suck
 };
 
 struct bitmaps_key_hash

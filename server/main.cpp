@@ -6,6 +6,7 @@
 #include <managers/abilities_manager.h>
 #include <abilities/ability.h>
 #include <core/animations_queue.h>
+#include <core/players.h>
 #include "core/game.h"
 #include "common/game_state.h"
 #include "managers/bitmap_field_manager.h"
@@ -17,6 +18,16 @@ int main() {
 	game g;
 
 	rpc::server server(8080);
+
+	std::atomic_int player_id{0};
+
+	server.bind("get_player_id", [&]() {
+		return player_id++;
+	});
+
+	server.bind("wait_for_turn", [&]() {
+		players::active_player_name();
+	});
 
 	server.bind("get_board", [&]() {
 		return board::fields_;

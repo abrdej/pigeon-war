@@ -1,6 +1,5 @@
 #include <core/path_finder.h>
 #include <core/states_controller.h>
-#include <client/animation/animation.h>
 #include <common/animations.h>
 #include <core/animations_queue.h>
 #include "teleport.h"

@@ -3,7 +3,6 @@
 #include "core/states_controller.h"
 #include "core/path_finder.h"
 #include "damage_dealers.h"
-#include "client/animation/animation.h"
 #include <chrono>
 
 void grenade::prepare(size_t for_index)

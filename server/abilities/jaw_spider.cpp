@@ -52,8 +52,11 @@ void jaw_spider::use(size_t index_on) {
 }
 
 void jaw_spider::play_animation(size_t index_on) {
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(index_on, std::chrono::milliseconds(150), "jaw_spider.png"));
-	animation::base_player::play();
+	animations_queue::push_animation(animation_types::flash_bitmap,
+									 index_on,
+									 150,
+									 0,
+									 bitmap_key::jaw_spider);
 }
 
 void jaw_spider::set_used() {

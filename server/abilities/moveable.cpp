@@ -3,7 +3,6 @@
 #include "core/states_controller.h"
 #include "core/path_finder.h"
 #include "core/board.h"
-#include "client/animation/animation.h"
 #include "managers/directions_manager.h"
 
 void moveable::prepare(size_t for_index)

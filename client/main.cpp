@@ -1,4 +1,4 @@
-#include "client/gui/pigeon_war_client.h"
+#include "pigeon_war_client.h"
 
 int main() {
 

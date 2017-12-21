@@ -3,10 +3,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <thread>
-#include "my_button.h"
-#include "board_panel.h"
-#include "buttons_panel.h"
-#include "entities_renderer.h"
+#include "gui/my_button.h"
+#include "gui/board_panel.h"
+#include "gui/buttons_panel.h"
+#include "gui/entities_renderer.h"
 #include "common/states.h"
 #include "animation/animation_impl.h"
 #include <atomic>
@@ -39,6 +39,9 @@ private:
 
 private:
 	std::unique_ptr<rpc::client> client;
+
+	static const int no_player_id = std::numeric_limits<int>::max();
+	int player_id{no_player_id};
 
 	friend class board_drawer;
 	game_state state;

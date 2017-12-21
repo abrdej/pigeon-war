@@ -55,8 +55,9 @@ void hypnosis::use(size_t index_on) {
 }
 
 void hypnosis::play_animation(size_t to_index) {
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
-																			   std::chrono::milliseconds(150),
-																			   "field_shoot.png"));
-	animation::base_player::play();
+	animations_queue::push_animation(animation_types::flash_bitmap,
+									 to_index,
+									 150,
+									 0,
+									 bitmap_key::field_shoot);
 }

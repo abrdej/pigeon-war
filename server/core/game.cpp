@@ -6,7 +6,6 @@
 #include "abilities/ability.h"
 #include "ai/ai.h"
 #include "entities/werewolf.h"
-#include "animation/animation.h"
 #include "entities/stone.h"
 #include "entities/saurian.h"
 #include "entities/saberhand.h"
@@ -141,12 +140,35 @@ void game::create_werewolf()
 	size_t wolf3_id = entity_manager::create<wolf>();
 	size_t wolf4_id = entity_manager::create<wolf>();
 
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(13, 5), std::chrono::milliseconds(100), "hello.png"));
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(13, 4), std::chrono::milliseconds(100), "hello.png"));
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(13, 3), std::chrono::milliseconds(100), "hello.png"));
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(13, 6), std::chrono::milliseconds(100), "hello.png"));
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(13, 7), std::chrono::milliseconds(100), "hello.png"));
-	animation::base_player::play();
+	animations_queue::push_animation(animation_types::flash_bitmap,
+									 board::to_index(13, 5),
+									 100,
+									 0,
+									 bitmap_key::hello);
+
+	animations_queue::push_animation(animation_types::flash_bitmap,
+									 board::to_index(13, 4),
+									 100,
+									 0,
+									 bitmap_key::hello);
+
+	animations_queue::push_animation(animation_types::flash_bitmap,
+									 board::to_index(13, 3),
+									 100,
+									 0,
+									 bitmap_key::hello);
+
+	animations_queue::push_animation(animation_types::flash_bitmap,
+									 board::to_index(13, 6),
+									 100,
+									 0,
+									 bitmap_key::hello);
+
+	animations_queue::push_animation(animation_types::flash_bitmap,
+									 board::to_index(13, 7),
+									 100,
+									 0,
+									 bitmap_key::hello);
 
 	//board_.insert(board::to_index(13, 5), beast);
 	board::insert(board::to_index(13, 4), wolf1_id);
