@@ -20,7 +20,7 @@ MSGPACK_ADD_ENUM(animation_types);
 
 struct animation_pack {
 	animation_pack() = default;
-	animation_pack(animation_types a, short x, short y, short z, bitmap_key k)
+	animation_pack(animation_types a, std::size_t x, std::size_t y, std::size_t z, bitmap_key k)
 			: animation_type(a), btm_key(k) {
 
 		std::get<0>(tup) = x;
@@ -34,7 +34,7 @@ struct animation_pack {
 
 	animation_types animation_type;
 
-	std::tuple<short, short, short> tup;
+	std::tuple<std::size_t, std::size_t, std::size_t> tup;
 
 	bitmap_key btm_key;
 

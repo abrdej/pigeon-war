@@ -11,6 +11,7 @@
 #include "animation/animation_impl.h"
 #include <atomic>
 #include <rpc/client.h>
+#include <common/turn_status.h>
 #include "common/game_state.h"
 #include "gui/drawer.h"
 
@@ -42,6 +43,8 @@ private:
 
 	static const int no_player_id = std::numeric_limits<int>::max();
 	int player_id{no_player_id};
+
+	turn_status last_turn_status{turn_status::update};
 
 	friend class board_drawer;
 	game_state state;

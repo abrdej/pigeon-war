@@ -25,6 +25,10 @@ public:
 	static void next_player();
 	static player_id_type player_for_entity(size_t entity_id);
 
+	static player_id_type get_player_name_from_id(int id) {
+		return players_[id].first;
+	}
+
 private:
 	static std::vector<std::pair<player_id_type, bool>> players_;
 	static size_t active_player_;

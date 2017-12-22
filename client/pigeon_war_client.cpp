@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <chrono>
 #include <core/board.h>
+#include <common/turn_status.h>
 
 namespace view
 {
@@ -29,6 +30,10 @@ void pigeon_war_client::run()
 
 	player_id = client->call("get_player_id").as<int>();
 
+	if (player_id == 0) {
+		last_turn_status = turn_status::do_turn;
+	}
+
 	std::cout << "Client player id: " << player_id << "\n";
 
 	state.board.fields_ = client->call("get_board").as<std::array<std::vector<std::size_t>, board::cols_n * board::rows_n>>();
@@ -50,23 +55,119 @@ void pigeon_war_client::run()
 
 void pigeon_war_client::update()
 {
-	sf::Event event{};
-	while (window_.pollEvent(event)) {
+	std::cout << "update\n";
 
-		if (event.type == sf::Event::Closed) {
-			window_.close();
+	auto status = client->call("get_status", player_id).as<turn_status>();
+
+	if (status == turn_status::do_turn && last_turn_status != turn_status::do_turn) {
+		// pull info
+
+		state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
+
+		for (auto&& animation_pack : state.animations_queue) {
+			if (animation_pack.animation_type == animation_types::move) {
+
+				std::cout << "move animation\n";
+
+				std::size_t from_index = std::get<0>(animation_pack.tup);
+				std::size_t to_index = std::get<1>(animation_pack.tup);
+				std::size_t entity_id = std::get<2>(animation_pack.tup);
+				auto btm_key = animation_pack.btm_key;
+
+				if (entity_id != std::numeric_limits<std::size_t>::max()) {
+					state.board.take(from_index);
+
+					animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
+					animation::base_player::play();
+
+					state.board.give_back(entity_id, to_index);
+
+				} else {
+					animation::player<animation::move>::launch(animation::move(from_index, to_index, btm_key));
+					animation::base_player::play();
+				}
+			} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
+
+				short from_index = std::get<0>(animation_pack.tup);
+				short time = std::get<1>(animation_pack.tup);
+				auto btm_key = animation_pack.btm_key;
+
+				animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
+				animation::base_player::play();
+			}
 		}
 
-		else if (event.type == sf::Event::MouseButtonReleased) {
+		state = client->call("get_game_state").as<decltype(state)>();
 
-			sf::Vector2i mouse_position(event.mouseButton.x, event.mouseButton.y);
-			on_mouse_click(mouse_position);
+		update_for_entity();
+
+	} else if (status == turn_status::wait) {
+
+		state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
+
+		std::cout << "wait: " << state.animations_queue.size() << "\n";
+
+		if (!state.animations_queue.empty()) {
+			for (auto&& animation_pack : state.animations_queue) {
+				if (animation_pack.animation_type == animation_types::move) {
+
+					std::cout << "move animation\n";
+
+					short from_index = std::get<0>(animation_pack.tup);
+					short to_index = std::get<1>(animation_pack.tup);
+					short entity_id = std::get<2>(animation_pack.tup);
+					auto btm_key = animation_pack.btm_key;
+
+					if (entity_id != -1) {
+						state.board.take(from_index);
+
+						animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
+						animation::base_player::play();
+
+						state.board.give_back(entity_id, to_index);
+
+					} else {
+						animation::player<animation::move>::launch(animation::move(from_index, to_index, btm_key));
+						animation::base_player::play();
+					}
+				} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
+
+					short from_index = std::get<0>(animation_pack.tup);
+					short time = std::get<1>(animation_pack.tup);
+					auto btm_key = animation_pack.btm_key;
+
+					animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
+					animation::base_player::play();
+				}
+			}
+
+			state = client->call("get_game_state").as<decltype(state)>();
+
+			update_for_entity();
+		}
+
+	} else if (status == turn_status::do_turn) {
+
+		sf::Event event{};
+		while (window_.pollEvent(event)) {
+
+			if (event.type == sf::Event::Closed) {
+				window_.close();
+			}
+
+			else if (event.type == sf::Event::MouseButtonReleased) {
+
+				sf::Vector2i mouse_position(event.mouseButton.x, event.mouseButton.y);
+				on_mouse_click(mouse_position);
+			}
 		}
 	}
 
 	window_.clear();
 	draw(window_);
 	window_.display();
+
+	last_turn_status = status;
 }
 
 void pigeon_war_client::draw(sf::RenderWindow& window)
@@ -99,7 +200,7 @@ void pigeon_war_client::on_board(size_t col, size_t row)
 
 		client->call("on_board", col, row);
 
-		state.animations_queue = client->call("pull_animations").as<decltype(state.animations_queue)>();
+		state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
 
 		for (auto&& animation_pack : state.animations_queue) {
 			if (animation_pack.animation_type == animation_types::move) {
@@ -137,6 +238,7 @@ void pigeon_war_client::on_board(size_t col, size_t row)
 		state = client->call("get_game_state").as<decltype(state)>();
 
 		update_for_entity();
+
 		block = false;
 	}
 }
@@ -145,13 +247,13 @@ void pigeon_war_client::on_button(size_t n)
 {
 	client->call("on_button", n);
 
-	state.animations_queue = client->call("pull_animations").as<decltype(state.animations_queue)>();
+	state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
 
 	state = client->call("get_game_state").as<decltype(state)>();
 
 	update_for_entity();
 
-	client->call("wait_for_turn");
+	//client->call("wait_for_turn");
 }
 
 void pigeon_war_client::prepare_animations()

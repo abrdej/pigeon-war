@@ -9,16 +9,18 @@
 #include "common/animations.h"
 
 struct animations_queue {
-	static std::vector<animation_pack> queue;
+	static std::array<std::vector<animation_pack>, 2> queue;
 
 	static void push_animation(const animation_pack& x) {
-		queue.push_back(x);
+		queue[0].push_back(x);
+		queue[1].push_back(x);
 	}
 	static void push_animation(animation_types a, std::size_t x, std::size_t y, std::size_t z, bitmap_key k) {
-		queue.push_back(animation_pack(a, x, y, z, k));
+		queue[0].push_back(animation_pack(a, x, y, z, k));
+		queue[1].push_back(animation_pack(a, x, y, z, k));
 	}
-	static std::vector<animation_pack> pull_all() {
-		return std::move(queue);
+	static std::vector<animation_pack> pull_all(int id) {
+		return std::move(queue[id]);
 	}
 };
 

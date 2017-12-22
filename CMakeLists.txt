@@ -210,7 +210,7 @@ set(CLIENT_SOURCE_FILES
         common/animations.h
 
         server/managers/entity_remover.cpp
-        )
+        common/turn_status.h)
 
 add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
 target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} rpc pthread)
