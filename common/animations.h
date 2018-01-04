@@ -9,6 +9,8 @@
 #include <iostream>
 #include "bitmaps.h"
 #include <rpc/msgpack.hpp>
+#include "add_enum.h"
+#include "define_packet.h"
 
 enum class animation_types {
 	move,
@@ -16,29 +18,27 @@ enum class animation_types {
 	change_health
 };
 
+PACKET_ADD_ENUM(animation_types)
+
 MSGPACK_ADD_ENUM(animation_types);
 
 struct animation_pack {
 	animation_pack() = default;
 	animation_pack(const animation_types& a, std::size_t x, std::size_t y, std::size_t z, bitmap_key k)
-			: animation_type(a), btm_key(k) {
-
-		std::get<0>(tup) = x;
-		std::get<1>(tup) = y;
-		std::get<2>(tup) = z;
-
-		std::cout << std::get<0>(tup)  << "\n";
-		std::cout << std::get<1>(tup)  << "\n";
-		std::cout << std::get<2>(tup)  << "\n";
+			: animation_type(a), x(x), y(y), z(z), btm_key(k) {
 	}
 
 	animation_types animation_type;
 
-	std::tuple<std::size_t, std::size_t, std::size_t> tup;
+	std::size_t x;
+	std::size_t y;
+	std::size_t z;
 
 	bitmap_key btm_key;
 
-	MSGPACK_DEFINE_MAP(animation_type, tup, btm_key);
+	//MSGPACK_DEFINE_MAP(animation_type, tup, btm_key);
 };
+
+PACKET_DEFINE5(animation_pack, animation_type, x, y, z, btm_key)
 
 #endif //PIGEONWAR_ANIMATIONS_H

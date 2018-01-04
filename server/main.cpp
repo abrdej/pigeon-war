@@ -17,89 +17,94 @@
 #include "managers/health_manager.h"
 #include "managers/names_manager.h"
 #include "Binder.h"
+#include "common/packet_helper.h"
+
+int function_impl(int a) {
+	return a;
+}
 
 int main() {
 
 	game g;
 
-	sf::TcpListener listener;
-
-	if (listener.listen(8081) != sf::Socket::Done) {
-		std::cout << "Listener error\n";
-	}
-
-	sf::TcpSocket client;
-	if (listener.accept(client) != sf::Socket::Done)
-	{
-		std::cout << "Client error\n";
-	}
-
 	std::atomic_int player_id{0};
 
 	Binder binder;
 
-	binder.bind("get_player_id", [&](const nlohmann::json&) -> nlohmann::json {
+	binder.bind("get_player_id", [&](sf::Packet&) {
 
 		std::cout << "get_player_id\n";
 
-		auto new_player_id = player_id++;
+		int new_player_id = player_id++;
 
-		nlohmann::json json_object;
-		json_object["name"] = "return_player_id";
-		json_object["value"] = new_player_id;
+		sf::Packet result_packet;
+		result_packet << new_player_id;
 
-		return json_object;
+		return result_packet;
 	});
 
-	binder.start(client);
-
-
-	rpc::server server(8080);
-
-
-
-	server.bind("get_player_id", [&]() {
-		std::cout << "get_player_id\n";
-		return player_id++;
-	});
-
-	server.bind("wait", [&]() {
-
-	});
-
-	server.bind("get_status", [&](int id) -> turn_status {
+	binder.bind("get_status", [&](sf::Packet& packet) {
 
 		std::cout << "get_status\n";
+
+		int id;
+		packet >> id;
 
 		auto this_player_name = players::active_player_name();
 		auto player_name = players::get_player_name_from_id(id);
 
-		return this_player_name == player_name ? turn_status::do_turn : turn_status::wait;
+		sf::Packet result_packet;
+		result_packet << "status" << (this_player_name == player_name ? turn_status::do_turn : turn_status::wait);
+
+		return result_packet;
 	});
 
-	server.bind("wait_for_turn", [&]() {
-
-		players::active_player_name();
-
-		std::this_thread::sleep_for(std::chrono::seconds(5));
-	});
-
-	server.bind("get_board", [&]() {
+	binder.bind("get_board", [&](sf::Packet& packet) {
 		std::cout << "get_board\n";
-		return board::fields_;
+
+		std::array<std::vector<std::size_t>, board::cols_n * board::rows_n> fields;
+		fields = board::fields_;
+
+		sf::Packet result_packet;
+
+		result_packet << fields;
+
+		return result_packet;
 	});
 
-	server.bind("get_entities_bitmaps", [&]() {
+	binder.bind("get_entities_bitmaps", [&](sf::Packet& packet) {
 		std::cout << "get_entities_bitmaps\n";
-		return bitmap_field_manager::get_map();
+
+		sf::Packet result_packet;
+		result_packet << bitmap_field_manager::get_map();
+
+		return result_packet;
 	});
 
-	server.bind("get_entities_healths", [&]() {
+	binder.bind("get_entities_healths", [&](sf::Packet& packet) {
 		std::cout << "get_entities_healths\n";
-		return healths_manager::get_map();
+
+		sf::Packet result_packet;
+		result_packet << healths_manager::get_map();
+
+		return result_packet;
 	});
 
-	server.bind("get_game_state", [&]() {
+	binder.bind("pull_animations", [&](sf::Packet& packet) {
+
+		int id;
+		packet >> id;
+
+		std::cout << "pull_animations\n";
+		auto anim = animations_queue::pull_all(id);
+
+		sf::Packet result_packet;
+		result_packet << anim;
+
+		return result_packet;
+	});
+
+	binder.bind("get_game_state", [&](sf::Packet& packet) {
 		std::cout << "get_game_state\n";
 		game_state state;
 		state.healths = healths_manager::get_map();
@@ -133,27 +138,53 @@ int main() {
 			}
 		}
 
-		return state;
+		sf::Packet result_packet;
+		result_packet << state;
+
+		return result_packet;
 	});
 
-	server.bind("on_board", [&](size_t x, size_t y) {
+	binder.bind("on_board", [&](sf::Packet& packet) {
 		std::cout << "on_board\n";
+
+		size_t x;
+		size_t y;
+
+		packet >> x;
+		packet >> y;
+
 		g.on_board(x, y);
+
+		sf::Packet result_packet;
+		result_packet << "Fine";
+
+		return result_packet;
 	});
 
-	server.bind("pull_animations", [&](int id) {
-		std::cout << "pull_animations\n";
-		auto anim = animations_queue::pull_all(id);
-
-		return anim;
-	});
-
-	server.bind("on_button", [&](size_t n) {
+	binder.bind("on_button", [&](sf::Packet& packet) {
 		std::cout << "on_button\n";
+
+		std::size_t n;
+		packet >> n;
+
 		g.on_button(n);
+
+		if (n == 5) {
+			// end of turn
+			// notify all clients of it
+
+			binder.end_turn();
+		}
+
+		sf::Packet result_packet;
+		result_packet << "Fine";
+
+		return result_packet;
 	});
 
-	server.run();
+	binder.start();
+
+	binder.working_thread.join();
 
 	return 0;
 }

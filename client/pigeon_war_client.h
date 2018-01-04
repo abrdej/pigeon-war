@@ -11,7 +11,6 @@
 #include "common/states.h"
 #include "animation/animation_impl.h"
 #include <atomic>
-#include <rpc/client.h>
 #include <common/turn_status.h>
 #include "common/game_state.h"
 #include "gui/drawer.h"
@@ -40,8 +39,9 @@ private:
 	void update_for_entity();
 
 private:
-	std::unique_ptr<rpc::client> client;
+	//std::unique_ptr<rpc::client> client;
 	sf::TcpSocket socket;
+	sf::SocketSelector selector;
 
 	static const int no_player_id = std::numeric_limits<int>::max();
 	int player_id{no_player_id};

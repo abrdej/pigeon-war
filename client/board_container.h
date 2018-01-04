@@ -11,6 +11,7 @@
 #include <functional>
 #include <limits>
 #include <rpc/msgpack.hpp>
+#include "common/define_packet.h"
 
 class board_container final {
 public:
@@ -115,5 +116,7 @@ public:
 
 	MSGPACK_DEFINE(fields_);
 };
+
+PACKET_DEFINE1(board_container, fields_)
 
 #endif //PIGEONWAR_BOARD_CONTAINER_H

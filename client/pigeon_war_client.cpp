@@ -6,7 +6,8 @@
 #include <chrono>
 #include <core/board.h>
 #include <common/turn_status.h>
-#include "json.hpp"
+#include "caller.h"
+#include "requests.h"
 
 namespace view
 {
@@ -27,31 +28,14 @@ pigeon_war_client::pigeon_war_client()
 
 void pigeon_war_client::run()
 {
-	client = std::make_unique<rpc::client>("127.0.0.1", 8080);
-
 	auto status = socket.connect("127.0.0.1", 8081);
 	if (status != sf::Socket::Done) {
 		std::cout << "Socket connecting error\n";
 	}
 
-	using json = nlohmann::json;
-	json json_object;
-	json_object["name"] = "get_player_id";
+	selector.add(socket);
 
-	std::string json_data = json_object.dump();
-
-	sf::Packet packet;
-	packet << json_data;
-	socket.send(packet);
-
-	socket.receive(packet);
-
-	std::string message;
-	packet >> message;
-
-	std::cout << "Message: " << message << "\n";
-
-	player_id = client->call("get_player_id").as<int>();
+	player_id = get_player_id(socket);
 
 	if (player_id == 0) {
 		last_turn_status = turn_status::do_turn;
@@ -59,11 +43,9 @@ void pigeon_war_client::run()
 
 	std::cout << "Client player id: " << player_id << "\n";
 
-	state.board.fields_ = client->call("get_board").as<std::array<std::vector<std::size_t>, board::cols_n * board::rows_n>>();
-
-	state.entities_bitmaps = client->call("get_entities_bitmaps").as<decltype(state.entities_bitmaps)>();
-
-	state.healths = client->call("get_entities_healths").as<decltype(state.healths)>();
+	state.board.fields_ = get_board(socket);
+	state.entities_bitmaps = get_entities_bitmaps(socket);
+	state.healths = get_entities_healths(socket);
 
 	for (auto&& bitmap_pack : state.entities_bitmaps) {
 		drawing_manager::add_component(bitmap_pack.first, std::make_shared<entity_drawer>(bitmap_pack.first, bitmap_pack.second));
@@ -78,100 +60,111 @@ void pigeon_war_client::run()
 
 void pigeon_war_client::update()
 {
+
+	if (selector.wait(sf::seconds(0.05))) {
+		sf::Packet packet;
+		socket.receive(packet);
+
+		std::string message;
+		packet >> message;
+
+		std::cout << "Message: " << message << "\n";
+	}
+
 	std::cout << "update\n";
 
-	client->call("wait");
+	//auto status = get_status(socket, player_id);
 
-	auto status = client->call("get_status", player_id).as<turn_status>();
+	turn_status status = turn_status::do_turn;
 
-	if (status == turn_status::do_turn && last_turn_status != turn_status::do_turn) {
-		// pull info
+//	if (status == turn_status::do_turn && last_turn_status != turn_status::do_turn) {
+//		// pull info
+//
+//		state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
+//
+//		for (auto&& animation_pack : state.animations_queue) {
+//			if (animation_pack.animation_type == animation_types::move) {
+//
+//				std::cout << "move animation\n";
+//
+//				std::size_t from_index = std::get<0>(animation_pack.tup);
+//				std::size_t to_index = std::get<1>(animation_pack.tup);
+//				std::size_t entity_id = std::get<2>(animation_pack.tup);
+//				auto btm_key = animation_pack.btm_key;
+//
+//				if (entity_id != std::numeric_limits<std::size_t>::max()) {
+//					state.board.take(from_index);
+//
+//					animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
+//					animation::base_player::play();
+//
+//					state.board.give_back(entity_id, to_index);
+//
+//				} else {
+//					animation::player<animation::move>::launch(animation::move(from_index, to_index, btm_key));
+//					animation::base_player::play();
+//				}
+//			} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
+//
+//				std::size_t from_index = std::get<0>(animation_pack.tup);
+//				std::size_t time = std::get<1>(animation_pack.tup);
+//				auto btm_key = animation_pack.btm_key;
+//
+//				animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
+//				animation::base_player::play();
+//			}
+//		}
+//
+//		state = client->call("get_game_state").as<decltype(state)>();
+//
+//		update_for_entity();
+//
+//	} else if (status == turn_status::wait) {
+//
+//		state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
+//
+//		std::cout << "wait: " << state.animations_queue.size() << "\n";
+//
+//		if (!state.animations_queue.empty()) {
+//			for (auto&& animation_pack : state.animations_queue) {
+//				if (animation_pack.animation_type == animation_types::move) {
+//
+//					std::cout << "move animation\n";
+//
+//					short from_index = std::get<0>(animation_pack.tup);
+//					short to_index = std::get<1>(animation_pack.tup);
+//					short entity_id = std::get<2>(animation_pack.tup);
+//					auto btm_key = animation_pack.btm_key;
+//
+//					if (entity_id != -1) {
+//						state.board.take(from_index);
+//
+//						animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
+//						animation::base_player::play();
+//
+//						state.board.give_back(entity_id, to_index);
+//
+//					} else {
+//						animation::player<animation::move>::launch(animation::move(from_index, to_index, btm_key));
+//						animation::base_player::play();
+//					}
+//				} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
+//
+//					short from_index = std::get<0>(animation_pack.tup);
+//					short time = std::get<1>(animation_pack.tup);
+//					auto btm_key = animation_pack.btm_key;
+//
+//					animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
+//					animation::base_player::play();
+//				}
+//			}
+//
+//			state = client->call("get_game_state").as<decltype(state)>();
+//
+//			update_for_entity();
+//		}
 
-		state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
-
-		for (auto&& animation_pack : state.animations_queue) {
-			if (animation_pack.animation_type == animation_types::move) {
-
-				std::cout << "move animation\n";
-
-				std::size_t from_index = std::get<0>(animation_pack.tup);
-				std::size_t to_index = std::get<1>(animation_pack.tup);
-				std::size_t entity_id = std::get<2>(animation_pack.tup);
-				auto btm_key = animation_pack.btm_key;
-
-				if (entity_id != std::numeric_limits<std::size_t>::max()) {
-					state.board.take(from_index);
-
-					animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
-					animation::base_player::play();
-
-					state.board.give_back(entity_id, to_index);
-
-				} else {
-					animation::player<animation::move>::launch(animation::move(from_index, to_index, btm_key));
-					animation::base_player::play();
-				}
-			} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
-
-				std::size_t from_index = std::get<0>(animation_pack.tup);
-				std::size_t time = std::get<1>(animation_pack.tup);
-				auto btm_key = animation_pack.btm_key;
-
-				animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
-				animation::base_player::play();
-			}
-		}
-
-		state = client->call("get_game_state").as<decltype(state)>();
-
-		update_for_entity();
-
-	} else if (status == turn_status::wait) {
-
-		state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
-
-		std::cout << "wait: " << state.animations_queue.size() << "\n";
-
-		if (!state.animations_queue.empty()) {
-			for (auto&& animation_pack : state.animations_queue) {
-				if (animation_pack.animation_type == animation_types::move) {
-
-					std::cout << "move animation\n";
-
-					short from_index = std::get<0>(animation_pack.tup);
-					short to_index = std::get<1>(animation_pack.tup);
-					short entity_id = std::get<2>(animation_pack.tup);
-					auto btm_key = animation_pack.btm_key;
-
-					if (entity_id != -1) {
-						state.board.take(from_index);
-
-						animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
-						animation::base_player::play();
-
-						state.board.give_back(entity_id, to_index);
-
-					} else {
-						animation::player<animation::move>::launch(animation::move(from_index, to_index, btm_key));
-						animation::base_player::play();
-					}
-				} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
-
-					short from_index = std::get<0>(animation_pack.tup);
-					short time = std::get<1>(animation_pack.tup);
-					auto btm_key = animation_pack.btm_key;
-
-					animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
-					animation::base_player::play();
-				}
-			}
-
-			state = client->call("get_game_state").as<decltype(state)>();
-
-			update_for_entity();
-		}
-
-	} else if (status == turn_status::do_turn) {
+	if (status == turn_status::do_turn) {
 
 		sf::Event event{};
 		while (window_.pollEvent(event)) {
@@ -223,18 +216,18 @@ void pigeon_war_client::on_board(size_t col, size_t row)
 	if (!block) {
 		block = true;
 
-		client->call("on_board", col, row);
+		call_on_board(socket, col, row);
 
-		state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
+		state.animations_queue = pull_animations(socket);
 
 		for (auto&& animation_pack : state.animations_queue) {
 			if (animation_pack.animation_type == animation_types::move) {
 
 				std::cout << "move animation\n";
 
-				short from_index = std::get<0>(animation_pack.tup);
-				short to_index = std::get<1>(animation_pack.tup);
-				short entity_id = std::get<2>(animation_pack.tup);
+				std::size_t from_index = animation_pack.x;
+				std::size_t to_index = animation_pack.y;
+				std::size_t entity_id = animation_pack.z;
 				auto btm_key = animation_pack.btm_key;
 
 				if (entity_id != -1) {
@@ -251,8 +244,8 @@ void pigeon_war_client::on_board(size_t col, size_t row)
 				}
 			} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
 
-				short from_index = std::get<0>(animation_pack.tup);
-				short time = std::get<1>(animation_pack.tup);
+				std::size_t from_index = animation_pack.x;
+				std::size_t time = animation_pack.y;
 				auto btm_key = animation_pack.btm_key;
 
 				animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
@@ -260,7 +253,7 @@ void pigeon_war_client::on_board(size_t col, size_t row)
 			}
 		}
 
-		state = client->call("get_game_state").as<decltype(state)>();
+		state = get_game_state(socket);
 
 		update_for_entity();
 
@@ -270,11 +263,11 @@ void pigeon_war_client::on_board(size_t col, size_t row)
 
 void pigeon_war_client::on_button(size_t n)
 {
-	client->call("on_button", n);
+	call_on_button(socket, n);
 
-	state.animations_queue = client->call("pull_animations", player_id).as<decltype(state.animations_queue)>();
+	state.animations_queue = pull_animations(socket);
 
-	state = client->call("get_game_state").as<decltype(state)>();
+	state = get_game_state(socket);
 
 	update_for_entity();
 

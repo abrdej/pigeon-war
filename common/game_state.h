@@ -12,6 +12,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <rpc/msgpack.hpp>
+#include "define_packet.h"
 
 static const auto no_selection = std::numeric_limits<std::size_t>::max();
 
@@ -30,5 +31,7 @@ struct game_state {
 
 	MSGPACK_DEFINE_MAP(possible_movements, valid_movements, selected_index, actual_target_type, board, healths, button_bitmaps, entity_name, entities_bitmaps);
 };
+
+PACKET_DEFINE9(game_state, possible_movements, valid_movements, selected_index, actual_target_type, board, healths, button_bitmaps, entity_name, entities_bitmaps)
 
 #endif //PIGEONWAR_COMMON_DATA_H

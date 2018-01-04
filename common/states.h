@@ -6,6 +6,7 @@
 #define PIGEONWAR_STATES_H
 
 #include <rpc/msgpack.hpp>
+#include "add_enum.h"
 
 namespace states {
 
@@ -18,5 +19,8 @@ static const std::size_t no_selected_index = std::numeric_limits<std::size_t>::m
 
 MSGPACK_ADD_ENUM(states::states_types);
 MSGPACK_ADD_ENUM(states::target_types);
+
+PACKET_ADD_ENUM(states::states_types)
+PACKET_ADD_ENUM(states::target_types)
 
 #endif //PIGEONWAR_STATES_H
