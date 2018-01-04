@@ -15,9 +15,10 @@ struct animations_queue {
 		queue[0].push_back(x);
 		queue[1].push_back(x);
 	}
-	static void push_animation(animation_types a, std::size_t x, std::size_t y, std::size_t z, bitmap_key k) {
-		queue[0].push_back(animation_pack(a, x, y, z, k));
-		queue[1].push_back(animation_pack(a, x, y, z, k));
+	static void push_animation(const animation_types& a, std::size_t x, std::size_t y, std::size_t z, bitmap_key k) {
+		animation_pack temp(a, x, y, z, k);
+		queue[0].emplace_back(temp);
+		queue[1].emplace_back(temp);
 	}
 	static std::vector<animation_pack> pull_all(int id) {
 		return std::move(queue[id]);

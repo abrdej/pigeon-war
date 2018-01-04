@@ -10,23 +10,61 @@
 #include <chrono>
 #include <thread>
 #include <common/turn_status.h>
+#include <SFML/Network.hpp>
 #include "core/game.h"
 #include "common/game_state.h"
 #include "managers/bitmap_field_manager.h"
 #include "managers/health_manager.h"
 #include "managers/names_manager.h"
+#include "Binder.h"
 
 int main() {
 
 	game g;
 
-	rpc::server server(8080);
+	sf::TcpListener listener;
+
+	if (listener.listen(8081) != sf::Socket::Done) {
+		std::cout << "Listener error\n";
+	}
+
+	sf::TcpSocket client;
+	if (listener.accept(client) != sf::Socket::Done)
+	{
+		std::cout << "Client error\n";
+	}
 
 	std::atomic_int player_id{0};
+
+	Binder binder;
+
+	binder.bind("get_player_id", [&](const nlohmann::json&) -> nlohmann::json {
+
+		std::cout << "get_player_id\n";
+
+		auto new_player_id = player_id++;
+
+		nlohmann::json json_object;
+		json_object["name"] = "return_player_id";
+		json_object["value"] = new_player_id;
+
+		return json_object;
+	});
+
+	binder.start(client);
+
+
+	rpc::server server(8080);
+
+
 
 	server.bind("get_player_id", [&]() {
 		std::cout << "get_player_id\n";
 		return player_id++;
+	});
+
+	server.bind("wait", [&]() {
+
 	});
 
 	server.bind("get_status", [&](int id) -> turn_status {

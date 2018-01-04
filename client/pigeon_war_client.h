@@ -2,6 +2,7 @@
 #define GUI_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
 #include <thread>
 #include "gui/my_button.h"
 #include "gui/board_panel.h"
@@ -40,6 +41,7 @@ private:
 
 private:
 	std::unique_ptr<rpc::client> client;
+	sf::TcpSocket socket;
 
 	static const int no_player_id = std::numeric_limits<int>::max();
 	int player_id{no_player_id};

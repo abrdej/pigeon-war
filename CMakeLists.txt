@@ -173,7 +173,7 @@ set(SERVER_SOURCE_FILES
 #        client/gui/bitmap_center.cpp
 #        client/gui/my_button.cpp
 
-        server/core/animations_queue.cpp server/core/animations_queue.h)
+        server/core/animations_queue.cpp server/core/animations_queue.h server/Binder.h)
 
 set(CLIENT_SOURCE_FILES
         client/gui/bitmap_center.cpp

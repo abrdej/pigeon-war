@@ -6,6 +6,7 @@
 #include <chrono>
 #include <core/board.h>
 #include <common/turn_status.h>
+#include "json.hpp"
 
 namespace view
 {
@@ -27,6 +28,28 @@ pigeon_war_client::pigeon_war_client()
 void pigeon_war_client::run()
 {
 	client = std::make_unique<rpc::client>("127.0.0.1", 8080);
+
+	auto status = socket.connect("127.0.0.1", 8081);
+	if (status != sf::Socket::Done) {
+		std::cout << "Socket connecting error\n";
+	}
+
+	using json = nlohmann::json;
+	json json_object;
+	json_object["name"] = "get_player_id";
+
+	std::string json_data = json_object.dump();
+
+	sf::Packet packet;
+	packet << json_data;
+	socket.send(packet);
+
+	socket.receive(packet);
+
+	std::string message;
+	packet >> message;
+
+	std::cout << "Message: " << message << "\n";
 
 	player_id = client->call("get_player_id").as<int>();
 
@@ -56,6 +79,8 @@ void pigeon_war_client::run()
 void pigeon_war_client::update()
 {
 	std::cout << "update\n";
+
+	client->call("wait");
 
 	auto status = client->call("get_status", player_id).as<turn_status>();
 
@@ -88,8 +113,8 @@ void pigeon_war_client::update()
 				}
 			} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
 
-				short from_index = std::get<0>(animation_pack.tup);
-				short time = std::get<1>(animation_pack.tup);
+				std::size_t from_index = std::get<0>(animation_pack.tup);
+				std::size_t time = std::get<1>(animation_pack.tup);
 				auto btm_key = animation_pack.btm_key;
 
 				animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
