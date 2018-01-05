@@ -116,9 +116,19 @@ int main() {
 		packet >> this_player_id;
 		packet >> n;
 
-		g.on_button(n);
+		if (this_player_id == players::active_player_index()) {
+			g.on_button(n);
+
+		} else {
+			std::cout << "on_board_2\n";
+
+			g.on_button_2(n, lstates[this_player_id]);
+		}
 
 		if (n == 5) {
+
+			lstates = std::vector<local_state>(2);
+
 			auto active_player = players::active_player_index();
 
 			sf::Packet result_packet;
@@ -129,8 +139,23 @@ int main() {
 
 		binder.send_notification(make_packet("animations", animations_queue::pull_all(0)));
 
-		binder.send_notification_to((players::active_player_index()) % 2, make_packet("local_state", get_local_state(g)));
-		binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("local_state", local_state()));
+		if (n == 5) {
+
+			binder.send_notification_to(players::active_player_index(), make_packet("local_state", get_local_state(g)));
+			binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("local_state", local_state()));
+
+		} else {
+
+			if (this_player_id == players::active_player_index()) {
+				binder.send_notification_to(this_player_id, make_packet("local_state", get_local_state(g)));
+
+			} else {
+				binder.send_notification_to(this_player_id, make_packet("local_state", lstates[this_player_id]));
+			}
+		}
+
+//		binder.send_notification_to((players::active_player_index()) % 2, make_packet("local_state", get_local_state(g)));
+//		binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("local_state", local_state()));
 
 		binder.send_notification(make_packet("game_state", get_game_state(g)));
 	});

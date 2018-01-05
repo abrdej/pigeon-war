@@ -81,7 +81,8 @@ void game::on_board_2(std::size_t col, std::size_t row, local_state& lstate) {
 		auto entity_id = board::at(index);
 		auto& entity_abilities = abilities_manager::component_for(entity_id);
 
-		auto bk = state_controller::possible_movements_;
+		auto bkpm = state_controller::possible_movements_;
+		auto bkatt = state_controller::actual_targeting_type_;
 
 		if (entity_abilities.is_active) {
 			auto moveable = entity_abilities.at(0);
@@ -91,6 +92,7 @@ void game::on_board_2(std::size_t col, std::size_t row, local_state& lstate) {
 		}
 
 		lstate.possible_movements = state_controller::possible_movements_;
+		lstate.actual_target_type = state_controller::actual_targeting_type_;
 
 		lstate.button_bitmaps.fill(bitmap_key::none);
 
@@ -110,7 +112,8 @@ void game::on_board_2(std::size_t col, std::size_t row, local_state& lstate) {
 
 		lstate.entity_name = names_manager::component_for(board::at(index));
 
-		state_controller::possible_movements_ = bk;
+		state_controller::possible_movements_ = bkpm;
+		state_controller::actual_targeting_type_ = bkatt;
 	}
 }
 
@@ -150,6 +153,39 @@ void game::on_button(size_t n)
 			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
 			//on_button(14);
 		}
+	}
+}
+
+void game::on_button_2(std::size_t n, local_state& lstate) {
+
+	if (n >= 0 && n <= 3) // 4 is passive
+	{
+		auto selected_index = lstate.selected_index;
+
+		//if (!players_funcs::player_entity(selected_index)) {
+		//	std::cout << "not player entity\n";
+		//	return;
+		//}
+
+		auto entity_id = board::at(selected_index);
+		auto& entity_abilities = abilities_manager::component_for(entity_id);
+
+		auto bkpm = states::state_controller::possible_movements_;
+		auto bkatt = states::state_controller::actual_targeting_type_;
+
+		if (entity_abilities.is_active) {
+			auto entity_ability = entity_abilities.at(n);
+			if (entity_ability) {
+				entity_ability->operator()(states::state_controller::selected_index_);
+			}
+		}
+
+		lstate.possible_movements = states::state_controller::possible_movements_;
+		lstate.actual_target_type = states::state_controller::actual_targeting_type_;
+
+		states::state_controller::possible_movements_ = bkpm;
+		states::state_controller::actual_targeting_type_ = bkatt;
+
 	}
 }
 
