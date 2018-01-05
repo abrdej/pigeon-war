@@ -10,8 +10,8 @@
 #include "caller.h"
 #include "requests.h"
 
-namespace view
-{
+using view::pigeon_war_client;
+
 pigeon_war_client::pigeon_war_client()
 		: window_(sf::VideoMode(1000, 700), "Turn based!") //, sf::Style::Fullscreen),
 {
@@ -253,4 +253,3 @@ void pigeon_war_client::update_for_entity()
 
 	buttons_panel_.set_for_entity_for(lstate.entity_name, lstate.button_bitmaps);
 }
-};
