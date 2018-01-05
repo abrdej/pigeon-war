@@ -22,6 +22,7 @@ public:
 	static bool neutral_entity(size_t entity_id);
 	static const player_id_type& active_player_name();
 	static bool active_player_ai();
+	static size_t active_player_index();
 	static void next_player();
 	static player_id_type player_for_entity(size_t entity_id);
 

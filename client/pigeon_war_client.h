@@ -29,6 +29,7 @@ public:
 
 private:
 	void update();
+	void receive_messages();
 	void draw(sf::RenderWindow& window);
 	void on_mouse_click(const point_type& args);
 
@@ -39,17 +40,18 @@ private:
 	void update_for_entity();
 
 private:
-	//std::unique_ptr<rpc::client> client;
 	sf::TcpSocket socket;
 	sf::SocketSelector selector;
 
 	static const int no_player_id = std::numeric_limits<int>::max();
 	int player_id{no_player_id};
 
-	turn_status last_turn_status{turn_status::update};
+	turn_status this_turn_status{turn_status::wait};
+	bool play_animations{false};
 
 	friend class board_drawer;
 	game_state state;
+	local_state lstate;
 
 	sf::RenderWindow window_;
 	board_panel board_panel_;

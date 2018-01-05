@@ -48,6 +48,19 @@ inline sf::Packet& operator >>(sf::Packet& packet, NAME& x) \
 } \
 
 
+#define PACKET_DEFINE6(NAME, M1, M2, M3, M4, M5, M6) \
+ \
+inline sf::Packet& operator <<(sf::Packet& packet, const NAME& x) \
+{ \
+	return packet << x.M1 << x.M2 << x.M3 << x.M4 << x.M5 << x.M6; \
+} \
+ \
+inline sf::Packet& operator >>(sf::Packet& packet, NAME& x) \
+{ \
+	return packet >> x.M1 >> x.M2 >> x.M3 >> x.M4 >> x.M5 >> x.M6; \
+} \
+
+
 #define PACKET_DEFINE9(NAME, M1, M2, M3, M4, M5, M6, M7, M8, M9) \
  \
 inline sf::Packet& operator <<(sf::Packet& packet, const NAME& x) \

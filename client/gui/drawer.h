@@ -16,13 +16,14 @@ namespace view
 class board_drawer
 {
 public:
-	board_drawer(game_state& state, sf::RenderWindow& window)
+	board_drawer(game_state& state, local_state& lstate, sf::RenderWindow& window)
 			: state(state),
+			  lstate(lstate),
 			  window_(window)
 	{}
 	void draw()
 	{
-		draw_selection(state.selected_index);
+		draw_selection(lstate.selected_index);
 		draw_possible_movements();
 	}
 
@@ -40,27 +41,27 @@ private:
 	}
 	void draw_possible_movements()
 	{
-		for (auto& possible_movement : state.possible_movements)
+		for (auto& possible_movement : lstate.possible_movements)
 			draw_possible_movement(possible_movement);
 	}
 	void draw_possible_movement(size_t index)
 	{
-		if (state.actual_target_type == states::target_types::non)
+		if (lstate.actual_target_type == states::target_types::non)
 			return;
 
 		sf::Sprite sprite;
 
-		if (state.actual_target_type == states::target_types::moving)
+		if (lstate.actual_target_type == states::target_types::moving)
 			sprite.setTexture(bitmap_center::grass_move_bitmap);
-		else if (state.actual_target_type == states::target_types::enemy)
+		else if (lstate.actual_target_type == states::target_types::enemy)
 		{
-			if (state.valid_movements.find(index) != std::end(state.valid_movements))
+			if (lstate.valid_movements.find(index) != std::end(lstate.valid_movements))
 				sprite.setTexture(bitmap_center::grass_damage_bitmap);
 			else
 				sprite.setTexture(bitmap_center::grass_attack_bitmap);
-		} else if (state.actual_target_type == states::target_types::friendly)
+		} else if (lstate.actual_target_type == states::target_types::friendly)
 		{
-			if (state.valid_movements.find(index) != std::end(state.valid_movements))
+			if (lstate.valid_movements.find(index) != std::end(lstate.valid_movements))
 				sprite.setTexture(bitmap_center::grass_boost_bitmap);
 			else
 				sprite.setTexture(bitmap_center::grass_friendly_bitmap);
@@ -75,6 +76,7 @@ private:
 
 private:
 	game_state& state;
+	local_state& lstate;
 	sf::RenderWindow& window_;
 };
 };

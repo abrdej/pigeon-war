@@ -15,7 +15,7 @@ struct animations_queue {
 		queue[0].push_back(x);
 		queue[1].push_back(x);
 	}
-	static void push_animation(const animation_types& a, std::size_t x, std::size_t y, std::size_t z, bitmap_key k) {
+	static void push_animation(const animation_types& a, int x, int y, int z, bitmap_key k) {
 		animation_pack temp(a, x, y, z, k);
 		queue[0].emplace_back(temp);
 		queue[1].emplace_back(temp);

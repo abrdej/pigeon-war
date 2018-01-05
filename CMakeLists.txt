@@ -173,7 +173,7 @@ set(SERVER_SOURCE_FILES
 #        client/gui/bitmap_center.cpp
 #        client/gui/my_button.cpp
 
-        server/core/animations_queue.cpp server/core/animations_queue.h server/Binder.h)
+        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h)
 
 set(CLIENT_SOURCE_FILES
         client/gui/bitmap_center.cpp
@@ -216,4 +216,4 @@ add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
 target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} rpc pthread)
 
 add_executable(pigeonwar_server server/main.cpp ${SERVER_SOURCE_FILES})
-target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} rpc pthread)
+target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} rpc pthread tbb)

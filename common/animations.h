@@ -24,15 +24,15 @@ MSGPACK_ADD_ENUM(animation_types);
 
 struct animation_pack {
 	animation_pack() = default;
-	animation_pack(const animation_types& a, std::size_t x, std::size_t y, std::size_t z, bitmap_key k)
+	animation_pack(const animation_types& a, int x, int y, int z, bitmap_key k)
 			: animation_type(a), x(x), y(y), z(z), btm_key(k) {
 	}
 
 	animation_types animation_type;
 
-	std::size_t x;
-	std::size_t y;
-	std::size_t z;
+	int x;
+	int y;
+	int z;
 
 	bitmap_key btm_key;
 

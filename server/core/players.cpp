@@ -53,6 +53,10 @@ bool players::active_player_ai()
 	return players_[active_player_].second;
 }
 
+size_t players::active_player_index() {
+	return active_player_;
+}
+
 void players::next_player()
 {
 	active_player_ = (++active_player_) % players_.size();

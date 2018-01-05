@@ -48,13 +48,13 @@ void shoot::play_animation(std::size_t entity_id, size_t from_index, size_t to_i
 	animations_queue::push_animation(animation_types::move,
 									 from_index,
 									 to_index,
-									 std::numeric_limits<std::size_t>::max(),
+									 -1,
 									 bitmap_key::shoot);
 
 	animations_queue::push_animation(animation_types::flash_bitmap,
 									 to_index,
 									 150,
-									 std::numeric_limits<std::size_t>::max(),
+									 -1,
 									 bitmap_key::bum);
 }
 

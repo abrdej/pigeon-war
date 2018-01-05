@@ -33,9 +33,8 @@ void game::on_board(size_t col, size_t row)
 {
 	using namespace states;
 
-	std::cout << "on board\n";
-
 	auto index = board::to_index(col, row);
+
 	if (board::empty(index) && state_controller::actual_state_ == states_types::waiting)
 		return;
 
@@ -64,6 +63,55 @@ void game::on_board(size_t col, size_t row)
 		state_controller::actual_targeting_type_ = target_types::non;
 		state_controller::selected_index_ = index;
 	}		
+}
+
+void game::on_board_2(std::size_t col, std::size_t row, local_state& lstate) {
+
+	using namespace states;
+
+	auto index = board::to_index(col, row);
+
+	if (board::empty(index) && state_controller::actual_state_ == states_types::waiting)
+		return;
+
+	if (!board::empty(index)) {
+
+		lstate.selected_index = index;
+
+		auto entity_id = board::at(index);
+		auto& entity_abilities = abilities_manager::component_for(entity_id);
+
+		auto bk = state_controller::possible_movements_;
+
+		if (entity_abilities.is_active) {
+			auto moveable = entity_abilities.at(0);
+			if (moveable) {
+				moveable->operator()(index);
+			}
+		}
+
+		lstate.possible_movements = state_controller::possible_movements_;
+
+		lstate.button_bitmaps.fill(bitmap_key::none);
+
+		auto id = board::at(index);
+		if (id != board::empty_id) {
+			auto& bitmap_field = bitmap_field_manager::component_for(id);
+			lstate.button_bitmaps[0] = bitmap_field.bmt_key;
+
+			auto& abilities = abilities_manager::component_for(board::at(index));
+			for (std::size_t i = 1; i < 6; ++i) {
+				auto ability = abilities.at(i - 1);
+				if (ability) {
+					lstate.button_bitmaps[i] = ability->get_bitmap_key();
+				}
+			}
+		}
+
+		lstate.entity_name = names_manager::component_for(board::at(index));
+
+		state_controller::possible_movements_ = bk;
+	}
 }
 
 void game::on_button(size_t n)

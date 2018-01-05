@@ -45,5 +45,10 @@ inline T send_and_receive(sf::TcpSocket& socket, const std::string& name, Args&&
 	return std::move(x);
 }
 
+template <typename T>
+inline void unpack(sf::Packet& packet, T& x) {
+	packet >> x;
+}
+
 
 #endif //PIGEONWAR_CALLER_H

@@ -129,8 +129,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::pair<T1, T2>& x)
 template <typename K, typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_map<K, T>& x)
 {
-	sf::Uint64 size = x.size();
-	packet << size;
+	packet << x.size();
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -142,7 +141,9 @@ inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_map<K, T
 template <typename K, typename T>
 inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_map<K, T>& x)
 {
-	sf::Uint64 size;
+	x.clear();
+
+	std::size_t size;
 	packet >> size;
 
 	for (std::size_t i = 0; i < size; ++i) {
@@ -157,8 +158,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_map<K, T>& x)
 template <typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_set<T>& x)
 {
-	sf::Uint64 size = x.size();
-	packet << size;
+	packet << x.size();
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -170,7 +170,9 @@ inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_set<T>& 
 template <typename T>
 inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_set<T>& x)
 {
-	sf::Uint64 size;
+	x.clear();
+
+	std::size_t size;
 	packet >> size;
 
 	for (std::size_t i = 0; i < size; ++i) {
