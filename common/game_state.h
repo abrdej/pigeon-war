@@ -11,7 +11,7 @@
 #include "animations.h"
 #include <unordered_set>
 #include <unordered_map>
-#include <rpc/msgpack.hpp>
+#include "packet_helper.h"
 #include "define_packet.h"
 
 static const auto no_selection = std::numeric_limits<std::size_t>::max();

@@ -23,7 +23,7 @@ private:
 	const int range = 3;
 	const int damage = 6;
 	const int bullets_n = 2;
-	size_t bullets;
+	int bullets;
 };
 
 #endif

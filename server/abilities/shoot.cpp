@@ -56,6 +56,8 @@ void shoot::play_animation(std::size_t entity_id, size_t from_index, size_t to_i
 									 150,
 									 -1,
 									 bitmap_key::bum);
+
+	animations_queue::pull();
 }
 
 void shoot::refresh_usable()

@@ -129,6 +129,17 @@ void pigeon_war_client::receive_messages() {
 					animation::player<animation::change_health>::launch(animation::change_health(to_index, change_health));
 					animation::base_player::play();
 
+				} else if (animation_pack.animation_type == animation_types::hide_show) {
+
+					int index = animation_pack.x;
+					int hide_show = animation_pack.y;
+					int entity_id = animation_pack.z;
+
+					if (hide_show == 0) {
+						state.board.take(index);
+					} else {
+						state.board.give_back(entity_id, index);
+					}
 				}
 			}
 

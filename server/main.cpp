@@ -1,6 +1,4 @@
 #include <iostream>
-#include <rpc/server.h>
-#include <rpc/msgpack.hpp>
 #include <core/board.h>
 #include <core/states_controller.h>
 #include <managers/abilities_manager.h>
@@ -70,35 +68,41 @@ int main() {
 
 	server binder;
 
+	animations_queue::set_pull_function([&binder](){
+		binder.send_notification(make_packet("animations", animations_queue::pull_all()));
+	});
+
 	std::vector<local_state> lstates(2);
 
 	binder.bind("on_board", [&](sf::Packet& packet) {
 		std::cout << "on_board\n";
 
-		int this_player_id;
+		int client_id;
 		size_t x;
 		size_t y;
 
-		packet >> this_player_id;
+		packet >> client_id;
 		packet >> x;
 		packet >> y;
 
-		if (this_player_id == players::active_player_index()) {
+        bool single_client = binder.is_single_client();
+
+		if (client_id == players::active_player_index() || single_client) {
 			g.on_board(x, y);
 
 		} else {
 			std::cout << "on_board_2\n";
 
-			g.on_board_2(x, y, lstates[this_player_id]);
+			g.on_board_2(x, y, lstates[client_id]);
 		}
 
-		binder.send_notification(make_packet("animations", animations_queue::pull_all(0)));
+		binder.send_notification(make_packet("animations", animations_queue::pull_all()));
 
-		if (this_player_id == players::active_player_index()) {
-			binder.send_notification_to(this_player_id, make_packet("local_state", get_local_state(g)));
+		if (client_id == players::active_player_index() || single_client) {
+			binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
 
 		} else {
-			binder.send_notification_to(this_player_id, make_packet("local_state", lstates[this_player_id]));
+			binder.send_notification_to(client_id, make_packet("local_state", lstates[client_id]));
 		}
 
 
@@ -110,19 +114,21 @@ int main() {
 	binder.bind("on_button", [&](sf::Packet& packet) {
 		std::cout << "on_button\n";
 
-		int this_player_id;
+		int client_id;
 		std::size_t n;
 
-		packet >> this_player_id;
+		packet >> client_id;
 		packet >> n;
 
-		if (this_player_id == players::active_player_index()) {
+        bool single_client = binder.is_single_client();
+
+		if (client_id == players::active_player_index() || single_client) {
 			g.on_button(n);
 
 		} else {
 			std::cout << "on_board_2\n";
 
-			g.on_button_2(n, lstates[this_player_id]);
+			g.on_button_2(n, lstates[client_id]);
 		}
 
 		if (n == 5) {
@@ -137,20 +143,24 @@ int main() {
 			binder.send_notification(result_packet);
 		}
 
-		binder.send_notification(make_packet("animations", animations_queue::pull_all(0)));
+		binder.send_notification(make_packet("animations", animations_queue::pull_all()));
 
 		if (n == 5) {
 
-			binder.send_notification_to(players::active_player_index(), make_packet("local_state", get_local_state(g)));
-			binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("local_state", local_state()));
+            if (single_client) {
+                binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
+            } else {
+                binder.send_notification_to(players::active_player_index(), make_packet("local_state", get_local_state(g)));
+                binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("local_state", local_state()));
+            }
 
 		} else {
 
-			if (this_player_id == players::active_player_index()) {
-				binder.send_notification_to(this_player_id, make_packet("local_state", get_local_state(g)));
+			if (client_id == players::active_player_index() || single_client) {
+				binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
 
 			} else {
-				binder.send_notification_to(this_player_id, make_packet("local_state", lstates[this_player_id]));
+				binder.send_notification_to(client_id, make_packet("local_state", lstates[client_id]));
 			}
 		}
 

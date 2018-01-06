@@ -10,7 +10,8 @@
 #include <thread>
 #include <atomic>
 #include <SFML/Network.hpp>
-#include <tbb/concurrent_queue.h>
+//#include <tbb/concurrent_queue.h>
+#include <boost/lockfree/spsc_queue.hpp>
 #include "packets_makers.h"
 
 struct server {
@@ -25,7 +26,9 @@ struct server {
 
 	std::vector<std::shared_ptr<sf::TcpSocket>> clients;
 
-	tbb::concurrent_queue<std::pair<std::size_t, sf::Packet>> packets_to_send;
+	//tbb::concurrent_queue<std::pair<std::size_t, sf::Packet>> packets_to_send;
+//	boost::queue_adaptor<std::queue<std::pair<std::size_t, sf::Packet>>> packets_to_send;
+	boost::lockfree::spsc_queue<std::pair<std::size_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
 
 	server() {
 
@@ -42,10 +45,16 @@ struct server {
 
 	void send_notification(const sf::Packet& packet) {
 		packets_to_send.push(std::make_pair(std::numeric_limits<std::size_t>::max(), packet));
+
+
 	}
 
 	void send_notification_to(std::size_t index, sf::Packet packet) {
 		packets_to_send.push(std::make_pair(index, packet));
+	}
+
+	bool is_single_client() const {
+		return clients.size() == 1;
 	}
 
 	void start() {
@@ -103,7 +112,8 @@ struct server {
 				}
 
 				std::pair<std::size_t, sf::Packet> packet_pack;
-				while (packets_to_send.try_pop(packet_pack)) {
+
+				while (packets_to_send.pop(packet_pack)) {
 
 					if (packet_pack.first == std::numeric_limits<std::size_t>::max()) {
 						for (auto&& client : clients) {

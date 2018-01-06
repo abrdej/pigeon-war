@@ -5,12 +5,9 @@
 #ifndef PIGEONWAR_TURN_STATUS_H
 #define PIGEONWAR_TURN_STATUS_H
 
-#include <rpc/msgpack.hpp>
 #include <SFML/Network/Packet.hpp>
 
 enum class turn_status { do_turn, wait, update };
-
-MSGPACK_ADD_ENUM(turn_status);
 
 inline sf::Packet& operator <<(sf::Packet& packet, const turn_status& status)
 {

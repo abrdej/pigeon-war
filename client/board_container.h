@@ -10,7 +10,6 @@
 #include <algorithm>
 #include <functional>
 #include <limits>
-#include <rpc/msgpack.hpp>
 #include "common/define_packet.h"
 
 class board_container final {
@@ -113,8 +112,6 @@ public:
 		return col >= 0 && col < cols_n && row >= 0 && row < rows_n;
 	}
     std::array<std::vector<std::size_t>, cols_n * rows_n> fields_;
-
-	MSGPACK_DEFINE(fields_);
 };
 
 PACKET_DEFINE1(board_container, fields_)

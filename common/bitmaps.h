@@ -5,7 +5,6 @@
 #ifndef PIGEONWAR_BITMAPS_H
 #define PIGEONWAR_BITMAPS_H
 
-#include <rpc/msgpack.hpp>
 #include "common/add_enum.h"
 
 enum class bitmap_key {
@@ -133,8 +132,6 @@ struct bitmaps_key_hash
 		return static_cast<std::size_t>(t);
 	}
 };
-
-MSGPACK_ADD_ENUM(bitmap_key);
 
 PACKET_ADD_ENUM(bitmap_key)
 

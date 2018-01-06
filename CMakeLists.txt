@@ -19,6 +19,10 @@ if(WIN32)
     link_directories("${CMAKE_SOURCE_DIR}/lib")
 endif()
 
+if(UNIX)
+    set(PLATFORM_LIBS pthread)
+endif()
+
 find_package(SFML 2 REQUIRED network audio graphics window system)
 include_directories(${SFML_INCLUDE_DIR})
 
@@ -213,7 +217,7 @@ set(CLIENT_SOURCE_FILES
         common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h)
 
 add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
-target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} rpc pthread)
+target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
 
 add_executable(pigeonwar_server server/main.cpp ${SERVER_SOURCE_FILES})
-target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} rpc pthread tbb)
+target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})

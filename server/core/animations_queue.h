@@ -6,23 +6,29 @@
 #define PIGEONWAR_ANIMATIONS_QUEUE_H
 
 #include <vector>
+#include <functional>
 #include "common/animations.h"
 
 struct animations_queue {
-	static std::array<std::vector<animation_pack>, 2> queue;
+
+	static std::vector<animation_pack> queue;
+    static std::function<void()> pull_fn;
 
 	static void push_animation(const animation_pack& x) {
-		queue[0].push_back(x);
-		queue[1].push_back(x);
+		queue.push_back(x);
 	}
 	static void push_animation(const animation_types& a, int x, int y, int z, bitmap_key k) {
-		animation_pack temp(a, x, y, z, k);
-		queue[0].emplace_back(temp);
-		queue[1].emplace_back(temp);
+		queue.emplace_back(a, x, y, z, k);
 	}
-	static std::vector<animation_pack> pull_all(int id) {
-		return std::move(queue[id]);
+	static std::vector<animation_pack> pull_all() {
+		return std::move(queue);
 	}
+    static void set_pull_function(std::function<void()> fn) {
+        pull_fn = fn;
+    }
+    static void pull() {
+        pull_fn();
+    }
 };
 
 

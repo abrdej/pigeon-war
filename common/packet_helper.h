@@ -12,23 +12,23 @@
 #include <unordered_set>
 #include "utils.h"
 
-inline sf::Packet& operator <<(sf::Packet& packet, std::size_t x)
-{
-	sf::Uint64 x_conv = x;
-	packet << x_conv;
-
-	return packet;
-}
-
-inline sf::Packet& operator >>(sf::Packet& packet, std::size_t& x)
-{
-	sf::Uint64 x_conv;
-	packet >> x_conv;
-
-	x = x_conv;
-
-	return packet;
-}
+//inline sf::Packet& operator <<(sf::Packet& packet, const size_t x)
+//{
+//	sf::Uint64 x_conv = x;
+//	packet << x_conv;
+//
+//	return packet;
+//}
+//
+//inline sf::Packet& operator >>(sf::Packet& packet, size_t& x)
+//{
+//	sf::Uint64 x_conv;
+//	packet >> x_conv;
+//
+//	x = x_conv;
+//
+//	return packet;
+//}
 
 template <typename... TT>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::tuple<TT...>& x)

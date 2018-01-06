@@ -54,6 +54,12 @@ void spider_web::use(size_t index_on) {
 
     auto enemy_id = board::take(index_on);
 
+    animations_queue::push_animation(animation_types::hide_show,
+                                     index_on,
+                                     0,
+                                     0,
+                                     bitmap_key::none);
+
     if (index_on != land_index) {
         animations_queue::push_animation(animation_types::move,
                                          index_on,
@@ -69,6 +75,12 @@ void spider_web::use(size_t index_on) {
                                      bitmap_key::spider_web);
 
     board::give_back(enemy_id, land_index);
+
+    animations_queue::push_animation(animation_types::hide_show,
+                                     land_index,
+                                     1,
+                                     enemy_id,
+                                     bitmap_key::none);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, caster_id));
 

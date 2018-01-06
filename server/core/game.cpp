@@ -62,7 +62,7 @@ void game::on_board(size_t col, size_t row)
 		state_controller::actual_state_ = states_types::waiting;
 		state_controller::actual_targeting_type_ = target_types::non;
 		state_controller::selected_index_ = index;
-	}		
+	}
 }
 
 void game::on_board_2(std::size_t col, std::size_t row, local_state& lstate) {

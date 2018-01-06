@@ -8,19 +8,17 @@
 #include <tuple>
 #include <iostream>
 #include "bitmaps.h"
-#include <rpc/msgpack.hpp>
 #include "add_enum.h"
 #include "define_packet.h"
 
 enum class animation_types {
 	move,
 	flash_bitmap,
-	change_health
+	change_health,
+	hide_show
 };
 
 PACKET_ADD_ENUM(animation_types)
-
-MSGPACK_ADD_ENUM(animation_types);
 
 struct animation_pack {
 	animation_pack() = default;
@@ -35,8 +33,6 @@ struct animation_pack {
 	int z;
 
 	bitmap_key btm_key;
-
-	//MSGPACK_DEFINE_MAP(animation_type, tup, btm_key);
 };
 
 PACKET_DEFINE5(animation_pack, animation_type, x, y, z, btm_key)
