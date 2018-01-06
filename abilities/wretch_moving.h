@@ -25,7 +25,7 @@ private:
     std::size_t entity_id;
     int max_range{4};
     int range{4};
-    const int power_decrease_for_cost{2};
+    const int power_decrease_for_cost{3};
     bool used{false};
 };
 

@@ -97,7 +97,10 @@ enum class bitmap_key {
     fir,
     wretch,
     wretch_moving,
-    vicious_circle
+    vicious_circle,
+	killer,
+	giant,
+	kill
 };
 
 struct bitmaps_key_hash

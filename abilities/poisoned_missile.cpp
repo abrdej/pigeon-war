@@ -57,6 +57,10 @@ void poisoned_missile::use(size_t index_on) {
                                      "poison",
                                      poison_receiver);
 
+    auto& abilities = abilities_manager::component_for(entity_id);
+    auto moveable_ptr = std::static_pointer_cast<moveable>(abilities.type(abilities::ability_types::moving));
+    moveable_ptr->refresh_range();
+
     used = true;
 }
 

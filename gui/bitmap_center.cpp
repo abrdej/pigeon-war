@@ -159,6 +159,9 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::fir, "fir.png");
     add_bitmap(bitmap_key::wretch, "wretch.png");
     add_bitmap(bitmap_key::wretch_moving, "moving.png");
-    add_bitmap(bitmap_key::vicious_circle, "water.png");
+    add_bitmap(bitmap_key::vicious_circle, "magic_energy.png");
+    add_bitmap(bitmap_key::killer, "killer.png");
+    add_bitmap(bitmap_key::giant, "giant.png");
+    add_bitmap(bitmap_key::kill, "kill.png");
 }
 }

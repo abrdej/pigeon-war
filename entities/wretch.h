@@ -22,7 +22,7 @@ struct wretch final
         entity_name(components) = "Wretch";
         entity_health(components).base_health = 45;
         entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<wretch_moving>(id));
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<vicious_circle>(id));
+        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<vicious_circle>(id));
         entity_directions(components) = directions::left;
         entity_drawer_ptr(components) = std::make_shared<entity_drawer>(id, bitmap_key::wretch);
         entity_power(components).base_power = 20;

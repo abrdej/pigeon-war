@@ -77,6 +77,7 @@ class healths_manager : public base_manager<health_field, health_field>
 			impl = [](health_field& health_pack, const damage_pack& dmg) {
 
 				auto final_damage = (std::min)(health_pack.health, dmg.damage_value);
+
 				health_pack.health -= final_damage;
 
 				return final_damage;

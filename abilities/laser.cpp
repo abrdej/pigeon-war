@@ -90,13 +90,13 @@ void laser::use(size_t index_on) {
 				auto dmg_receiver = healths_manager::get_damage_receiver(enemy_id);
 
 				healths_manager::set_damage_receiver(enemy_id,
-													 [this, dmg_receiver](health_field& health_pack,
+													 [dmg_receiver, bonus_dmg = bonus_damage](health_field& health_pack,
 																		  const damage_pack& dmg) mutable {
 
 														 auto damage = dmg_receiver(health_pack, dmg);
 
 														 auto final_bonus_damage = std::min(health_pack.health,
-																							bonus_damage);
+																							bonus_dmg);
 
 														 health_pack.health -= final_bonus_damage;
 
