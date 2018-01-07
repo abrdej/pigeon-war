@@ -42,12 +42,14 @@ void poisoned_missile::use(size_t index_on) {
     auto enemy_id = board::at(index_on);
 
     auto poison_receiver =
-            turn::turn_system::every_round([this, enemy_id, counter = 0, pl = poison_last]() mutable {
+            turn::turn_system::every_turn([this, enemy_id, counter = 0, pl = poison_last]() mutable {
 
-                damage_dealers::standard_damage_dealer(special_damage(5, enemy_id));
-                if (++counter == pl) {
-                    additions_manager::remove_component(enemy_id,
-                                                        "poison");
+                if (counter++ % 2) {
+                    damage_dealers::standard_damage_dealer(special_damage(5, enemy_id));
+                    if (counter == pl * 2) {
+                        additions_manager::remove_component(enemy_id,
+                                                            "poison");
+                    }
                 }
     });
 
@@ -55,6 +57,10 @@ void poisoned_missile::use(size_t index_on) {
     additions_manager::add_component(enemy_id,
                                      "poison",
                                      poison_receiver);
+
+    auto& abilities = abilities_manager::component_for(entity_id);
+    auto moveable_ptr = std::static_pointer_cast<moveable>(abilities.type(abilities::ability_types::moving));
+    moveable_ptr->refresh_range();
 
     used = true;
 }

@@ -174,6 +174,10 @@ void wolves_dinner(game& game) {
 #include <entities/wall.h>
 #include <entities/fir.h>
 #include <entities/wretch.h>
+#include <entities/killer.h>
+#include <entities/giant.h>
+#include <entities/golem.h>
+#include <entities/sorcerer.h>
 
 using Entites = boost::fusion::vector<shooter,
         destroyer,
@@ -187,15 +191,19 @@ using Entites = boost::fusion::vector<shooter,
         //werewolf,
         monk,
         //grenadier,
-        ninja,
+        //ninja,
         //treant,
-//        thrower,
-        absorber,
-        guardian,
+//thrower,
+        killer,
+//        absorber,
+        giant,
+        //guardian,
+        sorcerer,
         //creature,
         wretch,
         warrior,
-        handthrower,
+//        handthrower,
+        golem,
         spider>;
 
 struct OwnerCallback {
@@ -225,18 +233,20 @@ void skirmish(game& game) {
             }
         }
     }
-    creator_helper::create_neutral_many<fir>(trees_positions);
 
-    creator_helper::create_neutral_many<fir>({pos(6, 1), pos(7, 1), pos(6, 2), pos(7, 2)});
-    creator_helper::create_neutral_many<fir>({pos(10, 1), pos(11, 1), pos(10, 2), pos(11, 2)});
-    creator_helper::create_neutral_many<fir>({pos(7, 7), pos(8, 7), pos(7, 8), pos(8, 8)});
-    creator_helper::create_neutral_many<fir>({pos(3, 7), pos(4, 7), pos(3, 8), pos(4, 8)});
+    create_trees_1();
+    creator_helper::create_neutral_many<tree>(trees_positions);
+
+//    creator_helper::create_neutral_many<fir>({pos(6, 1), pos(7, 1), pos(6, 2), pos(7, 2)});
+//    creator_helper::create_neutral_many<fir>({pos(10, 1), pos(11, 1), pos(10, 2), pos(11, 2)});
+//    creator_helper::create_neutral_many<fir>({pos(7, 7), pos(8, 7), pos(7, 8), pos(8, 8)});
+//    creator_helper::create_neutral_many<fir>({pos(3, 7), pos(4, 7), pos(3, 8), pos(4, 8)});
 
 
-    creator_helper::create_neutral_many<wall>({pos(4, 4), pos(4, 5)});
-    creator_helper::create_neutral_many<wall>({pos(10, 5), pos(10, 6)});
+//    creator_helper::create_neutral_many<wall>({pos(4, 4), pos(4, 5)});
+//    creator_helper::create_neutral_many<wall>({pos(10, 5), pos(10, 6)});
 
-    creator_helper::create_neutral_many<fir>({pos(6, 4), pos(7, 4), pos(6, 5), pos(7, 5)});
+//    creator_helper::create_neutral_many<fir>({pos(6, 4), pos(7, 4), pos(6, 5), pos(7, 5)});
 
 
 

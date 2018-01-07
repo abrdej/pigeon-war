@@ -121,7 +121,23 @@ enum class bitmap_key {
 	healthing,
 	troll_rage,
 	detonation_anim,
-	magic_suck
+	magic_suck,
+	killer,
+	giant,
+	kill,
+	magic_energy,
+	killer_jump,
+	killer_attack,
+	defender,
+	defender_attack,
+	giant_blow,
+	giant_blow_special,
+	giant_ram,
+	golem,
+	stone_skin,
+	power_bullet,
+	power_bullet_bum,
+	sorcerer
 };
 
 struct bitmaps_key_hash

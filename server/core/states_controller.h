@@ -4,6 +4,8 @@
 #include <utility>
 #include <vector>
 #include <functional>
+#include <unordered_map>
+#include <unordered_set>
 #include "path_finder.h"
 #include "common/states.h"
 
@@ -25,6 +27,8 @@ public:
 	static std::vector<size_t> possible_movements_costs_;
 
 	static std::function<void(std::size_t)> caller_;
+
+	static std::unordered_map<std::size_t, std::unordered_set<std::size_t>> custom_valid_targets;
 };
 };
 

@@ -16,6 +16,8 @@ std::vector<size_t> state_controller::possible_movements_costs_;
 
 std::function<void(size_t)> state_controller::caller_;
 
+std::unordered_map<std::size_t, std::unordered_set<std::size_t>> state_controller::custom_valid_targets;
+
 void state_controller::first_state(size_t select_from_index)
 {
 	if (select_from_index == no_selected_index)

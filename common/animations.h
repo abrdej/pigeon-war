@@ -15,7 +15,8 @@ enum class animation_types {
 	move,
 	flash_bitmap,
 	change_health,
-	hide_show
+	hide_show,
+	change_bitmap
 };
 
 PACKET_ADD_ENUM(animation_types)

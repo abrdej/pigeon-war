@@ -27,11 +27,15 @@ find_package(SFML 2 REQUIRED network audio graphics window system)
 include_directories(${SFML_INCLUDE_DIR})
 
 if (WIN32)
-    set(BOOST_ROOT "C:/local/boost_1_65_1")
-    set(BOOST_INCLUDEDIR=/usr/local/include/boost)
+    set(BOOST_INCLUDEDIR "C:/local/boost_1_65_1/")
+    set(BOOST_LIBRARYDIR "C:/local/boost_1_65_1/lib64-msvc-14.1")
+    set(BOOST_ROOT "C:/local/boost_1_65_1/boost")
 endif()
 
-find_package(Boost)
+set(Boost_USE_STATIC_LIBS ON)
+add_definitions(-DBOOST_ALL_DYN_LINK)
+
+find_package(Boost REQUIRED filesystem system)
 include_directories(${Boost_INCLUDE_DIRS})
 
 set(SERVER_SOURCE_FILES
@@ -163,6 +167,7 @@ set(SERVER_SOURCE_FILES
         server/entities/wall.h server/entities/fir.h server/entities/wretch.h
         server/abilities/vicious_circle.cpp server/abilities/vicious_circle.h
         server/abilities/wretch_moving.cpp server/abilities/wretch_moving.h
+        server/abilities/kill.cpp
         common/bitmaps.h config.h.in server/managers/power_manager.h server/abilities/possible_move_helper.h
         server/abilities/possible_move_helper.cpp
         server/managers/bitmap_field_manager.cpp server/managers/bitmap_field_manager.h
@@ -177,7 +182,7 @@ set(SERVER_SOURCE_FILES
 #        client/gui/bitmap_center.cpp
 #        client/gui/my_button.cpp
 
-        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h)
+        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h)
 
 set(CLIENT_SOURCE_FILES
         client/gui/bitmap_center.cpp
@@ -214,10 +219,13 @@ set(CLIENT_SOURCE_FILES
         common/animations.h
 
         server/managers/entity_remover.cpp
-        common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h)
+        common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h server/entities/golem.h server/entities/sorcerer.h)
 
 add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
 target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
 
 add_executable(pigeonwar_server server/main.cpp ${SERVER_SOURCE_FILES})
 target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
+
+#add_executable(pigeonwar_hot_seat hot_seat.cpp)
+#target_link_libraries(pigeonwar_hot_seat ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})

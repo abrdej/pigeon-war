@@ -90,9 +90,9 @@ void spider_web::use(size_t index_on) {
         enemy_abilities.add_ability(abilities::ability_types::moving, std::make_shared<moveable>(1));
 
         auto slow_down_receiver =
-                turn::turn_system::every_round([this, slow_last = 2, enemy_id, moveable_backup, counter = 0]() mutable {
+                turn::turn_system::every_turn([this, slow_last = 1, enemy_id, moveable_backup, counter = 0]() mutable {
 
-                    if (++counter == slow_last) {
+                    if (counter++ == slow_last * 2) {
 
                         auto& inner_enemy_abilities = abilities_manager::component_for(enemy_id);
                         inner_enemy_abilities.add_ability(abilities::ability_types::moving, moveable_backup);

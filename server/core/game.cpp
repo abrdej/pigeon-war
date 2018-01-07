@@ -191,8 +191,18 @@ void game::on_button_2(std::size_t n, local_state& lstate) {
 
 bool game::valid_target(size_t target_index) const
 {
-	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy)
+	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy) {
+
+		auto caster_id = board::at(states::state_controller::selected_index_);
+		auto target_id = board::at(target_index);
+
+		if (!states::state_controller::custom_valid_targets[caster_id].empty()) {
+			return states::state_controller::custom_valid_targets[caster_id].find(target_id) !=
+				   std::end(states::state_controller::custom_valid_targets[caster_id]);
+		}
+
 		return players_funcs::enemy_entity(target_index);
+	}
 	else if (states::state_controller::actual_targeting_type_ == states::target_types::moving)
 		return board::empty(target_index);
 	else if (states::state_controller::actual_targeting_type_ == states::target_types::friendly)
@@ -202,8 +212,7 @@ bool game::valid_target(size_t target_index) const
 	else if (states::state_controller::actual_targeting_type_ == states::target_types::neutral) {
         std::cout << "neutral: " << players_funcs::neutral_entity(target_index) << "\n";
         return players_funcs::neutral_entity(target_index);
-    }
-    else if (states::state_controller::actual_targeting_type_ == states::target_types::all) {
+    } else if (states::state_controller::actual_targeting_type_ == states::target_types::all) {
         return true;
     }
 	return false;

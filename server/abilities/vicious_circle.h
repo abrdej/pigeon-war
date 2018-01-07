@@ -16,15 +16,17 @@ public:
     explicit vicious_circle(std::size_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::vicious_circle;
+        return bitmap_key::magic_energy;
     }
 
 private:
-    STRAIGHT_PREPARE(ENEMY)
+    void prepare(size_t for_index) override;
     void use(size_t index_on);
     void play_animation(size_t index_on);
 
+    std::size_t entity_id;
     int range{3};
+    bool used{false};
 };
 
 #endif //PIGEONWAR_VICIOUS_CIRCLE_H

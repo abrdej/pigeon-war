@@ -74,6 +74,7 @@ class healths_manager : public base_manager<health_field, health_field>
 			impl = [](health_field& health_pack, const damage_pack& dmg) {
 
 				auto final_damage = (std::min)(health_pack.health, dmg.damage_value);
+
 				health_pack.health -= final_damage;
 
 				return final_damage;
@@ -103,9 +104,11 @@ public:
 	};
 
 private:
-	static std::unordered_map<std::size_t,
-            std::vector<std::pair<on_receive_damage_policy,
-                    std::function<void(const damage_pack&)>>>> on_receive_damage_callbacks;
+	static std::unordered_map<std::size_t, std::unordered_map<std::size_t, std::function<void(const damage_pack&)>>>
+			on_receive_damage_before_callbacks;
+
+	static std::unordered_map<std::size_t, std::unordered_map<std::size_t, std::function<void(const damage_pack&)>>>
+			on_receive_damage_after_callbacks;
 
 	static std::unordered_map<std::size_t, damage_receiver> damage_receivers;
 
@@ -130,15 +133,21 @@ public:
 		// clean up receivers
 		entity_remover::add_remover(entity_id, [entity_id]() {
 			damage_receivers.erase(entity_id);
-			on_receive_damage_callbacks.erase(entity_id);
+//			on_receive_damage_callbacks.erase(entity_id);
+			on_receive_damage_before_callbacks.erase(entity_id);
+			on_receive_damage_after_callbacks.erase(entity_id);
 		});
 	}
 	static inline int receive_damage(const damage_pack& dmg)
 	{
-		for (auto&& callback_pack : on_receive_damage_callbacks[dmg.damage_receiver_id]) {
-			if (callback_pack.first == on_receive_damage_policy::before) {
-				callback_pack.second(dmg);
-			}
+//		for (auto&& callback_pack : on_receive_damage_callbacks[dmg.damage_receiver_id]) {
+//			if (callback_pack.first == on_receive_damage_policy::before) {
+//				callback_pack.second(dmg);
+//			}
+//		}
+
+		for (auto&& callback_pack : on_receive_damage_before_callbacks[dmg.damage_receiver_id]) {
+			callback_pack.second(dmg);
 		}
 
 		auto& health_pack = component_reference_for(dmg.damage_receiver_id);
@@ -147,10 +156,14 @@ public:
 		auto enemy_index = board::index_for(dmg.damage_receiver_id);
 		play_change_health_animation(enemy_index, -received_damage);
 
-		for (auto&& callback_pack : on_receive_damage_callbacks[dmg.damage_receiver_id]) {
-			if (callback_pack.first == on_receive_damage_policy::after) {
-				callback_pack.second(dmg);
-			}
+//		for (auto&& callback_pack : on_receive_damage_callbacks[dmg.damage_receiver_id]) {
+//			if (callback_pack.first == on_receive_damage_policy::after) {
+//				callback_pack.second(dmg);
+//			}
+//		}
+
+		for (auto&& callback_pack : on_receive_damage_after_callbacks[dmg.damage_receiver_id]) {
+			callback_pack.second(dmg);
 		}
 
 		return received_damage;
@@ -173,8 +186,25 @@ public:
 	}
 
 	template <typename Callback>
-	static void on_receive_damage(size_t entity_id, Callback callback, const on_receive_damage_policy& policy) {
-		on_receive_damage_callbacks[entity_id].push_back(std::make_pair(policy, callback));
+	static std::size_t on_receive_damage(size_t entity_id, Callback callback, const on_receive_damage_policy& policy) {
+//		on_receive_damage_callbacks[entity_id].push_back(std::make_pair(policy, callback));
+
+		static std::unordered_map<std::size_t, std::size_t> id_gen;
+
+		if (policy == on_receive_damage_policy::before) {
+			auto callback_id = id_gen[entity_id]++;
+			on_receive_damage_before_callbacks[entity_id].emplace(callback_id, callback);
+			return callback_id;
+
+		} else {
+			auto callback_id = id_gen[entity_id]++;
+			on_receive_damage_after_callbacks[entity_id].emplace(callback_id, callback);
+			return callback_id;
+		}
+	}
+	static void remove_on_receive_damage(size_t entity_id, size_t callback_id) {
+		on_receive_damage_before_callbacks[entity_id].erase(callback_id);
+		on_receive_damage_after_callbacks[entity_id].erase(callback_id);
 	}
 };
 

@@ -140,6 +140,11 @@ void pigeon_war_client::receive_messages() {
 					} else {
 						state.board.give_back(entity_id, index);
 					}
+				} else if (animation_pack.animation_type == animation_types::change_bitmap) {
+					int entity_id = animation_pack.x;
+					auto new_bitmap = animation_pack.btm_key;
+
+					drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(new_bitmap);
 				}
 			}
 

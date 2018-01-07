@@ -114,7 +114,6 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::fir, "fir.png");
     add_bitmap(bitmap_key::wretch, "wretch.png");
     add_bitmap(bitmap_key::wretch_moving, "moving.png");
-    add_bitmap(bitmap_key::vicious_circle, "water.png");
     add_bitmap(bitmap_key::monk_use_1, "monk_use_1.png");
     add_bitmap(bitmap_key::monk_use_2, "monk_use_2.png");
     add_bitmap(bitmap_key::monk_use_3, "monk_use_3.png");
@@ -133,5 +132,22 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::hello, "hello.png");
     add_bitmap(bitmap_key::detonation_anim, "detonation_anim.png");
     add_bitmap(bitmap_key::magic_suck, "magic_suck.png");
+    add_bitmap(bitmap_key::vicious_circle, "magic_energy.png");
+    add_bitmap(bitmap_key::killer, "killer.png");
+    add_bitmap(bitmap_key::giant, "giant.png");
+    add_bitmap(bitmap_key::kill, "kill.png");
+    add_bitmap(bitmap_key::magic_energy, "magic_energy.png");
+    add_bitmap(bitmap_key::killer_jump, "killer_jump.png");
+    add_bitmap(bitmap_key::killer_attack, "killer_attack.png");
+    add_bitmap(bitmap_key::defender, "defender.png");
+    add_bitmap(bitmap_key::giant_blow, "giant_blow.png");
+    add_bitmap(bitmap_key::giant_blow_special, "giant_blow_special.png");
+    add_bitmap(bitmap_key::defender_attack, "defender_attack.png");
+    add_bitmap(bitmap_key::giant_ram, "giant_ram.png");
+    add_bitmap(bitmap_key::golem, "golem.png");
+    add_bitmap(bitmap_key::stone_skin, "stone_skin.png");
+    add_bitmap(bitmap_key::power_bullet, "power_bullet.png");
+    add_bitmap(bitmap_key::power_bullet_bum, "power_bullet_bum.png");
+    add_bitmap(bitmap_key::sorcerer, "sorcerer.png");
 }
 }

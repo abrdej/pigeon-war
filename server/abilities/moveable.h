@@ -23,6 +23,10 @@ public:
 		return bitmap_key::moveable;
 	}
 
+	void refresh_range() {
+		used = false;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void move(size_t index_to);
