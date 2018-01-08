@@ -11,36 +11,31 @@ void power_bullet::use(size_t index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
     auto caster_id = board::at(used_from_index);
+    auto enemy_id = board::at(index_on);
+
+    auto has_power_bullet_effect = additions_manager::has_component(enemy_id, "power_bullet_effect");
 
     play_animation(used_from_index, index_on);
 
-    damage_dealers::standard_damage_dealer(magic_damage(damage_per_turn, board::at(index_on), caster_id));
-
-    auto enemy_id = board::at(index_on);
+    damage_dealers::standard_damage_dealer(magic_damage(has_power_bullet_effect ?
+                                                        damage_with_power_bullet_effect : full_damage,
+                                                        board::at(index_on), caster_id));
 
     auto damage_per_turn_receiver =
             turn::turn_system::every_turn([enemy_id, caster_id, counter = 0,
-                                                  damage = damage_per_turn,
-                                                  max_counter = turn_for_additional_damage]() mutable {
+                                                  //damage = damage_per_turn,
+                                                  max_counter = duration_of_effect]() mutable {
 
                 if (++counter == max_counter) {
 
-                    animations_queue::push_animation(animation_types::flash_bitmap,
-                                                     board::index_for(enemy_id),
-                                                     150,
-                                                     0,
-                                                     bitmap_key::power_bullet_bum);
-
-                    damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, caster_id));
-
                     additions_manager::remove_component(enemy_id,
-                                                            "damage_per_turn");
+                                                            "power_bullet_effect");
                 }
             });
 
 
     additions_manager::add_component(enemy_id,
-                                     "damage_per_turn",
+                                     "power_bullet_effect",
                                      damage_per_turn_receiver);
 
     used = true;

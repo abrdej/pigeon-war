@@ -15,7 +15,6 @@
 #include "entities/native.h"
 #include "abilities/damage_dealers.h"
 #include "abilities/drain.h"
-#include "gui/effects_manager.h"
 #include "ai/ai_manager.h"
 #include "scenarios/scenarios.h"
 #include "utils/scenario_helper.h"

@@ -5,6 +5,7 @@
 #ifndef PIGEONWAR_SORCERER_H
 #define PIGEONWAR_SORCERER_H
 
+#include <abilities/prison_connection.h>
 #include "entity.h"
 #include "server/abilities/moveable.h"
 
@@ -16,6 +17,7 @@ struct sorcerer final
         entity_name(components) = "Sorcerer";
         entity_health(components).base_health = 45;
         entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<prison_connection>(id));
         entity_bitmap_field(components) = bitmap_field(id, bitmap_key::sorcerer);
 
         return components;

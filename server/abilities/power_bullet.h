@@ -8,7 +8,7 @@
 #include "straight_target_ability.h"
 #include "per_turn_usable.h"
 
-class power_bullet final : public straight_target_ability<3>, per_turn_usable
+class power_bullet final : public straight_target_ability<2>, per_turn_usable
 {
 public:
 
@@ -21,9 +21,9 @@ private:
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    const int damage_per_turn = 10;
-    const int turn_for_additional_damage = 3;
-    bool used{false};
+    const int full_damage = 16;
+    const int damage_with_power_bullet_effect = 4;
+    const int duration_of_effect = 3;
 };
 
 #endif //PIGEONWAR_POWER_BULLET_H

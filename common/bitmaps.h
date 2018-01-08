@@ -137,7 +137,8 @@ enum class bitmap_key {
 	stone_skin,
 	power_bullet,
 	power_bullet_bum,
-	sorcerer
+	sorcerer,
+	sorcerer_attack
 };
 
 struct bitmaps_key_hash

@@ -65,6 +65,8 @@ void kill::use(size_t index_on) {
 
     auto entity_id = board::take(used_from_index);
 
+    bool is_killer_instinct_active = additions_manager::has_component(entity_id, "killer_instinct");
+
     animations_queue::push_animation(animation_types::hide_show, used_from_index, 0, 0, bitmap_key::none);
     animations_queue::push_animation(animation_types::flash_bitmap, index_on, 150, -1, bitmap_key::killer_jump);
     animations_queue::push_animation(animation_types::hide_show, index_on, 1, entity_id, bitmap_key::none);
@@ -77,7 +79,7 @@ void kill::use(size_t index_on) {
 
     auto enemy_id = board::at(target_index);
 
-    damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
+    damage_dealers::standard_damage_dealer(melee_damage(is_killer_instinct_active ? damage_with_killer_instinct : damage, enemy_id, entity_id));
 }
 
 void kill::play_animation(size_t from_index, size_t to_index) {

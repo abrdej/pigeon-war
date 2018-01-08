@@ -27,6 +27,14 @@ public:
 		used = false;
 	}
 
+	bool has_range() const {
+		return !used;
+	}
+
+	void remove_range() {
+		used = true;
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void move(size_t index_to);

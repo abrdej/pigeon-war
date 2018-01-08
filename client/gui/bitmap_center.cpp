@@ -149,5 +149,6 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::power_bullet, "power_bullet.png");
     add_bitmap(bitmap_key::power_bullet_bum, "power_bullet_bum.png");
     add_bitmap(bitmap_key::sorcerer, "sorcerer.png");
+    add_bitmap(bitmap_key::sorcerer_attack, "sorcerer_attack.png");
 }
 }

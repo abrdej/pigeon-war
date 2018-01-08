@@ -14,7 +14,7 @@ template <int Range,
 		bool AllFields = true>
 class path_target_ability : public ability {
 public:
-	void prepare(size_t for_index) {
+	void prepare(size_t for_index) override {
 
 		states::state_controller::selected_index_ = for_index;
 
