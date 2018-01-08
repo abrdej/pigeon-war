@@ -6,12 +6,12 @@
 #define PIGEONWAR_POISONED_MISSILE_H
 
 #include "ability.h"
-#include "core/turn.h"
+#include "per_turn_usable.h"
 
-class poisoned_missile final : public ability, protected turn_events_helper::every_turn_callback_helper
+class poisoned_missile final : public ability, per_turn_usable
 {
 public:
-    poisoned_missile();
+    poisoned_missile() = default;
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::poisoned_missile;

@@ -89,6 +89,10 @@ void buttons_panel::set_hint_for(const sf::Vector2f& pos, std::size_t hint_idx) 
     hint_pos = pos;
 }
 
+void buttons_panel::set_description(const std::string& desc) {
+	hint = desc;
+}
+
 void buttons_panel::remove_hint() {
     hint_button_idx = no_hint;
 }
@@ -106,15 +110,19 @@ void buttons_panel::draw_hint(sf::RenderWindow& window) {
     name.setString(entity_name);
     window.draw(name);
 
-    if (hint_button_idx < 5) {
-        sf::Text hint;
-        hint.setFont(name_font);
-        hint.setCharacterSize(18);
-        hint.setColor(sf::Color::White);
-        hint.setPosition(hint_pos + sf::Vector2f(constants::field_size / 2, 0.f));
-        hint.setString(hints[hint_button_idx]);
-        window.draw(hint);
-    }
+	auto y_pos = constants::top_left_point.y + board_container::rows_n * constants::field_size;
+	auto x_pos = constants::top_left_point.x + 2 * constants::field_size + constants::field_size / 2;
+
+	sf::Vector2f init_point(x_pos + 5 * constants::field_size,
+							y_pos + constants::field_size / 8);
+
+	sf::Text thint;
+	thint.setFont(name_font);
+	thint.setCharacterSize(12);
+	thint.setColor(sf::Color::White);
+	thint.setPosition(init_point);
+	thint.setString(hint);
+	window.draw(thint);
 }
 
 };

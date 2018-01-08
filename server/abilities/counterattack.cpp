@@ -7,10 +7,6 @@
 counterattack::counterattack(std::size_t entity_id)
 		: entity_id(entity_id) {
 
-	onEveryRound([this](){
-		used = false;
-	});
-
 	healths_manager::on_receive_damage(entity_id, [this](const damage_pack& dmg) {
 
 		auto enemy_index = board::index_for(dmg.damage_dealer_id);

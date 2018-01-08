@@ -6,9 +6,10 @@
 #define PIGEONWAR_COUNTERATTACK_H
 
 #include "ability.h"
-#include "core/turn.h"
+#include "per_turn_usable.h"
 
-class counterattack final : public ability, protected turn_events_helper::every_turn_callback_helper
+class counterattack final : public passive_ability,
+							per_turn_usable
 {
 public:
 	counterattack(std::size_t entity_id);
@@ -18,13 +19,11 @@ public:
 	}
 
 private:
-	void prepare(size_t for_index) override {}
 	void use(size_t index_on);
 	void play_animation(size_t from_index, size_t to_index);
 
 private:
 	std::size_t entity_id;
-	bool used{false};
 	int damage{7};
 };
 

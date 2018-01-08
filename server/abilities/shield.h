@@ -7,7 +7,7 @@
 
 #include "ability.h"
 
-class shield : public ability {
+class shield : public passive_ability {
 public:
     explicit shield(std::size_t entity_id);
     bitmap_key get_bitmap_key() const override {
@@ -15,7 +15,6 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override {}
     float range_attack_reduction{0.5f};
 };
 

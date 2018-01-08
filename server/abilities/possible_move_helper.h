@@ -46,4 +46,7 @@ return use(index); \
 } \
 
 
+#define STRAIGHT_PREPARE_ENEMY() \
+STRAIGHT_PREPARE(states::target_types::enemy) \
+
 #endif //PIGEONWAR_POSSIBLE_MOVE_HELPER_H

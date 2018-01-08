@@ -159,6 +159,13 @@ void pigeon_war_client::receive_messages() {
 			unpack(packet, lstate);
 
 			update_for_entity();
+
+		} else if (message == "description") {
+
+			std::string description;
+			unpack(packet, description);
+
+			set_description(description);
 		}
 	}
 }
@@ -184,8 +191,10 @@ void pigeon_war_client::update()
 
 				else if (event.type == sf::Event::MouseButtonReleased) {
 
+					bool left = event.mouseButton.button == sf::Mouse::Button::Left;
+
 					sf::Vector2i mouse_position(event.mouseButton.x, event.mouseButton.y);
-					on_mouse_click(mouse_position);
+					on_mouse_click(mouse_position, left);
 				}
 			}
 
@@ -208,7 +217,7 @@ void pigeon_war_client::draw(sf::RenderWindow& window)
 	animation_player_impl_.draw(window);
 }
 
-void pigeon_war_client::on_mouse_click(const point_type& args)
+void pigeon_war_client::on_mouse_click(const point_type& args, bool left)
 {
 	if (board_panel_.is_hit(args))
 	{
@@ -218,7 +227,12 @@ void pigeon_war_client::on_mouse_click(const point_type& args)
 	else if (buttons_panel_.is_hit(args))
 	{
 		size_t hit_button = buttons_panel_.hit_button(args);
-		on_button(hit_button);
+
+		if (left) {
+			on_button(hit_button);
+		} else {
+			get_button_description(hit_button);
+		}
 	}
 }
 
@@ -236,6 +250,10 @@ void pigeon_war_client::on_board(size_t col, size_t row)
 void pigeon_war_client::on_button(size_t n)
 {
 	call_on_button(socket, player_id, n);
+}
+
+void pigeon_war_client::get_button_description(size_t n) {
+	call_get_button_description(socket, player_id, n);
 }
 
 void pigeon_war_client::prepare_animations()
@@ -268,4 +286,8 @@ void pigeon_war_client::update_for_entity()
 		return;
 
 	buttons_panel_.set_for_entity_for(lstate.entity_name, lstate.button_bitmaps);
+}
+
+void pigeon_war_client::set_description(const std::string& desc) {
+	buttons_panel_.set_description(desc);
 }

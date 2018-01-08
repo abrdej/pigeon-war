@@ -14,6 +14,7 @@ public:
 	void on_board_2(std::size_t col, std::size_t row, local_state& lstate);
 	void on_button(std::size_t n);
 	void on_button_2(std::size_t n, local_state& lstate);
+	std::string get_button_description(std::size_t selected_index, std::size_t n);
 
 	bool valid_target(std::size_t target_index) const;
 

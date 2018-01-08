@@ -5,6 +5,7 @@
 #ifndef PIGEONWAR_STATES_H
 #define PIGEONWAR_STATES_H
 
+#include <limits>
 #include "add_enum.h"
 
 namespace states {

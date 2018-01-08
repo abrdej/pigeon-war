@@ -21,4 +21,8 @@ private:
 	virtual void prepare(size_t for_index) = 0;
 };
 
+struct passive_ability : ability {
+	void prepare(size_t for_index) override {}
+};
+
 #endif

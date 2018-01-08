@@ -120,7 +120,7 @@ int main() {
 		packet >> client_id;
 		packet >> n;
 
-        bool single_client = binder.is_single_client();
+		const bool single_client = binder.is_single_client();
 
 		if (client_id == players::active_player_index() || single_client) {
 			g.on_button(n);
@@ -168,6 +168,36 @@ int main() {
 //		binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("local_state", local_state()));
 
 		binder.send_notification(make_packet("game_state", get_game_state(g)));
+	});
+
+	binder.bind("get_button_description", [&](sf::Packet& packet) {
+		std::cout << "get_button_description\n";
+
+		int client_id;
+		std::size_t n;
+
+		packet >> client_id;
+		packet >> n;
+
+		std::string description;
+
+		const bool single_client = binder.is_single_client();
+
+		if (client_id == players::active_player_index() || single_client) {
+
+			description = g.get_button_description(states::state_controller::selected_index_, n);
+
+		} else {
+
+			description = g.get_button_description(lstates[client_id].selected_index, n);
+		}
+
+		if (single_client) {
+			binder.send_notification_to(client_id, make_packet("description", description));
+		} else {
+			binder.send_notification_to(players::active_player_index(), make_packet("description", description));
+			binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("description", description));
+		}
 	});
 
 	binder.start();

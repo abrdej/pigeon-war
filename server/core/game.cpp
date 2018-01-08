@@ -189,6 +189,23 @@ void game::on_button_2(std::size_t n, local_state& lstate) {
 	}
 }
 
+std::string game::get_button_description(std::size_t selected_index, std::size_t n) {
+
+	auto entity_id = board::at(selected_index);
+	auto& entity_abilities = abilities_manager::component_for(entity_id);
+
+	std::string description;
+
+	if (entity_abilities.is_active) {
+		auto entity_ability = entity_abilities.at(n);
+		if (entity_ability) {
+			description = entity_ability->hint();
+		}
+	}
+
+	return std::move(description);
+}
+
 bool game::valid_target(size_t target_index) const
 {
 	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy) {

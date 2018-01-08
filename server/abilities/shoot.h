@@ -1,10 +1,11 @@
 #ifndef SHOOT_H
 #define SHOOT_H
 
-#include "ability.h"
+#include "straight_target_ability.h"
 #include "core/turn.h"
 
-class shoot final : public ability, protected turn_events_helper::every_turn_callback_helper
+class shoot final : public straight_target_ability<3>,
+					protected turn_events_helper::every_turn_callback_helper
 {
 public:
 	shoot();
@@ -13,14 +14,21 @@ public:
 		return bitmap_key::shoot;
 	}
 
+	std::string hint() const override {
+		std::string desc;
+		desc = "The shooter can give a double shot of: " +
+				std::to_string(damage) + " damage.\n" +
+				"Remaining shots: " + std::to_string(bullets) +
+				"\nRange: " + std::to_string(range) + ".";
+		return std::move(desc);
+	}
+
 private:
-	void prepare(size_t for_index) override;
-	void use(size_t index_on);
+	void use(size_t index_on) override;
 	void play_animation(std::size_t entity_id, size_t from_index, size_t to_index);
 	void refresh_usable();
 
 private:
-	const int range = 3;
 	const int damage = 6;
 	const int bullets_n = 2;
 	int bullets;

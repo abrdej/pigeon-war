@@ -7,7 +7,7 @@
 
 #include "ability.h"
 
-class surroundings : public ability {
+class surroundings : public passive_ability {
 public:
     explicit surroundings(std::size_t entity_id);
 
@@ -16,7 +16,6 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override {}
     int damage_reduction{3};
     int min_damage{3};
 };

@@ -24,6 +24,8 @@ public:
     void set_hint_for(const sf::Vector2f& pos, std::size_t hint_idx);
     void remove_hint();
 
+	void set_description(const std::string& desc);
+
     void draw_hint(sf::RenderWindow& window);
 
 private:
@@ -36,6 +38,7 @@ private:
     sf::Sprite entity_logo;
 
     std::array<std::string, 5> hints;
+    std::string hint;
     static const std::size_t no_hint = std::numeric_limits<std::size_t>::max();
     std::size_t hint_button_idx{no_hint};
     sf::Vector2f hint_pos;

@@ -31,13 +31,15 @@ private:
 	void update();
 	void receive_messages();
 	void draw(sf::RenderWindow& window);
-	void on_mouse_click(const point_type& args);
+	void on_mouse_click(const point_type& args, bool left);
 
 	void on_board(size_t col, size_t row);
 	void on_button(size_t n);
+	void get_button_description(size_t n);
 
 	void prepare_animations();
 	void update_for_entity();
+	void set_description(const std::string& desc);
 
 private:
 	sf::TcpSocket socket;
