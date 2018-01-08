@@ -9,6 +9,7 @@
 #include <common/animations.h>
 #include <core/states_controller.h>
 #include <core/animations_queue.h>
+#include <sender.h>
 
 static const std::size_t no_damage_dealer = std::numeric_limits<std::size_t>::max();
 
@@ -58,14 +59,7 @@ inline damage_pack healing(int value, std::size_t receiver_id) {
 	return damage_pack{-value, damage_types::UNDEFINED, receiver_id, no_damage_dealer};
 }
 
-inline void play_change_health_animation(size_t to_index, int change_health)
-{
-	animations_queue::push_animation(animation_types::change_health,
-									 to_index,
-									 change_health,
-									 0,
-									 bitmap_key::none);
-}
+void play_change_health_animation(size_t to_index, int change_health);
 
 class healths_manager : public base_manager<health_field, health_field>
 {

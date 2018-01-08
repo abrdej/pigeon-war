@@ -8,7 +8,7 @@
 defender::defender(std::size_t entity_id) {
     onEveryTurn([this, entity_id]() {
 
-        if (players::active_player_name() == players::player_for_entity(entity_id)) {
+        if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
 
             std::vector<std::size_t> neighbors;
             board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);

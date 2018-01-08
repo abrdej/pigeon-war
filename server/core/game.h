@@ -16,13 +16,8 @@ public:
 	void on_button_2(std::size_t n, local_state& lstate);
 	std::string get_button_description(std::size_t selected_index, std::size_t n);
 
-	bool valid_target(std::size_t target_index) const;
-
 	void defeat();
 	void victory();
-
-private:
-	void create_werewolf();
 };
 
 #endif

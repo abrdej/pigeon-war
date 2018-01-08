@@ -67,8 +67,9 @@ public:
             return;
 
         auto entity_id = entity_manager::create<T>();
-        auto player = players::active_player_name();
-        players::add_entity_for_player(player, entity_id);
+        auto player_id = players_manager::get_active_player_id();
+
+        players_manager::add_entity_for_player(player_id, entity_id);
 
         board::insert(index_on, entity_id);
 

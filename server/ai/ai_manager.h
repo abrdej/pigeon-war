@@ -11,7 +11,7 @@ class ai_manager : public base_manager<std::shared_ptr<behavior_tree::base_task<
 	std::shared_ptr<behavior_tree::base_task<ai::behavior_tree_tasks::blackboard>>>
 {
 public:
-	static void perform_movement();
+	static void perform_movement(std::size_t for_player_of_id);
 };
 
 #endif

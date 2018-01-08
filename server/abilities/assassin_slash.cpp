@@ -1,6 +1,6 @@
 #include <core/states_controller.h>
 #include <core/board.h>
-#include <core/players.h>
+#include <managers/players_manager.h>
 #include <managers/additions_manager.h>
 #include <managers/entity_manager.h>
 #include "assassin_slash.h"

@@ -53,8 +53,8 @@ void entangling::use(size_t index_on) {
     auto caster_id = board::at(used_from_index);
 
     auto entangling_id = entity_manager::create<entangling_instance>();
-    auto player = players::active_player_name();
-    players::add_entity_for_player(player, entangling_id);
+    auto active_player_id = players_manager::get_active_player_id();
+    players_manager::add_entity_for_player(active_player_id, entangling_id);
 
     auto ability = abilities_manager::component_for(entangling_id).at(static_cast<int>(abilities::ability_types::passive));
 

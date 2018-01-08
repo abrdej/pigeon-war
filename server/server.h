@@ -26,8 +26,6 @@ struct server {
 
 	std::vector<std::shared_ptr<sf::TcpSocket>> clients;
 
-	//tbb::concurrent_queue<std::pair<std::size_t, sf::Packet>> packets_to_send;
-//	boost::queue_adaptor<std::queue<std::pair<std::size_t, sf::Packet>>> packets_to_send;
 	boost::lockfree::spsc_queue<std::pair<std::size_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
 
 	server() {

@@ -34,8 +34,8 @@ void build_cannon::use(size_t index_on) {
         return;
 
     auto cannon_id = entity_manager::create<cannon>();
-    auto player = players::active_player_name();
-    players::add_entity_for_player(player, cannon_id);
+    auto player_id = players_manager::get_active_player_id();
+    players_manager::add_entity_for_player(player_id, cannon_id);
 
     board::insert(index_on, cannon_id);
 }

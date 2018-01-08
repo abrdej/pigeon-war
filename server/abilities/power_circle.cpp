@@ -9,7 +9,7 @@ power_circle::power_circle(std::size_t entity_id) {
 
     onEveryTurn([this, entity_id]() {
 
-        if (players::active_player_name() == players::player_for_entity(entity_id)) {
+        if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
 
             //for (auto&& dmg_rec_pack : dmg_rec_backup) {
             //    healths_manager::set_damage_receiver(dmg_rec_pack.first, dmg_rec_pack.second);

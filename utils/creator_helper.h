@@ -24,7 +24,7 @@ void create_neutral_many(std::vector<std::pair<std::size_t, std::size_t>>& posit
     {
         size_t id = entity_manager::create<T>();
         board::insert(board::to_index(position.first, position.second), id);
-        players::add_neutral_entity(id);
+        players_manager::add_neutral_entity(id);
     }
 }
 
@@ -34,7 +34,7 @@ void create_neutral_many(std::initializer_list<std::pair<std::size_t, std::size_
     {
         size_t id = entity_manager::create<T>();
         board::insert(board::to_index(position.first, position.second), id);
-        players::add_neutral_entity(id);
+        players_manager::add_neutral_entity(id);
     }
 }
 

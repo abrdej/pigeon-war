@@ -31,7 +31,7 @@ interception::interception(std::size_t entity_id) {
     });
 
     onEveryTurn([this, entity_id]() {
-        if (players::active_player_name() != players::player_for_entity(entity_id)) {
+        if (players_manager::get_active_player_id() != players_manager::player_for_entity(entity_id)) {
             used = false;
         }
     });

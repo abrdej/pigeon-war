@@ -49,25 +49,25 @@ void saurions_web_s(game& game) {
     board::insert(board::to_index(12, 6), saurion3_id);
     board::insert(board::to_index(4, 1), saurion4_id);
 
-    players::create_human_player("tester");
-    players::create_ai_player("enemy");
-    players::add_entity_for_player("tester", shooter_id);
-    players::add_entity_for_player("tester", saberhand_id);
-    players::add_entity_for_player("enemy", saurion1_id);
-    players::add_entity_for_player("enemy", saurion2_id);
-    players::add_entity_for_player("enemy", saurion3_id);
-    players::add_entity_for_player("enemy", saurion4_id);
+    auto tester_id = players_manager::create_human_player("tester");
+    auto enemy_id = players_manager::create_ai_player("enemy");
+    players_manager::add_entity_for_player(tester_id, shooter_id);
+    players_manager::add_entity_for_player(tester_id, saberhand_id);
+    players_manager::add_entity_for_player(enemy_id, saurion1_id);
+    players_manager::add_entity_for_player(enemy_id, saurion2_id);
+    players_manager::add_entity_for_player(enemy_id, saurion3_id);
+    players_manager::add_entity_for_player(enemy_id, saurion4_id);
 
     using creator_helper::pos;
     creator_helper::create_stones({ pos(5, 0), pos(5, 1), pos(9, 9), pos(1, 8), pos(14, 8) });
 
     auto native_id = entity_manager::create<native>();
     board::insert(board::to_index(12, 4), native_id);
-    players::add_neutral_entity(native_id);
+    players_manager::add_neutral_entity(native_id);
 
     auto saurion_web_id = entity_manager::create<saurions_web>();
     board::insert(board::to_index(12, 4), saurion_web_id);
-    players::add_entity_for_player("enemy", saurion_web_id);
+    players_manager::add_entity_for_player(enemy_id, saurion_web_id);
 
     auto web_poison_to_native = turn::turn_system::every_round([native_id]() {
         std::cout << "recaive damage\n";
@@ -75,10 +75,10 @@ void saurions_web_s(game& game) {
 //        damage_dealers::play_change_health_animation(board::to_index(12, 4), damage);
     });
 
-    entity_remover::add_remover(saurion_web_id, [native_id, web_poison_to_native]() mutable {
+    entity_remover::add_remover(saurion_web_id, [tester_id, native_id, web_poison_to_native]() mutable {
         web_poison_to_native.reset();
         std::cout << "tester have native\n";
-        players::add_entity_for_player("tester", native_id);
+        players_manager::add_entity_for_player(tester_id, native_id);
     });
 
     if_any_die({shooter_id, saberhand_id, native_id}, [&]() {
@@ -97,10 +97,10 @@ void wolves_dinner(game& game) {
     //board::insert(board::to_index(2, 3), shooter_id);
     board::insert(board::to_index(2, 5), samurai_id);
 
-    players::create_human_player("tester");
-    players::create_ai_player("enemy");
+    auto tester_id = players_manager::create_human_player("tester");
+    auto enemy_id = players_manager::create_ai_player("enemy");
     //players::add_entity_for_player("tester", shooter_id);
-    players::add_entity_for_player("tester", samurai_id);
+    players_manager::add_entity_for_player(enemy_id, samurai_id);
 
     auto ai_sequence = behavior_tree::helper::Sequence<
             ai::behavior_tree_tasks::blackboard,
@@ -123,7 +123,7 @@ void wolves_dinner(game& game) {
         auto wolf_id = entity_manager::create<wolf>();
         ai_manager::add_component(wolf_id, ai_sequence);
         board::insert(board::to_index(wolf_pos.first, wolf_pos.second), wolf_id);
-        players::add_entity_for_player("enemy", wolf_id);
+        players_manager::add_entity_for_player(enemy_id, wolf_id);
         enemies_ids.push_back(wolf_id);
     }
 
@@ -280,9 +280,9 @@ void skirmish(game& game) {
             pos(12, 8)
     };
 
-    std::array<std::string, 2> players = {"tester1", "tester2"};
-    for (auto&& player : players) {
-        players::create_human_player(player);
+    std::array<std::size_t, 2> players;
+    for (auto& player : players) {
+        player = players_manager::create_human_player();
     }
 
     std::size_t i = 0;
@@ -295,6 +295,7 @@ void skirmish(game& game) {
 
         auto pos = init_positions[i++];
         board::insert(board::to_index(pos.first, pos.second), id);
+        players_manager::add_neutral_entity(id);
 
         entities_to_choose.insert(id);
     });
@@ -305,7 +306,7 @@ void skirmish(game& game) {
     std::shared_ptr<OwnerCallback> holder = std::make_shared<OwnerCallback>();
 
     auto create_entities_container = [](){
-        return std::unordered_map<std::string, std::vector<std::size_t>>();
+        return std::unordered_map<std::size_t, std::vector<std::size_t>>();
     };
 
     auto add_entity_for_player = turn::turn_system::every_turn([=, entities = create_entities_container()]() mutable {
@@ -331,7 +332,7 @@ void skirmish(game& game) {
 
             for (auto&& player_pack : entities) {
                 for (auto&& id : player_pack.second) {
-                    players::add_entity_for_player(player_pack.first, id);
+                    players_manager::add_entity_for_player(player_pack.first, id);
                 }
             }
             for (auto&& player_pack : entities) {
@@ -354,9 +355,9 @@ void skirmish(game& game) {
 void strategy(game& game) {
     auto balloon_id = entity_manager::create<balloon>();
     board::insert(board::to_index(2, 5), balloon_id);
-    players::create_human_player("tester");
+    auto tester_id = players_manager::create_human_player("tester");
 
-    players::add_entity_for_player("tester", balloon_id);
+    players_manager::add_entity_for_player(tester_id, balloon_id);
 
     using creator_helper::pos;
     creator_helper::create_neutral_many<fissure>({pos(5, 5)});

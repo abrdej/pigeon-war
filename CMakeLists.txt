@@ -62,7 +62,7 @@ set(SERVER_SOURCE_FILES
         server/abilities/sabers.cpp
         server/core/path_finder.cpp
         server/managers/names_manager.cpp
-        server/core/players.cpp
+        server/managers/players_manager.cpp
         server/core/board.cpp
         server/managers/entity_remover.cpp
         server/managers/entity_remover.h
@@ -182,7 +182,7 @@ set(SERVER_SOURCE_FILES
 #        client/gui/bitmap_center.cpp
 #        client/gui/my_button.cpp
 
-        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h server/abilities/straight_target_ability.cpp server/abilities/straight_target_ability.h server/abilities/per_turn_usable.h)
+        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h server/abilities/straight_target_ability.cpp server/abilities/straight_target_ability.h server/abilities/per_turn_usable.h server/sender.h server/sender.cpp)
 
 set(CLIENT_SOURCE_FILES
         client/gui/bitmap_center.cpp

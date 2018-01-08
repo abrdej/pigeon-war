@@ -40,7 +40,7 @@ void game::on_board(size_t col, size_t row)
 
 	else if (state_controller::actual_state_ == states_types::wait_for_action)
 	{
-		if (state_controller::is_possible_movement(index) && valid_target(index))
+		if (state_controller::is_possible_movement(index) && state_controller::valid_target(index))
 			state_controller::do_action(index);
 
 		else if (!board::empty(index) && players_funcs::player_entity(index))
@@ -141,15 +141,15 @@ void game::on_button(size_t n)
 	if (n == 5)
 	{
 		turn::turn_system::end_turn();
-		players::next_player();
+		players_manager::next_player();
 
 		states::state_controller::first_state(players_funcs::active_player_first_entity_index());
 
-		if (players::active_player_ai())
+		if (players_manager::is_active_player_ai())
 		{
-			ai_manager::perform_movement();
+			ai_manager::perform_movement(players_manager::get_active_player_id());
 			turn::turn_system::end_turn();
-			players::next_player();
+			players_manager::next_player();
 			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
 			//on_button(14);
 		}
@@ -206,35 +206,6 @@ std::string game::get_button_description(std::size_t selected_index, std::size_t
 	return std::move(description);
 }
 
-bool game::valid_target(size_t target_index) const
-{
-	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy) {
-
-		auto caster_id = board::at(states::state_controller::selected_index_);
-		auto target_id = board::at(target_index);
-
-		if (!states::state_controller::custom_valid_targets[caster_id].empty()) {
-			return states::state_controller::custom_valid_targets[caster_id].find(target_id) !=
-				   std::end(states::state_controller::custom_valid_targets[caster_id]);
-		}
-
-		return players_funcs::enemy_entity(target_index);
-	}
-	else if (states::state_controller::actual_targeting_type_ == states::target_types::moving)
-		return board::empty(target_index);
-	else if (states::state_controller::actual_targeting_type_ == states::target_types::friendly)
-		return players_funcs::player_entity(target_index);
-	else if (states::state_controller::actual_targeting_type_ == states::target_types::caster)
-		return target_index == states::state_controller::selected_index_;
-	else if (states::state_controller::actual_targeting_type_ == states::target_types::neutral) {
-        std::cout << "neutral: " << players_funcs::neutral_entity(target_index) << "\n";
-        return players_funcs::neutral_entity(target_index);
-    } else if (states::state_controller::actual_targeting_type_ == states::target_types::all) {
-        return true;
-    }
-	return false;
-}
-
 void game::defeat() {
     std::exit(0);
 }
@@ -243,52 +214,52 @@ void game::victory() {
     std::exit(0);
 }
 
-void game::create_werewolf()
-{
-	size_t wolf1_id = entity_manager::create<wolf>();
-	size_t wolf2_id = entity_manager::create<wolf>();
-	size_t wolf3_id = entity_manager::create<wolf>();
-	size_t wolf4_id = entity_manager::create<wolf>();
-
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 board::to_index(13, 5),
-									 100,
-									 0,
-									 bitmap_key::hello);
-
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 board::to_index(13, 4),
-									 100,
-									 0,
-									 bitmap_key::hello);
-
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 board::to_index(13, 3),
-									 100,
-									 0,
-									 bitmap_key::hello);
-
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 board::to_index(13, 6),
-									 100,
-									 0,
-									 bitmap_key::hello);
-
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 board::to_index(13, 7),
-									 100,
-									 0,
-									 bitmap_key::hello);
-
-	//board_.insert(board::to_index(13, 5), beast);
-	board::insert(board::to_index(13, 4), wolf1_id);
-	board::insert(board::to_index(13, 3), wolf2_id);
-	board::insert(board::to_index(13, 6), wolf3_id);
-	board::insert(board::to_index(13, 7), wolf4_id);
-
-	//players::add_entity_for_player(L"enemy", beast);
-	players::add_entity_for_player("enemy", wolf1_id);
-	players::add_entity_for_player("enemy", wolf2_id);
-	players::add_entity_for_player("enemy", wolf3_id);
-	players::add_entity_for_player("enemy", wolf4_id);
-}
+//void game::create_werewolf()
+//{
+//	size_t wolf1_id = entity_manager::create<wolf>();
+//	size_t wolf2_id = entity_manager::create<wolf>();
+//	size_t wolf3_id = entity_manager::create<wolf>();
+//	size_t wolf4_id = entity_manager::create<wolf>();
+//
+//	animations_queue::push_animation(animation_types::flash_bitmap,
+//									 board::to_index(13, 5),
+//									 100,
+//									 0,
+//									 bitmap_key::hello);
+//
+//	animations_queue::push_animation(animation_types::flash_bitmap,
+//									 board::to_index(13, 4),
+//									 100,
+//									 0,
+//									 bitmap_key::hello);
+//
+//	animations_queue::push_animation(animation_types::flash_bitmap,
+//									 board::to_index(13, 3),
+//									 100,
+//									 0,
+//									 bitmap_key::hello);
+//
+//	animations_queue::push_animation(animation_types::flash_bitmap,
+//									 board::to_index(13, 6),
+//									 100,
+//									 0,
+//									 bitmap_key::hello);
+//
+//	animations_queue::push_animation(animation_types::flash_bitmap,
+//									 board::to_index(13, 7),
+//									 100,
+//									 0,
+//									 bitmap_key::hello);
+//
+//	//board_.insert(board::to_index(13, 5), beast);
+//	board::insert(board::to_index(13, 4), wolf1_id);
+//	board::insert(board::to_index(13, 3), wolf2_id);
+//	board::insert(board::to_index(13, 6), wolf3_id);
+//	board::insert(board::to_index(13, 7), wolf4_id);
+//
+//	//players::add_entity_for_player(L"enemy", beast);
+//	players_manager::add_entity_for_player("enemy", wolf1_id);
+//	players_manager::add_entity_for_player("enemy", wolf2_id);
+//	players_manager::add_entity_for_player("enemy", wolf3_id);
+//	players_manager::add_entity_for_player("enemy", wolf4_id);
+//}

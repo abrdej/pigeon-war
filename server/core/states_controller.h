@@ -19,6 +19,7 @@ public:
 	static void do_action(size_t index);
 	static bool is_possible_movement(size_t index);
 	static void first_state(size_t select_from_index);
+	static bool valid_target(std::size_t target_index);
 
 	static size_t selected_index_;
 	static states_types actual_state_;
@@ -30,6 +31,9 @@ public:
 
 	static std::unordered_map<std::size_t, std::unordered_set<std::size_t>> custom_valid_targets;
 };
+
+
+
 };
 
 #endif

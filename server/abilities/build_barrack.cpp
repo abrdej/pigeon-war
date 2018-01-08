@@ -34,8 +34,8 @@ void build_barrack::use(size_t index_on) {
         return;
 
     auto barrack_id = entity_manager::create<barrack>();
-    auto player = players::active_player_name();
-    players::add_entity_for_player(player, barrack_id);
+    auto player_id = players_manager::get_active_player_id();
+    players_manager::add_entity_for_player(player_id, barrack_id);
 
     board::insert(index_on, barrack_id);
 }

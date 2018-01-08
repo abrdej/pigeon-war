@@ -4,7 +4,7 @@
 #include <managers/abilities_manager.h>
 #include <abilities/ability.h>
 #include <core/animations_queue.h>
-#include <core/players.h>
+#include <managers/players_manager.h>
 #include <chrono>
 #include <thread>
 #include <common/turn_status.h>
@@ -16,6 +16,7 @@
 #include "managers/names_manager.h"
 #include "server.h"
 #include "common/packet_helper.h"
+#include "sender.h"
 
 game_state get_game_state(game& g) {
 
@@ -54,7 +55,7 @@ local_state get_local_state(game& g) {
 	state.selected_index = states::state_controller::selected_index_;
 
 	for (auto&& move : states::state_controller::possible_movements_) {
-		if (g.valid_target(move)) {
+		if (states::state_controller::valid_target(move)) {
 			state.valid_movements.insert(move);
 		}
 	}
@@ -72,6 +73,10 @@ int main() {
 		binder.send_notification(make_packet("animations", animations_queue::pull_all()));
 	});
 
+	sender::set_sender([&binder](sf::Packet packet) {
+		binder.send_notification(packet);
+	});
+
 	std::vector<local_state> lstates(2);
 
 	binder.bind("on_board", [&](sf::Packet& packet) {
@@ -87,7 +92,7 @@ int main() {
 
         bool single_client = binder.is_single_client();
 
-		if (client_id == players::active_player_index() || single_client) {
+		if (client_id == players_manager::get_active_player_id() || single_client) {
 			g.on_board(x, y);
 
 		} else {
@@ -98,7 +103,7 @@ int main() {
 
 		binder.send_notification(make_packet("animations", animations_queue::pull_all()));
 
-		if (client_id == players::active_player_index() || single_client) {
+		if (client_id == players_manager::get_active_player_id() || single_client) {
 			binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
 
 		} else {
@@ -122,7 +127,7 @@ int main() {
 
 		const bool single_client = binder.is_single_client();
 
-		if (client_id == players::active_player_index() || single_client) {
+		if (client_id == players_manager::get_active_player_id() || single_client) {
 			g.on_button(n);
 
 		} else {
@@ -135,7 +140,7 @@ int main() {
 
 			lstates = std::vector<local_state>(2);
 
-			auto active_player = players::active_player_index();
+			auto active_player = players_manager::get_active_player_id();
 
 			sf::Packet result_packet;
 			result_packet << "end_turn" << active_player;
@@ -150,13 +155,13 @@ int main() {
             if (single_client) {
                 binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
             } else {
-                binder.send_notification_to(players::active_player_index(), make_packet("local_state", get_local_state(g)));
-                binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("local_state", local_state()));
+                binder.send_notification_to(players_manager::get_active_player_id(), make_packet("local_state", get_local_state(g)));
+                binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet("local_state", local_state()));
             }
 
 		} else {
 
-			if (client_id == players::active_player_index() || single_client) {
+			if (client_id == players_manager::get_active_player_id() || single_client) {
 				binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
 
 			} else {
@@ -183,7 +188,7 @@ int main() {
 
 		const bool single_client = binder.is_single_client();
 
-		if (client_id == players::active_player_index() || single_client) {
+		if (client_id == players_manager::get_active_player_id() || single_client) {
 
 			description = g.get_button_description(states::state_controller::selected_index_, n);
 
@@ -195,8 +200,8 @@ int main() {
 		if (single_client) {
 			binder.send_notification_to(client_id, make_packet("description", description));
 		} else {
-			binder.send_notification_to(players::active_player_index(), make_packet("description", description));
-			binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("description", description));
+			binder.send_notification_to(players_manager::get_active_player_id(), make_packet("description", description));
+			binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet("description", description));
 		}
 	});
 

@@ -5,8 +5,10 @@
 #include "abilities/ability.h"
 #include "managers/abilities_manager.h"
 
-namespace states
-{
+using states::state_controller;
+using states::states_types;
+using states::target_types;
+
 size_t state_controller::selected_index_ = no_selected_index;
 states_types state_controller::actual_state_ = states_types::waiting;
 target_types state_controller::actual_targeting_type_ = target_types::non;
@@ -54,4 +56,32 @@ bool state_controller::is_possible_movement(size_t index)
 	auto result = std::find(begin_it, end_it, index);
 	return result != end_it;
 }
+
+bool state_controller::valid_target(std::size_t target_index) {
+
+	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy) {
+
+		auto caster_id = board::at(states::state_controller::selected_index_);
+		auto target_id = board::at(target_index);
+
+		if (!states::state_controller::custom_valid_targets[caster_id].empty()) {
+			return states::state_controller::custom_valid_targets[caster_id].find(target_id) !=
+				   std::end(states::state_controller::custom_valid_targets[caster_id]);
+		}
+
+		return players_funcs::enemy_entity(target_index);
+	}
+	else if (states::state_controller::actual_targeting_type_ == states::target_types::moving)
+		return board::empty(target_index);
+	else if (states::state_controller::actual_targeting_type_ == states::target_types::friendly)
+		return players_funcs::player_entity(target_index);
+	else if (states::state_controller::actual_targeting_type_ == states::target_types::caster)
+		return target_index == states::state_controller::selected_index_;
+	else if (states::state_controller::actual_targeting_type_ == states::target_types::neutral) {
+		std::cout << "neutral: " << players_funcs::neutral_entity(target_index) << "\n";
+		return players_funcs::neutral_entity(target_index);
+	} else if (states::state_controller::actual_targeting_type_ == states::target_types::all) {
+		return true;
+	}
+	return false;
 }

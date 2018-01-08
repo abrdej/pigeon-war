@@ -1,6 +1,6 @@
 #include <managers/health_manager.h>
 #include <core/path_finder.h>
-#include <core/players.h>
+#include <managers/players_manager.h>
 #include "surroundings.h"
 
 surroundings::surroundings(std::size_t entity_id) {
