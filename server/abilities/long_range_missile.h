@@ -5,25 +5,21 @@
 #ifndef PIGEONWAR_LONG_RANGE_MISSILE_H
 #define PIGEONWAR_LONG_RANGE_MISSILE_H
 
-#include "ability.h"
-#include "core/turn.h"
+#include "straight_target_ability.h"
 
-class long_range_missile final : public ability, protected turn_events_helper::every_turn_callback_helper
+class long_range_missile final : public straight_target_ability<12>
 {
 public:
-	long_range_missile();
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::long_range_missile;
 	}
 
 private:
-	void prepare(size_t for_index) override;
 	void use(size_t index_on);
 	void play_animation(size_t from_index, size_t to_index);
 
 private:
-	const int range{12};
 	const int start_damage{8};
 	const int additional_damage{2};
 	bool used{false};

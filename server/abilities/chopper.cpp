@@ -39,17 +39,6 @@ chopper::chopper(std::size_t entity_id) : entity_id(entity_id) {
     });
 }
 
-void chopper::prepare(size_t for_index) {
-    states::state_controller::selected_index_ = for_index;
-    board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
-
-    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](size_t index)
-                                              {
-                                                  return use(index);
-                                              });
-}
-
 void chopper::use(size_t index_on) {
 
     if (used) {

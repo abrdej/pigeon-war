@@ -1,10 +1,10 @@
 #ifndef INVISIBILITY_H
 #define INVISIBILITY_H
 
-#include "ability.h"
+#include "caster_target_ability.h"
 #include "core/turn.h"
 
-class invisibility final : public ability 
+class invisibility final : public caster_target_ability
 {
 public:
 	explicit invisibility(size_t id);
@@ -14,8 +14,7 @@ public:
 	}
 
 private:
-	void prepare(size_t for_index) override;
-	void use(size_t on_index);
+	void use(size_t on_index) override;
 	void hide_me();
 	void show_me();
 private:

@@ -5,25 +5,22 @@
 #ifndef PIGEONWAR_POISONED_MISSILE_H
 #define PIGEONWAR_POISONED_MISSILE_H
 
-#include "ability.h"
+#include "path_target_ability.h"
 #include "per_turn_usable.h"
 
-class poisoned_missile final : public ability, per_turn_usable
+class poisoned_missile final : public path_target_ability<4>, per_turn_usable
 {
 public:
-    poisoned_missile() = default;
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::poisoned_missile;
     }
 
 private:
-    void prepare(size_t for_index) override;
     void use(size_t index_on);
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    const int range{4};
     const int damage{6};
     const int poison_power{3};
     const int poison_last{3};

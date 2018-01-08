@@ -2,12 +2,6 @@
 #include "sniper_shot.h"
 #include "damage_dealers.h"
 
-sniper_shot::sniper_shot() {
-    onEveryRound([this]() {
-        used = false;
-    });
-}
-
 void sniper_shot::prepare(size_t for_index) {
 
     states::state_controller::selected_index_ = for_index;

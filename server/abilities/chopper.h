@@ -5,13 +5,13 @@
 #ifndef PIGEONWAR_CHOPPER_H
 #define PIGEONWAR_CHOPPER_H
 
-#include "ability.h"
-#include "core/turn.h"
+#include "neighboring_target_ability.h"
+#include "per_turn_usable.h"
 #include <boost/circular_buffer.hpp>
 
 class spiral_of_fire;
 
-class chopper final : public ability, protected turn_events_helper::every_turn_callback_helper
+class chopper final : public neighboring_target_ability<>, per_turn_usable
 {
 public:
     explicit chopper(std::size_t entity_id);
@@ -21,8 +21,7 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void use(size_t index_on) override;
     void play_animation(size_t index_from, size_t index_on);
 
 private:
@@ -30,7 +29,6 @@ private:
     const int no_fired_damage = 5;
     const int fired_damage = 10;
     std::size_t entity_id;
-    bool used{false};
     int damage{no_fired_damage};
     bool fired{false};
     int fired_aura_dmg{3};

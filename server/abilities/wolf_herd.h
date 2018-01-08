@@ -5,11 +5,10 @@
 #ifndef PIGEONWAR_WOLF_HERD_H
 #define PIGEONWAR_WOLF_HERD_H
 
-#include "ability.h"
+#include "caster_target_ability.h"
 
-class wolf_herd final : public ability {
+class wolf_herd final : public caster_target_ability {
 public:
-	void prepare(size_t for_index) override;
 	void use(size_t index_on);
 
 	bitmap_key get_bitmap_key() const override {

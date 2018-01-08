@@ -4,13 +4,6 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 
-sabers::sabers()
-{
-	onEveryRound([this]() {
-		used = false;
-	});
-}
-
 void sabers::prepare(size_t for_index)
 {
 	targets_.clear();

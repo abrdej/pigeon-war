@@ -6,9 +6,9 @@
 #define PIGEONWAR_PROTECTION_FIELD_H
 
 #include <core/turn.h>
-#include "ability.h"
+#include "straight_target_ability.h"
 
-class protection_field : public ability, protected turn_events_helper::every_turn_callback_helper {
+class protection_field : public straight_target_ability<3>, protected turn_events_helper::every_turn_callback_helper {
 public:
     explicit protection_field(std::size_t entity_id);
 
@@ -21,8 +21,7 @@ public:
 	}
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void use(size_t index_on) override;
     void play_animation(size_t from_index, size_t to_index);
     bool is_active{true};
     bool used{false};

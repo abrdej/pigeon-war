@@ -5,25 +5,23 @@
 #ifndef PIGEONWAR_HANDCANNON_H
 #define PIGEONWAR_HANDCANNON_H
 
-#include "ability.h"
-#include "core/turn.h"
+#include "straight_target_ability.h"
+#include "per_turn_usable.h"
 
-class handcannon final : public ability, protected turn_events_helper::every_turn_callback_helper
+class handcannon final : public straight_target_ability<3>,
+                         per_turn_usable
 {
 public:
-    handcannon();
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::handcannon;
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void use(size_t index_on) override;
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    const int range = 3;
     const int damage = 8;
     const int bonus_damage = 5;
     bool used{false};

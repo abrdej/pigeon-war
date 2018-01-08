@@ -1,10 +1,10 @@
 #ifndef GRENADE_H
 #define GRENADE_H
 
-#include "ability.h"
+#include "path_target_ability.h"
 #include <vector>
 
-class grenade final : public ability
+class grenade final : public path_target_ability<3>
 {
 public:
 	grenade() = default;
@@ -14,12 +14,10 @@ public:
 	}
 
 private:
-	void prepare(size_t for_index) override;
-	void use(size_t index_on);
+	void use(size_t index_on) override;
 	void play_animation(size_t from_index, size_t to_index, const std::vector<size_t>& neightbords);
 
 private:
-	const int range = 3;
 	const int damage = 12;
 	bool used_{false};
 };

@@ -11,17 +11,6 @@ invisibility::invisibility(size_t id)
 
 }
 
-void invisibility::prepare(size_t for_index)
-{
-	states::state_controller::actual_state_ = states::states_types::wait_for_action;
-	states::state_controller::possible_movements_.push_back(for_index);
-	states::state_controller::actual_targeting_type_ = states::target_types::caster;
-	states::state_controller::wait_for_action([this](size_t index)
-	{
-		return use(index);
-	});
-}
-
 void invisibility::use(size_t on_index)
 {
 	if (used_)

@@ -5,24 +5,20 @@
 #ifndef PIGEONWAR_BLOW_THE_AX_H
 #define PIGEONWAR_BLOW_THE_AX_H
 
+#include "straight_target_ability.h"
+#include "per_turn_usable.h"
 
-#include "ability.h"
-#include "core/turn.h"
-
-class blow_the_ax final : public ability, turn_events_helper::every_turn_callback_helper {
+class blow_the_ax final : public straight_target_ability<1>,
+                          per_turn_usable {
 public:
-    blow_the_ax();
-
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::blow_the_ax;
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void use(size_t index_on) override;
 
     int damage{15};
-    bool used{false};
 };
 
 

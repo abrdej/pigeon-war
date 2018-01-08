@@ -32,8 +32,6 @@ struct local_state {
 	std::string entity_name;
 };
 
-
-
 PACKET_DEFINE3(game_state, board, healths, entities_bitmaps)
 
 PACKET_DEFINE6(local_state, possible_movements, valid_movements, selected_index, actual_target_type,  button_bitmaps, entity_name)

@@ -4,25 +4,6 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 
-basic_melee_attack::basic_melee_attack()
-{
-	onEveryRound([this]() {
-		used = false;
-	});
-}
-
-void basic_melee_attack::prepare(size_t for_index)
-{
-	states::state_controller::selected_index_ = for_index;
-	board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
-
-	states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-	states::state_controller::wait_for_action([this](size_t index)
-	{
-		return use(index);
-	});
-}
-
 void basic_melee_attack::use(size_t index_on)
 {
 	if (used) {

@@ -5,10 +5,10 @@
 #ifndef PIGEONWAR_SPIDER_WEB_H
 #define PIGEONWAR_SPIDER_WEB_H
 
-#include "ability.h"
-#include "core/turn.h"
+#include "straight_target_ability.h"
+#include "per_turn_usable.h"
 
-class spider_web final : public ability, protected turn_events_helper::every_turn_callback_helper
+class spider_web final : public straight_target_ability<5>, per_turn_usable
 {
 public:
     explicit spider_web(std::size_t entity_id);
@@ -20,14 +20,11 @@ public:
 	void set_used();
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void use(size_t index_on) override;
 
 private:
     std::size_t caster_id;
-    int range = 5;
     int damage = 6;
-    bool used{false};
 };
 
 #endif //PIGEONWAR_SPIDER_WEB_H

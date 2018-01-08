@@ -5,10 +5,10 @@
 #ifndef PIGEONWAR_GIANT_RAM_H
 #define PIGEONWAR_GIANT_RAM_H
 
-#include "ability.h"
+#include "straight_target_ability.h"
 #include <vector>
 
-class giant_ram final : public ability {
+class giant_ram final : public straight_target_ability<5, states::target_types::moving, true> {
 public:
     giant_ram();
 
@@ -17,14 +17,10 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override;
-
-    void use(size_t index_on);
-
+    void use(size_t index_on) override;
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    const int range = 5;
     const int damage = 15;
     bool used{false};
 };

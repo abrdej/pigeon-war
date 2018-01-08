@@ -7,10 +7,10 @@
 
 #include <managers/health_manager.h>
 #include "ability.h"
-#include "core/turn.h"
+#include "per_turn_usable.h"
 #include "possible_move_helper.h"
 
-class vicious_circle final : public ability, protected turn_events_helper::every_turn_callback_helper
+class vicious_circle final : public ability, per_turn_usable
 {
 public:
     explicit vicious_circle(std::size_t entity_id);
@@ -26,7 +26,6 @@ private:
 
     std::size_t entity_id;
     int range{3};
-    bool used{false};
 };
 
 #endif //PIGEONWAR_VICIOUS_CIRCLE_H

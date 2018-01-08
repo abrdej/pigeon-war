@@ -32,8 +32,6 @@ public:
 	static std::unordered_map<std::size_t, std::unordered_set<std::size_t>> custom_valid_targets;
 };
 
-
-
 };
 
 #endif

@@ -4,9 +4,6 @@
 #include "damage_dealers.h"
 
 vicious_circle::vicious_circle(std::size_t entity_id) : entity_id(entity_id) {
-    onEveryRound([this]() {
-        used = false;
-    });
 }
 
 void vicious_circle::prepare(size_t for_index) {

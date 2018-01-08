@@ -5,25 +5,22 @@
 #ifndef PIGEONWAR_SHIRUKEN_H
 #define PIGEONWAR_SHIRUKEN_H
 
-#include "ability.h"
-#include "core/turn.h"
+#include "path_target_ability.h"
+#include "per_turn_usable.h"
 
-class shiruken final : public ability, protected turn_events_helper::every_turn_callback_helper
+class shiruken final : public path_target_ability<4>, per_turn_usable
 {
 public:
-    shiruken();
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::shiruken;
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void use(size_t index_on) override;
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    const int range{4};
     const int damage{6};
     const int death_mark_duration{2};
     bool used{false};

@@ -5,19 +5,15 @@
 #ifndef PIGEONWAR_HYPNOSIS_H
 #define PIGEONWAR_HYPNOSIS_H
 
-#include "ability.h"
-#include "core/turn.h"
+#include "path_target_ability.h"
 
-class hypnosis final : public ability
+class hypnosis final : public path_target_ability<4, states::target_types::enemy, true>
 {
 public:
-	hypnosis();
-
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::hypnosis;
 	}
 private:
-	void prepare(size_t for_index) override;
 	void use(size_t index_on);
 	void play_animation(size_t to_index);
 

@@ -7,7 +7,7 @@
 
 #include "ability.h"
 
-class stone_skin : public ability {
+class stone_skin : public passive_ability {
 public:
     explicit stone_skin(std::size_t entity_id);
 
@@ -16,7 +16,6 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override {}
     int damage_reduction{0};
     int reduction_increase_amount{1};
 };

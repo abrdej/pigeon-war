@@ -25,7 +25,6 @@ private:
 private:
 	const int damage = 8;
 	const int bonus_damage = 1;
-	bool used{false};
 };
 
 #endif //PIGEONWAR_LASER_H

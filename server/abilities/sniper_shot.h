@@ -6,12 +6,11 @@
 #define PIGEONWAR_SNIPER_SHOT_H
 
 #include "ability.h"
-#include "core/turn.h"
+#include "per_turn_usable.h"
 
-class sniper_shot final : public ability, protected turn_events_helper::every_turn_callback_helper
+class sniper_shot final : public ability, per_turn_usable
 {
 public:
-    sniper_shot();
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::sniper_shot;
     }

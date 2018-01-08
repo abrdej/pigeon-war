@@ -26,20 +26,6 @@ protection_field::protection_field(std::size_t entity_id) {
     });
 }
 
-void protection_field::prepare(size_t for_index) {
-    states::state_controller::selected_index_ = for_index;
-
-    board_helper::calc_straight(for_index, states::state_controller::possible_movements_,
-                                states::state_controller::possible_movements_costs_,
-                                range);
-
-    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](size_t index)
-                                              {
-                                                  return use(index);
-                                              });
-}
-
 void protection_field::use(size_t index_on) {
     if (used)
         return;

@@ -5,12 +5,12 @@
 #ifndef PIGEONWAR_SPIRAL_OF_FIRE_H
 #define PIGEONWAR_SPIRAL_OF_FIRE_H
 
-#include "ability.h"
+#include "straight_target_ability.h"
 #include <vector>
 
 class chopper;
 
-class spiral_of_fire final : public ability
+class spiral_of_fire final : public straight_target_ability<3, states::target_types::enemy, true>
 {
 public:
     spiral_of_fire();
@@ -20,12 +20,10 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void use(size_t index_on) override;
     void play_animation(size_t from_index, size_t to_index);
 
 private:
-    const int range = 3;
     const int damage = 12;
     bool can_be_used{false};
 

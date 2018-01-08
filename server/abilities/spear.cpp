@@ -3,29 +3,9 @@
 #include "damage_dealers.h"
 
 spear::spear(std::size_t id) : entity_id(id) {
-    onEveryRound([this]() {
-        used = false;
-    });
-
     healths_manager::on_receive_damage(entity_id, [this](const damage_pack& dmg) mutable {
        accumulated_damage += 4;
     }, healths_manager::on_receive_damage_policy::after);
-}
-
-void spear::prepare(size_t for_index) {
-
-    states::state_controller::selected_index_ = for_index;
-
-    board_helper::calc_straight(for_index,
-                                states::state_controller::possible_movements_,
-                                states::state_controller::possible_movements_costs_,
-                                range);
-
-    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](size_t index)
-                                              {
-                                                  return use(index);
-                                              });
 }
 
 void spear::use(size_t index_on) {
