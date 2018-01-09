@@ -43,7 +43,6 @@ public:
 	}
 
 	static bool player_entity(std::size_t player_id, size_t entity_id) {
-		std::cout << "player_entity: " << player_id << ", " << entity_id << "\n";
 		return get_instance().entity_id_to_player_id[entity_id] == player_id;
 	}
 

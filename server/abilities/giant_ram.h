@@ -8,19 +8,21 @@
 #include "straight_target_ability.h"
 #include <vector>
 
-class giant_ram final : public straight_target_ability<5, states::target_types::moving, true> {
+class giant_ram final : public straight_target_ability<5, states::target_types::enemy, true> {
 public:
-    giant_ram();
+    explicit giant_ram(std::size_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::giant_ram;
     }
 
 private:
+    void prepare(std::size_t for_index) override;
     void use(size_t index_on) override;
     void play_animation(size_t from_index, size_t to_index);
 
 private:
+    std::size_t entity_id;
     const int damage = 15;
     bool used{false};
 };

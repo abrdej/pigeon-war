@@ -2,6 +2,7 @@
 #define HEALTH_COMPONENT_H
 
 #include "common/managers.h"
+#include "modifications_manager.h"
 #include <limits>
 #include <algorithm>
 #include <core/board.h>
@@ -134,30 +135,21 @@ public:
 	}
 	static inline int receive_damage(const damage_pack& dmg)
 	{
-//		for (auto&& callback_pack : on_receive_damage_callbacks[dmg.damage_receiver_id]) {
-//			if (callback_pack.first == on_receive_damage_policy::before) {
-//				callback_pack.second(dmg);
-//			}
-//		}
+		damage_pack damage_pack = dmg;
+		damage_pack.damage_value += modifications_manager::damage_receiver_modifier_value(dmg.damage_receiver_id);
 
-		for (auto&& callback_pack : on_receive_damage_before_callbacks[dmg.damage_receiver_id]) {
-			callback_pack.second(dmg);
+		for (auto&& callback_pack : on_receive_damage_before_callbacks[damage_pack.damage_receiver_id]) {
+			callback_pack.second(damage_pack);
 		}
 
-		auto& health_pack = component_reference_for(dmg.damage_receiver_id);
-		auto received_damage = damage_receivers[dmg.damage_receiver_id](health_pack, dmg);
+		auto& health_pack = component_reference_for(damage_pack.damage_receiver_id);
+		auto received_damage = damage_receivers[damage_pack.damage_receiver_id](health_pack, damage_pack);
 
-		auto enemy_index = board::index_for(dmg.damage_receiver_id);
+		auto enemy_index = board::index_for(damage_pack.damage_receiver_id);
 		play_change_health_animation(enemy_index, -received_damage);
 
-//		for (auto&& callback_pack : on_receive_damage_callbacks[dmg.damage_receiver_id]) {
-//			if (callback_pack.first == on_receive_damage_policy::after) {
-//				callback_pack.second(dmg);
-//			}
-//		}
-
-		for (auto&& callback_pack : on_receive_damage_after_callbacks[dmg.damage_receiver_id]) {
-			callback_pack.second(dmg);
+		for (auto&& callback_pack : on_receive_damage_after_callbacks[damage_pack.damage_receiver_id]) {
+			callback_pack.second(damage_pack);
 		}
 
 		return received_damage;

@@ -30,6 +30,13 @@ public:
 	static std::function<void(std::size_t)> caller_;
 
 	static std::unordered_map<std::size_t, std::unordered_set<std::size_t>> custom_valid_targets;
+
+	enum class custom_target_type {
+		board_index,
+		entity_id
+	};
+
+	static custom_target_type custom_valid_target_type;
 };
 
 };

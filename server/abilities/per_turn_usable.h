@@ -7,6 +7,8 @@
 
 #include <core/turn.h>
 
+using per_turn_callback = turn_events_helper::every_turn_callback_helper;
+
 class per_turn_usable : protected turn_events_helper::every_turn_callback_helper {
 public:
 	per_turn_usable() {

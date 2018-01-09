@@ -22,6 +22,7 @@ void giant_blow::use(size_t index_on)
 
     if (counter++ == 2) {
         states::state_controller::custom_valid_targets[enemy_id].insert(caster_id);
+        states::state_controller::custom_valid_target_type = states::state_controller::custom_target_type::entity_id;
 
         auto giant_only_target =
                 turn::turn_system::every_turn([this, enemy_id, counter = 0]() mutable {

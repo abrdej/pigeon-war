@@ -21,8 +21,7 @@ private:
     void play_animation(size_t index_from, size_t index_on);
 
 private:
-    const int damage = 8;
-    bool used{false};
+    const int damage{8};
     int counter{0};
 };
 

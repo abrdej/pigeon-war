@@ -20,6 +20,8 @@ std::function<void(size_t)> state_controller::caller_;
 
 std::unordered_map<std::size_t, std::unordered_set<std::size_t>> state_controller::custom_valid_targets;
 
+state_controller::custom_target_type state_controller::custom_valid_target_type = state_controller::custom_target_type::board_index;
+
 void state_controller::first_state(size_t select_from_index)
 {
 	if (select_from_index == no_selected_index)
@@ -62,10 +64,14 @@ bool state_controller::valid_target(std::size_t target_index) {
 	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy) {
 
 		auto caster_id = board::at(states::state_controller::selected_index_);
-		auto target_id = board::at(target_index);
+
+		std::size_t target_value = target_index;
+
+		if (custom_valid_target_type == custom_target_type::entity_id)
+			target_value = board::at(target_index);
 
 		if (!states::state_controller::custom_valid_targets[caster_id].empty()) {
-			return states::state_controller::custom_valid_targets[caster_id].find(target_id) !=
+			return states::state_controller::custom_valid_targets[caster_id].find(target_value) !=
 				   std::end(states::state_controller::custom_valid_targets[caster_id]);
 		}
 

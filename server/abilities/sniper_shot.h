@@ -23,7 +23,6 @@ private:
     const int range{10};
     const int damage{12};
     const int additional_damage{12};
-    bool used{false};
 };
 
 #endif //PIGEONWAR_SNIPER_SHOT_H

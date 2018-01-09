@@ -7,8 +7,21 @@
 #include "damage_dealers.h"
 #include "managers/abilities_manager.h"
 
-giant_ram::giant_ram() {
+giant_ram::giant_ram(std::size_t entity_id) : entity_id(entity_id) {
 
+}
+
+void giant_ram::prepare(std::size_t for_index) {
+
+    straight_target_ability::prepare(for_index);
+
+    for (auto& index : states::state_controller::possible_movements_) {
+        if (board::empty(index)) {
+            states::state_controller::custom_valid_targets[entity_id].insert(index);
+        }
+    }
+
+    states::state_controller::custom_valid_target_type = states::state_controller::custom_target_type::board_index;
 }
 
 void giant_ram::use(size_t index_on) {
@@ -60,6 +73,9 @@ void giant_ram::use(size_t index_on) {
     }
 
     states::state_controller::selected_index_ = index_on;
+
+    states::state_controller::possible_movements_.clear();
+    states::state_controller::custom_valid_targets[entity_id].clear();
 
     used = true;
 }
