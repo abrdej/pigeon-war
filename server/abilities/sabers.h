@@ -17,7 +17,6 @@ private:
 	void prepare(size_t for_index) override;
 	void target(size_t on);
 	void use(size_t index_on);
-	void play_animation(size_t index_from, size_t index_on);
 
 private:
 	const int range = 1;

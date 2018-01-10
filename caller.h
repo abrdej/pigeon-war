@@ -6,13 +6,14 @@
 #define PIGEONWAR_CALLER_H
 
 #include <SFML/Network.hpp>
+#include "common/message_types.h"
 
 
 template <typename... Args>
-inline void send(sf::TcpSocket& socket, const std::string& name, Args&&... args) {
+inline void send(sf::TcpSocket& socket, const message_types& message, Args&&... args) {
 
 	sf::Packet packet;
-	packet << name;
+	packet << message;
 
 	auto packer = [&packet](auto x) {
 		packet << x;
@@ -24,10 +25,10 @@ inline void send(sf::TcpSocket& socket, const std::string& name, Args&&... args)
 }
 
 template <typename T, typename... Args>
-inline T send_and_receive(sf::TcpSocket& socket, const std::string& name, Args&&... args) {
+inline T send_and_receive(sf::TcpSocket& socket, const message_types& message, Args&&... args) {
 
 	sf::Packet packet;
-	packet << name;
+	packet << message;
 
 	auto packer = [&packet](auto x) {
 		packet << x;

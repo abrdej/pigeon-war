@@ -21,23 +21,9 @@ void handcannon::use(size_t index_on) {
 
     std::cout << "active: " << is_active << " final_damage: " << final_damage << "\n";
 
-    play_animation(used_from_index, index_on);
+    sender::send(message_types::animation, animation_def::handcannon, used_from_index, index_on);
 
     damage_dealers::standard_damage_dealer(ranged_damage(final_damage, board::at(index_on), caster_id));
 
     used = true;
-}
-
-void handcannon::play_animation(size_t from_index, size_t to_index) {
-    animations_queue::push_animation(animation_types::move,
-                                     from_index,
-                                     to_index,
-                                     -1,
-                                     bitmap_key::handcannon);
-
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     to_index,
-                                     150,
-                                     0,
-                                     bitmap_key::handcannonbum);
 }

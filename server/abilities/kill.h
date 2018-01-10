@@ -21,7 +21,6 @@ private:
     void prepare(size_t for_index) override;
     void set_landing(size_t for_index);
     void use(size_t index_on);
-    void play_animation(size_t from_index, size_t to_index);
 
 private:
     const int range{4};

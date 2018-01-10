@@ -22,7 +22,6 @@ public:
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);
-    void play_animation(size_t index_on);
 
     std::size_t entity_id;
     int range{3};

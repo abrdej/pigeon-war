@@ -16,7 +16,7 @@ void jaw_spider::use(size_t index_on) {
 	auto used_from_index = states::state_controller::selected_index_;
 	auto caster_id = board::at(used_from_index);
 
-	play_animation(index_on);
+	sender::send(message_types::animation, animation_def::jaw_spider, index_on);
 
 	auto enemy_id = board::at(index_on);
 
@@ -31,14 +31,6 @@ void jaw_spider::use(size_t index_on) {
 	auto& abilities = abilities_manager::component_for(caster_id);
 	auto spider_web_ptr = std::static_pointer_cast<spider_web>(abilities.type(abilities::ability_types::special));
 	spider_web_ptr->set_used();
-}
-
-void jaw_spider::play_animation(size_t index_on) {
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 index_on,
-									 150,
-									 0,
-									 bitmap_key::jaw_spider);
 }
 
 void jaw_spider::set_used() {

@@ -1,7 +1,5 @@
 #include "dodge.h"
 #include "managers/health_manager.h"
-#include <iostream>
-#include <core/board.h>
 
 dodge::dodge(std::size_t entity_id) {
 
@@ -13,11 +11,7 @@ dodge::dodge(std::size_t entity_id) {
 
 			auto index = board::index_for(entity_id);
 
-			auto backup_id = board::take(index);
-
-			animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::dodge);
-
-			board::give_back(backup_id, index);
+			sender::send(message_types::animation, animation_def::dodge, index);
 
 			return 0;
 

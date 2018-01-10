@@ -28,41 +28,47 @@ void spider_web::use(size_t index_on) {
 
     auto land_index = board::to_index(pos_1.first + x, pos_1.second + y);
 
-    animations_queue::push_animation(animation_types::move,
-                                     used_from_index,
-                                     index_on,
-                                     -1,
-                                     bitmap_key::spider_web);
+    sender::send(message_types::animation, animation_def::spider_web, used_from_index, index_on, land_index);
 
-    auto enemy_id = board::take(index_on);
+//    animations_queue::push_animation(animation_types::move,
+//                                     used_from_index,
+//                                     index_on,
+//                                     -1,
+//                                     bitmap_key::spider_web);
 
-    animations_queue::push_animation(animation_types::hide_show,
-                                     index_on,
-                                     0,
-                                     0,
-                                     bitmap_key::none);
+    //auto enemy_id = board::take(index_on);
 
-    if (index_on != land_index) {
-        animations_queue::push_animation(animation_types::move,
-                                         index_on,
-                                         land_index,
-                                         -1,
-                                         bitmap_key::spider_web);
-    }
+    auto enemy_id = board::at(index_on);
 
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     land_index,
-                                     150,
-                                     -1,
-                                     bitmap_key::spider_web);
+    board::move(index_on, land_index);
 
-    board::give_back(enemy_id, land_index);
+//    animations_queue::push_animation(animation_types::hide_show,
+//                                     index_on,
+//                                     0,
+//                                     0,
+//                                     bitmap_key::none);
+//
+//    if (index_on != land_index) {
+//        animations_queue::push_animation(animation_types::move,
+//                                         index_on,
+//                                         land_index,
+//                                         -1,
+//                                         bitmap_key::spider_web);
+//    }
+//
+//    animations_queue::push_animation(animation_types::flash_bitmap,
+//                                     land_index,
+//                                     150,
+//                                     -1,
+//                                     bitmap_key::spider_web);
 
-    animations_queue::push_animation(animation_types::hide_show,
-                                     land_index,
-                                     1,
-                                     enemy_id,
-                                     bitmap_key::none);
+    //board::give_back(enemy_id, land_index);
+
+//    animations_queue::push_animation(animation_types::hide_show,
+//                                     land_index,
+//                                     1,
+//                                     enemy_id,
+//                                     bitmap_key::none);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, caster_id));
 

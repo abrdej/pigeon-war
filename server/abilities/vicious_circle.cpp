@@ -32,15 +32,11 @@ void vicious_circle::use(size_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
 
-    play_animation(index_on);
+    sender::send(message_types::animation, animation_def::vicious_circle, index_on);
 
     damage_dealers::standard_damage_dealer(magic_damage(power, board::at(index_on), entity_id));
 
     powers_manager::set_power_to(entity_id, 0);
 
     used = true;
-}
-
-void vicious_circle::play_animation(size_t index_on) {
-    animations_queue::push_animation(animation_types::flash_bitmap, index_on, 200, -1, bitmap_key::magic_energy);
 }

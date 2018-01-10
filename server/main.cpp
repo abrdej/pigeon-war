@@ -70,7 +70,7 @@ int main() {
 	server binder;
 
 	animations_queue::set_pull_function([&binder](){
-		binder.send_notification(make_packet("animations", animations_queue::pull_all()));
+		binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
 	});
 
 	sender::set_sender([&binder](sf::Packet packet) {
@@ -79,7 +79,7 @@ int main() {
 
 	std::vector<local_state> lstates(2);
 
-	binder.bind("on_board", [&](sf::Packet& packet) {
+	binder.bind(message_types::on_board, [&](sf::Packet& packet) {
 		std::cout << "on_board\n";
 
 		int client_id;
@@ -101,22 +101,22 @@ int main() {
 			g.on_board_2(x, y, lstates[client_id]);
 		}
 
-		binder.send_notification(make_packet("animations", animations_queue::pull_all()));
+		binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
 
 		if (client_id == players_manager::get_active_player_id() || single_client) {
-			binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
+			binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
 
 		} else {
-			binder.send_notification_to(client_id, make_packet("local_state", lstates[client_id]));
+			binder.send_notification_to(client_id, make_packet(message_types::local_state, lstates[client_id]));
 		}
 
 
 //		binder.send_notification_to((this_player_id + 1) % 2, make_packet("local_state", local_state()));
 
-		binder.send_notification(make_packet("game_state", get_game_state(g)));
+		binder.send_notification(make_packet(message_types::game_state, get_game_state(g)));
 	});
 
-	binder.bind("on_button", [&](sf::Packet& packet) {
+	binder.bind(message_types::on_button, [&](sf::Packet& packet) {
 		std::cout << "on_button\n";
 
 		int client_id;
@@ -148,34 +148,34 @@ int main() {
 			binder.send_notification(result_packet);
 		}
 
-		binder.send_notification(make_packet("animations", animations_queue::pull_all()));
+		binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
 
 		if (n == 5) {
 
             if (single_client) {
-                binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
+                binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
             } else {
-                binder.send_notification_to(players_manager::get_active_player_id(), make_packet("local_state", get_local_state(g)));
-                binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet("local_state", local_state()));
+                binder.send_notification_to(players_manager::get_active_player_id(), make_packet(message_types::local_state, get_local_state(g)));
+                binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet(message_types::local_state, local_state()));
             }
 
 		} else {
 
 			if (client_id == players_manager::get_active_player_id() || single_client) {
-				binder.send_notification_to(client_id, make_packet("local_state", get_local_state(g)));
+				binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
 
 			} else {
-				binder.send_notification_to(client_id, make_packet("local_state", lstates[client_id]));
+				binder.send_notification_to(client_id, make_packet(message_types::local_state, lstates[client_id]));
 			}
 		}
 
 //		binder.send_notification_to((players::active_player_index()) % 2, make_packet("local_state", get_local_state(g)));
 //		binder.send_notification_to((players::active_player_index() + 1) % 2, make_packet("local_state", local_state()));
 
-		binder.send_notification(make_packet("game_state", get_game_state(g)));
+		binder.send_notification(make_packet(message_types::game_state, get_game_state(g)));
 	});
 
-	binder.bind("get_button_description", [&](sf::Packet& packet) {
+	binder.bind(message_types::get_button_description, [&](sf::Packet& packet) {
 		std::cout << "get_button_description\n";
 
 		int client_id;
@@ -198,10 +198,10 @@ int main() {
 		}
 
 		if (single_client) {
-			binder.send_notification_to(client_id, make_packet("description", description));
+			binder.send_notification_to(client_id, make_packet(message_types::description, description));
 		} else {
-			binder.send_notification_to(players_manager::get_active_player_id(), make_packet("description", description));
-			binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet("description", description));
+			binder.send_notification_to(players_manager::get_active_player_id(), make_packet(message_types::description, description));
+			binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet(message_types::description, description));
 		}
 	});
 

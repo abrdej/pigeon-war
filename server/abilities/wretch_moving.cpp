@@ -54,11 +54,7 @@ void wretch_moving::move(size_t index_to) {
 
     states::state_controller::selected_index_ = states::no_selected_index;
 
-    animations_queue::push_animation(animation_types::move,
-                                     move_from_index,
-                                     index_to,
-                                     taken_id,
-                                     bitmap_key::none);
+    sender::send(message_types::animation, animation_def::move, move_from_index, index_to);
 
     int from_col = board::to_pos(move_from_index).first;
     int to_col = board::to_pos(index_to).first;

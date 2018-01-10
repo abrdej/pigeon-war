@@ -15,7 +15,6 @@ public:
     }
 private:
     void use(size_t index_on) override;
-    void play_sword_blow_animation(size_t from_index);
 
 private:
     const int damage = 10;

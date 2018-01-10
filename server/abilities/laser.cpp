@@ -27,7 +27,7 @@ void laser::use(size_t index_on) {
 
 	auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
-	play_animation(used_from_index, index_to_move);
+	sender::send(message_types::animation, animation_def::laser, used_from_index, index_to_move);
 
 	if (hor_diff != 0) {
 		for (int x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range); x = hor_diff > 0 ? x + 1 : x - 1) {
@@ -85,12 +85,4 @@ void laser::use(size_t index_on) {
 	}
 
 	used = true;
-}
-
-void laser::play_animation(size_t from_index, size_t to_index) {
-	animations_queue::push_animation(animation_types::move,
-									 from_index,
-									 to_index,
-									 -1,
-									 bitmap_key::laser);
 }

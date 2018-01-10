@@ -12,11 +12,12 @@
 #include <SFML/Network.hpp>
 //#include <tbb/concurrent_queue.h>
 #include <boost/lockfree/spsc_queue.hpp>
+#include <common/message_types.h>
 #include "packets_makers.h"
 
 struct server {
 
-	std::unordered_map<std::string, std::function<void(sf::Packet&)>> callbacks;
+	std::unordered_map<message_types, std::function<void(sf::Packet&)>, message_types_key_hash> callbacks;
 	std::thread working_thread;
 	std::atomic_bool is_running;
 
@@ -37,8 +38,8 @@ struct server {
 		selector.add(listener);
 	}
 
-	void bind(const std::string& name, std::function<void(sf::Packet&)> func) {
-		callbacks.insert(std::make_pair(name, func));
+	void bind(const message_types& message, std::function<void(sf::Packet&)> func) {
+		callbacks.insert(std::make_pair(message, func));
 	};
 
 	void send_notification(const sf::Packet& packet) {
@@ -83,10 +84,10 @@ struct server {
 							selector.add(*client);
 
 							// accept client and send data
-							send_notification_to(client_id, make_packet("player_id", static_cast<int>(client_id)));
-							send_notification_to(client_id, make_packet("board", board::fields_));
-							send_notification_to(client_id, make_packet("entities_bitmaps", bitmap_field_manager::get_map()));
-							send_notification_to(client_id, make_packet("healths", healths_manager::get_map()));
+							send_notification_to(client_id, make_packet(message_types::player_id, static_cast<int>(client_id)));
+							send_notification_to(client_id, make_packet(message_types::board, board::fields_));
+							send_notification_to(client_id, make_packet(message_types::entities_bitmaps, bitmap_field_manager::get_map()));
+							send_notification_to(client_id, make_packet(message_types::healths, healths_manager::get_map()));
 						}
 					}
 
@@ -96,11 +97,11 @@ struct server {
 							sf::Packet request_packet;
 							client->receive(request_packet);
 
-							std::string request_name;
-							request_packet >> request_name;
+							message_types request_message;
+							request_packet >> request_message;
 
 							try {
-								callbacks.at(request_name)(request_packet);
+								callbacks.at(request_message)(request_packet);
 
 							} catch (...) {
 								//std::cout << "Catch: " << request_name << "\n";

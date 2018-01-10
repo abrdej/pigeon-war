@@ -9,10 +9,10 @@ void poisoned_missile::use(size_t index_on) {
     if (used)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = board::at(used_from_index);
+    auto from_index = states::state_controller::selected_index_;
+    auto entity_id = board::at(from_index);
 
-    play_animation(used_from_index, index_on);
+    sender::send(message_types::animation, animation_def::poisoned_missile, from_index, index_on);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
 
@@ -40,19 +40,4 @@ void poisoned_missile::use(size_t index_on) {
     moveable_ptr->refresh_range();
 
     used = true;
-}
-
-void poisoned_missile::play_animation(size_t from_index, size_t to_index) {
-
-    animations_queue::push_animation(animation_types::move,
-                                     from_index,
-                                     to_index,
-                                     -1,
-                                     bitmap_key::poisoned_missile);
-
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     to_index,
-                                     150,
-                                     -1,
-                                     bitmap_key::poisoned_missile_splush);
 }

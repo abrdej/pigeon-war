@@ -36,11 +36,7 @@ void killer_instinct::use(std::size_t index) {
 	if (used)
 		return;
 
-	animations_queue::push_animation(animation_types::change_bitmap,
-									 entity_id,
-									 0,
-									 0,
-									 bitmap_key::killer_jump);
+	sender::send(message_types::animation, animation_def::set_killer_instinct, entity_id);
 
 	auto killer_instinct_receiver =
 			turn::turn_system::every_turn([this]() mutable {
@@ -48,11 +44,7 @@ void killer_instinct::use(std::size_t index) {
 				additions_manager::remove_component(entity_id,
 													"killer_instinct");
 
-				animations_queue::push_animation(animation_types::change_bitmap,
-												 entity_id,
-												 0,
-												 0,
-												 bitmap_key::killer);
+				sender::send(message_types::animation, animation_def::remove_killer_instinct, entity_id);
 			});
 
 	additions_manager::add_component(entity_id, "killer_instinct", killer_instinct_receiver);
@@ -63,11 +55,7 @@ void killer_instinct::use(std::size_t index) {
 
 	states::state_controller::selected_index_ = states::no_selected_index;
 
-	animations_queue::push_animation(animation_types::move,
-									 move_from_index,
-									 index,
-									 entity_id,
-									 bitmap_key::none);
+	sender::send(message_types::animation, animation_def::move, move_from_index, index);
 
 
 	int from_col = board::to_pos(move_from_index).first;

@@ -45,7 +45,9 @@ void prison_connection::use(size_t index_on) {
 
 	for (auto&& entity_with_effect : entities_with_effect) {
 		auto index = board::index_for(entity_with_effect);
-		play_animation(index);
+
+		sender::send(message_types::animation, animation_def::prison_connection, index);
+
 		damage_dealers::standard_damage_dealer(magic_damage(final_damage, board::at(index), entity_id));
 	}
 
@@ -54,12 +56,4 @@ void prison_connection::use(size_t index_on) {
 									 0,
 									 0,
 									 bitmap_key::sorcerer);
-}
-
-void prison_connection::play_animation(std::size_t index_on) {
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 index_on,
-									 150,
-									 0,
-									 bitmap_key::protection_field);
 }

@@ -15,7 +15,7 @@ void power_bullet::use(size_t index_on) {
 
     auto has_power_bullet_effect = additions_manager::has_component(enemy_id, "power_bullet_effect");
 
-    play_animation(used_from_index, index_on);
+    sender::send(message_types::animation, animation_def::power_bullet, used_from_index, index_on);
 
     damage_dealers::standard_damage_dealer(magic_damage(has_power_bullet_effect ?
                                                         damage_with_power_bullet_effect : full_damage,
@@ -39,18 +39,4 @@ void power_bullet::use(size_t index_on) {
                                      damage_per_turn_receiver);
 
     used = true;
-}
-
-void power_bullet::play_animation(size_t from_index, size_t to_index) {
-    animations_queue::push_animation(animation_types::move,
-                                     from_index,
-                                     to_index,
-                                     -1,
-                                     bitmap_key::power_bullet);
-
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     to_index,
-                                     150,
-                                     0,
-                                     bitmap_key::power_bullet_bum);
 }

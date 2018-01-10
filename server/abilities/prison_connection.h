@@ -19,7 +19,6 @@ public:
 
 private:
 	void use(std::size_t index_on) override;
-	void play_animation(std::size_t index_on);
 
 	std::size_t entity_id;
 	int base_damage{4};

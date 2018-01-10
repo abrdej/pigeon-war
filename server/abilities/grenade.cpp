@@ -17,7 +17,7 @@ void grenade::use(size_t index_on)
 	std::vector<size_t> neighbors;
 	board_helper::neighboring_fields(index_on, neighbors, false);
 
-	play_animation(used_from_index, index_on, neighbors);
+	sender::send(message_types::animation, animation_def::grenade, used_from_index, index_on);
 
 	damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
 
@@ -26,16 +26,15 @@ void grenade::use(size_t index_on)
 		if (!board::empty(index))
 			damage_dealers::standard_damage_dealer(ranged_damage(damage / 2, board::at(index), entity_id));
 	}
-	// show damage animation // for example. -9 dmg
 }
 
-void grenade::play_animation(size_t from_index, size_t to_index, const std::vector<size_t>& neightbords)
-{
-
-	animations_queue::push_animation(animation_types::move, from_index, to_index, -1, bitmap_key::grenade);
-	animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::bum);
-
-	for (auto& index : neightbords)
-		if (!board::empty(index))
-			animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::shards);
-}
+//void grenade::play_animation(size_t from_index, size_t to_index, const std::vector<size_t>& neightbords)
+//{
+//
+//	animations_queue::push_animation(animation_types::move, from_index, to_index, -1, bitmap_key::grenade);
+//	animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::bum);
+//
+//	for (auto& index : neightbords)
+//		if (!board::empty(index))
+//			animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::shards);
+//}

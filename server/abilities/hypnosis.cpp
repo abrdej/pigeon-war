@@ -10,7 +10,7 @@ void hypnosis::use(size_t index_on) {
 	if (used)
 		return;
 
-	play_animation(index_on);
+	sender::send(message_types::animation, animation_def::hypnosis, index_on);
 
 	auto enemy_id = board::at(index_on);
 
@@ -31,12 +31,4 @@ void hypnosis::use(size_t index_on) {
 	additions_manager::add_component(enemy_id, "hypnosis", hypnosis_receiver);
 
 	used = true;
-}
-
-void hypnosis::play_animation(size_t to_index) {
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 to_index,
-									 150,
-									 0,
-									 bitmap_key::field_shoot);
 }

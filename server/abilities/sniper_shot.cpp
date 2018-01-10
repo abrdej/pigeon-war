@@ -43,7 +43,9 @@ void sniper_shot::use(size_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
 
-    play_animation(entity_id, used_from_index, index_on);
+    //play_animation(entity_id, used_from_index, index_on);
+
+    sender::send(message_types::animation, animation_def::sniper_shot, used_from_index, index_on);
 
     auto enemy_id = board::at(index_on);
 

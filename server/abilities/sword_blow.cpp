@@ -13,7 +13,7 @@ void sword_blow::use(size_t index_on) {
     std::vector<size_t> around_fields_ids;
     board_helper::neighboring_fields(used_from_index, around_fields_ids, false);
 
-    play_sword_blow_animation(used_from_index);
+    sender::send(message_types::animation, animation_def::sword_blow, used_from_index);
 
     int hit_entities_counter = 0;
 
@@ -27,7 +27,9 @@ void sword_blow::use(size_t index_on) {
     }
 
     if (hit_entities_counter == 3) {
-        play_sword_blow_animation(used_from_index);
+
+        sender::send(message_types::animation, animation_def::sword_blow, used_from_index);
+
         for (auto&& field_id : around_fields_ids) {
             if (!board::empty(field_id)) {
                 damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(field_id), entity_id));
@@ -36,21 +38,4 @@ void sword_blow::use(size_t index_on) {
     }
 
     used = true;
-}
-
-void sword_blow::play_sword_blow_animation(size_t from_index) {
-
-    auto entity_id = board::take(from_index);
-
-    auto from_cr = board::to_pos(from_index);
-    from_cr.first -= 1;
-    from_cr.second -= 1;
-
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     board::to_index(from_cr.first, from_cr.second),
-                                     150,
-                                     entity_id,
-                                     bitmap_key::samurai_rat_sword);
-
-    board::give_back(entity_id, from_index);
 }

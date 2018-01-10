@@ -6,9 +6,9 @@
 #define PIGEONWAR_MAGIC_BULLET_H
 
 #include "path_target_ability.h"
-#include "core/turn.h"
+#include "per_turn_usable.h"
 
-class magic_bullet final : public path_target_ability<4>, protected turn_events_helper::every_turn_callback_helper
+class magic_bullet final : public path_target_ability<4>, protected per_turn_callback
 {
 public:
     explicit magic_bullet(std::size_t entity_id);
@@ -19,7 +19,6 @@ public:
 
 private:
     void use(size_t index_on);
-    void play_animation(size_t from_index, size_t to_index);
 
 private:
     int magic_power{0};

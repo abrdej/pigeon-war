@@ -17,7 +17,7 @@ public:
 
 private:
 	void prepare(size_t for_index) override;
-	void use(size_t for_index, size_t index_on);
+	void use(size_t from_index, size_t to_index);
 
 private:
 	bool used{false};

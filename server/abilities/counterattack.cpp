@@ -35,20 +35,9 @@ void counterattack::use(size_t index_on) {
 	auto entity_index = board::index_for(entity_id);
 	auto enemy_id = board::at(index_on);
 
-	play_animation(entity_index, index_on);
+	sender::send(message_types::animation, animation_def::counterattack, entity_index, index_on);
 
 	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
 
 	used = true;
-}
-
-void counterattack::play_animation(size_t from_index, size_t to_index) {
-
-	auto entity_id = board::take(from_index);
-
-	animations_queue::push_animation(animation_types::move, from_index, to_index, entity_id, bitmap_key::none);
-	animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::native_attack);
-	animations_queue::push_animation(animation_types::move, to_index, from_index, entity_id, bitmap_key::none);
-
-	board::give_back(entity_id, from_index);
 }

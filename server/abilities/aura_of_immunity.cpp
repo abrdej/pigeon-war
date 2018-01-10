@@ -32,11 +32,7 @@ aura_of_immunity::aura_of_immunity(std::size_t entity_id)
 							modifications_manager::modify_damage_receiver_modifier_by(friend_id, -damage_reduction_for_friends);
 						}
 
-						animations_queue::push_animation(animation_types::flash_bitmap,
-														 index,
-														 150,
-														 0,
-														 bitmap_key::defender);
+						sender::send(message_types::animation, animation_def::aura_of_immunity, index);
 
 						auto aura_of_immunity_receiver =
 								turn::turn_system::every_turn([this, counter = 0, aura_last = 1, friend_id]() mutable {
@@ -46,11 +42,8 @@ aura_of_immunity::aura_of_immunity(std::size_t entity_id)
 										if (entity_manager::alive(friend_id)) {
 											modifications_manager::modify_damage_receiver_modifier_by(friend_id, damage_reduction_for_friends);
 
-											animations_queue::push_animation(animation_types::flash_bitmap,
-																			 board::index_for(friend_id),
-																			 150,
-																			 0,
-																			 bitmap_key::defender_attack);
+											sender::send(message_types::animation, animation_def::aura_of_immunity_break, board::index_for(friend_id));
+
 
 											additions_manager::remove_component(friend_id,
 																				"aura_of_immunity");

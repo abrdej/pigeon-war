@@ -18,5 +18,5 @@ void play_change_health_animation(size_t to_index, int change_health)
 									 bitmap_key::none);
 	animations_queue::pull();
 
-	sender::send("healths", healths_manager::get_map());
+	sender::send(message_types::healths, healths_manager::get_map());
 }

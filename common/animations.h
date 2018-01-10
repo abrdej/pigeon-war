@@ -19,7 +19,57 @@ enum class animation_types {
 	change_bitmap
 };
 
+enum class animation_def {
+	shoot,
+	blow_the_ax,
+	dodge,
+	magic_bullet,
+	magic_suck,
+	sniper_shot,
+	teleport,
+	poisoned_missile,
+	laser,
+	drain,
+	grenade,
+	power_bullet,
+	protection_field,
+	sabers,
+	move,
+	aura_of_immunity,
+	aura_of_immunity_break,
+	basic_melee_attack,
+	chopper,
+	counterattack,
+	flame_thrower,
+	giant_blow,
+	giant_ram,
+	handcannon,
+	hypnosis,
+	jaw_spider,
+	kill,
+	set_killer_instinct,
+	remove_killer_instinct,
+	prison_connection,
+	spear,
+	spider_web,
+	spiral_of_fire,
+	sword_blow,
+	tongue_of_fire,
+	vicious_circle,
+	warrior_blow
+};
+
+struct animation_def_key_hash
+{
+	template <typename T>
+	std::size_t operator()(T t) const
+	{
+		return static_cast<std::size_t>(t);
+	}
+};
+
 PACKET_ADD_ENUM(animation_types)
+PACKET_ADD_ENUM(animation_def)
 
 struct animation_pack {
 	animation_pack() = default;

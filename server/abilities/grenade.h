@@ -15,7 +15,6 @@ public:
 
 private:
 	void use(size_t index_on) override;
-	void play_animation(size_t from_index, size_t to_index, const std::vector<size_t>& neightbords);
 
 private:
 	const int damage = 12;

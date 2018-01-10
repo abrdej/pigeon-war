@@ -2,10 +2,10 @@
 #define SHOOT_H
 
 #include "straight_target_ability.h"
-#include "core/turn.h"
+#include "per_turn_usable.h"
 
 class shoot final : public straight_target_ability<3>,
-					protected turn_events_helper::every_turn_callback_helper
+					protected per_turn_callback
 {
 public:
 	shoot();
@@ -25,12 +25,10 @@ public:
 
 private:
 	void use(size_t index_on) override;
-	void play_animation(std::size_t entity_id, size_t from_index, size_t to_index);
-	void refresh_usable();
 
 private:
-	const int damage = 6;
-	const int bullets_n = 2;
+	const int damage{6};
+	const int bullets_n{2};
 	int bullets;
 };
 

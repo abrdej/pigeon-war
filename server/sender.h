@@ -7,6 +7,7 @@
 
 #include <functional>
 #include <SFML/Network/Packet.hpp>
+#include <common/message_types.h>
 
 struct sender {
 	static std::function<void(sf::Packet)> send_fn;
@@ -16,11 +17,26 @@ struct sender {
 	}
 
 	template <typename DataType>
-	static void send(const std::string& name, const DataType& x) {
+	static void send(const message_types& message, const DataType& x) {
 		sf::Packet packet;
-		packet << name << x;
+		packet << message << x;
 		send_fn(packet);
     }
+
+	template <typename... DataTypes>
+	static void send(const message_types& message, DataTypes&&... x) {
+
+		sf::Packet packet;
+		packet << message;
+
+		auto packer = [&packet](auto y) {
+			packet << y;
+		};
+
+		int tab[] = {(packer(std::forward<DataTypes>(x)), 0)...};
+
+		send_fn(packet);
+	}
 };
 
 #endif //PIGEONWAR_SENDER_H

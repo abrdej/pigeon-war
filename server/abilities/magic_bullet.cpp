@@ -14,13 +14,9 @@ magic_bullet::magic_bullet(std::size_t entity_id) {
             for (auto& index : neighbors)
             {
                 if (!board::empty(index) && players_funcs::enemy_entity(index)) {
-                    magic_power += magic_power_drain_amount;
 
-                    animations_queue::push_animation(animation_types::flash_bitmap,
-                                                     index,
-                                                     150,
-                                                     0,
-                                                     bitmap_key::magic_suck);
+                    magic_power += magic_power_drain_amount;
+                    sender::send(message_types::animation, animation_def::magic_suck, index);
                 }
             }
         }
@@ -49,37 +45,13 @@ void magic_bullet::use(size_t index_on) {
     if (used)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = board::at(used_from_index);
+    auto from_index = states::state_controller::selected_index_;
 
-    play_animation(used_from_index, index_on);
+    sender::send(message_types::animation, animation_def::magic_bullet, from_index, index_on);
 
-    damage_dealers::standard_damage_dealer(magic_damage(magic_power, board::at(index_on), entity_id));
+    damage_dealers::standard_damage_dealer(magic_damage(magic_power, board::at(index_on), board::at(from_index)));
 
     magic_power = 0;
 
     used = true;
-}
-
-void magic_bullet::play_animation(size_t from_index, size_t to_index) {
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     from_index,
-                                     100,
-                                     0,
-                                     bitmap_key::monk_use_1);
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     from_index,
-                                     100,
-                                     0,
-                                     bitmap_key::monk_use_1);
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     from_index,
-                                     100,
-                                     0,
-                                     bitmap_key::monk_use_1);
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     to_index,
-                                     150,
-                                     0,
-                                     bitmap_key::magic_splash);
 }

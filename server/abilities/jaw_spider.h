@@ -20,7 +20,6 @@ public:
 
 private:
 	void use(size_t index_on) override;
-	void play_animation(size_t index_on);
 
 private:
 	const int damage = 8;

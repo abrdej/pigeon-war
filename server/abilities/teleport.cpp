@@ -2,6 +2,7 @@
 #include <core/states_controller.h>
 #include <common/animations.h>
 #include <core/animations_queue.h>
+#include <sender.h>
 #include "teleport.h"
 #include "core/board.h"
 
@@ -18,27 +19,16 @@ void teleport::prepare(size_t for_index) {
 											  });
 }
 
-void teleport::use(size_t for_index, size_t index_on) {
+void teleport::use(size_t from_index, size_t to_index) {
 
 	if (used)
 		return;
 
-	auto entity_id = board::take(for_index);
+	sender::send(message_types::animation, animation_def::teleport, from_index, to_index);
 
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 for_index,
-									 100,
-									 entity_id,
-									 bitmap_key::teleport);
+	board::move(from_index, to_index);
 
-	animations_queue::push_animation(animation_types::flash_bitmap,
-									 index_on,
-									 150,
-									 entity_id,
-									 bitmap_key::teleport);
-
-	board::give_back(entity_id, index_on);
-	states::state_controller::selected_index_ = index_on;
+	states::state_controller::selected_index_ = to_index;
 
 	used = true;
 }

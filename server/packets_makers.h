@@ -6,11 +6,12 @@
 #define PIGEONWAR_PACKETS_MAKERS_H
 
 #include <SFML/Network/Packet.hpp>
+#include "common/message_types.h"
 
 template <typename T>
-inline sf::Packet make_packet(const std::string& name, const T& x) {
+inline sf::Packet make_packet(const message_types& message, const T& x) {
 	sf::Packet packet;
-	packet << name << x;
+	packet << message << x;
 	return packet;
 }
 

@@ -20,7 +20,6 @@ public:
 
 private:
 	void use(std::size_t index) override;
-	void play_animation(size_t from_index, size_t to_index);
 
 private:
 	const int damage = 8;

@@ -29,7 +29,7 @@ void spiral_of_fire::use(size_t index_on) {
 
     auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
-    play_animation(used_from_index, index_to_move);
+    sender::send(message_types::animation, animation_def::spiral_of_fire, used_from_index, index_to_move);
 
     std::vector<std::size_t> indexes;
 
@@ -71,27 +71,4 @@ void spiral_of_fire::use(size_t index_on) {
     auto ability = abilities_manager::component_for(entity_id).type(abilities::ability_types::offensive);
     std::shared_ptr<chopper> ch = std::static_pointer_cast<chopper>(ability);
     ch->remove_fired();
-}
-
-void spiral_of_fire::play_animation(size_t from_index, size_t to_index) {
-
-    auto entity_id = board::take(from_index);
-
-    bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::spiral_of_fire;
-
-    animations_queue::push_animation(animation_types::move,
-                                     from_index,
-                                     to_index,
-                                     entity_id,
-                                     bitmap_key::none);
-
-    animations_queue::push_animation(animation_types::move,
-                                     to_index,
-                                     from_index,
-                                     entity_id,
-                                     bitmap_key::none);
-
-    bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::creature;
-
-    board::give_back(entity_id, from_index);
 }

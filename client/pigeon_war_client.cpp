@@ -7,8 +7,10 @@
 #include <core/board.h>
 #include <common/turn_status.h>
 #include <managers/health_manager.h>
+#include <common/message_types.h>
 #include "caller.h"
 #include "requests.h"
+#include "animations_service.h"
 
 using view::pigeon_war_client;
 
@@ -51,12 +53,10 @@ void pigeon_war_client::receive_messages() {
 		sf::Packet packet;
 		socket.receive(packet);
 
-		std::string message;
+		message_types message;
 		packet >> message;
 
-		std::cout << "Message: " << message << "\n";
-
-		if (message == "player_id") {
+		if (message == message_types::player_id) {
 			unpack(packet, player_id);
 
 			std::cout << "client player id: " << player_id << "\n";
@@ -65,27 +65,27 @@ void pigeon_war_client::receive_messages() {
 				this_turn_status = turn_status::do_turn;
 			}
 
-		} else if (message == "board") {
+		} else if (message == message_types::board) {
 			unpack(packet, state.board.fields_);
 
-		} else if (message == "entities_bitmaps") {
+		} else if (message == message_types::entities_bitmaps) {
 			unpack(packet, state.entities_bitmaps);
 
 			for (auto&& bitmap_pack : state.entities_bitmaps) {
 				drawing_manager::add_component(bitmap_pack.first, std::make_shared<entity_drawer>(bitmap_pack.first, bitmap_pack.second));
 			}
 
-		} else if (message == "healths") {
+		} else if (message == message_types::healths) {
 			unpack(packet, state.healths);
 
-		} else if (message == "end_turn") {
+		} else if (message == message_types::end_turn) {
 
 			std::size_t active_player_id;
 			unpack(packet, active_player_id);
 
 			this_turn_status = active_player_id == player_id ? turn_status::do_turn : turn_status::wait;
 
-		} else if (message == "animations") {
+		} else if (message == message_types::animations) {
 
 			unpack(packet, state.animations_queue);
 
@@ -148,24 +148,27 @@ void pigeon_war_client::receive_messages() {
 				}
 			}
 
-		} else if (message == "game_state") {
+		} else if (message == message_types::game_state) {
 
 			unpack(packet, state);
 
 			update_for_entity();
 
-		} else if (message == "local_state") {
+		} else if (message == message_types::local_state) {
 
 			unpack(packet, lstate);
 
 			update_for_entity();
 
-		} else if (message == "description") {
+		} else if (message == message_types::description) {
 
 			std::string description;
 			unpack(packet, description);
 
 			set_description(description);
+
+		} else if (message == message_types::animation) {
+			animations_service::handle(packet, state);
 		}
 	}
 }

@@ -40,7 +40,7 @@ void giant_ram::use(size_t index_on) {
 
     auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
-    play_animation(used_from_index, index_to_move);
+    sender::send(message_types::animation, animation_def::giant_ram, used_from_index, index_to_move);
 
     std::vector<std::size_t> indexes;
 
@@ -78,33 +78,4 @@ void giant_ram::use(size_t index_on) {
     states::state_controller::custom_valid_targets[entity_id].clear();
 
     used = true;
-}
-
-void giant_ram::play_animation(size_t from_index, size_t to_index) {
-
-    auto entity_id = board::take(from_index);
-
-    bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::giant_ram;
-
-    animations_queue::push_animation(animation_types::change_bitmap,
-                                     entity_id,
-                                     0,
-                                     0,
-                                     bitmap_key::giant_ram);
-
-    animations_queue::push_animation(animation_types::move,
-                                     from_index,
-                                     to_index,
-                                     entity_id,
-                                     bitmap_key::none);
-
-    animations_queue::push_animation(animation_types::change_bitmap,
-                                     entity_id,
-                                     0,
-                                     0,
-                                     bitmap_key::giant);
-
-    bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::giant;
-
-    board::give_back(entity_id, to_index);
 }

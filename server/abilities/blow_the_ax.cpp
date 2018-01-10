@@ -9,12 +9,9 @@ void blow_the_ax::use(size_t index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
 
-    auto entity_id = board::take(used_from_index);
+    auto entity_id = board::at(used_from_index);
 
-    animations_queue::push_animation(animation_types::move, used_from_index, index_on, entity_id, bitmap_key::none);
-    animations_queue::push_animation(animation_types::move, index_on, used_from_index, entity_id, bitmap_key::none);
-
-    board::give_back(entity_id, used_from_index);
+    sender::send(message_types::animation, animation_def::blow_the_ax, used_from_index, index_on);
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(index_on), entity_id));
 

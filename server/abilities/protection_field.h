@@ -22,7 +22,6 @@ public:
 
 private:
     void use(size_t index_on) override;
-    void play_animation(size_t from_index, size_t to_index);
     bool is_active{true};
     bool used{false};
     const int damage = 16;

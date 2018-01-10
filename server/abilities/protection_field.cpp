@@ -33,24 +33,9 @@ void protection_field::use(size_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
 
-    play_animation(used_from_index, index_on);
+    sender::send(message_types::animation, animation_def::protection_field, used_from_index, index_on);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
 
     used = true;
-}
-
-void protection_field::play_animation(size_t from_index, size_t to_index) {
-
-    animations_queue::push_animation(animation_types::move,
-                                     from_index,
-                                     to_index,
-                                     -1,
-                                     bitmap_key::protection_field);
-
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     to_index,
-                                     150,
-                                     -1,
-                                     bitmap_key::field_shoot);
 }
