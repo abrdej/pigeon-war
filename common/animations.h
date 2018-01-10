@@ -56,7 +56,8 @@ enum class animation_def {
 	sword_blow,
 	tongue_of_fire,
 	vicious_circle,
-	warrior_blow
+	warrior_blow,
+	set_immortality
 };
 
 struct animation_def_key_hash

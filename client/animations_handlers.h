@@ -59,6 +59,7 @@ struct move_with_return_base_handler : base_handler {
 			animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
 																					   std::chrono::milliseconds(150),
 																					   middle_bitmap_flush));
+			animation::base_player::play();
 		}
 
 		animation::player<animation::move>::launch(animation::move(to_index, from_index, entity_id));
@@ -98,7 +99,8 @@ struct change_bitmap_base_handler : base_handler {
 
 	void handle(sf::Packet& packet, game_state& g_state) override {
 		unpack(packet, entity_id);
-		g_state.entities_bitmaps[entity_id] = new_bitmap_key;
+
+		drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(new_bitmap_key);
 	}
 };
 
@@ -243,6 +245,10 @@ struct vicious_circle_handler : bitmap_flush_base_handler<bitmap_key::magic_ener
 };
 
 struct warrior_blow_handler : move_with_return_base_handler<bitmap_key::warrior_attack> {
+
+};
+
+struct set_immortality_handler : change_bitmap_base_handler<bitmap_key::warrior_immortal> {
 
 };
 

@@ -91,12 +91,12 @@ void giant_ram_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 	auto entity_id = g_state.board.take(from_index);
 
-	g_state.entities_bitmaps[entity_id] = bitmap_key::giant_ram;
+	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(bitmap_key::giant_ram);
 
 	animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
 	animation::base_player::play();
 
-	g_state.entities_bitmaps[entity_id] = bitmap_key::giant;
+	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(bitmap_key::giant);
 
 	g_state.board.give_back(entity_id, to_index);
 }
@@ -157,7 +157,7 @@ void spiral_of_fire_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 	auto entity_id = g_state.board.take(from_index);
 
-	g_state.entities_bitmaps[entity_id] = bitmap_key::spiral_of_fire;
+	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(bitmap_key::spiral_of_fire);
 
 	animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
 	animation::base_player::play();
@@ -165,7 +165,7 @@ void spiral_of_fire_handler::handle(sf::Packet& packet, game_state& g_state) {
 	animation::player<animation::move>::launch(animation::move(to_index, from_index, entity_id));
 	animation::base_player::play();
 
-	g_state.entities_bitmaps[entity_id] = bitmap_key::creature;
+	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(bitmap_key::creature);
 
 	g_state.board.give_back(entity_id, from_index);
 }
@@ -185,5 +185,5 @@ void sword_blow_handler::handle(sf::Packet& packet, game_state& g_state) {
 																			   std::chrono::milliseconds(150),
 																			   bitmap_key::samurai_rat_sword));
 
-	board::give_back(entity_id, index);
+	g_state.board.give_back(entity_id, index);
 }

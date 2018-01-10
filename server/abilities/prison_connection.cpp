@@ -2,6 +2,7 @@
 #include "managers/additions_manager.h"
 #include "core/board.h"
 #include "damage_dealers.h"
+#include "managers/entity_manager.h"
 
 prison_connection::prison_connection(std::size_t entity_id) : entity_id(entity_id) {
 
@@ -44,11 +45,14 @@ void prison_connection::use(size_t index_on) {
 									 bitmap_key::sorcerer_attack);
 
 	for (auto&& entity_with_effect : entities_with_effect) {
-		auto index = board::index_for(entity_with_effect);
 
-		sender::send(message_types::animation, animation_def::prison_connection, index);
+		if (entity_manager::alive(entity_with_effect)) {
+			auto index = board::index_for(entity_with_effect);
 
-		damage_dealers::standard_damage_dealer(magic_damage(final_damage, board::at(index), entity_id));
+			sender::send(message_types::animation, animation_def::prison_connection, index);
+
+			damage_dealers::standard_damage_dealer(magic_damage(final_damage, board::at(index), entity_id));
+		}
 	}
 
 	animations_queue::push_animation(animation_types::change_bitmap,

@@ -42,6 +42,8 @@ void giant_ram::use(size_t index_on) {
 
     sender::send(message_types::animation, animation_def::giant_ram, used_from_index, index_to_move);
 
+    board::move(used_from_index, index_to_move);
+
     std::vector<std::size_t> indexes;
 
     if (xx != 0) {

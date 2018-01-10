@@ -23,7 +23,7 @@ private:
     void use(size_t index_on);
 
 private:
-    const int range{4};
+    const int range{3};
     const int damage{8};
     const int damage_with_killer_instinct{20};
     std::size_t target_index;

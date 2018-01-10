@@ -71,6 +71,9 @@ bool state_controller::valid_target(std::size_t target_index) {
 			target_value = board::at(target_index);
 
 		if (!states::state_controller::custom_valid_targets[caster_id].empty()) {
+
+			std::cout << "custom\n";
+
 			return states::state_controller::custom_valid_targets[caster_id].find(target_value) !=
 				   std::end(states::state_controller::custom_valid_targets[caster_id]);
 		}

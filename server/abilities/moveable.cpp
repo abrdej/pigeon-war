@@ -37,6 +37,16 @@ void moveable::move(size_t index_to)
         return;
     }
 
+	std::size_t i = 0;
+	for ( ; i < states::state_controller::possible_movements_.size(); ++i) {
+		if (states::state_controller::possible_movements_[i] == index_to)
+			break;
+	}
+	auto cost = static_cast<int>(states::state_controller::possible_movements_costs_[i]);
+
+	if (cost_callback)
+		cost_callback(cost);
+
 	auto move_from_index = states::state_controller::selected_index_;
 
 	auto entity_id = board::take(move_from_index);

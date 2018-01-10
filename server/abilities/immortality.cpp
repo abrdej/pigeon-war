@@ -12,6 +12,9 @@ immortality::immortality(std::size_t entity_id) : entity_id(entity_id) {
 
         if (health_pack.health == 0) {
             healths_manager::set_destructible(entity_id, false);
+
+            sender::send(message_types::animation, animation_def::set_immortality, entity_id);
+
             receiver = turn::turn_system::every_turn([this, entity_id, &health_pack, counter = 0]() mutable {
                 if (counter++ == 1) {
                     healths_manager::set_destructible(entity_id, true);

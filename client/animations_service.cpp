@@ -42,13 +42,5 @@ void animations_service::initialize() {
 	add<tongue_of_fire_handler>(animation_def::tongue_of_fire);
 	add<vicious_circle_handler>(animation_def::vicious_circle);
 	add<warrior_blow_handler>(animation_def::warrior_blow);
-
-
-
-
-
-
-
-
-
+	add<set_immortality_handler>(animation_def::set_immortality);
 }

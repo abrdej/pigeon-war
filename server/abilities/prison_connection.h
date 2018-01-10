@@ -21,8 +21,8 @@ private:
 	void use(std::size_t index_on) override;
 
 	std::size_t entity_id;
-	int base_damage{4};
-	int damage_per_entities_with_effect{1};
+	int base_damage{6};
+	int damage_per_entities_with_effect{2};
 	int final_damage{0};
 	const int duration{3};
 	std::deque<std::size_t> entities_with_effect;

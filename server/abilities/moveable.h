@@ -35,6 +35,14 @@ public:
 		used = true;
 	}
 
+	void set_cost_callback(std::function<void(int)> fn) {
+		cost_callback = fn;
+	}
+
+	void remove_cost_callback() {
+		cost_callback = std::function<void(int)>();
+	}
+
 private:
 	void prepare(size_t for_index) override;
 	void move(size_t index_to);
@@ -43,6 +51,8 @@ private:
 	int range;
 	bool used{false};
     types type;
+
+	std::function<void(int)> cost_callback;
 };
 
 

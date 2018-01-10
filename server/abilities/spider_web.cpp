@@ -30,45 +30,9 @@ void spider_web::use(size_t index_on) {
 
     sender::send(message_types::animation, animation_def::spider_web, used_from_index, index_on, land_index);
 
-//    animations_queue::push_animation(animation_types::move,
-//                                     used_from_index,
-//                                     index_on,
-//                                     -1,
-//                                     bitmap_key::spider_web);
-
-    //auto enemy_id = board::take(index_on);
-
     auto enemy_id = board::at(index_on);
 
     board::move(index_on, land_index);
-
-//    animations_queue::push_animation(animation_types::hide_show,
-//                                     index_on,
-//                                     0,
-//                                     0,
-//                                     bitmap_key::none);
-//
-//    if (index_on != land_index) {
-//        animations_queue::push_animation(animation_types::move,
-//                                         index_on,
-//                                         land_index,
-//                                         -1,
-//                                         bitmap_key::spider_web);
-//    }
-//
-//    animations_queue::push_animation(animation_types::flash_bitmap,
-//                                     land_index,
-//                                     150,
-//                                     -1,
-//                                     bitmap_key::spider_web);
-
-    //board::give_back(enemy_id, land_index);
-
-//    animations_queue::push_animation(animation_types::hide_show,
-//                                     land_index,
-//                                     1,
-//                                     enemy_id,
-//                                     bitmap_key::none);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, caster_id));
 
