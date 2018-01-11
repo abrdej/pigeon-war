@@ -82,7 +82,7 @@ void players_funcs::enemy_entities_indexes(std::size_t player_id, std::vector<st
 {
 	indexes.clear();
 	board::for_each([player_id, &indexes](std::size_t entity_id, std::size_t col, std::size_t row) {
-		if (entity_id != -1 && players_manager::enemy_entity(entity_id, entity_id))
+		if (entity_id != -1 && players_manager::enemy_entity(player_id, entity_id))
 			indexes.push_back(board::to_index(col, row));
 	});
 }

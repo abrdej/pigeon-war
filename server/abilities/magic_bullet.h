@@ -17,6 +17,10 @@ public:
         return bitmap_key::magic_bullet;
     }
 
+    virtual std::string hint() const {
+        return "Magic power: " + std::to_string(magic_power);
+    }
+
 private:
     void use(size_t index_on);
 

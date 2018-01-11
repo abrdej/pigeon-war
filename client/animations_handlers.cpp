@@ -187,3 +187,44 @@ void sword_blow_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 	g_state.board.give_back(entity_id, index);
 }
+
+void bludgeon_push_handler::handle(sf::Packet& packet, game_state& g_state) {
+
+	std::size_t from_index, to_index, push_index;
+	unpack(packet, from_index);
+	unpack(packet, to_index);
+	unpack(packet, push_index);
+
+	auto caster_id = g_state.board.take(from_index);
+
+	animation::player<animation::move_entity>::launch(animation::move_entity(from_index, to_index, caster_id));
+	animation::base_player::play();
+
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), bitmap_key::bum));
+	animation::base_player::play();
+
+	g_state.board.give_back(caster_id, to_index);
+	auto enemy_id = g_state.board.take_bottom(to_index);
+
+	animation::player<animation::move_entity>::launch(animation::move_entity(to_index, push_index, enemy_id));
+	animation::base_player::play();
+
+	g_state.board.give_back(enemy_id, push_index);
+}
+
+void rage_handler::handle(sf::Packet& packet, game_state& g_state) {
+	std::size_t index;
+	unpack(packet, index);
+
+	auto entity_id = g_state.board.take(index);
+
+	auto from_cr = board::to_pos(index);
+	from_cr.first -= 1;
+	from_cr.second -= 1;
+
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
+																			   std::chrono::milliseconds(150),
+																			   bitmap_key::troll_rage));
+
+	g_state.board.give_back(entity_id, index);
+}

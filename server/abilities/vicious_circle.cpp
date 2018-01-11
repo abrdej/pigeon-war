@@ -22,6 +22,11 @@ void vicious_circle::prepare(size_t for_index) {
     std::cout << "power: " << power << "\n";
 }
 
+std::string vicious_circle::hint() const {
+    auto power = powers_manager::get_power_for(entity_id);
+    return "Magic power: " + std::to_string(power);
+}
+
 void vicious_circle::use(size_t index_on) {
 
     if (used)

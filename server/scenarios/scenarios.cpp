@@ -5,6 +5,7 @@
 #include <entities/werewolf.h>
 #include <entities/grenadier.h>
 #include <entities/destroyer.h>
+#include <entities/golem.h>
 #include "scenarios.h"
 #include "core/game.h"
 #include "server/abilities/damage_dealers.h"
@@ -21,6 +22,7 @@
 #include "entities/warrior.h"
 #include "utils/creator_helper.h"
 #include "utils/scenario_helper.h"
+#include "ai/behavior_tree.h"
 
 std::unordered_map<std::string, std::function<void()>> scenarios_initializer;
 
@@ -70,7 +72,7 @@ void saurions_web_s(game& game) {
     players_manager::add_entity_for_player(enemy_id, saurion_web_id);
 
     auto web_poison_to_native = turn::turn_system::every_round([native_id]() {
-        std::cout << "recaive damage\n";
+        std::cout << "receive damage\n";
         auto damage = healths_manager::receive_damage(damage_pack(4, damage_types::UNDEFINED, native_id));
 //        damage_dealers::play_change_health_animation(board::to_index(12, 4), damage);
     });
@@ -100,7 +102,7 @@ void wolves_dinner(game& game) {
     auto tester_id = players_manager::create_human_player("tester");
     auto enemy_id = players_manager::create_ai_player("enemy");
     //players::add_entity_for_player("tester", shooter_id);
-    players_manager::add_entity_for_player(enemy_id, samurai_id);
+    players_manager::add_entity_for_player(tester_id, samurai_id);
 
     auto ai_sequence = behavior_tree::helper::Sequence<
             ai::behavior_tree_tasks::blackboard,
@@ -152,6 +154,45 @@ void wolves_dinner(game& game) {
     });
 }
 
+void battle_with_a_golem(game& game) {
+
+    auto shooter_id = entity_manager::create<shooter>();
+    auto saberhand_id = entity_manager::create<saberhand>();
+
+    board::insert(board::to_index(2, 3), shooter_id);
+    board::insert(board::to_index(2, 5), saberhand_id);
+
+    auto tester_id = players_manager::create_human_player("tester");
+    auto enemy_id = players_manager::create_ai_player("enemy");
+
+    players_manager::add_entity_for_player(tester_id, shooter_id);
+    players_manager::add_entity_for_player(tester_id, saberhand_id);
+
+    auto best_aim_sequence = behavior_tree::helper::Sequence<
+            ai::behavior_tree_tasks::blackboard,
+            ai::behavior_tree_tasks::attack_enemy,
+            ai::behavior_tree_tasks::go_to,
+            ai::behavior_tree_tasks::can_go_to,
+            ai::behavior_tree_tasks::find_position_for_shot,
+            ai::behavior_tree_tasks::find_best_aim>::create();
+
+    auto nearest_aim_sequence = behavior_tree::helper::Sequence<
+            ai::behavior_tree_tasks::blackboard,
+            ai::behavior_tree_tasks::attack_enemy,
+            ai::behavior_tree_tasks::go_to,
+            ai::behavior_tree_tasks::find_position_for_shot,
+            ai::behavior_tree_tasks::find_nearest_enemy>::create();
+
+    auto ai_sequence = std::make_shared<behavior_tree::selector<ai::behavior_tree_tasks::blackboard>>();
+    ai_sequence->add_task(best_aim_sequence);
+    ai_sequence->add_task(nearest_aim_sequence);
+
+    auto golem_id = entity_manager::create<golem>();
+    ai_manager::add_component(golem_id, ai_sequence);
+    board::insert(board::to_index(10, 4), golem_id);
+    players_manager::add_entity_for_player(enemy_id, golem_id);
+}
+
 
 #include <boost/fusion/container/vector.hpp>
 #include <boost/fusion/algorithm/iteration/for_each.hpp>
@@ -185,24 +226,26 @@ using Entites = boost::fusion::vector<shooter,
         droid,
         saberhand,
         native,
-        //troll,
+        troll,
         sniper,
         mouse,
         //werewolf,
+        robot,
         monk,
-        //grenadier,
-        //ninja,
+        grenadier,
+        ninja,
         //treant,
-//thrower,
+        thrower,
         killer,
-//        absorber,
+        absorber,
+        //saurian,
         giant,
-        //guardian,
+        guardian,
         sorcerer,
-        //creature,
+        creature,
         wretch,
         warrior,
-//        handthrower,
+        handthrower,
         golem,
         spider>;
 
@@ -256,17 +299,30 @@ void skirmish(game& game) {
             pos(7, 2),
             pos(8, 2),
             pos(9, 2),
+
+            pos(5, 3),
+            pos(6, 3),
+            pos(7, 3),
+            pos(8, 3),
             pos(9, 3),
-            pos(9, 4),
-            pos(9, 5),
-            pos(9, 6),
-            pos(8, 6),
-            pos(7, 6),
-            pos(6, 6),
-            pos(5, 6),
-            pos(5, 5),
+
             pos(5, 4),
-            pos(5, 3)
+            pos(6, 4),
+            pos(7, 4),
+            pos(8, 4),
+            pos(9, 4),
+
+            pos(5, 5),
+            pos(6, 5),
+            pos(7, 5),
+            pos(8, 5),
+            pos(9, 5),
+
+            pos(5, 6),
+            pos(6, 6),
+            pos(7, 6),
+            pos(8, 6),
+            pos(9, 6)
     };
 
     std::array<std::pair<std::size_t, std::size_t>, 8> positions = {
@@ -364,5 +420,5 @@ void strategy(game& game) {
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {
-    skirmish(game);
+    battle_with_a_golem(game);
 }

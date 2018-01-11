@@ -64,6 +64,7 @@ void play_change_health_animation(size_t to_index, int change_health);
 
 class healths_manager : public base_manager<health_field, health_field>
 {
+public:
 	struct damage_receiver {
 		damage_receiver() {
 			impl = [](health_field& health_pack, const damage_pack& dmg) {

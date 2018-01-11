@@ -20,6 +20,7 @@ struct game_state {
 	board_container board;
 	std::unordered_map<std::size_t, int> healths;
 	std::unordered_map<std::size_t, bitmap_key> entities_bitmaps;
+	std::unordered_map<std::size_t, std::vector<std::string>> entities_additional_effects;
 	std::vector<animation_pack> animations_queue;
 };
 
@@ -32,7 +33,7 @@ struct local_state {
 	std::string entity_name;
 };
 
-PACKET_DEFINE3(game_state, board, healths, entities_bitmaps)
+PACKET_DEFINE4(game_state, board, healths, entities_bitmaps, entities_additional_effects)
 
 PACKET_DEFINE6(local_state, possible_movements, valid_movements, selected_index, actual_target_type,  button_bitmaps, entity_name)
 

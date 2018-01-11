@@ -106,6 +106,21 @@ namespace behavior_tree
 				return std::shared_ptr<Sequence>(new Sequence());
 			}
 		};
+
+	template <typename BlackBoard, typename... Tasks>
+	class Selector : public selector<BlackBoard>
+	{
+	protected:
+		Selector()
+		{
+			constructor_helper<selector<BlackBoard>, Tasks...>(*this);
+		}
+	public:
+		static std::shared_ptr<selector<BlackBoard>> create()
+		{
+			return std::shared_ptr<Selector>(new Selector());
+		}
+	};
 	}
 }
 

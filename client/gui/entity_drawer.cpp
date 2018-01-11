@@ -53,10 +53,6 @@ void entity_drawer::draw(sf::RenderWindow& window, size_t col, size_t row, int h
     auto position = sf::Vector2f(view::board_indexies_to_point(col, row));
     sprite.setPosition(position);
 
-    //sprite.setTextureRect(directions_manager::component_for(entity_id)
-    //                      == directions::left ? sf::IntRect(60, 0, -60, 60)
-    //                                          : sf::IntRect(0, 0, 60, 60));
-
     health_pos = position;
     health_pos.x += view::constants::field_size / 4.f;
     health_pos.y -= view::constants::field_size / 4.f;

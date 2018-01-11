@@ -9,6 +9,8 @@
 #include <thread>
 #include <common/turn_status.h>
 #include <SFML/Network.hpp>
+#include <scenarios/scenarios.h>
+#include <managers/additions_manager.h>
 #include "core/game.h"
 #include "common/game_state.h"
 #include "managers/bitmap_field_manager.h"
@@ -24,6 +26,7 @@ game_state get_game_state(game& g) {
 	state.healths = healths_manager::get_map();
 	state.board.fields_ = board::fields_;
 	state.entities_bitmaps = bitmap_field_manager::get_map();
+	state.entities_additional_effects = additions_manager::get_map();
 
 	return std::move(state);
 }
@@ -66,6 +69,8 @@ local_state get_local_state(game& g) {
 int main() {
 
 	game g;
+
+	create_scenario(g,  "saurions_web");
 
 	server binder;
 

@@ -76,6 +76,16 @@ class go_to : public behavior_tree::base_task<blackboard>
 public:
 	virtual bool operator()(blackboard& blackboard) override;
 };
+
+struct can_go_to : public behavior_tree::base_task<blackboard> {
+	bool operator()(blackboard& blackboard) override;
+};
+
+struct find_best_aim : public behavior_tree::base_task<blackboard>
+{
+	bool operator()(blackboard& blackboard) override;
+};
+
 }
 };
 

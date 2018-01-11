@@ -61,10 +61,6 @@ void pigeon_war_client::receive_messages() {
 
 			std::cout << "client player id: " << player_id << "\n";
 
-			if (player_id == 0) {
-				this_turn_status = turn_status::do_turn;
-			}
-
 		} else if (message == message_types::board) {
 			unpack(packet, state.board.fields_);
 
@@ -82,8 +78,6 @@ void pigeon_war_client::receive_messages() {
 
 			std::size_t active_player_id;
 			unpack(packet, active_player_id);
-
-			this_turn_status = active_player_id == player_id ? turn_status::do_turn : turn_status::wait;
 
 		} else if (message == message_types::animations) {
 
@@ -175,36 +169,27 @@ void pigeon_war_client::receive_messages() {
 
 void pigeon_war_client::update()
 {
-	if (this_turn_status == turn_status::wait) {
-//		std::cout << "waiting\n";
-	}
+	try {
 
-	//if (this_turn_status == turn_status::do_turn) {
+		sf::Event event{};
+		while (window_.pollEvent(event)) {
 
-//		std::cout << "turn\n";
-
-		try {
-
-			sf::Event event{};
-			while (window_.pollEvent(event)) {
-
-				if (event.type == sf::Event::Closed) {
-					window_.close();
-				}
-
-				else if (event.type == sf::Event::MouseButtonReleased) {
-
-					bool left = event.mouseButton.button == sf::Mouse::Button::Left;
-
-					sf::Vector2i mouse_position(event.mouseButton.x, event.mouseButton.y);
-					on_mouse_click(mouse_position, left);
-				}
+			if (event.type == sf::Event::Closed) {
+				window_.close();
 			}
 
-		} catch (...) {
+			else if (event.type == sf::Event::MouseButtonReleased) {
 
+				bool left = event.mouseButton.button == sf::Mouse::Button::Left;
+
+				sf::Vector2i mouse_position(event.mouseButton.x, event.mouseButton.y);
+				on_mouse_click(mouse_position, left);
+			}
 		}
-	//}
+
+	} catch (...) {
+
+	}
 
 	window_.clear();
 	draw(window_);
@@ -289,6 +274,17 @@ void pigeon_war_client::update_for_entity()
 		return;
 
 	buttons_panel_.set_for_entity_for(lstate.entity_name, lstate.button_bitmaps);
+
+	auto this_entity_id = state.board.at(lstate.selected_index);
+
+	std::string effects;
+
+	for (auto&& effect : state.entities_additional_effects[this_entity_id]) {
+		effects += effect;
+		effects += "\n";
+	}
+
+	set_description(effects);
 }
 
 void pigeon_war_client::set_description(const std::string& desc) {

@@ -69,7 +69,6 @@ struct additions_manager : base_manager<addition, addition&> {
 				map_.erase(entity_id);
 			});
 		}
-        //map_[entity_id].put_named(name, x);
     }
 
     static void remove_component(std::size_t entity_id, const std::string& name) {
@@ -80,10 +79,20 @@ struct additions_manager : base_manager<addition, addition&> {
 		return map_[entity_id].has(name);
 	}
 
-//    template <typename T>
-//    static inline void get_component(std::size_t entity_id) {
-//        map_[entity_id].get<T>();
-//    }
+	static std::unordered_map<std::size_t, std::vector<std::string>> get_map() {
+		std::unordered_map<std::size_t, std::vector<std::string>> result;
+
+		for (auto&& elem : map_) {
+
+			auto& field = result[elem.first];
+
+			for (auto&& addition : elem.second.named_data) {
+				field.push_back(addition.first);
+			}
+		}
+
+		return std::move(result);
+	}
 };
 
 

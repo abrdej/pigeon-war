@@ -26,6 +26,7 @@ struct server {
 	sf::TcpListener listener;
 
 	std::vector<std::shared_ptr<sf::TcpSocket>> clients;
+	std::unordered_map<std::string, std::size_t> addresses;
 
 	boost::lockfree::spsc_queue<std::pair<std::size_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
 
@@ -44,8 +45,6 @@ struct server {
 
 	void send_notification(const sf::Packet& packet) {
 		packets_to_send.push(std::make_pair(std::numeric_limits<std::size_t>::max(), packet));
-
-
 	}
 
 	void send_notification_to(std::size_t index, sf::Packet packet) {
@@ -76,12 +75,33 @@ struct server {
 
 						} else {
 
-							auto client_id = clients.size();
-							std::cout << "New client, next id: " << client_id << "\n";
-							std::cout << " remote address: " << client->getRemoteAddress().toString() << "\n";
+							auto address = client->getRemoteAddress().toString();
 
-							clients.emplace_back(client);
-							selector.add(*client);
+							auto it = addresses.find(address);
+
+							bool new_or_old = it != std::end(addresses);
+
+							std::size_t client_id;
+
+							if (new_or_old) {
+
+								client_id = it->second;
+
+								clients[client_id] = client;
+								selector.add(*client);
+
+							} else {
+								client_id = clients.size();
+								std::cout << "New client, next id: " << client_id << "\n";
+								std::cout << " remote address: " << client->getRemoteAddress().toString() << "\n";
+
+								clients.emplace_back(client);
+								selector.add(*client);
+
+								addresses.emplace(address, client_id);
+							}
+
+							//send_notification_to(client_id, make_packet())
 
 							// accept client and send data
 							send_notification_to(client_id, make_packet(message_types::player_id, static_cast<int>(client_id)));

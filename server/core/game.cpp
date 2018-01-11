@@ -21,7 +21,6 @@
 #include <iostream>
 
 game::game() {
-	create_scenario(*this, "saurions_web");
 }
 
 void game::initialize(std::array<std::vector<std::size_t>, board::cols_n * board::rows_n>& x) {

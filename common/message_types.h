@@ -20,7 +20,8 @@ enum class message_types {
 	animation,
 	on_button,
 	on_board,
-	get_button_description
+	get_button_description,
+	get_effect
 };
 
 struct message_types_key_hash

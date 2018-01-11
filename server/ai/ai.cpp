@@ -9,6 +9,7 @@
 #include <thread>
 #include <chrono>
 #include <algorithm>
+#include <managers/health_manager.h>
 #include "server/managers/abilities_manager.h"
 
 namespace ai
@@ -62,22 +63,27 @@ using namespace behavior_tree;
 
 bool find_nearest_enemy::operator()(blackboard& blackboard)
 {
-	std::vector<size_t> enemies_indexies;
-	players_funcs::enemy_entities_indexes(blackboard.player_id, enemies_indexies);
-	if (enemies_indexies.size() == 0)
+
+	std::cout << "blackboard.player_id: " << blackboard.player_id << "\n";
+
+	std::vector<size_t> enemies_indexes;
+	players_funcs::enemy_entities_indexes(blackboard.player_id, enemies_indexes);
+	if (enemies_indexes.size() == 0)
 		return false;
 
 	path_finder distance_finder(true);
 	distance_finder.calc(blackboard.my_entity_index_);
 
 	std::vector<size_t> distances_to_enemies;
-	for (auto& enemy_index : enemies_indexies)
+	for (auto& enemy_index : enemies_indexes)
 		distances_to_enemies.push_back(distance_finder.distance_to(enemy_index));
 
 	auto min_it = std::min_element(std::begin(distances_to_enemies),
 								   std::end(distances_to_enemies));
 
-	blackboard.nearest_enemy_index = enemies_indexies[min_it - std::begin(distances_to_enemies)];
+	blackboard.nearest_enemy_index = enemies_indexes[min_it - std::begin(distances_to_enemies)];
+
+	std::cout << "nearest_enemy_index: " << blackboard.nearest_enemy_index << "\n";
 
 	return true;
 }
@@ -93,8 +99,14 @@ bool attack_enemy::operator()(blackboard& blackboard)
 
 	(*offensive)(states::state_controller::selected_index_);
 	auto can_attack = states::state_controller::is_possible_movement(blackboard.nearest_enemy_index);
-	if (can_attack)
+	if (can_attack) {
 		states::state_controller::do_action(blackboard.nearest_enemy_index);
+		std::cout << "can_attack\n";
+	}
+
+
+	std::cout << "attack_enemy\n";
+
 	return can_attack;
 }
 
@@ -111,13 +123,20 @@ bool go_close_to::operator()(blackboard& blackboard)
 
 	std::vector<size_t> neighbors;
 	board_helper::neighboring_fields(blackboard.nearest_enemy_index,
-									 neighbors, true);
+									 neighbors, false);
+
+	neighbors.erase(std::remove_if(std::begin(neighbors), std::end(neighbors), [&blackboard](std::size_t index) {
+		return !board::empty(index) && index != blackboard.my_entity_index_;
+	}), std::end(neighbors));
 
 	auto nearest_field = *std::min_element(std::begin(neighbors), std::end(neighbors),
 										   [&distance_finder](size_t first_elem, size_t second_elem)
 										   {
 											   return distance_finder.distance_to(first_elem) < distance_finder.distance_to(second_elem);
 										   });
+
+	if (nearest_field == blackboard.my_entity_index_)
+		return true;
 
 	std::vector<size_t> path;
 	distance_finder.path_to(nearest_field, path);
@@ -137,13 +156,14 @@ bool go_close_to::operator()(blackboard& blackboard)
 bool go_to::operator()(blackboard& blackboard)
 {
 	auto entity_id = board::at(blackboard.my_entity_index_);
-	//if (!abilities_manager::moving::has(entity_id))
-	//	return false;
 
 	auto& entity_abilities = abilities_manager::component_for(entity_id);
 	auto moving = entity_abilities.type(abilities::ability_types::moving);
 	if (!moving)
 		return false;
+
+	if (blackboard.destination_index == blackboard.my_entity_index_)
+		return true;
 
 	path_finder path_finder(false);
 	path_finder.calc(blackboard.my_entity_index_);
@@ -152,8 +172,7 @@ bool go_to::operator()(blackboard& blackboard)
 	path_finder.path_to(blackboard.destination_index, path);
 
 	(*moving)(blackboard.my_entity_index_);
-	//abilities_manager::moving::init(entity_id, blackboard.my_entity_index_);
-	// moving_manager::init(entity_id, index_for);
+
 	for (auto& step : path)
 	{
 		if (states::state_controller::is_possible_movement(step))
@@ -163,6 +182,23 @@ bool go_to::operator()(blackboard& blackboard)
 		}
 	}
 	return false;
+}
+
+bool can_go_to::operator()(blackboard& blackboard)
+{
+	auto entity_id = board::at(blackboard.my_entity_index_);
+
+	auto& entity_abilities = abilities_manager::component_for(entity_id);
+	auto moving = entity_abilities.type(abilities::ability_types::moving);
+	if (!moving)
+		return false;
+
+	if (blackboard.destination_index == blackboard.my_entity_index_)
+		return true;
+
+	(*moving)(blackboard.my_entity_index_);
+
+	return states::state_controller::is_possible_movement(blackboard.destination_index);
 }
 
 bool find_position_for_shot::operator()(blackboard& blackboard)
@@ -191,5 +227,29 @@ bool find_position_for_shot::operator()(blackboard& blackboard)
 		return true;
 	return false;
 }
+
+bool find_best_aim::operator()(blackboard& blackboard) {
+
+	std::vector<size_t> enemies_indexes;
+	players_funcs::enemy_entities_indexes(blackboard.player_id, enemies_indexes);
+	if (enemies_indexes.size() == 0)
+		return false;
+
+	int min_health = std::numeric_limits<int>::max();
+	std::size_t min_health_enemy_id = 0;
+
+	for (auto&& enemy_id : enemies_indexes) {
+		auto health = healths_manager::component_for(enemy_id).health;
+		if (health < min_health) {
+			min_health = health;
+			min_health_enemy_id = enemy_id;
+		}
+	}
+
+	blackboard.nearest_enemy_index = min_health_enemy_id;
+
+	return true;
+}
+
 }
 };

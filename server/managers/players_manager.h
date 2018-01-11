@@ -31,7 +31,7 @@ public:
 	static std::size_t create_ai_player(const std::string& player_name) {
 		auto& instance = get_instance();
 		instance.players.emplace_back(std::make_pair(player_name, true));
-		return instance.players.size();
+		return instance.players.size() - 1;
 	}
 
 	static void add_entity_for_player(std::size_t player_id, size_t entity_id) {

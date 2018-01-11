@@ -27,7 +27,7 @@ struct wretch final
         entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<ball_and_chain>(id));
         entity_directions(components) = directions::left;
         entity_bitmap_field(components) = bitmap_field(id, bitmap_key::wretch);
-        entity_power(components).base_power = 20;
+        entity_power(components).base_power = 16;
 
         return components;
     }

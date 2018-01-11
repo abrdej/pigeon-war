@@ -35,7 +35,7 @@ struct move_base_handler : base_handler {
 
 		auto entity_id = g_state.board.take(from_index);
 
-		animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
+		animation::player<animation::move_entity>::launch(animation::move_entity(from_index, to_index, entity_id));
 		animation::base_player::play();
 
 		g_state.board.give_back(entity_id, to_index);
@@ -249,6 +249,26 @@ struct warrior_blow_handler : move_with_return_base_handler<bitmap_key::warrior_
 };
 
 struct set_immortality_handler : change_bitmap_base_handler<bitmap_key::warrior_immortal> {
+
+};
+
+struct bludgeon_push_handler : base_handler {
+	void handle(sf::Packet& packet, game_state& g_state) override;
+};
+
+struct bludgeon_handler : move_with_return_base_handler<bitmap_key::bum> {
+
+};
+
+struct rage_handler : base_handler {
+	void handle(sf::Packet& packet, game_state& g_state) override;
+};
+
+struct shiruken_handler : shot_base_handler<bitmap_key::shiruken, bitmap_key::shiruken_splash> {
+
+};
+
+struct death_mark_handler : bitmap_flush_base_handler<bitmap_key::assassin_slash> {
 
 };
 

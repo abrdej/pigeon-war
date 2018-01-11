@@ -43,4 +43,9 @@ void animations_service::initialize() {
 	add<vicious_circle_handler>(animation_def::vicious_circle);
 	add<warrior_blow_handler>(animation_def::warrior_blow);
 	add<set_immortality_handler>(animation_def::set_immortality);
+	add<bludgeon_push_handler>(animation_def::bludgeon_push);
+	add<bludgeon_handler>(animation_def::bludgeon);
+	add<rage_handler>(animation_def::rage);
+	add<shiruken_handler>(animation_def::shiruken);
+	add<death_mark_handler>(animation_def::death_mark);
 }

@@ -22,7 +22,6 @@ private:
 	const int range = 1;
 	const int damage = 7;
 	std::vector<size_t> targets_;
-	bool used{false};
 };
 
 #endif

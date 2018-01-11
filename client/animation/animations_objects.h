@@ -26,23 +26,9 @@ private:
     sf::Vector2f translation_;
     double velocity_;
     const sf::Texture& bitmap_;
+    sf::Sprite sprite;
     turn_types turn_;
 };
-
-//class move_at_path_object_animation final
-//{
-//public:
-//    move_at_path_object_animation(move_at_path move_data);
-//    void draw(sf::RenderWindow& window);
-//    bool run();
-//
-//private:
-//    std::vector<std::size_t> path;
-//    std::size_t from_index;
-//    std::size_t to_index;
-//    std::size_t path_index;
-//    move_object_animation *move_animation{nullptr};
-//};
 
 class move_object_animation2 final
 {
@@ -60,7 +46,7 @@ private:
     sf::Vector2f translation_;
     double velocity_;
     size_t entity_id_;
-    //sf::Sprite sprite_;
+    sf::Sprite& sprite;
     turn_types turn_;
 };
 

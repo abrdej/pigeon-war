@@ -39,7 +39,9 @@ private:
 
 	void prepare_animations();
 	void update_for_entity();
+
 	void set_description(const std::string& desc);
+	void set_effects();
 
 private:
 	sf::TcpSocket socket;
@@ -47,9 +49,6 @@ private:
 
 	static const int no_player_id = std::numeric_limits<int>::max();
 	int player_id{no_player_id};
-
-	turn_status this_turn_status{turn_status::wait};
-	bool play_animations{false};
 
 	friend class board_drawer;
 	game_state state;

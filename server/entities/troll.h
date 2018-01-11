@@ -16,7 +16,7 @@ struct troll final
 	{
 		base_components components;
 		entity_name(components) = "Troll";
-		entity_health(components).base_health = 70;
+		entity_health(components).base_health = 80;
 		entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(2));
 		entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<bludgeon>());
 		entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<rage>(id));

@@ -182,7 +182,7 @@ set(SERVER_SOURCE_FILES
 #        client/gui/bitmap_center.cpp
 #        client/gui/my_button.cpp
 
-        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h server/abilities/straight_target_ability.cpp server/abilities/straight_target_ability.h server/abilities/per_turn_usable.h server/sender.h server/sender.cpp server/abilities/neighboring_target_ability.h server/abilities/path_target_ability.h server/abilities/caster_target_ability.h server/abilities/prison_connection.cpp server/abilities/prison_connection.h server/abilities/killer_instinct.cpp server/abilities/killer_instinct.h server/abilities/aura_of_immunity.cpp server/abilities/aura_of_immunity.h server/managers/modifications_manager.cpp server/managers/modifications_manager.h server/abilities/ball_and_chain.cpp server/abilities/ball_and_chain.h)
+        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h server/abilities/straight_target_ability.cpp server/abilities/straight_target_ability.h server/abilities/per_turn_usable.h server/sender.h server/sender.cpp server/abilities/neighboring_target_ability.h server/abilities/path_target_ability.h server/abilities/caster_target_ability.h server/abilities/prison_connection.cpp server/abilities/prison_connection.h server/abilities/killer_instinct.cpp server/abilities/killer_instinct.h server/abilities/aura_of_immunity.cpp server/abilities/aura_of_immunity.h server/managers/modifications_manager.cpp server/managers/modifications_manager.h server/abilities/ball_and_chain.cpp server/abilities/ball_and_chain.h server/abilities/death_mark.cpp server/abilities/death_mark.h)
 
 set(CLIENT_SOURCE_FILES
         client/gui/bitmap_center.cpp
@@ -219,7 +219,7 @@ set(CLIENT_SOURCE_FILES
         common/animations.h
 
         server/managers/entity_remover.cpp
-        common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h server/entities/golem.h server/entities/sorcerer.h common/message_types.h client/animations_service.cpp client/animations_service.h client/animations_handlers.cpp client/animations_handlers.h)
+        common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h server/entities/golem.h server/entities/sorcerer.h common/message_types.h client/animations_service.cpp client/animations_service.h client/animations_handlers.cpp client/animations_handlers.h client/menu/menu.cpp client/menu/menu.h common/effects.h)
 
 add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
 target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})

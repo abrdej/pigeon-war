@@ -11,14 +11,13 @@
 struct rage final : public passive_ability,
 					turn_events_helper::every_turn_callback_helper {
 
-	rage(size_t id);
+	explicit rage(size_t id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::rage;
 	}
 
 	void use();
-	void play_animation(size_t use_from_index);
 
 private:
 	const int range = 1;
