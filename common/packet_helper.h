@@ -82,12 +82,9 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::vector<T>& x)
 	return packet;
 }
 
-template <typename T, sf::Uint64 N>
+template <typename T, size_t N>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::array<T, N>& x)
 {
-	sf::Uint64 size = N;
-	packet << size;
-
 	for (auto&& elem : x) {
 		packet << elem;
 	}
@@ -95,12 +92,9 @@ inline sf::Packet& operator <<(sf::Packet& packet, const std::array<T, N>& x)
 	return packet;
 }
 
-template <typename T, sf::Uint64 N>
+template <typename T, size_t N>
 inline sf::Packet& operator >>(sf::Packet& packet, std::array<T, N>& x)
 {
-	sf::Uint64 size;
-	packet >> size;
-
 	for (auto&& elem : x) {
 		packet >> elem;
 	}
