@@ -65,7 +65,7 @@ struct server {
 
 				std::cout << "Start\n";
 
-				if (selector.wait()) {
+				if (selector.wait(sf::seconds(1.f))) {
 
 					std::cout << "Wait\n";
 
