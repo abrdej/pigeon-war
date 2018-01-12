@@ -272,4 +272,12 @@ struct death_mark_handler : bitmap_flush_base_handler<bitmap_key::assassin_slash
 
 };
 
+struct set_invisibility_handler : change_bitmap_base_handler<bitmap_key::saberhand_transparency> {
+
+};
+
+struct remove_invisibility_handler : change_bitmap_base_handler<bitmap_key::saberhand> {
+
+};
+
 #endif //PIGEONWAR_ANIMATIONS_HANDLERS_H

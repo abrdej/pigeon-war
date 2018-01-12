@@ -29,8 +29,7 @@ void drain::use(size_t index_on)
 std::string drain::hint() const {
 
 	std::string desc;
-	desc = "Shoot - the shooter can give a double shot of: " +
-		   std::to_string(damage) + " damage.\n" +
-		   "\nRange: " + std::to_string(range) + ".";
+	desc = "Drain - deals damage of: " + std::to_string(damage) + " and heals native by: " + std::to_string(drain_amount) + " regardless of dealt damage.\n"
+			"This skill can heal over the base level of health.";
 	return std::move(desc);
 }

@@ -62,7 +62,9 @@ enum class animation_def {
 	bludgeon,
 	rage,
 	shiruken,
-	death_mark
+	death_mark,
+	set_invisibility,
+	remove_invisibility
 };
 
 struct animation_def_key_hash

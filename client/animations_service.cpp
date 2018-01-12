@@ -48,4 +48,6 @@ void animations_service::initialize() {
 	add<rage_handler>(animation_def::rage);
 	add<shiruken_handler>(animation_def::shiruken);
 	add<death_mark_handler>(animation_def::death_mark);
+	add<set_invisibility_handler>(animation_def::set_invisibility);
+	add<remove_invisibility_handler>(animation_def::remove_invisibility);
 }

@@ -16,8 +16,6 @@ void invisibility::use(size_t on_index)
 	if (used_)
         return;
 
-    used_ = true;
-
     hide_me();
 
 	receiver = turn::turn_system::every_turn([this]() {
@@ -27,6 +25,8 @@ void invisibility::use(size_t on_index)
             receiver.reset();
         }
     });
+
+	used_ = true;
 }
 
 void invisibility::hide_me()
@@ -35,12 +35,16 @@ void invisibility::hide_me()
 
 	bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::saberhand_transparency;
 
+	sender::send(message_types::animation, animation_def::set_invisibility, entity_id);
+
     healths_manager::set_destructible(entity_id, false);
 }
 
 void invisibility::show_me()
 {
 	bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::saberhand;
+
+	sender::send(message_types::animation, animation_def::remove_invisibility, entity_id);
 
     healths_manager::set_destructible(entity_id, true);
 }
