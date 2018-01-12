@@ -7,7 +7,7 @@
 
 #include "ability.h"
 
-class dodge final : passive_ability
+class dodge final : public passive_ability
 {
 public:
 	explicit dodge(std::size_t entity_id);
