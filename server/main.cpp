@@ -101,9 +101,9 @@ int main() {
 			g.on_board(x, y);
 
 		} else {
-			std::cout << "on_board_2\n";
+			//std::cout << "on_board_2\n";
 
-			g.on_board_2(x, y, lstates[client_id]);
+			//g.on_board_2(x, y, lstates[client_id]);
 		}
 
 		binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
@@ -112,7 +112,7 @@ int main() {
 			binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
 
 		} else {
-			binder.send_notification_to(client_id, make_packet(message_types::local_state, lstates[client_id]));
+			//binder.send_notification_to(client_id, make_packet(message_types::local_state, lstates[client_id]));
 		}
 
 
@@ -136,9 +136,9 @@ int main() {
 			g.on_button(n);
 
 		} else {
-			std::cout << "on_board_2\n";
+			//std::cout << "on_board_2\n";
 
-			g.on_button_2(n, lstates[client_id]);
+			//g.on_button_2(n, lstates[client_id]);
 		}
 
 		if (n == 5) {
@@ -161,7 +161,7 @@ int main() {
                 binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
             } else {
                 binder.send_notification_to(players_manager::get_active_player_id(), make_packet(message_types::local_state, get_local_state(g)));
-                binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet(message_types::local_state, local_state()));
+                //binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet(message_types::local_state, local_state()));
             }
 
 		} else {
@@ -170,7 +170,7 @@ int main() {
 				binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
 
 			} else {
-				binder.send_notification_to(client_id, make_packet(message_types::local_state, lstates[client_id]));
+				//binder.send_notification_to(client_id, make_packet(message_types::local_state, lstates[client_id]));
 			}
 		}
 
@@ -199,7 +199,7 @@ int main() {
 
 		} else {
 
-			description = g.get_button_description(lstates[client_id].selected_index, n);
+			//description = g.get_button_description(lstates[client_id].selected_index, n);
 		}
 
 		if (single_client) {
