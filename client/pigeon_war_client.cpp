@@ -168,7 +168,8 @@ void pigeon_war_client::receive_messages() {
 			std::string description;
 			unpack(packet, description);
 
-			set_description(description);
+			desc_pos = sf::Mouse::getPosition(window_);
+			hint_ptr = std::make_unique<hint>(desc_pos, description);
 
 		} else if (message == message_types::animation) {
 			animations_service::handle(packet, state);
@@ -194,6 +195,16 @@ void pigeon_war_client::update()
 				sf::Vector2i mouse_position(event.mouseButton.x, event.mouseButton.y);
 				on_mouse_click(mouse_position, left);
 			}
+
+			if (hint_ptr) {
+				auto len = std::sqrt(std::pow(desc_pos.x - sf::Mouse::getPosition(window_).x, 2.) +
+											 std::pow(desc_pos.y - sf::Mouse::getPosition(window_).y, 2.));
+
+				const float len_th = 35.f;
+				if (len > len_th) {
+					hint_ptr = nullptr;
+				}
+			}
 		}
 
 	} catch (...) {
@@ -212,6 +223,9 @@ void pigeon_war_client::draw(sf::RenderWindow& window)
 	board_drawer_->draw();
 	entities_renderer_.render(window, state.board, state.healths);
 	animation_player_impl_.draw(window);
+
+	if (hint_ptr)
+		hint_ptr->draw(window);
 }
 
 void pigeon_war_client::on_mouse_click(const point_type& args, bool left)

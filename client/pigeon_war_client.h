@@ -12,6 +12,7 @@
 #include "animation/animation_impl.h"
 #include <atomic>
 #include <common/turn_status.h>
+#include <gui/hint.h>
 #include "common/game_state.h"
 #include "gui/drawer.h"
 
@@ -54,9 +55,12 @@ private:
 	game_state state;
 	local_state lstate;
 
+	sf::Vector2i desc_pos;
+
 	sf::RenderWindow window_;
 	board_panel board_panel_;
 	buttons_panel buttons_panel_;
+	std::unique_ptr<hint> hint_ptr;
 	animation::player_impl animation_player_impl_;
 	std::unique_ptr<board_drawer> board_drawer_;
 	entities_renderer entities_renderer_;

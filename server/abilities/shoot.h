@@ -16,7 +16,7 @@ public:
 
 	std::string hint() const override {
 		std::string desc;
-		desc = "The shooter can give a double shot of: " +
+		desc = "Shoot - the shooter can give a double shot of: " +
 				std::to_string(damage) + " damage.\n" +
 				"Remaining shots: " + std::to_string(bullets) +
 				"\nRange: " + std::to_string(range) + ".";

@@ -15,6 +15,12 @@ public:
         return bitmap_key::blow_the_ax;
     }
 
+    std::string hint() const override {
+        std::string desc;
+        desc = "Blow The Ax - offensive ability that deals damage of: " + std::to_string(damage) + "\n";
+        return std::move(desc);
+    }
+
 private:
     void use(size_t index_on) override;
 
