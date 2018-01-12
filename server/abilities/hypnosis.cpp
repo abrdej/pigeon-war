@@ -32,3 +32,12 @@ void hypnosis::use(size_t index_on) {
 
 	used = true;
 }
+
+std::string hypnosis::hint() const {
+
+	std::string desc;
+
+	desc = "Hypnosis - causes that the enemy unit will not be albe to make a move in the next turn.\n"
+			"It can be used only once per battle.";
+	return std::move(desc);
+}

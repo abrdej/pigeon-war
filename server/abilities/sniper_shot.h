@@ -14,6 +14,9 @@ public:
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::sniper_shot;
     }
+
+    std::string hint() const override;
+
 private:
     void prepare(size_t for_index) override;
     void use(size_t index_on);

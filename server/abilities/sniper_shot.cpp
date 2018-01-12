@@ -78,3 +78,14 @@ void sniper_shot::play_animation(std::size_t entity_id, size_t from_index, size_
                                      -1,
                                      bitmap_key::sniper_bum);
 }
+
+std::string sniper_shot::hint() const {
+
+    std::string desc;
+    desc = "Sniper Shot - deals damage of: " + std::to_string(damage) + ".\n"
+            "If the target is below 50% of health deals additional: " + std::to_string(damage) + " damage.\n"
+            "Sniper can't give a shot when the enemy unit is in his neighborhood.\n";
+            "Range: " + std::to_string(range) + ".";
+
+    return std::move(desc);
+}

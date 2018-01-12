@@ -20,7 +20,7 @@ void invisibility::use(size_t on_index)
 
 	receiver = turn::turn_system::every_turn([this]() {
 
-        if (turn_counter_++ == 2 * duration) {
+        if (++turn_counter_ == 2 * duration) {
             show_me();
             receiver.reset();
         }

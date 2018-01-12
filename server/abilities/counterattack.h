@@ -18,9 +18,10 @@ public:
 		return bitmap_key::counterattack;
 	}
 
+	std::string hint() const override;
+
 private:
 	void use(size_t index_on);
-	void play_animation(size_t from_index, size_t to_index);
 
 private:
 	std::size_t entity_id;

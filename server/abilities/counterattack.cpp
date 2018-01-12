@@ -26,6 +26,14 @@ counterattack::counterattack(std::size_t entity_id)
 	}, healths_manager::on_receive_damage_policy::after);
 }
 
+std::string counterattack::hint() const {
+	std::string desc;
+	desc = "Counterattack - native performs a counterattack if the attacker is within his range.\n"
+			"Counterattack deals " + std::to_string(damage) + " damage. It works only once per turn\n";
+
+	return std::move(desc);
+}
+
 void counterattack::use(size_t index_on) {
 
 	if (used) {
