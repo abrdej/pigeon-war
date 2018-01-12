@@ -63,15 +63,9 @@ struct server {
 
 			while (is_running) {
 
-				std::cout << "Start\n";
-
 				if (selector.wait()) {
 
-					std::cout << "Wait\n";
-
 					if (selector.isReady(listener)) {
-
-						std::cout << "listener ready\n";
 
 						auto client = std::make_shared<sf::TcpSocket>();
 
@@ -81,31 +75,13 @@ struct server {
 
 						} else {
 
-							//auto address = client->getRemoteAddress().toString();
-
-							//auto it = addresses.find(address);
-
-							//bool new_or_old = it != std::end(addresses);
-
-							//std::size_t client_id;
-
-							//if (new_or_old) {
-
-							//	client_id = it->second;
-
-							//	clients[client_id] = client;
-							//	selector.add(*client);
-
-							//} else {
 							auto client_id = clients.size();
+
 							std::cout << "New client, next id: " << client_id << "\n";
 							std::cout << " remote address: " << client->getRemoteAddress().toString() << "\n";
 
 							clients.emplace_back(client);
 							selector.add(*client);
-
-							//addresses.emplace(address, client_id);
-							//}
 
 							// accept client and send data
 							send_notification_to(client_id, make_packet(message_types::player_id, static_cast<int>(client_id)));
