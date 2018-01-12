@@ -194,8 +194,8 @@ void battle_with_a_golem(game& game) {
 }
 
 
-#include <boost/fusion/container/vector.hpp>
-#include <boost/fusion/algorithm/iteration/for_each.hpp>
+//#include <boost/fusion/container/vector.hpp>
+//#include <boost/fusion/algorithm/iteration/for_each.hpp>
 #include <core/states_controller.h>
 #include <entities/treant.h>
 #include <entities/fire.h>
@@ -220,7 +220,8 @@ void battle_with_a_golem(game& game) {
 #include <entities/golem.h>
 #include <entities/sorcerer.h>
 
-using Entites = boost::fusion::vector<shooter,
+//using Entites = boost::fusion::vector<shooter,
+using Entites = std::tuple<shooter,
         destroyer,
         samurai_rat,
         droid,
@@ -260,6 +261,21 @@ void create_trees_1() {
     creator_helper::create_neutral_many<tree>({pos(3, 1), pos(3, 2), pos(4, 1), pos(4, 2), pos(3, 5), pos(3, 6)});
     creator_helper::create_neutral_many<tree>({pos(5, 8), pos(6, 8)});
     creator_helper::create_neutral_many<stone>({pos(1, 1), pos(4, 5)});
+}
+
+template <typename Tuple, typename F, std::size_t ...Indices>
+void for_each_impl(Tuple&& tuple, F&& f, std::index_sequence<Indices...>) {
+    using swallow = int[];
+    (void)swallow{1,
+                  (f(std::get<Indices>(std::forward<Tuple>(tuple))), void(), int{})...
+    };
+}
+
+template <typename Tuple, typename F>
+void for_each(Tuple&& tuple, F&& f) {
+    constexpr std::size_t N = std::tuple_size<std::remove_reference_t<Tuple>>::value;
+    for_each_impl(std::forward<Tuple>(tuple), std::forward<F>(f),
+                  std::make_index_sequence<N>{});
 }
 
 void skirmish(game& game) {
@@ -345,7 +361,7 @@ void skirmish(game& game) {
 
     std::unordered_set<std::size_t> entities_to_choose;
 
-    boost::fusion::for_each(Entites{}, [&i, &entities_to_choose, &init_positions](auto x) {
+    auto init_entity = [&](auto x) {
         using EntityType = decltype(x);
         auto id = entity_manager::create<EntityType>();
 
@@ -354,7 +370,25 @@ void skirmish(game& game) {
         players_manager::add_neutral_entity(id);
 
         entities_to_choose.insert(id);
-    });
+    };
+
+//    int tab[] = {(init_entity(std::forward<Args>(args)), 0)...};
+
+    for_each(Entites{}, init_entity);
+
+//
+//boost::fusion::for_each(Entites{}, init_entity);
+
+//    boost::fusion::for_each(Entites{}, [&i, &entities_to_choose, &init_positions](auto x) {
+//        using EntityType = decltype(x);
+//        auto id = entity_manager::create<EntityType>();
+//
+//        auto pos = init_positions[i++];
+//        board::insert(board::to_index(pos.first, pos.second), id);
+//        players_manager::add_neutral_entity(id);
+//
+//        entities_to_choose.insert(id);
+//    });
 
     int entities_for_player = 4;
     int selections = 0;
