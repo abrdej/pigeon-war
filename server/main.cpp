@@ -101,8 +101,6 @@ int main() {
 			g.on_board(x, y);
 
 		} else {
-			//std::cout << "on_board_2\n";
-
 			//g.on_board_2(x, y, lstates[client_id]);
 		}
 
@@ -112,7 +110,9 @@ int main() {
 			binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
 
 		} else {
-			//binder.send_notification_to(client_id, make_packet(message_types::local_state, lstates[client_id]));
+			auto local_state = get_local_state(g);
+			binder.send_notification_to(players_manager::get_active_player_id(), make_packet(message_types::local_state, local_state));
+			binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet(message_types::local_state, local_state));
 		}
 
 
@@ -160,17 +160,20 @@ int main() {
             if (single_client) {
                 binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
             } else {
-                binder.send_notification_to(players_manager::get_active_player_id(), make_packet(message_types::local_state, get_local_state(g)));
-                //binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet(message_types::local_state, local_state()));
+				auto local_state = get_local_state(g);
+                binder.send_notification_to(players_manager::get_active_player_id(), make_packet(message_types::local_state, local_state));
+                binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet(message_types::local_state, local_state));
             }
 
 		} else {
 
-			if (client_id == players_manager::get_active_player_id() || single_client) {
+			if (single_client) {
 				binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
 
 			} else {
-				//binder.send_notification_to(client_id, make_packet(message_types::local_state, lstates[client_id]));
+
+				binder.send_notification_to(players_manager::get_active_player_id(), make_packet(message_types::local_state, get_local_state(g)));
+				binder.send_notification_to((players_manager::get_active_player_id() + 1) % 2, make_packet(message_types::local_state, get_local_state(g)));
 			}
 		}
 
