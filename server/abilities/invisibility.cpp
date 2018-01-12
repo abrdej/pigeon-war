@@ -5,13 +5,13 @@
 #include "core/states_controller.h"
 #include "gui/bitmap_center.h"
 
-invisibility::invisibility(size_t id)
+invisibility::invisibility(sf::Uint64 id)
 	: entity_id(id)
 {
 
 }
 
-void invisibility::use(size_t on_index)
+void invisibility::use(sf::Uint64 on_index)
 {
 	if (used_)
         return;

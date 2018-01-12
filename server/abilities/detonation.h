@@ -10,16 +10,16 @@
 
 class detonation : public ability {
 public:
-    explicit detonation(std::size_t entity_id);
+    explicit detonation(sf::Uint64 entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::detonation;
     }
 
 private:
-    void prepare(size_t for_index) override {}
-    std::size_t entity_id;
-    int damage{9};
+    void prepare(sf::Uint64 for_index) override {}
+    sf::Uint64 entity_id;
+    sf::Int32 damage{9};
     turn::turn_system::strong_receiver receiver;
 };
 

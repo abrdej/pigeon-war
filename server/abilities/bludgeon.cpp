@@ -2,7 +2,7 @@
 #include "bludgeon.h"
 #include "damage_dealers.h"
 
-void bludgeon::use(size_t index_on)
+void bludgeon::use(sf::Uint64 index_on)
 {
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
@@ -12,11 +12,11 @@ void bludgeon::use(size_t index_on)
 	auto from_pos = board::to_pos(used_from_index);
 	auto on_pos = board::to_pos(index_on);
 
-	int x_diff = from_pos.first - on_pos.first;
-	int y_diff = from_pos.second - on_pos.second;
+	sf::Int32 x_diff = from_pos.first - on_pos.first;
+	sf::Int32 y_diff = from_pos.second - on_pos.second;
 
-	int push_x = on_pos.first - x_diff;
-	int push_y = on_pos.second - y_diff;
+	sf::Int32 push_x = on_pos.first - x_diff;
+	sf::Int32 push_y = on_pos.second - y_diff;
 
 	auto push_to_index = board::to_index(push_x, push_y);
 	auto set_on_index = index_on;

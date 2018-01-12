@@ -21,11 +21,11 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(std::size_t index) override;
+	void use(sf::Uint64 index) override;
 
 private:
-	const int damage = 8;
-	const int bonus_damage = 1;
+	const sf::Int32 damage = 8;
+	const sf::Int32 bonus_damage = 1;
 };
 
 #endif //PIGEONWAR_LASER_H

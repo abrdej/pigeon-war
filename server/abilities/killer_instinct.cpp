@@ -6,11 +6,11 @@
 #include "managers/abilities_manager.h"
 
 
-killer_instinct::killer_instinct(std::size_t entity_id)
+killer_instinct::killer_instinct(sf::Uint64 entity_id)
 		: entity_id(entity_id) {
 }
 
-void killer_instinct::prepare(size_t for_index) {
+void killer_instinct::prepare(sf::Uint64 for_index) {
 
 	auto& enemy_abilities = abilities_manager::component_for(entity_id);
 	auto moveable_ptr = std::static_pointer_cast<moveable>(enemy_abilities.type(abilities::ability_types::moving));
@@ -31,7 +31,7 @@ void killer_instinct::prepare(size_t for_index) {
 	}
 }
 
-void killer_instinct::use(std::size_t index) {
+void killer_instinct::use(sf::Uint64 index) {
 
 	if (used)
 		return;
@@ -58,8 +58,8 @@ void killer_instinct::use(std::size_t index) {
 	sender::send(message_types::animation, animation_def::move, move_from_index, index);
 
 
-	int from_col = board::to_pos(move_from_index).first;
-	int to_col = board::to_pos(index).first;
+	sf::Int32 from_col = board::to_pos(move_from_index).first;
+	sf::Int32 to_col = board::to_pos(index).first;
 	if (from_col != to_col)
 	if (from_col - to_col < 0)
 		directions_manager::turn_right(entity_id);

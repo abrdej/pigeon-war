@@ -25,7 +25,7 @@ std::string shoot::hint() const {
 	return std::move(desc);
 }
 
-void shoot::use(size_t index_on)
+void shoot::use(sf::Uint64 index_on)
 {
 	if (bullets == 0)
 		return;

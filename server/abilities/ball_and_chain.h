@@ -10,19 +10,19 @@
 
 class ball_and_chain : public path_target_ability<3>, protected per_turn_callback {
 public:
-	explicit ball_and_chain(std::size_t entity_id);
+	explicit ball_and_chain(sf::Uint64 entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::wretch;
 	}
 
 private:
-	void use(size_t index_on) override;
+	void use(sf::Uint64 index_on) override;
 
 private:
-	std::size_t entity_id;
-	const int damage_per_cost = 2;
-	const int duration = 2;
+	sf::Uint64 entity_id;
+	const sf::Int32 damage_per_cost = 2;
+	const sf::Int32 duration = 2;
 	bool used_{false};
 };
 

@@ -3,16 +3,16 @@
 #include "vicious_circle.h"
 #include "damage_dealers.h"
 
-vicious_circle::vicious_circle(std::size_t entity_id) : entity_id(entity_id) {
+vicious_circle::vicious_circle(sf::Uint64 entity_id) : entity_id(entity_id) {
 }
 
-void vicious_circle::prepare(size_t for_index) {
+void vicious_circle::prepare(sf::Uint64 for_index) {
     states::state_controller::selected_index_ = for_index;
 
     board_helper::circle(for_index, states::state_controller::possible_movements_, false);
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](size_t index)
+    states::state_controller::wait_for_action([this](sf::Uint64 index)
                                               {
                                                   return use(index);
                                               });
@@ -27,7 +27,7 @@ std::string vicious_circle::hint() const {
     return "Magic power: " + std::to_string(power);
 }
 
-void vicious_circle::use(size_t index_on) {
+void vicious_circle::use(sf::Uint64 index_on) {
 
     if (used)
         return;

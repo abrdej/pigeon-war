@@ -5,7 +5,7 @@
 #include "managers/additions_manager.h"
 #include "managers/health_manager.h"
 
-death_mark::death_mark(std::size_t entity_id) : entity_id(entity_id) {
+death_mark::death_mark(sf::Uint64 entity_id) : entity_id(entity_id) {
 
 }
 
@@ -16,7 +16,7 @@ death_mark::~death_mark() {
 	}
 }
 
-void death_mark::use(std::size_t index_on) {
+void death_mark::use(sf::Uint64 index_on) {
 
 	if (used)
 		return;

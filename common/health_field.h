@@ -8,11 +8,11 @@
 #include <limits>
 
 struct health_field {
-	int health;
-	int base_health;
+	sf::Int32 health;
+	sf::Int32 base_health;
 	bool is_destructible{true};
 };
 
-static const int indestructible = std::numeric_limits<int>::max();
+static const sf::Int32 indestructible = std::numeric_limits<sf::Int32>::max();
 
 #endif //PIGEONWAR_HEALTH_FIELD_H

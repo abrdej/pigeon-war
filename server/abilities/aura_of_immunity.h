@@ -10,7 +10,7 @@
 
 class aura_of_immunity : public passive_ability, per_turn_callback {
 public:
-	explicit aura_of_immunity(std::size_t entity_id);
+	explicit aura_of_immunity(sf::Uint64 entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::defender;
@@ -19,7 +19,7 @@ public:
 	std::string hint() const override;
 
 private:
-	std::size_t entity_id;
+	sf::Uint64 entity_id;
 	int damage_reduction_for_friends{1};
 	int damage_reduction_for_owner{3};
 };

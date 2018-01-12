@@ -11,21 +11,21 @@
 
 class wretch_moving final : public ability, turn_events_helper::every_turn_callback_helper {
 public:
-    explicit wretch_moving(std::size_t entity_id);
+    explicit wretch_moving(sf::Uint64 entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::moveable;
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void move(size_t index_to);
+    void prepare(sf::Uint64 for_index) override;
+    void move(sf::Uint64 index_to);
 
 private:
-    std::size_t entity_id;
-    int max_range{4};
-    int range{4};
-    const int power_decrease_for_cost{2};
+    sf::Uint64 entity_id;
+    sf::Int32 max_range{4};
+    sf::Int32 range{4};
+    const sf::Int32 power_decrease_for_cost{2};
     bool used{false};
 };
 

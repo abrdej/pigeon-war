@@ -2,7 +2,7 @@
 #include <core/board.h>
 #include "recovery.h"
 
-recovery::recovery(std::size_t id) : entity_id(id) {
+recovery::recovery(sf::Uint64 id) : entity_id(id) {
 
     healths_manager::on_receive_damage(entity_id, [this](const damage_pack&) {
         no_damage_counter = 0;
@@ -21,7 +21,7 @@ recovery::recovery(std::size_t id) : entity_id(id) {
 
             auto health_pack = healths_manager::component_for(entity_id);
 
-            //auto final_recovery = std::min<int>(recovery_amount_per_turn,
+            //auto final_recovery = std::min<sf::Int32>(recovery_amount_per_turn,
             //                                   health_pack.base_health - health_pack.health);
 
             if (recovery_amount_per_turn > 0) {

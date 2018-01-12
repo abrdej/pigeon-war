@@ -14,12 +14,12 @@ public:
 	std::string hint() const override;
 	
 private:
-	void use(size_t index_on) override;
+	void use(sf::Uint64 index_on) override;
 
 private:
-	const int range = 1;
-	const int damage = 10;
-	const int drain_amount = 4;
+	const sf::Int32 range = 1;
+	const sf::Int32 damage = 10;
+	const sf::Int32 drain_amount = 4;
 };
 
 #endif

@@ -11,7 +11,7 @@
 class spear final : public straight_target_ability<1>, per_turn_usable
 {
 public:
-    spear(std::size_t id);
+    spear(sf::Uint64 id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::spear;
@@ -20,14 +20,14 @@ public:
     std::string hint() const override;
 
 private:
-    void use(size_t index_on) override;
+    void use(sf::Uint64 index_on) override;
 
 private:
-    static const int range = 1;
-    static const int damage = 6;
-    const int additional_damage{4};
-    int accumulated_damage{0};
-    std::size_t entity_id;
+    static const sf::Int32 range = 1;
+    static const sf::Int32 damage = 6;
+    const sf::Int32 additional_damage{4};
+    sf::Int32 accumulated_damage{0};
+    sf::Uint64 entity_id;
 };
 
 

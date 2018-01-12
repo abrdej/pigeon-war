@@ -10,10 +10,10 @@ class my_button final
 {
 public:
 	using point_type = sf::Vector2i;
-	using rect_type = sf::Rect<int>;
+	using rect_type = sf::Rect<sf::Int32>;
 	using bitmap_type = sf::Texture;
 
-	my_button(const point_type& center, size_t size, const std::function<void()>& callback = nullptr);
+	my_button(const point_type& center, sf::Uint64 size, const std::function<void()>& callback = nullptr);
 	explicit my_button(const rect_type& rect, const std::function<void()>& callback = nullptr);
 
 	inline bool is_hit(const point_type& pt) const {

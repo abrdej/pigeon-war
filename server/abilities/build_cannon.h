@@ -16,8 +16,8 @@ public:
         return bitmap_key::build_cannon;
     }
 
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void prepare(sf::Uint64 for_index) override;
+    void use(sf::Uint64 index_on);
 
 //    static constexpr abilities::ability_types type = abilities::ability_types::special;
 //
@@ -34,7 +34,7 @@ public:
 //        states::state_controller::possible_movements_.push_back(board::to_index(pos_to_build.first, pos_to_build.second));
 //
 //        states::state_controller::actual_targeting_type_ = states::target_types::all;
-//        states::state_controller::wait_for_action([this](size_t index)
+//        states::state_controller::wait_for_action([this](sf::Uint64 index)
 //                                                  {
 //                                                      return use(index);
 //                                                  });

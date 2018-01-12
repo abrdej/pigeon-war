@@ -11,7 +11,7 @@
 
 class death_mark : public path_target_ability<3> {
 public:
-	explicit death_mark(std::size_t entity_id);
+	explicit death_mark(sf::Uint64 entity_id);
 	~death_mark();
 
 	bitmap_key get_bitmap_key() const override {
@@ -19,11 +19,11 @@ public:
 	}
 
 private:
-	void use(std::size_t index_on) override;
+	void use(sf::Uint64 index_on) override;
 
-	std::size_t entity_id;
-	std::size_t enemy_id;
-	int death_mark_duration{5};
+	sf::Uint64 entity_id;
+	sf::Uint64 enemy_id;
+	sf::Int32 death_mark_duration{5};
 	bool used{false};
 	bool mark_removed{false};
 };

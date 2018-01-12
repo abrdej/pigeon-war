@@ -3,7 +3,7 @@
 #include <managers/entity_manager.h>
 #include "immortality.h"
 
-immortality::immortality(std::size_t entity_id) : entity_id(entity_id) {
+immortality::immortality(sf::Uint64 entity_id) : entity_id(entity_id) {
 
     healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 

@@ -18,14 +18,14 @@ public:
     std::string hint() const override;
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
-    void play_animation(std::size_t entity_id, size_t from_index, size_t to_index);
+    void prepare(sf::Uint64 for_index) override;
+    void use(sf::Uint64 index_on);
+    void play_animation(sf::Uint64 entity_id, sf::Uint64 from_index, sf::Uint64 to_index);
 
 private:
-    const int range{10};
-    const int damage{12};
-    const int additional_damage{12};
+    const sf::Int32 range{10};
+    const sf::Int32 damage{12};
+    const sf::Int32 additional_damage{12};
 };
 
 #endif //PIGEONWAR_SNIPER_SHOT_H

@@ -10,8 +10,8 @@
 
 struct bitmap_field_manager : base_manager<bitmap_field, bitmap_field&>
 {
-	static std::unordered_map<std::size_t, bitmap_key> get_map() {
-		std::unordered_map<std::size_t, bitmap_key> returned_map;
+	static std::unordered_map<sf::Uint64, bitmap_key> get_map() {
+		std::unordered_map<sf::Uint64, bitmap_key> returned_map;
 
 		for (auto&& elem : map_) {
 			returned_map.insert(std::make_pair(elem.first, elem.second.bmt_key));
@@ -22,7 +22,7 @@ struct bitmap_field_manager : base_manager<bitmap_field, bitmap_field&>
 };
 
 template <>
-inline void add_component_of_type<bitmap_field>(std::size_t entity_id, const bitmap_field& component) {
+inline void add_component_of_type<bitmap_field>(sf::Uint64 entity_id, const bitmap_field& component) {
 	bitmap_field_manager::add_component(entity_id, component);
 }
 

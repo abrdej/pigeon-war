@@ -2,7 +2,7 @@
 #include "damage_dealers.h"
 #include <core/states_controller.h>
 
-void laser::use(size_t index_on) {
+void laser::use(sf::Uint64 index_on) {
 
 	if (used)
 		return;
@@ -13,11 +13,11 @@ void laser::use(size_t index_on) {
 	auto from_pos = board::to_pos(index_on);
 	auto to_pos = board::to_pos(used_from_index);
 
-	int hor_diff = static_cast<int>(from_pos.first) - static_cast<int>(to_pos.first);
-	int ver_diff = static_cast<int>(from_pos.second) - static_cast<int>(to_pos.second);
+	sf::Int32 hor_diff = static_cast<sf::Int32>(from_pos.first) - static_cast<sf::Int32>(to_pos.first);
+	sf::Int32 ver_diff = static_cast<sf::Int32>(from_pos.second) - static_cast<sf::Int32>(to_pos.second);
 
-	int xx = 0;
-	int yy = 0;
+	sf::Int32 xx = 0;
+	sf::Int32 yy = 0;
 
 	if (hor_diff != 0) {
 		xx = (hor_diff > 0 ? 1 : -1) * range;
@@ -30,7 +30,7 @@ void laser::use(size_t index_on) {
 	sender::send(message_types::animation, animation_def::laser, used_from_index, index_to_move);
 
 	if (hor_diff != 0) {
-		for (int x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range); x = hor_diff > 0 ? x + 1 : x - 1) {
+		for (sf::Int32 x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range); x = hor_diff > 0 ? x + 1 : x - 1) {
 
 			auto index = board::to_index(to_pos.first + x, to_pos.second);
 
@@ -57,7 +57,7 @@ void laser::use(size_t index_on) {
 			}
 		}
 	} else {
-		for (int y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range); y = ver_diff > 0 ? y + 1 : y - 1) {
+		for (sf::Int32 y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range); y = ver_diff > 0 ? y + 1 : y - 1) {
 
 			auto index = board::to_index(to_pos.first, to_pos.second + y);
 

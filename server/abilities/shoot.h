@@ -17,12 +17,12 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(size_t index_on) override;
+	void use(sf::Uint64 index_on) override;
 
 private:
-	const int damage{6};
-	const int bullets_n{2};
-	int bullets;
+	const sf::Int32 damage{6};
+	const sf::Int32 bullets_n{2};
+	sf::Int32 bullets;
 };
 
 #endif

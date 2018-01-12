@@ -4,7 +4,7 @@
 #include "poisoned_missile.h"
 #include "damage_dealers.h"
 
-void poisoned_missile::use(size_t index_on) {
+void poisoned_missile::use(sf::Uint64 index_on) {
 
     if (used)
         return;

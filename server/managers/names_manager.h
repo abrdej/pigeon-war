@@ -26,7 +26,7 @@ struct name_field {
 };
 
 template <>
-inline void add_component_of_type<name_field>(std::size_t entity_id, const name_field& component) {
+inline void add_component_of_type<name_field>(sf::Uint64 entity_id, const name_field& component) {
     std::string name = component;
     names_manager::add_component(entity_id, name);
 }

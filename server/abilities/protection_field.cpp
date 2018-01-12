@@ -3,7 +3,7 @@
 #include "protection_field.h"
 #include "damage_dealers.h"
 
-protection_field::protection_field(std::size_t entity_id) {
+protection_field::protection_field(sf::Uint64 entity_id) {
 
     onEveryTurn([this, entity_id]() {
         if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
@@ -26,7 +26,7 @@ protection_field::protection_field(std::size_t entity_id) {
     });
 }
 
-void protection_field::use(size_t index_on) {
+void protection_field::use(sf::Uint64 index_on) {
     if (used)
         return;
 

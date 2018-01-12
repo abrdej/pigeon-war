@@ -4,19 +4,19 @@
 #include "absorption.h"
 #include "damage_dealers.h"
 
-absorption::absorption(std::size_t entity_id) : entity_id(entity_id) {
+absorption::absorption(sf::Uint64 entity_id) : entity_id(entity_id) {
     onEveryTurn([this]() {
         used = false;
     });
 }
 
 absorption::~absorption() {
-    if (protected_id != std::numeric_limits<std::size_t>::max()) {
+    if (protected_id != std::numeric_limits<sf::Uint64>::max()) {
         healths_manager::set_damage_receiver(protected_id, protected_dmg_rec_backup);
     }
 }
 
-void absorption::prepare(size_t for_index) {
+void absorption::prepare(sf::Uint64 for_index) {
     states::state_controller::selected_index_ = for_index;
 
     path_finder path_finder(true);
@@ -26,13 +26,13 @@ void absorption::prepare(size_t for_index) {
                                        range);
 
     states::state_controller::actual_targeting_type_ = states::target_types::friendly;
-    states::state_controller::wait_for_action([this](size_t index)
+    states::state_controller::wait_for_action([this](sf::Uint64 index)
                                               {
                                                   return use(index);
                                               });
 }
 
-void absorption::use(size_t index_on) {
+void absorption::use(sf::Uint64 index_on) {
 
     if (used)
         return;
@@ -44,7 +44,7 @@ void absorption::use(size_t index_on) {
 
     if (protected_id != friendly_id) {
 
-        if (protected_id != std::numeric_limits<std::size_t>::max()) {
+        if (protected_id != std::numeric_limits<sf::Uint64>::max()) {
             healths_manager::set_damage_receiver(protected_id, protected_dmg_rec_backup);
         }
 
@@ -55,7 +55,7 @@ void absorption::use(size_t index_on) {
     healths_manager::set_damage_receiver(friendly_id,
                                          [this, friendly_id, dmg_receiver = protected_dmg_rec_backup](health_field& health_pack, const damage_pack& dmg) mutable {
 
-                                             auto half_dmg = static_cast<int>(dmg.damage_value * 0.5);
+                                             auto half_dmg = static_cast<sf::Int32>(dmg.damage_value * 0.5);
 
                                              damage_pack new_dmg = dmg;
                                              new_dmg.damage_value = half_dmg;
@@ -85,7 +85,7 @@ void absorption::use(size_t index_on) {
     play_animation(used_from_index, index_on);
 }
 
-void absorption::play_animation(size_t from_index, size_t to_index) {
+void absorption::play_animation(sf::Uint64 from_index, sf::Uint64 to_index) {
     animations_queue::push_animation(animation_types::flash_bitmap, from_index, 150, 0, bitmap_key::absorption);
     animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::absorption);
 }

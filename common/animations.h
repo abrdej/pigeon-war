@@ -70,9 +70,9 @@ enum class animation_def {
 struct animation_def_key_hash
 {
 	template <typename T>
-	std::size_t operator()(T t) const
+	sf::Uint64 operator()(T t) const
 	{
-		return static_cast<std::size_t>(t);
+		return static_cast<sf::Uint64>(t);
 	}
 };
 
@@ -81,15 +81,15 @@ PACKET_ADD_ENUM(animation_def)
 
 struct animation_pack {
 	animation_pack() = default;
-	animation_pack(const animation_types& a, int x, int y, int z, bitmap_key k)
+	animation_pack(const animation_types& a, sf::Int32 x, sf::Int32 y, sf::Int32 z, bitmap_key k)
 			: animation_type(a), x(x), y(y), z(z), btm_key(k) {
 	}
 
 	animation_types animation_type;
 
-	int x;
-	int y;
-	int z;
+	sf::Int32 x;
+	sf::Int32 y;
+	sf::Int32 z;
 
 	bitmap_key btm_key;
 };

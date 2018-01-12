@@ -24,7 +24,13 @@ game_state get_game_state(game& g) {
 
 	game_state state;
 	state.healths = healths_manager::get_map();
-	state.board.fields_ = board::fields_;
+
+	for (sf::Uint64 i = 0; i < board::fields_.size(); ++i) {
+		for (auto&& elem : board::fields_[i]) {
+			state.board.fields_[i].push_back(elem);
+		}
+	}
+
 	state.entities_bitmaps = bitmap_field_manager::get_map();
 	state.entities_additional_effects = additions_manager::get_map();
 
@@ -35,7 +41,9 @@ local_state get_local_state(game& g) {
 
 	local_state state;
 
-	state.possible_movements = states::state_controller::possible_movements_;
+	for (auto&& idx : states::state_controller::possible_movements_)
+		state.possible_movements.push_back(idx);
+
 	state.actual_target_type = states::state_controller::actual_targeting_type_;
 
 	state.button_bitmaps.fill(bitmap_key::none);
@@ -46,7 +54,7 @@ local_state get_local_state(game& g) {
 		state.button_bitmaps[0] = bitmap_field.bmt_key;
 
 		auto& abilities = abilities_manager::component_for(board::at(states::state_controller::selected_index_));
-		for (std::size_t i = 1; i < 6; ++i) {
+		for (sf::Uint64 i = 1; i < 6; ++i) {
 			auto ability = abilities.at(i - 1);
 			if (ability) {
 				state.button_bitmaps[i] = ability->get_bitmap_key();
@@ -66,7 +74,7 @@ local_state get_local_state(game& g) {
 	return std::move(state);
 }
 
-int main() {
+sf::Int32 main() {
 
 	game g;
 
@@ -86,9 +94,9 @@ int main() {
 
 	binder.bind(message_types::on_board, [&](sf::Packet& packet) {
 
-		int client_id;
-		size_t x;
-		size_t y;
+		sf::Int32 client_id;
+		sf::Uint64 x;
+		sf::Uint64 y;
 
 		packet >> client_id;
 		packet >> x;
@@ -108,8 +116,8 @@ int main() {
 
 	binder.bind(message_types::on_button, [&](sf::Packet& packet) {
 
-		int client_id;
-		std::size_t n;
+		sf::Int32 client_id;
+		sf::Uint64 n;
 
 		packet >> client_id;
 		packet >> n;
@@ -142,8 +150,8 @@ int main() {
 
 	binder.bind(message_types::get_button_description, [&](sf::Packet& packet) {
 
-		int client_id;
-		std::size_t n;
+		sf::Int32 client_id;
+		sf::Uint64 n;
 
 		packet >> client_id;
 		packet >> n;

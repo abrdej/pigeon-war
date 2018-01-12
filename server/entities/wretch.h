@@ -15,7 +15,7 @@
 
 struct wretch final
 {
-    static auto create(size_t id)
+    static auto create(sf::Uint64 id)
     {
         using components_type = std::tuple<name_field, health_field, abilities, directions, bitmap_field, power_field>;
 

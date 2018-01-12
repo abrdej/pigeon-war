@@ -18,15 +18,15 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void set_landing(size_t for_index);
-    void use(size_t index_on);
+    void prepare(sf::Uint64 for_index) override;
+    void set_landing(sf::Uint64 for_index);
+    void use(sf::Uint64 index_on);
 
 private:
     const int range{3};
     const int damage{8};
     const int damage_with_killer_instinct{20};
-    std::size_t target_index;
+    sf::Uint64 target_index;
     bool used{false};
 };
 

@@ -19,7 +19,7 @@ inline void send(sf::TcpSocket& socket, const message_types& message, Args&&... 
 		packet << x;
 	};
 
-	int tab[] = {(packer(std::forward<Args>(args)), 0)...};
+	sf::Int32 tab[] = {(packer(std::forward<Args>(args)), 0)...};
 
 	socket.send(packet);
 }
@@ -34,7 +34,7 @@ inline T send_and_receive(sf::TcpSocket& socket, const message_types& message, A
 		packet << x;
 	};
 
-	int tab[] = {(packer(std::forward<Args>(args)), 0)...};
+	sf::Int32 tab[] = {(packer(std::forward<Args>(args)), 0)...};
 
 	socket.send(packet);
 

@@ -11,7 +11,7 @@ public:
         path,
         straight
     };
-	explicit moveable(int range, types type = types::path)
+	explicit moveable(sf::Int32 range, types type = types::path)
 		: range(range),
           type(type) {
 		onEveryRound([this]() {
@@ -35,24 +35,24 @@ public:
 		used = true;
 	}
 
-	void set_cost_callback(std::function<void(int)> fn) {
+	void set_cost_callback(std::function<void(sf::Int32)> fn) {
 		cost_callback = fn;
 	}
 
 	void remove_cost_callback() {
-		cost_callback = std::function<void(int)>();
+		cost_callback = std::function<void(sf::Int32)>();
 	}
 
 private:
-	void prepare(size_t for_index) override;
-	void move(size_t index_to);
+	void prepare(sf::Uint64 for_index) override;
+	void move(sf::Uint64 index_to);
 
 private:
-	int range;
+	sf::Int32 range;
 	bool used{false};
     types type;
 
-	std::function<void(int)> cost_callback;
+	std::function<void(sf::Int32)> cost_callback;
 };
 
 

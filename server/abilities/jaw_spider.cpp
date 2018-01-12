@@ -7,7 +7,7 @@
 #include "damage_dealers.h"
 #include "spider_web.h"
 
-void jaw_spider::use(size_t index_on) {
+void jaw_spider::use(sf::Uint64 index_on) {
 
 	if (used) {
 		return;

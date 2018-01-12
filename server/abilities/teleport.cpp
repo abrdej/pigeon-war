@@ -6,20 +6,20 @@
 #include "teleport.h"
 #include "core/board.h"
 
-void teleport::prepare(size_t for_index) {
+void teleport::prepare(sf::Uint64 for_index) {
 
 	states::state_controller::selected_index_ = for_index;
 
 	board_helper::all_free(states::state_controller::possible_movements_);
 
 	states::state_controller::actual_targeting_type_ = states::target_types::moving;
-	states::state_controller::wait_for_action([this, for_index](size_t index)
+	states::state_controller::wait_for_action([this, for_index](sf::Uint64 index)
 											  {
 												  return use(for_index, index);
 											  });
 }
 
-void teleport::use(size_t from_index, size_t to_index) {
+void teleport::use(sf::Uint64 from_index, sf::Uint64 to_index) {
 
 	if (used)
 		return;

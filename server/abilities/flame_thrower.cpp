@@ -3,12 +3,12 @@
 #include <core/path_finder.h>
 #include <core/states_controller.h>
 
-void flame_thrower::use(size_t index_on) {
+void flame_thrower::use(sf::Uint64 index_on) {
 
 	if (used)
 		return;
 
-	int real_damage = damage;
+	sf::Int32 real_damage = damage;
 
 	if (counter == 2) {
 		real_damage += damage_bonus;
@@ -19,7 +19,7 @@ void flame_thrower::use(size_t index_on) {
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	std::vector<size_t> neightbords;
+	std::vector<sf::Uint64> neightbords;
 	board_helper::neighboring_fields(index_on, neightbords, false);
 
 	sender::send(message_types::animation, animation_def::flame_thrower, used_from_index, index_on);

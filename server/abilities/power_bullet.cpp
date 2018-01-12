@@ -4,7 +4,7 @@
 #include "managers/abilities_manager.h"
 #include "damage_dealers.h"
 
-void power_bullet::use(size_t index_on) {
+void power_bullet::use(sf::Uint64 index_on) {
 
     if (used)
         return;

@@ -4,14 +4,14 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 
-counterattack::counterattack(std::size_t entity_id)
+counterattack::counterattack(sf::Uint64 entity_id)
 		: entity_id(entity_id) {
 
 	healths_manager::on_receive_damage(entity_id, [this](const damage_pack& dmg) {
 
 		auto enemy_index = board::index_for(dmg.damage_dealer_id);
 
-		std::vector<std::size_t> neighbors;
+		std::vector<sf::Uint64> neighbors;
 		board_helper::neighboring_fields(board::index_for(this->entity_id),
 										 neighbors,
 										 false);
@@ -35,7 +35,7 @@ std::string counterattack::hint() const {
 	return std::move(desc);
 }
 
-void counterattack::use(size_t index_on) {
+void counterattack::use(sf::Uint64 index_on) {
 
 	if (used) {
 		return;

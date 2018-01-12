@@ -5,7 +5,7 @@
 
 entangling_life_suck::entangling_life_suck() {
     onEveryRound([this]() {
-        int dealed_damage = 0;
+        sf::Int32 dealed_damage = 0;
         if (entity_manager::alive(enemy_id)) {
             dealed_damage = damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, caster_id));
         }
@@ -30,24 +30,24 @@ entangling_life_suck::entangling_life_suck() {
     });
 }
 
-entangling::entangling(std::size_t id) : entity_id(id) {
+entangling::entangling(sf::Uint64 id) : entity_id(id) {
     onEveryRound([this]() {
         used = false;
     });
 }
 
-void entangling::prepare(size_t for_index) {
+void entangling::prepare(sf::Uint64 for_index) {
     states::state_controller::selected_index_ = for_index;
     board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](size_t index)
+    states::state_controller::wait_for_action([this](sf::Uint64 index)
                                               {
                                                   return use(index);
                                               });
 }
 
-void entangling::use(size_t index_on) {
+void entangling::use(sf::Uint64 index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
     auto caster_id = board::at(used_from_index);
@@ -56,7 +56,7 @@ void entangling::use(size_t index_on) {
     auto active_player_id = players_manager::get_active_player_id();
     players_manager::add_entity_for_player(active_player_id, entangling_id);
 
-    auto ability = abilities_manager::component_for(entangling_id).at(static_cast<int>(abilities::ability_types::passive));
+    auto ability = abilities_manager::component_for(entangling_id).at(static_cast<sf::Int32>(abilities::ability_types::passive));
 
     auto enemy_id = board::at(index_on);
     auto life_suck = std::static_pointer_cast<entangling_life_suck>(ability);

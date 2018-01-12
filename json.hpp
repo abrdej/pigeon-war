@@ -35,7 +35,7 @@ SOFTWARE.
 #include <ciso646> // and, not, or
 #include <clocale> // lconv, localeconv
 #include <cmath> // isfinite, labs, ldexp, signbit
-#include <cstddef> // nullptr_t, ptrdiff_t, size_t
+#include <cstddef> // nullptr_t, ptrdiff_t, sf::Uint64
 #include <cstdint> // int64_t, uint64_t
 #include <cstdlib> // abort, strtod, strtof, strtold, strtoul, strtoll, strtoull
 #include <cstring> // memcpy, strlen
@@ -201,12 +201,12 @@ class exception : public std::exception
     }
 
     /// the id of the exception
-    const int id;
+    const sf::Int32 id;
 
   protected:
-    exception(int id_, const char* what_arg) : id(id_), m(what_arg) {}
+    exception(sf::Int32 id_, const char* what_arg) : id(id_), m(what_arg) {}
 
-    static std::string name(const std::string& ename, int id)
+    static std::string name(const std::string& ename, sf::Int32 id)
     {
         return "[json.exception." + ename + "." + std::to_string(id) + "] ";
     }
@@ -270,7 +270,7 @@ class parse_error : public exception
     @param[in] what_arg  the explanatory string
     @return parse_error object
     */
-    static parse_error create(int id, std::size_t byte_, const std::string& what_arg)
+    static parse_error create(sf::Int32 id, sf::Uint64 byte_, const std::string& what_arg)
     {
         std::string w = exception::name("parse_error", id) + "parse error" +
                         (byte_ != 0 ? (" at " + std::to_string(byte_)) : "") +
@@ -287,10 +287,10 @@ class parse_error : public exception
           n+1 is the index of the terminating null byte or the end of file.
           This also holds true when reading a byte vector (CBOR or MessagePack).
     */
-    const std::size_t byte;
+    const sf::Uint64 byte;
 
   private:
-    parse_error(int id_, std::size_t byte_, const char* what_arg)
+    parse_error(sf::Int32 id_, sf::Uint64 byte_, const char* what_arg)
         : exception(id_, what_arg), byte(byte_) {}
 };
 
@@ -334,14 +334,14 @@ caught.,invalid_iterator}
 class invalid_iterator : public exception
 {
   public:
-    static invalid_iterator create(int id, const std::string& what_arg)
+    static invalid_iterator create(sf::Int32 id, const std::string& what_arg)
     {
         std::string w = exception::name("invalid_iterator", id) + what_arg;
         return invalid_iterator(id, w.c_str());
     }
 
   private:
-    invalid_iterator(int id_, const char* what_arg)
+    invalid_iterator(sf::Int32 id_, const char* what_arg)
         : exception(id_, what_arg) {}
 };
 
@@ -385,14 +385,14 @@ caught.,type_error}
 class type_error : public exception
 {
   public:
-    static type_error create(int id, const std::string& what_arg)
+    static type_error create(sf::Int32 id, const std::string& what_arg)
     {
         std::string w = exception::name("type_error", id) + what_arg;
         return type_error(id, w.c_str());
     }
 
   private:
-    type_error(int id_, const char* what_arg) : exception(id_, what_arg) {}
+    type_error(sf::Int32 id_, const char* what_arg) : exception(id_, what_arg) {}
 };
 
 /*!
@@ -428,14 +428,14 @@ caught.,out_of_range}
 class out_of_range : public exception
 {
   public:
-    static out_of_range create(int id, const std::string& what_arg)
+    static out_of_range create(sf::Int32 id, const std::string& what_arg)
     {
         std::string w = exception::name("out_of_range", id) + what_arg;
         return out_of_range(id, w.c_str());
     }
 
   private:
-    out_of_range(int id_, const char* what_arg) : exception(id_, what_arg) {}
+    out_of_range(sf::Int32 id_, const char* what_arg) : exception(id_, what_arg) {}
 };
 
 /*!
@@ -466,14 +466,14 @@ caught.,other_error}
 class other_error : public exception
 {
   public:
-    static other_error create(int id, const std::string& what_arg)
+    static other_error create(sf::Int32 id, const std::string& what_arg)
     {
         std::string w = exception::name("other_error", id) + what_arg;
         return other_error(id, w.c_str());
     }
 
   private:
-    other_error(int id_, const char* what_arg) : exception(id_, what_arg) {}
+    other_error(sf::Int32 id_, const char* what_arg) : exception(id_, what_arg) {}
 };
 
 
@@ -544,7 +544,7 @@ inline bool operator<(const value_t lhs, const value_t rhs) noexcept
 
     // discarded values are not comparable
     return lhs != value_t::discarded and rhs != value_t::discarded and
-           order[static_cast<std::size_t>(lhs)] < order[static_cast<std::size_t>(rhs)];
+           order[static_cast<sf::Uint64>(lhs)] < order[static_cast<sf::Uint64>(rhs)];
 }
 
 
@@ -566,12 +566,12 @@ using uncvref_t = typename std::remove_cv<typename std::remove_reference<T>::typ
 
 // implementation of C++14 index_sequence and affiliates
 // source: https://stackoverflow.com/a/32223343
-template<std::size_t... Ints>
+template<sf::Uint64... Ints>
 struct index_sequence
 {
     using type = index_sequence;
-    using value_type = std::size_t;
-    static constexpr std::size_t size() noexcept
+    using value_type = sf::Uint64;
+    static constexpr sf::Uint64 size() noexcept
     {
         return sizeof...(Ints);
     }
@@ -580,12 +580,12 @@ struct index_sequence
 template<class Sequence1, class Sequence2>
 struct merge_and_renumber;
 
-template<std::size_t... I1, std::size_t... I2>
+template<sf::Uint64... I1, sf::Uint64... I2>
 struct merge_and_renumber<index_sequence<I1...>, index_sequence<I2...>>
         : index_sequence < I1..., (sizeof...(I1) + I2)... >
           {};
 
-template<std::size_t N>
+template<sf::Uint64 N>
 struct make_index_sequence
     : merge_and_renumber < typename make_index_sequence < N / 2 >::type,
       typename make_index_sequence < N - N / 2 >::type >
@@ -718,7 +718,7 @@ struct external_constructor<value_t::array>
     template<typename BasicJsonType, typename CompatibleArrayType,
              enable_if_t<not std::is_same<CompatibleArrayType,
                                           typename BasicJsonType::array_t>::value,
-                         int> = 0>
+                         sf::Int32> = 0>
     static void construct(BasicJsonType& j, const CompatibleArrayType& arr)
     {
         using std::begin;
@@ -742,7 +742,7 @@ struct external_constructor<value_t::array>
     }
 
     template<typename BasicJsonType, typename T,
-             enable_if_t<std::is_convertible<T, BasicJsonType>::value, int> = 0>
+             enable_if_t<std::is_convertible<T, BasicJsonType>::value, sf::Int32> = 0>
     static void construct(BasicJsonType& j, const std::valarray<T>& arr)
     {
         j.m_type = value_t::array;
@@ -774,7 +774,7 @@ struct external_constructor<value_t::object>
 
     template<typename BasicJsonType, typename CompatibleObjectType,
              enable_if_t<not std::is_same<CompatibleObjectType,
-                                          typename BasicJsonType::object_t>::value, int> = 0>
+                                          typename BasicJsonType::object_t>::value, sf::Int32> = 0>
     static void construct(BasicJsonType& j, const CompatibleObjectType& obj)
     {
         using std::begin;
@@ -805,7 +805,7 @@ contains a `mapped_type`, whereas `std::vector` fails the test.
     template<typename T> struct has_##type {                                  \
     private:                                                                  \
         template<typename U, typename = typename U::type>                     \
-        static int detect(U &&);                                              \
+        static sf::Int32 detect(U &&);                                              \
         static void detect(...);                                              \
     public:                                                                   \
         static constexpr bool value =                                         \
@@ -899,7 +899,7 @@ struct has_from_json
     // also check the return type of from_json
     template<typename U, typename = enable_if_t<std::is_same<void, decltype(uncvref_t<U>::from_json(
                  std::declval<BasicJsonType>(), std::declval<T&>()))>::value>>
-    static int detect(U&&);
+    static sf::Int32 detect(U&&);
     static void detect(...);
 
   public:
@@ -917,7 +917,7 @@ struct has_non_default_from_json
         typename U,
         typename = enable_if_t<std::is_same<
                                    T, decltype(uncvref_t<U>::from_json(std::declval<BasicJsonType>()))>::value >>
-    static int detect(U&&);
+    static sf::Int32 detect(U&&);
     static void detect(...);
 
   public:
@@ -932,7 +932,7 @@ struct has_to_json
   private:
     template<typename U, typename = decltype(uncvref_t<U>::to_json(
                  std::declval<BasicJsonType&>(), std::declval<T>()))>
-    static int detect(U&&);
+    static sf::Int32 detect(U&&);
     static void detect(...);
 
   public:
@@ -946,7 +946,7 @@ struct has_to_json
 /////////////
 
 template<typename BasicJsonType, typename T, enable_if_t<
-             std::is_same<T, typename BasicJsonType::boolean_t>::value, int> = 0>
+             std::is_same<T, typename BasicJsonType::boolean_t>::value, sf::Int32> = 0>
 void to_json(BasicJsonType& j, T b) noexcept
 {
     external_constructor<value_t::boolean>::construct(j, b);
@@ -954,7 +954,7 @@ void to_json(BasicJsonType& j, T b) noexcept
 
 template<typename BasicJsonType, typename CompatibleString,
          enable_if_t<std::is_constructible<typename BasicJsonType::string_t,
-                     CompatibleString>::value, int> = 0>
+                     CompatibleString>::value, sf::Int32> = 0>
 void to_json(BasicJsonType& j, const CompatibleString& s)
 {
     external_constructor<value_t::string>::construct(j, s);
@@ -967,7 +967,7 @@ void to_json(BasicJsonType& j, typename BasicJsonType::string_t&& s)
 }
 
 template<typename BasicJsonType, typename FloatType,
-         enable_if_t<std::is_floating_point<FloatType>::value, int> = 0>
+         enable_if_t<std::is_floating_point<FloatType>::value, sf::Int32> = 0>
 void to_json(BasicJsonType& j, FloatType val) noexcept
 {
     external_constructor<value_t::number_float>::construct(j, static_cast<typename BasicJsonType::number_float_t>(val));
@@ -976,7 +976,7 @@ void to_json(BasicJsonType& j, FloatType val) noexcept
 template <
     typename BasicJsonType, typename CompatibleNumberUnsignedType,
     enable_if_t<is_compatible_integer_type<typename BasicJsonType::number_unsigned_t,
-                CompatibleNumberUnsignedType>::value, int> = 0 >
+                CompatibleNumberUnsignedType>::value, sf::Int32> = 0 >
 void to_json(BasicJsonType& j, CompatibleNumberUnsignedType val) noexcept
 {
     external_constructor<value_t::number_unsigned>::construct(j, static_cast<typename BasicJsonType::number_unsigned_t>(val));
@@ -985,14 +985,14 @@ void to_json(BasicJsonType& j, CompatibleNumberUnsignedType val) noexcept
 template <
     typename BasicJsonType, typename CompatibleNumberIntegerType,
     enable_if_t<is_compatible_integer_type<typename BasicJsonType::number_integer_t,
-                CompatibleNumberIntegerType>::value, int> = 0 >
+                CompatibleNumberIntegerType>::value, sf::Int32> = 0 >
 void to_json(BasicJsonType& j, CompatibleNumberIntegerType val) noexcept
 {
     external_constructor<value_t::number_integer>::construct(j, static_cast<typename BasicJsonType::number_integer_t>(val));
 }
 
 template<typename BasicJsonType, typename EnumType,
-         enable_if_t<std::is_enum<EnumType>::value, int> = 0>
+         enable_if_t<std::is_enum<EnumType>::value, sf::Int32> = 0>
 void to_json(BasicJsonType& j, EnumType e) noexcept
 {
     using underlying_type = typename std::underlying_type<EnumType>::type;
@@ -1010,14 +1010,14 @@ template <
     enable_if_t <
         is_compatible_array_type<BasicJsonType, CompatibleArrayType>::value or
         std::is_same<typename BasicJsonType::array_t, CompatibleArrayType>::value,
-        int > = 0 >
+        sf::Int32 > = 0 >
 void to_json(BasicJsonType& j, const CompatibleArrayType& arr)
 {
     external_constructor<value_t::array>::construct(j, arr);
 }
 
 template <typename BasicJsonType, typename T,
-          enable_if_t<std::is_convertible<T, BasicJsonType>::value, int> = 0>
+          enable_if_t<std::is_convertible<T, BasicJsonType>::value, sf::Int32> = 0>
 void to_json(BasicJsonType& j, std::valarray<T> arr)
 {
     external_constructor<value_t::array>::construct(j, std::move(arr));
@@ -1032,7 +1032,7 @@ void to_json(BasicJsonType& j, typename BasicJsonType::array_t&& arr)
 template <
     typename BasicJsonType, typename CompatibleObjectType,
     enable_if_t<is_compatible_object_type<BasicJsonType, CompatibleObjectType>::value,
-                int> = 0 >
+                sf::Int32> = 0 >
 void to_json(BasicJsonType& j, const CompatibleObjectType& obj)
 {
     external_constructor<value_t::object>::construct(j, obj);
@@ -1044,10 +1044,10 @@ void to_json(BasicJsonType& j, typename BasicJsonType::object_t&& obj)
     external_constructor<value_t::object>::construct(j, std::move(obj));
 }
 
-template<typename BasicJsonType, typename T, std::size_t N,
+template<typename BasicJsonType, typename T, sf::Uint64 N,
          enable_if_t<not std::is_constructible<
                          typename BasicJsonType::string_t, T (&)[N]>::value,
-                     int> = 0>
+                     sf::Int32> = 0>
 void to_json(BasicJsonType& j, T (&arr)[N])
 {
     external_constructor<value_t::array>::construct(j, arr);
@@ -1059,7 +1059,7 @@ void to_json(BasicJsonType& j, const std::pair<Args...>& p)
     j = {p.first, p.second};
 }
 
-template<typename BasicJsonType, typename Tuple, std::size_t... Idx>
+template<typename BasicJsonType, typename Tuple, sf::Uint64... Idx>
 void to_json_tuple_impl(BasicJsonType& j, const Tuple& t, index_sequence<Idx...>)
 {
     j = {std::get<Idx>(t)...};
@@ -1080,7 +1080,7 @@ template<typename BasicJsonType, typename ArithmeticType,
          enable_if_t<std::is_arithmetic<ArithmeticType>::value and
                      not std::is_same<ArithmeticType,
                                       typename BasicJsonType::boolean_t>::value,
-                     int> = 0>
+                     sf::Int32> = 0>
 void get_arithmetic_value(const BasicJsonType& j, ArithmeticType& val)
 {
     switch (static_cast<value_t>(j))
@@ -1145,7 +1145,7 @@ void from_json(const BasicJsonType& j, typename BasicJsonType::number_integer_t&
 }
 
 template<typename BasicJsonType, typename EnumType,
-         enable_if_t<std::is_enum<EnumType>::value, int> = 0>
+         enable_if_t<std::is_enum<EnumType>::value, sf::Int32> = 0>
 void from_json(const BasicJsonType& j, EnumType& e)
 {
     typename std::underlying_type<EnumType>::type val;
@@ -1165,7 +1165,7 @@ void from_json(const BasicJsonType& j, typename BasicJsonType::array_t& arr)
 
 // forward_list doesn't have an insert method
 template<typename BasicJsonType, typename T, typename Allocator,
-         enable_if_t<std::is_convertible<BasicJsonType, T>::value, int> = 0>
+         enable_if_t<std::is_convertible<BasicJsonType, T>::value, sf::Int32> = 0>
 void from_json(const BasicJsonType& j, std::forward_list<T, Allocator>& l)
 {
     if (JSON_UNLIKELY(not j.is_array()))
@@ -1181,7 +1181,7 @@ void from_json(const BasicJsonType& j, std::forward_list<T, Allocator>& l)
 
 // valarray doesn't have an insert method
 template<typename BasicJsonType, typename T,
-         enable_if_t<std::is_convertible<BasicJsonType, T>::value, int> = 0>
+         enable_if_t<std::is_convertible<BasicJsonType, T>::value, sf::Int32> = 0>
 void from_json(const BasicJsonType& j, std::valarray<T>& l)
 {
     if (JSON_UNLIKELY(not j.is_array()))
@@ -1209,7 +1209,7 @@ void from_json_array_impl(const BasicJsonType& j, CompatibleArrayType& arr, prio
 template<typename BasicJsonType, typename CompatibleArrayType>
 auto from_json_array_impl(const BasicJsonType& j, CompatibleArrayType& arr, priority_tag<1> /*unused*/)
 -> decltype(
-    arr.reserve(std::declval<typename CompatibleArrayType::size_type>()),
+    arr.reserve(std::declval<typename CompatibleArrayType::sf::Uint64ype>()),
     void())
 {
     using std::end;
@@ -1224,10 +1224,10 @@ auto from_json_array_impl(const BasicJsonType& j, CompatibleArrayType& arr, prio
     });
 }
 
-template<typename BasicJsonType, typename T, std::size_t N>
+template<typename BasicJsonType, typename T, sf::Uint64 N>
 void from_json_array_impl(const BasicJsonType& j, std::array<T, N>& arr, priority_tag<2> /*unused*/)
 {
-    for (std::size_t i = 0; i < N; ++i)
+    for (sf::Uint64 i = 0; i < N; ++i)
     {
         arr[i] = j.at(i).template get<T>();
     }
@@ -1236,7 +1236,7 @@ void from_json_array_impl(const BasicJsonType& j, std::array<T, N>& arr, priorit
 template<typename BasicJsonType, typename CompatibleArrayType,
          enable_if_t<is_compatible_array_type<BasicJsonType, CompatibleArrayType>::value and
                      std::is_convertible<BasicJsonType, typename CompatibleArrayType::value_type>::value and
-                     not std::is_same<typename BasicJsonType::array_t, CompatibleArrayType>::value, int> = 0>
+                     not std::is_same<typename BasicJsonType::array_t, CompatibleArrayType>::value, sf::Int32> = 0>
 void from_json(const BasicJsonType& j, CompatibleArrayType& arr)
 {
     if (JSON_UNLIKELY(not j.is_array()))
@@ -1248,7 +1248,7 @@ void from_json(const BasicJsonType& j, CompatibleArrayType& arr)
 }
 
 template<typename BasicJsonType, typename CompatibleObjectType,
-         enable_if_t<is_compatible_object_type<BasicJsonType, CompatibleObjectType>::value, int> = 0>
+         enable_if_t<is_compatible_object_type<BasicJsonType, CompatibleObjectType>::value, sf::Int32> = 0>
 void from_json(const BasicJsonType& j, CompatibleObjectType& obj)
 {
     if (JSON_UNLIKELY(not j.is_object()))
@@ -1278,7 +1278,7 @@ template<typename BasicJsonType, typename ArithmeticType,
              not std::is_same<ArithmeticType, typename BasicJsonType::number_integer_t>::value and
              not std::is_same<ArithmeticType, typename BasicJsonType::number_float_t>::value and
              not std::is_same<ArithmeticType, typename BasicJsonType::boolean_t>::value,
-             int> = 0>
+             sf::Int32> = 0>
 void from_json(const BasicJsonType& j, ArithmeticType& val)
 {
     switch (static_cast<value_t>(j))
@@ -1315,7 +1315,7 @@ void from_json(const BasicJsonType& j, std::pair<A1, A2>& p)
     p = {j.at(0).template get<A1>(), j.at(1).template get<A2>()};
 }
 
-template<typename BasicJsonType, typename Tuple, std::size_t... Idx>
+template<typename BasicJsonType, typename Tuple, sf::Uint64... Idx>
 void from_json_tuple_impl(const BasicJsonType& j, Tuple& t, index_sequence<Idx...>)
 {
     t = std::make_tuple(j.at(Idx).template get<typename std::tuple_element<Idx, Tuple>::type>()...);
@@ -1397,8 +1397,8 @@ constexpr T static_const<T>::value;
 /// abstract input adapter interface
 struct input_adapter_protocol
 {
-    virtual int get_character() = 0;
-    virtual std::string read(std::size_t offset, std::size_t length) = 0;
+    virtual sf::Int32 get_character() = 0;
+    virtual std::string read(sf::Uint64 offset, sf::Uint64 length) = 0;
     virtual ~input_adapter_protocol() = default;
 };
 
@@ -1406,7 +1406,7 @@ struct input_adapter_protocol
 using input_adapter_t = std::shared_ptr<input_adapter_protocol>;
 
 /// input adapter for cached stream input
-template<std::size_t BufferSize>
+template<sf::Uint64 BufferSize>
 class cached_input_stream_adapter : public input_adapter_protocol
 {
   public:
@@ -1436,7 +1436,7 @@ class cached_input_stream_adapter : public input_adapter_protocol
         is.clear();
     }
 
-    int get_character() override
+    sf::Int32 get_character() override
     {
         // check if refilling is necessary and possible
         if (buffer_pos == fill_size and not eof)
@@ -1459,7 +1459,7 @@ class cached_input_stream_adapter : public input_adapter_protocol
         return buffer[buffer_pos++] & 0xFF;
     }
 
-    std::string read(std::size_t offset, std::size_t length) override
+    std::string read(sf::Uint64 offset, sf::Uint64 length) override
     {
         // create buffer
         std::string result(length, '\0');
@@ -1490,21 +1490,21 @@ class cached_input_stream_adapter : public input_adapter_protocol
         // fill
         is.read(buffer.data(), static_cast<std::streamsize>(buffer.size()));
         // store number of bytes in the buffer
-        fill_size = static_cast<size_t>(is.gcount());
+        fill_size = static_cast<sf::Uint64>(is.gcount());
     }
 
     /// the associated input stream
     std::istream& is;
 
     /// chars returned via get_character()
-    std::size_t processed_chars = 0;
+    sf::Uint64 processed_chars = 0;
     /// chars processed in the current buffer
-    std::size_t buffer_pos = 0;
+    sf::Uint64 buffer_pos = 0;
 
     /// whether stream reached eof
     bool eof = false;
     /// how many chars have been copied to the buffer by last (re)fill
-    std::size_t fill_size = 0;
+    sf::Uint64 fill_size = 0;
 
     /// position of the stream when we started
     const std::streampos start_position;
@@ -1517,7 +1517,7 @@ class cached_input_stream_adapter : public input_adapter_protocol
 class input_buffer_adapter : public input_adapter_protocol
 {
   public:
-    input_buffer_adapter(const char* b, const std::size_t l)
+    input_buffer_adapter(const char* b, const sf::Uint64 l)
         : cursor(b), limit(b + l), start(b)
     {
         // skip byte order mark
@@ -1531,7 +1531,7 @@ class input_buffer_adapter : public input_adapter_protocol
     input_buffer_adapter(const input_buffer_adapter&) = delete;
     input_buffer_adapter& operator=(input_buffer_adapter&) = delete;
 
-    int get_character() noexcept override
+    sf::Int32 get_character() noexcept override
     {
         if (JSON_LIKELY(cursor < limit))
         {
@@ -1541,10 +1541,10 @@ class input_buffer_adapter : public input_adapter_protocol
         return std::char_traits<char>::eof();
     }
 
-    std::string read(std::size_t offset, std::size_t length) override
+    std::string read(sf::Uint64 offset, sf::Uint64 length) override
     {
         // avoid reading too many characters
-        const auto max_length = static_cast<size_t>(limit - start);
+        const auto max_length = static_cast<sf::Uint64>(limit - start);
         return std::string(start + offset, (std::min)(length, max_length - offset));
     }
 
@@ -1577,8 +1577,8 @@ class input_adapter
                  std::is_integral<
                      typename std::remove_pointer<CharT>::type>::value and
                  sizeof(typename std::remove_pointer<CharT>::type) == 1,
-                 int>::type = 0>
-    input_adapter(CharT b, std::size_t l)
+                 sf::Int32>::type = 0>
+    input_adapter(CharT b, sf::Uint64 l)
         : ia(std::make_shared<input_buffer_adapter>(reinterpret_cast<const char*>(b), l)) {}
 
     // derived support
@@ -1590,7 +1590,7 @@ class input_adapter
                  std::is_integral<
                      typename std::remove_pointer<CharT>::type>::value and
                  sizeof(typename std::remove_pointer<CharT>::type) == 1,
-                 int>::type = 0>
+                 sf::Int32>::type = 0>
     input_adapter(CharT b)
         : input_adapter(reinterpret_cast<const char*>(b),
                         std::strlen(reinterpret_cast<const char*>(b))) {}
@@ -1600,14 +1600,14 @@ class input_adapter
              typename std::enable_if<
                  std::is_same<typename std::iterator_traits<IteratorType>::iterator_category,
                               std::random_access_iterator_tag>::value,
-                 int>::type = 0>
+                 sf::Int32>::type = 0>
     input_adapter(IteratorType first, IteratorType last)
     {
         // assertion to check that the iterator range is indeed contiguous,
         // see http://stackoverflow.com/a/35008842/266378 for more discussion
         assert(std::accumulate(
-                   first, last, std::pair<bool, int>(true, 0),
-                   [&first](std::pair<bool, int> res, decltype(*first) val)
+                   first, last, std::pair<bool, sf::Int32>(true, 0),
+                   [&first](std::pair<bool, sf::Int32> res, decltype(*first) val)
         {
             res.first &= (val == *(std::next(std::addressof(*first), res.second++)));
             return res;
@@ -1618,7 +1618,7 @@ class input_adapter
             sizeof(typename std::iterator_traits<IteratorType>::value_type) == 1,
             "each element in the iterator range must have the size of 1 byte");
 
-        const auto len = static_cast<size_t>(std::distance(first, last));
+        const auto len = static_cast<sf::Uint64>(std::distance(first, last));
         if (JSON_LIKELY(len > 0))
         {
             // there is at least one element: use the address of first
@@ -1632,7 +1632,7 @@ class input_adapter
     }
 
     /// input adapter for array
-    template<class T, std::size_t N>
+    template<class T, sf::Uint64 N>
     input_adapter(T (&array)[N])
         : input_adapter(std::begin(array), std::end(array)) {}
 
@@ -1643,7 +1643,7 @@ class input_adapter
             not std::is_pointer<ContiguousContainer>::value and
             std::is_base_of<std::random_access_iterator_tag,
                             typename std::iterator_traits<decltype(std::begin(std::declval<ContiguousContainer const>()))>::iterator_category>::value,
-            int >::type = 0 >
+            sf::Int32 >::type = 0 >
     input_adapter(const ContiguousContainer& c)
         : input_adapter(std::begin(c), std::end(c)) {}
 
@@ -1777,11 +1777,11 @@ class lexer
     @return codepoint (0x0000..0xFFFF) or -1 in case of an error (e.g. EOF or
             non-hex character)
     */
-    int get_codepoint()
+    sf::Int32 get_codepoint()
     {
         // this function only makes sense after reading `\u`
         assert(current == 'u');
-        int codepoint = 0;
+        sf::Int32 codepoint = 0;
 
         const auto factors = { 12, 8, 4, 0 };
         for (const auto factor : factors)
@@ -1819,7 +1819,7 @@ class lexer
 
     @return true if and only if no range violation was detected
     */
-    bool next_byte_in_range(std::initializer_list<int> ranges)
+    bool next_byte_in_range(std::initializer_list<sf::Int32> ranges)
     {
         assert(ranges.size() == 2 or ranges.size() == 4 or ranges.size() == 6);
         add(current);
@@ -1925,8 +1925,8 @@ class lexer
                         // unicode escapes
                         case 'u':
                         {
-                            int codepoint;
-                            const int codepoint1 = get_codepoint();
+                            sf::Int32 codepoint;
+                            const sf::Int32 codepoint1 = get_codepoint();
 
                             if (JSON_UNLIKELY(codepoint1 == -1))
                             {
@@ -1940,7 +1940,7 @@ class lexer
                                 // expect next \uxxxx entry
                                 if (JSON_LIKELY(get() == '\\' and get() == 'u'))
                                 {
-                                    const int codepoint2 = get_codepoint();
+                                    const sf::Int32 codepoint2 = get_codepoint();
 
                                     if (JSON_UNLIKELY(codepoint2 == -1))
                                     {
@@ -2683,11 +2683,11 @@ scan_number_done:
     @param[in] length        the length of the passed literal text
     @param[in] return_type   the token type to return on success
     */
-    token_type scan_literal(const char* literal_text, const std::size_t length,
+    token_type scan_literal(const char* literal_text, const sf::Uint64 length,
                             token_type return_type)
     {
         assert(current == literal_text[0]);
-        for (std::size_t i = 1; i < length; ++i)
+        for (sf::Uint64 i = 1; i < length; ++i)
         {
             if (JSON_UNLIKELY(get() != literal_text[i]))
             {
@@ -2710,7 +2710,7 @@ scan_number_done:
     }
 
     /// get a character from the input
-    int get()
+    sf::Int32 get()
     {
         ++chars_read;
         return next_unget ? (next_unget = false, current)
@@ -2718,7 +2718,7 @@ scan_number_done:
     }
 
     /// add a character to yytext
-    void add(int c)
+    void add(sf::Int32 c)
     {
         // resize yytext if necessary; this condition is deemed unlikely,
         // because we start with a 1024-byte buffer
@@ -2766,7 +2766,7 @@ scan_number_done:
     /////////////////////
 
     /// return position of last read token
-    constexpr std::size_t get_position() const noexcept
+    constexpr sf::Uint64 get_position() const noexcept
     {
         return chars_read;
     }
@@ -2791,7 +2791,7 @@ scan_number_done:
                 // escape control characters
                 std::stringstream ss;
                 ss << "<U+" << std::setw(4) << std::uppercase << std::setfill('0')
-                   << std::hex << static_cast<int>(c) << ">";
+                   << std::hex << static_cast<sf::Int32>(c) << ">";
                 result += ss.str();
             }
             else
@@ -2883,20 +2883,20 @@ scan_number_done:
     detail::input_adapter_t ia = nullptr;
 
     /// the current character
-    int current = std::char_traits<char>::eof();
+    sf::Int32 current = std::char_traits<char>::eof();
 
     /// whether get() should return the last character again
     bool next_unget = false;
 
     /// the number of characters read
-    std::size_t chars_read = 0;
+    sf::Uint64 chars_read = 0;
     /// the start position of the current token
-    std::size_t start_pos = 0;
+    sf::Uint64 start_pos = 0;
 
     /// buffer for variable-length tokens (numbers, strings)
     std::vector<char> yytext = std::vector<char>(1024, '\0');
     /// current index in yytext
-    std::size_t yylen = 0;
+    sf::Uint64 yylen = 0;
 
     /// a description of occurred lexer errors
     const char* error_message = "";
@@ -2942,7 +2942,7 @@ class parser
     };
 
     using parser_callback_t =
-        std::function<bool(int depth, parse_event_t event, BasicJsonType& parsed)>;
+        std::function<bool(sf::Int32 depth, parse_event_t event, BasicJsonType& parsed)>;
 
     /// a parser reading from an input adapter
     explicit parser(detail::input_adapter_t adapter,
@@ -3444,7 +3444,7 @@ class parser
 
   private:
     /// current level of recursion
-    int depth = 0;
+    sf::Int32 depth = 0;
     /// callback function
     const parser_callback_t callback = nullptr;
     /// the type of the last read token
@@ -3539,7 +3539,7 @@ class primitive_iterator_t
         return *this;
     }
 
-    primitive_iterator_t operator++(int)
+    primitive_iterator_t operator++(sf::Int32)
     {
         auto result = *this;
         m_it++;
@@ -3552,7 +3552,7 @@ class primitive_iterator_t
         return *this;
     }
 
-    primitive_iterator_t operator--(int)
+    primitive_iterator_t operator--(sf::Int32)
     {
         auto result = *this;
         m_it--;
@@ -3856,7 +3856,7 @@ class iter_impl : public std::iterator<std::random_access_iterator_tag, BasicJso
     @brief post-increment (it++)
     @pre The iterator is initialized; i.e. `m_object != nullptr`.
     */
-    iter_impl operator++(int)
+    iter_impl operator++(sf::Int32)
     {
         auto result = *this;
         ++(*this);
@@ -3899,7 +3899,7 @@ class iter_impl : public std::iterator<std::random_access_iterator_tag, BasicJso
     @brief post-decrement (it--)
     @pre The iterator is initialized; i.e. `m_object != nullptr`.
     */
-    iter_impl operator--(int)
+    iter_impl operator--(sf::Int32)
     {
         auto result = *this;
         --(*this);
@@ -4194,7 +4194,7 @@ template<typename IteratorType> class iteration_proxy
         /// the iterator
         IteratorType anchor;
         /// an index for arrays (used to create key names)
-        std::size_t array_index = 0;
+        sf::Uint64 array_index = 0;
 
       public:
         explicit iteration_proxy_internal(IteratorType it) noexcept : anchor(it) {}
@@ -4305,7 +4305,7 @@ class json_reverse_iterator : public std::reverse_iterator<Base>
     json_reverse_iterator(const base_iterator& it) noexcept : base_iterator(it) {}
 
     /// post-increment (it++)
-    json_reverse_iterator operator++(int)
+    json_reverse_iterator operator++(sf::Int32)
     {
         return static_cast<json_reverse_iterator>(base_iterator::operator++(1));
     }
@@ -4317,7 +4317,7 @@ class json_reverse_iterator : public std::reverse_iterator<Base>
     }
 
     /// post-decrement (it--)
-    json_reverse_iterator operator--(int)
+    json_reverse_iterator operator--(sf::Int32)
     {
         return static_cast<json_reverse_iterator>(base_iterator::operator--(1));
     }
@@ -4381,7 +4381,7 @@ class json_reverse_iterator : public std::reverse_iterator<Base>
 template<typename CharType> struct output_adapter_protocol
 {
     virtual void write_character(CharType c) = 0;
-    virtual void write_characters(const CharType* s, std::size_t length) = 0;
+    virtual void write_characters(const CharType* s, sf::Uint64 length) = 0;
     virtual ~output_adapter_protocol() = default;
 };
 
@@ -4401,7 +4401,7 @@ class output_vector_adapter : public output_adapter_protocol<CharType>
         v.push_back(c);
     }
 
-    void write_characters(const CharType* s, std::size_t length) override
+    void write_characters(const CharType* s, sf::Uint64 length) override
     {
         std::copy(s, s + length, std::back_inserter(v));
     }
@@ -4422,7 +4422,7 @@ class output_stream_adapter : public output_adapter_protocol<CharType>
         stream.put(c);
     }
 
-    void write_characters(const CharType* s, std::size_t length) override
+    void write_characters(const CharType* s, sf::Uint64 length) override
     {
         stream.write(s, static_cast<std::streamsize>(length));
     }
@@ -4443,7 +4443,7 @@ class output_string_adapter : public output_adapter_protocol<CharType>
         str.push_back(c);
     }
 
-    void write_characters(const CharType* s, std::size_t length) override
+    void write_characters(const CharType* s, sf::Uint64 length) override
     {
         str.append(s, length);
     }
@@ -4547,7 +4547,7 @@ class binary_reader
 
     @note from http://stackoverflow.com/a/1001328/266378
     */
-    static constexpr bool little_endianess(int num = 1) noexcept
+    static constexpr bool little_endianess(sf::Int32 num = 1) noexcept
     {
         return (*reinterpret_cast<char*>(&num) == 1);
     }
@@ -4824,9 +4824,9 @@ class binary_reader
 
             case 0xf9: // Half-Precision Float (two-byte IEEE 754)
             {
-                const int byte1 = get();
+                const sf::Int32 byte1 = get();
                 check_eof();
-                const int byte2 = get();
+                const sf::Int32 byte2 = get();
                 check_eof();
 
                 // code from RFC 7049, Appendix D, Figure 3:
@@ -4837,9 +4837,9 @@ class binary_reader
                 // without such support. An example of a small decoder for
                 // half-precision floating-point numbers in the C language
                 // is shown in Fig. 3.
-                const int half = (byte1 << 8) + byte2;
-                const int exp = (half >> 10) & 0x1f;
-                const int mant = half & 0x3ff;
+                const sf::Int32 half = (byte1 << 8) + byte2;
+                const sf::Int32 exp = (half >> 10) & 0x1f;
+                const sf::Int32 mant = half & 0x3ff;
                 double val;
                 if (exp == 0)
                 {
@@ -5119,16 +5119,16 @@ class binary_reader
             case 0xcf: // uint 64
                 return get_number<uint64_t>();
 
-            case 0xd0: // int 8
+            case 0xd0: // sf::Int32 8
                 return get_number<int8_t>();
 
-            case 0xd1: // int 16
+            case 0xd1: // sf::Int32 16
                 return get_number<int16_t>();
 
-            case 0xd2: // int 32
+            case 0xd2: // sf::Int32 32
                 return get_number<int32_t>();
 
-            case 0xd3: // int 64
+            case 0xd3: // sf::Int32 64
                 return get_number<int64_t>();
 
             case 0xd9: // str 8
@@ -5210,7 +5210,7 @@ class binary_reader
 
     @return character read from the input
     */
-    int get()
+    sf::Int32 get()
     {
         ++chars_read;
         return (current = ia->get_character());
@@ -5233,7 +5233,7 @@ class binary_reader
     {
         // step 1: read input into array with system's byte order
         std::array<uint8_t, sizeof(NumberType)> vec;
-        for (std::size_t i = 0; i < sizeof(NumberType); ++i)
+        for (sf::Uint64 i = 0; i < sizeof(NumberType); ++i)
         {
             get();
             check_eof();
@@ -5528,10 +5528,10 @@ class binary_reader
     input_adapter_t ia = nullptr;
 
     /// the current character
-    int current = std::char_traits<char>::eof();
+    sf::Int32 current = std::char_traits<char>::eof();
 
     /// the number of characters read
-    std::size_t chars_read = 0;
+    sf::Uint64 chars_read = 0;
 
     /// whether we can assume little endianess
     const bool is_little_endian = little_endianess();
@@ -5866,28 +5866,28 @@ class binary_writer
                     else if (j.m_value.number_integer >= (std::numeric_limits<int8_t>::min)() and
                              j.m_value.number_integer <= (std::numeric_limits<int8_t>::max)())
                     {
-                        // int 8
+                        // sf::Int32 8
                         oa->write_character(static_cast<CharType>(0xd0));
                         write_number(static_cast<int8_t>(j.m_value.number_integer));
                     }
                     else if (j.m_value.number_integer >= (std::numeric_limits<int16_t>::min)() and
                              j.m_value.number_integer <= (std::numeric_limits<int16_t>::max)())
                     {
-                        // int 16
+                        // sf::Int32 16
                         oa->write_character(static_cast<CharType>(0xd1));
                         write_number(static_cast<int16_t>(j.m_value.number_integer));
                     }
                     else if (j.m_value.number_integer >= (std::numeric_limits<int32_t>::min)() and
                              j.m_value.number_integer <= (std::numeric_limits<int32_t>::max)())
                     {
-                        // int 32
+                        // sf::Int32 32
                         oa->write_character(static_cast<CharType>(0xd2));
                         write_number(static_cast<int32_t>(j.m_value.number_integer));
                     }
                     else if (j.m_value.number_integer >= (std::numeric_limits<int64_t>::min)() and
                              j.m_value.number_integer <= (std::numeric_limits<int64_t>::max)())
                     {
-                        // int 64
+                        // sf::Int32 64
                         oa->write_character(static_cast<CharType>(0xd3));
                         write_number(static_cast<int64_t>(j.m_value.number_integer));
                     }
@@ -6117,8 +6117,8 @@ class serializer
     */
     void dump(const BasicJsonType& val, const bool pretty_print,
               const bool ensure_ascii,
-              const unsigned int indent_step,
-              const unsigned int current_indent = 0)
+              const unsigned sf::Int32 indent_step,
+              const unsigned sf::Int32 current_indent = 0)
     {
         switch (val.m_type)
         {
@@ -6143,7 +6143,7 @@ class serializer
 
                     // first n-1 elements
                     auto i = val.m_value.object->cbegin();
-                    for (std::size_t cnt = 0; cnt < val.m_value.object->size() - 1; ++cnt, ++i)
+                    for (sf::Uint64 cnt = 0; cnt < val.m_value.object->size() - 1; ++cnt, ++i)
                     {
                         o->write_characters(indent_string.c_str(), new_indent);
                         o->write_character('\"');
@@ -6172,7 +6172,7 @@ class serializer
 
                     // first n-1 elements
                     auto i = val.m_value.object->cbegin();
-                    for (std::size_t cnt = 0; cnt < val.m_value.object->size() - 1; ++cnt, ++i)
+                    for (sf::Uint64 cnt = 0; cnt < val.m_value.object->size() - 1; ++cnt, ++i)
                     {
                         o->write_character('\"');
                         dump_escaped(i->first, ensure_ascii);
@@ -6314,7 +6314,7 @@ class serializer
     @param[in]  u  the first byte of a UTF-8 string
     @return  the number of expected bytes following
     */
-    static constexpr std::size_t bytes_following(const uint8_t u)
+    static constexpr sf::Uint64 bytes_following(const uint8_t u)
     {
         return ((u <= 127) ? 0
                 : ((192 <= u and u <= 223) ? 1
@@ -6332,12 +6332,12 @@ class serializer
 
     @complexity Linear in the length of string @a s.
     */
-    static std::size_t extra_space(const string_t& s,
+    static sf::Uint64 extra_space(const string_t& s,
                                    const bool ensure_ascii) noexcept
     {
-        std::size_t res = 0;
+        sf::Uint64 res = 0;
 
-        for (std::size_t i = 0; i < s.size(); ++i)
+        for (sf::Uint64 i = 0; i < s.size(); ++i)
         {
             switch (s[i])
             {
@@ -6426,7 +6426,7 @@ class serializer
         return res;
     }
 
-    static void escape_codepoint(int codepoint, string_t& result, std::size_t& pos)
+    static void escape_codepoint(sf::Int32 codepoint, string_t& result, sf::Uint64& pos)
     {
         // expecting a proper codepoint
         assert(0x00 <= codepoint and codepoint <= 0x10FFFF);
@@ -6460,8 +6460,8 @@ class serializer
             // represented as \uxxxx\uxxxx.
             // http://www.unicode.org/faq/utf_bom.html#utf16-4
             codepoint -= 0x10000;
-            const int high_surrogate = 0xD800 | ((codepoint >> 10) & 0x3FF);
-            const int low_surrogate = 0xDC00 | (codepoint & 0x3FF);
+            const sf::Int32 high_surrogate = 0xD800 | ((codepoint >> 10) & 0x3FF);
+            const sf::Int32 low_surrogate = 0xDC00 | (codepoint & 0x3FF);
             result[++pos] = hexify[(high_surrogate >> 12) & 0x0F];
             result[++pos] = hexify[(high_surrogate >> 8) & 0x0F];
             result[++pos] = hexify[(high_surrogate >> 4) & 0x0F];
@@ -6502,9 +6502,9 @@ class serializer
 
         // create a result string of necessary size
         string_t result(s.size() + space, '\\');
-        std::size_t pos = 0;
+        sf::Uint64 pos = 0;
 
-        for (std::size_t i = 0; i < s.size(); ++i)
+        for (sf::Uint64 i = 0; i < s.size(); ++i)
         {
             switch (s[i])
             {
@@ -6577,7 +6577,7 @@ class serializer
 
                         // to use \uxxxx escaping, we first need to caluclate
                         // the codepoint from the UTF-8 bytes
-                        int codepoint = 0;
+                        sf::Int32 codepoint = 0;
 
                         assert(0 <= bytes and bytes <= 3);
                         switch (bytes)
@@ -6646,7 +6646,7 @@ class serializer
         typename NumberType,
         detail::enable_if_t<std::is_same<NumberType, number_unsigned_t>::value or
                             std::is_same<NumberType, number_integer_t>::value,
-                            int> = 0 >
+                            sf::Int32> = 0 >
     void dump_integer(NumberType x)
     {
         // special case for "0"
@@ -6657,7 +6657,7 @@ class serializer
         }
 
         const bool is_negative = (x <= 0) and (x != 0);  // see issue #755
-        std::size_t i = 0;
+        sf::Uint64 i = 0;
 
         while (x != 0)
         {
@@ -6706,7 +6706,7 @@ class serializer
         // negative value indicates an error
         assert(len > 0);
         // check if buffer was large enough
-        assert(static_cast<std::size_t>(len) < number_buffer.size());
+        assert(static_cast<sf::Uint64>(len) < number_buffer.size());
 
         // erase thousands separator
         if (thousands_sep != '\0')
@@ -6728,7 +6728,7 @@ class serializer
             }
         }
 
-        o->write_characters(number_buffer.data(), static_cast<std::size_t>(len));
+        o->write_characters(number_buffer.data(), static_cast<sf::Uint64>(len));
 
         // determine if need to append ".0"
         const bool value_is_int_like =
@@ -7085,7 +7085,7 @@ class json_pointer
         // - start: position after the previous slash
         for (
             // search for the first slash after the first character
-            std::size_t slash = reference_string.find_first_of('/', 1),
+            sf::Uint64 slash = reference_string.find_first_of('/', 1),
             // set the beginning of the first reference token
             start = 1;
             // we can stop if start == string::npos+1 = 0
@@ -7101,7 +7101,7 @@ class json_pointer
             auto reference_token = reference_string.substr(start, slash - start);
 
             // check reference tokens are properly escaped
-            for (std::size_t pos = reference_token.find_first_of('~');
+            for (sf::Uint64 pos = reference_token.find_first_of('~');
                     pos != std::string::npos;
                     pos = reference_token.find_first_of('~', pos + 1))
             {
@@ -7372,7 +7372,7 @@ class basic_json
     /// a type to represent differences between iterators
     using difference_type = std::ptrdiff_t;
     /// a type to represent container sizes
-    using size_type = std::size_t;
+    using sf::Uint64ype = sf::Uint64;
 
     /// the allocator type
     using allocator_type = AllocatorType<basic_json>;
@@ -8293,8 +8293,8 @@ class basic_json
     - **strings**: @ref string_t, string literals, and all compatible string
       containers can be used.
     - **numbers**: @ref number_integer_t, @ref number_unsigned_t,
-      @ref number_float_t, and all convertible number types such as `int`,
-      `size_t`, `int64_t`, `float` or `double` can be used.
+      @ref number_float_t, and all convertible number types such as `sf::Int32`,
+      `sf::Uint64`, `int64_t`, `float` or `double` can be used.
     - **boolean**: @ref boolean_t / `bool` can be used.
 
     See the examples below.
@@ -8332,7 +8332,7 @@ class basic_json
                                  not detail::is_basic_json_nested_type<
                                      basic_json_t, U>::value and
                                  detail::has_to_json<basic_json, U>::value,
-                                 int> = 0>
+                                 sf::Int32> = 0>
     basic_json(CompatibleType && val) noexcept(noexcept(JSONSerializer<U>::to_json(
                 std::declval<basic_json_t&>(), std::forward<CompatibleType>(val))))
     {
@@ -8568,12 +8568,12 @@ class basic_json
     changes to any JSON value.
 
     @liveexample{The following code shows examples for the @ref
-    basic_json(size_type\, const basic_json&)
-    constructor.,basic_json__size_type_basic_json}
+    basic_json(sf::Uint64ype\, const basic_json&)
+    constructor.,basic_json__sf::Uint64ype_basic_json}
 
     @since version 1.0.0
     */
-    basic_json(size_type cnt, const basic_json& val)
+    basic_json(sf::Uint64ype cnt, const basic_json& val)
         : m_type(value_t::array)
     {
         m_value.array = create<array_t>(cnt, val);
@@ -8637,7 +8637,7 @@ class basic_json
     */
     template<class InputIT, typename std::enable_if<
                  std::is_same<InputIT, typename basic_json_t::iterator>::value or
-                 std::is_same<InputIT, typename basic_json_t::const_iterator>::value, int>::type = 0>
+                 std::is_same<InputIT, typename basic_json_t::const_iterator>::value, sf::Int32>::type = 0>
     basic_json(InputIT first, InputIT last)
     {
         assert(first.m_object != nullptr);
@@ -8965,7 +8965,7 @@ class basic_json
     @since version 1.0.0; indentation character @a indent_char and option
            @a ensure_ascii added in version 3.0.0
     */
-    string_t dump(const int indent = -1, const char indent_char = ' ',
+    string_t dump(const sf::Int32 indent = -1, const char indent_char = ' ',
                   const bool ensure_ascii = false) const
     {
         string_t result;
@@ -8973,7 +8973,7 @@ class basic_json
 
         if (indent >= 0)
         {
-            s.dump(*this, true, ensure_ascii, static_cast<unsigned int>(indent));
+            s.dump(*this, true, ensure_ascii, static_cast<unsigned sf::Int32>(indent));
         }
         else
         {
@@ -9505,7 +9505,7 @@ class basic_json
         typename BasicJsonType,
         detail::enable_if_t<std::is_same<typename std::remove_const<BasicJsonType>::type,
                                          basic_json_t>::value,
-                            int> = 0 >
+                            sf::Int32> = 0 >
     basic_json get() const
     {
         return *this;
@@ -9557,7 +9557,7 @@ class basic_json
             not std::is_same<basic_json_t, ValueType>::value and
             detail::has_from_json<basic_json_t, ValueType>::value and
             not detail::has_non_default_from_json<basic_json_t, ValueType>::value,
-            int > = 0 >
+            sf::Int32 > = 0 >
     ValueType get() const noexcept(noexcept(
                                        JSONSerializer<ValueType>::from_json(std::declval<const basic_json_t&>(), std::declval<ValueType&>())))
     {
@@ -9610,7 +9610,7 @@ class basic_json
         typename ValueType = detail::uncvref_t<ValueTypeCV>,
         detail::enable_if_t<not std::is_same<basic_json_t, ValueType>::value and
                             detail::has_non_default_from_json<basic_json_t,
-                                    ValueType>::value, int> = 0 >
+                                    ValueType>::value, sf::Int32> = 0 >
     ValueType get() const noexcept(noexcept(
                                        JSONSerializer<ValueTypeCV>::from_json(std::declval<const basic_json_t&>())))
     {
@@ -9647,7 +9647,7 @@ class basic_json
     @since version 1.0.0
     */
     template<typename PointerType, typename std::enable_if<
-                 std::is_pointer<PointerType>::value, int>::type = 0>
+                 std::is_pointer<PointerType>::value, sf::Int32>::type = 0>
     PointerType get() noexcept
     {
         // delegate the call to get_ptr
@@ -9659,7 +9659,7 @@ class basic_json
     @copydoc get()
     */
     template<typename PointerType, typename std::enable_if<
-                 std::is_pointer<PointerType>::value, int>::type = 0>
+                 std::is_pointer<PointerType>::value, sf::Int32>::type = 0>
     constexpr const PointerType get() const noexcept
     {
         // delegate the call to get_ptr
@@ -9693,7 +9693,7 @@ class basic_json
     @since version 1.0.0
     */
     template<typename PointerType, typename std::enable_if<
-                 std::is_pointer<PointerType>::value, int>::type = 0>
+                 std::is_pointer<PointerType>::value, sf::Int32>::type = 0>
     PointerType get_ptr() noexcept
     {
         // get the type of the PointerType (remove pointer and const)
@@ -9721,7 +9721,7 @@ class basic_json
     */
     template<typename PointerType, typename std::enable_if<
                  std::is_pointer<PointerType>::value and
-                 std::is_const<typename std::remove_pointer<PointerType>::type>::value, int>::type = 0>
+                 std::is_const<typename std::remove_pointer<PointerType>::type>::value, sf::Int32>::type = 0>
     constexpr const PointerType get_ptr() const noexcept
     {
         // get the type of the PointerType (remove pointer and const)
@@ -9770,7 +9770,7 @@ class basic_json
     @since version 1.1.0
     */
     template<typename ReferenceType, typename std::enable_if<
-                 std::is_reference<ReferenceType>::value, int>::type = 0>
+                 std::is_reference<ReferenceType>::value, sf::Int32>::type = 0>
     ReferenceType get_ref()
     {
         // delegate call to get_ref_impl
@@ -9783,7 +9783,7 @@ class basic_json
     */
     template<typename ReferenceType, typename std::enable_if<
                  std::is_reference<ReferenceType>::value and
-                 std::is_const<typename std::remove_reference<ReferenceType>::type>::value, int>::type = 0>
+                 std::is_const<typename std::remove_reference<ReferenceType>::type>::value, sf::Int32>::type = 0>
     ReferenceType get_ref() const
     {
         // delegate call to get_ref_impl
@@ -9797,7 +9797,7 @@ class basic_json
     The call is realized by calling @ref get() const.
 
     @tparam ValueType non-pointer type compatible to the JSON value, for
-    instance `int` for JSON integer numbers, `bool` for JSON booleans, or
+    instance `sf::Int32` for JSON integer numbers, `bool` for JSON booleans, or
     `std::vector` types for JSON arrays. The character type of @ref string_t
     as well as an initializer list of this type is excluded to avoid
     ambiguities as these types implicitly convert to `std::string`.
@@ -9829,7 +9829,7 @@ class basic_json
 #if (defined(__cplusplus) && __cplusplus >= 201703L) || (defined(_MSC_VER) && _MSC_VER >1900 && defined(_HAS_CXX17) && _HAS_CXX17 == 1) // fix for issue #464
                    and not std::is_same<ValueType, typename std::string_view>::value
 #endif
-                   , int >::type = 0 >
+                   , sf::Int32 >::type = 0 >
     operator ValueType() const
     {
         // delegate the call to get<>() const
@@ -9871,9 +9871,9 @@ class basic_json
 
     @liveexample{The example below shows how array elements can be read and
     written using `at()`. It also demonstrates the different exceptions that
-    can be thrown.,at__size_type}
+    can be thrown.,at__sf::Uint64ype}
     */
-    reference at(size_type idx)
+    reference at(sf::Uint64ype idx)
     {
         // at only works for arrays
         if (JSON_LIKELY(is_array()))
@@ -9918,9 +9918,9 @@ class basic_json
 
     @liveexample{The example below shows how array elements can be read using
     `at()`. It also demonstrates the different exceptions that can be thrown.,
-    at__size_type_const}
+    at__sf::Uint64ype_const}
     */
-    const_reference at(size_type idx) const
+    const_reference at(sf::Uint64ype idx) const
     {
         // at only works for arrays
         if (JSON_LIKELY(is_array()))
@@ -10064,11 +10064,11 @@ class basic_json
 
     @liveexample{The example below shows how array elements can be read and
     written using `[]` operator. Note the addition of `null`
-    values.,operatorarray__size_type}
+    values.,operatorarray__sf::Uint64ype}
 
     @since version 1.0.0
     */
-    reference operator[](size_type idx)
+    reference operator[](sf::Uint64ype idx)
     {
         // implicitly convert null value to an empty array
         if (is_null())
@@ -10110,11 +10110,11 @@ class basic_json
     @complexity Constant.
 
     @liveexample{The example below shows how array elements can be read using
-    the `[]` operator.,operatorarray__size_type_const}
+    the `[]` operator.,operatorarray__sf::Uint64ype_const}
 
     @since version 1.0.0
     */
-    const_reference operator[](size_type idx) const
+    const_reference operator[](sf::Uint64ype idx) const
     {
         // const operator[] only works for arrays
         if (JSON_LIKELY(is_array()))
@@ -10328,7 +10328,7 @@ class basic_json
     @param[in] key  key of the element to access
     @param[in] default_value  the value to return if @a key is not found
 
-    @tparam ValueType type compatible to JSON values, for instance `int` for
+    @tparam ValueType type compatible to JSON values, for instance `sf::Int32` for
     JSON integer numbers, `bool` for JSON booleans, or `std::vector` types for
     JSON arrays. Note the type of the expected value at @a key and the default
     value @a default_value must be compatible.
@@ -10352,7 +10352,7 @@ class basic_json
     @since version 1.0.0
     */
     template<class ValueType, typename std::enable_if<
-                 std::is_convertible<basic_json_t, ValueType>::value, int>::type = 0>
+                 std::is_convertible<basic_json_t, ValueType>::value, sf::Int32>::type = 0>
     ValueType value(const typename object_t::key_type& key, const ValueType& default_value) const
     {
         // at only works for objects
@@ -10401,7 +10401,7 @@ class basic_json
     @param[in] ptr  a JSON pointer to the element to access
     @param[in] default_value  the value to return if @a ptr found no value
 
-    @tparam ValueType type compatible to JSON values, for instance `int` for
+    @tparam ValueType type compatible to JSON values, for instance `sf::Int32` for
     JSON integer numbers, `bool` for JSON booleans, or `std::vector` types for
     JSON arrays. Note the type of the expected value at @a key and the default
     value @a default_value must be compatible.
@@ -10422,7 +10422,7 @@ class basic_json
     @since version 2.0.2
     */
     template<class ValueType, typename std::enable_if<
-                 std::is_convertible<basic_json_t, ValueType>::value, int>::type = 0>
+                 std::is_convertible<basic_json_t, ValueType>::value, sf::Int32>::type = 0>
     ValueType value(const json_pointer& ptr, const ValueType& default_value) const
     {
         // at only works for objects
@@ -10578,14 +10578,14 @@ class basic_json
     the given range
     @sa @ref erase(const typename object_t::key_type&) -- removes the element
     from an object at the given key
-    @sa @ref erase(const size_type) -- removes the element from an array at
+    @sa @ref erase(const sf::Uint64ype) -- removes the element from an array at
     the given index
 
     @since version 1.0.0
     */
     template<class IteratorType, typename std::enable_if<
                  std::is_same<IteratorType, typename basic_json_t::iterator>::value or
-                 std::is_same<IteratorType, typename basic_json_t::const_iterator>::value, int>::type
+                 std::is_same<IteratorType, typename basic_json_t::const_iterator>::value, sf::Int32>::type
              = 0>
     IteratorType erase(IteratorType pos)
     {
@@ -10683,14 +10683,14 @@ class basic_json
     @sa @ref erase(IteratorType) -- removes the element at a given position
     @sa @ref erase(const typename object_t::key_type&) -- removes the element
     from an object at the given key
-    @sa @ref erase(const size_type) -- removes the element from an array at
+    @sa @ref erase(const sf::Uint64ype) -- removes the element from an array at
     the given index
 
     @since version 1.0.0
     */
     template<class IteratorType, typename std::enable_if<
                  std::is_same<IteratorType, typename basic_json_t::iterator>::value or
-                 std::is_same<IteratorType, typename basic_json_t::const_iterator>::value, int>::type
+                 std::is_same<IteratorType, typename basic_json_t::const_iterator>::value, sf::Int32>::type
              = 0>
     IteratorType erase(IteratorType first, IteratorType last)
     {
@@ -10774,12 +10774,12 @@ class basic_json
     @sa @ref erase(IteratorType) -- removes the element at a given position
     @sa @ref erase(IteratorType, IteratorType) -- removes the elements in
     the given range
-    @sa @ref erase(const size_type) -- removes the element from an array at
+    @sa @ref erase(const sf::Uint64ype) -- removes the element from an array at
     the given index
 
     @since version 1.0.0
     */
-    size_type erase(const typename object_t::key_type& key)
+    sf::Uint64ype erase(const typename object_t::key_type& key)
     {
         // this erase only works for objects
         if (JSON_LIKELY(is_object()))
@@ -10804,7 +10804,7 @@ class basic_json
 
     @complexity Linear in distance between @a idx and the end of the container.
 
-    @liveexample{The example shows the effect of `erase()`.,erase__size_type}
+    @liveexample{The example shows the effect of `erase()`.,erase__sf::Uint64ype}
 
     @sa @ref erase(IteratorType) -- removes the element at a given position
     @sa @ref erase(IteratorType, IteratorType) -- removes the elements in
@@ -10814,7 +10814,7 @@ class basic_json
 
     @since version 1.0.0
     */
-    void erase(const size_type idx)
+    void erase(const sf::Uint64ype idx)
     {
         // this erase only works for arrays
         if (JSON_LIKELY(is_array()))
@@ -10913,7 +10913,7 @@ class basic_json
 
     @since version 1.0.0
     */
-    size_type count(typename object_t::key_type key) const
+    sf::Uint64ype count(typename object_t::key_type key) const
     {
         // return 0 for all nonobject types
         return is_object() ? m_value.object->count(key) : 0;
@@ -11352,7 +11352,7 @@ class basic_json
 
     @since version 1.0.0
     */
-    size_type size() const noexcept
+    sf::Uint64ype size() const noexcept
     {
         switch (m_type)
         {
@@ -11422,7 +11422,7 @@ class basic_json
 
     @since version 1.0.0
     */
-    size_type max_size() const noexcept
+    sf::Uint64ype max_size() const noexcept
     {
         switch (m_type)
         {
@@ -11899,7 +11899,7 @@ class basic_json
 
     @since version 1.0.0
     */
-    iterator insert(const_iterator pos, size_type cnt, const basic_json& val)
+    iterator insert(const_iterator pos, sf::Uint64ype cnt, const basic_json& val)
     {
         // insert only works for arrays
         if (JSON_LIKELY(is_array()))
@@ -12425,7 +12425,7 @@ class basic_json
     @copydoc operator==(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator==(const_reference lhs, const ScalarType rhs) noexcept
     {
         return (lhs == basic_json(rhs));
@@ -12436,7 +12436,7 @@ class basic_json
     @copydoc operator==(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator==(const ScalarType lhs, const_reference rhs) noexcept
     {
         return (basic_json(lhs) == rhs);
@@ -12470,7 +12470,7 @@ class basic_json
     @copydoc operator!=(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator!=(const_reference lhs, const ScalarType rhs) noexcept
     {
         return (lhs != basic_json(rhs));
@@ -12481,7 +12481,7 @@ class basic_json
     @copydoc operator!=(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator!=(const ScalarType lhs, const_reference rhs) noexcept
     {
         return (basic_json(lhs) != rhs);
@@ -12586,7 +12586,7 @@ class basic_json
     @copydoc operator<(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator<(const_reference lhs, const ScalarType rhs) noexcept
     {
         return (lhs < basic_json(rhs));
@@ -12597,7 +12597,7 @@ class basic_json
     @copydoc operator<(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator<(const ScalarType lhs, const_reference rhs) noexcept
     {
         return (basic_json(lhs) < rhs);
@@ -12632,7 +12632,7 @@ class basic_json
     @copydoc operator<=(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator<=(const_reference lhs, const ScalarType rhs) noexcept
     {
         return (lhs <= basic_json(rhs));
@@ -12643,7 +12643,7 @@ class basic_json
     @copydoc operator<=(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator<=(const ScalarType lhs, const_reference rhs) noexcept
     {
         return (basic_json(lhs) <= rhs);
@@ -12678,7 +12678,7 @@ class basic_json
     @copydoc operator>(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator>(const_reference lhs, const ScalarType rhs) noexcept
     {
         return (lhs > basic_json(rhs));
@@ -12689,7 +12689,7 @@ class basic_json
     @copydoc operator>(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator>(const ScalarType lhs, const_reference rhs) noexcept
     {
         return (basic_json(lhs) > rhs);
@@ -12724,7 +12724,7 @@ class basic_json
     @copydoc operator>=(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator>=(const_reference lhs, const ScalarType rhs) noexcept
     {
         return (lhs >= basic_json(rhs));
@@ -12735,7 +12735,7 @@ class basic_json
     @copydoc operator>=(const_reference, const_reference)
     */
     template<typename ScalarType, typename std::enable_if<
-                 std::is_scalar<ScalarType>::value, int>::type = 0>
+                 std::is_scalar<ScalarType>::value, sf::Int32>::type = 0>
     friend bool operator>=(const ScalarType lhs, const_reference rhs) noexcept
     {
         return (basic_json(lhs) >= rhs);
@@ -12789,7 +12789,7 @@ class basic_json
 
         // do the actual serialization
         serializer s(detail::output_adapter<char>(o), o.fill());
-        s.dump(j, pretty_print, false, static_cast<unsigned int>(indentation));
+        s.dump(j, pretty_print, false, static_cast<unsigned sf::Int32>(indentation));
         return o;
     }
 
@@ -12958,7 +12958,7 @@ class basic_json
     template<class IteratorType, typename std::enable_if<
                  std::is_base_of<
                      std::random_access_iterator_tag,
-                     typename std::iterator_traits<IteratorType>::iterator_category>::value, int>::type = 0>
+                     typename std::iterator_traits<IteratorType>::iterator_category>::value, sf::Int32>::type = 0>
     static basic_json parse(IteratorType first, IteratorType last,
                             const parser_callback_t cb = nullptr,
                             const bool allow_exceptions = true)
@@ -12971,7 +12971,7 @@ class basic_json
     template<class IteratorType, typename std::enable_if<
                  std::is_base_of<
                      std::random_access_iterator_tag,
-                     typename std::iterator_traits<IteratorType>::iterator_category>::value, int>::type = 0>
+                     typename std::iterator_traits<IteratorType>::iterator_category>::value, sf::Int32>::type = 0>
     static bool accept(IteratorType first, IteratorType last)
     {
         return parser(detail::input_adapter(first, last)).accept(true);
@@ -13181,7 +13181,7 @@ class basic_json
     vector in CBOR format.,to_cbor}
 
     @sa http://cbor.io
-    @sa @ref from_cbor(const std::vector<uint8_t>&, const size_t) for the
+    @sa @ref from_cbor(const std::vector<uint8_t>&, const sf::Uint64) for the
         analogous deserialization
     @sa @ref to_msgpack(const basic_json&) for the related MessagePack format
 
@@ -13276,7 +13276,7 @@ class basic_json
     vector in MessagePack format.,to_msgpack}
 
     @sa http://msgpack.org
-    @sa @ref from_msgpack(const std::vector<uint8_t>&, const size_t) for the
+    @sa @ref from_msgpack(const std::vector<uint8_t>&, const sf::Uint64) for the
         analogous deserialization
     @sa @ref to_cbor(const basic_json& for the related CBOR format
 
@@ -13400,7 +13400,7 @@ class basic_json
     @copydoc from_cbor(detail::input_adapter, const bool)
     */
     template<typename A1, typename A2,
-             detail::enable_if_t<std::is_constructible<detail::input_adapter, A1, A2>::value, int> = 0>
+             detail::enable_if_t<std::is_constructible<detail::input_adapter, A1, A2>::value, sf::Int32> = 0>
     static basic_json from_cbor(A1 && a1, A2 && a2, const bool strict = true)
     {
         return binary_reader(detail::input_adapter(std::forward<A1>(a1), std::forward<A2>(a2))).parse_cbor(strict);
@@ -13429,10 +13429,10 @@ class basic_json
     uint 16          | number_unsigned | 0xcd
     uint 32          | number_unsigned | 0xce
     uint 64          | number_unsigned | 0xcf
-    int 8            | number_integer  | 0xd0
-    int 16           | number_integer  | 0xd1
-    int 32           | number_integer  | 0xd2
-    int 64           | number_integer  | 0xd3
+    sf::Int32 8            | number_integer  | 0xd0
+    sf::Int32 16           | number_integer  | 0xd1
+    sf::Int32 32           | number_integer  | 0xd2
+    sf::Int32 64           | number_integer  | 0xd3
     str 8            | string          | 0xd9
     str 16           | string          | 0xda
     str 32           | string          | 0xdb
@@ -13487,7 +13487,7 @@ class basic_json
     @copydoc from_msgpack(detail::input_adapter, const bool)
     */
     template<typename A1, typename A2,
-             detail::enable_if_t<std::is_constructible<detail::input_adapter, A1, A2>::value, int> = 0>
+             detail::enable_if_t<std::is_constructible<detail::input_adapter, A1, A2>::value, sf::Int32> = 0>
     static basic_json from_msgpack(A1 && a1, A2 && a2, const bool strict = true)
     {
         return binary_reader(detail::input_adapter(std::forward<A1>(a1), std::forward<A2>(a2))).parse_msgpack(strict);
@@ -13847,7 +13847,7 @@ class basic_json
                         else
                         {
                             const auto idx = std::stoi(last_path);
-                            if (JSON_UNLIKELY(static_cast<size_type>(idx) > parent.size()))
+                            if (JSON_UNLIKELY(static_cast<sf::Uint64ype>(idx) > parent.size()))
                             {
                                 // avoid undefined behavior
                                 JSON_THROW(out_of_range::create(401, "array index " + std::to_string(idx) + " is out of range"));
@@ -13894,7 +13894,7 @@ class basic_json
             else if (parent.is_array())
             {
                 // note erase performs range check
-                parent.erase(static_cast<size_type>(std::stoi(last_path)));
+                parent.erase(static_cast<sf::Uint64ype>(std::stoi(last_path)));
             }
         };
 
@@ -14087,7 +14087,7 @@ class basic_json
                 case value_t::array:
                 {
                     // first pass: traverse common elements
-                    std::size_t i = 0;
+                    sf::Uint64 i = 0;
                     while (i < source.size() and i < target.size())
                     {
                         // recursive call to compare array values at index i
@@ -14210,7 +14210,7 @@ NLOHMANN_BASIC_JSON_TPL_DECLARATION
 NLOHMANN_BASIC_JSON_TPL&
 json_pointer::get_and_create(NLOHMANN_BASIC_JSON_TPL& j) const
 {
-    using size_type = typename NLOHMANN_BASIC_JSON_TPL::size_type;
+    using sf::Uint64ype = typename NLOHMANN_BASIC_JSON_TPL::sf::Uint64ype;
     auto result = &j;
 
     // in case no reference tokens exist, return a reference to the JSON value
@@ -14246,7 +14246,7 @@ json_pointer::get_and_create(NLOHMANN_BASIC_JSON_TPL& j) const
                 // create an entry in the array
                 JSON_TRY
                 {
-                    result = &result->operator[](static_cast<size_type>(std::stoi(reference_token)));
+                    result = &result->operator[](static_cast<sf::Uint64ype>(std::stoi(reference_token)));
                 }
                 JSON_CATCH(std::invalid_argument&)
                 {
@@ -14273,7 +14273,7 @@ NLOHMANN_BASIC_JSON_TPL_DECLARATION
 NLOHMANN_BASIC_JSON_TPL&
 json_pointer::get_unchecked(NLOHMANN_BASIC_JSON_TPL* ptr) const
 {
-    using size_type = typename NLOHMANN_BASIC_JSON_TPL::size_type;
+    using sf::Uint64ype = typename NLOHMANN_BASIC_JSON_TPL::sf::Uint64ype;
     for (const auto& reference_token : reference_tokens)
     {
         // convert null values to arrays or objects before continuing
@@ -14323,7 +14323,7 @@ json_pointer::get_unchecked(NLOHMANN_BASIC_JSON_TPL* ptr) const
                     JSON_TRY
                     {
                         ptr = &ptr->operator[](
-                            static_cast<size_type>(std::stoi(reference_token)));
+                            static_cast<sf::Uint64ype>(std::stoi(reference_token)));
                     }
                     JSON_CATCH(std::invalid_argument&)
                     {
@@ -14345,7 +14345,7 @@ NLOHMANN_BASIC_JSON_TPL_DECLARATION
 NLOHMANN_BASIC_JSON_TPL&
 json_pointer::get_checked(NLOHMANN_BASIC_JSON_TPL* ptr) const
 {
-    using size_type = typename NLOHMANN_BASIC_JSON_TPL::size_type;
+    using sf::Uint64ype = typename NLOHMANN_BASIC_JSON_TPL::sf::Uint64ype;
     for (const auto& reference_token : reference_tokens)
     {
         switch (ptr->m_type)
@@ -14378,7 +14378,7 @@ json_pointer::get_checked(NLOHMANN_BASIC_JSON_TPL* ptr) const
                 // note: at performs range check
                 JSON_TRY
                 {
-                    ptr = &ptr->at(static_cast<size_type>(std::stoi(reference_token)));
+                    ptr = &ptr->at(static_cast<sf::Uint64ype>(std::stoi(reference_token)));
                 }
                 JSON_CATCH(std::invalid_argument&)
                 {
@@ -14399,7 +14399,7 @@ NLOHMANN_BASIC_JSON_TPL_DECLARATION
 const NLOHMANN_BASIC_JSON_TPL&
 json_pointer::get_unchecked(const NLOHMANN_BASIC_JSON_TPL* ptr) const
 {
-    using size_type = typename NLOHMANN_BASIC_JSON_TPL::size_type;
+    using sf::Uint64ype = typename NLOHMANN_BASIC_JSON_TPL::sf::Uint64ype;
     for (const auto& reference_token : reference_tokens)
     {
         switch (ptr->m_type)
@@ -14433,7 +14433,7 @@ json_pointer::get_unchecked(const NLOHMANN_BASIC_JSON_TPL* ptr) const
                 JSON_TRY
                 {
                     ptr = &ptr->operator[](
-                        static_cast<size_type>(std::stoi(reference_token)));
+                        static_cast<sf::Uint64ype>(std::stoi(reference_token)));
                 }
                 JSON_CATCH(std::invalid_argument&)
                 {
@@ -14454,7 +14454,7 @@ NLOHMANN_BASIC_JSON_TPL_DECLARATION
 const NLOHMANN_BASIC_JSON_TPL&
 json_pointer::get_checked(const NLOHMANN_BASIC_JSON_TPL* ptr) const
 {
-    using size_type = typename NLOHMANN_BASIC_JSON_TPL::size_type;
+    using sf::Uint64ype = typename NLOHMANN_BASIC_JSON_TPL::sf::Uint64ype;
     for (const auto& reference_token : reference_tokens)
     {
         switch (ptr->m_type)
@@ -14487,7 +14487,7 @@ json_pointer::get_checked(const NLOHMANN_BASIC_JSON_TPL* ptr) const
                 // note: at performs range check
                 JSON_TRY
                 {
-                    ptr = &ptr->at(static_cast<size_type>(std::stoi(reference_token)));
+                    ptr = &ptr->at(static_cast<sf::Uint64ype>(std::stoi(reference_token)));
                 }
                 JSON_CATCH(std::invalid_argument&)
                 {
@@ -14521,7 +14521,7 @@ void json_pointer::flatten(const std::string& reference_string,
             else
             {
                 // iterate array and use index as reference string
-                for (std::size_t i = 0; i < value.m_value.array->size(); ++i)
+                for (sf::Uint64 i = 0; i < value.m_value.array->size(); ++i)
                 {
                     flatten(reference_string + "/" + std::to_string(i),
                             value.m_value.array->operator[](i), result);
@@ -14629,7 +14629,7 @@ struct hash<nlohmann::json>
 
     @since version 1.0.0
     */
-    std::size_t operator()(const nlohmann::json& j) const
+    sf::Uint64 operator()(const nlohmann::json& j) const
     {
         // a naive hashing via the string representation
         const auto& h = hash<nlohmann::json::string_t>();
@@ -14669,7 +14669,7 @@ if no parse error occurred.
 
 @since version 1.0.0
 */
-inline nlohmann::json operator "" _json(const char* s, std::size_t n)
+inline nlohmann::json operator "" _json(const char* s, sf::Uint64 n)
 {
     return nlohmann::json::parse(s, s + n);
 }
@@ -14687,7 +14687,7 @@ object if no parse error occurred.
 
 @since version 2.0.0
 */
-inline nlohmann::json::json_pointer operator "" _json_pointer(const char* s, std::size_t n)
+inline nlohmann::json::json_pointer operator "" _json_pointer(const char* s, sf::Uint64 n)
 {
     return nlohmann::json::json_pointer(std::string(s, n));
 }

@@ -13,7 +13,7 @@
 class vicious_circle final : public ability, per_turn_usable
 {
 public:
-    explicit vicious_circle(std::size_t entity_id);
+    explicit vicious_circle(sf::Uint64 entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::magic_energy;
@@ -22,11 +22,11 @@ public:
     std::string hint() const override;
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void prepare(sf::Uint64 for_index) override;
+    void use(sf::Uint64 index_on);
 
-    std::size_t entity_id;
-    int range{3};
+    sf::Uint64 entity_id;
+    sf::Int32 range{3};
 };
 
 #endif //PIGEONWAR_VICIOUS_CIRCLE_H

@@ -17,11 +17,11 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(size_t index_on);
+	void use(sf::Uint64 index_on);
 
 private:
 	bool used{false};
-	const int range{4};
+	const sf::Int32 range{4};
 };
 
 #endif //PIGEONWAR_HYPNOSIS_H

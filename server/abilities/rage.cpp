@@ -4,7 +4,7 @@
 #include "damage_dealers.h"
 #include <iostream>
 
-rage::rage(size_t id) : entity_id(id) {
+rage::rage(sf::Uint64 id) : entity_id(id) {
 	onEveryRound([this]() {
 		damage_this_turn = 0;
 	});
@@ -25,7 +25,7 @@ void rage::use() {
 
 	auto use_from_index = board::index_for(entity_id);
 
-	std::vector<size_t> around_fields_ids;
+	std::vector<sf::Uint64> around_fields_ids;
 	board_helper::neighboring_fields(use_from_index, around_fields_ids, false);
 
 	sender::send(message_types::animation, animation_def::rage, use_from_index);

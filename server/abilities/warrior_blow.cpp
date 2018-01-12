@@ -2,7 +2,7 @@
 #include "warrior_blow.h"
 #include "damage_dealers.h"
 
-void warrior_blow::use(size_t index_on) {
+void warrior_blow::use(sf::Uint64 index_on) {
 
     if (used) {
         return;

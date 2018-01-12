@@ -13,7 +13,7 @@
 #define MOVING states::target_types::moving
 
 #define PATH_FINDER_PREPARE(TARGET_TYPE) \
-void prepare(std::size_t for_index) override { \
+void prepare(sf::Uint64 for_index) override { \
 states::state_controller::selected_index_ = for_index; \
     \
 path_finder path_finder(true); \
@@ -23,7 +23,7 @@ path_finder.get_possible_movements(states::state_controller::possible_movements_
         range); \
 \
 states::state_controller::actual_targeting_type_ = TARGET_TYPE; \
-states::state_controller::wait_for_action([this](size_t index) \
+states::state_controller::wait_for_action([this](sf::Uint64 index) \
 { \
 return use(index); \
 }); \
@@ -31,7 +31,7 @@ return use(index); \
 
 
 #define STRAIGHT_PREPARE(TARGET_TYPE) \
-void prepare(std::size_t for_index) override { \
+void prepare(sf::Uint64 for_index) override { \
 states::state_controller::selected_index_ = for_index; \
  \
 board_helper::calc_straight(for_index, states::state_controller::possible_movements_, \
@@ -39,7 +39,7 @@ board_helper::calc_straight(for_index, states::state_controller::possible_moveme
         range); \
  \
 states::state_controller::actual_targeting_type_ = TARGET_TYPE; \
-states::state_controller::wait_for_action([this](size_t index) \
+states::state_controller::wait_for_action([this](sf::Uint64 index) \
 { \
 return use(index); \
 }); \

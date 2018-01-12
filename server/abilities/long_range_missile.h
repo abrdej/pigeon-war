@@ -16,12 +16,12 @@ public:
 	}
 
 private:
-	void use(size_t index_on);
-	void play_animation(size_t from_index, size_t to_index);
+	void use(sf::Uint64 index_on);
+	void play_animation(sf::Uint64 from_index, sf::Uint64 to_index);
 
 private:
-	const int start_damage{8};
-	const int additional_damage{2};
+	const sf::Int32 start_damage{8};
+	const sf::Int32 additional_damage{2};
 	bool used{false};
 };
 

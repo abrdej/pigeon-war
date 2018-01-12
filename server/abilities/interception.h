@@ -10,20 +10,20 @@
 
 class interception final : public ability, protected turn_events_helper::every_turn_callback_helper {
 public:
-    explicit interception(std::size_t entity_id);
+    explicit interception(sf::Uint64 entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::interception;
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
-    void play_animation(size_t index_from, size_t index_on);
+    void prepare(sf::Uint64 for_index) override;
+    void use(sf::Uint64 index_on);
+    void play_animation(sf::Uint64 index_from, sf::Uint64 index_on);
 
-    const int range = 1;
-    const int damage = 12;
-    int damage_accumulated{0};
+    const sf::Int32 range = 1;
+    const sf::Int32 damage = 12;
+    sf::Int32 damage_accumulated{0};
     bool is_active{false};
     bool used{false};
 };

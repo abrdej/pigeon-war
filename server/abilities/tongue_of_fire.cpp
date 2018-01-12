@@ -5,7 +5,7 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 
-void tongue_of_fire::use(size_t index_on)
+void tongue_of_fire::use(sf::Uint64 index_on)
 {
 	if (used)
 		return;

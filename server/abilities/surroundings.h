@@ -9,7 +9,7 @@
 
 class surroundings : public passive_ability {
 public:
-    explicit surroundings(std::size_t entity_id);
+    explicit surroundings(sf::Uint64 entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::surroundings;

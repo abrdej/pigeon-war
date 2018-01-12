@@ -26,9 +26,9 @@ struct server {
 	sf::TcpListener listener;
 
 	std::vector<std::shared_ptr<sf::TcpSocket>> clients;
-	std::unordered_map<std::string, std::size_t> addresses;
+	std::unordered_map<std::string, sf::Uint64> addresses;
 
-	boost::lockfree::spsc_queue<std::pair<std::size_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
+	boost::lockfree::spsc_queue<std::pair<sf::Uint64, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
 
 	server() {
 
@@ -44,10 +44,10 @@ struct server {
 	};
 
 	void send_notification(const sf::Packet& packet) {
-		packets_to_send.push(std::make_pair(std::numeric_limits<std::size_t>::max(), packet));
+		packets_to_send.push(std::make_pair(std::numeric_limits<sf::Uint64>::max(), packet));
 	}
 
-	void send_notification_to(std::size_t index, sf::Packet packet) {
+	void send_notification_to(sf::Uint64 index, sf::Packet packet) {
 		packets_to_send.push(std::make_pair(index, packet));
 	}
 
@@ -110,11 +110,11 @@ struct server {
 					}
 				}
 
-				std::pair<std::size_t, sf::Packet> packet_pack;
+				std::pair<sf::Uint64, sf::Packet> packet_pack;
 
 				while (packets_to_send.pop(packet_pack)) {
 
-					if (packet_pack.first == std::numeric_limits<std::size_t>::max()) {
+					if (packet_pack.first == std::numeric_limits<sf::Uint64>::max()) {
 						for (auto&& client : clients) {
 							client->send(packet_pack.second);
 						}

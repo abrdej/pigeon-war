@@ -17,12 +17,12 @@ public:
     }
 
 private:
-    void use(size_t index_on) override;
+    void use(sf::Uint64 index_on) override;
 
 private:
-    const int damage{6};
-    const int additional_damage_for_death_mark{6};
-//    const int death_mark_duration{2};
+    const sf::Int32 damage{6};
+    const sf::Int32 additional_damage_for_death_mark{6};
+//    const sf::Int32 death_mark_duration{2};
 };
 
 #endif //PIGEONWAR_SHIRUKEN_H

@@ -12,9 +12,9 @@ public:
 	}
 
 private:
-	void use(size_t index_on) override;
+	void use(sf::Uint64 index_on) override;
 private:
-	const int damage = 9;
+	const sf::Int32 damage = 9;
 };
 
 #endif

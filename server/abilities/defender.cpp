@@ -5,12 +5,12 @@
 #include "defender.h"
 #include "damage_dealers.h"
 
-defender::defender(std::size_t entity_id) {
+defender::defender(sf::Uint64 entity_id) {
     onEveryTurn([this, entity_id]() {
 
         if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
 
-            std::vector<std::size_t> neighbors;
+            std::vector<sf::Uint64> neighbors;
             board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);
             for (auto& index : neighbors)
             {
@@ -55,10 +55,10 @@ defender::defender(std::size_t entity_id) {
     });
 }
 
-void defender::prepare(size_t for_index) {
+void defender::prepare(sf::Uint64 for_index) {
 
 }
 
-void defender::use(size_t index_on) {
+void defender::use(sf::Uint64 index_on) {
 
 }

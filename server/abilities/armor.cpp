@@ -1,7 +1,7 @@
 #include "armor.h"
 #include <managers/health_manager.h>
 
-armor::armor(std::size_t entity_id) {
+armor::armor(sf::Uint64 entity_id) {
 
     healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 

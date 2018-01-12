@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <cassert>
 #include <iostream>
+#include <SFML/Config.hpp>
 
 class ability;
 
@@ -18,14 +19,14 @@ public:
 
 	void add_ability(ability_types type, const std::shared_ptr<ability>& ability_ptr)
 	{
-        abilities_[static_cast<int>(type)] = ability_ptr;
+        abilities_[static_cast<sf::Int32>(type)] = ability_ptr;
 	}
 
 //	template <typename AbilityType, typename... Args>
 //	auto add(Args&&... args) {
 //		auto ability = std::make_shared<AbilityType, Args...>(std::forward<Args>(args)...);
 //		auto type = AbilityType::type;
-//		int type_integer = static_cast<int>(type);
+//		sf::Int32 type_integer = static_cast<sf::Int32>(type);
 //		holder[type_integer] = ability;
 //
 //		enable(*ability);
@@ -43,37 +44,37 @@ public:
 //
 //        return ability;
 //	}
-//    bool has_ability(size_t index) const {
+//    bool has_ability(sf::Uint64 index) const {
 //        return holder.find(index) != holder.end();
 //    }
-//    std::function<void()> get_callback(size_t index) const {
+//    std::function<void()> get_callback(sf::Uint64 index) const {
 //        return callbacks.at(index);
 //    }
-//    std::string get_bitmap_key(size_t index) const {
+//    std::string get_bitmap_key(sf::Uint64 index) const {
 //		return bitmaps.at(index)();
 //    }
 
-	std::shared_ptr<ability> at(size_t index) const
+	std::shared_ptr<ability> at(sf::Uint64 index) const
 	{
         auto it = abilities_.find(index);
         return it != std::end(abilities_) ? it->second : nullptr;
 	}
 	std::shared_ptr<ability> type(ability_types type) const
 	{
-        int index = static_cast<int>(type);
+        sf::Int32 index = static_cast<sf::Int32>(type);
         return at(index);
 	}
-	size_t size() const
+	sf::Uint64 size() const
 	{
 		return abilities_.size();
 	}
 private:
-	std::unordered_map<int, std::shared_ptr<ability>> abilities_;
+	std::unordered_map<sf::Int32, std::shared_ptr<ability>> abilities_;
 
-//	std::unordered_map<int, std::shared_ptr<void>> holder;
-//	std::unordered_map<int, std::function<void()>> callbacks;
-//	std::unordered_map<int, std::function<std::string()>> bitmaps;
-//	std::unordered_map<int, std::string> hint;
+//	std::unordered_map<sf::Int32, std::shared_ptr<void>> holder;
+//	std::unordered_map<sf::Int32, std::function<void()>> callbacks;
+//	std::unordered_map<sf::Int32, std::function<std::string()>> bitmaps;
+//	std::unordered_map<sf::Int32, std::string> hint;
 };
 
 #endif

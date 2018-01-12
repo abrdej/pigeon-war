@@ -5,7 +5,7 @@
 #include "damage_dealers.h"
 #include "absorption.h"
 
-power_circle::power_circle(std::size_t entity_id) {
+power_circle::power_circle(sf::Uint64 entity_id) {
 
     onEveryTurn([this, entity_id]() {
 
@@ -32,7 +32,7 @@ power_circle::power_circle(std::size_t entity_id) {
                 absorption_ptr->set_empty();
             }
 
-            std::vector<std::size_t> aim_indexes;
+            std::vector<sf::Uint64> aim_indexes;
             board_helper::circle(board::index_for(entity_id), aim_indexes, false);
 
             auto from_cr = board::to_pos(board::index_for(entity_id));
@@ -63,7 +63,7 @@ power_circle::power_circle(std::size_t entity_id) {
 //                        healths_manager::set_damage_receiver(friendly_id,
 //                                                             [this, entity_id, friendly_id](health_field& health_pack, const damage_pack& dmg) mutable {
 //
-//                                                                 auto half_dmg = static_cast<int>(dmg.damage_value * 0.5);
+//                                                                 auto half_dmg = static_cast<sf::Int32>(dmg.damage_value * 0.5);
 //
 //                                                                 damage_pack new_dmg = dmg;
 //                                                                 new_dmg.damage_value = half_dmg;
@@ -103,7 +103,7 @@ power_circle::~power_circle() {
     //}
 }
 
-void power_circle::prepare(size_t for_index) {
+void power_circle::prepare(sf::Uint64 for_index) {
 
 
     states::state_controller::selected_index_ = for_index;
@@ -111,14 +111,14 @@ void power_circle::prepare(size_t for_index) {
     board_helper::circle(for_index, states::state_controller::possible_movements_, false);
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](size_t index)
+    states::state_controller::wait_for_action([this](sf::Uint64 index)
                                               {
                                                   return use(index);
                                               });
 
 }
 
-void power_circle::use(size_t index_on) {
+void power_circle::use(sf::Uint64 index_on) {
     if (!bonus_active) {
         return;
     }
@@ -137,6 +137,6 @@ void power_circle::use(size_t index_on) {
                                      bitmap_key::absorption);
 }
 
-void power_circle::play_animation(size_t index_on) {
+void power_circle::play_animation(sf::Uint64 index_on) {
 
 }

@@ -7,7 +7,7 @@
 class invisibility final : public caster_target_ability
 {
 public:
-	explicit invisibility(size_t id);
+	explicit invisibility(sf::Uint64 id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::invisibility;
@@ -16,15 +16,15 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(size_t on_index) override;
+	void use(sf::Uint64 on_index) override;
 	void hide_me();
 	void show_me();
 private:
 	bool used_{false};
-	size_t entity_id;
-	size_t index{0};
-	int turn_counter_{0};
-	int duration{2};
+	sf::Uint64 entity_id;
+	sf::Uint64 index{0};
+	sf::Int32 turn_counter_{0};
+	sf::Int32 duration{2};
 	using receiver_type = turn::turn_system::strong_receiver;
 	receiver_type receiver;
 };

@@ -40,13 +40,13 @@ public:
 //        states::state_controller::possible_movements_.push_back(board::to_index(pos_to_build.first, pos_to_build.second));
 //
 //        states::state_controller::actual_targeting_type_ = states::target_types::all;
-//        states::state_controller::wait_for_action([this](size_t index)
+//        states::state_controller::wait_for_action([this](sf::Uint64 index)
 //                                                  {
 //                                                      return use(index);
 //                                                  });
 //    }
 
-    void prepare(size_t for_index) override {
+    void prepare(sf::Uint64 for_index) override {
         states::state_controller::selected_index_ = for_index;
 
         auto pos = board::to_pos(for_index);
@@ -57,12 +57,12 @@ public:
         states::state_controller::possible_movements_.push_back(board::to_index(pos_to_build.first, pos_to_build.second));
 
         states::state_controller::actual_targeting_type_ = states::target_types::all;
-        states::state_controller::wait_for_action([this](size_t index)
+        states::state_controller::wait_for_action([this](sf::Uint64 index)
                                                   {
                                                       return use(index);
                                                   });
     }
-    void use(size_t index_on) {
+    void use(sf::Uint64 index_on) {
         if (built)
             return;
 

@@ -34,9 +34,9 @@ private:
 	void draw(sf::RenderWindow& window);
 	void on_mouse_click(const point_type& args, bool left);
 
-	void on_board(size_t col, size_t row);
-	void on_button(size_t n);
-	void get_button_description(size_t n);
+	void on_board(sf::Uint64 col, sf::Uint64 row);
+	void on_button(sf::Uint64 n);
+	void get_button_description(sf::Uint64 n);
 
 	void prepare_animations();
 	void update_for_entity();
@@ -48,8 +48,8 @@ private:
 	sf::TcpSocket socket;
 	sf::SocketSelector selector;
 
-	static const int no_player_id = std::numeric_limits<int>::max();
-	int player_id{no_player_id};
+	static const sf::Int32 no_player_id = std::numeric_limits<sf::Int32>::max();
+	sf::Int32 player_id{no_player_id};
 
 	friend class board_drawer;
 	game_state state;

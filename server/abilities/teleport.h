@@ -18,8 +18,8 @@ public:
 	std::string hint() const override;
 
 private:
-	void prepare(size_t for_index) override;
-	void use(size_t from_index, size_t to_index);
+	void prepare(sf::Uint64 for_index) override;
+	void use(sf::Uint64 from_index, sf::Uint64 to_index);
 
 private:
 	bool used{false};

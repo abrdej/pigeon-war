@@ -4,26 +4,26 @@
 #include <managers/entity_manager.h>
 #include <random>
 
-void wolf_herd::use(size_t index_on) {
+void wolf_herd::use(sf::Uint64 index_on) {
 
 	if (used)
 		return;
 
 	used = true;
 
-	std::vector<size_t> neighbors;
+	std::vector<sf::Uint64> neighbors;
 	board_helper::neighboring_fields(index_on, neighbors, true);
 
 	std::random_device rd;
 	std::default_random_engine dre(rd());
 
-	auto num_of_wolves = std::min<int>(neighbors.size(), max_number_of_wolf);
+	auto num_of_wolves = std::min<sf::Int32>(neighbors.size(), max_number_of_wolf);
 
-	for (int n = 0; n < num_of_wolves; ++n) {
+	for (sf::Int32 n = 0; n < num_of_wolves; ++n) {
 
-		std::uniform_int_distribution<int> uniform_dist(0, neighbors.size() - 1);
+		std::uniform_int_distribution<sf::Int32> uniform_dist(0, neighbors.size() - 1);
 
-		int place_idx = uniform_dist(dre);
+		sf::Int32 place_idx = uniform_dist(dre);
 
 		auto wolf_id = entity_manager::create<wolf>();
 		auto player_name = players_manager::get_active_player_id();

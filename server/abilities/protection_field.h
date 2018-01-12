@@ -10,7 +10,7 @@
 
 class protection_field : public straight_target_ability<3>, protected turn_events_helper::every_turn_callback_helper {
 public:
-    explicit protection_field(std::size_t entity_id);
+    explicit protection_field(sf::Uint64 entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::protection_field;
@@ -21,10 +21,10 @@ public:
 	}
 
 private:
-    void use(size_t index_on) override;
+    void use(sf::Uint64 index_on) override;
     bool is_active{true};
     bool used{false};
-    const int damage = 16;
+    const sf::Int32 damage = 16;
 };
 
 #endif //PIGEONWAR_PROTECTION_FIELD_H

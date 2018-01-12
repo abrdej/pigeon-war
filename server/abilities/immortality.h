@@ -10,7 +10,7 @@
 
 class immortality : public passive_ability {
 public:
-    explicit immortality(std::size_t entity_id);
+    explicit immortality(sf::Uint64 entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::immortality;
@@ -19,7 +19,7 @@ public:
     std::string hint() const override;
 
 private:
-    std::size_t entity_id;
+    sf::Uint64 entity_id;
     turn::turn_system::strong_receiver receiver;
 };
 

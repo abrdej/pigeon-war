@@ -14,28 +14,28 @@
 
 class bomb_detonation final : public ability, protected turn_events_helper::every_turn_callback_helper {
 public:
-	explicit bomb_detonation(std::size_t bomb_id);
+	explicit bomb_detonation(sf::Uint64 bomb_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::bomb_detonation;
 	}
 
-	void prepare(size_t for_index) override;
+	void prepare(sf::Uint64 for_index) override;
 	void look_for_bombs();
-	void use(size_t for_index);
-	void set_bomb_buffer(boost::circular_buffer<std::shared_ptr<std::size_t>>* p) {
+	void use(sf::Uint64 for_index);
+	void set_bomb_buffer(boost::circular_buffer<std::shared_ptr<sf::Uint64>>* p) {
 		buffer = p;
 	}
 private:
-	std::size_t bomb_id;
-	int damage{5};
-	int final_damage{5};
+	sf::Uint64 bomb_id;
+	sf::Int32 damage{5};
+	sf::Int32 final_damage{5};
 	bool waited{false};
-	boost::circular_buffer<std::shared_ptr<std::size_t>>* buffer{nullptr};
+	boost::circular_buffer<std::shared_ptr<sf::Uint64>>* buffer{nullptr};
 };
 
 struct bomb_instance {
-	static auto create(size_t id)
+	static auto create(sf::Uint64 id)
 	{
 		base_components components;
 		entity_name(components) = "Bomba";
@@ -54,15 +54,15 @@ public:
 		return bitmap_key::bomb;
 	}
 
-	void prepare(size_t for_index) override;
-	void use(size_t index_on);
+	void prepare(sf::Uint64 for_index) override;
+	void use(sf::Uint64 index_on);
 
 private:
-	std::size_t find_min_health_jump(std::size_t from_index, std::unordered_set<std::size_t>& visited_indexes);
+	sf::Uint64 find_min_health_jump(sf::Uint64 from_index, std::unordered_set<sf::Uint64>& visited_indexes);
 
 	bool used{false};
-	int range{3};
-	int damage{7};
+	sf::Int32 range{3};
+	sf::Int32 damage{7};
 };
 
 

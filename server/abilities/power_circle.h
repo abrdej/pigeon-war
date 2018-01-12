@@ -12,7 +12,7 @@
 class power_circle final : public ability, protected turn_events_helper::every_turn_callback_helper
 {
 public:
-    explicit power_circle(std::size_t entity_id);
+    explicit power_circle(sf::Uint64 entity_id);
     ~power_circle() override;
 
     bitmap_key get_bitmap_key() const override {
@@ -20,24 +20,24 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
-    void play_animation(size_t index_on);
+    void prepare(sf::Uint64 for_index) override;
+    void use(sf::Uint64 index_on);
+    void play_animation(sf::Uint64 index_on);
 
 private:
-    int damage{6};
+    sf::Int32 damage{6};
 
     bool bonus_active{false};
-    int bonus_counter{0};
-    const int max_bonus_counter{3};
+    sf::Int32 bonus_counter{0};
+    const sf::Int32 max_bonus_counter{3};
 
-    int damage_reduction{0};
+    sf::Int32 damage_reduction{0};
 
-    int absorption_power{0};
-    int max_absorption_power{15};
+    sf::Int32 absorption_power{0};
+    sf::Int32 max_absorption_power{15};
 
-    using damage_receiver_type = std::function<int(health_field&, const damage_pack&)>;
-    std::unordered_map<std::size_t, damage_receiver_type> dmg_rec_backup;
+    using damage_receiver_type = std::function<sf::Int32(health_field&, const damage_pack&)>;
+    std::unordered_map<sf::Uint64, damage_receiver_type> dmg_rec_backup;
 };
 
 #endif //PIGEONWAR_POWER_CIRCLE_H

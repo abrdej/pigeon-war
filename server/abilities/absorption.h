@@ -11,7 +11,7 @@
 
 class absorption final : public ability, turn_events_helper::every_turn_callback_helper {
 public:
-    explicit absorption(std::size_t entity_id);
+    explicit absorption(sf::Uint64 entity_id);
     ~absorption() override;
 
     bitmap_key get_bitmap_key() const override {
@@ -32,21 +32,21 @@ public:
     }
 
 private:
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
-    void play_animation(size_t from_index, size_t to_index);
+    void prepare(sf::Uint64 for_index) override;
+    void use(sf::Uint64 index_on);
+    void play_animation(sf::Uint64 from_index, sf::Uint64 to_index);
 
-    const std::size_t entity_id;
-    const int range = 3;
+    const sf::Uint64 entity_id;
+    const sf::Int32 range = 3;
     bool used{false};
 
-    int damage_reduction{0};
+    sf::Int32 damage_reduction{0};
 
-    int absorption_power{0};
-    int max_absorption_power{15};
+    sf::Int32 absorption_power{0};
+    sf::Int32 max_absorption_power{15};
 
-    using damage_receiver_type = std::function<int(health_field&, const damage_pack&)>;
-    std::size_t protected_id{std::numeric_limits<std::size_t>::max()};
+    using damage_receiver_type = std::function<sf::Int32(health_field&, const damage_pack&)>;
+    sf::Uint64 protected_id{std::numeric_limits<sf::Uint64>::max()};
     damage_receiver_type protected_dmg_rec_backup;
 };
 

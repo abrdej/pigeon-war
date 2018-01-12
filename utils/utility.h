@@ -20,8 +20,8 @@ inline double angle_rad(const sf::Vector2f& p1, const sf::Vector2f& p2)
 
 inline sf::Vector2f angle_distance_offset(const sf::Vector2f& p, double radians, double distance)
 {
-	int x = static_cast<int>(std::round(sin(radians) * distance));
-	int y = static_cast<int>(std::round(cos(radians) * distance));
+	sf::Int32 x = static_cast<sf::Int32>(std::round(sin(radians) * distance));
+	sf::Int32 y = static_cast<sf::Int32>(std::round(cos(radians) * distance));
 	return p + sf::Vector2f(x, y);
 }
 

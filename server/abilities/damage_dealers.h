@@ -7,9 +7,9 @@
 namespace damage_dealers
 {
 
-int random_damage(size_t damage);
+sf::Int32 random_damage(sf::Uint64 damage);
 
-int standard_damage_dealer(const damage_pack& dmg);
+sf::Int32 standard_damage_dealer(const damage_pack& dmg);
 
 };
 

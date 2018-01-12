@@ -1,5 +1,5 @@
 #include "entity_manager.h"
 
-std::unordered_set<size_t> entity_manager::entities_;
+std::unordered_set<sf::Uint64> entity_manager::entities_;
 
-std::vector<std::function<void(size_t)>> entity_manager::on_destroy_callbacks_;
+std::vector<std::function<void(sf::Uint64)>> entity_manager::on_destroy_callbacks_;

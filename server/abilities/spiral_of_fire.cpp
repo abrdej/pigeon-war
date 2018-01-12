@@ -13,7 +13,7 @@ spiral_of_fire::spiral_of_fire() {
 
 }
 
-void spiral_of_fire::use(size_t index_on) {
+void spiral_of_fire::use(sf::Uint64 index_on) {
 
     if (!can_be_used)
         return;
@@ -24,17 +24,17 @@ void spiral_of_fire::use(size_t index_on) {
     auto from_pos = board::to_pos(index_on);
     auto to_pos = board::to_pos(used_from_index);
 
-    int xx = static_cast<int>(from_pos.first) - static_cast<int>(to_pos.first);
-    int yy = static_cast<int>(from_pos.second) - static_cast<int>(to_pos.second);
+    sf::Int32 xx = static_cast<sf::Int32>(from_pos.first) - static_cast<sf::Int32>(to_pos.first);
+    sf::Int32 yy = static_cast<sf::Int32>(from_pos.second) - static_cast<sf::Int32>(to_pos.second);
 
     auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
     sender::send(message_types::animation, animation_def::spiral_of_fire, used_from_index, index_to_move);
 
-    std::vector<std::size_t> indexes;
+    std::vector<sf::Uint64> indexes;
 
     if (xx != 0) {
-        for (int x = xx > 0 ? 1 : -1; std::abs(x) <= std::abs(xx); x = xx > 0 ? x + 1 : x - 1) {
+        for (sf::Int32 x = xx > 0 ? 1 : -1; std::abs(x) <= std::abs(xx); x = xx > 0 ? x + 1 : x - 1) {
 
             auto index = board::to_index(to_pos.first + x, to_pos.second);
 
@@ -47,7 +47,7 @@ void spiral_of_fire::use(size_t index_on) {
             }
         }
     } else {
-        for (int y = yy > 0 ? 1 : -1; abs(y) <= abs(yy); y = yy > 0 ? y + 1 : y - 1) {
+        for (sf::Int32 y = yy > 0 ? 1 : -1; abs(y) <= abs(yy); y = yy > 0 ? y + 1 : y - 1) {
 
             auto index = board::to_index(to_pos.first, to_pos.second + y);
 
@@ -61,7 +61,7 @@ void spiral_of_fire::use(size_t index_on) {
         }
     }
 
-    for (int i = indexes.size() - 1; i >= 0; --i) {
+    for (sf::Int32 i = indexes.size() - 1; i >= 0; --i) {
         if (!board::empty(indexes[i])) {
             damage_dealers::standard_damage_dealer(special_damage(damage, board::at(indexes[i]), entity_id));
         }

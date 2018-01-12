@@ -1,7 +1,7 @@
 #include "stone_skin.h"
 #include "managers/health_manager.h"
 
-stone_skin::stone_skin(std::size_t entity_id) {
+stone_skin::stone_skin(sf::Uint64 entity_id) {
 
     healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 

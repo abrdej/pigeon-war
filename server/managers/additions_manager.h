@@ -8,6 +8,7 @@
 #include "common/managers.h"
 #include <memory>
 #include <typeindex>
+#include <SFML/Config.hpp>
 
 struct addition {
     std::unordered_map<std::type_index, std::shared_ptr<void>> data;
@@ -54,7 +55,7 @@ struct addition {
 struct additions_manager : base_manager<addition, addition&> {
 
     template <typename T>
-    static inline void add_component(std::size_t entity_id,
+    static inline void add_component(sf::Uint64 entity_id,
                                      const std::string& name,
                                      std::shared_ptr<T> x) {
 
@@ -71,16 +72,16 @@ struct additions_manager : base_manager<addition, addition&> {
 		}
     }
 
-    static void remove_component(std::size_t entity_id, const std::string& name) {
+    static void remove_component(sf::Uint64 entity_id, const std::string& name) {
         map_[entity_id].destroy_named(name);
     }
 
-	static bool has_component(std::size_t entity_id, const std::string& name) {
+	static bool has_component(sf::Uint64 entity_id, const std::string& name) {
 		return map_[entity_id].has(name);
 	}
 
-	static std::unordered_map<std::size_t, std::vector<std::string>> get_map() {
-		std::unordered_map<std::size_t, std::vector<std::string>> result;
+	static std::unordered_map<sf::Uint64, std::vector<std::string>> get_map() {
+		std::unordered_map<sf::Uint64, std::vector<std::string>> result;
 
 		for (auto&& elem : map_) {
 

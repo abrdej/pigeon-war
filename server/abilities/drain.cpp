@@ -5,7 +5,7 @@
 #include "damage_dealers.h"
 #include "managers/health_manager.h"
 
-void drain::use(size_t index_on)
+void drain::use(sf::Uint64 index_on)
 {
 	if (used) {
 		return;

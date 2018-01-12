@@ -19,12 +19,12 @@ public:
     std::string hint() const override;
 
 private:
-    void use(size_t index_on) override;
+    void use(sf::Uint64 index_on) override;
 
 private:
-    const int full_damage = 16;
-    const int damage_with_power_bullet_effect = 4;
-    const int duration_of_effect = 3;
+    const sf::Int32 full_damage = 16;
+    const sf::Int32 damage_with_power_bullet_effect = 4;
+    const sf::Int32 duration_of_effect = 3;
 };
 
 #endif //PIGEONWAR_POWER_BULLET_H

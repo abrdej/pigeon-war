@@ -24,13 +24,13 @@ public:
 	using callback = signal_type::callback;
 
 	static void end_turn();
-	static void on_turn(size_t turn_n, const std::function<void()>& task);
+	static void on_turn(sf::Uint64 turn_n, const std::function<void()>& task);
 	static strong_receiver every_round(std::function<void()> callback);
 	static strong_receiver every_turn(std::function<void()> callback);
 
 private:
-	static size_t turn_n_;
-	static std::unordered_multimap<size_t, std::function<void()>> tasks_;
+	static sf::Uint64 turn_n_;
+	static std::unordered_multimap<sf::Uint64, std::function<void()>> tasks_;
 	static signal_type every_round_signal_;
 	static signal_type every_turn_signal_;
 };

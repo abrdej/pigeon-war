@@ -5,7 +5,7 @@
 #include <managers/entity_manager.h>
 #include "hypnosis.h"
 
-void hypnosis::use(size_t index_on) {
+void hypnosis::use(sf::Uint64 index_on) {
 
 	if (used)
 		return;

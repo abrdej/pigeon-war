@@ -3,8 +3,8 @@
 
 namespace turn
 {
-size_t turn_system::turn_n_ = 0;
-std::unordered_multimap<size_t, std::function<void()>> turn_system::tasks_;
+sf::Uint64 turn_system::turn_n_ = 0;
+std::unordered_multimap<sf::Uint64, std::function<void()>> turn_system::tasks_;
 
 turn_system::signal_type turn_system::every_round_signal_;
 turn_system::signal_type turn_system::every_turn_signal_;
@@ -26,7 +26,7 @@ void turn_system::end_turn()
 	}
 }
 
-void turn_system::on_turn(size_t turn_n, const std::function<void()>& task)
+void turn_system::on_turn(sf::Uint64 turn_n, const std::function<void()>& task)
 {
 	tasks_.insert(std::make_pair(turn_n, task));
 }

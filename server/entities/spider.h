@@ -14,7 +14,7 @@
 
 struct spider final
 {
-    static auto create(size_t id)
+    static auto create(sf::Uint64 id)
     {
         base_components components;
         entity_name(components) = "Spider";

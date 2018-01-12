@@ -8,21 +8,21 @@
 #include <common/managers.h>
 
 struct modification {
-	int damage_receiver_modifier{0};
-	int damage_dealer_modifier{0};
+	sf::Int32 damage_receiver_modifier{0};
+	sf::Int32 damage_dealer_modifier{0};
 };
 
 struct modifications_manager : base_manager<modification, modification&> {
-	static void modify_damage_receiver_modifier_by(std::size_t entity_id, int x) {
+	static void modify_damage_receiver_modifier_by(sf::Uint64 entity_id, sf::Int32 x) {
 		map_[entity_id].damage_receiver_modifier += x;
 	}
-	static void modify_damage_dealer_modifier_by(std::size_t entity_id, int x) {
+	static void modify_damage_dealer_modifier_by(sf::Uint64 entity_id, sf::Int32 x) {
 		map_[entity_id].damage_dealer_modifier += x;
 	}
-	static int damage_receiver_modifier_value(std::size_t entity_id) {
+	static sf::Int32 damage_receiver_modifier_value(sf::Uint64 entity_id) {
 		return map_[entity_id].damage_receiver_modifier;
 	}
-	static int damage_dealer_modifier_value(std::size_t entity_id) {
+	static sf::Int32 damage_dealer_modifier_value(sf::Uint64 entity_id) {
 		return map_[entity_id].damage_dealer_modifier;
 	}
 };

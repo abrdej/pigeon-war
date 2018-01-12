@@ -37,7 +37,7 @@ void pigeon_war_client::run()
 
 	auto status = socket.connect("80.211.186.19", 443);
 
-	std::cout << "Status: " << static_cast<int>(status) << "\n";
+	std::cout << "Status: " << static_cast<sf::Int32>(status) << "\n";
 
 	if (status != sf::Socket::Done) {
 		std::cout << "Socket connecting error\n";
@@ -71,24 +71,43 @@ void pigeon_war_client::receive_messages() {
 			std::cout << "client player id: " << player_id << "\n";
 
 		} else if (message == message_types::board) {
+
+			std::cout << "board1\n";
 			unpack(packet, state.board.fields_);
+
+			std::cout << "board2\n";
 
 		} else if (message == message_types::entities_bitmaps) {
 			unpack(packet, state.entities_bitmaps);
+
+			std::cout << "entities_bitmaps\n";
 
 			for (auto&& bitmap_pack : state.entities_bitmaps) {
 				drawing_manager::add_component(bitmap_pack.first, std::make_shared<entity_drawer>(bitmap_pack.first, bitmap_pack.second));
 			}
 
+			std::cout << "entities_bitmaps2\n";
+
 		} else if (message == message_types::healths) {
+
+			std::cout << "healths1\n";
+
 			unpack(packet, state.healths);
+
+			std::cout << "healths2\n";
 
 		} else if (message == message_types::end_turn) {
 
-			std::size_t active_player_id;
+			std::cout << "end_turn1\n";
+
+			sf::Uint64 active_player_id;
 			unpack(packet, active_player_id);
 
+			std::cout << "end_turn2\n";
+
 		} else if (message == message_types::animations) {
+
+			std::cout << "animations1\n";
 
 			unpack(packet, state.animations_queue);
 
@@ -97,9 +116,9 @@ void pigeon_war_client::receive_messages() {
 
 					std::cout << "move animation\n";
 
-					int from_index = animation_pack.x;
-					int to_index = animation_pack.y;
-					int entity_id = animation_pack.z;
+					sf::Int32 from_index = animation_pack.x;
+					sf::Int32 to_index = animation_pack.y;
+					sf::Int32 entity_id = animation_pack.z;
 					auto btm_key = animation_pack.btm_key;
 
 					if (entity_id != -1) {
@@ -117,8 +136,8 @@ void pigeon_war_client::receive_messages() {
 
 				} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
 
-					int from_index = animation_pack.x;
-					int time = animation_pack.y;
+					sf::Int32 from_index = animation_pack.x;
+					sf::Int32 time = animation_pack.y;
 					auto btm_key = animation_pack.btm_key;
 
 					animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
@@ -126,17 +145,17 @@ void pigeon_war_client::receive_messages() {
 
 				} else if (animation_pack.animation_type == animation_types::change_health) {
 
-					int to_index = animation_pack.x;
-					int change_health = animation_pack.y;
+					sf::Int32 to_index = animation_pack.x;
+					sf::Int32 change_health = animation_pack.y;
 
 					animation::player<animation::change_health>::launch(animation::change_health(to_index, change_health));
 					animation::base_player::play();
 
 				} else if (animation_pack.animation_type == animation_types::hide_show) {
 
-					int index = animation_pack.x;
-					int hide_show = animation_pack.y;
-					int entity_id = animation_pack.z;
+					sf::Int32 index = animation_pack.x;
+					sf::Int32 hide_show = animation_pack.y;
+					sf::Int32 entity_id = animation_pack.z;
 
 					if (hide_show == 0) {
 						state.board.take(index);
@@ -144,24 +163,34 @@ void pigeon_war_client::receive_messages() {
 						state.board.give_back(entity_id, index);
 					}
 				} else if (animation_pack.animation_type == animation_types::change_bitmap) {
-					int entity_id = animation_pack.x;
+					sf::Int32 entity_id = animation_pack.x;
 					auto new_bitmap = animation_pack.btm_key;
 
 					drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(new_bitmap);
 				}
+
+				std::cout << "animations2\n";
 			}
 
 		} else if (message == message_types::game_state) {
+
+			std::cout << "game_state1\n";
 
 			unpack(packet, state);
 
 			update_for_entity();
 
+			std::cout << "game_state2\n";
+
 		} else if (message == message_types::local_state) {
+
+			std::cout << "local_state1\n";
 
 			unpack(packet, lstate);
 
 			update_for_entity();
+
+			std::cout << "local_state2\n";
 
 		} else if (message == message_types::description) {
 
@@ -172,6 +201,9 @@ void pigeon_war_client::receive_messages() {
 			hint_ptr = std::make_unique<hint>(desc_pos, description);
 
 		} else if (message == message_types::animation) {
+
+			std::cout << "animation\n";
+
 			animations_service::handle(packet, state);
 		}
 	}
@@ -237,7 +269,7 @@ void pigeon_war_client::on_mouse_click(const point_type& args, bool left)
 	}
 	else if (buttons_panel_.is_hit(args))
 	{
-		size_t hit_button = buttons_panel_.hit_button(args);
+		sf::Uint64 hit_button = buttons_panel_.hit_button(args);
 
 		if (left) {
 			on_button(hit_button);
@@ -247,7 +279,7 @@ void pigeon_war_client::on_mouse_click(const point_type& args, bool left)
 	}
 }
 
-void pigeon_war_client::on_board(size_t col, size_t row)
+void pigeon_war_client::on_board(sf::Uint64 col, sf::Uint64 row)
 {
 	if (!block) {
 		block = true;
@@ -258,12 +290,12 @@ void pigeon_war_client::on_board(size_t col, size_t row)
 	}
 }
 
-void pigeon_war_client::on_button(size_t n)
+void pigeon_war_client::on_button(sf::Uint64 n)
 {
 	call_on_button(socket, player_id, n);
 }
 
-void pigeon_war_client::get_button_description(size_t n) {
+void pigeon_war_client::get_button_description(sf::Uint64 n) {
 	call_get_button_description(socket, player_id, n);
 }
 

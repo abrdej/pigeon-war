@@ -3,16 +3,16 @@
 #include <managers/players_manager.h>
 #include "surroundings.h"
 
-surroundings::surroundings(std::size_t entity_id) {
+surroundings::surroundings(sf::Uint64 entity_id) {
 
     healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
         auto index = board::index_for(entity_id);
 
-        std::vector<std::size_t> neighbors;
+        std::vector<sf::Uint64> neighbors;
         board_helper::neighboring_fields(index, neighbors, false);
 
-        int enemies_in_neighborhood = 0;
+        sf::Int32 enemies_in_neighborhood = 0;
         for (auto&& neighbor : neighbors) {
             if (!board::empty(neighbor)) {
                 if (players_funcs::player_entity(board::index_for(entity_id)) && players_funcs::enemy_entity(neighbor)) {

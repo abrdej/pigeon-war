@@ -6,7 +6,7 @@
 #include "managers/modifications_manager.h"
 #include "core/animations_queue.h"
 
-aura_of_immunity::aura_of_immunity(std::size_t entity_id)
+aura_of_immunity::aura_of_immunity(sf::Uint64 entity_id)
 		: entity_id(entity_id) {
 
 	modifications_manager::modify_damage_receiver_modifier_by(entity_id, -damage_reduction_for_owner);
@@ -17,7 +17,7 @@ aura_of_immunity::aura_of_immunity(std::size_t entity_id)
 
 			auto caster_index = board::index_for(this->entity_id);
 
-			std::vector<size_t> neighbors;
+			std::vector<sf::Uint64> neighbors;
 			board_helper::neighboring_fields(caster_index, neighbors, false);
 
 			for (auto& index : neighbors) {

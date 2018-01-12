@@ -1,6 +1,6 @@
 #include <boost/process.hpp>
 
-int main() {
+sf::Int32 main() {
 
 //    system("pigeonwar_server.exe");
 //    system("pigeonwar_client.exe");

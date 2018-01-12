@@ -19,11 +19,11 @@ public:
 	void set_used();
 
 private:
-	void use(size_t index_on) override;
+	void use(sf::Uint64 index_on) override;
 
 private:
-	const int damage = 8;
-	const int bonus_for_spider_web_effect = 6;
+	const sf::Int32 damage = 8;
+	const sf::Int32 bonus_for_spider_web_effect = 6;
 };
 
 #endif //PIGEONWAR_JAW_SPIDER_H

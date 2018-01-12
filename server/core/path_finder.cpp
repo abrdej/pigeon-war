@@ -5,7 +5,7 @@
 path_finder::path_finder(bool all_fields)
 		: start_index_(-1)
 {
-	board::for_each([this, &all_fields](size_t entity_id, size_t col, size_t row) {
+	board::for_each([this, &all_fields](sf::Uint64 entity_id, sf::Uint64 col, sf::Uint64 row) {
 		auto rows_n = board::rows_n;
 		auto cols_n = board::cols_n;
 		auto key_from = board::to_index(col, row);
@@ -29,7 +29,7 @@ path_finder::path_finder(bool all_fields)
 	});
 }
 
-void path_finder::calc(size_t from_index)
+void path_finder::calc(sf::Uint64 from_index)
 {
 	start_index_ = from_index;
 	distance_map_.clear();
@@ -37,7 +37,7 @@ void path_finder::calc(size_t from_index)
 	breadth_search(graph_, from_index, distance_map_, sequence_map_);
 }
 
-size_t path_finder::find_first_satisfy_conditions(size_t from_index, const std::function<bool(size_t)>& condition_fn)
+sf::Uint64 path_finder::find_first_satisfy_conditions(sf::Uint64 from_index, const std::function<bool(sf::Uint64)>& condition_fn)
 {
 	start_index_ = from_index;
 	distance_map_.clear();
@@ -45,7 +45,7 @@ size_t path_finder::find_first_satisfy_conditions(size_t from_index, const std::
 	return breadth_search(graph_, from_index, distance_map_, sequence_map_, condition_fn);
 }
 
-void path_finder::get_possible_movements(std::vector<size_t>& movements, std::vector<size_t>& costs, int range)
+void path_finder::get_possible_movements(std::vector<sf::Uint64>& movements, std::vector<sf::Uint64>& costs, sf::Int32 range)
 {
 	movements.clear();
 	costs.clear();
@@ -57,7 +57,7 @@ void path_finder::get_possible_movements(std::vector<size_t>& movements, std::ve
 		}
 }
 
-void path_finder::path_to(size_t index, std::vector<size_t>& path)
+void path_finder::path_to(sf::Uint64 index, std::vector<sf::Uint64>& path)
 {
 	auto path_index = index;
 	path.push_back(index);
@@ -68,7 +68,7 @@ void path_finder::path_to(size_t index, std::vector<size_t>& path)
 	}
 }
 
-size_t path_finder::distance_to(size_t index)
+sf::Uint64 path_finder::distance_to(sf::Uint64 index)
 {
 	auto it = distance_map_.find(index);
 	if (it != std::end(distance_map_))
@@ -78,13 +78,13 @@ size_t path_finder::distance_to(size_t index)
 
 namespace board_helper
 {
-void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vector<size_t>& costs, int range, bool skip_obstacles)
+void calc_straight(sf::Uint64 from_index, std::vector<sf::Uint64>& movements, std::vector<sf::Uint64>& costs, sf::Int32 range, bool skip_obstacles)
 {
 	movements.clear();
 	costs.clear();
 
 	auto fld = board::to_pos(from_index);
-	for (size_t i = fld.first - 1; i != -1; --i)
+	for (sf::Uint64 i = fld.first - 1; i != -1; --i)
 	{
 		auto cost = fld.first - i;
 		if (cost > range)
@@ -98,7 +98,7 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 			break;
 	}
 
-	for (size_t i = fld.first + 1; i < board::cols_n; ++i)
+	for (sf::Uint64 i = fld.first + 1; i < board::cols_n; ++i)
 	{
 		auto cost = i - fld.first;
 		if (cost > range)
@@ -113,7 +113,7 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 			break;
 	}
 
-	for (size_t i = fld.second - 1; i != -1; --i)
+	for (sf::Uint64 i = fld.second - 1; i != -1; --i)
 	{
 		auto cost = fld.second - i;
 		if (cost > range)
@@ -128,7 +128,7 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 			break;
 	}
 
-	for (size_t i = fld.second + 1; i < board::rows_n; ++i)
+	for (sf::Uint64 i = fld.second + 1; i < board::rows_n; ++i)
 	{
 		auto cost = i - fld.second;
 		if (cost > range)
@@ -144,13 +144,13 @@ void calc_straight(size_t from_index, std::vector<size_t>& movements, std::vecto
 	}
 }
 
-void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool available)
+void neighboring_fields(sf::Uint64 for_index, std::vector<sf::Uint64>& fields, bool available)
 {
 	fields.clear();
 	auto fld = board::to_pos(for_index);
 
-	for (int col = -1; col <= 1; ++col) {
-		for (int row = -1; row <= 1; ++row)
+	for (sf::Int32 col = -1; col <= 1; ++col) {
+		for (sf::Int32 row = -1; row <= 1; ++row)
 		{
 			auto col_index = fld.first + col;
 			auto row_index = fld.second + row;
@@ -164,13 +164,13 @@ void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool avai
 	}
 }
 
-void circle(size_t for_index, std::vector<size_t>& fields, bool available) {
+void circle(sf::Uint64 for_index, std::vector<sf::Uint64>& fields, bool available) {
 
 	fields.clear();
 	auto fld = board::to_pos(for_index);
 
-	for (int col = -2; col <= 2; ++col) {
-		for (int row = -2; row <= 2; ++row) {
+	for (sf::Int32 col = -2; col <= 2; ++col) {
+		for (sf::Int32 row = -2; row <= 2; ++row) {
 			if (abs(col) == 2 || abs(row) == 2) {
 				auto col_index = fld.first + col;
 				auto row_index = fld.second + row;
@@ -185,8 +185,8 @@ void circle(size_t for_index, std::vector<size_t>& fields, bool available) {
 	}
 }
 
-void all_free(std::vector<size_t>& fields) {
-	for (size_t index = 0; index < board::rows_n * board::cols_n; ++index) {
+void all_free(std::vector<sf::Uint64>& fields) {
+	for (sf::Uint64 index = 0; index < board::rows_n * board::cols_n; ++index) {
 		if (board::empty(index)) {
 			fields.push_back(index);
 		}

@@ -18,9 +18,9 @@ public:
     std::string hint() const override;
 
 private:
-    void use(size_t index_on) override;
+    void use(sf::Uint64 index_on) override;
 
-    int damage{15};
+    sf::Int32 damage{15};
 };
 
 

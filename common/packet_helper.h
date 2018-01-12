@@ -12,23 +12,23 @@
 #include <unordered_set>
 #include "utils.h"
 
-inline sf::Packet& operator <<(sf::Packet& packet, const size_t x)
-{
-	sf::Uint64 x_conv = x;
-	packet << x_conv;
-
-	return packet;
-}
-
-inline sf::Packet& operator >>(sf::Packet& packet, size_t& x)
-{
-	sf::Uint64 x_conv;
-	packet >> x_conv;
-
-	x = x_conv;
-
-	return packet;
-}
+//inline sf::Packet& operator <<(sf::Packet& packet, const sf::Uint64 x)
+//{
+//	sf::Uint64 x_conv = x;
+//	packet << x_conv;
+//
+//	return packet;
+//}
+//
+//inline sf::Packet& operator >>(sf::Packet& packet, sf::Uint64& x)
+//{
+//	sf::Uint64 x_conv;
+//	packet >> x_conv;
+//
+//	x = x_conv;
+//
+//	return packet;
+//}
 
 template <typename... TT>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::tuple<TT...>& x)
@@ -70,7 +70,7 @@ inline sf::Packet& operator <<(sf::Packet& packet, const std::vector<T>& x)
 template <typename T>
 inline sf::Packet& operator >>(sf::Packet& packet, std::vector<T>& x)
 {
-	std::size_t size;
+	sf::Uint64 size;
 	packet >> size;
 
 	x.resize(size);
@@ -82,7 +82,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::vector<T>& x)
 	return packet;
 }
 
-template <typename T, std::size_t N>
+template <typename T, sf::Uint64 N>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::array<T, N>& x)
 {
 	sf::Uint64 size = N;
@@ -95,7 +95,7 @@ inline sf::Packet& operator <<(sf::Packet& packet, const std::array<T, N>& x)
 	return packet;
 }
 
-template <typename T, std::size_t N>
+template <typename T, sf::Uint64 N>
 inline sf::Packet& operator >>(sf::Packet& packet, std::array<T, N>& x)
 {
 	sf::Uint64 size;
@@ -143,10 +143,10 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_map<K, T>& x)
 {
 	x.clear();
 
-	std::size_t size;
+	sf::Uint64 size;
 	packet >> size;
 
-	for (std::size_t i = 0; i < size; ++i) {
+	for (sf::Uint64 i = 0; i < size; ++i) {
 		std::pair<K, T> elem;
 		packet >> elem;
 		x.insert(elem);
@@ -172,10 +172,10 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_set<T>& x)
 {
 	x.clear();
 
-	std::size_t size;
+	sf::Uint64 size;
 	packet >> size;
 
-	for (std::size_t i = 0; i < size; ++i) {
+	for (sf::Uint64 i = 0; i < size; ++i) {
 		T elem;
 		packet >> elem;
 		x.insert(elem);

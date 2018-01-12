@@ -4,21 +4,21 @@
 
 namespace damage_dealers {
 
-int random_damage(int damage)
+sf::Int32 random_damage(sf::Int32 damage)
 {
-	//auto dist = static_cast<int>(std::round(damage * 0.2f));
+	//auto dist = static_cast<sf::Int32>(std::round(damage * 0.2f));
 
 	std::random_device rd;
 	std::default_random_engine dre(rd());
-	std::uniform_int_distribution<int> uniform_dist(-1, 1);
-	int random = uniform_dist(dre);
+	std::uniform_int_distribution<sf::Int32> uniform_dist(-1, 1);
+	sf::Int32 random = uniform_dist(dre);
 	return damage + random;
 }
 
 }
 
 
-int damage_dealers::standard_damage_dealer(const damage_pack& dmg)
+sf::Int32 damage_dealers::standard_damage_dealer(const damage_pack& dmg)
 {
 	if (!healths_manager::is_destructible(dmg.damage_receiver_id)) {
 		return 0;

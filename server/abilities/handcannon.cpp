@@ -5,7 +5,7 @@
 #include "abilities.h"
 #include "protection_field.h"
 
-void handcannon::use(size_t index_on) {
+void handcannon::use(sf::Uint64 index_on) {
 
     if (used)
         return;

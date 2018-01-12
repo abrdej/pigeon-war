@@ -4,11 +4,11 @@
 #include "damage_dealers.h"
 #include "managers/entity_manager.h"
 
-prison_connection::prison_connection(std::size_t entity_id) : entity_id(entity_id) {
+prison_connection::prison_connection(sf::Uint64 entity_id) : entity_id(entity_id) {
 
 }
 
-void prison_connection::use(size_t index_on) {
+void prison_connection::use(sf::Uint64 index_on) {
 
 	if (used)
 		return;
@@ -35,7 +35,7 @@ void prison_connection::use(size_t index_on) {
 	additions_manager::add_component(enemy_id, "prison_connection_effect", prison_connection_receiver);
 	entities_with_effect.push_front(enemy_id);
 
-	int number_of_entities_with_effect = static_cast<int>(entities_with_effect.size());
+	sf::Int32 number_of_entities_with_effect = static_cast<sf::Int32>(entities_with_effect.size());
 
 	final_damage = base_damage + number_of_entities_with_effect * damage_per_entities_with_effect;
 

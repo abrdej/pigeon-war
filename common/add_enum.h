@@ -11,13 +11,13 @@
 \
 inline sf::Packet& operator <<(sf::Packet& packet, const NAME& enum_value) \
 { \
-	int enum_int = static_cast<int>(enum_value); \
+	sf::Uint32 enum_int = static_cast<sf::Uint32>(enum_value); \
 	return packet << enum_int; \
 } \
 \
 inline sf::Packet& operator >>(sf::Packet& packet, NAME& enum_value) \
 { \
-	int enum_int; \
+	sf::Uint32 enum_int; \
 	packet >> enum_int; \
 \
 	enum_value = static_cast<NAME>(enum_int); \

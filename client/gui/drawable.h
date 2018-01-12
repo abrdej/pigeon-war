@@ -11,7 +11,7 @@
 
 struct drawable {
     using ptr_type = std::shared_ptr<drawable>;
-    virtual void draw(sf::RenderWindow& window, size_t col, size_t row, int health) = 0;
+    virtual void draw(sf::RenderWindow& window, sf::Uint64 col, sf::Uint64 row, sf::Int32 health) = 0;
     virtual bitmap_key get_bitmap_key() = 0;
 };
 

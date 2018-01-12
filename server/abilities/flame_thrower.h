@@ -18,12 +18,12 @@ public:
 	}
 
 private:
-	void use(size_t index_on) override;
+	void use(sf::Uint64 index_on) override;
 
 private:
-	const int damage = 5;
-	const int damage_bonus = 4;
-	int counter = 0;
+	const sf::Int32 damage = 5;
+	const sf::Int32 damage_bonus = 4;
+	sf::Int32 counter = 0;
 };
 
 

@@ -3,7 +3,7 @@
 #include <managers/directions_manager.h>
 #include "wretch_moving.h"
 
-wretch_moving::wretch_moving(std::size_t entity_id) : entity_id(entity_id) {
+wretch_moving::wretch_moving(sf::Uint64 entity_id) : entity_id(entity_id) {
     onEveryRound([this]() {
         used = false;
         range = max_range;
@@ -11,11 +11,11 @@ wretch_moving::wretch_moving(std::size_t entity_id) : entity_id(entity_id) {
     });
 }
 
-void wretch_moving::prepare(size_t for_index) {
+void wretch_moving::prepare(sf::Uint64 for_index) {
     states::state_controller::selected_index_ = for_index;
     states::state_controller::actual_state_ = states::states_types::wait_for_action;
 
-    int power = powers_manager::get_power_for(entity_id);
+    sf::Int32 power = powers_manager::get_power_for(entity_id);
 
     std::cout << "power: " << power << "\n";
 
@@ -26,18 +26,18 @@ void wretch_moving::prepare(size_t for_index) {
                                        used ? 0 : std::min(range, power));
 
     states::state_controller::actual_targeting_type_ = states::target_types::moving;
-    states::state_controller::wait_for_action([this](size_t index)
+    states::state_controller::wait_for_action([this](sf::Uint64 index)
                                               {
                                                   return move(index);
                                               });
 }
 
-void wretch_moving::move(size_t index_to) {
+void wretch_moving::move(sf::Uint64 index_to) {
     if (used) {
         return;
     }
 
-    std::size_t i = 0;
+    sf::Uint64 i = 0;
     for ( ; i < states::state_controller::possible_movements_.size(); ++i) {
         if (states::state_controller::possible_movements_[i] == index_to)
             break;
@@ -56,8 +56,8 @@ void wretch_moving::move(size_t index_to) {
 
     sender::send(message_types::animation, animation_def::move, move_from_index, index_to);
 
-    int from_col = board::to_pos(move_from_index).first;
-    int to_col = board::to_pos(index_to).first;
+    sf::Int32 from_col = board::to_pos(move_from_index).first;
+    sf::Int32 to_col = board::to_pos(index_to).first;
     if (from_col != to_col)
         if (from_col - to_col < 0)
             directions_manager::turn_right(taken_id);

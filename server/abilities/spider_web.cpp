@@ -6,10 +6,10 @@
 #include "jaw_spider.h"
 #include "moveable.h"
 
-spider_web::spider_web(std::size_t entity_id) : caster_id(entity_id) {
+spider_web::spider_web(sf::Uint64 entity_id) : caster_id(entity_id) {
 }
 
-void spider_web::use(size_t index_on) {
+void spider_web::use(sf::Uint64 index_on) {
 
     if (used)
         return;
@@ -19,8 +19,8 @@ void spider_web::use(size_t index_on) {
     auto pos_1 = board::to_pos(used_from_index);
     auto pos_2 = board::to_pos(index_on);
 
-    int x = pos_2.first - pos_1.first;
-    int y = pos_2.second - pos_1.second;
+    sf::Int32 x = pos_2.first - pos_1.first;
+    sf::Int32 y = pos_2.second - pos_1.second;
     if (x != 0)
         x = x / std::abs(x);
     if (y != 0)

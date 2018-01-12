@@ -5,7 +5,7 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 
-void giant_blow::use(size_t index_on)
+void giant_blow::use(sf::Uint64 index_on)
 {
     if (used) {
         return;

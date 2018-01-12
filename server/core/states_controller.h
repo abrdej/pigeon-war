@@ -15,21 +15,21 @@ namespace states
 class state_controller
 {
 public:
-	static void wait_for_action(const std::function<void(size_t index)>& caller);
-	static void do_action(size_t index);
-	static bool is_possible_movement(size_t index);
-	static void first_state(size_t select_from_index);
-	static bool valid_target(std::size_t target_index);
+	static void wait_for_action(const std::function<void(sf::Uint64 index)>& caller);
+	static void do_action(sf::Uint64 index);
+	static bool is_possible_movement(sf::Uint64 index);
+	static void first_state(sf::Uint64 select_from_index);
+	static bool valid_target(sf::Uint64 target_index);
 
-	static size_t selected_index_;
+	static sf::Uint64 selected_index_;
 	static states_types actual_state_;
 	static target_types actual_targeting_type_;
-	static std::vector<size_t> possible_movements_;
-	static std::vector<size_t> possible_movements_costs_;
+	static std::vector<sf::Uint64> possible_movements_;
+	static std::vector<sf::Uint64> possible_movements_costs_;
 
-	static std::function<void(std::size_t)> caller_;
+	static std::function<void(sf::Uint64)> caller_;
 
-	static std::unordered_map<std::size_t, std::unordered_set<std::size_t>> custom_valid_targets;
+	static std::unordered_map<sf::Uint64, std::unordered_set<sf::Uint64>> custom_valid_targets;
 
 	enum class custom_target_type {
 		board_index,

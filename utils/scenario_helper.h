@@ -10,7 +10,7 @@
 #include "managers/entity_remover.h"
 
 template <typename Callback>
-void if_any_die(std::initializer_list<std::size_t> entities_id, Callback callback) {
+void if_any_die(std::initializer_list<sf::Uint64> entities_id, Callback callback) {
     auto any_die = [callback](){
         callback();
     };
@@ -20,7 +20,7 @@ void if_any_die(std::initializer_list<std::size_t> entities_id, Callback callbac
 }
 
 template <typename Callback>
-void if_any_die(std::vector<std::size_t> entities_id, Callback callback) {
+void if_any_die(std::vector<sf::Uint64> entities_id, Callback callback) {
     auto any_die = [callback](){
         callback();
     };
@@ -30,9 +30,9 @@ void if_any_die(std::vector<std::size_t> entities_id, Callback callback) {
 }
 
 template <typename Callback>
-void if_all_die(std::initializer_list<std::size_t> entities_id, Callback callback) {
+void if_all_die(std::initializer_list<sf::Uint64> entities_id, Callback callback) {
     auto entities_size = entities_id.size();
-    auto i = std::make_shared<int>(0);
+    auto i = std::make_shared<sf::Int32>(0);
     auto someone_die = [callback, entities_size, counter = i]() mutable {
         if (++(*counter) == entities_size) {
             callback();
@@ -44,9 +44,9 @@ void if_all_die(std::initializer_list<std::size_t> entities_id, Callback callbac
 }
 
 template <typename Callback>
-void if_all_die(std::vector<std::size_t> entities_id, Callback callback) {
+void if_all_die(std::vector<sf::Uint64> entities_id, Callback callback) {
     auto entities_size = entities_id.size();
-    auto i = std::make_shared<int>(0);
+    auto i = std::make_shared<sf::Int32>(0);
     auto someone_die = [callback, entities_size, counter = i]() mutable {
         if (++(*counter) == entities_size) {
             callback();

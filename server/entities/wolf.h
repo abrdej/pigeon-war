@@ -10,7 +10,7 @@
 class wolf final
 {
 public:
-	static auto create(size_t id) {
+	static auto create(sf::Uint64 id) {
 		base_components components;
 		entity_name(components) = "Wolf";
 		entity_health(components).base_health = 30;

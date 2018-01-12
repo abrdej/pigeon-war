@@ -12,7 +12,7 @@
 #include <core/animations_queue.h>
 #include <sender.h>
 
-static const std::size_t no_damage_dealer = std::numeric_limits<std::size_t>::max();
+static const sf::Uint64 no_damage_dealer = std::numeric_limits<sf::Uint64>::max();
 
 enum class damage_types {
 	MELEE,
@@ -23,44 +23,44 @@ enum class damage_types {
 };
 
 struct damage_pack {
-	damage_pack(int value, damage_types type, std::size_t receiver_id)
+	damage_pack(sf::Int32 value, damage_types type, sf::Uint64 receiver_id)
 			: damage_value(value),
               damage_receiver_id(receiver_id),
 			  damage_type(type),
 			  damage_dealer_id(no_damage_dealer) {}
-	damage_pack(int value, damage_types type, std::size_t receiver_id, std::size_t dealer_id)
+	damage_pack(sf::Int32 value, damage_types type, sf::Uint64 receiver_id, sf::Uint64 dealer_id)
 			: damage_value(value),
 			  damage_type(type),
               damage_receiver_id(receiver_id),
 			  damage_dealer_id(dealer_id) {}
 
-	int damage_value;
+	sf::Int32 damage_value;
 	damage_types damage_type;
-    std::size_t damage_receiver_id;
-	std::size_t damage_dealer_id;
+    sf::Uint64 damage_receiver_id;
+	sf::Uint64 damage_dealer_id;
 };
 
-inline damage_pack melee_damage(int value, std::size_t receiver_id, std::size_t dealer_id = no_damage_dealer) {
+inline damage_pack melee_damage(sf::Int32 value, sf::Uint64 receiver_id, sf::Uint64 dealer_id = no_damage_dealer) {
 	return damage_pack{value, damage_types::MELEE, receiver_id, dealer_id};
 }
 
-inline damage_pack ranged_damage(int value, std::size_t receiver_id, std::size_t dealer_id = no_damage_dealer) {
+inline damage_pack ranged_damage(sf::Int32 value, sf::Uint64 receiver_id, sf::Uint64 dealer_id = no_damage_dealer) {
 	return damage_pack{value, damage_types::RANGED, receiver_id, dealer_id};
 }
 
-inline damage_pack magic_damage(int value, std::size_t receiver_id, std::size_t dealer_id = no_damage_dealer) {
+inline damage_pack magic_damage(sf::Int32 value, sf::Uint64 receiver_id, sf::Uint64 dealer_id = no_damage_dealer) {
 	return damage_pack{value, damage_types::MAGIC, receiver_id, dealer_id};
 }
 
-inline damage_pack special_damage(int value, std::size_t receiver_id, std::size_t dealer_id = no_damage_dealer) {
+inline damage_pack special_damage(sf::Int32 value, sf::Uint64 receiver_id, sf::Uint64 dealer_id = no_damage_dealer) {
 	return damage_pack{value, damage_types::SPECIAL, receiver_id, dealer_id};
 }
 
-inline damage_pack healing(int value, std::size_t receiver_id) {
+inline damage_pack healing(sf::Int32 value, sf::Uint64 receiver_id) {
 	return damage_pack{-value, damage_types::UNDEFINED, receiver_id, no_damage_dealer};
 }
 
-void play_change_health_animation(size_t to_index, int change_health);
+void play_change_health_animation(sf::Uint64 to_index, sf::Int32 change_health);
 
 class healths_manager : public base_manager<health_field, health_field>
 {
@@ -84,13 +84,13 @@ public:
 			impl = callback;
 			return *this;
 		}
-		operator std::function<int(health_field&, const damage_pack&)>() {
+		operator std::function<sf::Int32(health_field&, const damage_pack&)>() {
 			return impl;
 		}
-		int operator()(health_field& entity_id, const damage_pack& dmg) {
+		sf::Int32 operator()(health_field& entity_id, const damage_pack& dmg) {
 			return impl(entity_id, dmg);
 		}
-		std::function<int(health_field&, const damage_pack&)> impl;
+		std::function<sf::Int32(health_field&, const damage_pack&)> impl;
 	};
 
 public:
@@ -100,18 +100,18 @@ public:
 	};
 
 private:
-	static std::unordered_map<std::size_t, std::unordered_map<std::size_t, std::function<void(const damage_pack&)>>>
+	static std::unordered_map<sf::Uint64, std::unordered_map<sf::Uint64, std::function<void(const damage_pack&)>>>
 			on_receive_damage_before_callbacks;
 
-	static std::unordered_map<std::size_t, std::unordered_map<std::size_t, std::function<void(const damage_pack&)>>>
+	static std::unordered_map<sf::Uint64, std::unordered_map<sf::Uint64, std::function<void(const damage_pack&)>>>
 			on_receive_damage_after_callbacks;
 
-	static std::unordered_map<std::size_t, damage_receiver> damage_receivers;
+	static std::unordered_map<sf::Uint64, damage_receiver> damage_receivers;
 
 public:
 
-	static std::unordered_map<std::size_t, int> get_map() {
-		std::unordered_map<std::size_t, int> returned_map;
+	static std::unordered_map<sf::Uint64, sf::Int32> get_map() {
+		std::unordered_map<sf::Uint64, sf::Int32> returned_map;
 
 		for (auto&& elem : map_) {
 			returned_map.insert(std::make_pair(elem.first, elem.second.health));
@@ -120,7 +120,7 @@ public:
 		return std::move(returned_map);
 	}
 
-	static inline void add_component(std::size_t entity_id, const managed_component_type& component)
+	static inline void add_component(sf::Uint64 entity_id, const managed_component_type& component)
 	{
 		managed_component_type health_component = component;
 		health_component.health = health_component.base_health;
@@ -134,7 +134,7 @@ public:
 			on_receive_damage_after_callbacks.erase(entity_id);
 		});
 	}
-	static inline int receive_damage(const damage_pack& dmg)
+	static inline sf::Int32 receive_damage(const damage_pack& dmg)
 	{
 		damage_pack damage_pack = dmg;
 		damage_pack.damage_value += modifications_manager::damage_receiver_modifier_value(dmg.damage_receiver_id);
@@ -155,28 +155,28 @@ public:
 
 		return received_damage;
 	}
-	static bool is_destructible(size_t entity_id) {
+	static bool is_destructible(sf::Uint64 entity_id) {
 		auto& health_pack = component_reference_for(entity_id);
 		return health_pack.is_destructible;
 	}
-	static void set_destructible(size_t entity_id, bool value) {
+	static void set_destructible(sf::Uint64 entity_id, bool value) {
 		auto& health_pack = component_reference_for(entity_id);
 		health_pack.is_destructible = value;
 	}
 
 	template <typename DamageReceiver>
-	static void set_damage_receiver(size_t entity_id, DamageReceiver damage_receiver) {
+	static void set_damage_receiver(sf::Uint64 entity_id, DamageReceiver damage_receiver) {
 		damage_receivers[entity_id] = damage_receiver;
 	}
-	static std::function<int(health_field&, const damage_pack&)> get_damage_receiver(size_t entity_id) {
+	static std::function<sf::Int32(health_field&, const damage_pack&)> get_damage_receiver(sf::Uint64 entity_id) {
 		return damage_receivers[entity_id];
 	}
 
 	template <typename Callback>
-	static std::size_t on_receive_damage(size_t entity_id, Callback callback, const on_receive_damage_policy& policy) {
+	static sf::Uint64 on_receive_damage(sf::Uint64 entity_id, Callback callback, const on_receive_damage_policy& policy) {
 //		on_receive_damage_callbacks[entity_id].push_back(std::make_pair(policy, callback));
 
-		static std::unordered_map<std::size_t, std::size_t> id_gen;
+		static std::unordered_map<sf::Uint64, sf::Uint64> id_gen;
 
 		if (policy == on_receive_damage_policy::before) {
 			auto callback_id = id_gen[entity_id]++;
@@ -189,14 +189,14 @@ public:
 			return callback_id;
 		}
 	}
-	static void remove_on_receive_damage(size_t entity_id, size_t callback_id) {
+	static void remove_on_receive_damage(sf::Uint64 entity_id, sf::Uint64 callback_id) {
 		on_receive_damage_before_callbacks[entity_id].erase(callback_id);
 		on_receive_damage_after_callbacks[entity_id].erase(callback_id);
 	}
 };
 
 template <>
-inline void add_component_of_type<health_field>(std::size_t entity_id, const health_field& component) {
+inline void add_component_of_type<health_field>(sf::Uint64 entity_id, const health_field& component) {
 	healths_manager::add_component(entity_id, component);
 }
 

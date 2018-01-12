@@ -5,11 +5,11 @@
 #include "moveable.h"
 #include "damage_dealers.h"
 
-ball_and_chain::ball_and_chain(std::size_t entity_id) : entity_id(entity_id) {
+ball_and_chain::ball_and_chain(sf::Uint64 entity_id) : entity_id(entity_id) {
 
 }
 
-void ball_and_chain::use(size_t index_on) {
+void ball_and_chain::use(sf::Uint64 index_on) {
 
 	if (used_)
 		return;
@@ -19,7 +19,7 @@ void ball_and_chain::use(size_t index_on) {
 	auto& enemy_abilities = abilities_manager::component_for(enemy_id);
 	auto moveable_ptr =  std::static_pointer_cast<moveable>(enemy_abilities.type(abilities::ability_types::moving));
 
-	moveable_ptr->set_cost_callback([dealer_id = entity_id, dmg = damage_per_cost, enemy_id](int cost) {
+	moveable_ptr->set_cost_callback([dealer_id = entity_id, dmg = damage_per_cost, enemy_id](sf::Int32 cost) {
 		damage_dealers::standard_damage_dealer(magic_damage(cost * dmg, enemy_id, dealer_id));
 	});
 

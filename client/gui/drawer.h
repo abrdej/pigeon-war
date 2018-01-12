@@ -28,7 +28,7 @@ public:
 	}
 
 private:
-	void draw_selection(size_t selection)
+	void draw_selection(sf::Uint64 selection)
 	{
 		if (selection == states::no_selected_index)
 			return;
@@ -44,7 +44,7 @@ private:
 		for (auto& possible_movement : lstate.possible_movements)
 			draw_possible_movement(possible_movement);
 	}
-	void draw_possible_movement(size_t index)
+	void draw_possible_movement(sf::Uint64 index)
 	{
 		if (lstate.actual_target_type == states::target_types::non)
 			return;

@@ -11,7 +11,7 @@
 class magic_bullet final : public path_target_ability<4>, protected per_turn_callback
 {
 public:
-    explicit magic_bullet(std::size_t entity_id);
+    explicit magic_bullet(sf::Uint64 entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::magic_bullet;
@@ -20,12 +20,12 @@ public:
     std::string hint() const override;
 
 private:
-    void use(size_t index_on);
+    void use(sf::Uint64 index_on);
 
 private:
-    int magic_power{0};
-    int magic_power_accumulation_amount{10};
-    int magic_power_drain_amount{5};
+    sf::Int32 magic_power{0};
+    sf::Int32 magic_power_accumulation_amount{10};
+    sf::Int32 magic_power_drain_amount{5};
     bool used{false};
 };
 

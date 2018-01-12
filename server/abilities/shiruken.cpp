@@ -3,7 +3,7 @@
 #include "shiruken.h"
 #include "damage_dealers.h"
 
-void shiruken::use(size_t index_on) {
+void shiruken::use(sf::Uint64 index_on) {
     if (used)
         return;
 

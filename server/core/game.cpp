@@ -23,11 +23,11 @@
 game::game() {
 }
 
-void game::initialize(std::array<std::vector<std::size_t>, board::cols_n * board::rows_n>& x) {
+void game::initialize(std::array<std::vector<sf::Uint64>, board::cols_n * board::rows_n>& x) {
 	x = board::fields_;
 }
 
-void game::on_board(size_t col, size_t row)
+void game::on_board(sf::Uint64 col, sf::Uint64 row)
 {
 	using namespace states;
 
@@ -63,59 +63,59 @@ void game::on_board(size_t col, size_t row)
 	}
 }
 
-void game::on_board_2(std::size_t col, std::size_t row, local_state& lstate) {
+//void game::on_board_2(sf::Uint64 col, sf::Uint64 row, local_state& lstate) {
+//
+//	using namespace states;
+//
+//	auto index = board::to_index(col, row);
+//
+//	if (board::empty(index) && state_controller::actual_state_ == states_types::waiting)
+//		return;
+//
+//	if (!board::empty(index)) {
+//
+//		lstate.selected_index = index;
+//
+//		auto entity_id = board::at(index);
+//		auto& entity_abilities = abilities_manager::component_for(entity_id);
+//
+//		auto bkpm = state_controller::possible_movements_;
+//		auto bkatt = state_controller::actual_targeting_type_;
+//
+//		if (entity_abilities.is_active) {
+//			auto moveable = entity_abilities.at(0);
+//			if (moveable) {
+//				moveable->operator()(index);
+//			}
+//		}
+//
+//		lstate.possible_movements = state_controller::possible_movements_;
+//		lstate.actual_target_type = state_controller::actual_targeting_type_;
+//
+//		lstate.button_bitmaps.fill(bitmap_key::none);
+//
+//		auto id = board::at(index);
+//		if (id != board::empty_id) {
+//			auto& bitmap_field = bitmap_field_manager::component_for(id);
+//			lstate.button_bitmaps[0] = bitmap_field.bmt_key;
+//
+//			auto& abilities = abilities_manager::component_for(board::at(index));
+//			for (sf::Uint64 i = 1; i < 6; ++i) {
+//				auto ability = abilities.at(i - 1);
+//				if (ability) {
+//					lstate.button_bitmaps[i] = ability->get_bitmap_key();
+//				}
+//			}
+//		}
+//
+//		lstate.entity_name = names_manager::component_for(board::at(index));
+//
+//		state_controller::possible_movements_ = bkpm;
+//		state_controller::actual_targeting_type_ = bkatt;
+//	}
+//}
 
-	using namespace states;
-
-	auto index = board::to_index(col, row);
-
-	if (board::empty(index) && state_controller::actual_state_ == states_types::waiting)
-		return;
-
-	if (!board::empty(index)) {
-
-		lstate.selected_index = index;
-
-		auto entity_id = board::at(index);
-		auto& entity_abilities = abilities_manager::component_for(entity_id);
-
-		auto bkpm = state_controller::possible_movements_;
-		auto bkatt = state_controller::actual_targeting_type_;
-
-		if (entity_abilities.is_active) {
-			auto moveable = entity_abilities.at(0);
-			if (moveable) {
-				moveable->operator()(index);
-			}
-		}
-
-		lstate.possible_movements = state_controller::possible_movements_;
-		lstate.actual_target_type = state_controller::actual_targeting_type_;
-
-		lstate.button_bitmaps.fill(bitmap_key::none);
-
-		auto id = board::at(index);
-		if (id != board::empty_id) {
-			auto& bitmap_field = bitmap_field_manager::component_for(id);
-			lstate.button_bitmaps[0] = bitmap_field.bmt_key;
-
-			auto& abilities = abilities_manager::component_for(board::at(index));
-			for (std::size_t i = 1; i < 6; ++i) {
-				auto ability = abilities.at(i - 1);
-				if (ability) {
-					lstate.button_bitmaps[i] = ability->get_bitmap_key();
-				}
-			}
-		}
-
-		lstate.entity_name = names_manager::component_for(board::at(index));
-
-		state_controller::possible_movements_ = bkpm;
-		state_controller::actual_targeting_type_ = bkatt;
-	}
-}
-
-void game::on_button(size_t n)
+void game::on_button(sf::Uint64 n)
 {
 	if (n >= 0 && n <= 3) // 4 is passive
 	{
@@ -154,40 +154,40 @@ void game::on_button(size_t n)
 	}
 }
 
-void game::on_button_2(std::size_t n, local_state& lstate) {
+//void game::on_button_2(sf::Uint64 n, local_state& lstate) {
+//
+//	if (n >= 0 && n <= 3) // 4 is passive
+//	{
+//		auto selected_index = lstate.selected_index;
+//
+//		//if (!players_funcs::player_entity(selected_index)) {
+//		//	std::cout << "not player entity\n";
+//		//	return;
+//		//}
+//
+//		auto entity_id = board::at(selected_index);
+//		auto& entity_abilities = abilities_manager::component_for(entity_id);
+//
+//		auto bkpm = states::state_controller::possible_movements_;
+//		auto bkatt = states::state_controller::actual_targeting_type_;
+//
+//		if (entity_abilities.is_active) {
+//			auto entity_ability = entity_abilities.at(n);
+//			if (entity_ability) {
+//				entity_ability->operator()(states::state_controller::selected_index_);
+//			}
+//		}
+//
+//		lstate.possible_movements = states::state_controller::possible_movements_;
+//		lstate.actual_target_type = states::state_controller::actual_targeting_type_;
+//
+//		states::state_controller::possible_movements_ = bkpm;
+//		states::state_controller::actual_targeting_type_ = bkatt;
+//
+//	}
+//}
 
-	if (n >= 0 && n <= 3) // 4 is passive
-	{
-		auto selected_index = lstate.selected_index;
-
-		//if (!players_funcs::player_entity(selected_index)) {
-		//	std::cout << "not player entity\n";
-		//	return;
-		//}
-
-		auto entity_id = board::at(selected_index);
-		auto& entity_abilities = abilities_manager::component_for(entity_id);
-
-		auto bkpm = states::state_controller::possible_movements_;
-		auto bkatt = states::state_controller::actual_targeting_type_;
-
-		if (entity_abilities.is_active) {
-			auto entity_ability = entity_abilities.at(n);
-			if (entity_ability) {
-				entity_ability->operator()(states::state_controller::selected_index_);
-			}
-		}
-
-		lstate.possible_movements = states::state_controller::possible_movements_;
-		lstate.actual_target_type = states::state_controller::actual_targeting_type_;
-
-		states::state_controller::possible_movements_ = bkpm;
-		states::state_controller::actual_targeting_type_ = bkatt;
-
-	}
-}
-
-std::string game::get_button_description(std::size_t selected_index, std::size_t n) {
+std::string game::get_button_description(sf::Uint64 selected_index, sf::Uint64 n) {
 
 	auto entity_id = board::at(selected_index);
 	auto& entity_abilities = abilities_manager::component_for(entity_id);
@@ -214,10 +214,10 @@ void game::victory() {
 
 //void game::create_werewolf()
 //{
-//	size_t wolf1_id = entity_manager::create<wolf>();
-//	size_t wolf2_id = entity_manager::create<wolf>();
-//	size_t wolf3_id = entity_manager::create<wolf>();
-//	size_t wolf4_id = entity_manager::create<wolf>();
+//	sf::Uint64 wolf1_id = entity_manager::create<wolf>();
+//	sf::Uint64 wolf2_id = entity_manager::create<wolf>();
+//	sf::Uint64 wolf3_id = entity_manager::create<wolf>();
+//	sf::Uint64 wolf4_id = entity_manager::create<wolf>();
 //
 //	animations_queue::push_animation(animation_types::flash_bitmap,
 //									 board::to_index(13, 5),

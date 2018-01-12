@@ -6,6 +6,7 @@
 #include <map>
 #include <list>
 #include <limits>
+#include <SFML/Config.hpp>
 
 template <typename T, typename C>
 class graph;
@@ -24,8 +25,8 @@ struct vertex
 	template <typename T, typename C>
 	friend class graph;
 
-	friend void djist(graph<std::string, int>& grph, const std::string& initial_node,
-		std::map<std::string, int>& distances_map,
+	friend void djist(graph<std::string, sf::Int32>& grph, const std::string& initial_node,
+		std::map<std::string, sf::Int32>& distances_map,
 		std::map<std::string, std::string>& sequence_map);
 
 	template <typename KT, typename CT>
@@ -52,12 +53,12 @@ struct graph
 
 	inline void add_vertex(const key_type& key);
 	inline void add_egde(const key_type& from, const key_type& to, const cost_type& cost = cost_type());
-	inline size_t size() const { return verticies_.size(); }
+	inline sf::Uint64 size() const { return verticies_.size(); }
 
 	map_type verticies_;
 
-	friend void djist(graph<std::string, int>& grph, const std::string& initial_node,
-		std::map<std::string, int>& distances_map,
+	friend void djist(graph<std::string, sf::Int32>& grph, const std::string& initial_node,
+		std::map<std::string, sf::Int32>& distances_map,
 		std::map<std::string, std::string>& sequence_map);
 
 	template <typename KT, typename CT>
@@ -87,7 +88,7 @@ inline void graph<Key, CostType>::add_egde(const key_type& from, const key_type&
 	verticies_[from].adj_list_.push_back(std::make_pair(to, cost));
 }
 
-typedef std::pair<std::string, int> pair_type;
+typedef std::pair<std::string, sf::Int32> pair_type;
 
 struct mypair_comp
 {
@@ -104,8 +105,8 @@ void fill_map(const std::map<KeyType, ValueType1>& source, std::map<KeyType, Val
 		destination[it->first] = value;
 }
 /*
-void djist(graph<std::string, int>& grph, const std::string& initial_node,
-	std::map<std::string, int>& distances_map,
+void djist(graph<std::string, sf::Int32>& grph, const std::string& initial_node,
+	std::map<std::string, sf::Int32>& distances_map,
 	std::map<std::string, std::string>& sequence_map)
 {
 	// get verticies
@@ -118,24 +119,24 @@ void djist(graph<std::string, int>& grph, const std::string& initial_node,
 
 	auto& start_key = init_it->first;
 
-	typedef std::pair<std::string, int> path_t;
+	typedef std::pair<std::string, sf::Int32> path_t;
 	path_t vrec;
 
 	std::priority_queue<path_t, std::vector<path_t>, mypair_comp> pq;
 	pq.push(std::make_pair(start_key, 0));
 
 	// scwolfch map
-	std::map<std::string, int> scwolfch_map;
+	std::map<std::string, sf::Int32> scwolfch_map;
 	fill_map(verticies, scwolfch_map, 0);
 
 	// distance map
-	fill_map(verticies, distances_map, std::numeric_limits<int>::max());
+	fill_map(verticies, distances_map, std::numeric_limits<sf::Int32>::max());
 	distances_map[start_key] = 0;
 
 	// sequence map
 	sequence_map[start_key] = "";
 
-	for (size_t nodes_seen = 0; nodes_seen < verticies.size(); ++nodes_seen)
+	for (sf::Uint64 nodes_seen = 0; nodes_seen < verticies.size(); ++nodes_seen)
 	{
 		do
 		{
@@ -151,7 +152,7 @@ void djist(graph<std::string, int>& grph, const std::string& initial_node,
 		auto& adj_list = verticies[v_key].adj_list_;
 		scwolfch_map[v_key] = 1;
 
-		for (size_t i = 0; i < adj_list.size(); ++i)
+		for (sf::Uint64 i = 0; i < adj_list.size(); ++i)
 		{
 			auto& edge = adj_list[i];
 			auto& w_dest_key = edge.first;
@@ -203,12 +204,12 @@ void breadth_search(graph<KeyType, CostType>& grph,
 		auto& v = verticies[v_key];
 		q.pop_front();
 
-		for (size_t i = 0; i < v.adj_list_.size(); ++i)
+		for (sf::Uint64 i = 0; i < v.adj_list_.size(); ++i)
 		{
 			auto& edge = v.adj_list_[i];
 			auto& w_dest_key = edge.first;
 
-			if (distances_map[w_dest_key] == std::numeric_limits<int>::max())
+			if (distances_map[w_dest_key] == std::numeric_limits<sf::Int32>::max())
 			{
 				distances_map[w_dest_key] = distances_map[v_key] + 1;
 				sequence_map[w_dest_key] = v_key;
@@ -259,12 +260,12 @@ KeyType breadth_search(graph<KeyType, CostType>& grph,
 		if (condition_func(v_key))
 			return v_key;
 
-		for (size_t i = 0; i < v.adj_list_.size(); ++i)
+		for (sf::Uint64 i = 0; i < v.adj_list_.size(); ++i)
 		{
 			auto& edge = v.adj_list_[i];
 			auto& w_dest_key = edge.first;
 
-			if (distances_map[w_dest_key] == std::numeric_limits<int>::max())
+			if (distances_map[w_dest_key] == std::numeric_limits<sf::Int32>::max())
 			{
 				distances_map[w_dest_key] = distances_map[v_key] + 1;
 				sequence_map[w_dest_key] = v_key;

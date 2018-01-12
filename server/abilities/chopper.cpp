@@ -8,7 +8,7 @@
 #include "chopper.h"
 #include "damage_dealers.h"
 
-chopper::chopper(std::size_t entity_id) : entity_id(entity_id) {
+chopper::chopper(sf::Uint64 entity_id) : entity_id(entity_id) {
     onEveryRound([this]() {
         used = false;
     });
@@ -18,7 +18,7 @@ chopper::chopper(std::size_t entity_id) : entity_id(entity_id) {
 
             auto index = board::index_for(entity_id);
 
-            std::vector<size_t> neighboring;
+            std::vector<sf::Uint64> neighboring;
             board_helper::neighboring_fields(index, neighboring, false);
 
             for (auto& attack_index : neighboring) {
@@ -39,7 +39,7 @@ chopper::chopper(std::size_t entity_id) : entity_id(entity_id) {
     });
 }
 
-void chopper::use(size_t index_on) {
+void chopper::use(sf::Uint64 index_on) {
 
     if (used) {
         return;

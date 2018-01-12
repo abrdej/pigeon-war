@@ -9,38 +9,38 @@ class path_finder
 {
 public:
 	explicit path_finder(bool all_fields = false);
-	void calc(size_t from_index);
+	void calc(sf::Uint64 from_index);
 
-	size_t find_first_satisfy_conditions(size_t from_index,
-										 const std::function<bool(size_t)>& condition_fn);
+	sf::Uint64 find_first_satisfy_conditions(sf::Uint64 from_index,
+										 const std::function<bool(sf::Uint64)>& condition_fn);
 
-	void get_possible_movements(std::vector<size_t>& movements,
-								std::vector<size_t>& costs,
-								int range);
+	void get_possible_movements(std::vector<sf::Uint64>& movements,
+								std::vector<sf::Uint64>& costs,
+								sf::Int32 range);
 
-	size_t distance_to(size_t index);
-	void path_to(size_t index, std::vector<size_t>& path);
+	sf::Uint64 distance_to(sf::Uint64 index);
+	void path_to(sf::Uint64 index, std::vector<sf::Uint64>& path);
 
 private:
-	graph<int, int> graph_;
-	std::map<int, int> distance_map_;
-	std::map<int, int> sequence_map_;
-	size_t start_index_;
+	graph<sf::Int32, sf::Int32> graph_;
+	std::map<sf::Int32, sf::Int32> distance_map_;
+	std::map<sf::Int32, sf::Int32> sequence_map_;
+	sf::Uint64 start_index_;
 };
 
 namespace board_helper
 {
-void calc_straight(size_t from_index,
-				   std::vector<size_t>& movements,
-				   std::vector<size_t>& costs,
-				   int range,
+void calc_straight(sf::Uint64 from_index,
+				   std::vector<sf::Uint64>& movements,
+				   std::vector<sf::Uint64>& costs,
+				   sf::Int32 range,
 				   bool skip_obstacles = false);
 
-void neighboring_fields(size_t for_index, std::vector<size_t>& fields, bool available);
+void neighboring_fields(sf::Uint64 for_index, std::vector<sf::Uint64>& fields, bool available);
 
-void circle(size_t for_index, std::vector<size_t>& fields, bool available);
+void circle(sf::Uint64 for_index, std::vector<sf::Uint64>& fields, bool available);
 
-void all_free(std::vector<size_t>& fields);
+void all_free(std::vector<sf::Uint64>& fields);
 };
 
 #endif

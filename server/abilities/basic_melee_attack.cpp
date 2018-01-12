@@ -4,7 +4,7 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 
-void basic_melee_attack::use(size_t index_on)
+void basic_melee_attack::use(sf::Uint64 index_on)
 {
 	if (used) {
 		return;

@@ -10,7 +10,7 @@
 
 class giant_ram final : public straight_target_ability<5, states::target_types::enemy, true> {
 public:
-    explicit giant_ram(std::size_t entity_id);
+    explicit giant_ram(sf::Uint64 entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::giant_ram;
@@ -19,12 +19,12 @@ public:
     std::string hint() const override;
 
 private:
-    void prepare(std::size_t for_index) override;
-    void use(size_t index_on) override;
+    void prepare(sf::Uint64 for_index) override;
+    void use(sf::Uint64 index_on) override;
 
 private:
-    std::size_t entity_id;
-    const int damage = 15;
+    sf::Uint64 entity_id;
+    const sf::Int32 damage = 15;
     bool used{false};
 };
 

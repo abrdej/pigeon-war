@@ -13,32 +13,32 @@ namespace ai
 class ai_brain
 {
 public:
-	explicit ai_brain(std::size_t player_id);
+	explicit ai_brain(sf::Uint64 player_id);
 	void do_turn();
 private:
-	void move_entity(size_t entity_index);
-	//bool attack_if_can(size_t from_index, size_t on_index);
-	//void go_in_direction(size_t from_index, size_t to_index);
+	void move_entity(sf::Uint64 entity_index);
+	//bool attack_if_can(sf::Uint64 from_index, sf::Uint64 on_index);
+	//void go_in_direction(sf::Uint64 from_index, sf::Uint64 to_index);
 private:
-	const std::size_t player_id;
+	const sf::Uint64 player_id;
 };
 
 namespace behavior_tree_tasks
 {
 struct blackboard
 {
-	blackboard(std::size_t player_id,
-			   size_t entity_index)
+	blackboard(sf::Uint64 player_id,
+			   sf::Uint64 entity_index)
 			: player_id(player_id),
 			  my_entity_index_(entity_index),
 			  nearest_enemy_index(-1),
 			  destination_index(-1)
 	{
 	}
-	std::size_t player_id;
-	size_t my_entity_index_;
-	size_t nearest_enemy_index;
-	size_t destination_index;
+	sf::Uint64 player_id;
+	sf::Uint64 my_entity_index_;
+	sf::Uint64 nearest_enemy_index;
+	sf::Uint64 destination_index;
 };
 
 template <typename TaskType>

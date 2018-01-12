@@ -2,13 +2,13 @@
 #include "sniper_shot.h"
 #include "damage_dealers.h"
 
-void sniper_shot::prepare(size_t for_index) {
+void sniper_shot::prepare(sf::Uint64 for_index) {
 
     states::state_controller::selected_index_ = for_index;
 
     bool enemy_close = false;
 
-    std::vector<size_t> neighbors;
+    std::vector<sf::Uint64> neighbors;
     board_helper::neighboring_fields(for_index, neighbors, false);
     for (auto& neighbor_index : neighbors)
     {
@@ -29,13 +29,13 @@ void sniper_shot::prepare(size_t for_index) {
     }
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](size_t index)
+    states::state_controller::wait_for_action([this](sf::Uint64 index)
                                               {
                                                   return use(index);
                                               });
 }
 
-void sniper_shot::use(size_t index_on) {
+void sniper_shot::use(sf::Uint64 index_on) {
 
     if (used)
         return;
@@ -54,7 +54,7 @@ void sniper_shot::use(size_t index_on) {
 
     std::cout << "health_percent: " << health_percent << "\n";
 
-    int final_damage = damage;
+    sf::Int32 final_damage = damage;
 
     if (health_percent < 50.f) {
         final_damage += additional_damage;
@@ -65,7 +65,7 @@ void sniper_shot::use(size_t index_on) {
     used = true;
 }
 
-void sniper_shot::play_animation(std::size_t entity_id, size_t from_index, size_t to_index) {
+void sniper_shot::play_animation(sf::Uint64 entity_id, sf::Uint64 from_index, sf::Uint64 to_index) {
     animations_queue::push_animation(animation_types::move,
                                      from_index,
                                      to_index,

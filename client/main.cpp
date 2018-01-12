@@ -1,6 +1,6 @@
 #include "pigeon_war_client.h"
 
-int main() {
+sf::Int32 main() {
 
 	view::bitmap_center::load();
 

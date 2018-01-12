@@ -16,8 +16,8 @@ public:
         return bitmap_key::build_barrack;
     }
 
-    void prepare(size_t for_index) override;
-    void use(size_t index_on);
+    void prepare(sf::Uint64 for_index) override;
+    void use(sf::Uint64 index_on);
 
 private:
     bool built{false};
