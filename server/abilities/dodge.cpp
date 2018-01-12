@@ -3,7 +3,7 @@
 
 dodge::dodge(std::size_t entity_id) {
 
-	healths_manager::set_damage_receiver(entity_id, [this, entity_id, counter = 0](health_field& health_pack, const damage_pack& dmg) mutable {
+	healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
 		if (++counter == 3) {
 
@@ -22,4 +22,12 @@ dodge::dodge(std::size_t entity_id) {
 			return final_damage;
 		}
 	});
+}
+
+std::string dodge::hint() const {
+
+	std::string desc;
+	desc = "Dodge - samurai avoids every third attack.\n"
+			"Received attacks from the last dodge: " + std::to_string(counter) + ".";
+	return std::move(desc);
 }

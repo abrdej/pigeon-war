@@ -13,6 +13,9 @@ public:
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::sword_blow;
     }
+
+    std::string hint() const override;
+
 private:
     void use(size_t index_on) override;
 

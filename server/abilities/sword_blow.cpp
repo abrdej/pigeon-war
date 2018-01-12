@@ -2,6 +2,14 @@
 #include "core/states_controller.h"
 #include "damage_dealers.h"
 
+std::string sword_blow::hint() const {
+
+    std::string desc;
+    desc = "Sword Blow - deals damage of: " + std::to_string(damage) + " to all units around the samurai.\n"
+            "If the samurai hits minimum tree units he performs an additional blow.";
+    return std::move(desc);
+}
+
 void sword_blow::use(size_t index_on) {
 
     if (used)

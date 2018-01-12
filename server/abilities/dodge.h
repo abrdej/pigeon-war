@@ -7,13 +7,19 @@
 
 #include "ability.h"
 
-struct dodge final : passive_ability
+class dodge final : passive_ability
 {
+public:
 	explicit dodge(std::size_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::dodge;
 	}
+
+	std::string hint() const override;
+
+private:
+	int counter{0};
 };
 
 
