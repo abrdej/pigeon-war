@@ -10,6 +10,9 @@ prison_connection::prison_connection(std::size_t entity_id) : entity_id(entity_i
 
 void prison_connection::use(size_t index_on) {
 
+	if (used)
+		return;
+
 	auto enemy_id = board::at(index_on);
 
 	auto prison_connection_receiver =
@@ -60,4 +63,6 @@ void prison_connection::use(size_t index_on) {
 									 0,
 									 0,
 									 bitmap_key::sorcerer);
+
+	used = true;
 }
