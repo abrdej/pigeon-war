@@ -67,6 +67,8 @@ struct server {
 
 				if (selector.wait()) {
 
+					std::cout << "Wait\n";
+
 					if (selector.isReady(listener)) {
 
 						std::cout << "listener ready\n";
