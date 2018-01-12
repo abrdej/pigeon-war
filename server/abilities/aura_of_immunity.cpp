@@ -62,7 +62,8 @@ aura_of_immunity::aura_of_immunity(std::size_t entity_id)
 std::string aura_of_immunity::hint() const {
 
 	std::string desc;
-	desc = "Aura Of Immunity - giant offers a nearby allies aure which apply damage reduction of " + std::to_string(damage_reduction_for_friends) + ".\n"
+	desc = "Aura Of Immunity - giant offers a nearby allies aure\n"
+				   "which apply damage reduction of " + std::to_string(damage_reduction_for_friends) + ".\n"
 			"Giant also has constant damage reduction by " + std::to_string(damage_reduction_for_owner) + ".";
 
 	return std::move(desc);

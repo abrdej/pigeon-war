@@ -48,7 +48,8 @@ std::string giant_blow::hint() const {
 
     std::string desc;
     desc = "Giant Blow - deals damage of " + std::to_string(damage) + ".\n"
-            "Every third attack additionally causes that the enemy can attack only the giant for one turn.\n";
+            "Every third attack additionally causes that the enemy can attack\n"
+            "only the giant for one turn.\n";
 
     return std::move(desc);
 }
