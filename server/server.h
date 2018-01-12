@@ -32,7 +32,7 @@ struct server {
 
 	server() {
 
-		if (listener.listen(80) != sf::Socket::Done) {
+		if (listener.listen(443) != sf::Socket::Done) {
 			std::cout << "Listener error\n";
 		}
 
@@ -65,7 +65,7 @@ struct server {
 
 				std::cout << "Start\n";
 
-				if (selector.wait(sf::seconds(1.f))) {
+				if (selector.wait()) {
 
 					std::cout << "Wait\n";
 

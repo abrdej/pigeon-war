@@ -454,5 +454,5 @@ void strategy(game& game) {
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {
-    battle_with_a_golem(game);
+    skirmish(game);
 }
