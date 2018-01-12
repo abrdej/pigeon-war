@@ -69,6 +69,8 @@ struct server {
 
 					if (selector.isReady(listener)) {
 
+						std::cout << "listener ready\n";
+
 						auto client = std::make_shared<sf::TcpSocket>();
 
 						if (listener.accept(*client) != sf::Socket::Done)
