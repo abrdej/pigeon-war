@@ -31,7 +31,7 @@ pigeon_war_client::pigeon_war_client()
 
 void pigeon_war_client::run()
 {
-	auto status = socket.connect("80.211.186.19", 23);
+	auto status = socket.connect("80.211.186.19", 8080);
 	if (status != sf::Socket::Done) {
 		std::cout << "Socket connecting error\n";
 	}

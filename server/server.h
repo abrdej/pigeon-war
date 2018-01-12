@@ -63,6 +63,8 @@ struct server {
 
 			while (is_running) {
 
+				std::cout << "Start\n";
+
 				if (selector.wait()) {
 
 					if (selector.isReady(listener)) {
