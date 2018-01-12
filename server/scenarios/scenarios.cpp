@@ -263,17 +263,17 @@ void create_trees_1() {
     creator_helper::create_neutral_many<stone>({pos(1, 1), pos(4, 5)});
 }
 
-template <typename Tuple, typename F, sf::Uint64 ...Indices>
+template <typename Tuple, typename F, size_t ...Indices>
 void for_each_impl(Tuple&& tuple, F&& f, std::index_sequence<Indices...>) {
-    using swallow = sf::Int32[];
+    using swallow = int[];
     (void)swallow{1,
-                  (f(std::get<Indices>(std::forward<Tuple>(tuple))), void(), sf::Int32{})...
+                  (f(std::get<Indices>(std::forward<Tuple>(tuple))), void(), int{})...
     };
 }
 
 template <typename Tuple, typename F>
 void for_each(Tuple&& tuple, F&& f) {
-    constexpr sf::Uint64 N = std::tuple_size<std::remove_reference_t<Tuple>>::value;
+    constexpr size_t N = std::tuple_size<std::remove_reference_t<Tuple>>::value;
     for_each_impl(std::forward<Tuple>(tuple), std::forward<F>(f),
                   std::make_index_sequence<N>{});
 }
