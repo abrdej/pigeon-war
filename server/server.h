@@ -102,7 +102,7 @@ struct server {
 							clients.emplace_back(client);
 							selector.add(*client);
 
-							addresses.emplace(address, client_id);
+							//addresses.emplace(address, client_id);
 							//}
 
 							// accept client and send data
