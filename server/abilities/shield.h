@@ -14,6 +14,8 @@ public:
         return bitmap_key::shield;
     }
 
+    std::string hint() const override;
+
 private:
     float range_attack_reduction{0.5f};
 };

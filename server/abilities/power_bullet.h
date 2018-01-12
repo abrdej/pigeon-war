@@ -16,6 +16,8 @@ public:
         return bitmap_key::power_bullet;
     }
 
+    std::string hint() const override;
+
 private:
     void use(size_t index_on) override;
 

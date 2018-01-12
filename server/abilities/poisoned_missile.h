@@ -16,12 +16,14 @@ public:
         return bitmap_key::poisoned_missile;
     }
 
+    std::string hint() const override;
+
 private:
     void use(size_t index_on);
 
 private:
     const int damage{6};
-    const int poison_power{3};
+    const int poison_power{5};
     const int poison_last{3};
 };
 

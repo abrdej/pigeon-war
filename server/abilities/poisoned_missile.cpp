@@ -19,10 +19,10 @@ void poisoned_missile::use(size_t index_on) {
     auto enemy_id = board::at(index_on);
 
     auto poison_receiver =
-            turn::turn_system::every_turn([this, enemy_id, counter = 0, pl = poison_last]() mutable {
+            turn::turn_system::every_turn([this, enemy_id, poison_damage = poison_power, counter = 0, pl = poison_last]() mutable {
 
                 if (counter++ % 2) {
-                    damage_dealers::standard_damage_dealer(special_damage(5, enemy_id));
+                    damage_dealers::standard_damage_dealer(special_damage(poison_damage, enemy_id));
                     if (counter == pl * 2) {
                         if (entity_manager::alive(enemy_id)) {
                             additions_manager::remove_component(enemy_id,
@@ -42,4 +42,14 @@ void poisoned_missile::use(size_t index_on) {
     moveable_ptr->refresh_range();
 
     used = true;
+}
+
+std::string poisoned_missile::hint() const {
+
+    std::string desc;
+    desc = "Poisoned Missile - deals damage of " + std::to_string(damage) + "\n"
+           " and poisons the opponent for " + std::to_string(poison_last) + " turn."
+            "Poison deals " + std::to_string(poison_power) + " damage per turn.";
+
+    return std::move(desc);
 }

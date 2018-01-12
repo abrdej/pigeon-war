@@ -53,7 +53,8 @@ std::string invisibility::hint() const {
 
 	std::string desc;
 
-	desc = "Invisibility - saberhand becomes invisible and can't receive any damage by " + std::to_string(duration) + " turns.\n"
+	desc = "Invisibility - saberhand becomes invisible and can't receive any damage\n"
+				   " through " + std::to_string(duration) + " turns.\n"
 			"This ability can be used only once per battle\n";
 
 	return std::move(desc);

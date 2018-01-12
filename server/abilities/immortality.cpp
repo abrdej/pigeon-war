@@ -26,3 +26,13 @@ immortality::immortality(std::size_t entity_id) : entity_id(entity_id) {
         return final_damage;
     });
 }
+
+std::string immortality::hint() const {
+
+    std::string desc;
+    desc = "Immortality - when the health of the warrior drops to zero\n"
+            "the warrior becomes immortal for one more turn.";
+
+    return std::move(desc);
+
+}

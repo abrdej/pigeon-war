@@ -4,7 +4,7 @@
 
 std::string blow_the_ax::hint() const {
     std::string desc;
-    desc = "Blow The Ax - offensive ability that deals damage of: " + std::to_string(damage) + " to single target.";
+    desc = "Blow The Ax - deals damage of: " + std::to_string(damage) + " to single target.";
     return std::move(desc);
 }
 

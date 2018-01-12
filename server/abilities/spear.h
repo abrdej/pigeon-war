@@ -17,9 +17,7 @@ public:
         return bitmap_key::spear;
     }
 
-    std::string hint() const override {
-        return "Accumulated damage: " + std::to_string(damage + accumulated_damage);
-    }
+    std::string hint() const override;
 
 private:
     void use(size_t index_on) override;
@@ -27,6 +25,7 @@ private:
 private:
     static const int range = 1;
     static const int damage = 6;
+    const int additional_damage{4};
     int accumulated_damage{0};
     std::size_t entity_id;
 };

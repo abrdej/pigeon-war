@@ -4,7 +4,7 @@
 
 spear::spear(std::size_t id) : entity_id(id) {
     healths_manager::on_receive_damage(entity_id, [this](const damage_pack& dmg) mutable {
-       accumulated_damage += 4;
+       accumulated_damage += additional_damage;
     }, healths_manager::on_receive_damage_policy::after);
 }
 
@@ -25,4 +25,15 @@ void spear::use(size_t index_on) {
     damage_dealers::standard_damage_dealer(melee_damage(full_damage, board::at(index_on), entity_id));
 
     accumulated_damage = 0;
+}
+
+std::string spear::hint() const {
+
+    std::string desc;
+    desc = "Spear - deals damage of " + std::to_string(damage) + ".\n"
+            "Additionally for every received attack, guardian accumulates "  + std::to_string(additional_damage) + " damage\n"
+            " which is consumed in the next attack.\n"
+            "Accumulated damage: " + std::to_string(accumulated_damage) + ".";
+
+    return std::move(desc);
 }

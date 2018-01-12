@@ -16,6 +16,8 @@ public:
         return bitmap_key::immortality;
     }
 
+    std::string hint() const override;
+
 private:
     std::size_t entity_id;
     turn::turn_system::strong_receiver receiver;

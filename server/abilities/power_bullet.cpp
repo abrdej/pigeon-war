@@ -40,3 +40,13 @@ void power_bullet::use(size_t index_on) {
 
     used = true;
 }
+
+std::string power_bullet::hint() const {
+
+    std::string desc;
+    desc = "Power Bullet - deals damage of " + std::to_string(full_damage) + ".\n"
+            "It also applies the effect of power bullet to enemy for one turn.\n"
+            "Enemies with power bullet effect receive only " + std::to_string(damage_with_power_bullet_effect) + " points of damage.";
+
+    return std::move(desc);
+}

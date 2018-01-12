@@ -16,3 +16,11 @@ shield::shield(std::size_t entity_id) {
         return final_damage;
     });
 }
+
+std::string shield::hint() const {
+
+    std::string desc;
+    desc = "Shield - guardian receive only 50% percent of ranged types of damage.\n";
+
+    return std::move(desc);
+}

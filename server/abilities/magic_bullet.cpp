@@ -40,6 +40,20 @@ magic_bullet::magic_bullet(std::size_t entity_id) {
     });
 }
 
+std::string magic_bullet::hint() const {
+
+    std::string desc;
+    desc = "Magic Bullet - monk accumulates " + std::to_string(magic_power_accumulation_amount) +
+            " magic points for each turn.\n"
+            "In addition, he accumulates " + std::to_string(magic_power_drain_amount) +
+            " magic points for each enemy in his neighborhood."
+            "Magic point can be used to deal damage equal to the amount of magic points.\n"
+            "Additionally, half of the damage that monk receive destroys the magic points\n"
+                    "which form a shiled.";
+
+    return std::move(desc);
+}
+
 void magic_bullet::use(size_t index_on) {
 
     if (used)

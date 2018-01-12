@@ -37,7 +37,8 @@ std::string hypnosis::hint() const {
 
 	std::string desc;
 
-	desc = "Hypnosis - causes that the enemy unit will not be albe to make a move in the next turn.\n"
+	desc = "Hypnosis - causes that the enemy unit will not be able to make a move\n"
+			" in the next turn.\n"
 			"It can be used only once per battle.";
 	return std::move(desc);
 }
