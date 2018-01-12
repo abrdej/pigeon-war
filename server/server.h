@@ -95,14 +95,14 @@ struct server {
 							//	selector.add(*client);
 
 							//} else {
-								client_id = clients.size();
-								std::cout << "New client, next id: " << client_id << "\n";
-								std::cout << " remote address: " << client->getRemoteAddress().toString() << "\n";
+							auto client_id = clients.size();
+							std::cout << "New client, next id: " << client_id << "\n";
+							std::cout << " remote address: " << client->getRemoteAddress().toString() << "\n";
 
-								clients.emplace_back(client);
-								selector.add(*client);
+							clients.emplace_back(client);
+							selector.add(*client);
 
-								addresses.emplace(address, client_id);
+							addresses.emplace(address, client_id);
 							//}
 
 							// accept client and send data
