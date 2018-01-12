@@ -46,10 +46,10 @@ std::string magic_bullet::hint() const {
     desc = "Magic Bullet - monk accumulates " + std::to_string(magic_power_accumulation_amount) +
             " magic points for each turn.\n"
             "In addition, he accumulates " + std::to_string(magic_power_drain_amount) +
-            " magic points for each enemy in his neighborhood."
+            " magic points for each enemy in his neighborhood.\n"
             "Magic point can be used to deal damage equal to the amount of magic points.\n"
-            "Additionally, half of the damage that monk receive destroys the magic points\n"
-                    "which form a shiled.";
+            "Additionally, half of the damage that monk receive firstly must destroys\n"
+                    " the magic shiled which is formed from this points.";
 
     return std::move(desc);
 }

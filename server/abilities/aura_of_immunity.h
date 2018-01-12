@@ -16,6 +16,8 @@ public:
 		return bitmap_key::defender;
 	}
 
+	std::string hint() const override;
+
 private:
 	std::size_t entity_id;
 	int damage_reduction_for_friends{1};

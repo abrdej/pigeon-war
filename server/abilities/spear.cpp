@@ -32,7 +32,7 @@ std::string spear::hint() const {
     std::string desc;
     desc = "Spear - deals damage of " + std::to_string(damage) + ".\n"
             "Additionally for every received attack, guardian accumulates "  + std::to_string(additional_damage) + " damage\n"
-            " which is consumed in the next attack.\n"
+            "which is consumed in the next attack.\n"
             "Accumulated damage: " + std::to_string(accumulated_damage) + ".";
 
     return std::move(desc);

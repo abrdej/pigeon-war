@@ -81,3 +81,13 @@ void giant_ram::use(size_t index_on) {
 
     used = true;
 }
+
+std::string giant_ram::hint() const {
+
+    std::string desc;
+    desc = "Giant Ram - the giant will accelerate and attack all units in his path.\n"
+            "Damage: " + std::to_string(damage) + ".\n"
+            "This ability can be used only once per battle.";
+
+    return std::move(desc);
+}

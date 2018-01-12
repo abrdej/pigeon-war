@@ -16,6 +16,8 @@ public:
         return (counter == 2) ? bitmap_key::giant_blow_special : bitmap_key::giant_blow;
     }
 
+    std::string hint() const override;
+
 private:
     void use(size_t index_on) override;
 

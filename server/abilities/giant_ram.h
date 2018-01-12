@@ -16,10 +16,11 @@ public:
         return bitmap_key::giant_ram;
     }
 
+    std::string hint() const override;
+
 private:
     void prepare(std::size_t for_index) override;
     void use(size_t index_on) override;
-    void play_animation(size_t from_index, size_t to_index);
 
 private:
     std::size_t entity_id;
