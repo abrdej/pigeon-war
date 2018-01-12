@@ -174,8 +174,6 @@ void pigeon_war_client::receive_messages() {
 			animations_service::handle(packet, state);
 		}
 	}
-
-	std::cout << "HGere\n";
 }
 
 void pigeon_war_client::update()

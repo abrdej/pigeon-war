@@ -120,7 +120,7 @@ change_health_animation::change_health_animation(change_health change_health_dat
 		  change_by_(change_health_data.change_by),
 		  duration_(std::chrono::milliseconds(300))
 {
-	font_.loadFromFile("verdanab.ttf");
+	font_.loadFromFile(resources_directory + "verdanab.ttf");
 
 	point_.x += view::constants::field_size / 4.;
 	point_.y -= view::constants::field_size / 3.;

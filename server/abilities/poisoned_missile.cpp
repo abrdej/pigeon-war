@@ -24,8 +24,10 @@ void poisoned_missile::use(size_t index_on) {
                 if (counter++ % 2) {
                     damage_dealers::standard_damage_dealer(special_damage(5, enemy_id));
                     if (counter == pl * 2) {
-                        additions_manager::remove_component(enemy_id,
-                                                            "poison");
+                        if (entity_manager::alive(enemy_id)) {
+                            additions_manager::remove_component(enemy_id,
+                                                                "poison");
+                        }
                     }
                 }
     });
