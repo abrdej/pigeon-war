@@ -25,3 +25,12 @@ void drain::use(size_t index_on)
 											entity_id));
 	used = true;
 }
+
+std::string drain::hint() const {
+
+	std::string desc;
+	desc = "Shoot - the shooter can give a double shot of: " +
+		   std::to_string(damage) + " damage.\n" +
+		   "\nRange: " + std::to_string(range) + ".";
+	return std::move(desc);
+}
