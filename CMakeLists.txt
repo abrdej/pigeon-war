@@ -224,8 +224,8 @@ set(CLIENT_SOURCE_FILES
 add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
 target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
 
-#add_executable(pigeonwar_server server/main.cpp ${SERVER_SOURCE_FILES})
-#target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
+add_executable(pigeonwar_server server/main.cpp ${SERVER_SOURCE_FILES})
+target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
 
 #add_executable(pigeonwar_hot_seat hot_seat.cpp)
 #target_link_libraries(pigeonwar_hot_seat ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})
