@@ -14,7 +14,7 @@ public:
 	explicit prison_connection(sf::Uint64 entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::protection_field;
+		return bitmap_key::prison_connection;
 	}
 
 private:
