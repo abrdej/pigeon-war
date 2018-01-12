@@ -60,3 +60,13 @@ void sabers::use(size_t index_on)
 
 	damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(index_on), entity_id));
 }
+
+std::string sabers::hint() const {
+
+	std::string desc;
+
+	desc = "Sabers - saberhand can acquire several neighboring targets\n"
+		   " and deal each of them damage of: " + std::to_string(damage) + ".";
+
+	return std::move(desc);
+}

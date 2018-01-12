@@ -86,3 +86,13 @@ void laser::use(size_t index_on) {
 
 	used = true;
 }
+
+std::string laser::hint() const {
+
+	std::string desc;
+	desc = "Laser - deals damage of " + std::to_string(damage) + "to all targets in line.\n"
+			"In addition, each hit target will now receive additional 1 point of damage from all units.\n"
+			"This effect stacks.";
+
+	return std::move(desc);
+}

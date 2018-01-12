@@ -20,10 +20,9 @@ void invisibility::use(size_t on_index)
 
     hide_me();
 
-	receiver = turn::turn_system::every_round([this]() {
-        ++turn_counter_;
+	receiver = turn::turn_system::every_turn([this]() {
 
-        if (turn_counter_ == 2) {
+        if (turn_counter_++ == 2 * duration) {
             show_me();
             receiver.reset();
         }
@@ -44,4 +43,14 @@ void invisibility::show_me()
 	bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::saberhand;
 
     healths_manager::set_destructible(entity_id, true);
+}
+
+std::string invisibility::hint() const {
+
+	std::string desc;
+
+	desc = "Invisibility - saberhand becomes invisible and can't receive any damage by " + std::to_string(duration) + " turns.\n"
+			"This ability can be used only once per battle\n";
+
+	return std::move(desc);
 }

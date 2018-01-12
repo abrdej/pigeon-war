@@ -32,3 +32,12 @@ void teleport::use(size_t from_index, size_t to_index) {
 
 	used = true;
 }
+
+std::string teleport::hint() const {
+
+	std::string desc;
+	desc = "Teleport - teleports the droid to a selected place on the map.\n"
+			"It can be used only once per battle.";
+
+	return std::move(desc);
+}

@@ -15,6 +15,8 @@ public:
 		return bitmap_key::teleport;
 	}
 
+	std::string hint() const override;
+
 private:
 	void prepare(size_t for_index) override;
 	void use(size_t from_index, size_t to_index);

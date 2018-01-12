@@ -13,6 +13,8 @@ public:
 		return bitmap_key::sabers;
 	}
 
+	std::string hint() const override;
+
 private:
 	void prepare(size_t for_index) override;
 	void target(size_t on);

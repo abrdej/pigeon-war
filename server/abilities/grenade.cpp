@@ -8,10 +8,10 @@
 std::string grenade::hint() const {
 
 	std::string desc;
-	std::string used_str = !used_ ? "It can be used once." : "It was used.";
+
 	desc = "Grenade - deals area damage of: " + std::to_string(damage) + " for main target\n"
 			"and half of that around.\n"
-		   + used_str;
+			"It can be used only once per battle.";
 	return std::move(desc);
 }
 

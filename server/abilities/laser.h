@@ -18,6 +18,8 @@ public:
 		return bitmap_key::laser;
 	}
 
+	std::string hint() const override;
+
 private:
 	void use(std::size_t index) override;
 
