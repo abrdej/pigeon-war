@@ -58,7 +58,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::tuple<TT...>& x)
 template <typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::vector<T>& x)
 {
-	packet << x.size();
+	packet << static_cast<sf::Uint64>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -129,7 +129,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::pair<T1, T2>& x)
 template <typename K, typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_map<K, T>& x)
 {
-	packet << x.size();
+	packet << static_cast<sf::Uint64>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -158,7 +158,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_map<K, T>& x)
 template <typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_set<T>& x)
 {
-	packet << x.size();
+	packet << static_cast<sf::Uint64>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
