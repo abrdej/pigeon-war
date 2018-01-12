@@ -32,7 +32,7 @@ struct server {
 
 	server() {
 
-		if (listener.listen(8081) != sf::Socket::Done) {
+		if (listener.listen(80) != sf::Socket::Done) {
 			std::cout << "Listener error\n";
 		}
 
@@ -77,22 +77,22 @@ struct server {
 
 						} else {
 
-							auto address = client->getRemoteAddress().toString();
+							//auto address = client->getRemoteAddress().toString();
 
-							auto it = addresses.find(address);
+							//auto it = addresses.find(address);
 
-							bool new_or_old = it != std::end(addresses);
+							//bool new_or_old = it != std::end(addresses);
 
-							std::size_t client_id;
+							//std::size_t client_id;
 
-							if (new_or_old) {
+							//if (new_or_old) {
 
-								client_id = it->second;
+							//	client_id = it->second;
 
-								clients[client_id] = client;
-								selector.add(*client);
+							//	clients[client_id] = client;
+							//	selector.add(*client);
 
-							} else {
+							//} else {
 								client_id = clients.size();
 								std::cout << "New client, next id: " << client_id << "\n";
 								std::cout << " remote address: " << client->getRemoteAddress().toString() << "\n";
@@ -101,9 +101,7 @@ struct server {
 								selector.add(*client);
 
 								addresses.emplace(address, client_id);
-							}
-
-							//send_notification_to(client_id, make_packet())
+							//}
 
 							// accept client and send data
 							send_notification_to(client_id, make_packet(message_types::player_id, static_cast<int>(client_id)));

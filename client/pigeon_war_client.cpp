@@ -31,10 +31,14 @@ pigeon_war_client::pigeon_war_client()
 
 void pigeon_war_client::run()
 {
-	auto status = socket.connect("80.211.186.19", 8080);
+	std::cout << "Waiting for connection\n";
+
+	auto status = socket.connect("80.211.186.19", 80);
 	if (status != sf::Socket::Done) {
 		std::cout << "Socket connecting error\n";
 	}
+
+	std::cout << "Connected\n";
 
 	selector.add(socket);
 
@@ -165,6 +169,8 @@ void pigeon_war_client::receive_messages() {
 			animations_service::handle(packet, state);
 		}
 	}
+
+	std::cout << "HGere\n";
 }
 
 void pigeon_war_client::update()
