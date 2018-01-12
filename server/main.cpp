@@ -133,7 +133,7 @@ int main() {
 
 			binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
 
-			binder.send_notification_to(client_id, make_packet(message_types::local_state, get_local_state(g)));
+			binder.send_notification(make_packet(message_types::local_state, get_local_state(g)));
 			binder.send_notification(make_packet(message_types::game_state, get_game_state(g)));
 
 
