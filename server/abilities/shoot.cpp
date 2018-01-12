@@ -15,6 +15,16 @@ shoot::shoot()
 	});
 }
 
+std::string shoot::hint() const {
+
+	std::string desc;
+	desc = "Shoot - the shooter can give a double shot of: " +
+		   std::to_string(damage) + " damage.\n" +
+		   "Remaining shots: " + std::to_string(bullets) +
+		   "\nRange: " + std::to_string(range) + ".";
+	return std::move(desc);
+}
+
 void shoot::use(size_t index_on)
 {
 	if (bullets == 0)

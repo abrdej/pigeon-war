@@ -11,3 +11,10 @@ armor::armor(std::size_t entity_id) {
         return final_damage;
     });
 }
+
+std::string armor::hint() const {
+    std::string desc;
+    desc = "Armor - a passive ability that limits the maximum damage from a single attack\n"
+                   "that Destroyer can receive to: " + std::to_string(max_damage) +".";
+    return std::move(desc);
+}

@@ -5,6 +5,16 @@
 #include "damage_dealers.h"
 #include <chrono>
 
+std::string grenade::hint() const {
+
+	std::string desc;
+	std::string used_str = !used_ ? "It can be used once." : "It was used.";
+	desc = "Grenade - deals area damage of: " + std::to_string(damage) + " for main target\n"
+			"and half of that around.\n"
+		   + used_str;
+	return std::move(desc);
+}
+
 void grenade::use(size_t index_on)
 {
 	if (used_)
@@ -27,14 +37,3 @@ void grenade::use(size_t index_on)
 			damage_dealers::standard_damage_dealer(ranged_damage(damage / 2, board::at(index), entity_id));
 	}
 }
-
-//void grenade::play_animation(size_t from_index, size_t to_index, const std::vector<size_t>& neightbords)
-//{
-//
-//	animations_queue::push_animation(animation_types::move, from_index, to_index, -1, bitmap_key::grenade);
-//	animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::bum);
-//
-//	for (auto& index : neightbords)
-//		if (!board::empty(index))
-//			animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::shards);
-//}

@@ -14,14 +14,7 @@ public:
 		return bitmap_key::shoot;
 	}
 
-	std::string hint() const override {
-		std::string desc;
-		desc = "Shoot - the shooter can give a double shot of: " +
-				std::to_string(damage) + " damage.\n" +
-				"Remaining shots: " + std::to_string(bullets) +
-				"\nRange: " + std::to_string(range) + ".";
-		return std::move(desc);
-	}
+	std::string hint() const override;
 
 private:
 	void use(size_t index_on) override;

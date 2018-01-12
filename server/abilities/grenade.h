@@ -13,14 +13,8 @@ public:
 		return bitmap_key::grenade;
 	}
 
-	std::string hint() const override {
-		std::string desc;
-		std::string used_str = !used_ ? "It can be used once." : "It was used.";
-		desc = "Grenade - deals area damage of: " + std::to_string(damage) + " for main target\n"
-			   "and half of that around.\n"
-				+ used_str;
-		return std::move(desc);
-	}
+	std::string hint() const override;
+
 
 private:
 	void use(size_t index_on) override;

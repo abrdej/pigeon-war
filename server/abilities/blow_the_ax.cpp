@@ -2,6 +2,12 @@
 #include "blow_the_ax.h"
 #include "damage_dealers.h"
 
+std::string blow_the_ax::hint() const {
+    std::string desc;
+    desc = "Blow The Ax - offensive ability that deals damage of: " + std::to_string(damage) + " to single target.";
+    return std::move(desc);
+}
+
 void blow_the_ax::use(size_t index_on) {
 
     if (used)
