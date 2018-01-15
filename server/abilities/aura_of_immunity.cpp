@@ -4,18 +4,19 @@
 #include "core/board.h"
 #include "managers/additions_manager.h"
 #include "managers/modifications_manager.h"
-#include "core/animations_queue.h"
 
 aura_of_immunity::aura_of_immunity(sf::Uint64 entity_id)
 		: entity_id(entity_id) {
 
 	modifications_manager::modify_damage_receiver_modifier_by(entity_id, -damage_reduction_for_owner);
 
-	onEveryTurn([this]() {
+	onEveryTurn([entity_id = this->entity_id,
+			damage_reduction_for_friends = this->damage_reduction_for_friends,
+			damage_reduction_for_owner = this->damage_reduction_for_owner]() {
 
-		if (players_manager::get_active_player_id() == players_manager::player_for_entity(this->entity_id)) {
+		if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
 
-			auto caster_index = board::index_for(this->entity_id);
+			auto caster_index = board::index_for(entity_id);
 
 			std::vector<sf::Uint64> neighbors;
 			board_helper::neighboring_fields(caster_index, neighbors, false);
@@ -35,7 +36,7 @@ aura_of_immunity::aura_of_immunity(sf::Uint64 entity_id)
 						sender::send(message_types::animation, animation_def::aura_of_immunity, index);
 
 						auto aura_of_immunity_receiver =
-								turn::turn_system::every_turn([this, counter = 0, aura_last = 1, friend_id]() mutable {
+								turn::turn_system::every_turn([damage_reduction_for_friends, counter = 0, aura_last = 1, friend_id]() mutable {
 
 									if (counter++ == aura_last) {
 

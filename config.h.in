@@ -7,6 +7,7 @@
 
 #include <string>
 
-static const std::string resources_directory = "@RES_DIR@/";
+//static const std::string resources_directory = "@RES_DIR@/";
+static const std::string resources_directory = "res/";
 
 #endif //PIGEONWAR_CONFIG_H_IN_H
