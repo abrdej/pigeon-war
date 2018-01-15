@@ -219,7 +219,7 @@ set(CLIENT_SOURCE_FILES
         common/animations.h
 
         server/managers/entity_remover.cpp
-        common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h server/entities/golem.h server/entities/sorcerer.h common/message_types.h client/animations_service.cpp client/animations_service.h client/animations_handlers.cpp client/animations_handlers.h client/menu/menu.cpp client/menu/menu.h common/effects.h client/gui/hint.cpp client/gui/hint.h)
+        common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h server/entities/golem.h server/entities/sorcerer.h common/message_types.h client/animations_service.cpp client/animations_service.h client/animations_handlers.cpp client/animations_handlers.h client/menu/menu.cpp client/menu/menu.h common/effects.h client/gui/hint.cpp client/gui/hint.h client/screen.h client/menu_screen.cpp client/menu_screen.h)
 
 add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
 target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})

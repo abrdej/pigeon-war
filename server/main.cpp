@@ -19,6 +19,7 @@
 #include "server.h"
 #include "common/packet_helper.h"
 #include "sender.h"
+#include "cbor/cbor.h"
 
 game_state get_game_state(game& g) {
 
@@ -74,7 +75,7 @@ local_state get_local_state(game& g) {
 	return std::move(state);
 }
 
-sf::Int32 main() {
+int main() {
 
 	game g;
 
