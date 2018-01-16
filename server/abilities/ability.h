@@ -9,7 +9,7 @@ class ability
 protected:
 	virtual ~ability() = default;
 public:
-	void operator()(std::uint64_t index)
+	void operator()(std::uint32_t index)
 	{
 		prepare(index);
 	}
@@ -18,11 +18,11 @@ public:
 	}
 	virtual bitmap_key get_bitmap_key() const = 0;
 private:
-	virtual void prepare(std::uint64_t for_index) = 0;
+	virtual void prepare(std::uint32_t for_index) = 0;
 };
 
 struct passive_ability : ability {
-	void prepare(std::uint64_t for_index) override {}
+	void prepare(std::uint32_t for_index) override {}
 };
 
 #endif

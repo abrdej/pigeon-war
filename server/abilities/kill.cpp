@@ -12,14 +12,14 @@ kill::kill() {
 
 }
 
-void kill::prepare(std::uint64_t for_index) {
+void kill::prepare(std::uint32_t for_index) {
     states::state_controller::selected_index_ = for_index;
 
     path_finder path_finder(true);
     path_finder.calc(for_index);
 
-    std::vector<std::uint64_t> possible_fields;
-    std::vector<std::uint64_t> costs;
+    std::vector<std::uint32_t> possible_fields;
+    std::vector<std::uint32_t> costs;
     path_finder.get_possible_movements(states::state_controller::possible_movements_,
                                        costs,
                                        range);
@@ -37,13 +37,13 @@ void kill::prepare(std::uint64_t for_index) {
 //    }
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](std::uint64_t index)
+    states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return set_landing(index);
                                               });
 }
 
-void kill::set_landing(std::uint64_t for_index) {
+void kill::set_landing(std::uint32_t for_index) {
 
     target_index = for_index;
 
@@ -54,14 +54,14 @@ void kill::set_landing(std::uint64_t for_index) {
     }
 
     states::state_controller::actual_targeting_type_ = states::target_types::moving;
-    states::state_controller::wait_for_action([this](std::uint64_t index)
+    states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
 
 }
 
-void kill::use(std::uint64_t index_on) {
+void kill::use(std::uint32_t index_on) {
 
     states::state_controller::possible_movements_.clear();
 

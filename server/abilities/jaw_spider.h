@@ -19,7 +19,7 @@ public:
 	void set_used();
 
 private:
-	void use(std::uint64_t index_on) override;
+	void use(std::uint32_t index_on) override;
 
 private:
 	const std::int32_t damage = 8;

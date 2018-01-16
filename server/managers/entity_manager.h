@@ -11,18 +11,18 @@
 
 class entity_manager final
 {
-	static std::unordered_map<std::uint64_t, base_entity> entities;
+	static std::unordered_map<std::uint32_t, base_entity> entities;
 
-	static std::unordered_map<std::uint64_t, std::vector<std::function<void()>>> on_destroy_callbacks;
+	static std::unordered_map<std::uint32_t, std::vector<std::function<void()>>> on_destroy_callbacks;
 
-	inline static std::uint64_t generate_id() {
-		static std::uint64_t entity_id_generator = 0;
+	inline static std::uint32_t generate_id() {
+		static std::uint32_t entity_id_generator = 0;
 		return entity_id_generator++;
 	}
 
 public:
 	template <typename EntityFactory>
-	inline static std::uint64_t create()
+	inline static std::uint32_t create()
 	{
 		auto entity_id = generate_id();
 
@@ -30,14 +30,14 @@ public:
 
 		return entity_id;
 	}
-	static base_entity get(std::uint64_t entity_id) {
+	static base_entity get(std::uint32_t entity_id) {
 		return entities.at(entity_id);
 	}
-	inline static bool alive(std::uint64_t entity_id)
+	inline static bool alive(std::uint32_t entity_id)
 	{
 		return entities.find(entity_id) != std::end(entities);
 	}
-	inline static void destroy(std::uint64_t entity_id)
+	inline static void destroy(std::uint32_t entity_id)
 	{
 		entities.erase(entity_id);
 
@@ -45,11 +45,11 @@ public:
 
 		call_destroy_callbacks(entity_id);
 	}
-	static void on_destroy(std::uint64_t entity_id, const std::function<void()>& callback)
+	static void on_destroy(std::uint32_t entity_id, const std::function<void()>& callback)
 	{
 		on_destroy_callbacks[entity_id].push_back(callback);
 	}
-	static void call_destroy_callbacks(std::uint64_t entity_id)
+	static void call_destroy_callbacks(std::uint32_t entity_id)
 	{
 		for (auto& callback : on_destroy_callbacks[entity_id])
 			callback();

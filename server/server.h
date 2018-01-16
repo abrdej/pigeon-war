@@ -17,7 +17,7 @@
 #include "components/damage_taker.h"
 
 auto get_bitmaps() {
-	std::unordered_map<std::uint64_t, bitmap_key> returned_map;
+	std::unordered_map<std::uint32_t, bitmap_key> returned_map;
 	entity_manager::for_all([&returned_map](base_entity entity) {
 		returned_map.insert(std::make_pair(entity.entity_id, entity.get<bitmap_field>()->bmt_key));
 	});
@@ -35,9 +35,9 @@ struct server {
 	sf::TcpListener listener;
 
 	std::vector<std::shared_ptr<sf::TcpSocket>> clients;
-	std::unordered_map<std::string, std::uint64_t> addresses;
+	std::unordered_map<std::string, std::uint32_t> addresses;
 
-	boost::lockfree::spsc_queue<std::pair<std::uint64_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
+	boost::lockfree::spsc_queue<std::pair<std::uint32_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
 
 	server() {
 
@@ -53,10 +53,10 @@ struct server {
 	};
 
 	void send_notification(const sf::Packet& packet) {
-		packets_to_send.push(std::make_pair(std::numeric_limits<std::uint64_t>::max(), packet));
+		packets_to_send.push(std::make_pair(std::numeric_limits<std::uint32_t>::max(), packet));
 	}
 
-	void send_notification_to(std::uint64_t index, sf::Packet packet) {
+	void send_notification_to(std::uint32_t index, sf::Packet packet) {
 		packets_to_send.push(std::make_pair(index, packet));
 	}
 
@@ -119,11 +119,11 @@ struct server {
 					}
 				}
 
-				std::pair<std::uint64_t, sf::Packet> packet_pack;
+				std::pair<std::uint32_t, sf::Packet> packet_pack;
 
 				while (packets_to_send.pop(packet_pack)) {
 
-					if (packet_pack.first == std::numeric_limits<std::uint64_t>::max()) {
+					if (packet_pack.first == std::numeric_limits<std::uint32_t>::max()) {
 						for (auto&& client : clients) {
 							client->send(packet_pack.second);
 						}

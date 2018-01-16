@@ -15,7 +15,7 @@ spiral_of_fire::spiral_of_fire() {
 
 }
 
-void spiral_of_fire::use(std::uint64_t index_on) {
+void spiral_of_fire::use(std::uint32_t index_on) {
 
     if (!can_be_used)
         return;
@@ -33,7 +33,7 @@ void spiral_of_fire::use(std::uint64_t index_on) {
 
     sender::send(message_types::animation, animation_def::spiral_of_fire, used_from_index, index_to_move);
 
-    std::vector<std::uint64_t> indexes;
+    std::vector<std::uint32_t> indexes;
 
     if (xx != 0) {
         for (std::int32_t x = xx > 0 ? 1 : -1; std::abs(x) <= std::abs(xx); x = xx > 0 ? x + 1 : x - 1) {

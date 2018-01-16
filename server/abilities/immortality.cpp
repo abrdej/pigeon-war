@@ -5,7 +5,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-immortality::immortality(std::uint64_t entity_id) : entity_id(entity_id) {
+immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
 
     set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 

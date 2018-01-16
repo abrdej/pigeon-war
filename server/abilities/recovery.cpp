@@ -1,7 +1,7 @@
 #include <core/board.h>
 #include "recovery.h"
 
-recovery::recovery(std::uint64_t id) : entity_id(id) {
+recovery::recovery(std::uint32_t id) : entity_id(id) {
 
 //    on_receive_damage(entity_id, [this](const damage_pack&) {
 //        no_damage_counter = 0;

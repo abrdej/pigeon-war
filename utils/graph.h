@@ -53,7 +53,7 @@ struct graph
 
 	inline void add_vertex(const key_type& key);
 	inline void add_egde(const key_type& from, const key_type& to, const cost_type& cost = cost_type());
-	inline std::uint64_t size() const { return verticies_.size(); }
+	inline std::uint32_t size() const { return verticies_.size(); }
 
 	map_type verticies_;
 
@@ -136,7 +136,7 @@ void djist(graph<std::string, std::int32_t>& grph, const std::string& initial_no
 	// sequence map
 	sequence_map[start_key] = "";
 
-	for (std::uint64_t nodes_seen = 0; nodes_seen < verticies.size(); ++nodes_seen)
+	for (std::uint32_t nodes_seen = 0; nodes_seen < verticies.size(); ++nodes_seen)
 	{
 		do
 		{
@@ -152,7 +152,7 @@ void djist(graph<std::string, std::int32_t>& grph, const std::string& initial_no
 		auto& adj_list = verticies[v_key].adj_list_;
 		scwolfch_map[v_key] = 1;
 
-		for (std::uint64_t i = 0; i < adj_list.size(); ++i)
+		for (std::uint32_t i = 0; i < adj_list.size(); ++i)
 		{
 			auto& edge = adj_list[i];
 			auto& w_dest_key = edge.first;
@@ -204,7 +204,7 @@ void breadth_search(graph<KeyType, CostType>& grph,
 		auto& v = verticies[v_key];
 		q.pop_front();
 
-		for (std::uint64_t i = 0; i < v.adj_list_.size(); ++i)
+		for (std::uint32_t i = 0; i < v.adj_list_.size(); ++i)
 		{
 			auto& edge = v.adj_list_[i];
 			auto& w_dest_key = edge.first;
@@ -260,7 +260,7 @@ KeyType breadth_search(graph<KeyType, CostType>& grph,
 		if (condition_func(v_key))
 			return v_key;
 
-		for (std::uint64_t i = 0; i < v.adj_list_.size(); ++i)
+		for (std::uint32_t i = 0; i < v.adj_list_.size(); ++i)
 		{
 			auto& edge = v.adj_list_[i];
 			auto& w_dest_key = edge.first;

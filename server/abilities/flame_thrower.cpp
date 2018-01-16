@@ -5,7 +5,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void flame_thrower::use(std::uint64_t index_on) {
+void flame_thrower::use(std::uint32_t index_on) {
 
 	if (used)
 		return;
@@ -21,7 +21,7 @@ void flame_thrower::use(std::uint64_t index_on) {
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	std::vector<std::uint64_t> neightbords;
+	std::vector<std::uint32_t> neightbords;
 	board_helper::neighboring_fields(index_on, neightbords, false);
 
 	sender::send(message_types::animation, animation_def::flame_thrower, used_from_index, index_on);

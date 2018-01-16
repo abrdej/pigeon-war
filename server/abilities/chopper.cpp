@@ -8,7 +8,7 @@
 #include "common/animations.h"
 
 
-chopper::chopper(std::uint64_t entity_id) : entity_id(entity_id) {
+chopper::chopper(std::uint32_t entity_id) : entity_id(entity_id) {
     onEveryRound([this]() {
         used = false;
     });
@@ -18,7 +18,7 @@ chopper::chopper(std::uint64_t entity_id) : entity_id(entity_id) {
 
             auto index = board::index_for(entity_id);
 
-            std::vector<std::uint64_t> neighboring;
+            std::vector<std::uint32_t> neighboring;
             board_helper::neighboring_fields(index, neighboring, false);
 
             for (auto& attack_index : neighboring) {
@@ -39,7 +39,7 @@ chopper::chopper(std::uint64_t entity_id) : entity_id(entity_id) {
     });
 }
 
-void chopper::use(std::uint64_t index_on) {
+void chopper::use(std::uint32_t index_on) {
 
     if (used) {
         return;

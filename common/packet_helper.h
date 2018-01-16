@@ -12,17 +12,17 @@
 #include <unordered_set>
 #include "utils.h"
 
-//inline sf::Packet& operator <<(sf::Packet& packet, const std::uint64_t x)
+//inline sf::Packet& operator <<(sf::Packet& packet, const std::uint32_t x)
 //{
-//	std::uint64_t x_conv = x;
+//	std::uint32_t x_conv = x;
 //	packet << x_conv;
 //
 //	return packet;
 //}
 //
-//inline sf::Packet& operator >>(sf::Packet& packet, std::uint64_t& x)
+//inline sf::Packet& operator >>(sf::Packet& packet, std::uint32_t& x)
 //{
-//	std::uint64_t x_conv;
+//	std::uint32_t x_conv;
 //	packet >> x_conv;
 //
 //	x = x_conv;
@@ -58,7 +58,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::tuple<TT...>& x)
 template <typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::vector<T>& x)
 {
-	packet << static_cast<std::uint64_t>(x.size());
+	packet << static_cast<std::uint32_t>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -70,7 +70,7 @@ inline sf::Packet& operator <<(sf::Packet& packet, const std::vector<T>& x)
 template <typename T>
 inline sf::Packet& operator >>(sf::Packet& packet, std::vector<T>& x)
 {
-	std::uint64_t size;
+	std::uint32_t size;
 	packet >> size;
 
 	x.resize(size);
@@ -123,7 +123,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::pair<T1, T2>& x)
 template <typename K, typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_map<K, T>& x)
 {
-	packet << static_cast<std::uint64_t>(x.size());
+	packet << static_cast<std::uint32_t>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -137,10 +137,10 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_map<K, T>& x)
 {
 	x.clear();
 
-	std::uint64_t size;
+	std::uint32_t size;
 	packet >> size;
 
-	for (std::uint64_t i = 0; i < size; ++i) {
+	for (std::uint32_t i = 0; i < size; ++i) {
 		std::pair<K, T> elem;
 		packet >> elem;
 		x.insert(elem);
@@ -152,7 +152,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_map<K, T>& x)
 template <typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_set<T>& x)
 {
-	packet << static_cast<std::uint64_t>(x.size());
+	packet << static_cast<std::uint32_t>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -166,10 +166,10 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_set<T>& x)
 {
 	x.clear();
 
-	std::uint64_t size;
+	std::uint32_t size;
 	packet >> size;
 
-	for (std::uint64_t i = 0; i < size; ++i) {
+	for (std::uint32_t i = 0; i < size; ++i) {
 		T elem;
 		packet >> elem;
 		x.insert(elem);

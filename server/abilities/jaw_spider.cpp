@@ -8,7 +8,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void jaw_spider::use(std::uint64_t index_on) {
+void jaw_spider::use(std::uint32_t index_on) {
 
 	if (used) {
 		return;

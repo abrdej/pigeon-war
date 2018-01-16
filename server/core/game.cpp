@@ -23,11 +23,11 @@
 game::game() {
 }
 
-void game::initialize(std::array<std::vector<std::uint64_t>, board::cols_n * board::rows_n>& x) {
+void game::initialize(std::array<std::vector<std::uint32_t>, board::cols_n * board::rows_n>& x) {
 	x = board::fields_;
 }
 
-void game::on_board(std::uint64_t col, std::uint64_t row)
+void game::on_board(std::uint32_t col, std::uint32_t row)
 {
 	using namespace states;
 
@@ -63,7 +63,7 @@ void game::on_board(std::uint64_t col, std::uint64_t row)
 	}
 }
 
-void game::on_button(std::uint64_t n)
+void game::on_button(std::uint32_t n)
 {
 	if (n >= 0 && n <= 3) // 4 is passive
 	{
@@ -102,7 +102,7 @@ void game::on_button(std::uint64_t n)
 	}
 }
 
-std::string game::get_button_description(std::uint64_t selected_index, std::uint64_t n) {
+std::string game::get_button_description(std::uint32_t selected_index, std::uint32_t n) {
 
 	auto entity_id = board::at(selected_index);
 	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();

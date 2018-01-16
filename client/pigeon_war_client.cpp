@@ -99,7 +99,7 @@ void pigeon_war_client::receive_messages() {
 
 			std::cout << "end_turn1\n";
 
-			std::uint64_t active_player_id;
+			std::uint32_t active_player_id;
 			unpack(packet, active_player_id);
 
 			std::cout << "end_turn2\n";
@@ -268,7 +268,7 @@ void pigeon_war_client::on_mouse_click(const point_type& args, bool left)
 	}
 	else if (buttons_panel_.is_hit(args))
 	{
-		std::uint64_t hit_button = buttons_panel_.hit_button(args);
+		std::uint32_t hit_button = buttons_panel_.hit_button(args);
 
 		if (left) {
 			on_button(hit_button);
@@ -278,7 +278,7 @@ void pigeon_war_client::on_mouse_click(const point_type& args, bool left)
 	}
 }
 
-void pigeon_war_client::on_board(std::uint64_t col, std::uint64_t row)
+void pigeon_war_client::on_board(std::uint32_t col, std::uint32_t row)
 {
 	if (!block) {
 		block = true;
@@ -289,12 +289,12 @@ void pigeon_war_client::on_board(std::uint64_t col, std::uint64_t row)
 	}
 }
 
-void pigeon_war_client::on_button(std::uint64_t n)
+void pigeon_war_client::on_button(std::uint32_t n)
 {
 	call_on_button(socket, player_id, n);
 }
 
-void pigeon_war_client::get_button_description(std::uint64_t n) {
+void pigeon_war_client::get_button_description(std::uint32_t n) {
 	call_get_button_description(socket, player_id, n);
 }
 

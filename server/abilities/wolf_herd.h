@@ -9,7 +9,7 @@
 
 class wolf_herd final : public caster_target_ability {
 public:
-	void use(std::uint64_t index_on);
+	void use(std::uint32_t index_on);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::wolf_herd;

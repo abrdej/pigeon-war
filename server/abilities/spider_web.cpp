@@ -8,10 +8,10 @@
 #include "sender.h"
 #include "common/animations.h"
 
-spider_web::spider_web(std::uint64_t entity_id) : caster_id(entity_id) {
+spider_web::spider_web(std::uint32_t entity_id) : caster_id(entity_id) {
 }
 
-void spider_web::use(std::uint64_t index_on) {
+void spider_web::use(std::uint32_t index_on) {
 
     if (used)
         return;

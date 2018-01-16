@@ -8,7 +8,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void drain::use(std::uint64_t index_on)
+void drain::use(std::uint32_t index_on)
 {
 	if (used) {
 		return;

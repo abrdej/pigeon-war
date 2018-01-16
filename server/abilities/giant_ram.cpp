@@ -6,11 +6,11 @@
 #include "sender.h"
 #include "common/animations.h"
 
-giant_ram::giant_ram(std::uint64_t entity_id) : entity_id(entity_id) {
+giant_ram::giant_ram(std::uint32_t entity_id) : entity_id(entity_id) {
 
 }
 
-void giant_ram::prepare(std::uint64_t for_index) {
+void giant_ram::prepare(std::uint32_t for_index) {
 
     straight_target_ability::prepare(for_index);
 
@@ -23,7 +23,7 @@ void giant_ram::prepare(std::uint64_t for_index) {
     states::state_controller::custom_valid_target_type = states::state_controller::custom_target_type::board_index;
 }
 
-void giant_ram::use(std::uint64_t index_on) {
+void giant_ram::use(std::uint32_t index_on) {
 
     if (used)
         return;
@@ -43,7 +43,7 @@ void giant_ram::use(std::uint64_t index_on) {
 
     board::move(used_from_index, index_to_move);
 
-    std::vector<std::uint64_t> indexes;
+    std::vector<std::uint32_t> indexes;
 
     if (xx != 0) {
         for (std::int32_t x = xx > 0 ? 1 : -1; std::abs(x) < std::abs(xx); x = xx > 0 ? x + 1 : x - 1) {

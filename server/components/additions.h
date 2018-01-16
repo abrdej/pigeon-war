@@ -52,24 +52,24 @@ struct addition {
 };
 
 template <typename T>
-inline void add_component(std::uint64_t entity_id,
+inline void add_component(std::uint32_t entity_id,
                           const std::string& name,
                           std::shared_ptr<T> x) {
 
     entity_manager::get(entity_id).get_with_create<addition>()->put_named(name, x);
 }
 
-inline void remove_component(std::uint64_t entity_id, const std::string& name) {
+inline void remove_component(std::uint32_t entity_id, const std::string& name) {
     entity_manager::get(entity_id).get<addition>()->destroy_named(name);
 }
 
-inline bool has_component(std::uint64_t entity_id, const std::string& name) {
+inline bool has_component(std::uint32_t entity_id, const std::string& name) {
     return entity_manager::get(entity_id).get_with_create<addition>()->has(name);
 }
 
-inline std::unordered_map<std::uint64_t, std::vector<std::string>> get_additions() {
+inline std::unordered_map<std::uint32_t, std::vector<std::string>> get_additions() {
 
-    std::unordered_map<std::uint64_t, std::vector<std::string>> result;
+    std::unordered_map<std::uint32_t, std::vector<std::string>> result;
 
     entity_manager::for_all([&result](base_entity entity) {
 

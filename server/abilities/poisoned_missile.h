@@ -19,7 +19,7 @@ public:
     std::string hint() const override;
 
 private:
-    void use(std::uint64_t index_on);
+    void use(std::uint32_t index_on);
 
 private:
     const std::int32_t damage{6};

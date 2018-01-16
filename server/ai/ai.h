@@ -13,32 +13,32 @@ namespace ai
 class ai_brain
 {
 public:
-	explicit ai_brain(std::uint64_t player_id);
+	explicit ai_brain(std::uint32_t player_id);
 	void do_turn();
 private:
-	void move_entity(std::uint64_t entity_index);
-	//bool attack_if_can(std::uint64_t from_index, std::uint64_t on_index);
-	//void go_in_direction(std::uint64_t from_index, std::uint64_t to_index);
+	void move_entity(std::uint32_t entity_index);
+	//bool attack_if_can(std::uint32_t from_index, std::uint32_t on_index);
+	//void go_in_direction(std::uint32_t from_index, std::uint32_t to_index);
 private:
-	const std::uint64_t player_id;
+	const std::uint32_t player_id;
 };
 
 namespace behavior_tree_tasks
 {
 struct blackboard
 {
-	blackboard(std::uint64_t player_id,
-			   std::uint64_t entity_index)
+	blackboard(std::uint32_t player_id,
+			   std::uint32_t entity_index)
 			: player_id(player_id),
 			  my_entity_index_(entity_index),
 			  nearest_enemy_index(-1),
 			  destination_index(-1)
 	{
 	}
-	std::uint64_t player_id;
-	std::uint64_t my_entity_index_;
-	std::uint64_t nearest_enemy_index;
-	std::uint64_t destination_index;
+	std::uint32_t player_id;
+	std::uint32_t my_entity_index_;
+	std::uint32_t nearest_enemy_index;
+	std::uint32_t destination_index;
 };
 
 template <typename TaskType>

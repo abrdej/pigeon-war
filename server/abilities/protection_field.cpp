@@ -5,7 +5,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-protection_field::protection_field(std::uint64_t entity_id) {
+protection_field::protection_field(std::uint32_t entity_id) {
 
     onEveryTurn([this, entity_id]() {
         if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
@@ -28,7 +28,7 @@ protection_field::protection_field(std::uint64_t entity_id) {
     });
 }
 
-void protection_field::use(std::uint64_t index_on) {
+void protection_field::use(std::uint32_t index_on) {
     if (used)
         return;
 

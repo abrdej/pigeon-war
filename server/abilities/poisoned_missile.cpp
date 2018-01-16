@@ -7,7 +7,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void poisoned_missile::use(std::uint64_t index_on) {
+void poisoned_missile::use(std::uint32_t index_on) {
 
     if (used)
         return;

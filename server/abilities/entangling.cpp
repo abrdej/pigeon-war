@@ -30,24 +30,24 @@
 //    });
 //}
 //
-//entangling::entangling(std::uint64_t id) : entity_id(id) {
+//entangling::entangling(std::uint32_t id) : entity_id(id) {
 //    onEveryRound([this]() {
 //        used = false;
 //    });
 //}
 //
-//void entangling::prepare(std::uint64_t for_index) {
+//void entangling::prepare(std::uint32_t for_index) {
 //    states::state_controller::selected_index_ = for_index;
 //    board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
 //
 //    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-//    states::state_controller::wait_for_action([this](std::uint64_t index)
+//    states::state_controller::wait_for_action([this](std::uint32_t index)
 //                                              {
 //                                                  return use(index);
 //                                              });
 //}
 //
-//void entangling::use(std::uint64_t index_on) {
+//void entangling::use(std::uint32_t index_on) {
 //
 //    auto used_from_index = states::state_controller::selected_index_;
 //    auto caster_id = board::at(used_from_index);

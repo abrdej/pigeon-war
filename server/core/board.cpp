@@ -1,3 +1,3 @@
 #include "board.h"
 
-std::array<std::vector<std::uint64_t>, board::cols_n * board::rows_n> board::fields_;
+std::array<std::vector<std::uint32_t>, board::cols_n * board::rows_n> board::fields_;

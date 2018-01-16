@@ -6,7 +6,7 @@
 #include "damage_dealers.h"
 #include "absorption.h"
 
-power_circle::power_circle(std::uint64_t entity_id) {
+power_circle::power_circle(std::uint32_t entity_id) {
 
     onEveryTurn([this, entity_id]() {
 
@@ -33,7 +33,7 @@ power_circle::power_circle(std::uint64_t entity_id) {
                 absorption_ptr->set_empty();
             }
 
-            std::vector<std::uint64_t> aim_indexes;
+            std::vector<std::uint32_t> aim_indexes;
             board_helper::circle(board::index_for(entity_id), aim_indexes, false);
 
             auto from_cr = board::to_pos(board::index_for(entity_id));
@@ -104,7 +104,7 @@ power_circle::~power_circle() {
     //}
 }
 
-void power_circle::prepare(std::uint64_t for_index) {
+void power_circle::prepare(std::uint32_t for_index) {
 
 
     states::state_controller::selected_index_ = for_index;
@@ -112,14 +112,14 @@ void power_circle::prepare(std::uint64_t for_index) {
     board_helper::circle(for_index, states::state_controller::possible_movements_, false);
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](std::uint64_t index)
+    states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
 
 }
 
-void power_circle::use(std::uint64_t index_on) {
+void power_circle::use(std::uint32_t index_on) {
     if (!bonus_active) {
         return;
     }
@@ -138,6 +138,6 @@ void power_circle::use(std::uint64_t index_on) {
                                      bitmap_key::absorption);
 }
 
-void power_circle::play_animation(std::uint64_t index_on) {
+void power_circle::play_animation(std::uint32_t index_on) {
 
 }

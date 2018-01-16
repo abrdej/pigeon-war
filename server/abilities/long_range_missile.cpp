@@ -4,7 +4,7 @@
 #include "long_range_missile.h"
 #include "damage_dealers.h"
 
-void long_range_missile::use(std::uint64_t index_on) {
+void long_range_missile::use(std::uint32_t index_on) {
 
 	if (used)
 		return;
@@ -31,7 +31,7 @@ void long_range_missile::use(std::uint64_t index_on) {
 	used = true;
 }
 
-void long_range_missile::play_animation(std::uint64_t from_index, std::uint64_t to_index) {
+void long_range_missile::play_animation(std::uint32_t from_index, std::uint32_t to_index) {
 	animations_queue::push_animation(animation_types::move,
 									 from_index,
 									 to_index,

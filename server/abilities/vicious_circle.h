@@ -12,7 +12,7 @@
 class vicious_circle final : public ability, per_turn_usable
 {
 public:
-    explicit vicious_circle(std::uint64_t entity_id);
+    explicit vicious_circle(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::magic_energy;
@@ -21,10 +21,10 @@ public:
     std::string hint() const override;
 
 private:
-    void prepare(std::uint64_t for_index) override;
-    void use(std::uint64_t index_on);
+    void prepare(std::uint32_t for_index) override;
+    void use(std::uint32_t index_on);
 
-    std::uint64_t entity_id;
+    std::uint32_t entity_id;
     std::int32_t range{3};
 };
 

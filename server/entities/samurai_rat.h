@@ -15,7 +15,7 @@
 
 struct samurai_rat final
 {
-	static auto create(std::uint64_t id) {
+	static auto create(std::uint32_t id) {
 		base_entity entity;
 		entity.entity_id = id;
 		entity.name = "Samurai";

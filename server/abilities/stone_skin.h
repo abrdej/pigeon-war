@@ -9,7 +9,7 @@
 
 class stone_skin : public passive_ability {
 public:
-    explicit stone_skin(std::uint64_t entity_id);
+    explicit stone_skin(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::stone_skin;

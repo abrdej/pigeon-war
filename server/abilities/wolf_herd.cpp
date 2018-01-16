@@ -4,14 +4,14 @@
 #include <managers/entity_manager.h>
 #include <random>
 
-void wolf_herd::use(std::uint64_t index_on) {
+void wolf_herd::use(std::uint32_t index_on) {
 
 	if (used)
 		return;
 
 	used = true;
 
-	std::vector<std::uint64_t> neighbors;
+	std::vector<std::uint32_t> neighbors;
 	board_helper::neighboring_fields(index_on, neighbors, true);
 
 	std::random_device rd;

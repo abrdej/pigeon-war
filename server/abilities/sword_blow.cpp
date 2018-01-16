@@ -12,7 +12,7 @@ std::string sword_blow::hint() const {
     return std::move(desc);
 }
 
-void sword_blow::use(std::uint64_t index_on) {
+void sword_blow::use(std::uint32_t index_on) {
 
     if (used)
         return;
@@ -20,7 +20,7 @@ void sword_blow::use(std::uint64_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
 
-    std::vector<std::uint64_t> around_fields_ids;
+    std::vector<std::uint32_t> around_fields_ids;
     board_helper::neighboring_fields(used_from_index, around_fields_ids, false);
 
     sender::send(message_types::animation, animation_def::sword_blow, used_from_index);

@@ -7,11 +7,11 @@
 #include "sender.h"
 #include "common/animations.h"
 
-prison_connection::prison_connection(std::uint64_t entity_id) : entity_id(entity_id) {
+prison_connection::prison_connection(std::uint32_t entity_id) : entity_id(entity_id) {
 
 }
 
-void prison_connection::use(std::uint64_t index_on) {
+void prison_connection::use(std::uint32_t index_on) {
 
 	if (used)
 		return;

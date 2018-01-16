@@ -6,13 +6,13 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void sniper_shot::prepare(std::uint64_t for_index) {
+void sniper_shot::prepare(std::uint32_t for_index) {
 
     states::state_controller::selected_index_ = for_index;
 
     bool enemy_close = false;
 
-    std::vector<std::uint64_t> neighbors;
+    std::vector<std::uint32_t> neighbors;
     board_helper::neighboring_fields(for_index, neighbors, false);
     for (auto& neighbor_index : neighbors)
     {
@@ -33,13 +33,13 @@ void sniper_shot::prepare(std::uint64_t for_index) {
     }
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](std::uint64_t index)
+    states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
 }
 
-void sniper_shot::use(std::uint64_t index_on) {
+void sniper_shot::use(std::uint32_t index_on) {
 
     if (used)
         return;
@@ -69,7 +69,7 @@ void sniper_shot::use(std::uint64_t index_on) {
     used = true;
 }
 
-void sniper_shot::play_animation(std::uint64_t entity_id, std::uint64_t from_index, std::uint64_t to_index) {
+void sniper_shot::play_animation(std::uint32_t entity_id, std::uint32_t from_index, std::uint32_t to_index) {
     animations_queue::push_animation(animation_types::move,
                                      from_index,
                                      to_index,

@@ -7,7 +7,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void handcannon::use(std::uint64_t index_on) {
+void handcannon::use(std::uint32_t index_on) {
 
     if (used)
         return;

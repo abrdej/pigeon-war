@@ -5,7 +5,7 @@
 #include "detonation.h"
 #include "damage_dealers.h"
 
-detonation::detonation(std::uint64_t entity_id) {
+detonation::detonation(std::uint32_t entity_id) {
 
     set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
@@ -13,7 +13,7 @@ detonation::detonation(std::uint64_t entity_id) {
         health_pack.health -= final_damage;
 
         if (health_pack.health == 0) {
-            std::vector<std::uint64_t> neighbors;
+            std::vector<std::uint32_t> neighbors;
             board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);
 
             auto from_cr = board::to_pos(board::index_for(entity_id));

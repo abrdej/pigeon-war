@@ -6,16 +6,16 @@
 #include "sender.h"
 #include "common/animations.h"
 
-vicious_circle::vicious_circle(std::uint64_t entity_id) : entity_id(entity_id) {
+vicious_circle::vicious_circle(std::uint32_t entity_id) : entity_id(entity_id) {
 }
 
-void vicious_circle::prepare(std::uint64_t for_index) {
+void vicious_circle::prepare(std::uint32_t for_index) {
     states::state_controller::selected_index_ = for_index;
 
     board_helper::circle(for_index, states::state_controller::possible_movements_, false);
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](std::uint64_t index)
+    states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
@@ -30,7 +30,7 @@ std::string vicious_circle::hint() const {
     return "Magic power: " + std::to_string(power);
 }
 
-void vicious_circle::use(std::uint64_t index_on) {
+void vicious_circle::use(std::uint32_t index_on) {
 
     if (used)
         return;

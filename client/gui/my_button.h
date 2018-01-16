@@ -13,7 +13,7 @@ public:
 	using rect_type = sf::Rect<std::int32_t>;
 	using bitmap_type = sf::Texture;
 
-	my_button(const point_type& center, std::uint64_t size, const std::function<void()>& callback = nullptr);
+	my_button(const point_type& center, std::uint32_t size, const std::function<void()>& callback = nullptr);
 	explicit my_button(const rect_type& rect, const std::function<void()>& callback = nullptr);
 
 	inline bool is_hit(const point_type& pt) const {

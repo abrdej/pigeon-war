@@ -3,13 +3,13 @@
 #include "surroundings.h"
 #include "components/damage_taker.h"
 
-surroundings::surroundings(std::uint64_t entity_id) {
+surroundings::surroundings(std::uint32_t entity_id) {
 
     set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
         auto index = board::index_for(entity_id);
 
-        std::vector<std::uint64_t> neighbors;
+        std::vector<std::uint32_t> neighbors;
         board_helper::neighboring_fields(index, neighbors, false);
 
         std::int32_t enemies_in_neighborhood = 0;

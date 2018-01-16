@@ -7,7 +7,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-aura_of_immunity::aura_of_immunity(std::uint64_t entity_id)
+aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)
 		: entity_id(entity_id) {
 
 	entity_manager::get(entity_id).get<modification>()->modify_damage_receiver_modifier_by(-damage_reduction_for_owner);
@@ -20,7 +20,7 @@ aura_of_immunity::aura_of_immunity(std::uint64_t entity_id)
 
 			auto caster_index = board::index_for(entity_id);
 
-			std::vector<std::uint64_t> neighbors;
+			std::vector<std::uint32_t> neighbors;
 			board_helper::neighboring_fields(caster_index, neighbors, false);
 
 			for (auto& index : neighbors) {

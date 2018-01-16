@@ -10,7 +10,7 @@
 
 class protection_field : public straight_target_ability<3>, protected turn_events_helper::every_turn_callback_helper {
 public:
-    explicit protection_field(std::uint64_t entity_id);
+    explicit protection_field(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::protection_field;
@@ -21,7 +21,7 @@ public:
 	}
 
 private:
-    void use(std::uint64_t index_on) override;
+    void use(std::uint32_t index_on) override;
     bool is_active{true};
     bool used{false};
     const std::int32_t damage = 16;

@@ -6,11 +6,11 @@
 #include "sender.h"
 
 
-killer_instinct::killer_instinct(std::uint64_t entity_id)
+killer_instinct::killer_instinct(std::uint32_t entity_id)
 		: entity_id(entity_id) {
 }
 
-void killer_instinct::prepare(std::uint64_t for_index) {
+void killer_instinct::prepare(std::uint32_t for_index) {
 
 	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
 
@@ -32,7 +32,7 @@ void killer_instinct::prepare(std::uint64_t for_index) {
 	}
 }
 
-void killer_instinct::use(std::uint64_t index) {
+void killer_instinct::use(std::uint32_t index) {
 
 	if (used)
 		return;

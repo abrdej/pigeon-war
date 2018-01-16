@@ -13,7 +13,7 @@
 class power_circle final : public ability, protected turn_events_helper::every_turn_callback_helper
 {
 public:
-    explicit power_circle(std::uint64_t entity_id);
+    explicit power_circle(std::uint32_t entity_id);
     ~power_circle() override;
 
     bitmap_key get_bitmap_key() const override {
@@ -21,9 +21,9 @@ public:
     }
 
 private:
-    void prepare(std::uint64_t for_index) override;
-    void use(std::uint64_t index_on);
-    void play_animation(std::uint64_t index_on);
+    void prepare(std::uint32_t for_index) override;
+    void use(std::uint32_t index_on);
+    void play_animation(std::uint32_t index_on);
 
 private:
     std::int32_t damage{6};
@@ -38,7 +38,7 @@ private:
     std::int32_t max_absorption_power{15};
 
     using damage_receiver_type = std::function<std::int32_t(health_field&, const damage_pack&)>;
-    std::unordered_map<std::uint64_t, damage_receiver_type> dmg_rec_backup;
+    std::unordered_map<std::uint32_t, damage_receiver_type> dmg_rec_backup;
 };
 
 #endif //PIGEONWAR_POWER_CIRCLE_H

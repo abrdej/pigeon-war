@@ -44,8 +44,8 @@ public:
 	}
 
 private:
-	void prepare(std::uint64_t for_index) override;
-	void move(std::uint64_t index_to);
+	void prepare(std::uint32_t for_index) override;
+	void move(std::uint32_t index_to);
 
 private:
 	std::int32_t range;

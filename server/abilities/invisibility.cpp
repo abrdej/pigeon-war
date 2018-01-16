@@ -6,13 +6,13 @@
 #include "sender.h"
 #include "common/animations.h"
 
-invisibility::invisibility(std::uint64_t id)
+invisibility::invisibility(std::uint32_t id)
 	: entity_id(id)
 {
 
 }
 
-void invisibility::use(std::uint64_t on_index)
+void invisibility::use(std::uint32_t on_index)
 {
 	if (used_)
         return;

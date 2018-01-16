@@ -113,7 +113,7 @@ void wolves_dinner(game& game) {
     >::create();
 
     using creator_helper::pos;
-    std::vector<std::pair<std::uint64_t, std::uint64_t>> wolves_positions = {
+    std::vector<std::pair<std::uint32_t, std::uint32_t>> wolves_positions = {
             pos(5, 6),
             pos(9, 7),
             pos(12, 2),
@@ -121,7 +121,7 @@ void wolves_dinner(game& game) {
             pos(8, 2)
 
     };
-    std::vector<std::uint64_t> enemies_ids;
+    std::vector<std::uint32_t> enemies_ids;
     for (auto&& wolf_pos : wolves_positions) {
         auto wolf_id = entity_manager::create<wolf>();
         ai_manager::add_component(wolf_id, ai_sequence);
@@ -130,7 +130,7 @@ void wolves_dinner(game& game) {
         enemies_ids.push_back(wolf_id);
     }
 
-    std::vector<std::pair<std::uint64_t, std::uint64_t>> trees_positions;
+    std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
     for (std::int32_t i = 0; i < board::cols_n; ++i) {
         for (std::int32_t j = 0; j < board::rows_n; ++j) {
              if (i == 0 || j == 0 || i == board::cols_n - 1|| j == board::rows_n - 1) {
@@ -283,7 +283,7 @@ void skirmish(game& game) {
 
     //creator_helper::create_neutral_many<fire>({pos(7, 4)});
 
-    std::vector<std::pair<std::uint64_t, std::uint64_t>> trees_positions;
+    std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
     for (std::int32_t i = 0; i < board::cols_n; ++i) {
         for (std::int32_t j = 0; j < board::rows_n; ++j) {
             if (i == 0 || j == 0 || i == board::cols_n - 1|| j == board::rows_n - 1) {
@@ -308,7 +308,7 @@ void skirmish(game& game) {
 
 
 
-    std::vector<std::pair<std::uint64_t, std::uint64_t>> init_positions = {
+    std::vector<std::pair<std::uint32_t, std::uint32_t>> init_positions = {
             pos(5, 2),
             pos(6, 2),
             pos(7, 2),
@@ -340,7 +340,7 @@ void skirmish(game& game) {
             pos(9, 6)
     };
 
-    std::array<std::pair<std::uint64_t, std::uint64_t>, 8> positions = {
+    std::array<std::pair<std::uint32_t, std::uint32_t>, 8> positions = {
             pos(2, 2),
             pos(12, 2),
             pos(2, 4),
@@ -351,14 +351,14 @@ void skirmish(game& game) {
             pos(12, 8)
     };
 
-    std::array<std::uint64_t, 2> players;
+    std::array<std::uint32_t, 2> players;
     for (auto& player : players) {
         player = players_manager::create_human_player();
     }
 
-    std::uint64_t i = 0;
+    std::uint32_t i = 0;
 
-    std::unordered_set<std::uint64_t> entities_to_choose;
+    std::unordered_set<std::uint32_t> entities_to_choose;
 
     auto init_entity = [&](auto x) {
         using EntityType = decltype(x);
@@ -395,7 +395,7 @@ void skirmish(game& game) {
     std::shared_ptr<OwnerCallback> holder = std::make_shared<OwnerCallback>();
 
     auto create_entities_container = [](){
-        return std::unordered_map<std::uint64_t, std::vector<std::uint64_t>>();
+        return std::unordered_map<std::uint32_t, std::vector<std::uint32_t>>();
     };
 
     auto add_entity_for_player = turn::turn_system::every_turn([=, entities = create_entities_container()]() mutable {

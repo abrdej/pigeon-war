@@ -21,7 +21,7 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(std::uint64_t index) override;
+	void use(std::uint32_t index) override;
 
 private:
 	const std::int32_t damage = 8;

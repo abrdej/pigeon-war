@@ -17,7 +17,7 @@ std::string grenade::hint() const {
 	return std::move(desc);
 }
 
-void grenade::use(std::uint64_t index_on)
+void grenade::use(std::uint32_t index_on)
 {
 	if (used_)
 		return;
@@ -26,7 +26,7 @@ void grenade::use(std::uint64_t index_on)
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	std::vector<std::uint64_t> neighbors;
+	std::vector<std::uint32_t> neighbors;
 	board_helper::neighboring_fields(index_on, neighbors, false);
 
 	sender::send(message_types::animation, animation_def::grenade, used_from_index, index_on);

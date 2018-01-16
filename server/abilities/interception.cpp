@@ -6,7 +6,7 @@
 #include <core/animations_queue.h>
 #include "components/damage_taker.h"
 
-interception::interception(std::uint64_t entity_id) {
+interception::interception(std::uint32_t entity_id) {
 
     set_damage_receiver(entity_id, [this, entity_id, counter = 0](health_field& health_pack, const damage_pack& dmg) mutable {
 
@@ -38,18 +38,18 @@ interception::interception(std::uint64_t entity_id) {
     });
 }
 
-void interception::prepare(std::uint64_t for_index) {
+void interception::prepare(std::uint32_t for_index) {
     states::state_controller::selected_index_ = for_index;
     board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](std::uint64_t index)
+    states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
 }
 
-void interception::use(std::uint64_t index_on) {
+void interception::use(std::uint32_t index_on) {
     if (used) {
         return;
     }
@@ -68,7 +68,7 @@ void interception::use(std::uint64_t index_on) {
     used = true;
 }
 
-void interception::play_animation(std::uint64_t index_from, std::uint64_t index_on) {
+void interception::play_animation(std::uint32_t index_from, std::uint32_t index_on) {
     auto entity_id = board::take(index_from);
 
     animations_queue::push_animation(animation_types::move,

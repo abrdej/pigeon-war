@@ -5,7 +5,7 @@
 #include "components/additions.h"
 #include "components/damage_taker.h"
 
-death_mark::death_mark(std::uint64_t entity_id) : entity_id(entity_id) {
+death_mark::death_mark(std::uint32_t entity_id) : entity_id(entity_id) {
 
 }
 
@@ -15,7 +15,7 @@ death_mark::~death_mark() {
 	}
 }
 
-void death_mark::use(std::uint64_t index_on) {
+void death_mark::use(std::uint32_t index_on) {
 
 	if (used)
 		return;

@@ -17,11 +17,11 @@ public:
     void prepare();
     void draw(sf::RenderWindow& window);
     bool is_hit(sf::Vector2i cursor) const;
-    std::uint64_t hit_button(sf::Vector2i cursor) const;
+    std::uint32_t hit_button(sf::Vector2i cursor) const;
     void set_for_entity_for(const std::string& entity_name,
 							const std::array<bitmap_key, 6>& button_bitmaps);
 
-    void set_hint_for(const sf::Vector2f& pos, std::uint64_t hint_idx);
+    void set_hint_for(const sf::Vector2f& pos, std::uint32_t hint_idx);
     void remove_hint();
 
 	void set_description(const std::string& desc);
@@ -39,8 +39,8 @@ private:
 
     std::array<std::string, 5> hints;
     std::string hint;
-    static const std::uint64_t no_hint = std::numeric_limits<std::uint64_t>::max();
-    std::uint64_t hint_button_idx{no_hint};
+    static const std::uint32_t no_hint = std::numeric_limits<std::uint32_t>::max();
+    std::uint32_t hint_button_idx{no_hint};
     sf::Vector2f hint_pos;
 };
 

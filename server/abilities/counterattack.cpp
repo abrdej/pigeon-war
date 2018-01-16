@@ -6,14 +6,14 @@
 #include "sender.h"
 #include "common/animations.h"
 
-counterattack::counterattack(std::uint64_t entity_id)
+counterattack::counterattack(std::uint32_t entity_id)
 		: entity_id(entity_id) {
 
 	on_receive_damage(entity_id, [this](const damage_pack& dmg) {
 
 		auto enemy_index = board::index_for(dmg.damage_dealer_id);
 
-		std::vector<std::uint64_t> neighbors;
+		std::vector<std::uint32_t> neighbors;
 		board_helper::neighboring_fields(board::index_for(this->entity_id),
 										 neighbors,
 										 false);
@@ -37,7 +37,7 @@ std::string counterattack::hint() const {
 	return std::move(desc);
 }
 
-void counterattack::use(std::uint64_t index_on) {
+void counterattack::use(std::uint32_t index_on) {
 
 	if (used) {
 		return;

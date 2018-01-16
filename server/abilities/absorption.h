@@ -11,7 +11,7 @@
 
 class absorption final : public ability, turn_events_helper::every_turn_callback_helper {
 public:
-    explicit absorption(std::uint64_t entity_id);
+    explicit absorption(std::uint32_t entity_id);
     ~absorption() override;
 
     bitmap_key get_bitmap_key() const override {
@@ -32,11 +32,11 @@ public:
     }
 
 private:
-    void prepare(std::uint64_t for_index) override;
-    void use(std::uint64_t index_on);
-    void play_animation(std::uint64_t from_index, std::uint64_t to_index);
+    void prepare(std::uint32_t for_index) override;
+    void use(std::uint32_t index_on);
+    void play_animation(std::uint32_t from_index, std::uint32_t to_index);
 
-    const std::uint64_t entity_id;
+    const std::uint32_t entity_id;
     const std::int32_t range = 3;
     bool used{false};
 
@@ -46,7 +46,7 @@ private:
     std::int32_t max_absorption_power{15};
 
     using damage_receiver_type = std::function<std::int32_t(health_field&, const damage_pack&)>;
-    std::uint64_t protected_id{std::numeric_limits<std::uint64_t>::max()};
+    std::uint32_t protected_id{std::numeric_limits<std::uint32_t>::max()};
     damage_receiver_type protected_dmg_rec_backup;
 };
 

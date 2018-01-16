@@ -4,7 +4,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void bludgeon::use(std::uint64_t index_on)
+void bludgeon::use(std::uint32_t index_on)
 {
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);

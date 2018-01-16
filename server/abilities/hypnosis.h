@@ -17,7 +17,7 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(std::uint64_t index_on);
+	void use(std::uint32_t index_on);
 
 private:
 	bool used{false};

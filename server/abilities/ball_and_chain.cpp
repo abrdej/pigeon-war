@@ -5,11 +5,11 @@
 #include "moveable.h"
 #include "damage_dealers.h"
 
-ball_and_chain::ball_and_chain(std::uint64_t entity_id) : entity_id(entity_id) {
+ball_and_chain::ball_and_chain(std::uint32_t entity_id) : entity_id(entity_id) {
 
 }
 
-void ball_and_chain::use(std::uint64_t index_on) {
+void ball_and_chain::use(std::uint32_t index_on) {
 
 	if (used_)
 		return;

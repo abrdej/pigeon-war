@@ -2,7 +2,7 @@
 
 namespace view
 {
-my_button::my_button(const point_type& center, std::uint64_t size, const std::function<void()>& callback)
+my_button::my_button(const point_type& center, std::uint32_t size, const std::function<void()>& callback)
 		: position_(rect_type(center.x - size / 2, center.y - size / 2, size, size)),
 		  callback_(callback)
 {

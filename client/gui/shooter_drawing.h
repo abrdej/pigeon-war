@@ -16,7 +16,7 @@
 
 //struct shooter_drawer : drawable {
 //
-//    std::uint64_t entity_id;
+//    std::uint32_t entity_id;
 //    sf::Sprite sprite;
 //    std::int32_t health{0};
 //    sf::Vector2f health_pos;
@@ -30,7 +30,7 @@
 //
 //    std::vector<sf::Texture> textures;
 //
-//    explicit shooter_drawer(std::uint64_t entity_id)
+//    explicit shooter_drawer(std::uint32_t entity_id)
 //            : entity_id(entity_id) {
 //
 //        font.loadFromFile("verdanab.ttf");

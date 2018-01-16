@@ -5,7 +5,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void power_bullet::use(std::uint64_t index_on) {
+void power_bullet::use(std::uint32_t index_on) {
 
     if (used)
         return;

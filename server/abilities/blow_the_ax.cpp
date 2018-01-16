@@ -10,7 +10,7 @@ std::string blow_the_ax::hint() const {
     return std::move(desc);
 }
 
-void blow_the_ax::use(std::uint64_t index_on) {
+void blow_the_ax::use(std::uint32_t index_on) {
 
     if (used)
         return;

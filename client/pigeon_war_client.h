@@ -34,9 +34,9 @@ private:
 	void draw(sf::RenderWindow& window);
 	void on_mouse_click(const point_type& args, bool left);
 
-	void on_board(std::uint64_t col, std::uint64_t row);
-	void on_button(std::uint64_t n);
-	void get_button_description(std::uint64_t n);
+	void on_board(std::uint32_t col, std::uint32_t row);
+	void on_button(std::uint32_t n);
+	void get_button_description(std::uint32_t n);
 
 	void prepare_animations();
 	void update_for_entity();

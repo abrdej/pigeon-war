@@ -1,7 +1,7 @@
 #include "stone_skin.h"
 #include "components/damage_taker.h"
 
-stone_skin::stone_skin(std::uint64_t entity_id) {
+stone_skin::stone_skin(std::uint32_t entity_id) {
 
     set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 

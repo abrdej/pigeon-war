@@ -6,7 +6,7 @@
 #include "sender.h"
 #include "common/animations.h"
 
-void basic_melee_attack::use(std::uint64_t index_on)
+void basic_melee_attack::use(std::uint32_t index_on)
 {
 	if (used) {
 		return;

@@ -9,7 +9,7 @@
 
 template <bitmap_key shot_bitmap_key, bitmap_key explosion_bitmap_key = bitmap_key::none>
 struct shot_base_handler : base_handler {
-	std::uint64_t from_index, to_index;
+	std::uint32_t from_index, to_index;
 
 	void handle(sf::Packet& packet, game_state& g_state) override {
 
@@ -27,7 +27,7 @@ struct shot_base_handler : base_handler {
 };
 
 struct move_base_handler : base_handler {
-	std::uint64_t from_index, to_index;
+	std::uint32_t from_index, to_index;
 
 	void handle(sf::Packet& packet, game_state& g_state) override {
 		unpack(packet, from_index);
@@ -44,7 +44,7 @@ struct move_base_handler : base_handler {
 
 template <bitmap_key middle_bitmap_flush = bitmap_key::none>
 struct move_with_return_base_handler : base_handler {
-	std::uint64_t from_index, to_index;
+	std::uint32_t from_index, to_index;
 
 	void handle(sf::Packet& packet, game_state& g_state) override {
 		unpack(packet, from_index);
@@ -71,12 +71,12 @@ struct move_with_return_base_handler : base_handler {
 
 template <bitmap_key flush_bitmap_key, bool hide_index = false, long time = 150>
 struct bitmap_flush_base_handler : base_handler {
-	std::uint64_t index;
+	std::uint32_t index;
 
 	void handle(sf::Packet& packet, game_state& g_state) override {
 		unpack(packet, index);
 
-		std::uint64_t entity_id{0};
+		std::uint32_t entity_id{0};
 
 		if (hide_index) {
 			entity_id = g_state.board.take(index);
@@ -95,7 +95,7 @@ struct bitmap_flush_base_handler : base_handler {
 
 template <bitmap_key new_bitmap_key>
 struct change_bitmap_base_handler : base_handler {
-	std::uint64_t entity_id;
+	std::uint32_t entity_id;
 
 	void handle(sf::Packet& packet, game_state& g_state) override {
 		unpack(packet, entity_id);

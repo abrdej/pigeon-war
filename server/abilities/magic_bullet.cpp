@@ -5,14 +5,14 @@
 #include "sender.h"
 #include "common/animations.h"
 
-magic_bullet::magic_bullet(std::uint64_t entity_id) {
+magic_bullet::magic_bullet(std::uint32_t entity_id) {
     onEveryTurn([this, entity_id]() {
 
         if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
             used = false;
             magic_power += magic_power_accumulation_amount;
 
-            std::vector<std::uint64_t> neighbors;
+            std::vector<std::uint32_t> neighbors;
             board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);
             for (auto& index : neighbors)
             {
@@ -57,7 +57,7 @@ std::string magic_bullet::hint() const {
     return std::move(desc);
 }
 
-void magic_bullet::use(std::uint64_t index_on) {
+void magic_bullet::use(std::uint32_t index_on) {
 
     if (used)
         return;

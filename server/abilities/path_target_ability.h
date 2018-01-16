@@ -14,7 +14,7 @@ template <std::int32_t Range,
 		bool AllFields = true>
 class path_target_ability : public ability {
 public:
-	void prepare(std::uint64_t for_index) override {
+	void prepare(std::uint32_t for_index) override {
 
 		states::state_controller::selected_index_ = for_index;
 
@@ -25,12 +25,12 @@ public:
 										   range);
 
 		states::state_controller::actual_targeting_type_ = target_type;
-		states::state_controller::wait_for_action([this](std::uint64_t index)
+		states::state_controller::wait_for_action([this](std::uint32_t index)
 												  {
 													  return use(index);
 												  });
 	}
-	virtual void use(std::uint64_t use_on_index) = 0;
+	virtual void use(std::uint32_t use_on_index) = 0;
 protected:
 	std::int32_t range{Range};
 	const states::target_types target_type{TargetType};

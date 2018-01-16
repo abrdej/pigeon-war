@@ -14,28 +14,28 @@
 
 class bomb_detonation final : public ability, protected turn_events_helper::every_turn_callback_helper {
 public:
-	explicit bomb_detonation(std::uint64_t bomb_id);
+	explicit bomb_detonation(std::uint32_t bomb_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::bomb_detonation;
 	}
 
-	void prepare(std::uint64_t for_index) override;
+	void prepare(std::uint32_t for_index) override;
 	void look_for_bombs();
-	void use(std::uint64_t for_index);
-	void set_bomb_buffer(boost::circular_buffer<std::shared_ptr<std::uint64_t>>* p) {
+	void use(std::uint32_t for_index);
+	void set_bomb_buffer(boost::circular_buffer<std::shared_ptr<std::uint32_t>>* p) {
 		buffer = p;
 	}
 private:
-	std::uint64_t bomb_id;
+	std::uint32_t bomb_id;
 	std::int32_t damage{5};
 	std::int32_t final_damage{5};
 	bool waited{false};
-	boost::circular_buffer<std::shared_ptr<std::uint64_t>>* buffer{nullptr};
+	boost::circular_buffer<std::shared_ptr<std::uint32_t>>* buffer{nullptr};
 };
 
 struct bomb_instance {
-	static auto create(std::uint64_t entity_id)
+	static auto create(std::uint32_t entity_id)
 	{
 		base_entity entity;
 		entity.entity_id = entity_id;
@@ -55,8 +55,8 @@ public:
 		return bitmap_key::bomb;
 	}
 
-	void prepare(std::uint64_t for_index) override;
-	void use(std::uint64_t index_on);
+	void prepare(std::uint32_t for_index) override;
+	void use(std::uint32_t index_on);
 
 private:
 };

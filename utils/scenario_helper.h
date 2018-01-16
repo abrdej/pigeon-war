@@ -9,7 +9,7 @@
 #include <memory>
 
 template <typename Callback>
-void if_any_die(std::initializer_list<std::uint64_t> entities_id, Callback callback) {
+void if_any_die(std::initializer_list<std::uint32_t> entities_id, Callback callback) {
     auto any_die = [callback](){
         callback();
     };
@@ -19,7 +19,7 @@ void if_any_die(std::initializer_list<std::uint64_t> entities_id, Callback callb
 }
 
 template <typename Callback>
-void if_any_die(std::vector<std::uint64_t> entities_id, Callback callback) {
+void if_any_die(std::vector<std::uint32_t> entities_id, Callback callback) {
     auto any_die = [callback](){
         callback();
     };
@@ -29,7 +29,7 @@ void if_any_die(std::vector<std::uint64_t> entities_id, Callback callback) {
 }
 
 template <typename Callback>
-void if_all_die(std::initializer_list<std::uint64_t> entities_id, Callback callback) {
+void if_all_die(std::initializer_list<std::uint32_t> entities_id, Callback callback) {
     auto entities_size = entities_id.size();
     auto i = std::make_shared<std::int32_t>(0);
     auto someone_die = [callback, entities_size, counter = i]() mutable {
@@ -43,7 +43,7 @@ void if_all_die(std::initializer_list<std::uint64_t> entities_id, Callback callb
 }
 
 template <typename Callback>
-void if_all_die(std::vector<std::uint64_t> entities_id, Callback callback) {
+void if_all_die(std::vector<std::uint32_t> entities_id, Callback callback) {
     auto entities_size = entities_id.size();
     auto i = std::make_shared<std::int32_t>(0);
     auto someone_die = [callback, entities_size, counter = i]() mutable {

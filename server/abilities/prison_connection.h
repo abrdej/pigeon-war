@@ -11,21 +11,21 @@
 
 class prison_connection : public path_target_ability<4>, per_turn_usable {
 public:
-	explicit prison_connection(std::uint64_t entity_id);
+	explicit prison_connection(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::prison_connection;
 	}
 
 private:
-	void use(std::uint64_t index_on) override;
+	void use(std::uint32_t index_on) override;
 
-	std::uint64_t entity_id;
+	std::uint32_t entity_id;
 	std::int32_t base_damage{6};
 	std::int32_t damage_per_entities_with_effect{2};
 	std::int32_t final_damage{0};
 	const std::int32_t duration{3};
-	std::deque<std::uint64_t> entities_with_effect;
+	std::deque<std::uint32_t> entities_with_effect;
 };
 
 

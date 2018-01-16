@@ -12,7 +12,7 @@ class counterattack final : public passive_ability,
 							per_turn_usable
 {
 public:
-	counterattack(std::uint64_t entity_id);
+	counterattack(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::counterattack;
@@ -21,10 +21,10 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(std::uint64_t index_on);
+	void use(std::uint32_t index_on);
 
 private:
-	std::uint64_t entity_id;
+	std::uint32_t entity_id;
 	std::int32_t damage{7};
 };
 

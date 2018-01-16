@@ -16,21 +16,21 @@
 //        return bitmap_key::entangling_life_suck;
 //    }
 //
-//    void prepare(std::uint64_t for_index) override {}
-//    void set_enemy_id(std::uint64_t id) {
+//    void prepare(std::uint32_t for_index) override {}
+//    void set_enemy_id(std::uint32_t id) {
 //        enemy_id = id;
 //    }
-//    void set_caster_id(std::uint64_t id) {
+//    void set_caster_id(std::uint32_t id) {
 //        caster_id = id;
 //    }
 //private:
-//    std::uint64_t enemy_id{std::numeric_limits<std::uint64_t>::max()};
-//    std::uint64_t caster_id{std::numeric_limits<std::uint64_t>::max()};
+//    std::uint32_t enemy_id{std::numeric_limits<std::uint32_t>::max()};
+//    std::uint32_t caster_id{std::numeric_limits<std::uint32_t>::max()};
 //    std::int32_t damage{4};
 //};
 //
 //struct entangling_instance {
-//    static auto create(std::uint64_t id)
+//    static auto create(std::uint32_t id)
 //    {
 //        base_components components;
 //        entity_name(components) = "Oplątanie";
@@ -43,20 +43,20 @@
 //class entangling final : public ability, turn_events_helper::every_turn_callback_helper
 //{
 //public:
-//    explicit entangling(std::uint64_t id);
+//    explicit entangling(std::uint32_t id);
 //
 //    bitmap_key get_bitmap_key() const override {
 //        return bitmap_key::entangling;
 //    }
 //
 //private:
-//    void prepare(std::uint64_t for_index) override;
-//    void use(std::uint64_t index_on);
+//    void prepare(std::uint32_t for_index) override;
+//    void use(std::uint32_t index_on);
 //
 //    const std::int32_t range = 2;
 //    const std::int32_t damage = 5;
 //    bool used{false};
-//    std::uint64_t entity_id;
+//    std::uint32_t entity_id;
 //};
 
 

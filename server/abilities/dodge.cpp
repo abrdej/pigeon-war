@@ -3,7 +3,7 @@
 #include "common/animations.h"
 #include "components/damage_taker.h"
 
-dodge::dodge(std::uint64_t entity_id) {
+dodge::dodge(std::uint32_t entity_id) {
 
 	set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 

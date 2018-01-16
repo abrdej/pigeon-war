@@ -10,26 +10,26 @@ using states::state_controller;
 using states::states_types;
 using states::target_types;
 
-std::uint64_t state_controller::selected_index_ = states::no_selected_index;
+std::uint32_t state_controller::selected_index_ = states::no_selected_index;
 states_types state_controller::actual_state_ = states_types::waiting;
 target_types state_controller::actual_targeting_type_ = target_types::non;
 
-std::vector<std::uint64_t> state_controller::possible_movements_;
-std::vector<std::uint64_t> state_controller::possible_movements_costs_;
+std::vector<std::uint32_t> state_controller::possible_movements_;
+std::vector<std::uint32_t> state_controller::possible_movements_costs_;
 
-std::function<void(std::uint64_t)> state_controller::caller_;
+std::function<void(std::uint32_t)> state_controller::caller_;
 
-std::unordered_map<std::uint64_t, std::unordered_set<std::uint64_t>> state_controller::custom_valid_targets;
+std::unordered_map<std::uint32_t, std::unordered_set<std::uint32_t>> state_controller::custom_valid_targets;
 
 state_controller::custom_target_type state_controller::custom_valid_target_type = state_controller::custom_target_type::board_index;
 
-void state_controller::first_state(std::uint64_t select_from_index)
+void state_controller::first_state(std::uint32_t select_from_index)
 {
 	if (select_from_index == no_selected_index)
 		return;
 
 	selected_index_ = select_from_index;
-	std::uint64_t selected_index = states::state_controller::selected_index_;
+	std::uint32_t selected_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(selected_index);
 	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
 
@@ -41,18 +41,18 @@ void state_controller::first_state(std::uint64_t select_from_index)
 	}
 }
 
-void state_controller::wait_for_action(const std::function<void(std::uint64_t index)>& caller)
+void state_controller::wait_for_action(const std::function<void(std::uint32_t index)>& caller)
 {
 	state_controller::actual_state_ = states_types::wait_for_action;
 	caller_ = caller;
 }
 
-void state_controller::do_action(std::uint64_t index)
+void state_controller::do_action(std::uint32_t index)
 {
 	caller_(index);
 }
 
-bool state_controller::is_possible_movement(std::uint64_t index)
+bool state_controller::is_possible_movement(std::uint32_t index)
 {
 	auto begin_it = std::begin(states::state_controller::possible_movements_);
 	auto end_it = std::end(states::state_controller::possible_movements_);
@@ -60,13 +60,13 @@ bool state_controller::is_possible_movement(std::uint64_t index)
 	return result != end_it;
 }
 
-bool state_controller::valid_target(std::uint64_t target_index) {
+bool state_controller::valid_target(std::uint32_t target_index) {
 
 	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy) {
 
 		auto caster_id = board::at(states::state_controller::selected_index_);
 
-		std::uint64_t target_value = target_index;
+		std::uint32_t target_value = target_index;
 
 		if (custom_valid_target_type == custom_target_type::entity_id)
 			target_value = board::at(target_index);

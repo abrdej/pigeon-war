@@ -7,18 +7,18 @@
 #include "assassin_slash.h"
 #include "damage_dealers.h"
 
-assassin_slash::assassin_slash(std::uint64_t entity_id) {
+assassin_slash::assassin_slash(std::uint32_t entity_id) {
 
 }
 
-void assassin_slash::prepare(std::uint64_t for_index) {
+void assassin_slash::prepare(std::uint32_t for_index) {
     states::state_controller::selected_index_ = for_index;
 
     path_finder path_finder(true);
     path_finder.calc(for_index);
 
-    std::vector<std::uint64_t> possible_fields;
-    std::vector<std::uint64_t> costs;
+    std::vector<std::uint32_t> possible_fields;
+    std::vector<std::uint32_t> costs;
     path_finder.get_possible_movements(possible_fields,
                                        costs,
                                        range);
@@ -36,13 +36,13 @@ void assassin_slash::prepare(std::uint64_t for_index) {
     }
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](std::uint64_t index)
+    states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return set_landing(index);
                                               });
 }
 
-void assassin_slash::set_landing(std::uint64_t for_index) {
+void assassin_slash::set_landing(std::uint32_t for_index) {
 
     marked_target_index = for_index;
 
@@ -53,14 +53,14 @@ void assassin_slash::set_landing(std::uint64_t for_index) {
     }
 
     states::state_controller::actual_targeting_type_ = states::target_types::moving;
-    states::state_controller::wait_for_action([this](std::uint64_t index)
+    states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
 
 }
 
-void assassin_slash::use(std::uint64_t index_on) {
+void assassin_slash::use(std::uint32_t index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
 
@@ -82,7 +82,7 @@ void assassin_slash::use(std::uint64_t index_on) {
     }
 }
 
-void assassin_slash::play_animation(std::uint64_t from_index, std::uint64_t to_index) {
+void assassin_slash::play_animation(std::uint32_t from_index, std::uint32_t to_index) {
     auto entity_id = board::take(from_index);
 
     animations_queue::push_animation(animation_types::move, from_index, to_index, entity_id, bitmap_key::none);

@@ -146,9 +146,9 @@ enum class bitmap_key {
 struct bitmaps_key_hash
 {
 	template <typename T>
-	std::uint64_t operator()(T t) const
+	std::uint32_t operator()(T t) const
 	{
-		return static_cast<std::uint64_t>(t);
+		return static_cast<std::uint32_t>(t);
 	}
 };
 

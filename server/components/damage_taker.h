@@ -15,9 +15,9 @@
 #include "damage_pack.h"
 #include "common/health_field.h"
 
-void play_change_health_animation(std::uint64_t to_index, std::int32_t change_health);
+void play_change_health_animation(std::uint32_t to_index, std::int32_t change_health);
 
-std::unordered_map<std::uint64_t, std::int32_t> get_healths();
+std::unordered_map<std::uint32_t, std::int32_t> get_healths();
 
 class damage_taker {
 public:
@@ -90,9 +90,9 @@ public:
 	}
 
 	template <typename Callback>
-	std::uint64_t on_receive_damage(Callback callback, const on_receive_damage_policy& policy) {
+	std::uint32_t on_receive_damage(Callback callback, const on_receive_damage_policy& policy) {
 
-		static std::uint64_t id_gen = 0;
+		static std::uint32_t id_gen = 0;
 
 		if (policy == on_receive_damage_policy::before) {
 			auto callback_id = id_gen++;
@@ -106,38 +106,38 @@ public:
 		}
 	}
 
-	void remove_on_receive_damage(std::uint64_t callback_id) {
+	void remove_on_receive_damage(std::uint32_t callback_id) {
 		on_receive_damage_before_callbacks.erase(callback_id);
 		on_receive_damage_after_callbacks.erase(callback_id);
 	}
 
 private:
 	damage_receiver_impl damage_receiver;
-	std::unordered_map<std::uint64_t, std::function<void(const damage_pack&)>> on_receive_damage_before_callbacks;
-	std::unordered_map<std::uint64_t, std::function<void(const damage_pack&)>> on_receive_damage_after_callbacks;
+	std::unordered_map<std::uint32_t, std::function<void(const damage_pack&)>> on_receive_damage_before_callbacks;
+	std::unordered_map<std::uint32_t, std::function<void(const damage_pack&)>> on_receive_damage_after_callbacks;
 };
 
 template <typename DamageReceiver>
-inline void set_damage_receiver(std::uint64_t entity_id, DamageReceiver damage_receiver) {
+inline void set_damage_receiver(std::uint32_t entity_id, DamageReceiver damage_receiver) {
 	entity_manager::get(entity_id).get<damage_taker>()->set_damage_receiver(damage_receiver);
 }
 
 template <typename Callback>
-inline std::uint64_t on_receive_damage(std::uint64_t entity_id,
+inline std::uint32_t on_receive_damage(std::uint32_t entity_id,
 									   Callback callback,
 									   const damage_taker::on_receive_damage_policy& policy) {
 	return entity_manager::get(entity_id).get<damage_taker>()->on_receive_damage(callback, policy);
 }
 
-inline void remove_on_receive_damage(std::uint64_t entity_id, std::uint64_t callback_id) {
+inline void remove_on_receive_damage(std::uint32_t entity_id, std::uint32_t callback_id) {
 	entity_manager::get(entity_id).get<damage_taker>()->remove_on_receive_damage(callback_id);
 }
 
-inline auto get_damage_receiver(std::uint64_t entity_id) {
+inline auto get_damage_receiver(std::uint32_t entity_id) {
 	return entity_manager::get(entity_id).get<damage_taker>()->get_damage_receiver();
 }
 
-inline void set_destructible(std::uint64_t entity_id, bool value) {
+inline void set_destructible(std::uint32_t entity_id, bool value) {
 	entity_manager::get(entity_id).get<health_field>()->is_destructible = value;
 }
 

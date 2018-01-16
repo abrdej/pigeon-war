@@ -24,7 +24,7 @@ game_state get_game_state(game& g) {
 	game_state state;
 	state.healths = get_healths();
 
-	for (std::uint64_t i = 0; i < board::fields_.size(); ++i) {
+	for (std::uint32_t i = 0; i < board::fields_.size(); ++i) {
 		for (auto&& elem : board::fields_[i]) {
 			state.board.fields_[i].push_back(elem);
 		}
@@ -96,8 +96,8 @@ int main() {
 	binder.bind(message_types::on_board, [&](sf::Packet& packet) {
 
 		std::int32_t client_id;
-		std::uint64_t x;
-		std::uint64_t y;
+		std::uint32_t x;
+		std::uint32_t y;
 
 		packet >> client_id;
 		packet >> x;
@@ -118,7 +118,7 @@ int main() {
 	binder.bind(message_types::on_button, [&](sf::Packet& packet) {
 
 		std::int32_t client_id;
-		std::uint64_t n;
+		std::uint32_t n;
 
 		packet >> client_id;
 		packet >> n;
@@ -152,7 +152,7 @@ int main() {
 	binder.bind(message_types::get_button_description, [&](sf::Packet& packet) {
 
 		std::int32_t client_id;
-		std::uint64_t n;
+		std::uint32_t n;
 
 		packet >> client_id;
 		packet >> n;
