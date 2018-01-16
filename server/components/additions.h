@@ -60,7 +60,7 @@ inline void add_component(std::uint32_t entity_id,
 }
 
 inline void remove_component(std::uint32_t entity_id, const std::string& name) {
-    entity_manager::get(entity_id).get<addition>()->destroy_named(name);
+    entity_manager::get(entity_id).get_with_create<addition>()->destroy_named(name);
 }
 
 inline bool has_component(std::uint32_t entity_id, const std::string& name) {
