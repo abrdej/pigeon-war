@@ -35,14 +35,15 @@ private:
 };
 
 struct bomb_instance {
-	static auto create(sf::Uint64 id)
+	static auto create(sf::Uint64 entity_id)
 	{
-		base_components components;
-		entity_name(components) = "Bomba";
-		entity_health(components).base_health = indestructible;
-		entity_health(components).is_destructible = false;
-		entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<bomb_detonation>(id));
-		return components;
+		base_entity entity;
+		entity.entity_id = entity_id;
+		entity.name = "Bomba";
+		entity.add<health_field>();
+		auto abilities_ptr = entity.add<abilities>();
+		abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<bomb_detonation>(entity_id));
+		return entity;
 	}
 };
 

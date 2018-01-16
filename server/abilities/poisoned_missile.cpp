@@ -3,6 +3,7 @@
 #include "managers/additions_manager.h"
 #include "poisoned_missile.h"
 #include "damage_dealers.h"
+#include "abilities/moveable.h"
 
 void poisoned_missile::use(sf::Uint64 index_on) {
 

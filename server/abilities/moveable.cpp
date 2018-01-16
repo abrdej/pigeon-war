@@ -1,9 +1,9 @@
 #include <core/animations_queue.h>
+#include <sender.h>
 #include "moveable.h"
 #include "core/states_controller.h"
 #include "core/path_finder.h"
 #include "core/board.h"
-#include "managers/directions_manager.h"
 
 void moveable::prepare(sf::Uint64 for_index)
 {
@@ -58,11 +58,6 @@ void moveable::move(sf::Uint64 index_to)
 
 	sf::Int32 from_col = board::to_pos(move_from_index).first;
 	sf::Int32 to_col = board::to_pos(index_to).first;
-	if (from_col != to_col)
-		if (from_col - to_col < 0)
-			directions_manager::turn_right(entity_id);
-		else
-			directions_manager::turn_left(entity_id);
 
 	board::give_back(entity_id, index_to);
 

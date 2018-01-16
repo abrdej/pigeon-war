@@ -10,14 +10,15 @@
 struct wall {
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Wall";
-        entity_health(components).is_destructible = false;
-        entity_health(components).base_health = indestructible;
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Wall";
 
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::wall);
+        entity.add<health_field>();
 
-        return components;
+        entity.add<bitmap_field>(id, bitmap_key::wall);
+
+        return entity;
     }
 };
 

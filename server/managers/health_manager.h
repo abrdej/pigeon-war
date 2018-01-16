@@ -11,34 +11,8 @@
 #include <core/states_controller.h>
 #include <core/animations_queue.h>
 #include <sender.h>
+#include "damage_pack.h"
 
-static const sf::Uint64 no_damage_dealer = std::numeric_limits<sf::Uint64>::max();
-
-enum class damage_types {
-	MELEE,
-	RANGED,
-	MAGIC,
-	SPECIAL,
-	UNDEFINED
-};
-
-struct damage_pack {
-	damage_pack(sf::Int32 value, damage_types type, sf::Uint64 receiver_id)
-			: damage_value(value),
-              damage_receiver_id(receiver_id),
-			  damage_type(type),
-			  damage_dealer_id(no_damage_dealer) {}
-	damage_pack(sf::Int32 value, damage_types type, sf::Uint64 receiver_id, sf::Uint64 dealer_id)
-			: damage_value(value),
-			  damage_type(type),
-              damage_receiver_id(receiver_id),
-			  damage_dealer_id(dealer_id) {}
-
-	sf::Int32 damage_value;
-	damage_types damage_type;
-    sf::Uint64 damage_receiver_id;
-	sf::Uint64 damage_dealer_id;
-};
 
 inline damage_pack melee_damage(sf::Int32 value, sf::Uint64 receiver_id, sf::Uint64 dealer_id = no_damage_dealer) {
 	return damage_pack{value, damage_types::MELEE, receiver_id, dealer_id};
@@ -126,10 +100,8 @@ public:
 		health_component.health = health_component.base_health;
 		base_manager<health_field, health_field>::add_component(entity_id, health_component);
 
-		// clean up receivers
 		entity_remover::add_remover(entity_id, [entity_id]() {
 			damage_receivers.erase(entity_id);
-//			on_receive_damage_callbacks.erase(entity_id);
 			on_receive_damage_before_callbacks.erase(entity_id);
 			on_receive_damage_after_callbacks.erase(entity_id);
 		});

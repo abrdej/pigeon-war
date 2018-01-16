@@ -4,6 +4,7 @@
 #include <managers/abilities_manager.h>
 #include <managers/entity_manager.h>
 #include "hypnosis.h"
+#include "core/turn.h"
 
 void hypnosis::use(sf::Uint64 index_on) {
 

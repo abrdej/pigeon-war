@@ -73,9 +73,6 @@ public:
 		auto& instance = get_instance();
 		auto next_player_id = ++instance.active_player_id % instance.players.size();
 		instance.active_player_id = next_player_id;
-
-		std::cout << "next_player: " << instance.active_player_id << "\n";
-
 		return next_player_id;
 	}
 

@@ -11,22 +11,28 @@
 #include <server/abilities/moveable.h>
 #include <server/abilities/teleport.h>
 #include <gui/entity_drawer.h>
+#include <damage_taker.h>
 
 class droid final
 {
 public:
 	static auto create(sf::Uint64 id)
 	{
-		base_components components;
-		entity_name(components) = "Droid";
-		entity_health(components).base_health = 55;
-		entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-		entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<laser>());
-		entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<teleport>());
+		base_entity entity;
+		entity.entity_id = id;
+		entity.name = "Droid";
 
-		entity_bitmap_field(components) = bitmap_field(id, bitmap_key::droid);
+		entity.add<health_field>(55);
+		entity.add<damage_taker>();
 
-		return components;
+		auto abilities_ptr = entity.add<abilities>();
+		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<laser>());
+		abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<teleport>());
+
+		entity.add<bitmap_field>(id, bitmap_key::droid);
+
+		return entity;
 	}
 };
 

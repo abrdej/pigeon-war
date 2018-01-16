@@ -10,68 +10,57 @@
 #include "server/abilities/abilities.h"
 #include "abilities_manager.h"
 #include "health_manager.h"
-#include "names_manager.h"
+#include "name_field.h"
 #include "abilities_manager.h"
 #include <functional>
 #include <gui/drawing_manager.h>
-#include <entities/wretch.h>
 #include <boost/fusion/algorithm/iteration/for_each.hpp>
-#include <entities/shooter.h>
-#include "directions_manager.h"
-#include "types_manager.h"
-#include "server/ai/ai_manager.h"
 #include "entity_remover.h"
 #include "core/board.h"
 
-template <typename... T>
-void add_components(sf::Uint64 entity_id, const std::tuple<T...>& tuple) {
-	sf::Int32 t[] = {(add_component_of_type(entity_id, std::get<T>(tuple)), 0)...};
-}
-
 class entity_manager final
 {
-	static std::unordered_set<sf::Uint64> entities_;
-	static std::vector<std::function<void(sf::Uint64)>> on_destroy_callbacks_;
+	static std::unordered_map<std::uint64_t, base_entity> entities;
 
-	inline static sf::Uint64 generate_id() {
-		static sf::Uint64 entity_id_generator = 0;
+	static std::vector<std::function<void(std::uint64_t)>> on_destroy_callbacks;
+
+	inline static std::uint64_t generate_id() {
+		static std::uint64_t entity_id_generator = 0;
 		return entity_id_generator++;
 	}
 
 public:
-	template <typename EntityComponents>
-	inline static sf::Uint64 create()
+	template <typename EntityFactory>
+	inline static std::uint64_t create()
 	{
 		auto entity_id = generate_id();
 
-		entities_.insert(entity_id);
+		entities.emplace(entity_id, EntityFactory::create(entity_id));
 
-		auto components = EntityComponents::create(entity_id);
-		add_components(entity_id, components);
-
-		return entity_id++;
+		return entity_id;
 	}
-	inline static bool alive(sf::Uint64 entity_id)
-	{
-		return entities_.find(entity_id) != std::end(entities_);
+	static base_entity get(std::uint64_t entity_id) {
+		return entities.at(entity_id);
 	}
-	inline static void destroy(sf::Uint64 entity_id)
+	inline static bool alive(std::uint64_t entity_id)
 	{
-		entities_.erase(entity_id);
-
-        entity_remover::remove(entity_id);
+		return entities.find(entity_id) != std::end(entities);
+	}
+	inline static void destroy(std::uint64_t entity_id)
+	{
+		entities.erase(entity_id);
 
 		board::remove_entity(entity_id);
 
 		call_destroy_callbacks(entity_id);
 	}
-	static void on_destroy(const std::function<void(sf::Uint64)>& callback)
+	static void on_destroy(const std::function<void(std::uint64_t)>& callback)
 	{
-		on_destroy_callbacks_.push_back(callback);
+		on_destroy_callbacks.push_back(callback);
 	}
-	static void call_destroy_callbacks(sf::Uint64 entity_id)
+	static void call_destroy_callbacks(std::uint64_t entity_id)
 	{
-		for (auto& callback : on_destroy_callbacks_)
+		for (auto& callback : on_destroy_callbacks)
 			callback(entity_id);
 	}
 };

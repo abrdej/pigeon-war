@@ -8,13 +8,16 @@ class saurions_web final
 public:
 	static auto create(sf::Uint64 id)
 	{
-		base_components components;
-		entity_name(components) = "Saurion Web";
-		entity_health(components).base_health = 20;
+		base_entity entity;
+		entity.entity_id = id;
+		entity.name = "Saurion Web";
 
-		entity_bitmap_field(components) = bitmap_field(id, bitmap_key::saurions_web);
+		entity.add<health_field>(20);
+		entity.add<damage_taker>();
 
-		return components;
+		entity.add<bitmap_field>(id, bitmap_key::saurions_web);
+
+		return entity;
 	}
 };
 

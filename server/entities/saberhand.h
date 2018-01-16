@@ -5,22 +5,28 @@
 #include "server/abilities/moveable.h"
 #include "server/abilities/sabers.h"
 #include "server/abilities/invisibility.h"
+#include "damage_taker.h"
 
 class saberhand final
 {
 public:
 	static auto create(sf::Uint64 id)
 	{
-		base_components components;
-		entity_name(components) = "Saberhand";
-		entity_health(components).base_health = 60;
-		entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-		entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<sabers>());
-		entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<invisibility>(id));
+		base_entity entity;
+		entity.entity_id = id;
+		entity.name = "Saberhand";
 
-		entity_bitmap_field(components) = bitmap_field(id, bitmap_key::saberhand);
+		entity.add<health_field>(60);
+		entity.add<damage_taker>();
 
-		return components;
+		auto abilities_ptr = entity.add<abilities>();
+		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<sabers>());
+		abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<invisibility>(id));
+
+		entity.add<bitmap_field>(id, bitmap_key::saberhand);
+
+		return entity;
 	}
 };
 

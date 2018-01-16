@@ -10,14 +10,15 @@
 struct fir {
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Fir";
-        entity_health(components).is_destructible = false;
-        entity_health(components).base_health = indestructible;
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Fir";
 
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::fir);
+        entity.add<health_field>();
 
-        return components;
+        entity.add<bitmap_field>(id, bitmap_key::fir);
+
+        return entity;
     }
 };
 

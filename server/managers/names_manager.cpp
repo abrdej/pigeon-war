@@ -1,1 +1,0 @@
-#include "names_manager.h"

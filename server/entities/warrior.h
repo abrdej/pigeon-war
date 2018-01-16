@@ -16,16 +16,21 @@ class warrior final
 public:
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Warrior";
-        entity_health(components).base_health = 50;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<warrior_blow>());
-        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<immortality>(id));
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Warrior";
 
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::warrior);
+        entity.add<health_field>(50);
+        entity.add<damage_taker>();
 
-        return components;
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<warrior_blow>());
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<immortality>(id));
+
+        entity.add<bitmap_field>(id, bitmap_key::warrior);
+
+        return entity;
     }
 };
 

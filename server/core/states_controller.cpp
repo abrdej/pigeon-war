@@ -5,6 +5,7 @@
 #include "abilities/abilities.h"
 #include "abilities/ability.h"
 #include "managers/abilities_manager.h"
+#include "managers/players_manager.h"
 
 using states::state_controller;
 using states::states_types;

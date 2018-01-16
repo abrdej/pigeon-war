@@ -16,17 +16,22 @@ struct giant final
 {
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Giant";
-        entity_health(components).base_health = 70;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<giant_blow>());
-        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<giant_ram>(id));
-        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<aura_of_immunity>(id));
-        entity_directions(components) = directions::left;
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::giant);
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Giant";
 
-        return components;
+        entity.add<health_field>(70);
+        entity.add<damage_taker>();
+
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<giant_blow>());
+        abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<giant_ram>(id));
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<aura_of_immunity>(id));
+
+        entity.add<bitmap_field>(id, bitmap_key::giant);
+
+        return entity;
     }
 };
 

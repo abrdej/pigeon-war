@@ -15,14 +15,19 @@ struct robot final
 {
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Robot";
-        entity_health(components).base_health = 45;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Robot";
 
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::robot);
+        entity.add<health_field>(45);
+        entity.add<damage_taker>();
 
-        return components;
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+
+        entity.add<bitmap_field>(id, bitmap_key::robot);
+
+        return entity;
     }
 };
 

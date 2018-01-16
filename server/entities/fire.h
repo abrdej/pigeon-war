@@ -11,14 +11,15 @@ struct fire final
 {
 	static auto create(sf::Uint64 id)
 	{
-		base_components components;
-		entity_name(components) = "Fire";
-		entity_health(components).base_health = indestructible;
-		entity_health(components).is_destructible = false;
+		base_entity entity;
+		entity.entity_id = id;
+		entity.name = "Fire";
 
-		entity_bitmap_field(components) = bitmap_field(id, bitmap_key::fire);
+		entity.add<health_field>();
 
-		return components;
+		entity.add<bitmap_field>(id, bitmap_key::fire);
+
+		return entity;
 	}
 };
 

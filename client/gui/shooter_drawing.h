@@ -9,8 +9,6 @@
 #include <managers/health_manager.h>
 #include <SFML/Graphics/Text.hpp>
 #include <core/board.h>
-#include "managers/directions_manager.h"
-#include "managers/types_manager.h"
 #include "bitmap_center.h"
 #include "drawable.h"
 #include "board_panel.h"

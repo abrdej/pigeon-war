@@ -9,14 +9,19 @@ class saurian final
 public:
 	static auto create(sf::Uint64 id)
 	{
-		base_components components;
-		entity_name(components) = "Saurion";
-		entity_health(components).base_health = 35;
-		entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<tongue_of_fire>());
+		base_entity entity;
+		entity.entity_id = id;
+		entity.name = "Saurion";
 
-		entity_bitmap_field(components) = bitmap_field(id, bitmap_key::saurian);
+		entity.add<health_field>(35);
+		entity.add<damage_taker>();
 
-		return components;
+		auto abilities_ptr = entity.add<abilities>();
+		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<tongue_of_fire>());
+
+		entity.add<bitmap_field>(id, bitmap_key::saurian);
+
+		return entity;
 	}
 };
 

@@ -1,12 +1,8 @@
 #ifndef NAMES_MANAGER_H
 #define NAMES_MANAGER_H
 
-#include "common/managers.h"
-#include <unordered_map>
 #include <vector>
 #include <string>
-
-using names_manager = base_manager<std::string, std::string&>;
 
 struct name_field {
     std::string value;
@@ -24,11 +20,5 @@ struct name_field {
         return *this;
     }
 };
-
-template <>
-inline void add_component_of_type<name_field>(sf::Uint64 entity_id, const name_field& component) {
-    std::string name = component;
-    names_manager::add_component(entity_id, name);
-}
 
 #endif

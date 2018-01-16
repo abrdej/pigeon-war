@@ -2,7 +2,6 @@
 #include "utils/creator_helper.h"
 #include "core/board.h"
 #include "managers/entity_manager.h"
-#include "managers/players_manager.h"
 #include "entities/stone.h"
 
 namespace creator_helper

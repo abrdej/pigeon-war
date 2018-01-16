@@ -23,6 +23,7 @@
 #include "utils/creator_helper.h"
 #include "utils/scenario_helper.h"
 #include "ai/behavior_tree.h"
+#include "ai/ai_manager.h"
 
 std::unordered_map<std::string, std::function<void()>> scenarios_initializer;
 
@@ -199,8 +200,6 @@ void battle_with_a_golem(game& game) {
 #include <core/states_controller.h>
 #include <entities/treant.h>
 #include <entities/fire.h>
-#include <entities/balloon.h>
-#include <entities/fissure.h>
 #include <entities/thrower.h>
 #include <entities/guardian.h>
 #include <entities/creature.h>
@@ -440,17 +439,6 @@ void skirmish(game& game) {
     });
 
     holder->owner = add_entity_for_player;
-}
-
-void strategy(game& game) {
-    auto balloon_id = entity_manager::create<balloon>();
-    board::insert(board::to_index(2, 5), balloon_id);
-    auto tester_id = players_manager::create_human_player("tester");
-
-    players_manager::add_entity_for_player(tester_id, balloon_id);
-
-    using creator_helper::pos;
-    creator_helper::create_neutral_many<fissure>({pos(5, 5)});
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {

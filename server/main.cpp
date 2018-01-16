@@ -11,11 +11,12 @@
 #include <SFML/Network.hpp>
 #include <scenarios/scenarios.h>
 #include <managers/additions_manager.h>
+#include <managers/entity_manager.h>
 #include "core/game.h"
 #include "common/game_state.h"
 #include "managers/bitmap_field_manager.h"
 #include "managers/health_manager.h"
-#include "managers/names_manager.h"
+#include "managers/name_field.h"
 #include "server.h"
 #include "common/packet_helper.h"
 #include "sender.h"
@@ -63,7 +64,9 @@ local_state get_local_state(game& g) {
 		}
 	}
 
-	state.entity_name = names_manager::component_for(board::at(states::state_controller::selected_index_));
+	auto entity = entity_manager::get(board::at(states::state_controller::selected_index_));
+
+	state.entity_name = *entity.get<name_field>();
 	state.selected_index = states::state_controller::selected_index_;
 
 	for (auto&& move : states::state_controller::possible_movements_) {

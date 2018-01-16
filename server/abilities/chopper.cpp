@@ -68,8 +68,6 @@ void chopper::use(sf::Uint64 index_on) {
 
 void chopper::set_fired() {
 
-    bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::creature_fired;
-
     damage = fired_damage;
     fired = true;
 
@@ -79,8 +77,6 @@ void chopper::set_fired() {
 }
 
 void chopper::remove_fired() {
-
-    bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::creature;
 
     damage = no_fired_damage;
     fired = false;

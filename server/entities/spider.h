@@ -16,17 +16,22 @@ struct spider final
 {
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Spider";
-        entity_health(components).base_health = 45;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<jaw_spider>());
-        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<spider_web>(id));
-        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<surroundings>(id));
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Spider";
 
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::spider);
+        entity.add<health_field>(45);
+        entity.add<damage_taker>();
 
-        return components;
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<jaw_spider>());
+        abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<spider_web>(id));
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<surroundings>(id));
+
+        entity.add<bitmap_field>(id, bitmap_key::spider);
+
+        return entity;
     }
 };
 

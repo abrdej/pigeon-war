@@ -22,10 +22,10 @@ private:
     void move(sf::Uint64 index_to);
 
 private:
-    sf::Uint64 entity_id;
-    sf::Int32 max_range{4};
-    sf::Int32 range{4};
-    const sf::Int32 power_decrease_for_cost{2};
+    std::uint64_t entity_id;
+    std::int32_t max_range{4};
+    std::int32_t range{4};
+    const std::int32_t power_decrease_for_cost{2};
     bool used{false};
 };
 

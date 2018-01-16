@@ -1,9 +1,9 @@
 #include <managers/additions_manager.h>
 #include <core/board.h>
-#include <managers/directions_manager.h>
 #include "killer_instinct.h"
 #include "core/animations_queue.h"
 #include "managers/abilities_manager.h"
+#include "sender.h"
 
 
 killer_instinct::killer_instinct(sf::Uint64 entity_id)
@@ -56,15 +56,6 @@ void killer_instinct::use(sf::Uint64 index) {
 	states::state_controller::selected_index_ = states::no_selected_index;
 
 	sender::send(message_types::animation, animation_def::move, move_from_index, index);
-
-
-	sf::Int32 from_col = board::to_pos(move_from_index).first;
-	sf::Int32 to_col = board::to_pos(index).first;
-	if (from_col != to_col)
-	if (from_col - to_col < 0)
-		directions_manager::turn_right(entity_id);
-	else
-		directions_manager::turn_left(entity_id);
 
 	board::give_back(entity_id, index);
 

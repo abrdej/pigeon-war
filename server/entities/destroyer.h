@@ -16,16 +16,21 @@ class destroyer final
 public:
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Destroyer";
-        entity_health(components).base_health = 50;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<blow_the_ax>());
-        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<armor>(id));
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Destroyer";
 
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::destroyer);
+        entity.add<health_field>(50);
+        entity.add<damage_taker>();
 
-        return components;
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<blow_the_ax>());
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<armor>(id));
+
+        entity.add<bitmap_field>(id, bitmap_key::destroyer);
+
+        return entity;
     }
 };
 

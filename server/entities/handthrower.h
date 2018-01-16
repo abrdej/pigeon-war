@@ -16,16 +16,21 @@ class handthrower final
 public:
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Handthrower";
-        entity_health(components).base_health = 45;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<handcannon>());
-        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<protection_field>(id));
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Handthrower";
 
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::handthrower);
+        entity.add<health_field>(45);
+        entity.add<damage_taker>();
 
-        return components;
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<handcannon>());
+        abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<protection_field>(id));
+
+        entity.add<bitmap_field>(id, bitmap_key::handthrower);
+
+        return entity;
     }
 };
 

@@ -17,14 +17,21 @@ class grenadier final
 public:
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Grenadier";
-        entity_health(components).base_health = 40;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<bomb>());
-        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<detonation>(id));
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::grenadier);
-        return components;
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Grenadier";
+
+        entity.add<health_field>(40);
+        entity.add<damage_taker>();
+
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<bomb>());
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<detonation>(id));
+
+        entity.add<bitmap_field>(id, bitmap_key::grenadier);
+
+        return entity;
     }
 };
 

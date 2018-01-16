@@ -11,8 +11,8 @@
 
 struct bitmap_field {
 	bitmap_field() = default;
-	bitmap_field(sf::Uint64 entity_id, bitmap_key bmt_key) : entity_id(entity_id), bmt_key(bmt_key) {}
-	sf::Uint64 entity_id;
+	bitmap_field(std::uint64_t entity_id, bitmap_key bmt_key) : entity_id(entity_id), bmt_key(bmt_key) {}
+	std::uint64_t entity_id;
 	bitmap_key bmt_key;
 };
 

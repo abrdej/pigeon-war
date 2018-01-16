@@ -7,12 +7,17 @@
 
 #include <limits>
 
-struct health_field {
-	sf::Int32 health;
-	sf::Int32 base_health;
-	bool is_destructible{true};
-};
+static const std::int32_t indestructible = std::numeric_limits<std::int32_t>::max();
 
-static const sf::Int32 indestructible = std::numeric_limits<sf::Int32>::max();
+struct health_field {
+	health_field(std::int32_t value)
+			: base_health(value), health(value), is_destructible(true) {}
+
+	health_field() : is_destructible(false), base_health(indestructible), health(indestructible) {}
+
+	std::int32_t health;
+	std::int32_t base_health;
+	bool is_destructible;
+};
 
 #endif //PIGEONWAR_HEALTH_FIELD_H

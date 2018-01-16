@@ -16,15 +16,21 @@ class absorber final
 public:
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Absorber";
-        entity_health(components).base_health = 50;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<absorption>(id));
-        entity_abilities(components).add_ability(abilities::ability_types::special, std::make_shared<power_circle>(id));
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::absorber);
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Absorber";
 
-        return components;
+        entity.add<health_field>(50);
+        entity.add<damage_taker>();
+
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<absorption>(id));
+        abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<power_circle>(id));
+
+        entity.add<bitmap_field>(id, bitmap_key::absorber);
+
+        return entity;
     }
 };
 

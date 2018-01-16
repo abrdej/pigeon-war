@@ -18,16 +18,21 @@ struct golem final
 {
     static auto create(sf::Uint64 id)
     {
-        base_components components;
-        entity_name(components) = "Golem";
-        entity_health(components).base_health = 60;
-        entity_abilities(components).add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        entity_abilities(components).add_ability(abilities::ability_types::offensive, std::make_shared<power_bullet>());
-        entity_abilities(components).add_ability(abilities::ability_types::passive, std::make_shared<stone_skin>(id));
-        entity_directions(components) = directions::left;
-        entity_bitmap_field(components) = bitmap_field(id, bitmap_key::golem);
+        base_entity entity;
+        entity.entity_id = id;
+        entity.name = "Golem";
 
-        return components;
+        entity.add<health_field>(60);
+        entity.add<damage_taker>();
+
+        auto abilities_ptr = entity.add<abilities>();
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<power_bullet>());
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<stone_skin>(id));
+
+        entity.add<bitmap_field>(id, bitmap_key::golem);
+
+        return entity;
     }
 };
 

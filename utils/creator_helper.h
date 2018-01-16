@@ -4,6 +4,7 @@
 #include <vector>
 #include <initializer_list>
 #include "managers/entity_manager.h"
+#include "managers/players_manager.h"
 
 class board;
 class entity_manager;

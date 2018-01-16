@@ -33,8 +33,6 @@ void invisibility::hide_me()
 {
 	index = board::index_for(entity_id);
 
-	bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::saberhand_transparency;
-
 	sender::send(message_types::animation, animation_def::set_invisibility, entity_id);
 
     healths_manager::set_destructible(entity_id, false);
@@ -42,8 +40,6 @@ void invisibility::hide_me()
 
 void invisibility::show_me()
 {
-	bitmap_field_manager::component_for(entity_id).bmt_key = bitmap_key::saberhand;
-
 	sender::send(message_types::animation, animation_def::remove_invisibility, entity_id);
 
     healths_manager::set_destructible(entity_id, true);

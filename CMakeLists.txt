@@ -48,7 +48,6 @@ set(SERVER_SOURCE_FILES
         server/core/board.cpp
         utils/creator_helper.cpp
         server/abilities/damage_dealer.cpp
-        server/managers/directions_manager.cpp
         server/abilities/drain.cpp
         server/managers/entity_manager.cpp
         server/core/game.cpp
@@ -61,7 +60,7 @@ set(SERVER_SOURCE_FILES
         server/abilities/shoot.cpp
         server/abilities/sabers.cpp
         server/core/path_finder.cpp
-        server/managers/names_manager.cpp
+        server/managers/name_field.cpp
         server/managers/players_manager.cpp
         server/core/board.cpp
         server/managers/entity_remover.cpp
@@ -109,13 +108,6 @@ set(SERVER_SOURCE_FILES
         server/abilities/recovery.cpp
         server/abilities/recovery.h
         server/entities/fire.h
-        server/entities/balloon.h
-        server/abilities/build_cannon.cpp
-        server/abilities/build_cannon.h
-        server/entities/cannon.h
-        server/abilities/build_barrack.cpp
-        server/abilities/build_barrack.h
-        server/entities/barrack.h
         server/abilities/teleport.h
         server/abilities/wolf_herd.cpp
         server/abilities/wolf_herd.h
@@ -131,13 +123,7 @@ set(SERVER_SOURCE_FILES
         server/entities/treant.h server/abilities/entangling.cpp
         server/abilities/entangling.h server/abilities/recovery.cpp
         server/abilities/recovery.h server/entities/fire.h
-        server/entities/balloon.h server/abilities/build_cannon.cpp
-        server/abilities/build_cannon.h server/entities/cannon.h
-        server/abilities/build_barrack.cpp server/abilities/build_barrack.h
-        server/entities/barrack.h
-        server/abilities/builder.cpp
-        server/abilities/builder.h
-        server/entities/drilling_rig.h server/entities/fissure.h server/entities/thrower.h
+        server/entities/thrower.h
         server/abilities/flame_thrower.cpp server/abilities/flame_thrower.h
         server/abilities/counterattack.cpp server/abilities/counterattack.h
         server/entities/guardian.h server/abilities/spear.cpp server/abilities/spear.h
@@ -168,7 +154,7 @@ set(SERVER_SOURCE_FILES
         server/abilities/vicious_circle.cpp server/abilities/vicious_circle.h
         server/abilities/wretch_moving.cpp server/abilities/wretch_moving.h
         server/abilities/kill.cpp
-        common/bitmaps.h config.h.in server/managers/power_manager.h server/abilities/possible_move_helper.h
+        common/bitmaps.h config.h.in server/managers/power_field.h server/abilities/possible_move_helper.h
         server/abilities/possible_move_helper.cpp
         server/managers/bitmap_field_manager.cpp server/managers/bitmap_field_manager.h
 
@@ -182,7 +168,7 @@ set(SERVER_SOURCE_FILES
 #        client/gui/bitmap_center.cpp
 #        client/gui/my_button.cpp
 
-        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h server/abilities/straight_target_ability.cpp server/abilities/straight_target_ability.h server/abilities/per_turn_usable.h server/sender.h server/sender.cpp server/abilities/neighboring_target_ability.h server/abilities/path_target_ability.h server/abilities/caster_target_ability.h server/abilities/prison_connection.cpp server/abilities/prison_connection.h server/abilities/killer_instinct.cpp server/abilities/killer_instinct.h server/abilities/aura_of_immunity.cpp server/abilities/aura_of_immunity.h server/managers/modifications_manager.cpp server/managers/modifications_manager.h server/abilities/ball_and_chain.cpp server/abilities/ball_and_chain.h server/abilities/death_mark.cpp server/abilities/death_mark.h)
+        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h server/abilities/straight_target_ability.cpp server/abilities/straight_target_ability.h server/abilities/per_turn_usable.h server/sender.h server/sender.cpp server/abilities/neighboring_target_ability.h server/abilities/path_target_ability.h server/abilities/caster_target_ability.h server/abilities/prison_connection.cpp server/abilities/prison_connection.h server/abilities/killer_instinct.cpp server/abilities/killer_instinct.h server/abilities/aura_of_immunity.cpp server/abilities/aura_of_immunity.h server/managers/modifications_manager.cpp server/managers/modifications_manager.h server/abilities/ball_and_chain.cpp server/abilities/ball_and_chain.h server/abilities/death_mark.cpp server/abilities/death_mark.h server/damage_taker.cpp server/damage_taker.h server/damage_pack.h)
 
 set(CLIENT_SOURCE_FILES
         client/gui/bitmap_center.cpp

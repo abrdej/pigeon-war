@@ -1,13 +1,17 @@
 #include <core/states_controller.h>
 #include <core/board.h>
-#include <managers/directions_manager.h>
+#include <sender.h>
+#include <managers/power_field.h>
+#include <common/animations.h>
+#include <managers/entity_manager.h>
 #include "wretch_moving.h"
 
 wretch_moving::wretch_moving(sf::Uint64 entity_id) : entity_id(entity_id) {
     onEveryRound([this]() {
         used = false;
         range = max_range;
-        powers_manager::set_power_to_base_power(this->entity_id);
+        auto power_field_ptr = entity_manager::get(this->entity_id).get<power_field>();
+        power_field_ptr->power = power_field_ptr->base_power;
     });
 }
 
@@ -15,7 +19,7 @@ void wretch_moving::prepare(sf::Uint64 for_index) {
     states::state_controller::selected_index_ = for_index;
     states::state_controller::actual_state_ = states::states_types::wait_for_action;
 
-    sf::Int32 power = powers_manager::get_power_for(entity_id);
+    auto power = entity_manager::get(entity_id).get<power_field>()->power;
 
     std::cout << "power: " << power << "\n";
 
@@ -42,10 +46,11 @@ void wretch_moving::move(sf::Uint64 index_to) {
         if (states::state_controller::possible_movements_[i] == index_to)
             break;
     }
-    auto cost = states::state_controller::possible_movements_costs_[i];
+    std::int32_t cost = states::state_controller::possible_movements_costs_[i];
     std::cout << "cost: " << cost << "\n";
 
-    powers_manager::modify_power_by(entity_id, -power_decrease_for_cost * cost);
+    entity_manager::get(entity_id).get<power_field>()->power =- power_decrease_for_cost * cost;
+
     range = 0;
 
     auto move_from_index = states::state_controller::selected_index_;
@@ -55,14 +60,6 @@ void wretch_moving::move(sf::Uint64 index_to) {
     states::state_controller::selected_index_ = states::no_selected_index;
 
     sender::send(message_types::animation, animation_def::move, move_from_index, index_to);
-
-    sf::Int32 from_col = board::to_pos(move_from_index).first;
-    sf::Int32 to_col = board::to_pos(index_to).first;
-    if (from_col != to_col)
-        if (from_col - to_col < 0)
-            directions_manager::turn_right(taken_id);
-        else
-            directions_manager::turn_left(taken_id);
 
     board::give_back(taken_id, index_to);
 
