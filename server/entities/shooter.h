@@ -10,7 +10,7 @@
 
 struct shooter final
 {
-	static auto create(std::uint32_t entity_id)
+	static auto create(base_entity& entity)
 	{
 		entity.name = "Shooter";
 
@@ -22,7 +22,7 @@ struct shooter final
 		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<shoot>());
 		abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<grenade>());
 
-		entity.add<bitmap_field>(entity_id, bitmap_key::shooter);
+		entity.add<bitmap_field>(entity.entity_id, bitmap_key::shooter);
 
 		return entity;
 	}
