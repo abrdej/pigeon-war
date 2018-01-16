@@ -28,8 +28,10 @@ public:
 		auto it = modules.find(std::type_index(typeid(T)));
 		if (it != std::end(modules))
 			return std::static_pointer_cast<T>(it->second);
-		else
+		else {
+			std::cout << "get component which doesn't exist\n" << typeid(T).name() << "\n";
 			return std::shared_ptr<T>();
+		}
 	}
 	template <typename T>
 	std::shared_ptr<T> get_with_create()
