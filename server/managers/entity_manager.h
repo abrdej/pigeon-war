@@ -28,7 +28,7 @@ public:
 
 		auto result = entities.emplace(entity_id, base_entity());
         result.first->second.entity_id = entity_id;
-		EntityFactory::create(entity_id, result.first->second);
+		EntityFactory::create(result.first->second);
 
 		return entity_id;
 	}
