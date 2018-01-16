@@ -59,7 +59,6 @@ set(SERVER_SOURCE_FILES
         server/abilities/shoot.cpp
         server/abilities/sabers.cpp
         server/core/path_finder.cpp
-        server/components/name_field.cpp
         server/managers/players_manager.cpp
         server/core/board.cpp
         utils/scenario_helper.h

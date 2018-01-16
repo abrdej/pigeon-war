@@ -13,7 +13,6 @@
 #include <managers/entity_manager.h>
 #include "core/game.h"
 #include "common/game_state.h"
-#include "components/name_field.h"
 #include "server.h"
 #include "common/packet_helper.h"
 #include "sender.h"
@@ -63,7 +62,7 @@ local_state get_local_state(game& g) {
 		}
 	}
 
-	state.entity_name = *entity.get<name_field>();
+	state.entity_name = entity.name;
 	state.selected_index = states::state_controller::selected_index_;
 
 	for (auto&& move : states::state_controller::possible_movements_) {
