@@ -6,16 +6,14 @@
 class saurions_web final
 {
 public:
-	static auto create(std::uint32_t id)
+	static auto create(base_entity& entity)
 	{
-		base_entity entity;
-		entity.entity_id = id;
 		entity.name = "Saurion Web";
 
 		entity.add<health_field>(20);
 		entity.add<damage_taker>();
 
-		entity.add<bitmap_field>(id, bitmap_key::saurions_web);
+		entity.add<bitmap_field>(entity.entity_id, bitmap_key::saurions_web);
 
 		return entity;
 	}

@@ -7,10 +7,8 @@
 class saurian final
 {
 public:
-	static auto create(std::uint32_t id)
+	static auto create(base_entity& entity)
 	{
-		base_entity entity;
-		entity.entity_id = id;
 		entity.name = "Saurion";
 
 		entity.add<health_field>(35);
@@ -19,7 +17,7 @@ public:
 		auto abilities_ptr = entity.add<abilities>();
 		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<tongue_of_fire>());
 
-		entity.add<bitmap_field>(id, bitmap_key::saurian);
+		entity.add<bitmap_field>(entity.entity_id, bitmap_key::saurian);
 
 		return entity;
 	}

@@ -12,8 +12,6 @@ struct shooter final
 {
 	static auto create(std::uint32_t entity_id)
 	{
-		base_entity entity;
-		entity.entity_id = entity_id;
 		entity.name = "Shooter";
 
 		entity.add<health_field>(50);

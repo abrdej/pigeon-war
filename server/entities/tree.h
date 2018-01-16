@@ -9,15 +9,13 @@
 #include "entity.h"
 
 struct tree {
-    static auto create(std::uint32_t id)
+    static auto create(base_entity& entity)
     {
-        base_entity entity;
-        entity.entity_id = id;
         entity.name = "Tree";
 
         entity.add<health_field>();
 
-        entity.add<bitmap_field>(id, bitmap_key::tree);
+        entity.add<bitmap_field>(entity.entity_id, bitmap_key::tree);
 
         return entity;
     }

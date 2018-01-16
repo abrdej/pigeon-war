@@ -16,21 +16,19 @@
 
 struct wretch final
 {
-    static auto create(std::uint32_t id)
+    static auto create(base_entity& entity)
     {
-        base_entity entity;
-        entity.entity_id = id;
         entity.name = "Wretch";
 
         entity.add<health_field>(45);
         entity.add<damage_taker>();
 
         auto abilities_ptr = entity.add<abilities>();
-        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<wretch_moving>(id));
-        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<vicious_circle>(id));
-        abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<ball_and_chain>(id));
+        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<wretch_moving>(entity.entity_id));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<vicious_circle>(entity.entity_id));
+        abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<ball_and_chain>(entity.entity_id));
 
-        entity.add<bitmap_field>(id, bitmap_key::wretch);
+        entity.add<bitmap_field>(entity.entity_id, bitmap_key::wretch);
 
         entity.add<power_field>(16);
 

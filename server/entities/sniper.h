@@ -12,10 +12,8 @@
 
 struct sniper final
 {
-    static auto create(std::uint32_t id)
+    static auto create(base_entity& entity)
     {
-        base_entity entity;
-        entity.entity_id = id;
         entity.name = "Sniper";
 
         entity.add<health_field>(35);
@@ -26,7 +24,7 @@ struct sniper final
         abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<sniper_shot>());
         abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<hypnosis>());
 
-        entity.add<bitmap_field>(id, bitmap_key::sniper);
+        entity.add<bitmap_field>(entity.entity_id, bitmap_key::sniper);
 
         return entity;
     }

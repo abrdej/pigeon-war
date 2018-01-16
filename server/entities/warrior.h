@@ -14,10 +14,8 @@
 class warrior final
 {
 public:
-    static auto create(std::uint32_t id)
+    static auto create(base_entity& entity)
     {
-        base_entity entity;
-        entity.entity_id = id;
         entity.name = "Warrior";
 
         entity.add<health_field>(50);
@@ -26,9 +24,9 @@ public:
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
         abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<warrior_blow>());
-        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<immortality>(id));
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<immortality>(entity.entity_id));
 
-        entity.add<bitmap_field>(id, bitmap_key::warrior);
+        entity.add<bitmap_field>(entity.entity_id, bitmap_key::warrior);
 
         return entity;
     }

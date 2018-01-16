@@ -5,15 +5,13 @@
 
 struct stone final
 {
-	static auto create(std::uint32_t id)
+	static auto create(base_entity& entity)
 	{
-		base_entity entity;
-		entity.entity_id = id;
 		entity.name = "Stone";
 
 		entity.add<health_field>();
 
-		entity.add<bitmap_field>(id, bitmap_key::stone);
+		entity.add<bitmap_field>(entity.entity_id, bitmap_key::stone);
 
 		return entity;
 	}

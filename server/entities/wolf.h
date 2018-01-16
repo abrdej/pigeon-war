@@ -11,10 +11,8 @@
 class wolf final
 {
 public:
-	static auto create(std::uint32_t id) {
-
-		base_entity entity;
-		entity.entity_id = id;
+	static auto create(base_entity& entity)
+	{
 		entity.name = "Wolf";
 
 		entity.add<health_field>(30);
@@ -24,7 +22,7 @@ public:
 		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
 		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<basic_melee_attack>());
 
-		entity.add<bitmap_field>(id, bitmap_key::wolf);
+		entity.add<bitmap_field>(entity.entity_id, bitmap_key::wolf);
 
 		return entity;
 	}

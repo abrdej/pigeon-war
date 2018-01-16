@@ -14,10 +14,8 @@
 class guardian final
 {
 public:
-    static auto create(std::uint32_t id)
+    static auto create(base_entity& entity)
     {
-        base_entity entity;
-        entity.entity_id = id;
         entity.name = "Guardian";
 
         entity.add<health_field>(65);
@@ -25,10 +23,10 @@ public:
 
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<spear>(id));
-        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<shield>(id));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<spear>(entity.entity_id));
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<shield>(entity.entity_id));
 
-        entity.add<bitmap_field>(id, bitmap_key::guardian);
+        entity.add<bitmap_field>(entity.entity_id, bitmap_key::guardian);
 
         return entity;
     }

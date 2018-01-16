@@ -16,10 +16,8 @@
 
 struct golem final
 {
-    static auto create(std::uint32_t id)
+    static auto create(base_entity& entity)
     {
-        base_entity entity;
-        entity.entity_id = id;
         entity.name = "Golem";
 
         entity.add<health_field>(60);
@@ -28,9 +26,9 @@ struct golem final
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
         abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<power_bullet>());
-        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<stone_skin>(id));
+        abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<stone_skin>(entity.entity_id));
 
-        entity.add<bitmap_field>(id, bitmap_key::golem);
+        entity.add<bitmap_field>(entity.entity_id, bitmap_key::golem);
 
         return entity;
     }

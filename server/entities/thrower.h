@@ -13,10 +13,8 @@
 class thrower final
 {
 public:
-	static auto create(std::uint32_t id)
+	static auto create(base_entity& entity)
 	{
-		base_entity entity;
-		entity.entity_id = id;
 		entity.name = "Rocket Thrower";
 
 		entity.add<health_field>(40);
@@ -27,7 +25,7 @@ public:
 		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<flame_thrower>());
 		abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<long_range_missile>());
 
-		entity.add<bitmap_field>(id, bitmap_key::thrower);
+		entity.add<bitmap_field>(entity.entity_id, bitmap_key::thrower);
 
 		return entity;
 	}

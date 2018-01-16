@@ -30,7 +30,7 @@
 //};
 //
 //struct entangling_instance {
-//    static auto create(std::uint32_t id)
+//    static auto create(base_entity& entity)
 //    {
 //        base_components components;
 //        entity_name(components) = "Oplątanie";

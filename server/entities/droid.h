@@ -16,10 +16,8 @@
 class droid final
 {
 public:
-	static auto create(std::uint32_t id)
+	static auto create(base_entity& entity)
 	{
-		base_entity entity;
-		entity.entity_id = id;
 		entity.name = "Droid";
 
 		entity.add<health_field>(55);
@@ -30,7 +28,7 @@ public:
 		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<laser>());
 		abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<teleport>());
 
-		entity.add<bitmap_field>(id, bitmap_key::droid);
+		entity.add<bitmap_field>(entity.entity_id, bitmap_key::droid);
 
 		return entity;
 	}

@@ -13,10 +13,8 @@
 
 struct robot final
 {
-    static auto create(std::uint32_t id)
+    static auto create(base_entity& entity)
     {
-        base_entity entity;
-        entity.entity_id = id;
         entity.name = "Robot";
 
         entity.add<health_field>(45);
@@ -25,7 +23,7 @@ struct robot final
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
 
-        entity.add<bitmap_field>(id, bitmap_key::robot);
+        entity.add<bitmap_field>(entity.entity_id, bitmap_key::robot);
 
         return entity;
     }

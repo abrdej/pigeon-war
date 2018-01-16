@@ -13,10 +13,8 @@
 
 struct treant final
 {
-    static auto create(std::uint32_t id) {
-
-            base_entity entity;
-            entity.entity_id = id;
+    static auto create(base_entity& entity)
+    {
             entity.name = "Treant";
 
             entity.add<health_field>(55);
@@ -24,9 +22,9 @@ struct treant final
 
             auto abilities_ptr = entity.add<abilities>();
             abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(2));
-//            abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<entangling>(id));
-//            abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<recovery>(id));
-            entity.add<bitmap_field>(id, bitmap_key::treant);
+//            abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<entangling>(entity.entity_id));
+//            abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<recovery>(entity.entity_id));
+            entity.add<bitmap_field>(entity.entity_id, bitmap_key::treant);
 
             return entity;
     }

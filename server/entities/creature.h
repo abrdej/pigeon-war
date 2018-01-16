@@ -15,10 +15,8 @@
 class creature final
 {
 public:
-    static auto create(std::uint32_t id)
+    static auto create(base_entity& entity)
     {
-        base_entity entity;
-        entity.entity_id = id;
         entity.name = "Fiery Hedgehog";
 
         entity.add<health_field>(50);
@@ -26,10 +24,10 @@ public:
 
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<chopper>(id));
+        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<chopper>(entity.entity_id));
         abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<spiral_of_fire>());
 
-        entity.add<bitmap_field>(id, bitmap_key::creature);
+        entity.add<bitmap_field>(entity.entity_id, bitmap_key::creature);
 
         return entity;
     }
