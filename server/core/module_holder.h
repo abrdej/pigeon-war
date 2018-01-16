@@ -4,6 +4,7 @@
 #include <memory>
 #include <unordered_map>
 #include <typeindex>
+#include <iostream>
 
 class module_holder
 {
