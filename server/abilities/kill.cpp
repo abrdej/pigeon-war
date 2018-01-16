@@ -1,23 +1,25 @@
 #include <server/core/states_controller.h>
 #include <core/board.h>
 #include <managers/players_manager.h>
-#include <managers/additions_manager.h>
+#include <components/additions.h>
 #include <managers/entity_manager.h>
 #include "kill.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
 kill::kill() {
 
 }
 
-void kill::prepare(sf::Uint64 for_index) {
+void kill::prepare(std::uint64_t for_index) {
     states::state_controller::selected_index_ = for_index;
 
     path_finder path_finder(true);
     path_finder.calc(for_index);
 
-    std::vector<sf::Uint64> possible_fields;
-    std::vector<sf::Uint64> costs;
+    std::vector<std::uint64_t> possible_fields;
+    std::vector<std::uint64_t> costs;
     path_finder.get_possible_movements(states::state_controller::possible_movements_,
                                        costs,
                                        range);
@@ -35,13 +37,13 @@ void kill::prepare(sf::Uint64 for_index) {
 //    }
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](sf::Uint64 index)
+    states::state_controller::wait_for_action([this](std::uint64_t index)
                                               {
                                                   return set_landing(index);
                                               });
 }
 
-void kill::set_landing(sf::Uint64 for_index) {
+void kill::set_landing(std::uint64_t for_index) {
 
     target_index = for_index;
 
@@ -52,14 +54,14 @@ void kill::set_landing(sf::Uint64 for_index) {
     }
 
     states::state_controller::actual_targeting_type_ = states::target_types::moving;
-    states::state_controller::wait_for_action([this](sf::Uint64 index)
+    states::state_controller::wait_for_action([this](std::uint64_t index)
                                               {
                                                   return use(index);
                                               });
 
 }
 
-void kill::use(sf::Uint64 index_on) {
+void kill::use(std::uint64_t index_on) {
 
     states::state_controller::possible_movements_.clear();
 
@@ -67,7 +69,7 @@ void kill::use(sf::Uint64 index_on) {
 
     auto entity_id = board::at(used_from_index);
 
-    bool is_killer_instinct_active = additions_manager::has_component(entity_id, "killer_instinct");
+    bool is_killer_instinct_active = has_component(entity_id, "killer_instinct");
 
     sender::send(message_types::animation, animation_def::kill, used_from_index, index_on, target_index);
 

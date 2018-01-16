@@ -9,7 +9,7 @@
 
 class shield : public passive_ability {
 public:
-    explicit shield(sf::Uint64 entity_id);
+    explicit shield(std::uint64_t entity_id);
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::shield;
     }

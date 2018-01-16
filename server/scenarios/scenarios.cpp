@@ -72,17 +72,17 @@ void saurions_web_s(game& game) {
     board::insert(board::to_index(12, 4), saurion_web_id);
     players_manager::add_entity_for_player(enemy_id, saurion_web_id);
 
-    auto web_poison_to_native = turn::turn_system::every_round([native_id]() {
-        std::cout << "receive damage\n";
-        auto damage = healths_manager::receive_damage(damage_pack(4, damage_types::UNDEFINED, native_id));
-//        damage_dealers::play_change_health_animation(board::to_index(12, 4), damage);
-    });
+//    auto web_poison_to_native = turn::turn_system::every_round([native_id]() {
+//        std::cout << "receive damage\n";
+//        auto damage = healths_manager::receive_damage(damage_pack(4, damage_types::UNDEFINED, native_id));
+////        damage_dealers::play_change_health_animation(board::to_index(12, 4), damage);
+//    });
 
-    entity_remover::add_remover(saurion_web_id, [tester_id, native_id, web_poison_to_native]() mutable {
-        web_poison_to_native.reset();
-        std::cout << "tester have native\n";
-        players_manager::add_entity_for_player(tester_id, native_id);
-    });
+//    entity_remover::add_remover(saurion_web_id, [tester_id, native_id, web_poison_to_native]() mutable {
+//        web_poison_to_native.reset();
+//        std::cout << "tester have native\n";
+//        players_manager::add_entity_for_player(tester_id, native_id);
+//    });
 
     if_any_die({shooter_id, saberhand_id, native_id}, [&]() {
         std::cout << "defeat\n";
@@ -113,7 +113,7 @@ void wolves_dinner(game& game) {
     >::create();
 
     using creator_helper::pos;
-    std::vector<std::pair<sf::Uint64, sf::Uint64>> wolves_positions = {
+    std::vector<std::pair<std::uint64_t, std::uint64_t>> wolves_positions = {
             pos(5, 6),
             pos(9, 7),
             pos(12, 2),
@@ -121,7 +121,7 @@ void wolves_dinner(game& game) {
             pos(8, 2)
 
     };
-    std::vector<sf::Uint64> enemies_ids;
+    std::vector<std::uint64_t> enemies_ids;
     for (auto&& wolf_pos : wolves_positions) {
         auto wolf_id = entity_manager::create<wolf>();
         ai_manager::add_component(wolf_id, ai_sequence);
@@ -130,9 +130,9 @@ void wolves_dinner(game& game) {
         enemies_ids.push_back(wolf_id);
     }
 
-    std::vector<std::pair<sf::Uint64, sf::Uint64>> trees_positions;
-    for (sf::Int32 i = 0; i < board::cols_n; ++i) {
-        for (sf::Int32 j = 0; j < board::rows_n; ++j) {
+    std::vector<std::pair<std::uint64_t, std::uint64_t>> trees_positions;
+    for (std::int32_t i = 0; i < board::cols_n; ++i) {
+        for (std::int32_t j = 0; j < board::rows_n; ++j) {
              if (i == 0 || j == 0 || i == board::cols_n - 1|| j == board::rows_n - 1) {
                  trees_positions.push_back(pos(i, j));
              }
@@ -283,9 +283,9 @@ void skirmish(game& game) {
 
     //creator_helper::create_neutral_many<fire>({pos(7, 4)});
 
-    std::vector<std::pair<sf::Uint64, sf::Uint64>> trees_positions;
-    for (sf::Int32 i = 0; i < board::cols_n; ++i) {
-        for (sf::Int32 j = 0; j < board::rows_n; ++j) {
+    std::vector<std::pair<std::uint64_t, std::uint64_t>> trees_positions;
+    for (std::int32_t i = 0; i < board::cols_n; ++i) {
+        for (std::int32_t j = 0; j < board::rows_n; ++j) {
             if (i == 0 || j == 0 || i == board::cols_n - 1|| j == board::rows_n - 1) {
                 trees_positions.push_back(pos(i, j));
             }
@@ -308,7 +308,7 @@ void skirmish(game& game) {
 
 
 
-    std::vector<std::pair<sf::Uint64, sf::Uint64>> init_positions = {
+    std::vector<std::pair<std::uint64_t, std::uint64_t>> init_positions = {
             pos(5, 2),
             pos(6, 2),
             pos(7, 2),
@@ -340,7 +340,7 @@ void skirmish(game& game) {
             pos(9, 6)
     };
 
-    std::array<std::pair<sf::Uint64, sf::Uint64>, 8> positions = {
+    std::array<std::pair<std::uint64_t, std::uint64_t>, 8> positions = {
             pos(2, 2),
             pos(12, 2),
             pos(2, 4),
@@ -351,14 +351,14 @@ void skirmish(game& game) {
             pos(12, 8)
     };
 
-    std::array<sf::Uint64, 2> players;
+    std::array<std::uint64_t, 2> players;
     for (auto& player : players) {
         player = players_manager::create_human_player();
     }
 
-    sf::Uint64 i = 0;
+    std::uint64_t i = 0;
 
-    std::unordered_set<sf::Uint64> entities_to_choose;
+    std::unordered_set<std::uint64_t> entities_to_choose;
 
     auto init_entity = [&](auto x) {
         using EntityType = decltype(x);
@@ -371,7 +371,7 @@ void skirmish(game& game) {
         entities_to_choose.insert(id);
     };
 
-//    sf::Int32 tab[] = {(init_entity(std::forward<Args>(args)), 0)...};
+//    std::int32_t tab[] = {(init_entity(std::forward<Args>(args)), 0)...};
 
     for_each(Entites{}, init_entity);
 
@@ -389,13 +389,13 @@ void skirmish(game& game) {
 //        entities_to_choose.insert(id);
 //    });
 
-    sf::Int32 entities_for_player = 4;
-    sf::Int32 selections = 0;
+    std::int32_t entities_for_player = 4;
+    std::int32_t selections = 0;
 
     std::shared_ptr<OwnerCallback> holder = std::make_shared<OwnerCallback>();
 
     auto create_entities_container = [](){
-        return std::unordered_map<sf::Uint64, std::vector<sf::Uint64>>();
+        return std::unordered_map<std::uint64_t, std::vector<std::uint64_t>>();
     };
 
     auto add_entity_for_player = turn::turn_system::every_turn([=, entities = create_entities_container()]() mutable {

@@ -3,7 +3,7 @@
 #include "board_panel.h"
 #include "common/health_field.h"
 
-entity_drawer::entity_drawer(sf::Uint64 entity_id, const bitmap_key& bmt_key)
+entity_drawer::entity_drawer(std::uint64_t entity_id, const bitmap_key& bmt_key)
     : entity_id(entity_id), bmt_key(bmt_key) {
 
     font.loadFromFile(resources_directory + "verdanab.ttf");
@@ -19,7 +19,7 @@ bitmap_key entity_drawer::get_bitmap_key() {
     return bmt_key;
 }
 
-void entity_drawer::render_text(sf::Int32 entity_health, sf::Vector2f position, sf::Uint64 entity_id, sf::RenderWindow& window)
+void entity_drawer::render_text(std::int32_t entity_health, sf::Vector2f position, std::uint64_t entity_id, sf::RenderWindow& window)
 {
     if (entity_health == indestructible)
         return;
@@ -48,7 +48,7 @@ void entity_drawer::render_text(sf::Int32 entity_health, sf::Vector2f position, 
 
 }
 
-void entity_drawer::draw(sf::RenderWindow& window, sf::Uint64 col, sf::Uint64 row, sf::Int32 health) {
+void entity_drawer::draw(sf::RenderWindow& window, std::uint64_t col, std::uint64_t row, std::int32_t health) {
 
     auto position = sf::Vector2f(view::board_indexies_to_point(col, row));
     sprite.setPosition(position);

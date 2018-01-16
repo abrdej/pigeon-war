@@ -3,7 +3,7 @@
 
 void magic_bullet_handler::handle(sf::Packet& packet, game_state& g_state) {
 
-	sf::Uint64 from_index, to_index;
+	std::uint64_t from_index, to_index;
 	unpack(packet, from_index);
 	unpack(packet, to_index);
 
@@ -27,7 +27,7 @@ void magic_bullet_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 void teleport_handler::handle(sf::Packet& packet, game_state& g_state) {
 
-	sf::Uint64 from_index, to_index;
+	std::uint64_t from_index, to_index;
 	unpack(packet, from_index);
 	unpack(packet, to_index);
 
@@ -85,7 +85,7 @@ void flame_thrower_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 void giant_ram_handler::handle(sf::Packet& packet, game_state& g_state) {
 
-	sf::Uint64 from_index, to_index;
+	std::uint64_t from_index, to_index;
 	unpack(packet, from_index);
 	unpack(packet, to_index);
 
@@ -102,7 +102,7 @@ void giant_ram_handler::handle(sf::Packet& packet, game_state& g_state) {
 }
 
 void kill_handler::handle(sf::Packet& packet, game_state& g_state) {
-	sf::Uint64 from_index, to_index, enemy_index;
+	std::uint64_t from_index, to_index, enemy_index;
 	unpack(packet, from_index);
 	unpack(packet, to_index);
 	unpack(packet, enemy_index);
@@ -130,7 +130,7 @@ void kill_handler::handle(sf::Packet& packet, game_state& g_state) {
 void spider_web_handler::handle(sf::Packet& packet, game_state& g_state) {
 	shot_base_handler::handle(packet, g_state);
 
-	sf::Uint64 land_index;
+	std::uint64_t land_index;
 	unpack(packet, land_index);
 
 	auto enemy_id = g_state.board.take(to_index);
@@ -151,7 +151,7 @@ void spider_web_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 void spiral_of_fire_handler::handle(sf::Packet& packet, game_state& g_state) {
 
-	sf::Uint64 from_index, to_index;
+	std::uint64_t from_index, to_index;
 	unpack(packet, from_index);
 	unpack(packet, to_index);
 
@@ -172,7 +172,7 @@ void spiral_of_fire_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 void sword_blow_handler::handle(sf::Packet& packet, game_state& g_state) {
 
-	sf::Uint64 index;
+	std::uint64_t index;
 	unpack(packet, index);
 
 	auto entity_id = g_state.board.take(index);
@@ -190,7 +190,7 @@ void sword_blow_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 void bludgeon_push_handler::handle(sf::Packet& packet, game_state& g_state) {
 
-	sf::Uint64 from_index, to_index, push_index;
+	std::uint64_t from_index, to_index, push_index;
 	unpack(packet, from_index);
 	unpack(packet, to_index);
 	unpack(packet, push_index);
@@ -213,7 +213,7 @@ void bludgeon_push_handler::handle(sf::Packet& packet, game_state& g_state) {
 }
 
 void rage_handler::handle(sf::Packet& packet, game_state& g_state) {
-	sf::Uint64 index;
+	std::uint64_t index;
 	unpack(packet, index);
 
 	auto entity_id = g_state.board.take(index);

@@ -5,24 +5,15 @@
 #include <memory>
 #include <string>
 #include <unordered_map>
-#include <unordered_set>
-#include "entities/entity.h"
-#include "server/abilities/abilities.h"
-#include "abilities_manager.h"
-#include "health_manager.h"
-#include "name_field.h"
-#include "abilities_manager.h"
 #include <functional>
-#include <gui/drawing_manager.h>
-#include <boost/fusion/algorithm/iteration/for_each.hpp>
-#include "entity_remover.h"
+#include "entities/entity.h"
 #include "core/board.h"
 
 class entity_manager final
 {
 	static std::unordered_map<std::uint64_t, base_entity> entities;
 
-	static std::vector<std::function<void(std::uint64_t)>> on_destroy_callbacks;
+	static std::unordered_map<std::uint64_t, std::vector<std::function<void()>>> on_destroy_callbacks;
 
 	inline static std::uint64_t generate_id() {
 		static std::uint64_t entity_id_generator = 0;
@@ -54,14 +45,20 @@ public:
 
 		call_destroy_callbacks(entity_id);
 	}
-	static void on_destroy(const std::function<void(std::uint64_t)>& callback)
+	static void on_destroy(std::uint64_t entity_id, const std::function<void()>& callback)
 	{
-		on_destroy_callbacks.push_back(callback);
+		on_destroy_callbacks[entity_id].push_back(callback);
 	}
 	static void call_destroy_callbacks(std::uint64_t entity_id)
 	{
-		for (auto& callback : on_destroy_callbacks)
-			callback(entity_id);
+		for (auto& callback : on_destroy_callbacks[entity_id])
+			callback();
+	}
+	template <typename Function>
+	static void for_all(Function function) {
+		for (auto&& entity_pack : entities) {
+			function(entity_pack.second);
+		}
 	}
 };
 

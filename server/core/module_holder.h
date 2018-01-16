@@ -31,6 +31,16 @@ public:
 		else
 			return std::shared_ptr<T>();
 	}
+	template <typename T>
+	std::shared_ptr<T> get_with_create()
+	{
+		auto it = modules.find(std::type_index(typeid(T)));
+		if (it != std::end(modules))
+			return std::static_pointer_cast<T>(it->second);
+		else {
+			return add<T>();
+		}
+	}
 
 	template <typename T>
 	void erase()

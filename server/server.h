@@ -14,6 +14,15 @@
 #include <boost/lockfree/spsc_queue.hpp>
 #include <common/message_types.h>
 #include "packets_makers.h"
+#include "components/damage_taker.h"
+
+auto get_bitmaps() {
+	std::unordered_map<std::uint64_t, bitmap_key> returned_map;
+	entity_manager::for_all([&returned_map](base_entity entity) {
+		returned_map.insert(std::make_pair(entity.entity_id, entity.get<bitmap_field>()->bmt_key));
+	});
+	return std::move(returned_map);
+}
 
 struct server {
 
@@ -26,9 +35,9 @@ struct server {
 	sf::TcpListener listener;
 
 	std::vector<std::shared_ptr<sf::TcpSocket>> clients;
-	std::unordered_map<std::string, sf::Uint64> addresses;
+	std::unordered_map<std::string, std::uint64_t> addresses;
 
-	boost::lockfree::spsc_queue<std::pair<sf::Uint64, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
+	boost::lockfree::spsc_queue<std::pair<std::uint64_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
 
 	server() {
 
@@ -44,10 +53,10 @@ struct server {
 	};
 
 	void send_notification(const sf::Packet& packet) {
-		packets_to_send.push(std::make_pair(std::numeric_limits<sf::Uint64>::max(), packet));
+		packets_to_send.push(std::make_pair(std::numeric_limits<std::uint64_t>::max(), packet));
 	}
 
-	void send_notification_to(sf::Uint64 index, sf::Packet packet) {
+	void send_notification_to(std::uint64_t index, sf::Packet packet) {
 		packets_to_send.push(std::make_pair(index, packet));
 	}
 
@@ -86,8 +95,8 @@ struct server {
 							// accept client and send data
 							send_notification_to(client_id, make_packet(message_types::player_id, static_cast<int>(client_id)));
 							send_notification_to(client_id, make_packet(message_types::board, board::fields_));
-							send_notification_to(client_id, make_packet(message_types::entities_bitmaps, bitmap_field_manager::get_map()));
-							send_notification_to(client_id, make_packet(message_types::healths, healths_manager::get_map()));
+							send_notification_to(client_id, make_packet(message_types::entities_bitmaps, get_bitmaps()));
+							send_notification_to(client_id, make_packet(message_types::healths, get_healths()));
 						}
 					}
 
@@ -110,11 +119,11 @@ struct server {
 					}
 				}
 
-				std::pair<sf::Uint64, sf::Packet> packet_pack;
+				std::pair<std::uint64_t, sf::Packet> packet_pack;
 
 				while (packets_to_send.pop(packet_pack)) {
 
-					if (packet_pack.first == std::numeric_limits<sf::Uint64>::max()) {
+					if (packet_pack.first == std::numeric_limits<std::uint64_t>::max()) {
 						for (auto&& client : clients) {
 							client->send(packet_pack.second);
 						}

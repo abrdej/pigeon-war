@@ -6,7 +6,7 @@
 #include "server/abilities/abilities.h"
 #include "server/abilities/shoot.h"
 #include "server/abilities/grenade.h"
-#include "damage_taker.h"
+#include "components/damage_taker.h"
 
 struct shooter final
 {

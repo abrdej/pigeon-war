@@ -9,9 +9,9 @@ void board_panel::prepare()
 {
     grass_texture_.loadFromFile(resources_directory + "grass2.png");
 
-    for (sf::Uint64 row = 0; row < board::rows_n; ++row)
+    for (std::uint64_t row = 0; row < board::rows_n; ++row)
     {
-        for (sf::Uint64 col = 0; col < board::cols_n; ++col)
+        for (std::uint64_t col = 0; col < board::cols_n; ++col)
         {
             //point_type init_point(constants::top_left_point.x + col * constants::field_size,
             //	constants::top_left_point.y + row * constants::field_size);
@@ -41,13 +41,13 @@ bool board_panel::is_hit(const point_type& cursor) const
             cursor.x <= bottom_right_point.x && cursor.y <= bottom_right_point.y);
 }
 
-std::pair<sf::Uint64, sf::Uint64> board_panel::hit_field(const point_type& cursor) const
+std::pair<std::uint64_t, std::uint64_t> board_panel::hit_field(const point_type& cursor) const
 {
 //		auto top_right_board_point = cursor; //  -constants::top_left_point;
-//		sf::Uint64 col = top_right_board_point.x / constants::field_size;
-//		sf::Uint64 row = top_right_board_point.y / constants::field_size;
+//		std::uint64_t col = top_right_board_point.x / constants::field_size;
+//		std::uint64_t row = top_right_board_point.y / constants::field_size;
 //		return std::make_pair(col, row);
-    for (sf::Uint64 i = 0; i < buttons_.size(); ++i) {
+    for (std::uint64_t i = 0; i < buttons_.size(); ++i) {
         if (buttons_[i].is_hit(cursor)) {
             return index_to_indexes(i);
         }
@@ -55,14 +55,14 @@ std::pair<sf::Uint64, sf::Uint64> board_panel::hit_field(const point_type& curso
     return {};
 }
 
-board_panel::point_type board_indexies_to_point(sf::Uint64 col, sf::Uint64 row)
+board_panel::point_type board_indexies_to_point(std::uint64_t col, std::uint64_t row)
 {
-    sf::Int32 x = constants::top_left_point.x + col * constants::field_size;
-    sf::Int32 y = constants::top_left_point.y + row * constants::field_size;
+    std::int32_t x = constants::top_left_point.x + col * constants::field_size;
+    std::int32_t y = constants::top_left_point.y + row * constants::field_size;
     return {x, y};
 }
 
-board_panel::rect_type board_indexies_to_rectangle(sf::Uint64 col, sf::Uint64 row)
+board_panel::rect_type board_indexies_to_rectangle(std::uint64_t col, std::uint64_t row)
 {
     auto point = board_indexies_to_point(col, row);
     return {point.x, point.y, constants::field_size, constants::field_size};
@@ -70,8 +70,8 @@ board_panel::rect_type board_indexies_to_rectangle(sf::Uint64 col, sf::Uint64 ro
 
 board_panel::point_type board_indexies_to_point(double col, double row)
 {
-    sf::Int32 x = constants::top_left_point.x + col * constants::field_size;
-    sf::Int32 y = constants::top_left_point.y + row * constants::field_size;
+    std::int32_t x = constants::top_left_point.x + col * constants::field_size;
+    std::int32_t y = constants::top_left_point.y + row * constants::field_size;
     return {x, y};
 }
 
@@ -81,24 +81,24 @@ board_panel::rect_type board_indexes_to_rectangle(double col, double row)
     return {point.x, point.y, constants::field_size, constants::field_size};
 }
 
-board_panel::point_type board_index_to_point(sf::Uint64 index)
+board_panel::point_type board_index_to_point(std::uint64_t index)
 {
     auto indexes = board::to_pos(index);
     return board_indexies_to_point(indexes.first, indexes.second);
 }
 
-board_panel::rect_type board_index_to_rectangle(sf::Uint64 index)
+board_panel::rect_type board_index_to_rectangle(std::uint64_t index)
 {
     auto indexes = board::to_pos(index);
     return board_indexies_to_rectangle(indexes.first, indexes.second);
 }
 
-sf::Uint64 indexes_to_index(sf::Uint64 row, sf::Uint64 col)
+std::uint64_t indexes_to_index(std::uint64_t row, std::uint64_t col)
 {
     return row * board::cols_n + col;
 }
 
-std::pair<sf::Uint64, sf::Uint64> index_to_indexes(sf::Uint64 index)
+std::pair<std::uint64_t, std::uint64_t> index_to_indexes(std::uint64_t index)
 {
     return std::make_pair(index % board::cols_n,
                           index / board::cols_n);

@@ -1,10 +1,11 @@
-#include <managers/additions_manager.h>
+#include <components/additions.h>
 #include "power_bullet.h"
 #include "core/states_controller.h"
-#include "managers/abilities_manager.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void power_bullet::use(sf::Uint64 index_on) {
+void power_bullet::use(std::uint64_t index_on) {
 
     if (used)
         return;
@@ -13,7 +14,7 @@ void power_bullet::use(sf::Uint64 index_on) {
     auto caster_id = board::at(used_from_index);
     auto enemy_id = board::at(index_on);
 
-    auto has_power_bullet_effect = additions_manager::has_component(enemy_id, "power_bullet_effect");
+    auto has_power_bullet_effect = has_component(enemy_id, "power_bullet_effect");
 
     sender::send(message_types::animation, animation_def::power_bullet, used_from_index, index_on);
 
@@ -28,15 +29,14 @@ void power_bullet::use(sf::Uint64 index_on) {
 
                 if (++counter == max_counter) {
 
-                    additions_manager::remove_component(enemy_id,
-                                                            "power_bullet_effect");
+                    remove_component(enemy_id, "power_bullet_effect");
                 }
             });
 
 
-    additions_manager::add_component(enemy_id,
-                                     "power_bullet_effect",
-                                     damage_per_turn_receiver);
+    add_component(enemy_id,
+                  "power_bullet_effect",
+                  damage_per_turn_receiver);
 
     used = true;
 }

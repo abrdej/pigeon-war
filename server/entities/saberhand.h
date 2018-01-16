@@ -5,12 +5,12 @@
 #include "server/abilities/moveable.h"
 #include "server/abilities/sabers.h"
 #include "server/abilities/invisibility.h"
-#include "damage_taker.h"
+#include "components/damage_taker.h"
 
 class saberhand final
 {
 public:
-	static auto create(sf::Uint64 id)
+	static auto create(std::uint64_t id)
 	{
 		base_entity entity;
 		entity.entity_id = id;

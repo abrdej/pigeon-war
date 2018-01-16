@@ -1,8 +1,11 @@
 #include <core/states_controller.h>
+#include <managers/entity_manager.h>
 #include "warrior_blow.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void warrior_blow::use(sf::Uint64 index_on) {
+void warrior_blow::use(std::uint64_t index_on) {
 
     if (used) {
         return;
@@ -16,9 +19,9 @@ void warrior_blow::use(sf::Uint64 index_on) {
     auto enemy_id = board::at(index_on);
 
     auto caster_id = board::at(used_from_index);
-    auto health_pack = healths_manager::component_for(caster_id);
+    auto health_pack_ptr = entity_manager::get(caster_id).get<health_field>();
 
-    auto missing_health = health_pack.base_health - health_pack.health;
+    auto missing_health = health_pack_ptr->base_health - health_pack_ptr->health;
 
     auto damage_increase_factor = missing_health / 5;
 

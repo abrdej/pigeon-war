@@ -2,7 +2,7 @@
 #include "core/states_controller.h"
 #include "core/board.h"
 
-void ai_manager::perform_movement(sf::Uint64 for_player_of_id)
+void ai_manager::perform_movement(std::uint64_t for_player_of_id)
 {
 	for (auto& elem : map_)
 	{

@@ -7,7 +7,7 @@
 
 #include <server/abilities/poisoned_missile.h>
 #include <server/abilities/long_range_missile.h>
-#include <damage_taker.h>
+#include <components/damage_taker.h>
 #include "entity.h"
 #include "server/abilities/abilities.h"
 #include "server/abilities/moveable.h"
@@ -15,7 +15,7 @@
 class mouse final
 {
 public:
-    static auto create(sf::Uint64 id)
+    static auto create(std::uint64_t id)
     {
         base_entity entity;
         entity.entity_id = id;

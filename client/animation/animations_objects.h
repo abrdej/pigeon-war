@@ -18,8 +18,8 @@ public:
     bool run();
 
 private:
-    sf::Uint64 index_from_;
-    sf::Uint64 index_to_;
+    std::uint64_t index_from_;
+    std::uint64_t index_to_;
     sf::Vector2f start_pos_;
     sf::Vector2f actual_pos_;
     sf::Vector2f end_pos_;
@@ -38,14 +38,14 @@ public:
     bool run();
 
 private:
-    sf::Uint64 index_from_;
-    sf::Uint64 index_to_;
+    std::uint64_t index_from_;
+    std::uint64_t index_to_;
     sf::Vector2f start_pos_;
     sf::Vector2f actual_pos_;
     sf::Vector2f end_pos_;
     sf::Vector2f translation_;
     double velocity_;
-    sf::Uint64 entity_id_;
+    std::uint64_t entity_id_;
     sf::Sprite& sprite;
     turn_types turn_;
 };
@@ -72,7 +72,7 @@ public:
 private:
     sf::Font font_;
     sf::Vector2f point_;
-    sf::Int32 change_by_;
+    std::int32_t change_by_;
     std::chrono::system_clock::time_point start_time_;
     std::chrono::milliseconds duration_;
 };

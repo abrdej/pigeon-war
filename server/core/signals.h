@@ -5,7 +5,6 @@
 #include <memory>
 #include <vector>
 
-//template <typename... Args>
 class signal
 {
 public:

@@ -2,13 +2,15 @@
 #include "aura_of_immunity.h"
 #include "core/path_finder.h"
 #include "core/board.h"
-#include "managers/additions_manager.h"
-#include "managers/modifications_manager.h"
+#include "components/additions.h"
+#include "components/modification.h"
+#include "sender.h"
+#include "common/animations.h"
 
-aura_of_immunity::aura_of_immunity(sf::Uint64 entity_id)
+aura_of_immunity::aura_of_immunity(std::uint64_t entity_id)
 		: entity_id(entity_id) {
 
-	modifications_manager::modify_damage_receiver_modifier_by(entity_id, -damage_reduction_for_owner);
+	entity_manager::get(entity_id).get<modification>()->modify_damage_receiver_modifier_by(-damage_reduction_for_owner);
 
 	onEveryTurn([entity_id = this->entity_id,
 			damage_reduction_for_friends = this->damage_reduction_for_friends,
@@ -18,7 +20,7 @@ aura_of_immunity::aura_of_immunity(sf::Uint64 entity_id)
 
 			auto caster_index = board::index_for(entity_id);
 
-			std::vector<sf::Uint64> neighbors;
+			std::vector<std::uint64_t> neighbors;
 			board_helper::neighboring_fields(caster_index, neighbors, false);
 
 			for (auto& index : neighbors) {
@@ -29,8 +31,8 @@ aura_of_immunity::aura_of_immunity(sf::Uint64 entity_id)
 
 						auto friend_id = board::at(index);
 
-						if (!additions_manager::has_component(friend_id, "aura_of_immunity")) {
-							modifications_manager::modify_damage_receiver_modifier_by(friend_id, -damage_reduction_for_friends);
+						if (!has_component(friend_id, "aura_of_immunity")) {
+							entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(-damage_reduction_for_friends);
 						}
 
 						sender::send(message_types::animation, animation_def::aura_of_immunity, index);
@@ -41,18 +43,17 @@ aura_of_immunity::aura_of_immunity(sf::Uint64 entity_id)
 									if (counter++ == aura_last) {
 
 										if (entity_manager::alive(friend_id)) {
-											modifications_manager::modify_damage_receiver_modifier_by(friend_id, damage_reduction_for_friends);
+											entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(damage_reduction_for_friends);
 
 											sender::send(message_types::animation, animation_def::aura_of_immunity_break, board::index_for(friend_id));
 
 
-											additions_manager::remove_component(friend_id,
-																				"aura_of_immunity");
+											remove_component(friend_id, "aura_of_immunity");
 										}
 									}
 								});
 
-						additions_manager::add_component(friend_id, "aura_of_immunity", aura_of_immunity_receiver);
+						add_component(friend_id, "aura_of_immunity", aura_of_immunity_receiver);
 					}
 				}
 			}

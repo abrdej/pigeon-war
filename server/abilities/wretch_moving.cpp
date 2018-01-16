@@ -1,12 +1,12 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <sender.h>
-#include <managers/power_field.h>
+#include <components/power_field.h>
 #include <common/animations.h>
 #include <managers/entity_manager.h>
 #include "wretch_moving.h"
 
-wretch_moving::wretch_moving(sf::Uint64 entity_id) : entity_id(entity_id) {
+wretch_moving::wretch_moving(std::uint64_t entity_id) : entity_id(entity_id) {
     onEveryRound([this]() {
         used = false;
         range = max_range;
@@ -15,7 +15,7 @@ wretch_moving::wretch_moving(sf::Uint64 entity_id) : entity_id(entity_id) {
     });
 }
 
-void wretch_moving::prepare(sf::Uint64 for_index) {
+void wretch_moving::prepare(std::uint64_t for_index) {
     states::state_controller::selected_index_ = for_index;
     states::state_controller::actual_state_ = states::states_types::wait_for_action;
 
@@ -30,18 +30,18 @@ void wretch_moving::prepare(sf::Uint64 for_index) {
                                        used ? 0 : std::min(range, power));
 
     states::state_controller::actual_targeting_type_ = states::target_types::moving;
-    states::state_controller::wait_for_action([this](sf::Uint64 index)
+    states::state_controller::wait_for_action([this](std::uint64_t index)
                                               {
                                                   return move(index);
                                               });
 }
 
-void wretch_moving::move(sf::Uint64 index_to) {
+void wretch_moving::move(std::uint64_t index_to) {
     if (used) {
         return;
     }
 
-    sf::Uint64 i = 0;
+    std::uint64_t i = 0;
     for ( ; i < states::state_controller::possible_movements_.size(); ++i) {
         if (states::state_controller::possible_movements_[i] == index_to)
             break;

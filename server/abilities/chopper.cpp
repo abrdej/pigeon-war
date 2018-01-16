@@ -1,14 +1,14 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <entities/creature.h>
-#include <gui/bitmap_center.h>
-#include <managers/abilities_manager.h>
-#include <gui/entity_drawer.h>
-#include <gui/drawing_manager.h>
+#include <managers/entity_manager.h>
 #include "chopper.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-chopper::chopper(sf::Uint64 entity_id) : entity_id(entity_id) {
+
+chopper::chopper(std::uint64_t entity_id) : entity_id(entity_id) {
     onEveryRound([this]() {
         used = false;
     });
@@ -18,7 +18,7 @@ chopper::chopper(sf::Uint64 entity_id) : entity_id(entity_id) {
 
             auto index = board::index_for(entity_id);
 
-            std::vector<sf::Uint64> neighboring;
+            std::vector<std::uint64_t> neighboring;
             board_helper::neighboring_fields(index, neighboring, false);
 
             for (auto& attack_index : neighboring) {
@@ -39,7 +39,7 @@ chopper::chopper(sf::Uint64 entity_id) : entity_id(entity_id) {
     });
 }
 
-void chopper::use(sf::Uint64 index_on) {
+void chopper::use(std::uint64_t index_on) {
 
     if (used) {
         return;
@@ -71,9 +71,10 @@ void chopper::set_fired() {
     damage = fired_damage;
     fired = true;
 
-    auto ability = abilities_manager::component_for(entity_id).type(abilities::ability_types::special);
-    std::shared_ptr<spiral_of_fire> spof = std::static_pointer_cast<spiral_of_fire>(ability);
-    spof->can_be_used = true;
+    auto entity = entity_manager::get(entity_id);
+
+    auto spiral_of_fire_ptr = std::static_pointer_cast<spiral_of_fire>(entity.get<abilities>()->type(abilities::ability_types::special));
+    spiral_of_fire_ptr->can_be_used = true;
 }
 
 void chopper::remove_fired() {

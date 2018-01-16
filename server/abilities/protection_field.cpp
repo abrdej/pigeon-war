@@ -1,9 +1,11 @@
-#include <managers/health_manager.h>
 #include <core/states_controller.h>
 #include "protection_field.h"
 #include "damage_dealers.h"
+#include "components/damage_taker.h"
+#include "sender.h"
+#include "common/animations.h"
 
-protection_field::protection_field(sf::Uint64 entity_id) {
+protection_field::protection_field(std::uint64_t entity_id) {
 
     onEveryTurn([this, entity_id]() {
         if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
@@ -11,7 +13,7 @@ protection_field::protection_field(sf::Uint64 entity_id) {
         }
     });
 
-    healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
+    set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
         if (is_active && !used) {
             is_active = false;
@@ -26,7 +28,7 @@ protection_field::protection_field(sf::Uint64 entity_id) {
     });
 }
 
-void protection_field::use(sf::Uint64 index_on) {
+void protection_field::use(std::uint64_t index_on) {
     if (used)
         return;
 

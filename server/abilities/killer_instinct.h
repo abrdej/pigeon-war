@@ -10,17 +10,17 @@
 
 class killer_instinct : public path_target_ability<7, states::target_types::moving> {
 public:
-	explicit killer_instinct(sf::Uint64 entity_id);
+	explicit killer_instinct(std::uint64_t entity_id);
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::killer_jump;
 	}
 
 private:
-	void prepare(sf::Uint64 for_index) override;
-	void use(sf::Uint64 index) override;
+	void prepare(std::uint64_t for_index) override;
+	void use(std::uint64_t index) override;
 
-	sf::Uint64 entity_id;
-	const sf::Int32 range{7};
+	std::uint64_t entity_id;
+	const std::int32_t range{7};
 	bool used{false};
 };
 

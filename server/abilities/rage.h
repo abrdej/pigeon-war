@@ -5,13 +5,13 @@
 #ifndef PIGEONWAR_RAGE_H
 #define PIGEONWAR_RAGE_H
 
-#include <core/turn.h>
+#include <core/turn_system.h>
 #include "abilities/ability.h"
 
 struct rage final : public passive_ability,
 					turn_events_helper::every_turn_callback_helper {
 
-	explicit rage(sf::Uint64 id);
+	explicit rage(std::uint64_t id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::rage;
@@ -23,8 +23,8 @@ private:
 	const int range = 1;
 	const int damage = 10;
 	const int required_damage = 2;
-	sf::Uint64 damage_this_turn{0};
-	sf::Uint64 entity_id;
+	std::uint64_t damage_this_turn{0};
+	std::uint64_t entity_id;
 };
 
 

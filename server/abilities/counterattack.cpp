@@ -1,17 +1,19 @@
 #include "counterattack.h"
 #include "damage_dealers.h"
-#include <managers/health_manager.h>
 #include <core/states_controller.h>
 #include <core/board.h>
+#include <components/damage_taker.h>
+#include "sender.h"
+#include "common/animations.h"
 
-counterattack::counterattack(sf::Uint64 entity_id)
+counterattack::counterattack(std::uint64_t entity_id)
 		: entity_id(entity_id) {
 
-	healths_manager::on_receive_damage(entity_id, [this](const damage_pack& dmg) {
+	on_receive_damage(entity_id, [this](const damage_pack& dmg) {
 
 		auto enemy_index = board::index_for(dmg.damage_dealer_id);
 
-		std::vector<sf::Uint64> neighbors;
+		std::vector<std::uint64_t> neighbors;
 		board_helper::neighboring_fields(board::index_for(this->entity_id),
 										 neighbors,
 										 false);
@@ -23,7 +25,7 @@ counterattack::counterattack(sf::Uint64 entity_id)
 				break;
 			}
 		}
-	}, healths_manager::on_receive_damage_policy::after);
+	}, damage_taker::on_receive_damage_policy::after);
 }
 
 std::string counterattack::hint() const {
@@ -35,7 +37,7 @@ std::string counterattack::hint() const {
 	return std::move(desc);
 }
 
-void counterattack::use(sf::Uint64 index_on) {
+void counterattack::use(std::uint64_t index_on) {
 
 	if (used) {
 		return;

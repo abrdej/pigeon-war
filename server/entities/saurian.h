@@ -7,7 +7,7 @@
 class saurian final
 {
 public:
-	static auto create(sf::Uint64 id)
+	static auto create(std::uint64_t id)
 	{
 		base_entity entity;
 		entity.entity_id = id;

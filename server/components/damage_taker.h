@@ -9,12 +9,15 @@
 #include <cstdint>
 #include <unordered_map>
 #include <functional>
-#include <managers/modifications_manager.h>
+#include <components/modification.h>
 #include <core/board.h>
-#include <managers/health_manager.h>
-//#include <managers/entity_manager.h>
+#include <managers/entity_manager.h>
 #include "damage_pack.h"
 #include "common/health_field.h"
+
+void play_change_health_animation(std::uint64_t to_index, std::int32_t change_health);
+
+std::unordered_map<std::uint64_t, std::int32_t> get_healths();
 
 class damage_taker {
 public:
@@ -63,25 +66,25 @@ public:
 
 	std::int32_t receive_damage(const damage_pack& dmg)
 	{
+		auto receiver_entity = entity_manager::get(dmg.damage_receiver_id);
+
 		damage_pack damage_pack = dmg;
-		damage_pack.damage_value += modifications_manager::damage_receiver_modifier_value(dmg.damage_receiver_id);
+		damage_pack.damage_value += receiver_entity.get<modification>()->damage_receiver_modifier_value();
 
 		for (auto&& callback_pack : on_receive_damage_before_callbacks) {
 			callback_pack.second(damage_pack);
 		}
 
-//		auto health_pack = entity_manager::get(damage_pack.damage_receiver_id).get<health_field>();
-//
-//		auto received_damage = damage_receiver(*health_pack, damage_pack);
-//
-//		auto enemy_index = board::index_for(damage_pack.damage_receiver_id);
-//		play_change_health_animation(enemy_index, -received_damage);
-//
-//		for (auto&& callback_pack : on_receive_damage_after_callbacks) {
-//			callback_pack.second(damage_pack);
-//		}
+		auto health_pack = receiver_entity.get<health_field>();
 
-		int received_damage{};
+		auto received_damage = damage_receiver(*health_pack, damage_pack);
+
+		auto enemy_index = board::index_for(damage_pack.damage_receiver_id);
+		play_change_health_animation(enemy_index, -received_damage);
+
+		for (auto&& callback_pack : on_receive_damage_after_callbacks) {
+			callback_pack.second(damage_pack);
+		}
 
 		return received_damage;
 	}
@@ -113,6 +116,31 @@ private:
 	std::unordered_map<std::uint64_t, std::function<void(const damage_pack&)>> on_receive_damage_before_callbacks;
 	std::unordered_map<std::uint64_t, std::function<void(const damage_pack&)>> on_receive_damage_after_callbacks;
 };
+
+template <typename DamageReceiver>
+inline void set_damage_receiver(std::uint64_t entity_id, DamageReceiver damage_receiver) {
+	entity_manager::get(entity_id).get<damage_taker>()->set_damage_receiver(damage_receiver);
+}
+
+template <typename Callback>
+inline std::uint64_t on_receive_damage(std::uint64_t entity_id,
+									   Callback callback,
+									   const damage_taker::on_receive_damage_policy& policy) {
+	return entity_manager::get(entity_id).get<damage_taker>()->on_receive_damage(callback, policy);
+}
+
+inline void remove_on_receive_damage(std::uint64_t entity_id, std::uint64_t callback_id) {
+	entity_manager::get(entity_id).get<damage_taker>()->remove_on_receive_damage(callback_id);
+}
+
+inline auto get_damage_receiver(std::uint64_t entity_id) {
+	return entity_manager::get(entity_id).get<damage_taker>()->get_damage_receiver();
+}
+
+inline void set_destructible(std::uint64_t entity_id, bool value) {
+	entity_manager::get(entity_id).get<health_field>()->is_destructible = value;
+}
+
 
 
 #endif //PIGEONWAR_DAMAGE_TAKER_H

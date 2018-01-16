@@ -1,18 +1,19 @@
-#include <managers/health_manager.h>
 #include <managers/entity_manager.h>
 #include <core/path_finder.h>
+#include <core/animations_queue.h>
+#include <components/damage_taker.h>
 #include "detonation.h"
 #include "damage_dealers.h"
 
-detonation::detonation(sf::Uint64 entity_id) {
+detonation::detonation(std::uint64_t entity_id) {
 
-    healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
+    set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
         auto final_damage = std::min(health_pack.health, dmg.damage_value);
         health_pack.health -= final_damage;
 
         if (health_pack.health == 0) {
-            std::vector<sf::Uint64> neighbors;
+            std::vector<std::uint64_t> neighbors;
             board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);
 
             auto from_cr = board::to_pos(board::index_for(entity_id));

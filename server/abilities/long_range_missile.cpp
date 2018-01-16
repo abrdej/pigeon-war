@@ -1,9 +1,10 @@
 #include <core/states_controller.h>
 #include <core/board.h>
+#include <core/animations_queue.h>
 #include "long_range_missile.h"
 #include "damage_dealers.h"
 
-void long_range_missile::use(sf::Uint64 index_on) {
+void long_range_missile::use(std::uint64_t index_on) {
 
 	if (used)
 		return;
@@ -18,19 +19,19 @@ void long_range_missile::use(sf::Uint64 index_on) {
 	auto used_from_pos = board::to_pos(used_from_index);
 	auto used_to_pos = board::to_pos(index_on);
 
-	auto distance = std::max(std::abs(static_cast<sf::Int32>(used_from_pos.first) - static_cast<sf::Int32>(used_to_pos.first)),
-							 std::abs(static_cast<sf::Int32>(used_from_pos.second) - static_cast<sf::Int32>(used_to_pos.second)));
+	auto distance = std::max(std::abs(static_cast<std::int32_t>(used_from_pos.first) - static_cast<std::int32_t>(used_to_pos.first)),
+							 std::abs(static_cast<std::int32_t>(used_from_pos.second) - static_cast<std::int32_t>(used_to_pos.second)));
 
 	std::cout << "distance: " << distance << "\n";
 
-	sf::Int32 final_damage = static_cast<sf::Int32>(start_damage + distance * additional_damage);
+	std::int32_t final_damage = static_cast<std::int32_t>(start_damage + distance * additional_damage);
 
 	damage_dealers::standard_damage_dealer(ranged_damage(final_damage, enemy_id, entity_id));
 
 	used = true;
 }
 
-void long_range_missile::play_animation(sf::Uint64 from_index, sf::Uint64 to_index) {
+void long_range_missile::play_animation(std::uint64_t from_index, std::uint64_t to_index) {
 	animations_queue::push_animation(animation_types::move,
 									 from_index,
 									 to_index,

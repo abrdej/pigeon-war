@@ -9,12 +9,10 @@ class game
 {
 public:
 	game();
-	void initialize(std::array<std::vector<sf::Uint64>, board::cols_n * board::rows_n>& x);
-	void on_board(sf::Uint64 col, sf::Uint64 row);
-//	void on_board_2(sf::Uint64 col, sf::Uint64 row, local_state& lstate);
-	void on_button(sf::Uint64 n);
-//	void on_button_2(sf::Uint64 n, local_state& lstate);
-	std::string get_button_description(sf::Uint64 selected_index, sf::Uint64 n);
+	void initialize(std::array<std::vector<std::uint64_t>, board::cols_n * board::rows_n>& x);
+	void on_board(std::uint64_t col, std::uint64_t row);
+	void on_button(std::uint64_t n);
+	std::string get_button_description(std::uint64_t selected_index, std::uint64_t n);
 
 	void defeat();
 	void victory();

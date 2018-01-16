@@ -1,13 +1,14 @@
 #include <core/states_controller.h>
 #include <core/board.h>
-#include <managers/health_manager.h>
-#include <managers/abilities_manager.h>
-#include <managers/additions_manager.h>
+#include <components/additions.h>
+#include <managers/entity_manager.h>
 #include "jaw_spider.h"
 #include "damage_dealers.h"
 #include "spider_web.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void jaw_spider::use(sf::Uint64 index_on) {
+void jaw_spider::use(std::uint64_t index_on) {
 
 	if (used) {
 		return;
@@ -20,7 +21,7 @@ void jaw_spider::use(sf::Uint64 index_on) {
 
 	auto enemy_id = board::at(index_on);
 
-	auto has_spider_web_effect = additions_manager::has_component(enemy_id, "spider_web_effect");
+	auto has_spider_web_effect = has_component(enemy_id, "spider_web_effect");
 
 	auto final_damage = has_spider_web_effect ? damage + bonus_for_spider_web_effect : damage;
 
@@ -28,8 +29,9 @@ void jaw_spider::use(sf::Uint64 index_on) {
 
 	used = true;
 
-	auto& abilities = abilities_manager::component_for(caster_id);
-	auto spider_web_ptr = std::static_pointer_cast<spider_web>(abilities.type(abilities::ability_types::special));
+	auto abilities_ptr = entity_manager::get(caster_id).get<abilities>();
+
+	auto spider_web_ptr = std::static_pointer_cast<spider_web>(abilities_ptr->type(abilities::ability_types::special));
 	spider_web_ptr->set_used();
 }
 

@@ -2,7 +2,7 @@
 #include "managers/entity_manager.h"
 #include <random>
 #include "entities/entity.h"
-#include "damage_taker.h"
+#include "components/damage_taker.h"
 
 std::int32_t random_damage(std::int32_t damage) {
 	std::random_device rd;
@@ -13,7 +13,7 @@ std::int32_t random_damage(std::int32_t damage) {
 }
 
 
-//sf::Int32 damage_dealers::standard_damage_dealer(const damage_pack& dmg)
+//std::int32_t damage_dealers::standard_damage_dealer(const damage_pack& dmg)
 //{
 //	if (!healths_manager::is_destructible(dmg.damage_receiver_id)) {
 //		return 0;

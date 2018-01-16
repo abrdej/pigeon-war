@@ -6,11 +6,11 @@
 #define PIGEONWAR_IMMORTALITY_H
 
 #include "ability.h"
-#include "core/turn.h"
+#include "core/turn_system.h"
 
 class immortality : public passive_ability {
 public:
-    explicit immortality(sf::Uint64 entity_id);
+    explicit immortality(std::uint64_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::immortality;
@@ -19,7 +19,7 @@ public:
     std::string hint() const override;
 
 private:
-    sf::Uint64 entity_id;
+    std::uint64_t entity_id;
     turn::turn_system::strong_receiver receiver;
 };
 

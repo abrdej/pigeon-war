@@ -6,7 +6,7 @@
 #define PIGEONWAR_KILL_H
 
 #include "abilities/ability.h"
-#include "core/turn.h"
+#include "core/turn_system.h"
 
 class kill final : public ability, protected turn_events_helper::every_turn_callback_helper
 {
@@ -18,15 +18,15 @@ public:
     }
 
 private:
-    void prepare(sf::Uint64 for_index) override;
-    void set_landing(sf::Uint64 for_index);
-    void use(sf::Uint64 index_on);
+    void prepare(std::uint64_t for_index) override;
+    void set_landing(std::uint64_t for_index);
+    void use(std::uint64_t index_on);
 
 private:
     const int range{3};
     const int damage{8};
     const int damage_with_killer_instinct{20};
-    sf::Uint64 target_index;
+    std::uint64_t target_index;
     bool used{false};
 };
 

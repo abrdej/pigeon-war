@@ -2,7 +2,7 @@
 #define DAMAGE_DEALERS_H
 
 #include "core/board.h"
-#include "managers/health_manager.h"
+#include "components/damage_pack.h"
 
 namespace damage_dealers
 {

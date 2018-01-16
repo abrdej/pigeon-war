@@ -11,22 +11,22 @@
 #include <SFML/Graphics.hpp>
 
 struct drawing_manager : base_manager<drawable::ptr_type, drawable::ptr_type> {
-    static drawable::ptr_type drawer_for(sf::Uint64 entity_id) {
+    static drawable::ptr_type drawer_for(std::uint64_t entity_id) {
         return map_.at(entity_id);
     }
 
     template <typename Drawer>
-    static std::shared_ptr<Drawer> typed_drawer_for(sf::Uint64 entity_id) {
+    static std::shared_ptr<Drawer> typed_drawer_for(std::uint64_t entity_id) {
         return std::static_pointer_cast<Drawer>(map_.at(entity_id));
     }
 
-    static bitmap_key get_bitmap_key_for(sf::Uint64 entity_id) {
+    static bitmap_key get_bitmap_key_for(std::uint64_t entity_id) {
         return map_.at(entity_id)->get_bitmap_key();
     }
 };
 
 template <>
-inline void add_component_of_type<drawable::ptr_type>(sf::Uint64 entity_id, const drawable::ptr_type& component) {
+inline void add_component_of_type<drawable::ptr_type>(std::uint64_t entity_id, const drawable::ptr_type& component) {
     drawing_manager::add_component(entity_id, component);
 }
 

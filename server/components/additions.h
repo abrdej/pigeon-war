@@ -5,10 +5,9 @@
 #ifndef PIGEONWAR_ADDITIONS_MANAGER_H
 #define PIGEONWAR_ADDITIONS_MANAGER_H
 
-#include "common/managers.h"
+#include "managers/entity_manager.h"
 #include <memory>
 #include <typeindex>
-#include <SFML/Config.hpp>
 
 struct addition {
     std::unordered_map<std::type_index, std::shared_ptr<void>> data;
@@ -52,49 +51,37 @@ struct addition {
 	}
 };
 
-struct additions_manager : base_manager<addition, addition&> {
+template <typename T>
+inline void add_component(std::uint64_t entity_id,
+                          const std::string& name,
+                          std::shared_ptr<T> x) {
 
-    template <typename T>
-    static inline void add_component(sf::Uint64 entity_id,
-                                     const std::string& name,
-                                     std::shared_ptr<T> x) {
+    entity_manager::get(entity_id).get_with_create<addition>()->put_named(name, x);
+}
 
-		auto it = map_.find(entity_id);
-		if (it != std::end(map_)) {
-			it->second.put_named(name, x);
-		}
-		else {
-			it = map_.emplace(entity_id, addition()).first;
-			it->second.put_named(name, x);
-			entity_remover::add_remover(entity_id, [entity_id]() {
-				map_.erase(entity_id);
-			});
-		}
-    }
+inline void remove_component(std::uint64_t entity_id, const std::string& name) {
+    entity_manager::get(entity_id).get<addition>()->destroy_named(name);
+}
 
-    static void remove_component(sf::Uint64 entity_id, const std::string& name) {
-        map_[entity_id].destroy_named(name);
-    }
+inline bool has_component(std::uint64_t entity_id, const std::string& name) {
+    return entity_manager::get(entity_id).get_with_create<addition>()->has(name);
+}
 
-	static bool has_component(sf::Uint64 entity_id, const std::string& name) {
-		return map_[entity_id].has(name);
-	}
+inline std::unordered_map<std::uint64_t, std::vector<std::string>> get_additions() {
 
-	static std::unordered_map<sf::Uint64, std::vector<std::string>> get_map() {
-		std::unordered_map<sf::Uint64, std::vector<std::string>> result;
+    std::unordered_map<std::uint64_t, std::vector<std::string>> result;
 
-		for (auto&& elem : map_) {
+    entity_manager::for_all([&result](base_entity entity) {
 
-			auto& field = result[elem.first];
+        std::shared_ptr<addition> additions_ptr = entity.get_with_create<addition>();
 
-			for (auto&& addition : elem.second.named_data) {
-				field.push_back(addition.first);
-			}
-		}
+        auto& field = result[entity.entity_id];
 
-		return std::move(result);
-	}
-};
-
+        for (auto&& addition : additions_ptr->named_data) {
+            field.push_back(addition.first);
+        }
+    });
+    return std::move(result);
+}
 
 #endif //PIGEONWAR_ADDITIONS_MANAGER_H

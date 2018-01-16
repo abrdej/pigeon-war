@@ -1,11 +1,13 @@
 #include <core/states_controller.h>
 #include <managers/entity_manager.h>
-#include "managers/additions_manager.h"
+#include "components/additions.h"
 #include "poisoned_missile.h"
 #include "damage_dealers.h"
 #include "abilities/moveable.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void poisoned_missile::use(sf::Uint64 index_on) {
+void poisoned_missile::use(std::uint64_t index_on) {
 
     if (used)
         return;
@@ -26,20 +28,20 @@ void poisoned_missile::use(sf::Uint64 index_on) {
                     damage_dealers::standard_damage_dealer(special_damage(poison_damage, enemy_id));
                     if (counter == pl * 2) {
                         if (entity_manager::alive(enemy_id)) {
-                            additions_manager::remove_component(enemy_id,
-                                                                "poison");
+                            remove_component(enemy_id,
+                                             "poison");
                         }
                     }
                 }
     });
 
 
-    additions_manager::add_component(enemy_id,
-                                     "poison",
-                                     poison_receiver);
+    add_component(enemy_id,
+                  "poison",
+                  poison_receiver);
 
-    auto& abilities = abilities_manager::component_for(entity_id);
-    auto moveable_ptr = std::static_pointer_cast<moveable>(abilities.type(abilities::ability_types::moving));
+    auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+    auto moveable_ptr = std::static_pointer_cast<moveable>(abilities_ptr->type(abilities::ability_types::moving));
     moveable_ptr->refresh_range();
 
     used = true;

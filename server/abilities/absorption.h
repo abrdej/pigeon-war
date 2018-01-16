@@ -6,12 +6,12 @@
 #define PIGEONWAR_ABSORBSION_H
 
 #include "ability.h"
-#include <core/turn.h>
+#include <core/turn_system.h>
 #include <unordered_map>
 
 class absorption final : public ability, turn_events_helper::every_turn_callback_helper {
 public:
-    explicit absorption(sf::Uint64 entity_id);
+    explicit absorption(std::uint64_t entity_id);
     ~absorption() override;
 
     bitmap_key get_bitmap_key() const override {
@@ -32,21 +32,21 @@ public:
     }
 
 private:
-    void prepare(sf::Uint64 for_index) override;
-    void use(sf::Uint64 index_on);
-    void play_animation(sf::Uint64 from_index, sf::Uint64 to_index);
+    void prepare(std::uint64_t for_index) override;
+    void use(std::uint64_t index_on);
+    void play_animation(std::uint64_t from_index, std::uint64_t to_index);
 
-    const sf::Uint64 entity_id;
-    const sf::Int32 range = 3;
+    const std::uint64_t entity_id;
+    const std::int32_t range = 3;
     bool used{false};
 
-    sf::Int32 damage_reduction{0};
+    std::int32_t damage_reduction{0};
 
-    sf::Int32 absorption_power{0};
-    sf::Int32 max_absorption_power{15};
+    std::int32_t absorption_power{0};
+    std::int32_t max_absorption_power{15};
 
-    using damage_receiver_type = std::function<sf::Int32(health_field&, const damage_pack&)>;
-    sf::Uint64 protected_id{std::numeric_limits<sf::Uint64>::max()};
+    using damage_receiver_type = std::function<std::int32_t(health_field&, const damage_pack&)>;
+    std::uint64_t protected_id{std::numeric_limits<std::uint64_t>::max()};
     damage_receiver_type protected_dmg_rec_backup;
 };
 

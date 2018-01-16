@@ -1,11 +1,13 @@
-#include <managers/additions_manager.h>
+#include <components/additions.h>
 #include "giant_blow.h"
 #include "core/path_finder.h"
 #include "core/states_controller.h"
 #include "core/board.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void giant_blow::use(sf::Uint64 index_on)
+void giant_blow::use(std::uint64_t index_on)
 {
     if (used) {
         return;
@@ -31,12 +33,11 @@ void giant_blow::use(sf::Uint64 index_on)
 
                         states::state_controller::custom_valid_targets[enemy_id].clear();
 
-                        additions_manager::remove_component(enemy_id,
-                                                            "giant_only_target");
+                        remove_component(enemy_id, "giant_only_target");
                     }
                 });
 
-        additions_manager::add_component(enemy_id, "giant_only_target", giant_only_target);
+        add_component(enemy_id, "giant_only_target", giant_only_target);
 
         counter = 0;
     }

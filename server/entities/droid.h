@@ -11,12 +11,12 @@
 #include <server/abilities/moveable.h>
 #include <server/abilities/teleport.h>
 #include <gui/entity_drawer.h>
-#include <damage_taker.h>
+#include <components/damage_taker.h>
 
 class droid final
 {
 public:
-	static auto create(sf::Uint64 id)
+	static auto create(std::uint64_t id)
 	{
 		base_entity entity;
 		entity.entity_id = id;

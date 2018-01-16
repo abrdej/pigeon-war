@@ -1,8 +1,11 @@
 #include "laser.h"
 #include "damage_dealers.h"
 #include <core/states_controller.h>
+#include "sender.h"
+#include "common/animations.h"
+#include "components/damage_taker.h"
 
-void laser::use(sf::Uint64 index_on) {
+void laser::use(std::uint64_t index_on) {
 
 	if (used)
 		return;
@@ -13,11 +16,11 @@ void laser::use(sf::Uint64 index_on) {
 	auto from_pos = board::to_pos(index_on);
 	auto to_pos = board::to_pos(used_from_index);
 
-	sf::Int32 hor_diff = static_cast<sf::Int32>(from_pos.first) - static_cast<sf::Int32>(to_pos.first);
-	sf::Int32 ver_diff = static_cast<sf::Int32>(from_pos.second) - static_cast<sf::Int32>(to_pos.second);
+	std::int32_t hor_diff = static_cast<std::int32_t>(from_pos.first) - static_cast<std::int32_t>(to_pos.first);
+	std::int32_t ver_diff = static_cast<std::int32_t>(from_pos.second) - static_cast<std::int32_t>(to_pos.second);
 
-	sf::Int32 xx = 0;
-	sf::Int32 yy = 0;
+	std::int32_t xx = 0;
+	std::int32_t yy = 0;
 
 	if (hor_diff != 0) {
 		xx = (hor_diff > 0 ? 1 : -1) * range;
@@ -30,7 +33,7 @@ void laser::use(sf::Uint64 index_on) {
 	sender::send(message_types::animation, animation_def::laser, used_from_index, index_to_move);
 
 	if (hor_diff != 0) {
-		for (sf::Int32 x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range); x = hor_diff > 0 ? x + 1 : x - 1) {
+		for (std::int32_t x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range); x = hor_diff > 0 ? x + 1 : x - 1) {
 
 			auto index = board::to_index(to_pos.first + x, to_pos.second);
 
@@ -38,9 +41,9 @@ void laser::use(sf::Uint64 index_on) {
 				auto enemy_id = board::at(index);
 				damage_dealers::standard_damage_dealer(special_damage(damage, enemy_id, entity_id));
 
-				auto dmg_receiver = healths_manager::get_damage_receiver(enemy_id);
+				auto dmg_receiver = get_damage_receiver(enemy_id);
 
-				healths_manager::set_damage_receiver(enemy_id,
+				set_damage_receiver(enemy_id,
 													 [dmg_receiver, bonus_dmg = bonus_damage](health_field& health_pack, const damage_pack& dmg) mutable {
 
 														 auto damage = dmg_receiver(health_pack, dmg);
@@ -57,7 +60,7 @@ void laser::use(sf::Uint64 index_on) {
 			}
 		}
 	} else {
-		for (sf::Int32 y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range); y = ver_diff > 0 ? y + 1 : y - 1) {
+		for (std::int32_t y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range); y = ver_diff > 0 ? y + 1 : y - 1) {
 
 			auto index = board::to_index(to_pos.first, to_pos.second + y);
 
@@ -65,9 +68,9 @@ void laser::use(sf::Uint64 index_on) {
 				auto enemy_id = board::at(index);
 				damage_dealers::standard_damage_dealer(special_damage(damage, board::at(index), entity_id));
 
-				auto dmg_receiver = healths_manager::get_damage_receiver(enemy_id);
+				auto dmg_receiver = get_damage_receiver(enemy_id);
 
-				healths_manager::set_damage_receiver(enemy_id,
+				set_damage_receiver(enemy_id,
 													 [dmg_receiver, bonus_dmg = bonus_damage](health_field& health_pack,
 																		  const damage_pack& dmg) mutable {
 

@@ -33,7 +33,7 @@ struct sender {
 			packet << y;
 		};
 
-		sf::Int32 tab[] = {(packer(std::forward<DataTypes>(x)), 0)...};
+		std::int32_t tab[] = {(packer(std::forward<DataTypes>(x)), 0)...};
 
 		send_fn(packet);
 	}

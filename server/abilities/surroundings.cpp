@@ -1,18 +1,18 @@
-#include <managers/health_manager.h>
 #include <core/path_finder.h>
 #include <managers/players_manager.h>
 #include "surroundings.h"
+#include "components/damage_taker.h"
 
-surroundings::surroundings(sf::Uint64 entity_id) {
+surroundings::surroundings(std::uint64_t entity_id) {
 
-    healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
+    set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
         auto index = board::index_for(entity_id);
 
-        std::vector<sf::Uint64> neighbors;
+        std::vector<std::uint64_t> neighbors;
         board_helper::neighboring_fields(index, neighbors, false);
 
-        sf::Int32 enemies_in_neighborhood = 0;
+        std::int32_t enemies_in_neighborhood = 0;
         for (auto&& neighbor : neighbors) {
             if (!board::empty(neighbor)) {
                 if (players_funcs::player_entity(board::index_for(entity_id)) && players_funcs::enemy_entity(neighbor)) {

@@ -1,15 +1,17 @@
-#include <managers/health_manager.h>
 #include <core/states_controller.h>
 #include "rage.h"
 #include "damage_dealers.h"
 #include <iostream>
+#include "sender.h"
+#include "common/animations.h"
+#include "components/damage_taker.h"
 
-rage::rage(sf::Uint64 id) : entity_id(id) {
+rage::rage(std::uint64_t id) : entity_id(id) {
 	onEveryRound([this]() {
 		damage_this_turn = 0;
 	});
 
-	healths_manager::on_receive_damage(entity_id, [this](const damage_pack&) {
+	on_receive_damage(entity_id, [this](const damage_pack&) {
 
 		std::cout << "on receive damage\n";
 
@@ -18,14 +20,14 @@ rage::rage(sf::Uint64 id) : entity_id(id) {
 			std::cout << "used\n";
 			use();
 		}
-	}, healths_manager::on_receive_damage_policy::after);
+	}, damage_taker::on_receive_damage_policy::after);
 }
 
 void rage::use() {
 
 	auto use_from_index = board::index_for(entity_id);
 
-	std::vector<sf::Uint64> around_fields_ids;
+	std::vector<std::uint64_t> around_fields_ids;
 	board_helper::neighboring_fields(use_from_index, around_fields_ids, false);
 
 	sender::send(message_types::animation, animation_def::rage, use_from_index);

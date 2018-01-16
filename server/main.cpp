@@ -1,7 +1,6 @@
 #include <iostream>
 #include <core/board.h>
 #include <core/states_controller.h>
-#include <managers/abilities_manager.h>
 #include <abilities/ability.h>
 #include <core/animations_queue.h>
 #include <managers/players_manager.h>
@@ -10,13 +9,11 @@
 #include <common/turn_status.h>
 #include <SFML/Network.hpp>
 #include <scenarios/scenarios.h>
-#include <managers/additions_manager.h>
+#include <components/additions.h>
 #include <managers/entity_manager.h>
 #include "core/game.h"
 #include "common/game_state.h"
-#include "managers/bitmap_field_manager.h"
-#include "managers/health_manager.h"
-#include "managers/name_field.h"
+#include "components/name_field.h"
 #include "server.h"
 #include "common/packet_helper.h"
 #include "sender.h"
@@ -25,16 +22,16 @@
 game_state get_game_state(game& g) {
 
 	game_state state;
-	state.healths = healths_manager::get_map();
+	state.healths = get_healths();
 
-	for (sf::Uint64 i = 0; i < board::fields_.size(); ++i) {
+	for (std::uint64_t i = 0; i < board::fields_.size(); ++i) {
 		for (auto&& elem : board::fields_[i]) {
 			state.board.fields_[i].push_back(elem);
 		}
 	}
 
-	state.entities_bitmaps = bitmap_field_manager::get_map();
-	state.entities_additional_effects = additions_manager::get_map();
+	state.entities_bitmaps = get_bitmaps();
+	state.entities_additional_effects = get_additions();
 
 	return std::move(state);
 }
@@ -50,21 +47,21 @@ local_state get_local_state(game& g) {
 
 	state.button_bitmaps.fill(bitmap_key::none);
 
-	auto id = board::at(states::state_controller::selected_index_);
-	if (id != board::empty_id) {
-		auto& bitmap_field = bitmap_field_manager::component_for(id);
-		state.button_bitmaps[0] = bitmap_field.bmt_key;
+	auto entity_id = board::at(states::state_controller::selected_index_);
+	auto entity = entity_manager::get(entity_id);
 
-		auto& abilities = abilities_manager::component_for(board::at(states::state_controller::selected_index_));
-		for (sf::Uint64 i = 1; i < 6; ++i) {
-			auto ability = abilities.at(i - 1);
+	if (entity_id != board::empty_id) {
+
+		state.button_bitmaps[0] = entity.get<bitmap_field>()->bmt_key;
+
+		auto abilities_ptr = entity.get<abilities>();
+		for (std::int32_t i = 1; i < 6; ++i) {
+			auto ability = abilities_ptr->at(i - 1);
 			if (ability) {
 				state.button_bitmaps[i] = ability->get_bitmap_key();
 			}
 		}
 	}
-
-	auto entity = entity_manager::get(board::at(states::state_controller::selected_index_));
 
 	state.entity_name = *entity.get<name_field>();
 	state.selected_index = states::state_controller::selected_index_;
@@ -98,9 +95,9 @@ int main() {
 
 	binder.bind(message_types::on_board, [&](sf::Packet& packet) {
 
-		sf::Int32 client_id;
-		sf::Uint64 x;
-		sf::Uint64 y;
+		std::int32_t client_id;
+		std::uint64_t x;
+		std::uint64_t y;
 
 		packet >> client_id;
 		packet >> x;
@@ -120,8 +117,8 @@ int main() {
 
 	binder.bind(message_types::on_button, [&](sf::Packet& packet) {
 
-		sf::Int32 client_id;
-		sf::Uint64 n;
+		std::int32_t client_id;
+		std::uint64_t n;
 
 		packet >> client_id;
 		packet >> n;
@@ -154,8 +151,8 @@ int main() {
 
 	binder.bind(message_types::get_button_description, [&](sf::Packet& packet) {
 
-		sf::Int32 client_id;
-		sf::Uint64 n;
+		std::int32_t client_id;
+		std::uint64_t n;
 
 		packet >> client_id;
 		packet >> n;

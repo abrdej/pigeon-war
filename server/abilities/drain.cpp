@@ -1,11 +1,14 @@
+#include <managers/entity_manager.h>
+#include <components/damage_taker.h>
 #include "drain.h"
 #include "core/path_finder.h"
 #include "core/states_controller.h"
 #include "core/board.h"
 #include "damage_dealers.h"
-#include "managers/health_manager.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void drain::use(sf::Uint64 index_on)
+void drain::use(std::uint64_t index_on)
 {
 	if (used) {
 		return;
@@ -21,8 +24,8 @@ void drain::use(sf::Uint64 index_on)
 													   board::at(index_on),
 													   entity_id));
 
-	healths_manager::receive_damage(healing(drain_amount,
-											entity_id));
+	entity_manager::get(entity_id).get<damage_taker>()->receive_damage(healing(drain_amount,
+																			   entity_id));
 	used = true;
 }
 

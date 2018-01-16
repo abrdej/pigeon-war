@@ -16,14 +16,14 @@ public:
 	std::string hint() const override;
 
 private:
-	void prepare(sf::Uint64 for_index) override;
-	void target(sf::Uint64 on);
-	void use(sf::Uint64 index_on);
+	void prepare(std::uint64_t for_index) override;
+	void target(std::uint64_t on);
+	void use(std::uint64_t index_on);
 
 private:
-	const sf::Int32 range = 1;
-	const sf::Int32 damage = 7;
-	std::vector<sf::Uint64> targets_;
+	const std::int32_t range = 1;
+	const std::int32_t damage = 7;
+	std::vector<std::uint64_t> targets_;
 };
 
 #endif

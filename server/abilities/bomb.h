@@ -7,35 +7,35 @@
 
 #include <entities/entity.h>
 #include "ability.h"
-#include "core/turn.h"
+#include "core/turn_system.h"
 #include "moveable.h"
 #include <boost/circular_buffer.hpp>
 #include <managers/entity_manager.h>
 
 class bomb_detonation final : public ability, protected turn_events_helper::every_turn_callback_helper {
 public:
-	explicit bomb_detonation(sf::Uint64 bomb_id);
+	explicit bomb_detonation(std::uint64_t bomb_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::bomb_detonation;
 	}
 
-	void prepare(sf::Uint64 for_index) override;
+	void prepare(std::uint64_t for_index) override;
 	void look_for_bombs();
-	void use(sf::Uint64 for_index);
-	void set_bomb_buffer(boost::circular_buffer<std::shared_ptr<sf::Uint64>>* p) {
+	void use(std::uint64_t for_index);
+	void set_bomb_buffer(boost::circular_buffer<std::shared_ptr<std::uint64_t>>* p) {
 		buffer = p;
 	}
 private:
-	sf::Uint64 bomb_id;
-	sf::Int32 damage{5};
-	sf::Int32 final_damage{5};
+	std::uint64_t bomb_id;
+	std::int32_t damage{5};
+	std::int32_t final_damage{5};
 	bool waited{false};
-	boost::circular_buffer<std::shared_ptr<sf::Uint64>>* buffer{nullptr};
+	boost::circular_buffer<std::shared_ptr<std::uint64_t>>* buffer{nullptr};
 };
 
 struct bomb_instance {
-	static auto create(sf::Uint64 entity_id)
+	static auto create(std::uint64_t entity_id)
 	{
 		base_entity entity;
 		entity.entity_id = entity_id;
@@ -55,15 +55,10 @@ public:
 		return bitmap_key::bomb;
 	}
 
-	void prepare(sf::Uint64 for_index) override;
-	void use(sf::Uint64 index_on);
+	void prepare(std::uint64_t for_index) override;
+	void use(std::uint64_t index_on);
 
 private:
-	sf::Uint64 find_min_health_jump(sf::Uint64 from_index, std::unordered_set<sf::Uint64>& visited_indexes);
-
-	bool used{false};
-	sf::Int32 range{3};
-	sf::Int32 damage{7};
 };
 
 

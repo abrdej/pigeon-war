@@ -9,19 +9,19 @@
 
 namespace detail
 {
-    template<sf::Int32... Is>
+    template<std::int32_t... Is>
     struct seq { };
 
-    template<sf::Int32 N, sf::Int32... Is>
+    template<std::int32_t N, std::int32_t... Is>
     struct gen_seq : gen_seq<N - 1, N - 1, Is...> { };
 
-    template<sf::Int32... Is>
+    template<std::int32_t... Is>
     struct gen_seq<0, Is...> : seq<Is...> { };
 }
 
 namespace detail
 {
-    template<typename T, typename F, sf::Int32... Is>
+    template<typename T, typename F, std::int32_t... Is>
     void for_each(T&& t, F f, seq<Is...>)
     {
         auto l = { (f(std::get<Is>(t)), 0)... };

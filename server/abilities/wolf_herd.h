@@ -9,7 +9,7 @@
 
 class wolf_herd final : public caster_target_ability {
 public:
-	void use(sf::Uint64 index_on);
+	void use(std::uint64_t index_on);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::wolf_herd;
@@ -17,7 +17,7 @@ public:
 
 private:
 	bool used{false};
-	sf::Int32 max_number_of_wolf{2};
+	std::int32_t max_number_of_wolf{2};
 };
 
 

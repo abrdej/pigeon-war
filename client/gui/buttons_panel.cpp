@@ -13,7 +13,7 @@ void buttons_panel::prepare()
 
     auto x_pos = constants::top_left_point.x + 2 * constants::field_size + constants::field_size / 2;
 
-	for (sf::Uint64 col = 0; col < 5; ++col)
+	for (std::uint64_t col = 0; col < 5; ++col)
 	{
 		my_button::point_type init_point(x_pos + col * constants::field_size,
                                          y_pos);
@@ -42,24 +42,24 @@ void buttons_panel::draw(sf::RenderWindow& window)
 
 bool buttons_panel::is_hit(sf::Vector2i cursor) const
 {
-	sf::Uint64 y_pos = constants::top_left_point.y + board_container::rows_n * constants::field_size;
-	sf::Uint64 x_right = constants::top_left_point.x + board_container::cols_n * constants::field_size;
+	std::uint64_t y_pos = constants::top_left_point.y + board_container::rows_n * constants::field_size;
+	std::uint64_t x_right = constants::top_left_point.x + board_container::cols_n * constants::field_size;
 
 	return (cursor.x >= constants::top_left_point.x && cursor.y >= y_pos &&
 			cursor.x <= x_right && cursor.y <= y_pos + constants::field_size);
 }
 
-sf::Uint64 buttons_panel::hit_button(sf::Vector2i cursor) const
+std::uint64_t buttons_panel::hit_button(sf::Vector2i cursor) const
 {
 	//auto x_right = cursor.x - constants::top_left_point.x;
 	//return x_right / constants::field_size;
 
-    for (sf::Uint64 i = 0; i < buttons_.size(); ++i) {
+    for (std::uint64_t i = 0; i < buttons_.size(); ++i) {
         if (buttons_[i].is_hit(cursor)) {
             return i;
         }
     }
-    return std::numeric_limits<sf::Uint64>::max();
+    return std::numeric_limits<std::uint64_t>::max();
 }
 
 void buttons_panel::set_for_entity_for(const std::string& entity_name,
@@ -67,7 +67,7 @@ void buttons_panel::set_for_entity_for(const std::string& entity_name,
 
 	this->entity_name = entity_name;
 
-	for (sf::Uint64 i = 1; i < 6; ++i) {
+	for (std::uint64_t i = 1; i < 6; ++i) {
 		if (button_bitmaps[i] != bitmap_key::none) {
 			buttons_[i - 1].icon(bitmap_center::get_bitmap(button_bitmaps[i]));
 		} else {
@@ -84,7 +84,7 @@ void buttons_panel::set_for_entity_for(const std::string& entity_name,
 	}
 }
 
-void buttons_panel::set_hint_for(const sf::Vector2f& pos, sf::Uint64 hint_idx) {
+void buttons_panel::set_hint_for(const sf::Vector2f& pos, std::uint64_t hint_idx) {
     hint_button_idx = hint_idx;
     hint_pos = pos;
 }

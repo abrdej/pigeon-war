@@ -1,14 +1,17 @@
 #include <core/states_controller.h>
 #include "spear.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
+#include "components/damage_taker.h"
 
-spear::spear(sf::Uint64 id) : entity_id(id) {
-    healths_manager::on_receive_damage(entity_id, [this](const damage_pack& dmg) mutable {
+spear::spear(std::uint64_t id) : entity_id(id) {
+    on_receive_damage(entity_id, [this](const damage_pack& dmg) mutable {
        accumulated_damage += additional_damage;
-    }, healths_manager::on_receive_damage_policy::after);
+    }, damage_taker::on_receive_damage_policy::after);
 }
 
-void spear::use(sf::Uint64 index_on) {
+void spear::use(std::uint64_t index_on) {
 
     if (used)
         return;
@@ -20,7 +23,7 @@ void spear::use(sf::Uint64 index_on) {
 
     sender::send(message_types::animation, animation_def::spear, used_from_index, index_on);
 
-    sf::Int32 full_damage = damage + accumulated_damage;
+    std::int32_t full_damage = damage + accumulated_damage;
 
     damage_dealers::standard_damage_dealer(melee_damage(full_damage, board::at(index_on), entity_id));
 

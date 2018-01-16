@@ -2,7 +2,7 @@
 #define MOVEABLE_H
 
 #include "ability.h"
-#include "core/turn.h"
+#include "core/turn_system.h"
 #include <functional>
 
 class moveable final : public ability, turn_events_helper::every_turn_callback_helper {
@@ -11,7 +11,7 @@ public:
         path,
         straight
     };
-	explicit moveable(sf::Int32 range, types type = types::path)
+	explicit moveable(std::int32_t range, types type = types::path)
 		: range(range),
           type(type) {
 		onEveryRound([this]() {
@@ -35,24 +35,24 @@ public:
 		used = true;
 	}
 
-	void set_cost_callback(std::function<void(sf::Int32)> fn) {
+	void set_cost_callback(std::function<void(std::int32_t)> fn) {
 		cost_callback = fn;
 	}
 
 	void remove_cost_callback() {
-		cost_callback = std::function<void(sf::Int32)>();
+		cost_callback = std::function<void(std::int32_t)>();
 	}
 
 private:
-	void prepare(sf::Uint64 for_index) override;
-	void move(sf::Uint64 index_to);
+	void prepare(std::uint64_t for_index) override;
+	void move(std::uint64_t index_to);
 
 private:
-	sf::Int32 range;
+	std::int32_t range;
 	bool used{false};
     types type;
 
-	std::function<void(sf::Int32)> cost_callback;
+	std::function<void(std::int32_t)> cost_callback;
 };
 
 

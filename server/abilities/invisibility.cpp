@@ -3,15 +3,16 @@
 #include "core/board.h"
 #include "entities/saberhand.h"
 #include "core/states_controller.h"
-#include "gui/bitmap_center.h"
+#include "sender.h"
+#include "common/animations.h"
 
-invisibility::invisibility(sf::Uint64 id)
+invisibility::invisibility(std::uint64_t id)
 	: entity_id(id)
 {
 
 }
 
-void invisibility::use(sf::Uint64 on_index)
+void invisibility::use(std::uint64_t on_index)
 {
 	if (used_)
         return;
@@ -35,14 +36,14 @@ void invisibility::hide_me()
 
 	sender::send(message_types::animation, animation_def::set_invisibility, entity_id);
 
-    healths_manager::set_destructible(entity_id, false);
+    set_destructible(entity_id, false);
 }
 
 void invisibility::show_me()
 {
 	sender::send(message_types::animation, animation_def::remove_invisibility, entity_id);
 
-    healths_manager::set_destructible(entity_id, true);
+    set_destructible(entity_id, true);
 }
 
 std::string invisibility::hint() const {

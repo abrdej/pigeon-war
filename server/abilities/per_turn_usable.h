@@ -5,7 +5,7 @@
 #ifndef PIGEONWAR_PER_TURN_USABLE_H
 #define PIGEONWAR_PER_TURN_USABLE_H
 
-#include <core/turn.h>
+#include <core/turn_system.h>
 
 using per_turn_callback = turn_events_helper::every_turn_callback_helper;
 

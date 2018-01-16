@@ -1,9 +1,11 @@
 #include <core/states_controller.h>
-#include <managers/additions_manager.h>
+#include <components/additions.h>
 #include "shiruken.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void shiruken::use(sf::Uint64 index_on) {
+void shiruken::use(std::uint64_t index_on) {
     if (used)
         return;
 
@@ -12,7 +14,7 @@ void shiruken::use(sf::Uint64 index_on) {
 
     auto enemy_id = board::at(index_on);
 
-    auto has_death_mark = additions_manager::has_component(enemy_id, "death_mark");
+    auto has_death_mark = has_component(enemy_id, "death_mark");
 
     sender::send(message_types::animation, animation_def::shiruken, used_from_index, index_on);
 
@@ -22,12 +24,12 @@ void shiruken::use(sf::Uint64 index_on) {
 //    auto death_mark_receiver =
 //            turn::turn_system::every_turn([this, enemy_id, counter = 0, duration = death_mark_duration]() mutable {
 //                if (counter++ == duration * 2) {
-//                    additions_manager::remove_component(enemy_id,
+//                    remove_component(enemy_id,
 //                                                        "death_mark");
 //                }
 //            });
 //
-//    additions_manager::add_component(enemy_id,
+//    add_component(enemy_id,
 //                                     "death_mark",
 //                                     death_mark_receiver);
 

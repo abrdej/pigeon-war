@@ -62,79 +62,79 @@ std::unique_ptr<player<Animation>> player<Animation>::me_ = nullptr;
 
 struct move
 {
-	move(sf::Uint64 fi, sf::Uint64 ti, sf::Uint64 id)
+	move(std::uint64_t fi, std::uint64_t ti, std::uint64_t id)
 			: from_index(fi),
 			  to_index(ti),
 			  bitmap(drawing_manager::get_bitmap_key_for(id)) {
 	}
-	move(sf::Uint64 fi, sf::Uint64 ti, bitmap_key bitmap)
+	move(std::uint64_t fi, std::uint64_t ti, bitmap_key bitmap)
 			: from_index(fi),
 			  to_index(ti),
 			  bitmap(bitmap)
 	{
 	}
-	sf::Uint64 from_index;
-	sf::Uint64 to_index;
+	std::uint64_t from_index;
+	std::uint64_t to_index;
 	bitmap_key bitmap;
 };
 
 struct move_at_path {
-	move_at_path(sf::Uint64 start_index, std::vector<sf::Uint64> path, sf::Uint64 object_id)
+	move_at_path(std::uint64_t start_index, std::vector<std::uint64_t> path, std::uint64_t object_id)
 			: path(std::move(path)), start_index(start_index), bitmap(drawing_manager::get_bitmap_key_for(object_id)) {
 	}
-	move_at_path(sf::Uint64 start_index, std::vector<sf::Uint64> path, bitmap_key bitmap)
+	move_at_path(std::uint64_t start_index, std::vector<std::uint64_t> path, bitmap_key bitmap)
 			: path(std::move(path)), start_index(start_index), bitmap(bitmap) {}
-	std::vector<sf::Uint64> path;
+	std::vector<std::uint64_t> path;
 	bitmap_key bitmap;
-	sf::Uint64 start_index;
+	std::uint64_t start_index;
 };
 
 struct move_entity
 {
-	move_entity(sf::Uint64 from_index, sf::Uint64 to_index, sf::Uint64 entity_id)
+	move_entity(std::uint64_t from_index, std::uint64_t to_index, std::uint64_t entity_id)
 			: from_index(from_index),
 			  to_index(to_index),
 			  entity_id(entity_id)
 	{
 	}
-	sf::Uint64 from_index;
-	sf::Uint64 to_index;
-	sf::Uint64 entity_id;
+	std::uint64_t from_index;
+	std::uint64_t to_index;
+	std::uint64_t entity_id;
 };
 
 struct bum
 {
-	bum(sf::Uint64 on_index)
+	bum(std::uint64_t on_index)
 			: on_index(on_index)
 	{
 	}
-	sf::Uint64 on_index;
+	std::uint64_t on_index;
 };
 
 struct claws
 {
-	claws(sf::Uint64 on_index)
+	claws(std::uint64_t on_index)
 			: on_index(on_index)
 	{
 	}
-	sf::Uint64 on_index;
+	std::uint64_t on_index;
 };
 
 struct flash_bitmap
 {
-	flash_bitmap(sf::Uint64 on_index, std::chrono::milliseconds duration, const std::string& bitmap_name)
+	flash_bitmap(std::uint64_t on_index, std::chrono::milliseconds duration, const std::string& bitmap_name)
 			: on_index(on_index),
 			  duration(duration),
 			  bitmap_name(bitmap_name)
 	{
 	}
-	flash_bitmap(sf::Uint64 on_index, std::chrono::milliseconds duration, const bitmap_key& bmt_key)
+	flash_bitmap(std::uint64_t on_index, std::chrono::milliseconds duration, const bitmap_key& bmt_key)
 			: on_index(on_index),
 			  duration(duration),
 			  bmt_key(bmt_key)
 	{
 	}
-	sf::Uint64 on_index;
+	std::uint64_t on_index;
 	std::chrono::milliseconds duration;
 	std::string bitmap_name;
 	bitmap_key bmt_key;
@@ -142,13 +142,13 @@ struct flash_bitmap
 
 struct change_health
 {
-	change_health(sf::Uint64 for_index, sf::Int32 change_by)
+	change_health(std::uint64_t for_index, std::int32_t change_by)
 			: for_index(for_index),
 			  change_by(change_by)
 	{
 	}
-	sf::Uint64 for_index;
-	sf::Int32 change_by;
+	std::uint64_t for_index;
+	std::int32_t change_by;
 };
 };
 

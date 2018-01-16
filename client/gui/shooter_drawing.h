@@ -16,9 +16,9 @@
 
 //struct shooter_drawer : drawable {
 //
-//    sf::Uint64 entity_id;
+//    std::uint64_t entity_id;
 //    sf::Sprite sprite;
-//    sf::Int32 health{0};
+//    std::int32_t health{0};
 //    sf::Vector2f health_pos;
 //    sf::Font font;
 //
@@ -30,7 +30,7 @@
 //
 //    std::vector<sf::Texture> textures;
 //
-//    explicit shooter_drawer(sf::Uint64 entity_id)
+//    explicit shooter_drawer(std::uint64_t entity_id)
 //            : entity_id(entity_id) {
 //
 //        font.loadFromFile("verdanab.ttf");
@@ -48,7 +48,7 @@
 //        state = x;
 //    }
 //
-//    void render_text(sf::Int32 entity_health, sf::Vector2f position, sf::RenderWindow& window)
+//    void render_text(std::int32_t entity_health, sf::Vector2f position, sf::RenderWindow& window)
 //    {
 //        if (entity_health == indestructible)
 //            return;
@@ -64,7 +64,7 @@
 //
 //    void draw(sf::RenderWindow& window) override {
 //
-//        sprite.setTexture(textures[static_cast<sf::Int32>(state)]);
+//        sprite.setTexture(textures[static_cast<std::int32_t>(state)]);
 //
 //        auto index = board::index_for(entity_id);
 //        auto pos = board::to_pos(index);

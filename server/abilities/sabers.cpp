@@ -3,8 +3,10 @@
 #include "core/states_controller.h"
 #include "core/board.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void sabers::prepare(sf::Uint64 for_index)
+void sabers::prepare(std::uint64_t for_index)
 {
 	targets_.clear();
 
@@ -12,13 +14,13 @@ void sabers::prepare(sf::Uint64 for_index)
 	board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
 
 	states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-	states::state_controller::wait_for_action([this](sf::Uint64 index)
+	states::state_controller::wait_for_action([this](std::uint64_t index)
 	{
 		return target(index);
 	});
 }
 
-void sabers::target(sf::Uint64 target_index)
+void sabers::target(std::uint64_t target_index)
 {
 	auto result = std::find(std::begin(targets_), std::end(targets_), target_index);
 	if (result != std::end(targets_))
@@ -41,14 +43,14 @@ void sabers::target(sf::Uint64 target_index)
 		states::state_controller::possible_movements_.push_back(target_index);
 
 		states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-		states::state_controller::wait_for_action([this](sf::Uint64 index)
+		states::state_controller::wait_for_action([this](std::uint64_t index)
 		{
 			return target(index);
 		});
 	}
 }
 
-void sabers::use(sf::Uint64 index_on)
+void sabers::use(std::uint64_t index_on)
 {
 	if (board::empty(index_on))
 		return;

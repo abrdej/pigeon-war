@@ -9,26 +9,25 @@
 #include <thread>
 #include <chrono>
 #include <algorithm>
-#include <managers/health_manager.h>
-#include "server/managers/abilities_manager.h"
+#include <managers/entity_manager.h>
 
 namespace ai
 {
-ai_brain::ai_brain(sf::Uint64 player_id)
+ai_brain::ai_brain(std::uint64_t player_id)
 		: player_id(player_id)
 {
 }
 
 void ai_brain::do_turn()
 {
-	std::vector<sf::Uint64> entities_indexies;
+	std::vector<std::uint64_t> entities_indexies;
 	players_funcs::player_entities_indexes(player_id, entities_indexies);
 
 	for (auto& entity_index : entities_indexies)
 		move_entity(entity_index);
 }
 
-void ai_brain::move_entity(sf::Uint64 entity_index)
+void ai_brain::move_entity(std::uint64_t entity_index)
 {
 	states::state_controller::selected_index_ = entity_index;
 
@@ -66,7 +65,7 @@ bool find_nearest_enemy::operator()(blackboard& blackboard)
 
 	std::cout << "blackboard.player_id: " << blackboard.player_id << "\n";
 
-	std::vector<sf::Uint64> enemies_indexes;
+	std::vector<std::uint64_t> enemies_indexes;
 	players_funcs::enemy_entities_indexes(blackboard.player_id, enemies_indexes);
 	if (enemies_indexes.size() == 0)
 		return false;
@@ -74,7 +73,7 @@ bool find_nearest_enemy::operator()(blackboard& blackboard)
 	path_finder distance_finder(true);
 	distance_finder.calc(blackboard.my_entity_index_);
 
-	std::vector<sf::Uint64> distances_to_enemies;
+	std::vector<std::uint64_t> distances_to_enemies;
 	for (auto& enemy_index : enemies_indexes)
 		distances_to_enemies.push_back(distance_finder.distance_to(enemy_index));
 
@@ -92,8 +91,8 @@ bool attack_enemy::operator()(blackboard& blackboard)
 {
 	auto selected_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(selected_index);
-	auto& entity_abilities = abilities_manager::component_for(entity_id);
-	auto offensive = entity_abilities.type(abilities::ability_types::offensive);
+	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto offensive = abilities_ptr->type(abilities::ability_types::offensive);
 	if (!offensive)
 		return false;
 
@@ -113,24 +112,24 @@ bool attack_enemy::operator()(blackboard& blackboard)
 bool go_close_to::operator()(blackboard& blackboard)
 {
 	auto entity_id = board::at(blackboard.my_entity_index_);
-	auto& entity_abilities = abilities_manager::component_for(entity_id);
-	auto moving = entity_abilities.type(abilities::ability_types::moving);
+	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto moving = abilities_ptr->type(abilities::ability_types::moving);
 	if (!moving)
 		return false;
 
 	path_finder distance_finder(false);
 	distance_finder.calc(blackboard.my_entity_index_);
 
-	std::vector<sf::Uint64> neighbors;
+	std::vector<std::uint64_t> neighbors;
 	board_helper::neighboring_fields(blackboard.nearest_enemy_index,
 									 neighbors, false);
 
-	neighbors.erase(std::remove_if(std::begin(neighbors), std::end(neighbors), [&blackboard](sf::Uint64 index) {
+	neighbors.erase(std::remove_if(std::begin(neighbors), std::end(neighbors), [&blackboard](std::uint64_t index) {
 		return !board::empty(index) && index != blackboard.my_entity_index_;
 	}), std::end(neighbors));
 
 	auto nearest_field = *std::min_element(std::begin(neighbors), std::end(neighbors),
-										   [&distance_finder](sf::Uint64 first_elem, sf::Uint64 second_elem)
+										   [&distance_finder](std::uint64_t first_elem, std::uint64_t second_elem)
 										   {
 											   return distance_finder.distance_to(first_elem) < distance_finder.distance_to(second_elem);
 										   });
@@ -138,7 +137,7 @@ bool go_close_to::operator()(blackboard& blackboard)
 	if (nearest_field == blackboard.my_entity_index_)
 		return true;
 
-	std::vector<sf::Uint64> path;
+	std::vector<std::uint64_t> path;
 	distance_finder.path_to(nearest_field, path);
 
 	(*moving)(blackboard.my_entity_index_);
@@ -157,8 +156,8 @@ bool go_to::operator()(blackboard& blackboard)
 {
 	auto entity_id = board::at(blackboard.my_entity_index_);
 
-	auto& entity_abilities = abilities_manager::component_for(entity_id);
-	auto moving = entity_abilities.type(abilities::ability_types::moving);
+	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto moving = abilities_ptr->type(abilities::ability_types::moving);
 	if (!moving)
 		return false;
 
@@ -168,7 +167,7 @@ bool go_to::operator()(blackboard& blackboard)
 	path_finder path_finder(false);
 	path_finder.calc(blackboard.my_entity_index_);
 
-	std::vector<sf::Uint64> path;
+	std::vector<std::uint64_t> path;
 	path_finder.path_to(blackboard.destination_index, path);
 
 	(*moving)(blackboard.my_entity_index_);
@@ -188,8 +187,8 @@ bool can_go_to::operator()(blackboard& blackboard)
 {
 	auto entity_id = board::at(blackboard.my_entity_index_);
 
-	auto& entity_abilities = abilities_manager::component_for(entity_id);
-	auto moving = entity_abilities.type(abilities::ability_types::moving);
+	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto moving = abilities_ptr->type(abilities::ability_types::moving);
 	if (!moving)
 		return false;
 
@@ -205,15 +204,15 @@ bool find_position_for_shot::operator()(blackboard& blackboard)
 {
 	auto selected_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(selected_index);
-	auto& entity_abilities = abilities_manager::component_for(entity_id);
-	auto offensive = entity_abilities.type(abilities::ability_types::offensive);
+	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto offensive = abilities_ptr->type(abilities::ability_types::offensive);
 	if (!offensive)
 		return false;
 
 	path_finder path_finder(false);
 
 	auto destination_index = path_finder.find_first_satisfy_conditions(selected_index,
-																	   [&offensive, &blackboard](sf::Uint64 index)->bool
+																	   [&offensive, &blackboard](std::uint64_t index)->bool
 																	   {
 																		   (*offensive)(index);
 																		   auto can_attack =
@@ -230,16 +229,17 @@ bool find_position_for_shot::operator()(blackboard& blackboard)
 
 bool find_best_aim::operator()(blackboard& blackboard) {
 
-	std::vector<sf::Uint64> enemies_indexes;
+	std::vector<std::uint64_t> enemies_indexes;
 	players_funcs::enemy_entities_indexes(blackboard.player_id, enemies_indexes);
-	if (enemies_indexes.size() == 0)
+	if (enemies_indexes.empty())
 		return false;
 
-	sf::Int32 min_health = std::numeric_limits<sf::Int32>::max();
-	sf::Uint64 min_health_enemy_id = 0;
+	std::int32_t min_health = std::numeric_limits<std::int32_t>::max();
+	std::uint64_t min_health_enemy_id = 0;
 
 	for (auto&& enemy_id : enemies_indexes) {
-		auto health = healths_manager::component_for(enemy_id).health;
+		auto health = entity_manager::get(enemy_id).get<health_field>()->health;
+
 		if (health < min_health) {
 			min_health = health;
 			min_health_enemy_id = enemy_id;

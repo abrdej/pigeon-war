@@ -6,6 +6,8 @@
 #include "core/states_controller.h"
 #include "core/board.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
 shoot::shoot()
 		: bullets(bullets_n)
@@ -25,7 +27,7 @@ std::string shoot::hint() const {
 	return std::move(desc);
 }
 
-void shoot::use(sf::Uint64 index_on)
+void shoot::use(std::uint64_t index_on)
 {
 	if (bullets == 0)
 		return;

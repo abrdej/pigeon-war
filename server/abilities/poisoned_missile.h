@@ -19,12 +19,12 @@ public:
     std::string hint() const override;
 
 private:
-    void use(sf::Uint64 index_on);
+    void use(std::uint64_t index_on);
 
 private:
-    const sf::Int32 damage{6};
-    const sf::Int32 poison_power{5};
-    const sf::Int32 poison_last{3};
+    const std::int32_t damage{6};
+    const std::int32_t poison_power{5};
+    const std::int32_t poison_last{3};
 };
 
 #endif //PIGEONWAR_POISONED_MISSILE_H

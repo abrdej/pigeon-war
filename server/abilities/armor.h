@@ -9,7 +9,7 @@
 
 class armor : public passive_ability {
 public:
-    explicit armor(sf::Uint64 entity_id);
+    explicit armor(std::uint64_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::armor;
@@ -18,7 +18,7 @@ public:
     std::string hint() const override;
 
 private:
-    sf::Int32 max_damage{6};
+    std::int32_t max_damage{6};
 };
 
 

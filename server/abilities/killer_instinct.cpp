@@ -1,19 +1,20 @@
-#include <managers/additions_manager.h>
+#include <components/additions.h>
 #include <core/board.h>
+#include <managers/entity_manager.h>
 #include "killer_instinct.h"
 #include "core/animations_queue.h"
-#include "managers/abilities_manager.h"
 #include "sender.h"
 
 
-killer_instinct::killer_instinct(sf::Uint64 entity_id)
+killer_instinct::killer_instinct(std::uint64_t entity_id)
 		: entity_id(entity_id) {
 }
 
-void killer_instinct::prepare(sf::Uint64 for_index) {
+void killer_instinct::prepare(std::uint64_t for_index) {
 
-	auto& enemy_abilities = abilities_manager::component_for(entity_id);
-	auto moveable_ptr = std::static_pointer_cast<moveable>(enemy_abilities.type(abilities::ability_types::moving));
+	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+
+	auto moveable_ptr = std::static_pointer_cast<moveable>(abilities_ptr->type(abilities::ability_types::moving));
 
 	if (!moveable_ptr->has_range()) {
 		states::state_controller::possible_movements_.clear();
@@ -31,7 +32,7 @@ void killer_instinct::prepare(sf::Uint64 for_index) {
 	}
 }
 
-void killer_instinct::use(sf::Uint64 index) {
+void killer_instinct::use(std::uint64_t index) {
 
 	if (used)
 		return;
@@ -41,13 +42,12 @@ void killer_instinct::use(sf::Uint64 index) {
 	auto killer_instinct_receiver =
 			turn::turn_system::every_turn([this]() mutable {
 
-				additions_manager::remove_component(entity_id,
-													"killer_instinct");
+				remove_component(entity_id, "killer_instinct");
 
 				sender::send(message_types::animation, animation_def::remove_killer_instinct, entity_id);
 			});
 
-	additions_manager::add_component(entity_id, "killer_instinct", killer_instinct_receiver);
+	add_component(entity_id, "killer_instinct", killer_instinct_receiver);
 
 	auto move_from_index = states::state_controller::selected_index_;
 
@@ -64,7 +64,8 @@ void killer_instinct::use(sf::Uint64 index) {
 
 	used = true;
 
-	auto& enemy_abilities = abilities_manager::component_for(entity_id);
-	auto moveable_ptr = std::static_pointer_cast<moveable>(enemy_abilities.type(abilities::ability_types::moving));
+	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+
+	auto moveable_ptr = std::static_pointer_cast<moveable>(abilities_ptr->type(abilities::ability_types::moving));
 	moveable_ptr->remove_range();
 }

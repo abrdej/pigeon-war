@@ -12,10 +12,10 @@
 #include "board_container.h"
 #include "common/bitmaps.h"
 
-void call_on_button(sf::TcpSocket& socket, sf::Int32 player_id, sf::Uint64 n);
+void call_on_button(sf::TcpSocket& socket, std::int32_t player_id, std::uint64_t n);
 
-void call_get_button_description(sf::TcpSocket& socket, sf::Int32 player_id, sf::Uint64 n);
+void call_get_button_description(sf::TcpSocket& socket, std::int32_t player_id, std::uint64_t n);
 
-void call_on_board(sf::TcpSocket& socket, sf::Int32 player_id, sf::Uint64 col, sf::Uint64 row);
+void call_on_board(sf::TcpSocket& socket, std::int32_t player_id, std::uint64_t col, std::uint64_t row);
 
 #endif //PIGEONWAR_REQUESTS_H

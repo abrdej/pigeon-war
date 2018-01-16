@@ -13,7 +13,7 @@ namespace states {
 enum class states_types { waiting, wait_for_action };
 enum class target_types { caster, enemy, friendly, neutral, moving, all, non };
 
-static const sf::Uint64 no_selected_index = std::numeric_limits<sf::Uint64>::max();
+static const std::uint64_t no_selected_index = std::numeric_limits<std::uint64_t>::max();
 
 }
 

@@ -19,11 +19,11 @@ public:
     std::string hint() const override;
 
 private:
-    void use(sf::Uint64 index_on) override;
+    void use(std::uint64_t index_on) override;
 
 private:
-    const sf::Int32 damage{8};
-    sf::Int32 counter{0};
+    const std::int32_t damage{8};
+    std::int32_t counter{0};
 };
 
 #endif //PIGEONWAR_GIANT_BLOW_H

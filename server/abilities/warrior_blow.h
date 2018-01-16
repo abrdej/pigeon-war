@@ -19,11 +19,11 @@ public:
     std::string hint() const override;
 
 private:
-    void use(sf::Uint64 index_on) override;
+    void use(std::uint64_t index_on) override;
 
 private:
-    const sf::Uint64 damage = 10;
-    const sf::Uint64 damage_per_factor = 2;
+    const std::uint64_t damage = 10;
+    const std::uint64_t damage_per_factor = 2;
 };
 
 

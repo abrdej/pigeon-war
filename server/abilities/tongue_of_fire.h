@@ -12,9 +12,9 @@ public:
 	}
 
 private:
-	void use(sf::Uint64 index_on) override;
+	void use(std::uint64_t index_on) override;
 private:
-	const sf::Int32 damage = 9;
+	const std::int32_t damage = 9;
 };
 
 #endif

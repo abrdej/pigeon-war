@@ -1,15 +1,18 @@
 #include <core/states_controller.h>
+#include <components/damage_taker.h>
 #include "magic_bullet.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-magic_bullet::magic_bullet(sf::Uint64 entity_id) {
+magic_bullet::magic_bullet(std::uint64_t entity_id) {
     onEveryTurn([this, entity_id]() {
 
         if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
             used = false;
             magic_power += magic_power_accumulation_amount;
 
-            std::vector<sf::Uint64> neighbors;
+            std::vector<std::uint64_t> neighbors;
             board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);
             for (auto& index : neighbors)
             {
@@ -22,12 +25,12 @@ magic_bullet::magic_bullet(sf::Uint64 entity_id) {
         }
     });
 
-    healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
+    set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
-        auto half_damage = static_cast<sf::Int32>(dmg.damage_value * 0.5f);
+        auto half_damage = static_cast<std::int32_t>(dmg.damage_value * 0.5f);
 
-        //auto damage_for_magic_power = std::min<sf::Int32>(static_cast<sf::Int32>(0.5 * magic_power), dmg.damage_value);
-        auto damage_for_magic_power = std::min<sf::Int32>(magic_power, half_damage);
+        //auto damage_for_magic_power = std::min<std::int32_t>(static_cast<std::int32_t>(0.5 * magic_power), dmg.damage_value);
+        auto damage_for_magic_power = std::min<std::int32_t>(magic_power, half_damage);
         magic_power -= damage_for_magic_power;
 
 //        auto remaining_damage = dmg.damage_value - damage_for_magic_power;
@@ -54,7 +57,7 @@ std::string magic_bullet::hint() const {
     return std::move(desc);
 }
 
-void magic_bullet::use(sf::Uint64 index_on) {
+void magic_bullet::use(std::uint64_t index_on) {
 
     if (used)
         return;

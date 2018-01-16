@@ -5,15 +5,17 @@
 #include <common/managers.h>
 #include <gui/entity_drawer.h>
 #include <gui/drawing_manager.h>
+#include <managers/entity_manager.h>
 #include "spiral_of_fire.h"
 #include "damage_dealers.h"
-#include "managers/abilities_manager.h"
+#include "sender.h"
+#include "common/animations.h"
 
 spiral_of_fire::spiral_of_fire() {
 
 }
 
-void spiral_of_fire::use(sf::Uint64 index_on) {
+void spiral_of_fire::use(std::uint64_t index_on) {
 
     if (!can_be_used)
         return;
@@ -24,17 +26,17 @@ void spiral_of_fire::use(sf::Uint64 index_on) {
     auto from_pos = board::to_pos(index_on);
     auto to_pos = board::to_pos(used_from_index);
 
-    sf::Int32 xx = static_cast<sf::Int32>(from_pos.first) - static_cast<sf::Int32>(to_pos.first);
-    sf::Int32 yy = static_cast<sf::Int32>(from_pos.second) - static_cast<sf::Int32>(to_pos.second);
+    std::int32_t xx = static_cast<std::int32_t>(from_pos.first) - static_cast<std::int32_t>(to_pos.first);
+    std::int32_t yy = static_cast<std::int32_t>(from_pos.second) - static_cast<std::int32_t>(to_pos.second);
 
     auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
     sender::send(message_types::animation, animation_def::spiral_of_fire, used_from_index, index_to_move);
 
-    std::vector<sf::Uint64> indexes;
+    std::vector<std::uint64_t> indexes;
 
     if (xx != 0) {
-        for (sf::Int32 x = xx > 0 ? 1 : -1; std::abs(x) <= std::abs(xx); x = xx > 0 ? x + 1 : x - 1) {
+        for (std::int32_t x = xx > 0 ? 1 : -1; std::abs(x) <= std::abs(xx); x = xx > 0 ? x + 1 : x - 1) {
 
             auto index = board::to_index(to_pos.first + x, to_pos.second);
 
@@ -47,7 +49,7 @@ void spiral_of_fire::use(sf::Uint64 index_on) {
             }
         }
     } else {
-        for (sf::Int32 y = yy > 0 ? 1 : -1; abs(y) <= abs(yy); y = yy > 0 ? y + 1 : y - 1) {
+        for (std::int32_t y = yy > 0 ? 1 : -1; abs(y) <= abs(yy); y = yy > 0 ? y + 1 : y - 1) {
 
             auto index = board::to_index(to_pos.first, to_pos.second + y);
 
@@ -61,14 +63,15 @@ void spiral_of_fire::use(sf::Uint64 index_on) {
         }
     }
 
-    for (sf::Int32 i = indexes.size() - 1; i >= 0; --i) {
+    for (std::int32_t i = indexes.size() - 1; i >= 0; --i) {
         if (!board::empty(indexes[i])) {
             damage_dealers::standard_damage_dealer(special_damage(damage, board::at(indexes[i]), entity_id));
         }
     }
     can_be_used = false;
 
-    auto ability = abilities_manager::component_for(entity_id).type(abilities::ability_types::offensive);
+    auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+    auto ability = abilities_ptr->type(abilities::ability_types::offensive);
     std::shared_ptr<chopper> ch = std::static_pointer_cast<chopper>(ability);
     ch->remove_fired();
 }

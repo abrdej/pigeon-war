@@ -1,8 +1,10 @@
 #include <core/states_controller.h>
 #include "bludgeon.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void bludgeon::use(sf::Uint64 index_on)
+void bludgeon::use(std::uint64_t index_on)
 {
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
@@ -12,11 +14,11 @@ void bludgeon::use(sf::Uint64 index_on)
 	auto from_pos = board::to_pos(used_from_index);
 	auto on_pos = board::to_pos(index_on);
 
-	sf::Int32 x_diff = from_pos.first - on_pos.first;
-	sf::Int32 y_diff = from_pos.second - on_pos.second;
+	std::int32_t x_diff = from_pos.first - on_pos.first;
+	std::int32_t y_diff = from_pos.second - on_pos.second;
 
-	sf::Int32 push_x = on_pos.first - x_diff;
-	sf::Int32 push_y = on_pos.second - y_diff;
+	std::int32_t push_x = on_pos.first - x_diff;
+	std::int32_t push_y = on_pos.second - y_diff;
 
 	auto push_to_index = board::to_index(push_x, push_y);
 	auto set_on_index = index_on;

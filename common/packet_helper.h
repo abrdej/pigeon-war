@@ -12,17 +12,17 @@
 #include <unordered_set>
 #include "utils.h"
 
-//inline sf::Packet& operator <<(sf::Packet& packet, const sf::Uint64 x)
+//inline sf::Packet& operator <<(sf::Packet& packet, const std::uint64_t x)
 //{
-//	sf::Uint64 x_conv = x;
+//	std::uint64_t x_conv = x;
 //	packet << x_conv;
 //
 //	return packet;
 //}
 //
-//inline sf::Packet& operator >>(sf::Packet& packet, sf::Uint64& x)
+//inline sf::Packet& operator >>(sf::Packet& packet, std::uint64_t& x)
 //{
-//	sf::Uint64 x_conv;
+//	std::uint64_t x_conv;
 //	packet >> x_conv;
 //
 //	x = x_conv;
@@ -58,7 +58,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::tuple<TT...>& x)
 template <typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::vector<T>& x)
 {
-	packet << static_cast<sf::Uint64>(x.size());
+	packet << static_cast<std::uint64_t>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -70,7 +70,7 @@ inline sf::Packet& operator <<(sf::Packet& packet, const std::vector<T>& x)
 template <typename T>
 inline sf::Packet& operator >>(sf::Packet& packet, std::vector<T>& x)
 {
-	sf::Uint64 size;
+	std::uint64_t size;
 	packet >> size;
 
 	x.resize(size);
@@ -123,7 +123,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::pair<T1, T2>& x)
 template <typename K, typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_map<K, T>& x)
 {
-	packet << static_cast<sf::Uint64>(x.size());
+	packet << static_cast<std::uint64_t>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -137,10 +137,10 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_map<K, T>& x)
 {
 	x.clear();
 
-	sf::Uint64 size;
+	std::uint64_t size;
 	packet >> size;
 
-	for (sf::Uint64 i = 0; i < size; ++i) {
+	for (std::uint64_t i = 0; i < size; ++i) {
 		std::pair<K, T> elem;
 		packet >> elem;
 		x.insert(elem);
@@ -152,7 +152,7 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_map<K, T>& x)
 template <typename T>
 inline sf::Packet& operator <<(sf::Packet& packet, const std::unordered_set<T>& x)
 {
-	packet << static_cast<sf::Uint64>(x.size());
+	packet << static_cast<std::uint64_t>(x.size());
 
 	for (auto&& elem : x) {
 		packet << elem;
@@ -166,10 +166,10 @@ inline sf::Packet& operator >>(sf::Packet& packet, std::unordered_set<T>& x)
 {
 	x.clear();
 
-	sf::Uint64 size;
+	std::uint64_t size;
 	packet >> size;
 
-	for (sf::Uint64 i = 0; i < size; ++i) {
+	for (std::uint64_t i = 0; i < size; ++i) {
 		T elem;
 		packet >> elem;
 		x.insert(elem);

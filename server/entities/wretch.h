@@ -9,14 +9,14 @@
 #include <server/abilities/vicious_circle.h>
 #include <abilities/ball_and_chain.h>
 #include "entity.h"
-#include "damage_taker.h"
+#include "components/damage_taker.h"
 #include "server/abilities/abilities.h"
 #include "server/abilities/moveable.h"
-#include "server/managers/power_field.h"
+#include "components/power_field.h"
 
 struct wretch final
 {
-    static auto create(sf::Uint64 id)
+    static auto create(std::uint64_t id)
     {
         base_entity entity;
         entity.entity_id = id;

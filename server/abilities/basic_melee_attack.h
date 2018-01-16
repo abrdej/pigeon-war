@@ -12,11 +12,11 @@ public:
 	}
 
 private:
-	void use(sf::Uint64 index_on) override;
+	void use(std::uint64_t index_on) override;
 	
 private:
-	const sf::Int32 range = 1;
-	const sf::Int32 damage = 4;
+	const std::int32_t range = 1;
+	const std::int32_t damage = 4;
 };
 
 #endif

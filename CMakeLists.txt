@@ -40,7 +40,6 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 set(SERVER_SOURCE_FILES
         server/entities/entity.h
-        server/managers/abilities_manager.cpp
         server/abilities/ability.cpp
         server/ai/ai.cpp
         server/ai/ai_manager.cpp
@@ -54,17 +53,15 @@ set(SERVER_SOURCE_FILES
         server/abilities/grenade.cpp
         server/abilities/invisibility.cpp
         server/abilities/moveable.cpp
-        server/core/turn.cpp
+        server/core/turn_system.cpp
         server/abilities/tongue_of_fire.cpp
         server/core/states_controller.cpp
         server/abilities/shoot.cpp
         server/abilities/sabers.cpp
         server/core/path_finder.cpp
-        server/managers/name_field.cpp
+        server/components/name_field.cpp
         server/managers/players_manager.cpp
         server/core/board.cpp
-        server/managers/entity_remover.cpp
-        server/managers/entity_remover.h
         utils/scenario_helper.h
         server/scenarios/scenarios.h
         server/scenarios/scenarios.cpp
@@ -76,15 +73,12 @@ set(SERVER_SOURCE_FILES
         server/entities/mouse.h
         server/abilities/poisoned_missile.cpp
         server/abilities/poisoned_missile.h
-        server/managers/entity_remover.cpp
-        server/managers/entity_remover.h
         utils/scenario_helper.h
         server/entities/tree.h
         server/entities/samurai_rat.h
         server/entities/troll.h
         server/abilities/rage.cpp
         server/abilities/rage.h
-        server/managers/health_manager.cpp
         server/entities/droid.h
         server/abilities/laser.cpp
         server/abilities/laser.h
@@ -127,8 +121,8 @@ set(SERVER_SOURCE_FILES
         server/abilities/flame_thrower.cpp server/abilities/flame_thrower.h
         server/abilities/counterattack.cpp server/abilities/counterattack.h
         server/entities/guardian.h server/abilities/spear.cpp server/abilities/spear.h
-        server/abilities/shield.cpp server/abilities/shield.h server/managers/additions_manager.cpp
-        server/managers/additions_manager.h server/entities/creature.h server/abilities/chopper.cpp
+        server/abilities/shield.cpp server/abilities/shield.h server/components/additions.cpp
+        server/components/additions.h server/entities/creature.h server/abilities/chopper.cpp
         server/abilities/chopper.h server/abilities/spiral_of_fire.cpp server/abilities/spiral_of_fire.h
         server/entities/handthrower.h server/abilities/handcannon.cpp server/abilities/handcannon.h
         server/abilities/protection_field.cpp server/abilities/protection_field.h
@@ -154,9 +148,8 @@ set(SERVER_SOURCE_FILES
         server/abilities/vicious_circle.cpp server/abilities/vicious_circle.h
         server/abilities/wretch_moving.cpp server/abilities/wretch_moving.h
         server/abilities/kill.cpp
-        common/bitmaps.h config.h.in server/managers/power_field.h server/abilities/possible_move_helper.h
+        common/bitmaps.h config.h.in server/components/power_field.h server/abilities/possible_move_helper.h
         server/abilities/possible_move_helper.cpp
-        server/managers/bitmap_field_manager.cpp server/managers/bitmap_field_manager.h
 
 #        client/animation/animation.cpp
 #        client/animation/animation.h
@@ -168,7 +161,7 @@ set(SERVER_SOURCE_FILES
 #        client/gui/bitmap_center.cpp
 #        client/gui/my_button.cpp
 
-        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h server/abilities/straight_target_ability.cpp server/abilities/straight_target_ability.h server/abilities/per_turn_usable.h server/sender.h server/sender.cpp server/abilities/neighboring_target_ability.h server/abilities/path_target_ability.h server/abilities/caster_target_ability.h server/abilities/prison_connection.cpp server/abilities/prison_connection.h server/abilities/killer_instinct.cpp server/abilities/killer_instinct.h server/abilities/aura_of_immunity.cpp server/abilities/aura_of_immunity.h server/managers/modifications_manager.cpp server/managers/modifications_manager.h server/abilities/ball_and_chain.cpp server/abilities/ball_and_chain.h server/abilities/death_mark.cpp server/abilities/death_mark.h server/damage_taker.cpp server/damage_taker.h server/damage_pack.h)
+        server/core/animations_queue.cpp server/core/animations_queue.h server/server.h server/packets_makers.h server/abilities/defender.cpp server/abilities/defender.h server/abilities/giant_blow.cpp server/abilities/giant_blow.h server/abilities/giant_ram.cpp server/abilities/giant_ram.h server/abilities/stone_skin.cpp server/abilities/stone_skin.h server/abilities/power_bullet.cpp server/abilities/power_bullet.h server/abilities/straight_target_ability.cpp server/abilities/straight_target_ability.h server/abilities/per_turn_usable.h server/sender.h server/sender.cpp server/abilities/neighboring_target_ability.h server/abilities/path_target_ability.h server/abilities/caster_target_ability.h server/abilities/prison_connection.cpp server/abilities/prison_connection.h server/abilities/killer_instinct.cpp server/abilities/killer_instinct.h server/abilities/aura_of_immunity.cpp server/abilities/aura_of_immunity.h server/components/modification.cpp server/components/modification.h server/abilities/ball_and_chain.cpp server/abilities/ball_and_chain.h server/abilities/death_mark.cpp server/abilities/death_mark.h server/components/damage_taker.cpp server/components/damage_taker.h server/components/damage_pack.h)
 
 set(CLIENT_SOURCE_FILES
         client/gui/bitmap_center.cpp
@@ -203,8 +196,6 @@ set(CLIENT_SOURCE_FILES
         common/game_state.h
         common/states.h
         common/animations.h
-
-        server/managers/entity_remover.cpp
         common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h server/entities/golem.h server/entities/sorcerer.h common/message_types.h client/animations_service.cpp client/animations_service.h client/animations_handlers.cpp client/animations_handlers.h client/menu/menu.cpp client/menu/menu.h common/effects.h client/gui/hint.cpp client/gui/hint.h client/screen.h client/menu_screen.cpp client/menu_screen.h)
 
 add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})

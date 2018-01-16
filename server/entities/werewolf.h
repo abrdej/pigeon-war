@@ -5,12 +5,12 @@
 #include <server/abilities/wolf_herd.h>
 #include <gui/entity_drawer.h>
 #include "entity.h"
-#include "damage_taker.h"
+#include "components/damage_taker.h"
 #include "server/abilities/moveable.h"
 
 struct werewolf final
 {
-	static auto create(sf::Uint64 id)
+	static auto create(std::uint64_t id)
 	{
 		base_entity entity;
 		entity.entity_id = id;

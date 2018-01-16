@@ -1,12 +1,13 @@
 #include <core/states_controller.h>
 #include <core/board.h>
-#include <managers/additions_manager.h>
-#include <managers/abilities_manager.h>
+#include <components/additions.h>
 #include <managers/entity_manager.h>
 #include "hypnosis.h"
-#include "core/turn.h"
+#include "core/turn_system.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void hypnosis::use(sf::Uint64 index_on) {
+void hypnosis::use(std::uint64_t index_on) {
 
 	if (used)
 		return;
@@ -15,21 +16,21 @@ void hypnosis::use(sf::Uint64 index_on) {
 
 	auto enemy_id = board::at(index_on);
 
-	auto& abilities = abilities_manager::component_for(enemy_id);
-	abilities.is_active = false;
+	auto enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
+	enemy_abilities_ptr->is_active = false;
 
-	auto hypnosis_receiver = turn::turn_system::every_turn([this, enemy_id, counter = 0]() mutable {
+	auto hypnosis_receiver = turn::turn_system::every_turn([enemy_id, counter = 0]() mutable {
 		if (++counter == 2) {
 
-			auto& inner_abilities = abilities_manager::component_for(enemy_id);
-			inner_abilities.is_active = true;
+			auto inner_enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
+			inner_enemy_abilities_ptr->is_active = true;
 
-			additions_manager::remove_component(enemy_id,
-												"hypnosis");
+			remove_component(enemy_id,
+							 "hypnosis");
 		}
 	});
 
-	additions_manager::add_component(enemy_id, "hypnosis", hypnosis_receiver);
+	add_component(enemy_id, "hypnosis", hypnosis_receiver);
 
 	used = true;
 }

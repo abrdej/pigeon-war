@@ -1,9 +1,11 @@
 #include "dodge.h"
-#include "managers/health_manager.h"
+#include "sender.h"
+#include "common/animations.h"
+#include "components/damage_taker.h"
 
-dodge::dodge(sf::Uint64 entity_id) {
+dodge::dodge(std::uint64_t entity_id) {
 
-	healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
+	set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
 		if (++counter == 3) {
 

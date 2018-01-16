@@ -5,7 +5,7 @@
 #ifndef PIGEONWAR_ENTANGLING_H
 #define PIGEONWAR_ENTANGLING_H
 
-#include <core/turn.h>
+#include <core/turn_system.h>
 #include <entities/entity.h>
 #include "ability.h"
 
@@ -16,21 +16,21 @@
 //        return bitmap_key::entangling_life_suck;
 //    }
 //
-//    void prepare(sf::Uint64 for_index) override {}
-//    void set_enemy_id(sf::Uint64 id) {
+//    void prepare(std::uint64_t for_index) override {}
+//    void set_enemy_id(std::uint64_t id) {
 //        enemy_id = id;
 //    }
-//    void set_caster_id(sf::Uint64 id) {
+//    void set_caster_id(std::uint64_t id) {
 //        caster_id = id;
 //    }
 //private:
-//    sf::Uint64 enemy_id{std::numeric_limits<sf::Uint64>::max()};
-//    sf::Uint64 caster_id{std::numeric_limits<sf::Uint64>::max()};
-//    sf::Int32 damage{4};
+//    std::uint64_t enemy_id{std::numeric_limits<std::uint64_t>::max()};
+//    std::uint64_t caster_id{std::numeric_limits<std::uint64_t>::max()};
+//    std::int32_t damage{4};
 //};
 //
 //struct entangling_instance {
-//    static auto create(sf::Uint64 id)
+//    static auto create(std::uint64_t id)
 //    {
 //        base_components components;
 //        entity_name(components) = "Oplątanie";
@@ -43,20 +43,20 @@
 //class entangling final : public ability, turn_events_helper::every_turn_callback_helper
 //{
 //public:
-//    explicit entangling(sf::Uint64 id);
+//    explicit entangling(std::uint64_t id);
 //
 //    bitmap_key get_bitmap_key() const override {
 //        return bitmap_key::entangling;
 //    }
 //
 //private:
-//    void prepare(sf::Uint64 for_index) override;
-//    void use(sf::Uint64 index_on);
+//    void prepare(std::uint64_t for_index) override;
+//    void use(std::uint64_t index_on);
 //
-//    const sf::Int32 range = 2;
-//    const sf::Int32 damage = 5;
+//    const std::int32_t range = 2;
+//    const std::int32_t damage = 5;
 //    bool used{false};
-//    sf::Uint64 entity_id;
+//    std::uint64_t entity_id;
 //};
 
 

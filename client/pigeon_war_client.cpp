@@ -6,7 +6,6 @@
 #include <chrono>
 #include <core/board.h>
 #include <common/turn_status.h>
-#include <managers/health_manager.h>
 #include <common/message_types.h>
 #include "caller.h"
 #include "requests.h"
@@ -37,7 +36,7 @@ void pigeon_war_client::run()
 
 	auto status = socket.connect("80.211.186.19", 443);
 
-	std::cout << "Status: " << static_cast<sf::Int32>(status) << "\n";
+	std::cout << "Status: " << static_cast<std::int32_t>(status) << "\n";
 
 	if (status != sf::Socket::Done) {
 		std::cout << "Socket connecting error\n";
@@ -100,7 +99,7 @@ void pigeon_war_client::receive_messages() {
 
 			std::cout << "end_turn1\n";
 
-			sf::Uint64 active_player_id;
+			std::uint64_t active_player_id;
 			unpack(packet, active_player_id);
 
 			std::cout << "end_turn2\n";
@@ -116,9 +115,9 @@ void pigeon_war_client::receive_messages() {
 
 					std::cout << "move animation\n";
 
-					sf::Int32 from_index = animation_pack.x;
-					sf::Int32 to_index = animation_pack.y;
-					sf::Int32 entity_id = animation_pack.z;
+					std::int32_t from_index = animation_pack.x;
+					std::int32_t to_index = animation_pack.y;
+					std::int32_t entity_id = animation_pack.z;
 					auto btm_key = animation_pack.btm_key;
 
 					if (entity_id != -1) {
@@ -136,8 +135,8 @@ void pigeon_war_client::receive_messages() {
 
 				} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
 
-					sf::Int32 from_index = animation_pack.x;
-					sf::Int32 time = animation_pack.y;
+					std::int32_t from_index = animation_pack.x;
+					std::int32_t time = animation_pack.y;
 					auto btm_key = animation_pack.btm_key;
 
 					animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
@@ -145,17 +144,17 @@ void pigeon_war_client::receive_messages() {
 
 				} else if (animation_pack.animation_type == animation_types::change_health) {
 
-					sf::Int32 to_index = animation_pack.x;
-					sf::Int32 change_health = animation_pack.y;
+					std::int32_t to_index = animation_pack.x;
+					std::int32_t change_health = animation_pack.y;
 
 					animation::player<animation::change_health>::launch(animation::change_health(to_index, change_health));
 					animation::base_player::play();
 
 				} else if (animation_pack.animation_type == animation_types::hide_show) {
 
-					sf::Int32 index = animation_pack.x;
-					sf::Int32 hide_show = animation_pack.y;
-					sf::Int32 entity_id = animation_pack.z;
+					std::int32_t index = animation_pack.x;
+					std::int32_t hide_show = animation_pack.y;
+					std::int32_t entity_id = animation_pack.z;
 
 					if (hide_show == 0) {
 						state.board.take(index);
@@ -163,7 +162,7 @@ void pigeon_war_client::receive_messages() {
 						state.board.give_back(entity_id, index);
 					}
 				} else if (animation_pack.animation_type == animation_types::change_bitmap) {
-					sf::Int32 entity_id = animation_pack.x;
+					std::int32_t entity_id = animation_pack.x;
 					auto new_bitmap = animation_pack.btm_key;
 
 					drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(new_bitmap);
@@ -269,7 +268,7 @@ void pigeon_war_client::on_mouse_click(const point_type& args, bool left)
 	}
 	else if (buttons_panel_.is_hit(args))
 	{
-		sf::Uint64 hit_button = buttons_panel_.hit_button(args);
+		std::uint64_t hit_button = buttons_panel_.hit_button(args);
 
 		if (left) {
 			on_button(hit_button);
@@ -279,7 +278,7 @@ void pigeon_war_client::on_mouse_click(const point_type& args, bool left)
 	}
 }
 
-void pigeon_war_client::on_board(sf::Uint64 col, sf::Uint64 row)
+void pigeon_war_client::on_board(std::uint64_t col, std::uint64_t row)
 {
 	if (!block) {
 		block = true;
@@ -290,12 +289,12 @@ void pigeon_war_client::on_board(sf::Uint64 col, sf::Uint64 row)
 	}
 }
 
-void pigeon_war_client::on_button(sf::Uint64 n)
+void pigeon_war_client::on_button(std::uint64_t n)
 {
 	call_on_button(socket, player_id, n);
 }
 
-void pigeon_war_client::get_button_description(sf::Uint64 n) {
+void pigeon_war_client::get_button_description(std::uint64_t n) {
 	call_get_button_description(socket, player_id, n);
 }
 

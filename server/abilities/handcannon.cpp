@@ -1,11 +1,13 @@
 #include <core/states_controller.h>
-#include "managers/abilities_manager.h"
+#include <managers/entity_manager.h>
 #include "handcannon.h"
 #include "damage_dealers.h"
 #include "abilities.h"
 #include "protection_field.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void handcannon::use(sf::Uint64 index_on) {
+void handcannon::use(std::uint64_t index_on) {
 
     if (used)
         return;
@@ -13,8 +15,8 @@ void handcannon::use(sf::Uint64 index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto caster_id = board::at(used_from_index);
 
-    auto& caster_abilities = abilities_manager::component_for(caster_id);
-    auto protection_field_ptr = std::static_pointer_cast<protection_field>(caster_abilities.type(abilities::ability_types::special));
+    auto abilities_ptr = entity_manager::get(caster_id).get<abilities>();
+    auto protection_field_ptr = std::static_pointer_cast<protection_field>(abilities_ptr->type(abilities::ability_types::special));
     auto is_active = protection_field_ptr->active();
 
     auto final_damage = is_active ? bonus_damage + damage : damage;

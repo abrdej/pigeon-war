@@ -4,56 +4,55 @@
 #include "managers/entity_manager.h"
 #include "abilities/abilities.h"
 #include "abilities/ability.h"
-#include "managers/abilities_manager.h"
 #include "managers/players_manager.h"
 
 using states::state_controller;
 using states::states_types;
 using states::target_types;
 
-sf::Uint64 state_controller::selected_index_ = states::no_selected_index;
+std::uint64_t state_controller::selected_index_ = states::no_selected_index;
 states_types state_controller::actual_state_ = states_types::waiting;
 target_types state_controller::actual_targeting_type_ = target_types::non;
 
-std::vector<sf::Uint64> state_controller::possible_movements_;
-std::vector<sf::Uint64> state_controller::possible_movements_costs_;
+std::vector<std::uint64_t> state_controller::possible_movements_;
+std::vector<std::uint64_t> state_controller::possible_movements_costs_;
 
-std::function<void(sf::Uint64)> state_controller::caller_;
+std::function<void(std::uint64_t)> state_controller::caller_;
 
-std::unordered_map<sf::Uint64, std::unordered_set<sf::Uint64>> state_controller::custom_valid_targets;
+std::unordered_map<std::uint64_t, std::unordered_set<std::uint64_t>> state_controller::custom_valid_targets;
 
 state_controller::custom_target_type state_controller::custom_valid_target_type = state_controller::custom_target_type::board_index;
 
-void state_controller::first_state(sf::Uint64 select_from_index)
+void state_controller::first_state(std::uint64_t select_from_index)
 {
 	if (select_from_index == no_selected_index)
 		return;
 
 	selected_index_ = select_from_index;
-	sf::Uint64 selected_index = states::state_controller::selected_index_;
+	std::uint64_t selected_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(selected_index);
-	auto& entity_abilities = abilities_manager::component_for(entity_id);
+	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
 
-	if (entity_abilities.is_active) {
-		auto moveable = entity_abilities.at(0);
+	if (abilities_ptr->is_active) {
+		auto moveable = abilities_ptr->at(0);
 		if (moveable) {
 			moveable->operator()(states::state_controller::selected_index_);
 		}
 	}
 }
 
-void state_controller::wait_for_action(const std::function<void(sf::Uint64 index)>& caller)
+void state_controller::wait_for_action(const std::function<void(std::uint64_t index)>& caller)
 {
 	state_controller::actual_state_ = states_types::wait_for_action;
 	caller_ = caller;
 }
 
-void state_controller::do_action(sf::Uint64 index)
+void state_controller::do_action(std::uint64_t index)
 {
 	caller_(index);
 }
 
-bool state_controller::is_possible_movement(sf::Uint64 index)
+bool state_controller::is_possible_movement(std::uint64_t index)
 {
 	auto begin_it = std::begin(states::state_controller::possible_movements_);
 	auto end_it = std::end(states::state_controller::possible_movements_);
@@ -61,13 +60,13 @@ bool state_controller::is_possible_movement(sf::Uint64 index)
 	return result != end_it;
 }
 
-bool state_controller::valid_target(sf::Uint64 target_index) {
+bool state_controller::valid_target(std::uint64_t target_index) {
 
 	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy) {
 
 		auto caster_id = board::at(states::state_controller::selected_index_);
 
-		sf::Uint64 target_value = target_index;
+		std::uint64_t target_value = target_index;
 
 		if (custom_valid_target_type == custom_target_type::entity_id)
 			target_value = board::at(target_index);

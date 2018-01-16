@@ -5,14 +5,15 @@
 #ifndef PIGEONWAR_POWER_CIRCLE_H
 #define PIGEONWAR_POWER_CIRCLE_H
 
-#include <managers/health_manager.h>
 #include "ability.h"
-#include "core/turn.h"
+#include "core/turn_system.h"
+#include "components/damage_pack.h"
+#include "common/health_field.h"
 
 class power_circle final : public ability, protected turn_events_helper::every_turn_callback_helper
 {
 public:
-    explicit power_circle(sf::Uint64 entity_id);
+    explicit power_circle(std::uint64_t entity_id);
     ~power_circle() override;
 
     bitmap_key get_bitmap_key() const override {
@@ -20,24 +21,24 @@ public:
     }
 
 private:
-    void prepare(sf::Uint64 for_index) override;
-    void use(sf::Uint64 index_on);
-    void play_animation(sf::Uint64 index_on);
+    void prepare(std::uint64_t for_index) override;
+    void use(std::uint64_t index_on);
+    void play_animation(std::uint64_t index_on);
 
 private:
-    sf::Int32 damage{6};
+    std::int32_t damage{6};
 
     bool bonus_active{false};
-    sf::Int32 bonus_counter{0};
-    const sf::Int32 max_bonus_counter{3};
+    std::int32_t bonus_counter{0};
+    const std::int32_t max_bonus_counter{3};
 
-    sf::Int32 damage_reduction{0};
+    std::int32_t damage_reduction{0};
 
-    sf::Int32 absorption_power{0};
-    sf::Int32 max_absorption_power{15};
+    std::int32_t absorption_power{0};
+    std::int32_t max_absorption_power{15};
 
-    using damage_receiver_type = std::function<sf::Int32(health_field&, const damage_pack&)>;
-    std::unordered_map<sf::Uint64, damage_receiver_type> dmg_rec_backup;
+    using damage_receiver_type = std::function<std::int32_t(health_field&, const damage_pack&)>;
+    std::unordered_map<std::uint64_t, damage_receiver_type> dmg_rec_backup;
 };
 
 #endif //PIGEONWAR_POWER_CIRCLE_H

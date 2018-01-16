@@ -1,14 +1,18 @@
 #include <core/states_controller.h>
+#include <core/animations_queue.h>
+#include <managers/entity_manager.h>
 #include "sniper_shot.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
-void sniper_shot::prepare(sf::Uint64 for_index) {
+void sniper_shot::prepare(std::uint64_t for_index) {
 
     states::state_controller::selected_index_ = for_index;
 
     bool enemy_close = false;
 
-    std::vector<sf::Uint64> neighbors;
+    std::vector<std::uint64_t> neighbors;
     board_helper::neighboring_fields(for_index, neighbors, false);
     for (auto& neighbor_index : neighbors)
     {
@@ -29,13 +33,13 @@ void sniper_shot::prepare(sf::Uint64 for_index) {
     }
 
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
-    states::state_controller::wait_for_action([this](sf::Uint64 index)
+    states::state_controller::wait_for_action([this](std::uint64_t index)
                                               {
                                                   return use(index);
                                               });
 }
 
-void sniper_shot::use(sf::Uint64 index_on) {
+void sniper_shot::use(std::uint64_t index_on) {
 
     if (used)
         return;
@@ -49,12 +53,12 @@ void sniper_shot::use(sf::Uint64 index_on) {
 
     auto enemy_id = board::at(index_on);
 
-    auto health_pack = healths_manager::component_for(enemy_id);
-    float health_percent = health_pack.health / static_cast<float>(health_pack.base_health) * 100.f;
+    auto health_pack = entity_manager::get(enemy_id).get<health_field>();
+    float health_percent = health_pack->health / static_cast<float>(health_pack->base_health) * 100.f;
 
     std::cout << "health_percent: " << health_percent << "\n";
 
-    sf::Int32 final_damage = damage;
+    std::int32_t final_damage = damage;
 
     if (health_percent < 50.f) {
         final_damage += additional_damage;
@@ -65,7 +69,7 @@ void sniper_shot::use(sf::Uint64 index_on) {
     used = true;
 }
 
-void sniper_shot::play_animation(sf::Uint64 entity_id, sf::Uint64 from_index, sf::Uint64 to_index) {
+void sniper_shot::play_animation(std::uint64_t entity_id, std::uint64_t from_index, std::uint64_t to_index) {
     animations_queue::push_animation(animation_types::move,
                                      from_index,
                                      to_index,

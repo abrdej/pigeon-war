@@ -12,7 +12,7 @@ class counterattack final : public passive_ability,
 							per_turn_usable
 {
 public:
-	counterattack(sf::Uint64 entity_id);
+	counterattack(std::uint64_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::counterattack;
@@ -21,11 +21,11 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(sf::Uint64 index_on);
+	void use(std::uint64_t index_on);
 
 private:
-	sf::Uint64 entity_id;
-	sf::Int32 damage{7};
+	std::uint64_t entity_id;
+	std::int32_t damage{7};
 };
 
 #endif //PIGEONWAR_COUNTERATTACK_H

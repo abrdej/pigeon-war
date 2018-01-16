@@ -1,9 +1,9 @@
 #include "stone_skin.h"
-#include "managers/health_manager.h"
+#include "components/damage_taker.h"
 
-stone_skin::stone_skin(sf::Uint64 entity_id) {
+stone_skin::stone_skin(std::uint64_t entity_id) {
 
-    healths_manager::set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
+    set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
 
         auto damage = dmg.damage_value;
 

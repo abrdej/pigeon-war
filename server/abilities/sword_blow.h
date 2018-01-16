@@ -17,10 +17,10 @@ public:
     std::string hint() const override;
 
 private:
-    void use(sf::Uint64 index_on) override;
+    void use(std::uint64_t index_on) override;
 
 private:
-    const sf::Int32 damage = 10;
+    const std::int32_t damage = 10;
 };
 
 

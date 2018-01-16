@@ -1,6 +1,8 @@
 #include "sword_blow.h"
 #include "core/states_controller.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
 std::string sword_blow::hint() const {
 
@@ -10,7 +12,7 @@ std::string sword_blow::hint() const {
     return std::move(desc);
 }
 
-void sword_blow::use(sf::Uint64 index_on) {
+void sword_blow::use(std::uint64_t index_on) {
 
     if (used)
         return;
@@ -18,12 +20,12 @@ void sword_blow::use(sf::Uint64 index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
 
-    std::vector<sf::Uint64> around_fields_ids;
+    std::vector<std::uint64_t> around_fields_ids;
     board_helper::neighboring_fields(used_from_index, around_fields_ids, false);
 
     sender::send(message_types::animation, animation_def::sword_blow, used_from_index);
 
-    sf::Int32 hit_entities_counter = 0;
+    std::int32_t hit_entities_counter = 0;
 
     for (auto&& field_id : around_fields_ids) {
         if (!board::empty(field_id)) {

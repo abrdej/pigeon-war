@@ -7,7 +7,7 @@
 
 #include "straight_target_ability.h"
 #include "per_turn_usable.h"
-#include "core/turn.h"
+#include "core/turn_system.h"
 
 class laser final : public straight_target_ability<3>,
 					per_turn_usable
@@ -21,11 +21,11 @@ public:
 	std::string hint() const override;
 
 private:
-	void use(sf::Uint64 index) override;
+	void use(std::uint64_t index) override;
 
 private:
-	const sf::Int32 damage = 8;
-	const sf::Int32 bonus_damage = 1;
+	const std::int32_t damage = 8;
+	const std::int32_t bonus_damage = 1;
 };
 
 #endif //PIGEONWAR_LASER_H

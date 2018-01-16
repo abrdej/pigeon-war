@@ -1,6 +1,8 @@
 #include <core/states_controller.h>
 #include "blow_the_ax.h"
 #include "damage_dealers.h"
+#include "sender.h"
+#include "common/animations.h"
 
 std::string blow_the_ax::hint() const {
     std::string desc;
@@ -8,7 +10,7 @@ std::string blow_the_ax::hint() const {
     return std::move(desc);
 }
 
-void blow_the_ax::use(sf::Uint64 index_on) {
+void blow_the_ax::use(std::uint64_t index_on) {
 
     if (used)
         return;
