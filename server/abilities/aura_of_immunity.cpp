@@ -10,7 +10,7 @@
 aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)
 		: entity_id(entity_id) {
 
-	entity_manager::get(entity_id).get<modification>()->modify_damage_receiver_modifier_by(-damage_reduction_for_owner);
+	entity_manager::get(entity_id).get_with_create<modification>()->modify_damage_receiver_modifier_by(-damage_reduction_for_owner);
 
 	onEveryTurn([entity_id = this->entity_id,
 			damage_reduction_for_friends = this->damage_reduction_for_friends,
@@ -32,7 +32,7 @@ aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)
 						auto friend_id = board::at(index);
 
 						if (!has_component(friend_id, "aura_of_immunity")) {
-							entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(-damage_reduction_for_friends);
+							entity_manager::get(friend_id).get_with_create<modification>()->modify_damage_dealer_modifier_by(-damage_reduction_for_friends);
 						}
 
 						sender::send(message_types::animation, animation_def::aura_of_immunity, index);
@@ -43,7 +43,7 @@ aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)
 									if (counter++ == aura_last) {
 
 										if (entity_manager::alive(friend_id)) {
-											entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(damage_reduction_for_friends);
+											entity_manager::get(friend_id).get_with_create<modification>()->modify_damage_dealer_modifier_by(damage_reduction_for_friends);
 
 											sender::send(message_types::animation, animation_def::aura_of_immunity_break, board::index_for(friend_id));
 
