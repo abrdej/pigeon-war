@@ -24,18 +24,6 @@ void kill::prepare(std::uint32_t for_index) {
                                        costs,
                                        range);
 
-//    states::state_controller::possible_movements_.clear();
-//
-//    for (auto&& field_index : possible_fields) {
-//        if (!board::empty(field_index) && players_funcs::enemy_entity(field_index)) {
-//            auto enemy_id = board::at(field_index);
-//            auto healths_pack = healths_manager::component_for(enemy_id);
-//            if (healths_pack.health <= max_health) {
-//                states::state_controller::possible_movements_.push_back(field_index);
-//            }
-//        }
-//    }
-
     states::state_controller::actual_targeting_type_ = states::target_types::enemy;
     states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {

@@ -41,8 +41,8 @@ struct server {
 
 	server() {
 
-		if (listener.listen(443) != sf::Socket::Done) {
-//		if (listener.listen(5555) != sf::Socket::Done) {
+//		if (listener.listen(443) != sf::Socket::Done) {
+		if (listener.listen(5555) != sf::Socket::Done) {
 			std::cout << "Listener error\n";
 		}
 

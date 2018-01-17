@@ -36,15 +36,17 @@ template <typename T>
 inline void add_component(std::uint32_t entity_id,
                           const std::string& name,
                           std::shared_ptr<T> x) {
-
+    std::cout << "YY1\n";
     entity_manager::get(entity_id).get<addition>()->put_named(name, x);
 }
 
 inline void remove_component(std::uint32_t entity_id, const std::string& name) {
+    std::cout << "YY2\n";
     entity_manager::get(entity_id).get<addition>()->destroy_named(name);
 }
 
 inline bool has_component(std::uint32_t entity_id, const std::string& name) {
+    std::cout << "YY3\n";
     return entity_manager::get(entity_id).get<addition>()->has(name);
 }
 

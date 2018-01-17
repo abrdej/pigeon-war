@@ -34,8 +34,8 @@ void pigeon_war_client::run()
 
 	//sf::IpAddress adress();
 
-	auto status = socket.connect("80.211.186.19", 443);
-//	auto status = socket.connect("127.0.0.1", 5555);
+//	auto status = socket.connect("80.211.186.19", 443);
+	auto status = socket.connect("127.0.0.1", 5555);
 
 	std::cout << "Status: " << static_cast<std::int32_t>(status) << "\n";
 
@@ -72,49 +72,32 @@ void pigeon_war_client::receive_messages() {
 
 		} else if (message == message_types::board) {
 
-			std::cout << "board1\n";
 			unpack(packet, state.board.fields_);
-
-			std::cout << "board2\n";
 
 		} else if (message == message_types::entities_bitmaps) {
 			unpack(packet, state.entities_bitmaps);
-
-			std::cout << "entities_bitmaps\n";
 
 			for (auto&& bitmap_pack : state.entities_bitmaps) {
 				drawing_manager::add_component(bitmap_pack.first, std::make_shared<entity_drawer>(bitmap_pack.first, bitmap_pack.second));
 			}
 
-			std::cout << "entities_bitmaps2\n";
-
 		} else if (message == message_types::healths) {
-
-			std::cout << "healths1\n";
 
 			unpack(packet, state.healths);
 
-			std::cout << "healths2\n";
-
 		} else if (message == message_types::end_turn) {
-
-			std::cout << "end_turn1\n";
 
 			std::uint32_t active_player_id;
 			unpack(packet, active_player_id);
 
-			std::cout << "end_turn2\n";
+			std::cout << "end_turn: " << active_player_id << "\n";
 
 		} else if (message == message_types::animations) {
-
-			std::cout << "animations1\n";
 
 			unpack(packet, state.animations_queue);
 
 			for (auto&& animation_pack : state.animations_queue) {
 				if (animation_pack.animation_type == animation_types::move) {
-
-					std::cout << "move animation\n";
 
 					std::int32_t from_index = animation_pack.x;
 					std::int32_t to_index = animation_pack.y;
@@ -168,29 +151,19 @@ void pigeon_war_client::receive_messages() {
 
 					drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(new_bitmap);
 				}
-
-				std::cout << "animations2\n";
 			}
 
 		} else if (message == message_types::game_state) {
-
-			std::cout << "game_state1\n";
 
 			unpack(packet, state);
 
 			update_for_entity();
 
-			std::cout << "game_state2\n";
-
 		} else if (message == message_types::local_state) {
-
-			std::cout << "local_state1\n";
 
 			unpack(packet, lstate);
 
 			update_for_entity();
-
-			std::cout << "local_state2\n";
 
 		} else if (message == message_types::description) {
 
@@ -201,8 +174,6 @@ void pigeon_war_client::receive_messages() {
 			hint_ptr = std::make_unique<hint>(desc_pos, description);
 
 		} else if (message == message_types::animation) {
-
-			std::cout << "animation\n";
 
 			animations_service::handle(packet, state);
 		}

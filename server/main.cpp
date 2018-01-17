@@ -92,8 +92,6 @@ int main() {
 		binder.send_notification(packet);
 	});
 
-	std::vector<local_state> lstates(2);
-
 	binder.bind(message_types::on_board, [&](sf::Packet& packet) {
 
 		std::int32_t client_id;
@@ -124,19 +122,24 @@ int main() {
 		packet >> client_id;
 		packet >> n;
 
+		std::cout << "N1: " << n << "\n";
+
 		const bool single_client = binder.is_single_client();
 
 		if (client_id == players_manager::get_active_player_id() || single_client) {
+
+			std::cout << "client_id: " << client_id << " single_client:" << single_client << "\n";
+
 			g.on_button(n);
 
-			if (n == 5) {
+			std::cout << "N2: " << n << "\n";
 
-				lstates = std::vector<local_state>(2);
+			if (n == 5) {
 
 				auto active_player = players_manager::get_active_player_id();
 
 				sf::Packet result_packet;
-				result_packet << "end_turn" << active_player;
+				result_packet << message_types::end_turn << active_player;
 
 				binder.send_notification(result_packet);
 			}
@@ -145,8 +148,6 @@ int main() {
 
 			binder.send_notification(make_packet(message_types::local_state, get_local_state(g)));
 			binder.send_notification(make_packet(message_types::game_state, get_game_state(g)));
-
-
 		}
 	});
 

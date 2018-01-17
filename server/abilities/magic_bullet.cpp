@@ -7,9 +7,9 @@
 #include "managers/players_manager.h"
 
 magic_bullet::magic_bullet(std::uint32_t entity_id) {
-    on_every_two_turns_from_this([this, entity_id]() {
+    after_player_turn(entity_id, [this, entity_id]() {
 
-        if (players_manager::active_player_entity(entity_id)) {
+        if (!players_manager::neutral_entity(entity_id)) {
             used = false;
             magic_power += magic_power_accumulation_amount;
 

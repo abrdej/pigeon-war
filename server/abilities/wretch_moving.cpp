@@ -7,7 +7,7 @@
 #include "wretch_moving.h"
 
 wretch_moving::wretch_moving(std::uint32_t entity_id) : entity_id(entity_id) {
-    on_every_two_turns_from_next([this]() {
+    after_player_turn(entity_id, [this]() {
         used = false;
         range = max_range;
         auto power_field_ptr = entity_manager::get(this->entity_id).get<power_field>();

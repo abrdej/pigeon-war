@@ -142,7 +142,8 @@ enum class bitmap_key {
 	warrior_immortal,
 	prison_connection,
 	poison_effect,
-	rocket
+	rocket,
+	combat_robot
 };
 
 struct bitmaps_key_hash

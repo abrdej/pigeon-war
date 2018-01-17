@@ -24,8 +24,8 @@ private:
 
 private:
     const int range{3};
-    const int damage{8};
-    const int damage_with_killer_instinct{20};
+    const int damage{6};
+    const int damage_with_killer_instinct{25};
     std::uint32_t target_index;
     bool used{false};
 };

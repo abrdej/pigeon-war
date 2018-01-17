@@ -154,5 +154,6 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::prison_connection, "prison_connection.png");
     add_bitmap(bitmap_key::poison_effect, "poison_effect.png");
     add_bitmap(bitmap_key::rocket, "flame_thrower.png");
+    add_bitmap(bitmap_key::combat_robot, "combat_robot.png");
 }
 }

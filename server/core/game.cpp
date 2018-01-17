@@ -91,19 +91,27 @@ void game::on_button(std::uint32_t n)
 	}
 	if (n == 5)
 	{
+		std::cout << "yy1\n";
 		turn_system::end_turn();
+
+		std::cout << "yy2\n";
+
 		players_manager::next_player();
+
+		std::cout << "yy3\n";
 
 		states::state_controller::first_state(players_funcs::active_player_first_entity_index());
 
-		if (players_manager::is_active_player_ai())
-		{
-			ai_manager::perform_movement(players_manager::get_active_player_id());
-			turn_system::end_turn();
-			players_manager::next_player();
-			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
-			//on_button(14);
-		}
+		std::cout << "yy4\n";
+
+//		if (players_manager::is_active_player_ai())
+//		{
+//			ai_manager::perform_movement(players_manager::get_active_player_id());
+//			turn_system::end_turn();
+//			players_manager::next_player();
+//			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
+//			//on_button(14);
+//		}
 	}
 }
 

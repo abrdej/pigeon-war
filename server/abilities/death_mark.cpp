@@ -10,7 +10,7 @@ death_mark::death_mark(std::uint32_t entity_id) : entity_id(entity_id) {
 }
 
 death_mark::~death_mark() {
-	if (!mark_removed) {
+	if (!mark_removed && enemy_id != std::numeric_limits<std::uint32_t>::max()) {
 		remove_component(enemy_id, "death_mark");
 	}
 }

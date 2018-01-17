@@ -6,6 +6,8 @@
 #include <iostream>
 #include <unordered_map>
 #include <memory>
+#include <unordered_set>
+#include <managers/players_manager.h>
 
 enum class frequency_types {
 	every_turn,
@@ -58,7 +60,9 @@ public:
 									  const std::function<void(turn_callback_info&)>& callback) {
 
 		std::uint32_t callback_id = get_callback_id();
-		callbacks[callback_id] = callback_pack(frequency, duration, callback);
+
+		callbacks_to_set.push_back(std::make_pair(callback_id, callback_pack(frequency, duration, callback)));
+
 		return callback_id;
 	}
 
@@ -67,21 +71,24 @@ public:
 									  const std::function<void()>& callback) {
 
 		std::uint32_t callback_id = get_callback_id();
-		callbacks[callback_id] = callback_pack(frequency, duration, [callback](turn_callback_info&) {
+
+		callbacks_to_set.push_back(std::make_pair(callback_id, callback_pack(frequency, duration, [callback](turn_callback_info&) {
 			callback();
-		});
+		})));
+
 		return callback_id;
 	}
 
 	static void remove_callback(std::uint32_t callback_id) {
-		callbacks_to_remove.push_back(callback_id);
+		callbacks_to_remove.insert(callback_id);
 	}
 
 private:
 	static std::uint32_t turn_n;
 	static std::unordered_multimap<std::uint32_t, std::function<void()>> tasks;
 	static std::unordered_map<std::uint32_t, callback_pack> callbacks;
-	static std::vector<std::uint32_t> callbacks_to_remove;
+	static std::unordered_set<std::uint32_t> callbacks_to_remove;
+	static std::vector<std::pair<std::uint32_t, callback_pack>> callbacks_to_set;
 };
 
 struct callback_deleter {
@@ -155,6 +162,14 @@ protected:
 		on_every_two_turns_from_this_holder = make_callback_holder(turn_system::set_callback(frequency_types::every_two_turns_from_this, 0, callback));
 	}
 	template <typename Callback>
+	void after_player_turn(std::uint32_t entity_id, Callback callback) {
+		after_player_turn_holder = make_callback_holder(turn_system::set_callback(frequency_types::every_turn, 0, [entity_id, callback]() {
+			if (players_manager::active_player_entity(entity_id)) {
+				callback();
+			}
+		}));
+	}
+	template <typename Callback>
 	void on_every_two_turns_from_next(Callback callback) {
 		on_every_two_turns_from_next_holder = make_callback_holder(turn_system::set_callback(frequency_types::every_two_turns_from_next, 0, callback));
 	}
@@ -163,6 +178,7 @@ private:
 	callback_holder on_every_turn_holder;
 	callback_holder on_every_two_turns_from_this_holder;
 	callback_holder on_every_two_turns_from_next_holder;
+	callback_holder after_player_turn_holder;
 };
 
 #endif

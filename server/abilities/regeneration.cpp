@@ -5,7 +5,9 @@
 
 regeneration::regeneration(std::uint32_t entity_id) : entity_id(entity_id) {
 
-	on_every_two_turns_from_next([this]() {
+	auto id = entity_id;
+
+	on_every_two_turns_from_next([this, id]() {
 
 		auto entity = entity_manager::get(this->entity_id);
 		auto health_field_ptr = entity.get<health_field>();

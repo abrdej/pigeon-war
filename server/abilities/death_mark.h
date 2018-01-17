@@ -22,7 +22,7 @@ private:
 	void use(std::uint32_t index_on) override;
 
 	std::uint32_t entity_id;
-	std::uint32_t enemy_id;
+	std::uint32_t enemy_id{std::numeric_limits<std::uint32_t>::max()};
 	std::int32_t death_mark_duration{5};
 	bool used{false};
 	bool mark_removed{false};

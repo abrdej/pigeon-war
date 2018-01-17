@@ -218,6 +218,7 @@ void battle_with_a_golem(game& game) {
 #include <entities/giant.h>
 #include <entities/golem.h>
 #include <entities/sorcerer.h>
+#include <entities/combat_robot.h>
 
 //using Entites = boost::fusion::vector<shooter,
 using Entites = std::tuple<shooter,
@@ -233,10 +234,10 @@ using Entites = std::tuple<shooter,
 //        robot,
         monk,
 //        grenadier,
-//        ninja,
+        ninja,
         //treant,
         thrower,
-//        killer,
+        killer,
 //        absorber,
         //saurian,
 //        giant,
@@ -246,6 +247,7 @@ using Entites = std::tuple<shooter,
         wretch,
         warrior,
         handthrower,
+        combat_robot,
         golem,
         spider>;
 
@@ -367,23 +369,7 @@ void skirmish(game& game) {
         entities_to_choose.insert(id);
     };
 
-//    std::int32_t tab[] = {(init_entity(std::forward<Args>(args)), 0)...};
-
     for_each(Entites{}, init_entity);
-
-//
-//boost::fusion::for_each(Entites{}, init_entity);
-
-//    boost::fusion::for_each(Entites{}, [&i, &entities_to_choose, &init_positions](auto x) {
-//        using EntityType = decltype(x);
-//        auto id = entity_manager::create<EntityType>();
-//
-//        auto pos = init_positions[i++];
-//        board::insert(board::to_index(pos.first, pos.second), id);
-//        players_manager::add_neutral_entity(id);
-//
-//        entities_to_choose.insert(id);
-//    });
 
     std::int32_t entities_for_player = 4;
     std::int32_t selections = 0;
@@ -392,45 +378,42 @@ void skirmish(game& game) {
         return std::unordered_map<std::uint32_t, std::vector<std::uint32_t>>();
     };
 
-    set_every_turn_callback(0,
+    set_every_turn_callback(8,
                             [=, entities = create_entities_container()](const turn_callback_info& info) mutable {
 
-        auto entity_id = board::take(states::state_controller::selected_index_);
+                                auto entity_id = board::take(states::state_controller::selected_index_);
 
-        entities[players[selections % 2]].push_back(entity_id);
+                                entities[players[selections % 2]].push_back(entity_id);
 
-        auto pos = positions[selections];
-        auto new_index = board::to_index(pos.first, pos.second);
-        board::give_back(entity_id, new_index);
-        states::state_controller::selected_index_ = new_index;
+                                auto pos = positions[selections];
+                                auto new_index = board::to_index(pos.first, pos.second);
+                                board::give_back(entity_id, new_index);
+                                states::state_controller::selected_index_ = new_index;
 
-        entities_to_choose.erase(entity_id);
+                                entities_to_choose.erase(entity_id);
 
-        ++selections;
+                                ++selections;
 
-        if (selections == entities_for_player * 2) {
+                                if (info.ended) {
+                                    for (auto&& entity_to_remove : entities_to_choose) {
+                                        entity_manager::destroy(entity_to_remove);
+                                    }
 
-            for (auto&& entity_to_remove : entities_to_choose) {
-                entity_manager::destroy(entity_to_remove);
-            }
+                                    for (auto&& player_pack : entities) {
+                                        for (auto&& id : player_pack.second) {
+                                            players_manager::add_entity_for_player(player_pack.first, id);
+                                        }
+                                    }
+//                                    for (auto&& player_pack : entities) {
+//                                        if_all_die(player_pack.second, [&]() {
+//                                            std::cout << player_pack.first << " win!!!\n";
+//                                            game.defeat();
+//                                        });
+//                                    }
 
-            for (auto&& player_pack : entities) {
-                for (auto&& id : player_pack.second) {
-                    players_manager::add_entity_for_player(player_pack.first, id);
-                }
-            }
-            for (auto&& player_pack : entities) {
-                if_all_die(player_pack.second, [&]() {
-                    std::cout << player_pack.first << " win!!!\n";
-                    game.defeat();
-                });
-            }
-
-            entities.clear();
-
-            turn_system::remove_callback(info.callback_id);
-        }
-    });
+                                    entities.clear();
+                                }
+                            });
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {
