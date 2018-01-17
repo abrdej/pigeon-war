@@ -8,7 +8,7 @@
 #include <core/turn_system.h>
 #include "straight_target_ability.h"
 
-class protection_field : public straight_target_ability<3>, protected turn_events_helper::every_turn_callback_helper {
+class protection_field : public straight_target_ability<3>, protected turn_callback_helper {
 public:
     explicit protection_field(std::uint32_t entity_id);
 

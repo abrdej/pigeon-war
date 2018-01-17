@@ -6,10 +6,10 @@
 #define PIGEONWAR_ABSORBSION_H
 
 #include "ability.h"
-#include <core/turn_system.h>
+#include "per_turn_usable.h"
 #include <unordered_map>
 
-class absorption final : public ability, turn_events_helper::every_turn_callback_helper {
+class absorption final : public ability, per_turn_usable {
 public:
     explicit absorption(std::uint32_t entity_id);
     ~absorption() override;
@@ -38,7 +38,6 @@ private:
 
     const std::uint32_t entity_id;
     const std::int32_t range = 3;
-    bool used{false};
 
     std::int32_t damage_reduction{0};
 

@@ -39,13 +39,12 @@ void killer_instinct::use(std::uint32_t index) {
 
 	sender::send(message_types::animation, animation_def::set_killer_instinct, entity_id);
 
-	auto killer_instinct_receiver =
-			turn::turn_system::every_turn([this]() mutable {
+	auto killer_instinct_receiver = make_every_turn_callback_holder(1, [this]() mutable {
 
-				remove_component(entity_id, "killer_instinct");
+		remove_component(entity_id, "killer_instinct");
 
-				sender::send(message_types::animation, animation_def::remove_killer_instinct, entity_id);
-			});
+		sender::send(message_types::animation, animation_def::remove_killer_instinct, entity_id);
+	});
 
 	add_component(entity_id, "killer_instinct", killer_instinct_receiver);
 

@@ -24,7 +24,7 @@ private:
 private:
     const std::int32_t damage{6};
     const std::int32_t poison_power{5};
-    const std::int32_t poison_last{3};
+    const std::int32_t poison_duration{3};
 };
 
 #endif //PIGEONWAR_POISONED_MISSILE_H

@@ -280,4 +280,25 @@ struct remove_invisibility_handler : change_bitmap_base_handler<bitmap_key::sabe
 
 };
 
+struct poison_handler : bitmap_flush_base_handler<bitmap_key::poison_effect> {
+
+};
+
+struct start_sorcerer_attack_handler : change_bitmap_base_handler<bitmap_key::sorcerer_attack> {
+
+};
+
+struct end_sorcerer_attack_handler : change_bitmap_base_handler<bitmap_key::sorcerer> {
+
+};
+
+struct change_health_handler : base_handler {
+	void handle(sf::Packet& packet, game_state& g_state) override;
+};
+
+struct rocket_launcher_handler : shot_base_handler<bitmap_key::rocket, bitmap_key::bum> {
+
+};
+
+
 #endif //PIGEONWAR_ANIMATIONS_HANDLERS_H

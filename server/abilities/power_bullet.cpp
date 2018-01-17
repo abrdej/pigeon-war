@@ -22,21 +22,14 @@ void power_bullet::use(std::uint32_t index_on) {
                                                         damage_with_power_bullet_effect : full_damage,
                                                         board::at(index_on), caster_id));
 
-    auto damage_per_turn_receiver =
-            turn::turn_system::every_turn([enemy_id, caster_id, counter = 0,
-                                                  //damage = damage_per_turn,
-                                                  max_counter = duration_of_effect]() mutable {
-
-                if (++counter == max_counter) {
-
-                    remove_component(enemy_id, "power_bullet_effect");
-                }
-            });
-
+    auto power_bullet_effect_holder = make_after_n_round_callback_holder(duration_of_effect,
+                                       [enemy_id, caster_id]() mutable {
+                                           remove_component(enemy_id, "power_bullet_effect");
+                                       });
 
     add_component(enemy_id,
                   "power_bullet_effect",
-                  damage_per_turn_receiver);
+                  power_bullet_effect_holder);
 
     used = true;
 }

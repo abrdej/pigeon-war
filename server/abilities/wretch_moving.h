@@ -9,7 +9,7 @@
 #include "core/turn_system.h"
 #include <functional>
 
-class wretch_moving final : public ability, turn_events_helper::every_turn_callback_helper {
+class wretch_moving final : public ability, turn_callback_helper {
 public:
     explicit wretch_moving(std::uint32_t entity_id);
 

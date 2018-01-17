@@ -20,25 +20,30 @@ void poisoned_missile::use(std::uint32_t index_on) {
     damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
 
     auto enemy_id = board::at(index_on);
+    auto poison_power = this->poison_power;
+    auto poison_duration = this->poison_duration;
 
-    auto poison_receiver =
-            turn::turn_system::every_turn([this, enemy_id, poison_damage = poison_power, counter = 0, pl = poison_last]() mutable {
 
-                if (counter++ % 2) {
-                    damage_dealers::standard_damage_dealer(special_damage(poison_damage, enemy_id));
-                    if (counter == pl * 2) {
-                        if (entity_manager::alive(enemy_id)) {
-                            remove_component(enemy_id,
-                                             "poison");
-                        }
-                    }
-                }
+
+    auto poison_receiver = make_every_two_turns_from_next_callback_holder(poison_duration,
+                                                    [enemy_id, poison_power](const turn_callback_info& info) mutable {
+
+                                                        sender::send(message_types::animation, animation_def::poison, board::index_for(enemy_id));
+
+                                                        damage_dealers::standard_damage_dealer(special_damage(poison_power, enemy_id));
+
+                                                        if (info.ended) {
+
+                                                            if (entity_manager::alive(enemy_id)) {
+                                                                remove_component(enemy_id,
+                                                                                 "poison");
+                                                            }
+                                                        }
     });
-
 
     add_component(enemy_id,
                   "poison",
-                  poison_receiver);
+                  std::move(poison_receiver));
 
     auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
     auto moveable_ptr = std::static_pointer_cast<moveable>(abilities_ptr->type(abilities::ability_types::moving));
@@ -51,7 +56,7 @@ std::string poisoned_missile::hint() const {
 
     std::string desc;
     desc = "Poisoned Missile - deals damage of " + std::to_string(damage) + "\n"
-           " and poisons the opponent for " + std::to_string(poison_last) + " turn."
+           " and poisons the opponent for " + std::to_string(poison_duration) + " turn."
             "Poison deals " + std::to_string(poison_power) + " damage per turn.";
 
     return std::move(desc);

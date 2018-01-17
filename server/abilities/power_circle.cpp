@@ -1,6 +1,7 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <managers/entity_manager.h>
+#include <managers/players_manager.h>
 #include <core/animations_queue.h>
 #include "power_circle.h"
 #include "damage_dealers.h"
@@ -8,58 +9,57 @@
 
 power_circle::power_circle(std::uint32_t entity_id) {
 
-    onEveryTurn([this, entity_id]() {
+    on_every_two_turns_from_this([this, entity_id]() {
 
-        if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
 
-            //for (auto&& dmg_rec_pack : dmg_rec_backup) {
-            //    set_damage_receiver(dmg_rec_pack.first, dmg_rec_pack.second);
-            //}
-            //dmg_rec_backup.clear();
+        //for (auto&& dmg_rec_pack : dmg_rec_backup) {
+        //    set_damage_receiver(dmg_rec_pack.first, dmg_rec_pack.second);
+        //}
+        //dmg_rec_backup.clear();
 
-            //damage_reduction = 0;
+        //damage_reduction = 0;
 
-            auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-            auto absorption_ptr = std::static_pointer_cast<absorption>(abilities_ptr->type(abilities::ability_types::special));
+        auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+        auto absorption_ptr = std::static_pointer_cast<absorption>(abilities_ptr->type(abilities::ability_types::special));
 
-            absorption_ptr->zero_dmg_reduction();
+        absorption_ptr->zero_dmg_reduction();
 
-            if (absorption_ptr->is_full()) {
-                bonus_active = true;
-            } else if (bonus_active && ++bonus_counter == max_bonus_counter) {
-                bonus_active = false;
-                absorption_power = 0;
-                bonus_counter = 0;
-                absorption_ptr->set_empty();
-            }
+        if (absorption_ptr->is_full()) {
+            bonus_active = true;
+        } else if (bonus_active && ++bonus_counter == max_bonus_counter) {
+            bonus_active = false;
+            absorption_power = 0;
+            bonus_counter = 0;
+            absorption_ptr->set_empty();
+        }
 
-            std::vector<std::uint32_t> aim_indexes;
-            board_helper::circle(board::index_for(entity_id), aim_indexes, false);
+        std::vector<std::uint32_t> aim_indexes;
+        board_helper::circle(board::index_for(entity_id), aim_indexes, false);
 
-            auto from_cr = board::to_pos(board::index_for(entity_id));
-            from_cr.first -= 2;
-            from_cr.second -= 2;
+        auto from_cr = board::to_pos(board::index_for(entity_id));
+        from_cr.first -= 2;
+        from_cr.second -= 2;
 
-            animations_queue::push_animation(animation_types::flash_bitmap,
-                                             board::to_index(from_cr.first, from_cr.second),
-                                             150,
-                                             -1,
-                                             bitmap_key::absorber_orbit);
+        animations_queue::push_animation(animation_types::flash_bitmap,
+                                         board::to_index(from_cr.first, from_cr.second),
+                                         150,
+                                         -1,
+                                         bitmap_key::absorber_orbit);
 
-            for (auto& index : aim_indexes) {
-                if (!board::empty(index)) {
-                    if (players_funcs::enemy_entity(index)) {
-                        damage_dealers::standard_damage_dealer(magic_damage(damage, board::at(index), entity_id));
+        for (auto& index : aim_indexes) {
+            if (!board::empty(index)) {
+                if (players_funcs::enemy_entity(index)) {
+                    damage_dealers::standard_damage_dealer(magic_damage(damage, board::at(index), entity_id));
 
-                    } else if (players_funcs::player_entity(index)) {
+                } else if (players_funcs::player_entity(index)) {
 
-                        //++damage_reduction;
-                        absorption_ptr->increase_dmg_reduction();
+                    //++damage_reduction;
+                    absorption_ptr->increase_dmg_reduction();
 
-                        //auto friendly_id = board::at(index);
-                        //auto dmg_rec = get_damage_receiver(friendly_id);
+                    //auto friendly_id = board::at(index);
+                    //auto dmg_rec = get_damage_receiver(friendly_id);
 
-                        //dmg_rec_backup.insert(std::make_pair(friendly_id, dmg_rec));
+                    //dmg_rec_backup.insert(std::make_pair(friendly_id, dmg_rec));
 
 //                        set_damage_receiver(friendly_id,
 //                                                             [this, entity_id, friendly_id](health_field& health_pack, const damage_pack& dmg) mutable {
@@ -90,7 +90,6 @@ power_circle::power_circle(std::uint32_t entity_id) {
 //                                                                 return damage;
 //                                                             });
 
-                    }
                 }
             }
         }

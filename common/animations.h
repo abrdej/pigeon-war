@@ -64,7 +64,12 @@ enum class animation_def {
 	shiruken,
 	death_mark,
 	set_invisibility,
-	remove_invisibility
+	remove_invisibility,
+	poison,
+	start_sorcerer_attack,
+	end_sorcerer_attack,
+	change_health,
+	rocket_launcher
 };
 
 struct animation_def_key_hash

@@ -19,6 +19,8 @@ struct treant final
 
             entity.add<health_field>(55);
             entity.add<damage_taker>();
+            entity.add<addition>();
+            entity.add<modification>();
 
             auto abilities_ptr = entity.add<abilities>();
             abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(2));

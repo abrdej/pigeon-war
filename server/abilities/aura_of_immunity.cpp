@@ -1,4 +1,5 @@
 #include <managers/entity_manager.h>
+#include <managers/players_manager.h>
 #include "aura_of_immunity.h"
 #include "core/path_finder.h"
 #include "core/board.h"
@@ -10,51 +11,50 @@
 aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)
 		: entity_id(entity_id) {
 
-	entity_manager::get(entity_id).get_with_create<modification>()->modify_damage_receiver_modifier_by(-damage_reduction_for_owner);
+	entity_manager::get(entity_id).get<modification>()->modify_damage_receiver_modifier_by(-damage_reduction_for_owner);
 
-	onEveryTurn([entity_id = this->entity_id,
+	on_every_two_turns_from_this([entity_id = this->entity_id,
 			damage_reduction_for_friends = this->damage_reduction_for_friends,
 			damage_reduction_for_owner = this->damage_reduction_for_owner]() {
 
-		if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
+		auto caster_index = board::index_for(entity_id);
 
-			auto caster_index = board::index_for(entity_id);
+		std::vector<std::uint32_t> neighbors;
+		board_helper::neighboring_fields(caster_index, neighbors, false);
 
-			std::vector<std::uint32_t> neighbors;
-			board_helper::neighboring_fields(caster_index, neighbors, false);
+		for (auto& index : neighbors) {
+			if (!board::empty(index)) {
+				if (players_funcs::enemy_entity(index)) {
 
-			for (auto& index : neighbors) {
-				if (!board::empty(index)) {
-					if (players_funcs::enemy_entity(index)) {
+				} else if (players_funcs::player_entity(index)) {
 
-					} else if (players_funcs::player_entity(index)) {
+					auto friend_id = board::at(index);
 
-						auto friend_id = board::at(index);
-
-						if (!has_component(friend_id, "aura_of_immunity")) {
-							entity_manager::get(friend_id).get_with_create<modification>()->modify_damage_dealer_modifier_by(-damage_reduction_for_friends);
-						}
-
-						sender::send(message_types::animation, animation_def::aura_of_immunity, index);
-
-						auto aura_of_immunity_receiver =
-								turn::turn_system::every_turn([damage_reduction_for_friends, counter = 0, aura_last = 1, friend_id]() mutable {
-
-									if (counter++ == aura_last) {
-
-										if (entity_manager::alive(friend_id)) {
-											entity_manager::get(friend_id).get_with_create<modification>()->modify_damage_dealer_modifier_by(damage_reduction_for_friends);
-
-											sender::send(message_types::animation, animation_def::aura_of_immunity_break, board::index_for(friend_id));
-
-
-											remove_component(friend_id, "aura_of_immunity");
-										}
-									}
-								});
-
-						add_component(friend_id, "aura_of_immunity", aura_of_immunity_receiver);
+					if (!has_component(friend_id, "aura_of_immunity")) {
+						entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(-damage_reduction_for_friends);
 					}
+
+					auto damage_reduction = damage_reduction_for_friends;
+
+					sender::send(message_types::animation, animation_def::aura_of_immunity, index);
+
+					auto aura_of_immunity_receiver = make_every_turn_callback_holder(2,
+																					 [damage_reduction, friend_id](const turn_callback_info& info) mutable {
+
+						if (info.ended) {
+
+							if (entity_manager::alive(friend_id)) {
+								entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(damage_reduction);
+
+								sender::send(message_types::animation, animation_def::aura_of_immunity_break, board::index_for(friend_id));
+
+
+								remove_component(friend_id, "aura_of_immunity");
+							}
+						}
+					});
+
+					add_component(friend_id, "aura_of_immunity", aura_of_immunity_receiver);
 				}
 			}
 		}

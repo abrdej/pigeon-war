@@ -50,4 +50,9 @@ void animations_service::initialize() {
 	add<death_mark_handler>(animation_def::death_mark);
 	add<set_invisibility_handler>(animation_def::set_invisibility);
 	add<remove_invisibility_handler>(animation_def::remove_invisibility);
+	add<poison_handler>(animation_def::poison);
+	add<start_sorcerer_attack_handler>(animation_def::start_sorcerer_attack);
+	add<end_sorcerer_attack_handler>(animation_def::end_sorcerer_attack);
+	add<change_health_handler>(animation_def::change_health);
+	add<rocket_launcher_handler>(animation_def::rocket_launcher);
 }

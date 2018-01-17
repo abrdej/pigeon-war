@@ -6,9 +6,7 @@
 #include "damage_dealers.h"
 
 absorption::absorption(std::uint32_t entity_id) : entity_id(entity_id) {
-    onEveryTurn([this]() {
-        used = false;
-    });
+
 }
 
 absorption::~absorption() {
@@ -54,34 +52,34 @@ void absorption::use(std::uint32_t index_on) {
     }
 
     set_damage_receiver(friendly_id,
-                                         [this, friendly_id, dmg_receiver = protected_dmg_rec_backup](health_field& health_pack, const damage_pack& dmg) mutable {
+                        [this, friendly_id, dmg_receiver = protected_dmg_rec_backup](health_field& health_pack, const damage_pack& dmg) mutable {
 
-                                             auto half_dmg = static_cast<std::int32_t>(dmg.damage_value * 0.5);
+                            auto half_dmg = static_cast<std::int32_t>(dmg.damage_value * 0.5);
 
-                                             damage_pack new_dmg = dmg;
-                                             new_dmg.damage_value = half_dmg;
+                            damage_pack new_dmg = dmg;
+                            new_dmg.damage_value = half_dmg;
 
-                                             auto damage = dmg_receiver(health_pack, new_dmg);
+                            auto damage = dmg_receiver(health_pack, new_dmg);
 
-                                             damage_pack last_dmg = dmg;
-                                             last_dmg.damage_value = dmg.damage_value - half_dmg;
-                                             last_dmg.damage_receiver_id = entity_id;
+                            damage_pack last_dmg = dmg;
+                            last_dmg.damage_value = dmg.damage_value - half_dmg;
+                            last_dmg.damage_receiver_id = entity_id;
 
-                                             absorption_power = std::min(absorption_power + last_dmg.damage_value,
-                                                                         max_absorption_power);
+                            absorption_power = std::min(absorption_power + last_dmg.damage_value,
+                                                        max_absorption_power);
 
-                                             std::cout << "absorption_power: " << absorption_power << "\n";
+                            std::cout << "absorption_power: " << absorption_power << "\n";
 
-                                             animations_queue::push_animation(animation_types::flash_bitmap,
-                                                                              board::index_for(friendly_id),
-                                                                              150,
-                                                                              0,
-                                                                              bitmap_key::absorption);
+                            animations_queue::push_animation(animation_types::flash_bitmap,
+                                                             board::index_for(friendly_id),
+                                                             150,
+                                                             0,
+                                                             bitmap_key::absorption);
 
-                                             damage_dealers::standard_damage_dealer(last_dmg);
+                            damage_dealers::standard_damage_dealer(last_dmg);
 
-                                             return damage;
-                                         });
+                            return damage;
+                        });
 
     play_animation(used_from_index, index_on);
 }

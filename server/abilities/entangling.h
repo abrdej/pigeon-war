@@ -9,7 +9,7 @@
 #include <entities/entity.h>
 #include "ability.h"
 
-//struct entangling_life_suck final : public ability, turn_events_helper::every_turn_callback_helper {
+//struct entangling_life_suck final : public ability, turn_callback_helper {
 //    explicit entangling_life_suck();
 //
 //    bitmap_key get_bitmap_key() const override {
@@ -40,7 +40,7 @@
 //    }
 //};
 //
-//class entangling final : public ability, turn_events_helper::every_turn_callback_helper
+//class entangling final : public ability, turn_callback_helper
 //{
 //public:
 //    explicit entangling(std::uint32_t id);

@@ -8,7 +8,7 @@
 #include "abilities/ability.h"
 #include "core/turn_system.h"
 
-class kill final : public ability, protected turn_events_helper::every_turn_callback_helper
+class kill final : public ability, protected turn_callback_helper
 {
 public:
     kill();

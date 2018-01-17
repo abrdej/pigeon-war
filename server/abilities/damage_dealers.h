@@ -9,6 +9,8 @@ namespace damage_dealers
 
 std::int32_t standard_damage_dealer(const damage_pack& dmg);
 
+std::int32_t standard_healing(const damage_pack& dmg);
+
 };
 
 #endif

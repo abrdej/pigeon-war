@@ -7,17 +7,14 @@
 #include "components/damage_taker.h"
 
 rage::rage(std::uint32_t id) : entity_id(id) {
-	onEveryRound([this]() {
+	on_every_two_turns_from_next([this]() {
 		damage_this_turn = 0;
 	});
 
 	on_receive_damage(entity_id, [this](const damage_pack&) {
 
-		std::cout << "on receive damage\n";
-
 		++damage_this_turn;
 		if (damage_this_turn == required_damage) {
-			std::cout << "used\n";
 			use();
 		}
 	}, damage_taker::on_receive_damage_policy::after);

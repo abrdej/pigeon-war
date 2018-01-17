@@ -13,6 +13,8 @@ public:
 
 		entity.add<health_field>(35);
 		entity.add<damage_taker>();
+		entity.add<addition>();
+		entity.add<modification>();
 
 		auto abilities_ptr = entity.add<abilities>();
 		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<tongue_of_fire>());

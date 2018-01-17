@@ -9,7 +9,7 @@
 #include "core/turn_system.h"
 
 class recovery final : public passive_ability,
-                       protected turn_events_helper::every_turn_callback_helper
+                       protected turn_callback_helper
 {
 public:
     explicit recovery(std::uint32_t id);

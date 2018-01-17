@@ -24,7 +24,7 @@ private:
 private:
     const std::int32_t full_damage = 16;
     const std::int32_t damage_with_power_bullet_effect = 4;
-    const std::int32_t duration_of_effect = 3;
+    const std::int32_t duration_of_effect = 1;
 };
 
 #endif //PIGEONWAR_POWER_BULLET_H

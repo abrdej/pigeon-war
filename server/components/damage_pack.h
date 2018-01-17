@@ -15,6 +15,7 @@ enum class damage_types {
 	RANGED,
 	MAGIC,
 	SPECIAL,
+	HEALING,
 	UNDEFINED
 };
 
@@ -54,7 +55,7 @@ inline damage_pack special_damage(std::int32_t value, std::uint32_t receiver_id,
 }
 
 inline damage_pack healing(std::int32_t value, std::uint32_t receiver_id) {
-	return damage_pack{-value, damage_types::UNDEFINED, receiver_id, no_damage_dealer};
+	return damage_pack{-value, damage_types::HEALING, receiver_id, no_damage_dealer};
 }
 
 #endif //PIGEONWAR_DAMAGE_PACK_H

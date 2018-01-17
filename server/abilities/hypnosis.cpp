@@ -19,16 +19,15 @@ void hypnosis::use(std::uint32_t index_on) {
 	auto enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
 	enemy_abilities_ptr->is_active = false;
 
-	auto hypnosis_receiver = turn::turn_system::every_turn([enemy_id, counter = 0]() mutable {
-		if (++counter == 2) {
+	auto hypnosis_receiver = make_after_n_round_callback_holder(duration,
+																[enemy_id]() mutable {
 
-			auto inner_enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
-			inner_enemy_abilities_ptr->is_active = true;
+																	auto inner_enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
+																	inner_enemy_abilities_ptr->is_active = true;
 
-			remove_component(enemy_id,
-							 "hypnosis");
-		}
-	});
+																	remove_component(enemy_id,
+																					 "hypnosis");
+																});
 
 	add_component(enemy_id, "hypnosis", hypnosis_receiver);
 

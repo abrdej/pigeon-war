@@ -5,6 +5,7 @@
 #include "damage_dealers.h"
 #include "sender.h"
 #include "common/animations.h"
+#include "managers/players_manager.h"
 
 void sniper_shot::prepare(std::uint32_t for_index) {
 
@@ -47,8 +48,6 @@ void sniper_shot::use(std::uint32_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
 
-    //play_animation(entity_id, used_from_index, index_on);
-
     sender::send(message_types::animation, animation_def::sniper_shot, used_from_index, index_on);
 
     auto enemy_id = board::at(index_on);
@@ -67,20 +66,6 @@ void sniper_shot::use(std::uint32_t index_on) {
     damage_dealers::standard_damage_dealer(ranged_damage(final_damage, enemy_id, entity_id));
 
     used = true;
-}
-
-void sniper_shot::play_animation(std::uint32_t entity_id, std::uint32_t from_index, std::uint32_t to_index) {
-    animations_queue::push_animation(animation_types::move,
-                                     from_index,
-                                     to_index,
-                                     -1,
-                                     bitmap_key::sniper_shot);
-
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     to_index,
-                                     150,
-                                     -1,
-                                     bitmap_key::sniper_bum);
 }
 
 std::string sniper_shot::hint() const {

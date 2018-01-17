@@ -86,7 +86,7 @@ void game::on_button(std::uint32_t n)
 	}
 	if (n == 5)
 	{
-		turn::turn_system::end_turn();
+		turn_system::end_turn();
 		players_manager::next_player();
 
 		states::state_controller::first_state(players_funcs::active_player_first_entity_index());
@@ -94,7 +94,7 @@ void game::on_button(std::uint32_t n)
 		if (players_manager::is_active_player_ai())
 		{
 			ai_manager::perform_movement(players_manager::get_active_player_id());
-			turn::turn_system::end_turn();
+			turn_system::end_turn();
 			players_manager::next_player();
 			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
 			//on_button(14);

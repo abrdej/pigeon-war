@@ -4,12 +4,7 @@
 
 void play_change_health_animation(std::uint32_t to_index, std::int32_t change_health)
 {
-    animations_queue::push_animation(animation_types::change_health,
-                                     to_index,
-                                     change_health,
-                                     0,
-                                     bitmap_key::none);
-    animations_queue::pull();
+    sender::send(message_types::animation, animation_def::change_health, to_index, change_health);
 
     sender::send(message_types::healths, get_healths());
 }

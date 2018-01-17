@@ -5,78 +5,164 @@
 #include <string>
 #include <iostream>
 #include <unordered_map>
-#include "managers/players_manager.h"
-#include "signals.h"
+#include <memory>
 
-namespace turn
-{
+enum class frequency_types {
+	every_turn,
+	every_two_turns_from_this,
+	every_two_turns_from_next,
+	after_n_rounds
+};
+
+struct turn_callback {
+	std::function<void()> callback;
+	bool ended{false};
+	std::uint32_t callback_id;
+};
+
+struct turn_callback_info {
+	bool ended{false};
+	std::uint32_t callback_id;
+};
 
 class turn_system
 {
+	struct callback_pack {
+		callback_pack() = default;
+		callback_pack(frequency_types frequency,
+					  int32_t duration,
+					  const std::function<void(turn_callback_info&)>& callback)
+				: frequency(frequency),
+				  callback(callback),
+				  duration(duration),
+				  number_of_calls(0) {}
+
+		frequency_types frequency;
+		std::function<void(turn_callback_info&)> callback;
+		int32_t duration;
+		int32_t number_of_calls;
+	};
+
 public:
-	using signal_type = signal;
-	using strong_receiver = signal_type::strong_receiver;
-	using weak_receiver = signal_type::weak_receiver;
-	using callback = signal_type::callback;
 
 	static void end_turn();
 	static void on_turn(std::uint32_t turn_n, const std::function<void()>& task);
-	static strong_receiver every_round(std::function<void()> callback);
-	static strong_receiver every_turn(std::function<void()> callback);
+
+	static std::uint32_t get_callback_id() {
+		static std::uint32_t callback_id_gen = 0;
+		return callback_id_gen++;
+	}
+
+	static std::uint32_t set_callback(const frequency_types& frequency,
+									  int32_t duration,
+									  const std::function<void(turn_callback_info&)>& callback) {
+
+		std::uint32_t callback_id = get_callback_id();
+		callbacks[callback_id] = callback_pack(frequency, duration, callback);
+		return callback_id;
+	}
+
+	static std::uint32_t set_callback(const frequency_types& frequency,
+									  int32_t duration,
+									  const std::function<void()>& callback) {
+
+		std::uint32_t callback_id = get_callback_id();
+		callbacks[callback_id] = callback_pack(frequency, duration, [callback](turn_callback_info&) {
+			callback();
+		});
+		return callback_id;
+	}
+
+	static void remove_callback(std::uint32_t callback_id) {
+		callbacks_to_remove.push_back(callback_id);
+	}
 
 private:
-	static std::uint32_t turn_n_;
-	static std::unordered_multimap<std::uint32_t, std::function<void()>> tasks_;
-	static signal_type every_round_signal_;
-	static signal_type every_turn_signal_;
+	static std::uint32_t turn_n;
+	static std::unordered_multimap<std::uint32_t, std::function<void()>> tasks;
+	static std::unordered_map<std::uint32_t, callback_pack> callbacks;
+	static std::vector<std::uint32_t> callbacks_to_remove;
 };
+
+struct callback_deleter {
+	void operator()(std::uint32_t* p) const {
+		turn_system::remove_callback(*p);
+		delete p;
+	}
+};
+
+//using callback_holder = std::unique_ptr<std::uint32_t, callback_deleter>;
+using callback_holder = std::shared_ptr<std::uint32_t>;
+
+inline auto make_callback_holder(std::uint32_t callback_id) {
+	return callback_holder(new std::uint32_t(callback_id), callback_deleter());
 }
 
-namespace turn_events_helper
-{
+template <typename Callback>
+inline auto make_every_turn_callback_holder(std::int32_t duration,
+											Callback callback) {
 
-class every_turn_callback_helper
+	return make_callback_holder(turn_system::set_callback(frequency_types::every_turn,
+														  duration,
+														  callback));
+}
+
+template <typename Callback>
+inline void set_every_turn_callback(std::int32_t duration,
+									Callback callback) {
+
+	turn_system::set_callback(frequency_types::every_turn,
+							  duration,
+							  callback);
+}
+
+template <typename Callback>
+inline auto make_every_two_turns_from_next_callback_holder(std::int32_t duration,
+														   Callback callback) {
+
+	return make_callback_holder(turn_system::set_callback(frequency_types::every_two_turns_from_next,
+														  duration,
+														  callback));
+}
+
+template <typename Callback>
+inline auto make_after_n_round_callback_holder(std::int32_t duration,
+											   Callback callback) {
+
+	return make_callback_holder(turn_system::set_callback(frequency_types::after_n_rounds,
+														  duration,
+														  callback));
+}
+
+template <typename Callback>
+inline void set_after_n_round_callback(std::int32_t duration,
+									   Callback callback) {
+
+	turn_system::set_callback(frequency_types::after_n_rounds,
+							  duration,
+							  callback);
+}
+
+class turn_callback_helper
 {
 protected:
-	using callback_type = turn::turn_system::callback;
-
 	template <typename Callback>
-	void onEveryRound(Callback callback)
-	{
-		end_round_receiver_ = turn::turn_system::every_round(callback);
+	void on_every_turn(Callback callback) {
+		on_every_turn_holder = make_callback_holder(turn_system::set_callback(frequency_types::every_turn, 0, callback));
 	}
 	template <typename Callback>
-	void onEveryTurn(Callback callback)
-	{
-		end_turn_receiver_ = turn::turn_system::every_turn(callback);
+	void on_every_two_turns_from_this(Callback callback) {
+		on_every_two_turns_from_this_holder = make_callback_holder(turn_system::set_callback(frequency_types::every_two_turns_from_this, 0, callback));
 	}
 	template <typename Callback>
-	void onTwoTurns(Callback callback)
-	{
-		every_turns_receiver_ = turn::turn_system::every_turn([this, callback]() {
-
-			std::cout << state << "\n";
-
-			if (state) {
-				callback();
-			}
-			state = !state;
-		});
+	void on_every_two_turns_from_next(Callback callback) {
+		on_every_two_turns_from_next_holder = make_callback_holder(turn_system::set_callback(frequency_types::every_two_turns_from_next, 0, callback));
 	}
+
 private:
-	bool state{false};
-	turn::turn_system::strong_receiver end_round_receiver_;
-	turn::turn_system::strong_receiver end_turn_receiver_;
-	turn::turn_system::strong_receiver every_turns_receiver_;
+	callback_holder on_every_turn_holder;
+	callback_holder on_every_two_turns_from_this_holder;
+	callback_holder on_every_two_turns_from_next_holder;
 };
-
-struct on_every_round : every_turn_callback_helper {
-	template <typename Callback>
-	explicit on_every_round(Callback callback) {
-		onEveryRound(callback);
-	}
-};
-
-}
 
 #endif

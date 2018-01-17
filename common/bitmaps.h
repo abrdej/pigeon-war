@@ -140,7 +140,9 @@ enum class bitmap_key {
 	sorcerer,
 	sorcerer_attack,
 	warrior_immortal,
-	prison_connection
+	prison_connection,
+	poison_effect,
+	rocket
 };
 
 struct bitmaps_key_hash

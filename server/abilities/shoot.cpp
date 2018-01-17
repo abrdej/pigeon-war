@@ -12,7 +12,7 @@
 shoot::shoot()
 		: bullets(bullets_n)
 {
-	onEveryRound([this]() {
+	on_every_two_turns_from_next([this]() {
 		bullets = bullets_n;
 	});
 }

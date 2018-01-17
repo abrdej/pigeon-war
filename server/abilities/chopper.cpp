@@ -9,11 +9,11 @@
 
 
 chopper::chopper(std::uint32_t entity_id) : entity_id(entity_id) {
-    onEveryRound([this]() {
+    on_every_two_turns_from_next([this]() {
         used = false;
     });
 
-    onEveryTurn([this, entity_id]() {
+    on_every_turn([this, entity_id]() {
         if (fired) {
 
             auto index = board::index_for(entity_id);

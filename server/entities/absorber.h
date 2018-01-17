@@ -10,6 +10,7 @@
 #include <server/abilities/moveable.h>
 #include <server/abilities/absorption.h>
 #include <server/abilities/power_circle.h>
+#include <components/additions.h>
 
 class absorber final
 {
@@ -20,6 +21,8 @@ public:
 
         entity.add<health_field>(50);
         entity.add<damage_taker>();
+        entity.add<addition>();
+        entity.add<modification>();
 
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));

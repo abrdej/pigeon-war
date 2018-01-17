@@ -17,24 +17,25 @@ void prison_connection::use(std::uint32_t index_on) {
 		return;
 
 	auto enemy_id = board::at(index_on);
+	auto caster_id = board::at(states::state_controller::selected_index_);
 
-	auto prison_connection_receiver =
-			turn::turn_system::every_turn([this, enemy_id, counter = 0, end_duration = duration]() mutable {
+	auto prison_connection_holder = make_after_n_round_callback_holder(duration,
+																	   [this, enemy_id, caster_id]() {
 
-				if (counter++ % 2) {
-					//damage_dealers::standard_damage_dealer(special_damage(final_damage, enemy_id));
+																		   remove_component(enemy_id, "prison_connection_effect");
 
-					//std::cout << "final_damage: " << final_damage << "\n";
+																		   if (entity_manager::alive(caster_id)) {
+																			   entities_with_effect.erase(std::remove(std::begin(entities_with_effect), std::end(entities_with_effect), enemy_id),
+																										  std::end(entities_with_effect));
+																		   }
+																	   });
 
-					if (counter == end_duration * 2) {
-						remove_component(enemy_id, "prison_connection_effect");
-						entities_with_effect.erase(std::remove(std::begin(entities_with_effect), std::end(entities_with_effect), enemy_id),
-												   std::end(entities_with_effect));
-					}
-				}
-			});
+	if (has_component(enemy_id, "prison_connection_effect")) {
+		entities_with_effect.erase(std::remove(std::begin(entities_with_effect), std::end(entities_with_effect), enemy_id),
+								   std::end(entities_with_effect));
+	}
 
-	add_component(enemy_id, "prison_connection_effect", prison_connection_receiver);
+	add_component(enemy_id, "prison_connection_effect", prison_connection_holder);
 	entities_with_effect.push_front(enemy_id);
 
 	std::int32_t number_of_entities_with_effect = static_cast<std::int32_t>(entities_with_effect.size());
@@ -43,11 +44,7 @@ void prison_connection::use(std::uint32_t index_on) {
 
 	std::cout << "final_damage: " << final_damage << "\n";
 
-	animations_queue::push_animation(animation_types::change_bitmap,
-									 entity_id,
-									 0,
-									 0,
-									 bitmap_key::sorcerer_attack);
+	sender::send(message_types::animation, animation_def::start_sorcerer_attack, entity_id);
 
 	for (auto&& entity_with_effect : entities_with_effect) {
 
@@ -60,11 +57,7 @@ void prison_connection::use(std::uint32_t index_on) {
 		}
 	}
 
-	animations_queue::push_animation(animation_types::change_bitmap,
-									 entity_id,
-									 0,
-									 0,
-									 bitmap_key::sorcerer);
+	sender::send(message_types::animation, animation_def::end_sorcerer_attack, entity_id);
 
 	used = true;
 }

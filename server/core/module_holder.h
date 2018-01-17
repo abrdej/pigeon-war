@@ -12,9 +12,7 @@ public:
 	template <typename T, typename... Args>
 	std::shared_ptr<T> add(Args&&... args)
 	{
-		auto& module = modules[std::type_index(typeid(T))];
-		module = std::make_shared<T>(std::forward<Args>(args)...);
-		return std::static_pointer_cast<T>(module);
+		return std::static_pointer_cast<T>(modules.emplace(std::type_index(typeid(T)), std::make_shared<T>(std::forward<Args>(args)...)).first->second);
 	}
 
 	template <typename T>
@@ -35,13 +33,14 @@ public:
 		}
 	}
 	template <typename T>
-	std::shared_ptr<T> get_with_create()
+	std::shared_ptr<T> get()
 	{
 		auto it = modules.find(std::type_index(typeid(T)));
 		if (it != std::end(modules))
 			return std::static_pointer_cast<T>(it->second);
 		else {
-			return add<T>();
+			std::cout << "get component which doesn't exist\n" << typeid(T).name() << "\n";
+			return std::shared_ptr<T>();
 		}
 	}
 

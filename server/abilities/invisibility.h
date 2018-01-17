@@ -25,8 +25,7 @@ private:
 	std::uint32_t index{0};
 	std::int32_t turn_counter_{0};
 	std::int32_t duration{2};
-	using receiver_type = turn::turn_system::strong_receiver;
-	receiver_type receiver;
+	callback_holder invisibility_callback;
 };
 
 #endif

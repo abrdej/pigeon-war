@@ -20,7 +20,8 @@ public:
 
 private:
     std::uint32_t entity_id;
-    turn::turn_system::strong_receiver receiver;
+    std::int32_t duration{1};
+    callback_holder immortality_holder;
 };
 
 #endif //PIGEONWAR_IMMORTALITY_H

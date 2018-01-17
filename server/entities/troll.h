@@ -8,6 +8,7 @@
 #include <server/abilities/moveable.h>
 #include <server/abilities/bludgeon.h>
 #include <server/abilities/rage.h>
+#include <abilities/regeneration.h>
 #include "entity.h"
 
 struct troll final
@@ -18,11 +19,14 @@ struct troll final
 
 		entity.add<health_field>(80);
 		entity.add<damage_taker>();
+		entity.add<addition>();
+		entity.add<modification>();
 
 		auto abilities_ptr = entity.add<abilities>();
 		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(2));
 		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<bludgeon>());
 		abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<rage>(entity.entity_id));
+		abilities_ptr->add_ability(abilities::ability_types::defensive, std::make_shared<regeneration>(entity.entity_id));
 
 		entity.add<bitmap_field>(entity.entity_id, bitmap_key::troll);
 

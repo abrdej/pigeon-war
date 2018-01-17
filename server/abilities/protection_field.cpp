@@ -7,10 +7,8 @@
 
 protection_field::protection_field(std::uint32_t entity_id) {
 
-    onEveryTurn([this, entity_id]() {
-        if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
-            is_active = true;
-        }
+    on_every_two_turns_from_this([this, entity_id]() {
+        is_active = true;
     });
 
     set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {

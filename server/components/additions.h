@@ -10,25 +10,6 @@
 #include <typeindex>
 
 struct addition {
-    std::unordered_map<std::type_index, std::shared_ptr<void>> data;
-
-    template <typename T>
-    T& get() {
-        return data.at(std::type_index(typeid(T)));
-    }
-    template <typename T>
-    const T& get() const {
-        return data.at(std::type_index(typeid(T)));
-    }
-    template <typename T, typename... Args>
-    void put(const std::shared_ptr<T>& x) {
-        data[std::type_index(typeid(T))] = x;
-    };
-    template <typename T>
-    void destroy() {
-        data.erase(std::type_index(typeid(T)));
-    }
-
     std::unordered_map<std::string, std::shared_ptr<void>> named_data;
 
     template <typename T>
@@ -56,15 +37,15 @@ inline void add_component(std::uint32_t entity_id,
                           const std::string& name,
                           std::shared_ptr<T> x) {
 
-    entity_manager::get(entity_id).get_with_create<addition>()->put_named(name, x);
+    entity_manager::get(entity_id).get<addition>()->put_named(name, x);
 }
 
 inline void remove_component(std::uint32_t entity_id, const std::string& name) {
-    entity_manager::get(entity_id).get_with_create<addition>()->destroy_named(name);
+    entity_manager::get(entity_id).get<addition>()->destroy_named(name);
 }
 
 inline bool has_component(std::uint32_t entity_id, const std::string& name) {
-    return entity_manager::get(entity_id).get_with_create<addition>()->has(name);
+    return entity_manager::get(entity_id).get<addition>()->has(name);
 }
 
 inline std::unordered_map<std::uint32_t, std::vector<std::string>> get_additions() {
@@ -73,12 +54,14 @@ inline std::unordered_map<std::uint32_t, std::vector<std::string>> get_additions
 
     entity_manager::for_all([&result](base_entity entity) {
 
-        std::shared_ptr<addition> additions_ptr = entity.get_with_create<addition>();
+        if (entity.contain<addition>()) {
+            std::shared_ptr<addition> additions_ptr = entity.get<addition>();
 
-        auto& field = result[entity.entity_id];
+            auto& field = result[entity.entity_id];
 
-        for (auto&& addition : additions_ptr->named_data) {
-            field.push_back(addition.first);
+            for (auto&& addition : additions_ptr->named_data) {
+                field.push_back(addition.first);
+            }
         }
     });
     return std::move(result);

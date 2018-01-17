@@ -20,7 +20,6 @@ public:
 private:
     void prepare(std::uint32_t for_index) override;
     void use(std::uint32_t index_on);
-    void play_animation(std::uint32_t entity_id, std::uint32_t from_index, std::uint32_t to_index);
 
 private:
     const std::int32_t range{10};

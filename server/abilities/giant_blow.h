@@ -24,6 +24,7 @@ private:
 private:
     const std::int32_t damage{8};
     std::int32_t counter{0};
+    std::int32_t duration_of_giant_only_target = 1;
 };
 
 #endif //PIGEONWAR_GIANT_BLOW_H

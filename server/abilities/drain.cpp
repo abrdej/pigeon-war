@@ -24,8 +24,8 @@ void drain::use(std::uint32_t index_on)
 													   board::at(index_on),
 													   entity_id));
 
-	entity_manager::get(entity_id).get<damage_taker>()->receive_damage(healing(drain_amount,
-																			   entity_id));
+	entity_manager::get(entity_id).get<damage_taker>()->heal(healing(drain_amount,
+																	 entity_id));
 	used = true;
 }
 

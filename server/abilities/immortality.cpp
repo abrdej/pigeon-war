@@ -7,21 +7,21 @@
 
 immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
 
-    set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
+    set_damage_receiver(entity_id, [this](health_field& health_pack, const damage_pack& dmg) mutable {
 
         auto final_damage = std::min(health_pack.health, dmg.damage_value);
         health_pack.health -= final_damage;
 
         if (health_pack.health == 0) {
-            set_destructible(entity_id, false);
+            set_destructible(this->entity_id, false);
 
-            sender::send(message_types::animation, animation_def::set_immortality, entity_id);
+            sender::send(message_types::animation, animation_def::set_immortality, this->entity_id);
 
-            receiver = turn::turn_system::every_turn([this, entity_id, &health_pack, counter = 0]() mutable {
-                if (counter++ == 1) {
-                    set_destructible(entity_id, true);
-                    entity_manager::destroy(entity_id);
-                }
+            immortality_holder = make_after_n_round_callback_holder(duration, [this]() {
+                set_destructible(this->entity_id, true);
+                entity_manager::destroy(this->entity_id);
+
+                std::cout << "destroy\n";
             });
         }
 

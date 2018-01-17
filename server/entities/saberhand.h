@@ -6,6 +6,7 @@
 #include "server/abilities/sabers.h"
 #include "server/abilities/invisibility.h"
 #include "components/damage_taker.h"
+#include "components/additions.h"
 
 class saberhand final
 {
@@ -16,6 +17,8 @@ public:
 
 		entity.add<health_field>(60);
 		entity.add<damage_taker>();
+		entity.add<addition>();
+		entity.add<modification>();
 
 		auto abilities_ptr = entity.add<abilities>();
 		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));

@@ -46,6 +46,9 @@ public:
 	static bool player_entity(std::uint32_t player_id, std::uint32_t entity_id) {
 		return get_instance().entity_id_to_player_id[entity_id] == player_id;
 	}
+	static bool active_player_entity(std::uint32_t entity_id) {
+		return get_instance().entity_id_to_player_id[entity_id] == get_instance().active_player_id;
+	}
 
 	static bool enemy_entity(std::uint32_t player_id, std::uint32_t entity_id) {
 		return get_instance().entity_id_to_player_id[entity_id] != player_id

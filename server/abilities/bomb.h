@@ -6,13 +6,13 @@
 #define PIGEONWAR_BOMB_H
 
 #include <entities/entity.h>
-#include "ability.h"
+#include "path_target_ability.h"
 #include "core/turn_system.h"
 #include "moveable.h"
 #include <boost/circular_buffer.hpp>
 #include <managers/entity_manager.h>
 
-class bomb_detonation final : public ability, protected turn_events_helper::every_turn_callback_helper {
+class bomb_detonation final : public ability, protected turn_callback_helper {
 public:
 	explicit bomb_detonation(std::uint32_t bomb_id);
 
@@ -47,7 +47,8 @@ struct bomb_instance {
 	}
 };
 
-class bomb final : public ability, protected turn_events_helper::every_turn_callback_helper {
+class bomb final : public path_target_ability<4, states::target_types::moving, true>,
+				   protected turn_callback_helper {
 public:
 	bomb();
 

@@ -1,6 +1,6 @@
 #include <entities/samurai_rat.h>
 #include <entities/troll.h>
-#include <entities/mouse.h>
+#include <entities/poisoner.h>
 #include <entities/droid.h>
 #include <entities/werewolf.h>
 #include <entities/grenadier.h>
@@ -228,18 +228,18 @@ using Entites = std::tuple<shooter,
         native,
         troll,
         sniper,
-        mouse,
+        poisoner,
         //werewolf,
-        robot,
+//        robot,
         monk,
-        grenadier,
-        ninja,
+//        grenadier,
+//        ninja,
         //treant,
         thrower,
-        killer,
-        absorber,
+//        killer,
+//        absorber,
         //saurian,
-        giant,
+//        giant,
         guardian,
         sorcerer,
         creature,
@@ -248,10 +248,6 @@ using Entites = std::tuple<shooter,
         handthrower,
         golem,
         spider>;
-
-struct OwnerCallback {
-    turn::turn_system::strong_receiver owner;
-};
 
 void create_trees_1() {
     using creator_helper::pos;
@@ -392,13 +388,12 @@ void skirmish(game& game) {
     std::int32_t entities_for_player = 4;
     std::int32_t selections = 0;
 
-    std::shared_ptr<OwnerCallback> holder = std::make_shared<OwnerCallback>();
-
     auto create_entities_container = [](){
         return std::unordered_map<std::uint32_t, std::vector<std::uint32_t>>();
     };
 
-    auto add_entity_for_player = turn::turn_system::every_turn([=, entities = create_entities_container()]() mutable {
+    set_every_turn_callback(0,
+                            [=, entities = create_entities_container()](const turn_callback_info& info) mutable {
 
         auto entity_id = board::take(states::state_controller::selected_index_);
 
@@ -433,12 +428,9 @@ void skirmish(game& game) {
 
             entities.clear();
 
-            holder.reset();
+            turn_system::remove_callback(info.callback_id);
         }
-
     });
-
-    holder->owner = add_entity_for_player;
 }
 
 void create_scenario(game& game, const std::string& scenario_name) {

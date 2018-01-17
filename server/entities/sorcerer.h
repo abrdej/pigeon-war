@@ -17,6 +17,8 @@ struct sorcerer final
 
         entity.add<health_field>(45);
         entity.add<damage_taker>();
+        entity.add<addition>();
+        entity.add<modification>();
 
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));

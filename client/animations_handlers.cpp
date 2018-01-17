@@ -228,3 +228,15 @@ void rage_handler::handle(sf::Packet& packet, game_state& g_state) {
 
 	g_state.board.give_back(entity_id, index);
 }
+
+void change_health_handler::handle(sf::Packet& packet, game_state& g_state) {
+
+	std::int32_t to_index;
+	std::int32_t change_health;
+
+	unpack(packet, to_index);
+	unpack(packet, change_health);
+
+	animation::player<animation::change_health>::launch(animation::change_health(to_index, change_health));
+	animation::base_player::play();
+}

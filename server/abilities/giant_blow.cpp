@@ -22,24 +22,22 @@ void giant_blow::use(std::uint32_t index_on)
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 
-    if (counter++ == 2) {
-        states::state_controller::custom_valid_targets[enemy_id].insert(caster_id);
-        states::state_controller::custom_valid_target_type = states::state_controller::custom_target_type::entity_id;
+    if (entity_manager::alive(enemy_id)) {
 
-        auto giant_only_target =
-                turn::turn_system::every_turn([this, enemy_id, counter = 0]() mutable {
+        if (counter++ == 2) {
+            states::state_controller::custom_valid_targets[enemy_id].insert(caster_id);
+            states::state_controller::custom_valid_target_type = states::state_controller::custom_target_type::entity_id;
 
-                    if (++counter == 2) {
+            auto giant_only_target = make_after_n_round_callback_holder(duration_of_giant_only_target,
+                                                                        [enemy_id]() mutable {
 
-                        states::state_controller::custom_valid_targets[enemy_id].clear();
+                                                                            states::state_controller::custom_valid_targets[enemy_id].clear();
+                                                                            remove_component(enemy_id,
+                                                                                             "giant_only_target");
+                                                                        });
 
-                        remove_component(enemy_id, "giant_only_target");
-                    }
-                });
-
-        add_component(enemy_id, "giant_only_target", giant_only_target);
-
-        counter = 0;
+            add_component(enemy_id, "giant_only_target", giant_only_target);
+        }
     }
 
     used = true;

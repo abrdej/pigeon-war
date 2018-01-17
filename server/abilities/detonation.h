@@ -6,7 +6,6 @@
 #define PIGEONWAR_DETONATION_H
 
 #include "ability.h"
-#include "core/turn_system.h"
 
 class detonation : public ability {
 public:
@@ -20,7 +19,6 @@ private:
     void prepare(std::uint32_t for_index) override {}
     std::uint32_t entity_id;
     std::int32_t damage{9};
-    turn::turn_system::strong_receiver receiver;
 };
 
 

@@ -24,19 +24,16 @@ void ball_and_chain::use(std::uint32_t index_on) {
 		damage_dealers::standard_damage_dealer(magic_damage(cost * dmg, enemy_id, dealer_id));
 	});
 
-	auto slow_down_receiver =
-			turn::turn_system::every_turn([effect_duration = duration, enemy_id, counter = 0]() mutable {
+	auto slow_down_receiver = make_after_n_round_callback_holder(duration,
+																 [enemy_id]() mutable {
 
-				if (counter++ == effect_duration * 2) {
+			auto inner_enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
+			auto inner_moveable_ptr =  std::static_pointer_cast<moveable>(inner_enemy_abilities_ptr->type(abilities::ability_types::moving));
 
-					auto inner_enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
-					auto inner_moveable_ptr =  std::static_pointer_cast<moveable>(inner_enemy_abilities_ptr->type(abilities::ability_types::moving));
+			inner_moveable_ptr->remove_cost_callback();
 
-					inner_moveable_ptr->remove_cost_callback();
-
-					remove_component(enemy_id, "ball_and_chain_effect");
-				}
-			});
+			remove_component(enemy_id, "ball_and_chain_effect");
+	});
 
 	add_component(enemy_id, "ball_and_chain_effect", slow_down_receiver);
 

@@ -21,7 +21,10 @@ struct wretch final
         entity.name = "Wretch";
 
         entity.add<health_field>(45);
+        entity.add<power_field>(16);
         entity.add<damage_taker>();
+        entity.add<addition>();
+        entity.add<modification>();
 
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<wretch_moving>(entity.entity_id));
@@ -29,8 +32,6 @@ struct wretch final
         abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<ball_and_chain>(entity.entity_id));
 
         entity.add<bitmap_field>(entity.entity_id, bitmap_key::wretch);
-
-        entity.add<power_field>(16);
 
         return entity;
     }

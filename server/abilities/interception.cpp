@@ -5,6 +5,7 @@
 #include <core/states_controller.h>
 #include <core/animations_queue.h>
 #include "components/damage_taker.h"
+#include "managers/players_manager.h"
 
 interception::interception(std::uint32_t entity_id) {
 
@@ -31,10 +32,8 @@ interception::interception(std::uint32_t entity_id) {
         }
     });
 
-    onEveryTurn([this, entity_id]() {
-        if (players_manager::get_active_player_id() != players_manager::player_for_entity(entity_id)) {
-            used = false;
-        }
+    on_every_two_turns_from_next([this, entity_id]() {
+        used = false;
     });
 }
 

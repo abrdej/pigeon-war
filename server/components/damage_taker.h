@@ -69,7 +69,8 @@ public:
 		auto receiver_entity = entity_manager::get(dmg.damage_receiver_id);
 
 		damage_pack damage_pack = dmg;
-		damage_pack.damage_value += receiver_entity.get_with_create<modification>()->damage_receiver_modifier_value();
+
+		damage_pack.damage_value += receiver_entity.get<modification>()->damage_receiver_modifier_value();
 
 		for (auto&& callback_pack : on_receive_damage_before_callbacks) {
 			callback_pack.second(damage_pack);
@@ -87,6 +88,21 @@ public:
 		}
 
 		return received_damage;
+	}
+
+	std::int32_t heal(const damage_pack& heal_pack)
+	{
+		auto receiver_entity = entity_manager::get(heal_pack.damage_receiver_id);
+
+		auto health_pack = receiver_entity.get<health_field>();
+
+		auto heal_amount = (std::min)(health_pack->health, heal_pack.damage_value);
+
+		health_pack->health += heal_amount;
+
+		play_change_health_animation(board::index_for(heal_pack.damage_receiver_id), heal_amount);
+
+		return heal_amount;
 	}
 
 	template <typename Callback>

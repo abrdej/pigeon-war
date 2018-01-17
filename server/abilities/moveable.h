@@ -5,7 +5,7 @@
 #include "core/turn_system.h"
 #include <functional>
 
-class moveable final : public ability, turn_events_helper::every_turn_callback_helper {
+class moveable final : public ability, turn_callback_helper {
 public:
     enum class types {
         path,
@@ -14,7 +14,7 @@ public:
 	explicit moveable(std::int32_t range, types type = types::path)
 		: range(range),
           type(type) {
-		onEveryRound([this]() {
+		on_every_two_turns_from_next([this]() {
 			used = false;
 		});
 	}

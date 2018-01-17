@@ -10,7 +10,7 @@
 #include "components/damage_pack.h"
 #include "common/health_field.h"
 
-class power_circle final : public ability, protected turn_events_helper::every_turn_callback_helper
+class power_circle final : public ability, protected turn_callback_helper
 {
 public:
     explicit power_circle(std::uint32_t entity_id);

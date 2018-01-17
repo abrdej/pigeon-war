@@ -7,11 +7,13 @@
 #include "wretch_moving.h"
 
 wretch_moving::wretch_moving(std::uint32_t entity_id) : entity_id(entity_id) {
-    onEveryRound([this]() {
+    on_every_two_turns_from_next([this]() {
         used = false;
         range = max_range;
         auto power_field_ptr = entity_manager::get(this->entity_id).get<power_field>();
         power_field_ptr->power = power_field_ptr->base_power;
+
+        std::cout << "set power: " << power_field_ptr->base_power << "\n";
     });
 }
 

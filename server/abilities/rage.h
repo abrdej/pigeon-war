@@ -9,7 +9,7 @@
 #include "abilities/ability.h"
 
 struct rage final : public passive_ability,
-					turn_events_helper::every_turn_callback_helper {
+					turn_callback_helper {
 
 	explicit rage(std::uint32_t id);
 

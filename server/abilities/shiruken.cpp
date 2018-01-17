@@ -22,7 +22,7 @@ void shiruken::use(std::uint32_t index_on) {
 
 
 //    auto death_mark_receiver =
-//            turn::turn_system::every_turn([this, enemy_id, counter = 0, duration = death_mark_duration]() mutable {
+//            turn_system::every_turn([this, enemy_id, counter = 0, duration = death_mark_duration]() mutable {
 //                if (counter++ == duration * 2) {
 //                    remove_component(enemy_id,
 //                                                        "death_mark");

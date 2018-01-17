@@ -1,24 +1,62 @@
 #include <iostream>
 #include "turn_system.h"
 
-namespace turn
-{
-std::uint32_t turn_system::turn_n_ = 0;
-std::unordered_multimap<std::uint32_t, std::function<void()>> turn_system::tasks_;
+std::uint32_t turn_system::turn_n = 0;
+std::unordered_multimap<std::uint32_t, std::function<void()>> turn_system::tasks;
 
-turn_system::signal_type turn_system::every_round_signal_;
-turn_system::signal_type turn_system::every_turn_signal_;
+std::unordered_map<std::uint32_t, turn_system::callback_pack> turn_system::callbacks;
+
+std::vector<std::uint32_t> turn_system::callbacks_to_remove;
 
 void turn_system::end_turn()
 {
-	++turn_n_;
+	++turn_n;
 
-	every_turn_signal_.send_event();
+	for (auto&& callback_id : callbacks_to_remove) {
+		callbacks.erase(callback_id);
+	}
 
-	if (turn_n_ % 2)
-		every_round_signal_.send_event();
+	callbacks_to_remove.clear();
 
-	auto result = tasks_.equal_range(turn_n_);
+	for (auto& callback_pack : callbacks) {
+		const auto frequency = callback_pack.second.frequency;
+		if (frequency == frequency_types::every_turn) {
+			turn_callback_info info{callback_pack.second.duration && ++callback_pack.second.number_of_calls == callback_pack.second.duration,
+									callback_pack.first};
+			callback_pack.second.callback(info);
+			if (info.ended) {
+				callbacks_to_remove.push_back(callback_pack.first);
+			}
+
+		} else if (frequency == frequency_types::every_two_turns_from_this) {
+			turn_callback_info info{callback_pack.second.duration && ++callback_pack.second.number_of_calls == callback_pack.second.duration,
+									callback_pack.first};
+			callback_pack.second.callback(info);
+			callback_pack.second.frequency = frequency_types::every_two_turns_from_next;
+			if (info.ended) {
+				callbacks_to_remove.push_back(callback_pack.first);
+			}
+
+		} else if (frequency == frequency_types::every_two_turns_from_next) {
+			callback_pack.second.frequency = frequency_types::every_two_turns_from_this;
+
+		} else if (frequency == frequency_types::after_n_rounds) {
+			if (++callback_pack.second.number_of_calls == callback_pack.second.duration * 2) {
+				turn_callback_info info{true,
+										callback_pack.first};
+				callback_pack.second.callback(info);
+				callbacks_to_remove.push_back(callback_pack.first);
+			}
+		}
+	}
+
+	for (auto&& callback_id : callbacks_to_remove) {
+		callbacks.erase(callback_id);
+	}
+
+	callbacks_to_remove.clear();
+
+	auto result = tasks.equal_range(turn_n);
 	auto it = result.first;
 	for (; it != result.second; ++it)
 	{
@@ -28,17 +66,5 @@ void turn_system::end_turn()
 
 void turn_system::on_turn(std::uint32_t turn_n, const std::function<void()>& task)
 {
-	tasks_.insert(std::make_pair(turn_n, task));
+	tasks.insert(std::make_pair(turn_n, task));
 }
-
-turn_system::strong_receiver turn_system::every_round(std::function<void()> callback)
-{
-	return every_round_signal_.add_receiver(std::make_shared<std::function<void()>>(callback));
-}
-
-turn_system::strong_receiver turn_system::every_turn(std::function<void()> callback)
-{
-	return every_turn_signal_.add_receiver(std::make_shared<std::function<void()>>(callback));
-}
-
-};

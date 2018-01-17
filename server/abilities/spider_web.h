@@ -25,6 +25,7 @@ private:
 private:
     std::uint32_t caster_id;
     std::int32_t damage = 6;
+	std::int32_t duration = 1;
 };
 
 #endif //PIGEONWAR_SPIDER_WEB_H

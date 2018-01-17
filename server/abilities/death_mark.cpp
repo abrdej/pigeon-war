@@ -24,15 +24,13 @@ void death_mark::use(std::uint32_t index_on) {
 
 	enemy_id = board::at(index_on);
 
-	auto death_mark_receiver =
-			turn::turn_system::every_turn([this, counter = 0]() mutable {
-				if (counter++ == death_mark_duration * 2) {
-					remove_component(enemy_id, "death_mark");
-					mark_removed = true;
+	auto death_mark_receiver = make_after_n_round_callback_holder(death_mark_duration,
+																  [this]() {
+		remove_component(enemy_id, "death_mark");
+		mark_removed = true;
 
-					set_damage_receiver(entity_id, entity_manager::get(entity_id).get<damage_taker>()->get_damage_receiver());
-				}
-			});
+		set_damage_receiver(entity_id, entity_manager::get(entity_id).get<damage_taker>()->get_damage_receiver());
+	});
 
 	add_component(enemy_id,
 				  "death_mark",

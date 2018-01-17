@@ -4,11 +4,12 @@
 #include "damage_dealers.h"
 #include "sender.h"
 #include "common/animations.h"
+#include "managers/players_manager.h"
 
 magic_bullet::magic_bullet(std::uint32_t entity_id) {
-    onEveryTurn([this, entity_id]() {
+    on_every_two_turns_from_this([this, entity_id]() {
 
-        if (players_manager::get_active_player_id() == players_manager::player_for_entity(entity_id)) {
+        if (players_manager::active_player_entity(entity_id)) {
             used = false;
             magic_power += magic_power_accumulation_amount;
 
@@ -52,7 +53,8 @@ std::string magic_bullet::hint() const {
             " magic points for each enemy in his neighborhood.\n"
             "Magic point can be used to deal damage equal to the amount of magic points.\n"
             "Additionally, half of the damage that monk receive firstly must destroys\n"
-                    " the magic shiled which is formed from this points.";
+                    " the magic shiled which is formed from this points.\n"
+            "Magic power: " + std::to_string(magic_power) + ".";
 
     return std::move(desc);
 }

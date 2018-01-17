@@ -22,6 +22,7 @@ private:
 private:
 	bool used{false};
 	const std::int32_t range{4};
+	const std::int32_t duration{1};
 };
 
 #endif //PIGEONWAR_HYPNOSIS_H

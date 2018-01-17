@@ -19,12 +19,8 @@ void invisibility::use(std::uint32_t on_index)
 
     hide_me();
 
-	receiver = turn::turn_system::every_turn([this]() {
-
-        if (++turn_counter_ == 2 * duration) {
-            show_me();
-            receiver.reset();
-        }
+	invisibility_callback = make_after_n_round_callback_holder(duration, [this]() {
+		show_me();
     });
 
 	used_ = true;

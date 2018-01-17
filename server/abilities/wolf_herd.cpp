@@ -1,7 +1,8 @@
 #include "wolf_herd.h"
-#include <core/states_controller.h>
-#include <entities/wolf.h>
-#include <managers/entity_manager.h>
+#include "core/states_controller.h"
+#include "entities/wolf.h"
+#include "managers/entity_manager.h"
+#include "managers/players_manager.h"
 #include <random>
 
 void wolf_herd::use(std::uint32_t index_on) {

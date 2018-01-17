@@ -41,22 +41,9 @@ void laser::use(std::uint32_t index_on) {
 				auto enemy_id = board::at(index);
 				damage_dealers::standard_damage_dealer(special_damage(damage, enemy_id, entity_id));
 
-				auto dmg_receiver = get_damage_receiver(enemy_id);
-
-				set_damage_receiver(enemy_id,
-													 [dmg_receiver, bonus_dmg = bonus_damage](health_field& health_pack, const damage_pack& dmg) mutable {
-
-														 auto damage = dmg_receiver(health_pack, dmg);
-
-														 if (damage > 0) {
-															 auto final_bonus_damage = std::min(health_pack.health, bonus_dmg);
-
-															 health_pack.health -= final_bonus_damage;
-
-															 damage += final_bonus_damage;
-														 }
-														 return damage;
-													 });
+				if (entity_manager::get(enemy_id).contain<modification>()) {
+					entity_manager::get(enemy_id).get<modification>()->modify_damage_receiver_modifier_by(bonus_damage);
+				}
 			}
 		}
 	} else {
@@ -68,21 +55,9 @@ void laser::use(std::uint32_t index_on) {
 				auto enemy_id = board::at(index);
 				damage_dealers::standard_damage_dealer(special_damage(damage, board::at(index), entity_id));
 
-				auto dmg_receiver = get_damage_receiver(enemy_id);
-
-				set_damage_receiver(enemy_id,
-													 [dmg_receiver, bonus_dmg = bonus_damage](health_field& health_pack,
-																		  const damage_pack& dmg) mutable {
-
-														 auto damage = dmg_receiver(health_pack, dmg);
-
-														 auto final_bonus_damage = std::min(health_pack.health,
-																							bonus_dmg);
-
-														 health_pack.health -= final_bonus_damage;
-
-														 return damage + final_bonus_damage;
-													 });
+				if (entity_manager::get(enemy_id).contain<modification>()) {
+					entity_manager::get(enemy_id).get<modification>()->modify_damage_receiver_modifier_by(bonus_damage);
+				}
 			}
 		}
 	}
