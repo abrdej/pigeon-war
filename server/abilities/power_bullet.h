@@ -22,7 +22,7 @@ private:
     void use(std::uint32_t index_on) override;
 
 private:
-    const std::int32_t full_damage = 16;
+    const std::int32_t full_damage = 12;
     const std::int32_t damage_with_power_bullet_effect = 4;
     const std::int32_t duration_of_effect = 1;
 };

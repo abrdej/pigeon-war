@@ -30,13 +30,19 @@ void state_controller::first_state(std::uint32_t select_from_index)
 
 	selected_index_ = select_from_index;
 	std::uint32_t selected_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(selected_index);
-	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
 
-	if (abilities_ptr->is_active) {
-		auto moveable = abilities_ptr->at(0);
-		if (moveable) {
-			moveable->operator()(states::state_controller::selected_index_);
+	auto entity_id = board::at(selected_index);
+	auto entity = entity_manager::get(entity_id);
+
+	if (entity.contain<abilities>()) {
+
+		auto abilities_ptr = entity.get<abilities>();
+
+		if (abilities_ptr->is_active) {
+			auto moveable = abilities_ptr->at(0);
+			if (moveable) {
+				moveable->operator()(states::state_controller::selected_index_);
+			}
 		}
 	}
 }

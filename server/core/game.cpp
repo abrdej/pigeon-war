@@ -75,12 +75,17 @@ void game::on_button(std::uint32_t n)
 		}
 
 		auto entity_id = board::at(selected_index);
-		auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+		auto entity = entity_manager::get(entity_id);
 
-		if (abilities_ptr->is_active) {
-			auto entity_ability = abilities_ptr->at(n);
-			if (entity_ability) {
-				entity_ability->operator()(states::state_controller::selected_index_);
+		if (entity.contain<abilities>()) {
+
+			auto abilities_ptr = entity.get<abilities>();
+
+			if (abilities_ptr->is_active) {
+				auto entity_ability = abilities_ptr->at(n);
+				if (entity_ability) {
+					entity_ability->operator()(states::state_controller::selected_index_);
+				}
 			}
 		}
 	}
@@ -105,14 +110,18 @@ void game::on_button(std::uint32_t n)
 std::string game::get_button_description(std::uint32_t selected_index, std::uint32_t n) {
 
 	auto entity_id = board::at(selected_index);
-	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto entity = entity_manager::get(entity_id);
 
 	std::string description;
 
-	if (abilities_ptr->is_active) {
-		auto entity_ability = abilities_ptr->at(n);
-		if (entity_ability) {
-			description = entity_ability->hint();
+	if (entity.contain<abilities>()) {
+		auto abilities_ptr = entity.get<abilities>();
+
+		if (abilities_ptr->is_active) {
+			auto entity_ability = abilities_ptr->at(n);
+			if (entity_ability) {
+				description = entity_ability->hint();
+			}
 		}
 	}
 
