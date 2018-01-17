@@ -53,11 +53,13 @@ local_state get_local_state(game& g) {
 
 		state.button_bitmaps[0] = entity.get<bitmap_field>()->bmt_key;
 
-		auto abilities_ptr = entity.get<abilities>();
-		for (std::int32_t i = 1; i < 6; ++i) {
-			auto ability = abilities_ptr->at(i - 1);
-			if (ability) {
-				state.button_bitmaps[i] = ability->get_bitmap_key();
+		if (entity.contain<abilities>()) {
+			auto abilities_ptr = entity.get<abilities>();
+			for (std::int32_t i = 1; i < 6; ++i) {
+				auto ability = abilities_ptr->at(i - 1);
+				if (ability) {
+					state.button_bitmaps[i] = ability->get_bitmap_key();
+				}
 			}
 		}
 	}
