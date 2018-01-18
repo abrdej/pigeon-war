@@ -4,8 +4,8 @@
 #include "sender.h"
 #include "common/animations.h"
 
-bludgeon::bludgeon() {
-	on_every_two_turns_from_next([this]() {
+bludgeon::bludgeon(std::uint32_t entity_id) {
+	after_player_turn(entity_id, [this]() {
 		if (!used) {
 			rage_damage = std::max(0, rage_damage - 1);
 		}
@@ -15,6 +15,9 @@ bludgeon::bludgeon() {
 
 void bludgeon::use(std::uint32_t index_on)
 {
+	if (used)
+		return;
+
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
@@ -62,4 +65,6 @@ void bludgeon::use(std::uint32_t index_on)
 	rage_damage += 1;
 
 	std::cout << "Rage damage :" << rage_damage << "\n";
+
+	used = true;
 }

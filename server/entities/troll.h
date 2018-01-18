@@ -24,7 +24,7 @@ struct troll final
 
 		auto abilities_ptr = entity.add<abilities>();
 		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(2));
-		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<bludgeon>());
+		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<bludgeon>(entity.entity_id));
 		abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<rage>(entity.entity_id));
 		abilities_ptr->add_ability(abilities::ability_types::defensive, std::make_shared<regeneration>(entity.entity_id));
 

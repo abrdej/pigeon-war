@@ -11,7 +11,7 @@
 class bludgeon final : public straight_target_ability<1>, turn_callback_helper
 {
 public:
-	bludgeon();
+	explicit bludgeon(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::bludgeon;
