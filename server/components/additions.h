@@ -14,11 +14,21 @@ struct addition {
 
     template <typename T>
     std::shared_ptr<T> get_named(const std::string& name) {
-        return std::static_pointer_cast<T>(named_data.at(name));
+        try {
+            return std::static_pointer_cast<T>(named_data.at(name));
+        } catch (std::out_of_range& e) {
+            std::cout << "addition::get_named for " + name + " out of range error.\n";
+            return std::shared_ptr<T>();
+        }
     }
     template <typename T>
     const std::shared_ptr<T> get_named(const std::string& name) const {
-        return std::static_pointer_cast<T>(named_data.at(name));
+        try {
+            return std::static_pointer_cast<T>(named_data.at(name));
+        } catch (std::out_of_range& e) {
+            std::cout << "addition::get_named for " + name + " out of range error.\n";
+            return std::shared_ptr<T>();
+        }
     }
     template <typename T, typename... Args>
     void put_named(const std::string& name, const std::shared_ptr<T>& x) {
