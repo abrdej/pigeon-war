@@ -10,16 +10,23 @@
 #include <thread>
 #include <atomic>
 #include <SFML/Network.hpp>
-//#include <tbb/concurrent_queue.h>
 #include <boost/lockfree/spsc_queue.hpp>
 #include <common/message_types.h>
 #include "packets_makers.h"
 #include "components/damage_taker.h"
 
-auto get_bitmaps() {
-	std::unordered_map<std::uint32_t, bitmap_key> returned_map;
+//auto get_bitmaps() {
+//	std::unordered_map<std::uint32_t, bitmap_key> returned_map;
+//	entity_manager::for_all([&returned_map](base_entity entity) {
+//		returned_map.insert(std::make_pair(entity.entity_id, entity.get<bitmap_field>()->bmt_key));
+//	});
+//	return std::move(returned_map);
+//}
+
+auto get_names() {
+	std::unordered_map<std::uint32_t, std::string> returned_map;
 	entity_manager::for_all([&returned_map](base_entity entity) {
-		returned_map.insert(std::make_pair(entity.entity_id, entity.get<bitmap_field>()->bmt_key));
+		returned_map.insert(std::make_pair(entity.entity_id, entity.name));
 	});
 	return std::move(returned_map);
 }
@@ -96,7 +103,7 @@ struct server {
 							// accept client and send data
 							send_notification_to(client_id, make_packet(message_types::player_id, static_cast<int>(client_id)));
 							send_notification_to(client_id, make_packet(message_types::board, board::fields_));
-							send_notification_to(client_id, make_packet(message_types::entities_bitmaps, get_bitmaps()));
+							send_notification_to(client_id, make_packet(message_types::entities_names, get_names()));
 							send_notification_to(client_id, make_packet(message_types::healths, get_healths()));
 						}
 					}

@@ -13,13 +13,14 @@
 #include <unordered_map>
 #include "packet_helper.h"
 #include "define_packet.h"
+#include "json.hpp"
 
 static const auto no_selection = std::numeric_limits<std::uint32_t>::max();
 
 struct game_state {
 	board_container board;
 	std::unordered_map<std::uint32_t, std::int32_t> healths;
-	std::unordered_map<std::uint32_t, bitmap_key> entities_bitmaps;
+	std::unordered_map<std::uint32_t, std::string> entities_names;
 	std::unordered_map<std::uint32_t, std::vector<std::string>> entities_additional_effects;
 	std::vector<animation_pack> animations_queue;
 };
@@ -33,7 +34,7 @@ struct local_state {
 	std::string entity_name;
 };
 
-PACKET_DEFINE4(game_state, board, healths, entities_bitmaps, entities_additional_effects)
+PACKET_DEFINE4(game_state, board, healths, entities_names, entities_additional_effects)
 
 PACKET_DEFINE6(local_state, possible_movements, valid_movements, selected_index, actual_target_type,  button_bitmaps, entity_name)
 

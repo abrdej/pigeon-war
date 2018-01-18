@@ -7,6 +7,7 @@
 #include <core/board.h>
 #include <common/turn_status.h>
 #include <common/message_types.h>
+#include <gui/drawer_factory.h>
 #include "caller.h"
 #include "requests.h"
 #include "animations_service.h"
@@ -74,11 +75,11 @@ void pigeon_war_client::receive_messages() {
 
 			unpack(packet, state.board.fields_);
 
-		} else if (message == message_types::entities_bitmaps) {
-			unpack(packet, state.entities_bitmaps);
+		} else if (message == message_types::entities_names) {
+			unpack(packet, state.entities_names);
 
-			for (auto&& bitmap_pack : state.entities_bitmaps) {
-				drawing_manager::add_component(bitmap_pack.first, std::make_shared<entity_drawer>(bitmap_pack.first, bitmap_pack.second));
+			for (auto&& names_pack : state.entities_names) {
+				drawing_manager::add_component(names_pack.first, drawer_factory::create(names_pack.first, names_pack.second));
 			}
 
 		} else if (message == message_types::healths) {

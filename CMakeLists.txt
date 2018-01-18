@@ -195,7 +195,7 @@ set(CLIENT_SOURCE_FILES
         common/game_state.h
         common/states.h
         common/animations.h
-        common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h server/entities/golem.h server/entities/sorcerer.h common/message_types.h client/animations_service.cpp client/animations_service.h client/animations_handlers.cpp client/animations_handlers.h client/menu/menu.cpp client/menu/menu.h common/effects.h client/gui/hint.cpp client/gui/hint.h client/screen.h client/menu_screen.cpp client/menu_screen.h server/effects/base_effect.h server/effects/poison_effect.h server/entities/combat_robot.h)
+        common/turn_status.h common/add_enum.h common/packet_helper.h common/define_packet.h common/utils.h caller.h client/requests.cpp client/requests.h server/entities/golem.h server/entities/sorcerer.h common/message_types.h client/animations_service.cpp client/animations_service.h client/animations_handlers.cpp client/animations_handlers.h client/menu/menu.cpp client/menu/menu.h common/effects.h client/gui/hint.cpp client/gui/hint.h client/screen.h client/menu_screen.cpp client/menu_screen.h server/effects/base_effect.h server/effects/poison_effect.h server/entities/combat_robot.h client/gui/drawer_factory.cpp client/gui/drawer_factory.h common/messages/messages.cpp common/messages/messages.h)
 
 add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
 target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})

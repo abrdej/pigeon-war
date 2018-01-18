@@ -17,6 +17,8 @@
 #include "common/packet_helper.h"
 #include "sender.h"
 #include "cbor/cbor.h"
+#include "json.hpp"
+#include "common/messages/messages.h"
 
 game_state get_game_state(game& g) {
 
@@ -29,7 +31,7 @@ game_state get_game_state(game& g) {
 		}
 	}
 
-	state.entities_bitmaps = get_bitmaps();
+	state.entities_names = get_names();
 	state.entities_additional_effects = get_additions();
 
 	return std::move(state);
@@ -84,9 +86,9 @@ int main() {
 
 	server binder;
 
-	animations_queue::set_pull_function([&binder](){
-		binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
-	});
+//	animations_queue::set_pull_function([&binder](){
+//		binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
+//	});
 
 	sender::set_sender([&binder](sf::Packet packet) {
 		binder.send_notification(packet);
@@ -107,7 +109,7 @@ int main() {
 		if (client_id == players_manager::get_active_player_id() || single_client) {
 			g.on_board(x, y);
 
-			binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
+//			binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
 			binder.send_notification(make_packet(message_types::local_state, get_local_state(g)));
 			binder.send_notification(make_packet(message_types::game_state, get_game_state(g)));
 
@@ -144,7 +146,7 @@ int main() {
 				binder.send_notification(result_packet);
 			}
 
-			binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
+//			binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
 
 			binder.send_notification(make_packet(message_types::local_state, get_local_state(g)));
 			binder.send_notification(make_packet(message_types::game_state, get_game_state(g)));
