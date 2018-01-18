@@ -275,12 +275,8 @@ void for_each(Tuple&& tuple, F&& f) {
                   std::make_index_sequence<N>{});
 }
 
-void skirmish(game& game) {
-
+void set_trees() {
     using creator_helper::pos;
-
-    //creator_helper::create_neutral_many<fire>({pos(7, 4)});
-
     std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
     for (std::int32_t i = 0; i < board::cols_n; ++i) {
         for (std::int32_t j = 0; j < board::rows_n; ++j) {
@@ -292,19 +288,36 @@ void skirmish(game& game) {
 
     create_trees_1();
     creator_helper::create_neutral_many<tree>(trees_positions);
+}
 
-//    creator_helper::create_neutral_many<fir>({pos(6, 1), pos(7, 1), pos(6, 2), pos(7, 2)});
-//    creator_helper::create_neutral_many<fir>({pos(10, 1), pos(11, 1), pos(10, 2), pos(11, 2)});
-//    creator_helper::create_neutral_many<fir>({pos(7, 7), pos(8, 7), pos(7, 8), pos(8, 8)});
-//    creator_helper::create_neutral_many<fir>({pos(3, 7), pos(4, 7), pos(3, 8), pos(4, 8)});
+void set_fires() {
 
+    using creator_helper::pos;
+    std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
+    for (std::int32_t i = 0; i < board::cols_n; ++i) {
+        for (std::int32_t j = 0; j < board::rows_n; ++j) {
+            if (i == 0 || j == 0 || i == board::cols_n - 1|| j == board::rows_n - 1) {
+                trees_positions.push_back(pos(i, j));
+            }
+        }
+    }
 
-//    creator_helper::create_neutral_many<wall>({pos(4, 4), pos(4, 5)});
-//    creator_helper::create_neutral_many<wall>({pos(10, 5), pos(10, 6)});
+    creator_helper::create_neutral_many<fir>(trees_positions);
 
-//    creator_helper::create_neutral_many<fir>({pos(6, 4), pos(7, 4), pos(6, 5), pos(7, 5)});
+//    creator_helper::create_neutral_many<fire>({pos(7, 4)});
+    creator_helper::create_neutral_many<fir>({pos(6, 1), pos(7, 1), pos(6, 2), pos(7, 2)});
+    creator_helper::create_neutral_many<fir>({pos(10, 1), pos(11, 1), pos(10, 2), pos(11, 2)});
+    creator_helper::create_neutral_many<fir>({pos(7, 7), pos(8, 7), pos(7, 8), pos(8, 8)});
+    creator_helper::create_neutral_many<fir>({pos(3, 7), pos(4, 7), pos(3, 8), pos(4, 8)});
+    creator_helper::create_neutral_many<wall>({pos(4, 4), pos(4, 5)});
+    creator_helper::create_neutral_many<wall>({pos(10, 5), pos(10, 6)});
+    creator_helper::create_neutral_many<fir>({pos(6, 4), pos(7, 4), pos(6, 5), pos(7, 5)});
+}
 
+void skirmish(game& game) {
+    using creator_helper::pos;
 
+    set_fires();
 
     std::vector<std::pair<std::uint32_t, std::uint32_t>> init_positions = {
             pos(5, 2),
