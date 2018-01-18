@@ -36,7 +36,7 @@ void sword_blow::use(std::uint32_t index_on) {
         }
     }
 
-    if (hit_entities_counter == 3) {
+    if (hit_entities_counter >= 3) {
 
         sender::send(message_types::animation, animation_def::sword_blow, used_from_index);
 

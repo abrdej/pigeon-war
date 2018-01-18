@@ -8,9 +8,11 @@
 #include "per_turn_usable.h"
 #include "straight_target_ability.h"
 
-class bludgeon final : public straight_target_ability<1>, per_turn_usable
+class bludgeon final : public straight_target_ability<1>, turn_callback_helper
 {
 public:
+	bludgeon();
+
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::bludgeon;
 	}
@@ -19,8 +21,10 @@ private:
 	void use(std::uint32_t index_on) override;
 
 private:
+	bool used{false};
 	const std::int32_t range = 1;
 	const std::int32_t damage = 6;
+	std::int32_t rage_damage{0};
 };
 
 #endif //PIGEONWAR_BLUDGEON_H

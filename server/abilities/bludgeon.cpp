@@ -4,6 +4,15 @@
 #include "sender.h"
 #include "common/animations.h"
 
+bludgeon::bludgeon() {
+	on_every_two_turns_from_next([this]() {
+		if (!used) {
+			rage_damage = std::max(0, rage_damage - 1);
+		}
+		used = false;
+	});
+}
+
 void bludgeon::use(std::uint32_t index_on)
 {
 	auto used_from_index = states::state_controller::selected_index_;
@@ -34,7 +43,7 @@ void bludgeon::use(std::uint32_t index_on)
 					 index_on,
 					 push_to_index);
 
-		damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
+		damage_dealers::standard_damage_dealer(melee_damage(damage + rage_damage, enemy_id, entity_id));
 
 		states::state_controller::possible_movements_.clear();
 		states::state_controller::selected_index_ = set_on_index;
@@ -45,8 +54,10 @@ void bludgeon::use(std::uint32_t index_on)
 					 used_from_index,
 					 index_on);
 
-		damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
+		damage_dealers::standard_damage_dealer(melee_damage(damage + rage_damage, enemy_id, entity_id));
 
 		states::state_controller::possible_movements_.clear();
 	}
+
+	rage_damage += 1;
 }

@@ -14,7 +14,11 @@ struct entities_renderer {
 
 		board.for_each([this, &healths, &window](std::uint32_t entity_id, std::uint32_t col, std::uint32_t row) {
 			if (entity_id != -1) {
-				drawing_manager::drawer_for(entity_id)->draw(window, col, row, healths.at(entity_id));
+				try {
+					drawing_manager::drawer_for(entity_id)->draw(window, col, row, healths.at(entity_id));
+				} catch (...) {
+					std::cout << "renderer out of range\n";
+				}
 			}
 		});
 	}
