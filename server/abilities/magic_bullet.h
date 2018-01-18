@@ -25,7 +25,7 @@ private:
 private:
     std::int32_t magic_power{0};
     std::int32_t magic_power_accumulation_amount{10};
-    std::int32_t magic_power_drain_amount{5};
+    std::int32_t magic_power_drain_amount{4};
     bool used{false};
 };
 
