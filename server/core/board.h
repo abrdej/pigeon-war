@@ -13,35 +13,61 @@ public:
 	static const std::uint32_t rows_n = 10;
 	static const std::uint32_t empty_id = std::numeric_limits<std::uint32_t>::max();
 
+	static std::function<void()> observer;
+
+	template <typename Observer>
+	static void set_observer(Observer x) {
+		//observer = x;
+	}
+
 	inline static void insert(std::uint32_t on_index, std::uint32_t entity_id)
 	{
 		fields_[on_index].push_back(entity_id);
+
+		if (observer)
+			observer();
 	}
 	inline static void remove(std::uint32_t from_index)
 	{
 		fields_[from_index].pop_back();
+
+		if (observer)
+			observer();
 	}
 	inline static void move(std::uint32_t from_index, std::uint32_t to_index)
 	{
 		auto entity_id = fields_[from_index].back();
 		fields_[from_index].pop_back();
 		fields_[to_index].push_back(entity_id);
+
+		if (observer)
+			observer();
 	}
 	inline static std::uint32_t take(std::uint32_t from_index)
 	{
 		auto entity_id = fields_[from_index].back();
 		fields_[from_index].pop_back();
+
+		if (observer)
+			observer();
+
 		return entity_id;
 	}
 	inline static std::uint32_t take_bottom(std::uint32_t from_index)
 	{
 		auto entity_id = fields_[from_index].front();
 		fields_[from_index].erase(std::begin(fields_[from_index]));
+
+		if (observer)
+			observer();
+
 		return entity_id;
 	}
 	inline static void give_back(std::uint32_t entity_id, std::uint32_t to_index)
 	{
 		fields_[to_index].push_back(entity_id);
+		if (observer)
+			observer();
 	}
 	inline static std::uint32_t at(std::uint32_t at_index)
 	{
@@ -81,6 +107,9 @@ public:
 				break;
 			}
 		}
+
+		if (observer)
+			observer();
 	}
 	inline static void for_each(const std::function<void(std::uint32_t entity_id, std::uint32_t col, std::uint32_t row)>& func) {
 		for (std::uint32_t i = 0; i < fields_.size(); ++i)

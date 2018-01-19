@@ -35,8 +35,8 @@ void pigeon_war_client::run()
 
 	//sf::IpAddress adress();
 
-	auto status = socket.connect("80.211.186.19", 443);
-//	auto status = socket.connect("127.0.0.1", 5555);
+//	auto status = socket.connect("80.211.186.19", 443);
+	auto status = socket.connect("127.0.0.1", 5555);
 
 	std::cout << "Status: " << static_cast<std::int32_t>(status) << "\n";
 

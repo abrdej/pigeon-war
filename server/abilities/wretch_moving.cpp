@@ -51,7 +51,7 @@ void wretch_moving::move(std::uint32_t index_to) {
     std::int32_t cost = states::state_controller::possible_movements_costs_[i];
     std::cout << "cost: " << cost << "\n";
 
-    entity_manager::get(entity_id).get<power_field>()->power =- power_decrease_for_cost * cost;
+    entity_manager::get(entity_id).get<power_field>()->power -= power_decrease_for_cost * cost;
 
     range = 0;
 
