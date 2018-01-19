@@ -17,7 +17,7 @@ public:
 
 	template <typename Observer>
 	static void set_observer(Observer x) {
-		//observer = x;
+		observer = x;
 	}
 
 	inline static void insert(std::uint32_t on_index, std::uint32_t entity_id)

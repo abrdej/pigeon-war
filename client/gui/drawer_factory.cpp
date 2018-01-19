@@ -40,7 +40,8 @@ std::shared_ptr<drawable> drawer_factory::create(std::uint32_t entity_id, const 
 			{"Water", bitmap_key::water},
 			{"Werewolf", bitmap_key::werewolf},
 			{"Wolf", bitmap_key::wolf},
-			{"Wretch", bitmap_key::wretch}
+			{"Wretch", bitmap_key::wretch},
+			{"Druid", bitmap_key::druid}
 	};
 
 

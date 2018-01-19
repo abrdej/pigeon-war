@@ -17,33 +17,35 @@ void poisoned_missile::use(std::uint32_t index_on) {
 
     sender::send(message_types::animation, animation_def::poisoned_missile, from_index, index_on);
 
+    auto enemy_id = board::at(index_on);
+
     damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
 
-    auto enemy_id = board::at(index_on);
-    auto poison_power = this->poison_power;
-    auto poison_duration = this->poison_duration;
+    if (entity_manager::alive(enemy_id)) {
 
+        auto poison_power = this->poison_power;
+        auto poison_duration = this->poison_duration;
 
+        auto poison_receiver = make_every_two_turns_from_next_callback_holder(poison_duration,
+                                                                              [enemy_id, poison_power](const turn_callback_info& info) mutable {
 
-    auto poison_receiver = make_every_two_turns_from_next_callback_holder(poison_duration,
-                                                    [enemy_id, poison_power](const turn_callback_info& info) mutable {
+                                                                                  sender::send(message_types::animation, animation_def::poison, board::index_for(enemy_id));
 
-                                                        sender::send(message_types::animation, animation_def::poison, board::index_for(enemy_id));
+                                                                                  damage_dealers::standard_damage_dealer(special_damage(poison_power, enemy_id));
 
-                                                        damage_dealers::standard_damage_dealer(special_damage(poison_power, enemy_id));
+                                                                                  if (info.ended) {
 
-                                                        if (info.ended) {
+                                                                                      if (entity_manager::alive(enemy_id)) {
+                                                                                          remove_component(enemy_id,
+                                                                                                           "poison");
+                                                                                      }
+                                                                                  }
+                                                                              });
 
-                                                            if (entity_manager::alive(enemy_id)) {
-                                                                remove_component(enemy_id,
-                                                                                 "poison");
-                                                            }
-                                                        }
-    });
-
-    add_component(enemy_id,
-                  "poison",
-                  std::move(poison_receiver));
+        add_component(enemy_id,
+                      "poison",
+                      std::move(poison_receiver));
+    }
 
     auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
     auto moveable_ptr = std::static_pointer_cast<moveable>(abilities_ptr->type(abilities::ability_types::moving));

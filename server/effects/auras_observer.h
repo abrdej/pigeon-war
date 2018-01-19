@@ -36,10 +36,15 @@ public:
 	}
 
 	static void observe() {
+
+		std::vector<bool> entities_to_remove_aura(get_instance().entities_with_auras.size(), true);
+
 		for (auto&& entity_with_aura_pack : get_instance().entities_with_auras) {
-//			entity_with_aura_pack.second->remove_effect(entity_with_aura_pack.first);
+			entity_with_aura_pack.second->remove_effect(entity_with_aura_pack.first);
 		}
 		get_instance().entities_with_auras.clear();
+
+
 		for (auto&& aura_pack : get_instance().auras) {
 			auto board_index = board::index_for(aura_pack.first);
 
@@ -48,7 +53,9 @@ public:
 
 			for (auto&& neighbour_index : neighbors) {
 				if (!board::empty(neighbour_index)) {
-					aura_pack.second->set_effect(board::at(neighbour_index));
+
+					auto entity_id = board::at(neighbour_index);
+					aura_pack.second->set_effect(entity_id);
 					get_instance().entities_with_auras.emplace_back(board::at(neighbour_index), aura_pack.second);
 				}
 			}
