@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <unordered_map>
+#include <functional>
 #include <memory>
 #include <unordered_set>
 #include <managers/players_manager.h>
@@ -13,13 +14,8 @@ enum class frequency_types {
 	every_turn,
 	every_two_turns_from_this,
 	every_two_turns_from_next,
-	after_n_rounds
-};
-
-struct turn_callback {
-	std::function<void()> callback;
-	bool ended{false};
-	std::uint32_t callback_id;
+	after_n_rounds,
+    after_n_turns
 };
 
 struct turn_callback_info {
@@ -33,9 +29,9 @@ class turn_system
 		callback_pack() = default;
 		callback_pack(frequency_types frequency,
 					  int32_t duration,
-					  const std::function<void(turn_callback_info&)>& callback)
+					  std::function<void(turn_callback_info&)> callback)
 				: frequency(frequency),
-				  callback(callback),
+				  callback(std::move(callback)),
 				  duration(duration),
 				  number_of_calls(0) {}
 
@@ -61,7 +57,7 @@ public:
 
 		std::uint32_t callback_id = get_callback_id();
 
-		callbacks_to_set.push_back(std::make_pair(callback_id, callback_pack(frequency, duration, callback)));
+		callbacks_to_set.emplace_back(callback_id, callback_pack(frequency, duration, callback));
 
 		return callback_id;
 	}
@@ -72,9 +68,9 @@ public:
 
 		std::uint32_t callback_id = get_callback_id();
 
-		callbacks_to_set.push_back(std::make_pair(callback_id, callback_pack(frequency, duration, [callback](turn_callback_info&) {
+		callbacks_to_set.emplace_back(callback_id, callback_pack(frequency, duration, [callback](turn_callback_info&) {
 			callback();
-		})));
+		}));
 
 		return callback_id;
 	}
@@ -139,6 +135,15 @@ inline auto make_after_n_round_callback_holder(std::int32_t duration,
 	return make_callback_holder(turn_system::set_callback(frequency_types::after_n_rounds,
 														  duration,
 														  callback));
+}
+
+template <typename Callback>
+inline auto make_after_n_turns_callback_holder(std::int32_t duration,
+                                               Callback callback) {
+
+    return make_callback_holder(turn_system::set_callback(frequency_types::after_n_turns,
+                                                          duration,
+                                                          callback));
 }
 
 template <typename Callback>

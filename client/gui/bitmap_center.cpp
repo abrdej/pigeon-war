@@ -28,7 +28,7 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::moveable, "moving.png");
     add_bitmap(bitmap_key::wolf, "wolf.png");
     add_bitmap(bitmap_key::werewolf, "werewolf.png");
-    add_bitmap(bitmap_key::drain, "wolfwere_claws.png");
+    add_bitmap(bitmap_key::drain, "drain.png");
     add_bitmap(bitmap_key::basic_melee_attack, "damage.png");
     add_bitmap(bitmap_key::bum, "bum.png");
     add_bitmap(bitmap_key::claws, "claws.png");
@@ -44,7 +44,7 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::sword_blow, "sword_blow.png");
     add_bitmap(bitmap_key::troll, "troll.png");
     add_bitmap(bitmap_key::bludgeon, "bludgeon.png");
-    add_bitmap(bitmap_key::rage, "hello.png");
+    add_bitmap(bitmap_key::rage, "rage.png");
     add_bitmap(bitmap_key::mouse, "rattati.png");
     add_bitmap(bitmap_key::poisoned_missile, "poisoned_missile.png");
     add_bitmap(bitmap_key::droid, "droid.png");
@@ -72,7 +72,7 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::barrack, "barrack.png");
     add_bitmap(bitmap_key::thrower, "mouse.png");
     add_bitmap(bitmap_key::flame_thrower, "flame_thrower.png");
-    add_bitmap(bitmap_key::counterattack, "native.png");
+    add_bitmap(bitmap_key::counterattack, "counter_attack.png");
     add_bitmap(bitmap_key::guardian, "guardian.png");
     add_bitmap(bitmap_key::spear, "spear.png");
     add_bitmap(bitmap_key::shield, "shield.png");
@@ -90,7 +90,7 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::robot, "robot.png");
     add_bitmap(bitmap_key::spider, "spider.png");
     add_bitmap(bitmap_key::spider_web, "web.png");
-    add_bitmap(bitmap_key::surroundings, "spider.png");
+    add_bitmap(bitmap_key::surroundings, "surroundings.png");
     add_bitmap(bitmap_key::detonation, "detonation.png");
     add_bitmap(bitmap_key::sniper, "sniper.png");
     add_bitmap(bitmap_key::sniper_shot, "sniper_shoot.png");
@@ -153,8 +153,20 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::warrior_immortal, "warrior_imm.png");
     add_bitmap(bitmap_key::prison_connection, "prison_connection.png");
     add_bitmap(bitmap_key::poison_effect, "poison_effect.png");
-    add_bitmap(bitmap_key::rocket, "flame_thrower.png");
+    add_bitmap(bitmap_key::rocket, "rocket_thrower.png");
+    add_bitmap(bitmap_key::change_rocket_type, "mortar_thrower.png");
     add_bitmap(bitmap_key::combat_robot, "combat_robot.png");
     add_bitmap(bitmap_key::druid, "druid.png");
+    add_bitmap(bitmap_key::cure, "cure.png");
+    add_bitmap(bitmap_key::cure_anim, "cure_anim.png");
+    add_bitmap(bitmap_key::portal, "portal.png");
+    add_bitmap(bitmap_key::portal_1, "portal_1.png");
+    add_bitmap(bitmap_key::portal_2, "portal_2.png");
+    add_bitmap(bitmap_key::portal_3, "portal_3.png");
+    add_bitmap(bitmap_key::lightning, "lightning.png");
+    add_bitmap(bitmap_key::lightning_prepare, "lightning_prepare.png");
+    add_bitmap(bitmap_key::ball_and_chain, "ball_and_chain.png");
+    add_bitmap(bitmap_key::soul_hunter, "soul_hunter.png");
+    add_bitmap(bitmap_key::suck_the_soul, "soul.png");
 }
 }

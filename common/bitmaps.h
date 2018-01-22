@@ -144,7 +144,19 @@ enum class bitmap_key {
 	poison_effect,
 	rocket,
 	combat_robot,
-	druid
+	druid,
+    cure,
+    cure_anim,
+    portal,
+	portal_1,
+	portal_2,
+	portal_3,
+	lightning,
+	lightning_prepare,
+	change_rocket_type,
+	ball_and_chain,
+    soul_hunter,
+	suck_the_soul
 };
 
 struct bitmaps_key_hash

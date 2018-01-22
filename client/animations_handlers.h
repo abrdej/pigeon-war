@@ -300,5 +300,26 @@ struct rocket_launcher_handler : shot_base_handler<bitmap_key::rocket, bitmap_ke
 
 };
 
+struct portal_handler : base_handler {
+	void handle(sf::Packet& packet, game_state& g_state) override;
+};
+
+struct cure_handler : bitmap_flush_base_handler<bitmap_key::cure_anim> {
+
+};
+
+struct lightning_prepare_handler : bitmap_flush_base_handler<bitmap_key::lightning_prepare> {
+
+};
+
+struct lightning_handler : bitmap_flush_base_handler<bitmap_key::lightning> {
+
+};
+
+struct soul_out_handler : bitmap_flush_base_handler<bitmap_key::suck_the_soul> {
+
+};
+
+
 
 #endif //PIGEONWAR_ANIMATIONS_HANDLERS_H

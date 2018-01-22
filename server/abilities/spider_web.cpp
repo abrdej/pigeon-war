@@ -43,7 +43,7 @@ void spider_web::use(std::uint32_t index_on) {
         auto moveable_backup =  enemy_abilities_ptr->type(abilities::ability_types::moving);
         enemy_abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(1));
 
-        auto slow_down_receiver = make_after_n_round_callback_holder(duration,
+        auto slow_down_receiver = make_after_n_turns_callback_holder(duration,
                                            [enemy_id, moveable_backup]() mutable {
 
                                                auto inner_enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();

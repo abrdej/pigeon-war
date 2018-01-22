@@ -2,8 +2,14 @@
 #include <common/animations.h>
 #include <core/board.h>
 #include <managers/players_manager.h>
+#include <managers/entity_manager.h>
+#include <components/power_field.h>
 #include "portal.h"
 #include "possible_move_helper.h"
+
+portal::portal(std::uint32_t entity_id) : entity_id(entity_id) {
+
+}
 
 void portal::prepare(std::uint32_t for_index) {
 
@@ -19,7 +25,13 @@ void portal::prepare(std::uint32_t for_index) {
 }
 
 void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
+
 	if (used)
+		return;
+
+	auto& power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+
+	if (power < power_cost)
 		return;
 
 	auto center_pos = board::to_pos(from_index);
@@ -27,6 +39,8 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
 
 	std::vector<std::uint32_t> around_fields_ids;
 	board_helper::neighboring_fields(from_index, around_fields_ids, false);
+
+    std::vector<std::pair<std::uint32_t, std::uint32_t>> neighboring_moves;
 
 	for (auto&& field_id : around_fields_ids) {
 		if (!board::empty(field_id) && !players_funcs::neutral_entity(field_id)) {
@@ -43,19 +57,18 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
 
 			if (board::empty(dest_index)) {
 				board::move(field_id, dest_index);
+                neighboring_moves.emplace_back(field_id, dest_index);
 			}
 		}
 	}
 
 	board::move(from_index, to_index);
 
-	sender::send(message_types::animation, animation_def::teleport, from_index, to_index);
-
-
-
-
+	sender::send(message_types::animation, animation_def::portal, from_index, to_index, neighboring_moves);
 
 	states::state_controller::selected_index_ = to_index;
 
-	//used = true;
+	power -= power_cost;
+
+	used = true;
 }

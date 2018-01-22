@@ -14,14 +14,16 @@ public:
 	explicit cure(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::assassin_slash;
+		return bitmap_key::cure;
 	}
 
 private:
 	void use(std::uint32_t index_on) override;
 
 	std::uint32_t entity_id;
-	std::int32_t cure_amount{10};
+	std::int32_t healing_amount_per_turn{4};
+	std::int32_t healing_duration{2};
+	std::int32_t power_cost{6};
 };
 
 

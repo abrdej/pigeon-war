@@ -6,14 +6,36 @@
 #include <functional>
 #include "effects/base_effect.h"
 
-struct aura_setter {
-	void set_aura(std::uint32_t index, const std::shared_ptr<effect>& aura);
-	void remove_auras(std::uint32_t index);
+class moveable_base {
+    using move_callback_type = std::function<void(std::uint32_t, std::uint32_t, std::int32_t)>;
 
-	std::vector<std::uint32_t> effect_ids;
+    std::unordered_map<std::uint32_t, moveable_base::move_callback_type> move_callbacks;
+
+protected:
+    void call_move_callbacks(std::uint32_t from_index, std::uint32_t to_index, std::int32_t cost) {
+        for (auto&& callback_pack : move_callbacks) {
+            callback_pack.second(from_index, to_index, cost);
+        }
+    }
+
+public:
+    virtual void refresh_range() = 0;
+    virtual bool has_range() const = 0;
+    virtual void remove_range() = 0;
+    //virtual void set_slow_down(std::int32_t value) = 0;
+    //virtual void remove_slow_down() = 0;
+
+    virtual std::uint32_t set_move_callback(move_callback_type callback) {
+        static std::uint32_t callback_id_gen = 0;
+        move_callbacks[callback_id_gen] = callback;
+        return callback_id_gen++;
+    }
+    virtual void remove_move_callback(std::uint32_t callback_id) {
+        move_callbacks.erase(callback_id);
+    }
 };
 
-class moveable final : public ability, turn_callback_helper, aura_setter {
+class moveable final : public ability, public moveable_base, turn_callback_helper  {
 public:
     enum class types {
         path,
@@ -31,28 +53,16 @@ public:
 		return bitmap_key::moveable;
 	}
 
-	void refresh_range() {
+	void refresh_range() override {
 		used = false;
 	}
 
-	bool has_range() const {
+	bool has_range() const override {
 		return !used;
 	}
 
-	void remove_range() {
+	void remove_range() override {
 		used = true;
-	}
-
-	void set_cost_callback(std::function<void(std::int32_t)> fn) {
-		cost_callback = fn;
-	}
-
-	void remove_cost_callback() {
-		cost_callback = std::function<void(std::int32_t)>();
-	}
-
-	void add_aura(const std::shared_ptr<effect>& aura) {
-		auras.push_back(aura);
 	}
 
 private:
@@ -63,12 +73,6 @@ private:
 	std::int32_t range;
 	bool used{false};
     types type;
-
-	std::function<void(std::int32_t)> cost_callback;
-
-	std::vector<std::shared_ptr<effect>> effects;
-
-	std::vector<std::shared_ptr<effect>> auras;
 };
 
 

@@ -220,6 +220,7 @@ void battle_with_a_golem(game& game) {
 #include <entities/sorcerer.h>
 #include <entities/combat_robot.h>
 #include <entities/druid.h>
+#include <entities/soul_hunter.h>
 
 //using Entites = boost::fusion::vector<shooter,
 using Entites = std::tuple<shooter,
@@ -242,7 +243,7 @@ using Entites = std::tuple<shooter,
         druid,
 //        absorber,
         //saurian,
-        giant,
+//        giant,
         guardian,
         sorcerer,
         creature,
@@ -251,6 +252,7 @@ using Entites = std::tuple<shooter,
         handthrower,
         combat_robot,
         golem,
+        soul_hunter,
         spider>;
 
 void create_trees_1() {
@@ -409,10 +411,14 @@ void skirmish(game& game) {
 
                                 ++selections;
 
+                                std::cout << "before ended\n";
+
                                 if (info.ended) {
                                     for (auto&& entity_to_remove : entities_to_choose) {
                                         entity_manager::destroy(entity_to_remove);
                                     }
+
+                                    std::cout << "after ended\n";
 
                                     for (auto&& player_pack : entities) {
                                         for (auto&& id : player_pack.second) {
@@ -428,6 +434,7 @@ void skirmish(game& game) {
 
                                     entities.clear();
                                 }
+                                std::cout << "enddd\n";
                             });
 }
 

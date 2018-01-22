@@ -56,6 +56,13 @@ void turn_system::end_turn()
 					callback_pack.second.callback(info);
 					callbacks_to_remove.insert(callback_pack.first);
 				}
+			} else if (frequency == frequency_types::after_n_turns) {
+				if (++callback_pack.second.number_of_calls == callback_pack.second.duration) {
+					turn_callback_info info{true,
+											callback_pack.first};
+					callback_pack.second.callback(info);
+					callbacks_to_remove.insert(callback_pack.first);
+				}
 			}
 		}
 	}

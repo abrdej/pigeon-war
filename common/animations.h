@@ -69,7 +69,12 @@ enum class animation_def {
 	start_sorcerer_attack,
 	end_sorcerer_attack,
 	change_health,
-	rocket_launcher
+	rocket_launcher,
+	portal,
+	cure,
+	lightning_prepare,
+	lightning,
+	soul_out
 };
 
 struct animation_def_key_hash

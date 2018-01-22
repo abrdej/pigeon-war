@@ -240,3 +240,58 @@ void change_health_handler::handle(sf::Packet& packet, game_state& g_state) {
 	animation::player<animation::change_health>::launch(animation::change_health(to_index, change_health));
 	animation::base_player::play();
 }
+
+void portal_handler::handle(sf::Packet& packet, game_state& g_state) {
+
+	std::uint32_t from_index, to_index;
+	unpack(packet, from_index);
+	unpack(packet, to_index);
+
+    std::vector<std::pair<std::uint32_t, std::uint32_t>> neighboring_moves;
+    unpack(packet, neighboring_moves);
+
+	auto entity_id = g_state.board.take(from_index);
+
+    std::vector<std::pair<std::uint32_t, std::uint32_t>> taken;
+
+    for (auto&& move_pack : neighboring_moves) {
+        auto neighboring_id = g_state.board.take(move_pack.first);
+        taken.emplace_back(neighboring_id, move_pack.second);
+    }
+
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
+																			   std::chrono::milliseconds(100),
+																			   bitmap_key::portal_1));
+	animation::base_player::play();
+
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
+																			   std::chrono::milliseconds(100),
+																			   bitmap_key::portal_2));
+	animation::base_player::play();
+
+    animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
+                                                                               std::chrono::milliseconds(100),
+                                                                               bitmap_key::portal_3));
+    animation::base_player::play();
+
+    animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
+                                                                               std::chrono::milliseconds(100),
+                                                                               bitmap_key::portal_3));
+    animation::base_player::play();
+
+    animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
+                                                                               std::chrono::milliseconds(100),
+                                                                               bitmap_key::portal_2));
+    animation::base_player::play();
+
+    animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
+                                                                               std::chrono::milliseconds(100),
+                                                                               bitmap_key::portal_1));
+    animation::base_player::play();
+
+	g_state.board.give_back(entity_id, to_index);
+
+    for (auto&& taken_pack : taken) {
+        g_state.board.give_back(taken_pack.first, taken_pack.second);
+    }
+}

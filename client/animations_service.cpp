@@ -55,4 +55,9 @@ void animations_service::initialize() {
 	add<end_sorcerer_attack_handler>(animation_def::end_sorcerer_attack);
 	add<change_health_handler>(animation_def::change_health);
 	add<rocket_launcher_handler>(animation_def::rocket_launcher);
+	add<portal_handler>(animation_def::portal);
+	add<cure_handler>(animation_def::cure);
+	add<lightning_prepare_handler>(animation_def::lightning_prepare);
+	add<lightning_handler>(animation_def::lightning);
+	add<soul_out_handler>(animation_def::soul_out);
 }

@@ -6,12 +6,13 @@
 #define PIGEONWAR_PORTAL_H
 
 #include "ability.h"
+#include "per_turn_usable.h"
 
-class portal final : public ability {
+class portal final : public ability, per_turn_usable {
 public:
-	portal() = default;
+	explicit portal(std::uint32_t entity_id);
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::teleport;
+		return bitmap_key::portal;
 	}
 
 private:
@@ -19,7 +20,8 @@ private:
 	void use(std::uint32_t from_index, std::uint32_t to_index);
 
 private:
-	bool used{false};
+	std::uint32_t entity_id;
+	std::int32_t power_cost{20};
 };
 
 
