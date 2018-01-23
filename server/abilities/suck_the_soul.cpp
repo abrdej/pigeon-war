@@ -18,20 +18,25 @@ suck_the_soul::suck_the_soul(std::uint32_t entity_id) {
 
         for (auto&& soul_pack : souls) {
             auto enemy_id = souls.front().first;
-            auto soul_health = souls.front().second;
 
-            soul_health -= damage_for_soul_health;
-            soul_health = std::max(0, soul_health);
+			if (entity_manager::alive(enemy_id)) {
+				auto soul_health = souls.front().second;
 
-            entity_manager::get(enemy_id).get<damage_taker>()->heal(healing(soul_health,
-                                                                            enemy_id));
+				soul_health -= damage_for_soul_health;
+				soul_health = std::max(0, soul_health);
 
-            souls.erase(std::begin(souls) + souls_mapped[enemy_id]);
-            souls_mapped.erase(enemy_id);
+				entity_manager::get(enemy_id).get<damage_taker>()->heal(healing(soul_health,
+																				enemy_id));
 
-            remove_component(enemy_id,
-                             "soul_suck");
+				remove_component(enemy_id,
+								 "soul_suck");
+			} else {
+				souls_n -= 1;
+			}
         }
+
+		souls.clear();
+		souls_mapped.clear();
 
         damage_value = damage_value - souls_n * damage_for_soul_health;
         damage_value = std::max(0, damage_value);
