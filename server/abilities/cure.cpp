@@ -35,9 +35,11 @@ void cure::use(std::uint32_t index_on) {
 
     auto healing_holder = make_every_two_turns_from_next_callback_holder(healing_duration,
                                                                          [healing_amount_per_turn, friend_id]() {
-                                                                             sender::send(message_types::animation, animation_def::cure, board::index_for(friend_id));
-                                                                             entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
-                                                                                                                                              friend_id));
+																			 if (entity_manager::alive(friend_id)) {
+																				 sender::send(message_types::animation, animation_def::cure, board::index_for(friend_id));
+																				 entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
+																																				  friend_id));
+																			 }
                                                                          });
 
 //    entity_manager::get(friend_id).get<addition>()->named_data.clear();
