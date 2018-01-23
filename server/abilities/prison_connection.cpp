@@ -35,6 +35,11 @@ void prison_connection::use(std::uint32_t index_on) {
 								   std::end(entities_with_effect));
 	}
 
+	entities_with_effect.erase(std::remove_if(std::begin(entities_with_effect), std::end(entities_with_effect),
+											  [](std::uint32_t id) {
+												  return !entity_manager::alive(id);
+											  }), std::end(entities_with_effect));
+
 	add_component(enemy_id, "prison_connection_effect", prison_connection_holder);
 	entities_with_effect.push_front(enemy_id);
 
