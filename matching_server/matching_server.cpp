@@ -48,7 +48,7 @@ int main() {
                 }
             }
 
-            if (number_of_clients == 2) {
+            if (number_of_clients == 1) {
 
                 std::cout << "create game\n";
 
@@ -58,6 +58,8 @@ int main() {
                 static std::uint32_t process_gen = 0;
 
                 child cc(str.c_str());
+
+                std::this_thread::sleep_for(std::chrono::seconds(5));
 
                 //processes.emplace(process_gen++, cc);
 

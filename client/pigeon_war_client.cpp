@@ -38,25 +38,29 @@ void pigeon_war_client::run()
 	//sf::TcpSocket matching_socket;
 
 	//auto status = matching_socket.connect(address, port);
+	//bool matching = true;
+	//std::int32_t game_port = port;
 
 	//if (status != sf::Socket::Done) {
 	//	std::cout << "Matching server connecting error\n";
+	//	matching = false;
+
+	//} else {
+
+	//	sf::Packet packet;
+	//	matching_socket.receive(packet);
+
+		//message_types message;
+		//packet >> message;
+
+		//if (message != message_types::game_server_port) {
+		//	std::cout << "bad message\n";
+		//}
+
+		//packet >> game_port;
+
+		//std::cout << "Game port: " << std::to_string(game_port) << "\n";
 	//}
-
-	//sf::Packet packet;
-	//matching_socket.receive(packet);
-
-	//message_types message;
-	//packet >> message;
-
-	//if (message != message_types::game_server_port) {
-	//	std::cout << "bad message\n";
-	//}
-
-	//std::int32_t game_port;
-	//packet >> game_port;
-
-	//std::cout << "Game port: " << std::to_string(game_port) << "\n";
 
 	auto status = socket.connect(address, port);
 

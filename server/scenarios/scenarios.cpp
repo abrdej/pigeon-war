@@ -321,7 +321,8 @@ void set_fires() {
 void skirmish(game& game) {
     using creator_helper::pos;
 
-    set_fires();
+//    set_fires();
+    set_trees();
 
     std::vector<std::pair<std::uint32_t, std::uint32_t>> init_positions = {
             pos(5, 2),
