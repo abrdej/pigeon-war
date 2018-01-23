@@ -41,19 +41,6 @@ suck_the_soul::suck_the_soul(std::uint32_t entity_id) {
         damage_value = damage_value - souls_n * damage_for_soul_health;
         damage_value = std::max(0, damage_value);
 
-//        if (!souls.empty()) {
-//            auto enemy_id = souls.front().first;
-//
-//            if (entity_manager::alive(enemy_id)) {
-//                auto soul_health = souls.front().second;
-//                damage_value -= soul_health;
-//                damage_value = std::max(0, damage_value);
-//
-//                remove_component(enemy_id,
-//                                 "soul_suck");
-//            }
-//        }
-
         auto final_damage = std::min(health_pack.health, damage_value);
         health_pack.health -= final_damage;
 

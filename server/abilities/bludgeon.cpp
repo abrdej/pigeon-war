@@ -29,8 +29,24 @@ void bludgeon::use(std::uint32_t index_on)
 	std::int32_t x_diff = from_pos.first - on_pos.first;
 	std::int32_t y_diff = from_pos.second - on_pos.second;
 
-	std::int32_t push_x = on_pos.first - x_diff;
-	std::int32_t push_y = on_pos.second - y_diff;
+	std::int32_t push_x = on_pos.first;
+	std::int32_t push_y = on_pos.second;
+
+	while (true) {
+		auto dx = push_x - x_diff;
+		auto dy = push_y - y_diff;
+
+		auto index = board::to_index(dx, dy);
+
+		if (!board::empty(index))
+			break;
+
+		push_x = dx;
+		push_y = dy;
+	}
+
+	//std::int32_t push_x = on_pos.first - x_diff;
+	//std::int32_t push_y = on_pos.second - y_diff;
 
 	auto push_to_index = board::to_index(push_x, push_y);
 	auto set_on_index = index_on;
