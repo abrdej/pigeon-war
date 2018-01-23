@@ -14,9 +14,11 @@
 
 using view::pigeon_war_client;
 
-pigeon_war_client::pigeon_war_client()
-		: window_(sf::VideoMode(1000, 700), "Turn based!") //, sf::Style::Fullscreen),
-{
+pigeon_war_client::pigeon_war_client(const std::string& address, int port)
+		: window_(sf::VideoMode(1000, 700), "Turn based!"),
+		  address(address),
+		  port(port) {
+
 	board_drawer_ = std::make_unique<board_drawer>(this->state, this->lstate, window_);
 
 	board_panel_.prepare();
@@ -31,25 +33,42 @@ pigeon_war_client::pigeon_war_client()
 
 void pigeon_war_client::run()
 {
-	std::cout << "Waiting for connection\n";
+	std::cout << "Waiting for game...\n";
 
-	//sf::IpAddress adress();
+	//sf::TcpSocket matching_socket;
 
-//	auto status = socket.connect("80.211.186.19", 443);
-	auto status = socket.connect("127.0.0.1", 5555);
+	//auto status = matching_socket.connect(address, port);
 
-	std::cout << "Status: " << static_cast<std::int32_t>(status) << "\n";
+	//if (status != sf::Socket::Done) {
+	//	std::cout << "Matching server connecting error\n";
+	//}
+
+	//sf::Packet packet;
+	//matching_socket.receive(packet);
+
+	//message_types message;
+	//packet >> message;
+
+	//if (message != message_types::game_server_port) {
+	//	std::cout << "bad message\n";
+	//}
+
+	//std::int32_t game_port;
+	//packet >> game_port;
+
+	//std::cout << "Game port: " << std::to_string(game_port) << "\n";
+
+	auto status = socket.connect(address, port);
 
 	if (status != sf::Socket::Done) {
-		std::cout << "Socket connecting error\n";
+		std::cout << "Game server connecting error: " << status << "\n";
 	}
 
-	std::cout << "Connected\n";
+	std::cout << "Connected to game\n";
 
 	selector.add(socket);
 
-	while (window_.isOpen())
-	{
+	while (window_.isOpen()) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 		receive_messages();
 		update();
@@ -66,7 +85,21 @@ void pigeon_war_client::receive_messages() {
 		message_types message;
 		packet >> message;
 
-		if (message == message_types::player_id) {
+		/*if (message == message_types::game_server_port) {
+
+			std::int32_t game_port;
+			packet >> game_port;
+
+			socket.disconnect();
+			auto status = socket.connect(address, game_port);
+
+			if (status != sf::Socket::Done) {
+				std::cout << "Socket connecting error\n";
+			}
+
+			std::cout << "Received game port\n";
+
+		}*/ if (message == message_types::player_id) {
 			unpack(packet, player_id);
 
 			std::cout << "client player id: " << player_id << "\n";

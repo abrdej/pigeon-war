@@ -46,10 +46,10 @@ struct server {
 
 	boost::lockfree::spsc_queue<std::pair<std::uint32_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
 
-	server() {
+	server(int port) {
 
 //		if (listener.listen(443) != sf::Socket::Done) {
-		if (listener.listen(5555) != sf::Socket::Done) {
+		if (listener.listen(port) != sf::Socket::Done) {
 			std::cout << "Listener error\n";
 		}
 

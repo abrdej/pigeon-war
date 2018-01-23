@@ -78,17 +78,19 @@ local_state get_local_state(game& g) {
 	return std::move(state);
 }
 
-int main() {
+int main(int argc, char** argv) {
+
+	int port = 5555;
+
+	if (argc > 1) {
+		port = std::atoi(argv[1]);
+	}
 
 	game g;
 
 	create_scenario(g,  "saurions_web");
 
-	server binder;
-
-//	animations_queue::set_pull_function([&binder](){
-//		binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
-//	});
+	server binder(port);
 
 	sender::set_sender([&binder](sf::Packet packet) {
 		binder.send_notification(packet);

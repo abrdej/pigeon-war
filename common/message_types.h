@@ -9,6 +9,7 @@
 #include <unordered_map>
 
 enum class message_types {
+	game_server_port,
 	player_id,
 	board,
 	entities_bitmaps,

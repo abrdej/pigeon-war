@@ -24,7 +24,7 @@ class pigeon_war_client final
 public:
 	using point_type = sf::Vector2i;
 public:
-	pigeon_war_client();
+	pigeon_war_client(const std::string& address, int port);
 
 	void run();
 
@@ -65,6 +65,9 @@ private:
 	std::unique_ptr<board_drawer> board_drawer_;
 	entities_renderer entities_renderer_;
 	std::atomic_bool block{false};
+
+	const std::string address;
+	const int port;
 };
 
 }
