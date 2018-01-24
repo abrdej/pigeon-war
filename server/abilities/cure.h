@@ -23,7 +23,7 @@ private:
 	std::uint32_t entity_id;
 	std::int32_t healing_amount_per_turn{4};
 	std::int32_t healing_duration{2};
-	std::int32_t power_cost{6};
+	std::int32_t power_cost{8};
 };
 
 

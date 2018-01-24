@@ -20,7 +20,7 @@ private:
 	void use(std::uint32_t index_on) override;
 
 private:
-	const std::int32_t damage{7};
+	const std::int32_t damage{6};
 	const std::int32_t bullets_n{2};
 	std::int32_t bullets;
 };

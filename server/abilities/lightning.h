@@ -23,7 +23,7 @@ private:
 
     std::uint32_t entity_id;
     std::int32_t damage{12};
-    std::int32_t power_cost{8};
+    std::int32_t power_cost{10};
 };
 
 #endif //PIGEONWAR_LIGHTNING_H

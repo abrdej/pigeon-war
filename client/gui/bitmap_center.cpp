@@ -168,5 +168,6 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::ball_and_chain, "ball_and_chain.png");
     add_bitmap(bitmap_key::soul_hunter, "soul_hunter.png");
     add_bitmap(bitmap_key::suck_the_soul, "soul.png");
+    add_bitmap(bitmap_key::mechanical_saw, "mechanical_saw.png");
 }
 }

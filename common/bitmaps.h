@@ -156,7 +156,8 @@ enum class bitmap_key {
 	change_rocket_type,
 	ball_and_chain,
     soul_hunter,
-	suck_the_soul
+	suck_the_soul,
+	mechanical_saw
 };
 
 struct bitmaps_key_hash

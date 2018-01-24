@@ -320,6 +320,9 @@ struct soul_out_handler : bitmap_flush_base_handler<bitmap_key::suck_the_soul> {
 
 };
 
+struct saw_passing_handler : base_handler {
+	void handle(sf::Packet& packet, game_state& g_state) override;
+};
 
 
 #endif //PIGEONWAR_ANIMATIONS_HANDLERS_H

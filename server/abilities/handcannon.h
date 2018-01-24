@@ -23,7 +23,6 @@ private:
 private:
     const std::int32_t damage = 12;
     const std::int32_t bonus_damage = 0;
-    bool used{false};
 };
 
 #endif //PIGEONWAR_HANDCANNON_H

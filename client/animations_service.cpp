@@ -60,4 +60,5 @@ void animations_service::initialize() {
 	add<lightning_prepare_handler>(animation_def::lightning_prepare);
 	add<lightning_handler>(animation_def::lightning);
 	add<soul_out_handler>(animation_def::soul_out);
+	add<saw_passing_handler>(animation_def::saw_passing);
 }

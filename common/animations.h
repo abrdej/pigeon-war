@@ -74,7 +74,8 @@ enum class animation_def {
 	cure,
 	lightning_prepare,
 	lightning,
-	soul_out
+	soul_out,
+	saw_passing
 };
 
 struct animation_def_key_hash

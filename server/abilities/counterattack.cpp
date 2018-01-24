@@ -11,18 +11,20 @@ counterattack::counterattack(std::uint32_t entity_id)
 
 	on_receive_damage(entity_id, [this](const damage_pack& dmg) {
 
-		auto enemy_index = board::index_for(dmg.damage_dealer_id);
+		if (entity_manager::get(this->entity_id).get<health_field>()->health > 0) {
+			auto enemy_index = board::index_for(dmg.damage_dealer_id);
 
-		std::vector<std::uint32_t> neighbors;
-		board_helper::neighboring_fields(board::index_for(this->entity_id),
-										 neighbors,
-										 false);
+			std::vector<std::uint32_t> neighbors;
+			board_helper::neighboring_fields(board::index_for(this->entity_id),
+											 neighbors,
+											 false);
 
-		for (auto&& index : neighbors) {
-			std::cout << index << "\n";
-			if (index == enemy_index) {
-				use(enemy_index);
-				break;
+			for (auto&& index : neighbors) {
+				std::cout << index << "\n";
+				if (index == enemy_index) {
+					use(enemy_index);
+					break;
+				}
 			}
 		}
 	}, damage_taker::on_receive_damage_policy::after);

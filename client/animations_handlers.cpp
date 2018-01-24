@@ -101,6 +101,20 @@ void giant_ram_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(entity_id, to_index);
 }
 
+void saw_passing_handler::handle(sf::Packet& packet, game_state& g_state) {
+
+	std::uint32_t from_index, to_index;
+	unpack(packet, from_index);
+	unpack(packet, to_index);
+
+	auto entity_id = g_state.board.take(from_index);
+
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
+	animation::base_player::play();
+
+	g_state.board.give_back(entity_id, to_index);
+}
+
 void kill_handler::handle(sf::Packet& packet, game_state& g_state) {
 	std::uint32_t from_index, to_index, enemy_index;
 	unpack(packet, from_index);

@@ -20,7 +20,7 @@ private:
 	void use(std::uint32_t index_on) override;
 
 private:
-	const std::int32_t damage = 16;
+	const std::int32_t damage = 12;
 	bool used_{false};
 };
 
