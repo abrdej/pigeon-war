@@ -9,7 +9,7 @@
 magic_bullet::magic_bullet(std::uint32_t entity_id) {
     after_player_turn(entity_id, [this, entity_id]() {
 
-        if (!players_manager::neutral_entity(entity_id)) {
+        if (first_used) {
             used = false;
             magic_power += magic_power_accumulation_amount;
 
@@ -71,6 +71,8 @@ void magic_bullet::use(std::uint32_t index_on) {
     damage_dealers::standard_damage_dealer(magic_damage(magic_power, board::at(index_on), board::at(from_index)));
 
     magic_power = 0;
+
+    first_used = true;
 
     used = true;
 }

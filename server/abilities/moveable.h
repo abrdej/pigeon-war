@@ -22,8 +22,8 @@ public:
     virtual void refresh_range() = 0;
     virtual bool has_range() const = 0;
     virtual void remove_range() = 0;
-    //virtual void set_slow_down(std::int32_t value) = 0;
-    //virtual void remove_slow_down() = 0;
+    virtual void set_slow_down(std::int32_t value) = 0;
+    virtual void remove_slow_down() = 0;
 
     virtual std::uint32_t set_move_callback(move_callback_type callback) {
         static std::uint32_t callback_id_gen = 0;
@@ -43,6 +43,7 @@ public:
     };
 	explicit moveable(std::int32_t range, types type = types::path)
 		: range(range),
+		  base_range(range),
           type(type) {
 		on_every_two_turns_from_next([this]() {
 			used = false;
@@ -65,12 +66,20 @@ public:
 		used = true;
 	}
 
+	void set_slow_down(std::int32_t value) override {
+		range = value;
+	}
+	void remove_slow_down() override {
+		range = base_range;
+	}
+
 private:
 	void prepare(std::uint32_t for_index) override;
 	void move(std::uint32_t index_to);
 
 private:
 	std::int32_t range;
+	const std::int32_t base_range;
 	bool used{false};
     types type;
 };

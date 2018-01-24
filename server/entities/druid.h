@@ -22,7 +22,7 @@ public:
 		entity.name = "Druid";
 
 		entity.add<health_field>(45);
-		entity.add<power_filed_with_charging>(10, 10, 25);
+		entity.add<power_filed_with_charging>(entity.entity_id, 10, 10, 25);
 		entity.add<damage_taker>();
 		entity.add<addition>();
 		entity.add<modification>();

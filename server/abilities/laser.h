@@ -25,7 +25,7 @@ private:
 
 private:
 	const std::int32_t damage = 8;
-	const std::int32_t bonus_damage = 1;
+	const std::int32_t bonus_damage = 2;
 };
 
 #endif //PIGEONWAR_LASER_H

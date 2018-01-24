@@ -25,7 +25,7 @@ private:
 
 private:
 	std::uint32_t entity_id;
-	std::int32_t damage{7};
+	std::int32_t damage{10};
 };
 
 #endif //PIGEONWAR_COUNTERATTACK_H

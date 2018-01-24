@@ -25,7 +25,7 @@ private:
 private:
     static const std::int32_t range = 1;
     static const std::int32_t damage = 6;
-    const std::int32_t additional_damage{4};
+    const std::int32_t additional_damage{6};
     std::int32_t accumulated_damage{0};
     std::uint32_t entity_id;
 };

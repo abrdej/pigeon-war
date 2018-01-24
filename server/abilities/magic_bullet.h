@@ -23,10 +23,11 @@ private:
     void use(std::uint32_t index_on);
 
 private:
-    std::int32_t magic_power{0};
+    std::int32_t magic_power{10};
     std::int32_t magic_power_accumulation_amount{10};
     std::int32_t magic_power_drain_amount{4};
     bool used{false};
+    bool first_used{false};
 };
 
 #endif //PIGEONWAR_MAGIC_BULLET_H

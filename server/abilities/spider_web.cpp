@@ -39,21 +39,20 @@ void spider_web::use(std::uint32_t index_on) {
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, caster_id));
 
     if (entity_manager::alive(enemy_id)) {
+
         auto enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
-        auto moveable_backup =  enemy_abilities_ptr->type(abilities::ability_types::moving);
-        enemy_abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(1));
+        auto moveable_base_ptr = std::dynamic_pointer_cast<moveable_base>(enemy_abilities_ptr->type(abilities::ability_types::moving));
+        if (moveable_base_ptr) {
+            moveable_base_ptr->set_slow_down(1);
 
-        auto slow_down_receiver = make_after_n_turns_callback_holder(duration,
-                                           [enemy_id, moveable_backup]() mutable {
+            auto slow_down_receiver = make_after_n_turns_callback_holder(duration,
+                                                                         [enemy_id, moveable_base_ptr]() mutable {
+                                                                             moveable_base_ptr->remove_slow_down();
+                                                                             remove_component(enemy_id, "spider_web_effect");
+                                                                         });
 
-                                               auto inner_enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
-
-                                               inner_enemy_abilities_ptr->add_ability(abilities::ability_types::moving, moveable_backup);
-
-                                               remove_component(enemy_id, "spider_web_effect");
-                                           });
-
-        add_component(enemy_id, "spider_web_effect", slow_down_receiver);
+            add_component(enemy_id, "spider_web_effect", slow_down_receiver);
+        }
     }
 
     used = true;

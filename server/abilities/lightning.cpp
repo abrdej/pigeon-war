@@ -34,10 +34,9 @@ void lightning::use(std::uint32_t index_on) {
 
     auto lightning_holder = make_after_n_round_callback_holder(1,
                                                                [enemy_id, caster_id, damage]() mutable {
-                                                                   auto caster_alive = entity_manager::alive(enemy_id);
-                                                                   if (caster_alive) {
+                                                                   if (entity_manager::alive(enemy_id)) {
                                                                        sender::send(message_types::animation, animation_def::lightning, board::index_for(enemy_id));
-                                                                       damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, caster_alive ? caster_id : no_damage_dealer));
+                                                                       damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, entity_manager::alive(caster_id) ? caster_id : no_damage_dealer));
                                                                        remove_component(enemy_id, "lightning_effect");
                                                                    }
                                                                });

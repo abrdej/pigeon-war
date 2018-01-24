@@ -16,6 +16,7 @@ rage::rage(std::uint32_t id) : entity_id(id) {
 		++damage_this_turn;
 		if (damage_this_turn == required_damage) {
 			use();
+			damage_this_turn = 0;
 		}
 	}, damage_taker::on_receive_damage_policy::after);
 }

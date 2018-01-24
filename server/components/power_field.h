@@ -15,14 +15,15 @@ struct power_field {
 };
 
 struct power_filed_with_charging : turn_callback_helper {
-	explicit power_filed_with_charging(std::int32_t initial_power,
+	explicit power_filed_with_charging(std::uint32_t entity_id,
+									   std::int32_t initial_power,
 									   std::int32_t charging_power_amount,
-									   std::int32_t max_power = 0
-									   )
+									   std::int32_t max_power = 0)
 			: power(initial_power),
 			  charging_power_amount(charging_power_amount),
 			  max_power(max_power) {
-		on_every_two_turns_from_next([this]() {
+
+		after_player_turn(entity_id, [this, entity_id]() {
 			this->power += this->charging_power_amount;
 			if (this->max_power) {
 				this->power = std::min(this->power, this->max_power);
