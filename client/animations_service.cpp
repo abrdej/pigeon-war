@@ -65,4 +65,6 @@ void animations_service::initialize() {
 	add<destruction_handler>(animation_def::destruction);
 	add<fist_of_doom_handler>(animation_def::fist_of_doom);
 	add<uselessness_handler>(animation_def::uselessness);
+	add<meteorite_before_handler>(animation_def::meteorite_before);
+	add<meteorite_handler>(animation_def::meteorite);
 }

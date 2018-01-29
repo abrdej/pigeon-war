@@ -181,5 +181,7 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::fist_of_doom_ex, "fist_of_doom_ex.png");
     add_bitmap(bitmap_key::fist_of_doom_ex2, "fist_of_doom_ex2.png");
     add_bitmap(bitmap_key::uselessness, "uselessness.png");
+    add_bitmap(bitmap_key::wizzard, "wizzard.png");
+    add_bitmap(bitmap_key::meteorite, "meteorite.png");
 }
 }

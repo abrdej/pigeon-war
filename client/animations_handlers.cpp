@@ -356,3 +356,26 @@ void fist_of_doom_handler::handle(sf::Packet& packet, game_state& g_state) {
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(100), bitmap_key::fist_of_doom_ex2));
 	animation::base_player::play();
 }
+
+void meteorite_handler::handle(sf::Packet& packet, game_state& g_state) {
+
+	std::uint32_t to_index;
+	unpack(packet, to_index);
+
+	auto pos = board::to_pos(to_index);
+	pos.second = 0;
+
+	auto from_index = board::to_index(pos.first, pos.second);
+
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, bitmap_key::meteorite));
+	animation::base_player::play();
+
+	auto from_cr = board::to_pos(to_index);
+	from_cr.first -= 1;
+	from_cr.second -= 1;
+
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
+																			   std::chrono::milliseconds(150),
+																			   bitmap_key::detonation_anim));
+	animation::base_player::play();
+}

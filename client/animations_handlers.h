@@ -340,6 +340,13 @@ struct uselessness_handler : bitmap_flush_base_handler<bitmap_key::uselessness> 
 
 };
 
+struct meteorite_before_handler : bitmap_flush_base_handler<bitmap_key::uselessness> {
+
+};
+
+struct meteorite_handler : base_handler {
+	void handle(sf::Packet& packet, game_state& g_state) override;
+};
 
 
 #endif //PIGEONWAR_ANIMATIONS_HANDLERS_H

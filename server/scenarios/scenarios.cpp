@@ -224,6 +224,7 @@ void battle_with_a_golem(game& game) {
 #include <entities/mechanical_saw.h>
 #include <entities/commander.h>
 #include <entities/gin.h>
+#include <entities/wizzard.h>
 
 //using Entites = boost::fusion::vector<shooter,
 using Entites = std::tuple<shooter,
@@ -242,7 +243,8 @@ using Entites = std::tuple<shooter,
         ninja,
         //treant,
         thrower,
-        killer,
+//        killer,
+        wizzard,
         druid,
 //        absorber,
         //saurian,
