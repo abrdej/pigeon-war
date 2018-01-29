@@ -16,7 +16,11 @@ aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)
 
 	entity_manager::get(entity_id).get<modification>()->modify_damage_receiver_modifier_by(-damage_reduction_for_owner);
 
-	auras_observer::add_aura(entity_id, std::make_shared<aura_of_immunity_effect>(damage_reduction_for_friends));
+	auras_observer::add_aura(entity_id, std::make_shared<aura_of_immunity_effect>(entity_id, damage_reduction_for_friends));
+
+	//entity_manager::on_destroy(entity_id, [entity_id]() {
+	//	auras_observer::remove_aura(entity_id);
+	//});
 }
 
 std::string aura_of_immunity::hint() const {

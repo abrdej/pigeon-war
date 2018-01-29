@@ -157,7 +157,19 @@ enum class bitmap_key {
 	ball_and_chain,
     soul_hunter,
 	suck_the_soul,
-	mechanical_saw
+	mechanical_saw,
+	commander,
+	arrow,
+	arrow_anim,
+	aura_of_destruction,
+	destruction_1,
+	destruction_2,
+	destruction_3,
+	gin,
+	fist_of_doom,
+	fist_of_doom_ex,
+	fist_of_doom_ex2,
+    uselessness
 };
 
 struct bitmaps_key_hash

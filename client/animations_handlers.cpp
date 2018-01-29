@@ -198,6 +198,7 @@ void sword_blow_handler::handle(sf::Packet& packet, game_state& g_state) {
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
 																			   std::chrono::milliseconds(150),
 																			   bitmap_key::samurai_rat_sword));
+    animation::base_player::play();
 
 	g_state.board.give_back(entity_id, index);
 }
@@ -308,4 +309,50 @@ void portal_handler::handle(sf::Packet& packet, game_state& g_state) {
     for (auto&& taken_pack : taken) {
         g_state.board.give_back(taken_pack.first, taken_pack.second);
     }
+}
+
+void destruction_handler::handle(sf::Packet& packet, game_state& g_state) {
+
+	std::uint32_t index;
+	unpack(packet, index);
+
+	//auto entity_id = g_state.board.take(index);
+
+	auto from_cr = board::to_pos(index);
+	from_cr.first -= 1;
+	from_cr.second -= 1;
+
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
+																			   std::chrono::milliseconds(75),
+																			   bitmap_key::destruction_1));
+    animation::base_player::play();
+    animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
+                                                                               std::chrono::milliseconds(75),
+                                                                               bitmap_key::destruction_2));
+    animation::base_player::play();
+    animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
+                                                                               std::chrono::milliseconds(75),
+                                                                               bitmap_key::destruction_3));
+    animation::base_player::play();
+
+	//g_state.board.give_back(entity_id, index);
+}
+
+void fist_of_doom_handler::handle(sf::Packet& packet, game_state& g_state) {
+
+	std::uint32_t to_index;
+	unpack(packet, to_index);
+
+	auto pos = board::to_pos(to_index);
+	pos.second = 0;
+
+	auto from_index = board::to_index(pos.first, pos.second);
+
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, bitmap_key::fist_of_doom));
+	animation::base_player::play();
+
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(100), bitmap_key::fist_of_doom_ex));
+	animation::base_player::play();
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(100), bitmap_key::fist_of_doom_ex2));
+	animation::base_player::play();
 }

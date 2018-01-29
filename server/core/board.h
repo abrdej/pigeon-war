@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <vector>
 #include <array>
+#include <boost/signals2.hpp>
 #include <SFML/Config.hpp>
 
 class board final {
@@ -13,26 +14,25 @@ public:
 	static const std::uint32_t rows_n = 10;
 	static const std::uint32_t empty_id = std::numeric_limits<std::uint32_t>::max();
 
-	static std::function<void()> observer;
+	using board_change_signal_type = boost::signals2::signal<void()>;
+	static board_change_signal_type board_change_signal;
 
-	template <typename Observer>
-	static void set_observer(Observer x) {
-		observer = x;
+	template <typename SlotType>
+	static void on_change(SlotType x) {
+		board_change_signal.connect(x);
 	}
 
 	inline static void insert(std::uint32_t on_index, std::uint32_t entity_id)
 	{
 		fields_[on_index].push_back(entity_id);
 
-		if (observer)
-			observer();
+		board_change_signal();
 	}
 	inline static void remove(std::uint32_t from_index)
 	{
 		fields_[from_index].pop_back();
 
-		if (observer)
-			observer();
+		board_change_signal();
 	}
 	inline static void move(std::uint32_t from_index, std::uint32_t to_index)
 	{
@@ -40,16 +40,14 @@ public:
 		fields_[from_index].pop_back();
 		fields_[to_index].push_back(entity_id);
 
-		if (observer)
-			observer();
+		board_change_signal();
 	}
 	inline static std::uint32_t take(std::uint32_t from_index)
 	{
 		auto entity_id = fields_[from_index].back();
 		fields_[from_index].pop_back();
 
-		if (observer)
-			observer();
+		board_change_signal();
 
 		return entity_id;
 	}
@@ -58,16 +56,14 @@ public:
 		auto entity_id = fields_[from_index].front();
 		fields_[from_index].erase(std::begin(fields_[from_index]));
 
-		if (observer)
-			observer();
+		board_change_signal();
 
 		return entity_id;
 	}
 	inline static void give_back(std::uint32_t entity_id, std::uint32_t to_index)
 	{
 		fields_[to_index].push_back(entity_id);
-		if (observer)
-			observer();
+		board_change_signal();
 	}
 	inline static std::uint32_t at(std::uint32_t at_index)
 	{
@@ -108,8 +104,7 @@ public:
 			}
 		}
 
-		if (observer)
-			observer();
+		board_change_signal();
 	}
 	inline static void for_each(const std::function<void(std::uint32_t entity_id, std::uint32_t col, std::uint32_t row)>& func) {
 		for (std::uint32_t i = 0; i < fields_.size(); ++i)

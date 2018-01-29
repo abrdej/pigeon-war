@@ -169,5 +169,17 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::soul_hunter, "soul_hunter.png");
     add_bitmap(bitmap_key::suck_the_soul, "soul.png");
     add_bitmap(bitmap_key::mechanical_saw, "mechanical_saw.png");
+    add_bitmap(bitmap_key::commander, "commander2.png");
+    add_bitmap(bitmap_key::arrow, "arrow.png");
+    add_bitmap(bitmap_key::arrow_anim, "arrow_anim.png");
+    add_bitmap(bitmap_key::aura_of_destruction, "aura_of_destruction.png");
+    add_bitmap(bitmap_key::destruction_1, "destruction_1.png");
+    add_bitmap(bitmap_key::destruction_2, "destruction_2.png");
+    add_bitmap(bitmap_key::destruction_3, "destruction_3.png");
+    add_bitmap(bitmap_key::gin, "gin.png");
+    add_bitmap(bitmap_key::fist_of_doom, "fist_of_doom.png");
+    add_bitmap(bitmap_key::fist_of_doom_ex, "fist_of_doom_ex.png");
+    add_bitmap(bitmap_key::fist_of_doom_ex2, "fist_of_doom_ex2.png");
+    add_bitmap(bitmap_key::uselessness, "uselessness.png");
 }
 }

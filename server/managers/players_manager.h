@@ -65,7 +65,12 @@ public:
 	}
 
 	static std::uint32_t player_for_entity(std::uint32_t entity_id) {
-		return get_instance().entity_id_to_player_id.at(entity_id);
+		auto it = get_instance().entity_id_to_player_id.find(entity_id);
+		if (it != std::end(get_instance().entity_id_to_player_id)) {
+			return it->second;
+		} else {
+			return no_player;
+		}
 	}
 
 	static std::uint32_t get_active_player_id() {
@@ -84,8 +89,10 @@ public:
 		return instance.players[instance.active_player_id].second;
 	}
 
-private:
 	static const std::uint32_t neutral_id = std::numeric_limits<std::uint32_t>::max();
+	static const std::uint32_t no_player = std::numeric_limits<std::uint32_t>::max();
+
+private:
 	std::vector<std::pair<std::string, bool>> players;
 	std::unordered_map<std::uint32_t, std::uint32_t> entity_id_to_player_id;
 	std::uint32_t active_player_id{0};

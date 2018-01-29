@@ -5,6 +5,8 @@
 path_finder::path_finder(bool all_fields)
 		: start_index_(-1)
 {
+    board_graph.set_size(board::cols_n * board::rows_n);
+
 	board::for_each([this, &all_fields](std::uint32_t entity_id, std::uint32_t col, std::uint32_t row) {
 		auto rows_n = board::rows_n;
 		auto cols_n = board::cols_n;
@@ -13,18 +15,18 @@ path_finder::path_finder(bool all_fields)
 		if (row < rows_n - 1) {
 			auto key_to = board::to_index(col, row + 1);
 			if (board::empty(key_to) || all_fields)
-				graph_.add_egde(key_from, key_to);
+                board_graph.add_edge(key_from, key_to);
 
 			if (board::empty(key_from) || all_fields)
-				graph_.add_egde(key_to, key_from);
+                board_graph.add_edge(key_to, key_from);
 		}
 		if (col < cols_n - 1) {
 			auto key_to = board::to_index(col + 1, row);
 			if (board::empty(key_to) || all_fields)
-				graph_.add_egde(key_from, key_to);
+                board_graph.add_edge(key_from, key_to);
 
 			if (board::empty(key_from) || all_fields)
-				graph_.add_egde(key_to, key_from);
+                board_graph.add_edge(key_to, key_from);
 		}
 	});
 }
@@ -34,7 +36,7 @@ void path_finder::calc(std::uint32_t from_index)
 	start_index_ = from_index;
 	distance_map_.clear();
 	sequence_map_.clear();
-	breadth_search(graph_, from_index, distance_map_, sequence_map_);
+	breadth_search(board_graph, from_index, distance_map_, sequence_map_);
 }
 
 std::uint32_t path_finder::find_first_satisfy_conditions(std::uint32_t from_index, const std::function<bool(std::uint32_t)>& condition_fn)
@@ -42,18 +44,20 @@ std::uint32_t path_finder::find_first_satisfy_conditions(std::uint32_t from_inde
 	start_index_ = from_index;
 	distance_map_.clear();
 	sequence_map_.clear();
-	return breadth_search(graph_, from_index, distance_map_, sequence_map_, condition_fn);
+	return breadth_search(board_graph, from_index, distance_map_, sequence_map_, condition_fn);
 }
 
-void path_finder::get_possible_movements(std::vector<std::uint32_t>& movements, std::vector<std::uint32_t>& costs, std::int32_t range)
+void path_finder::get_possible_movements(std::vector<std::uint32_t>& movements,
+                                         std::vector<std::uint32_t>& costs,
+                                         std::int32_t range)
 {
 	movements.clear();
 	costs.clear();
-	for (auto& elem : distance_map_)
-		if (elem.second <= range && elem.second != 0)
+	for (std::size_t i = 0; i < distance_map_.size(); ++i)
+		if (distance_map_[i] <= range && distance_map_[i] != 0)
 		{
-			movements.emplace_back(elem.first);
-			costs.emplace_back(elem.second);
+			movements.emplace_back(i);
+			costs.emplace_back(distance_map_[i]);
 		}
 }
 
@@ -68,12 +72,9 @@ void path_finder::path_to(std::uint32_t index, std::vector<std::uint32_t>& path)
 	}
 }
 
-std::uint32_t path_finder::distance_to(std::uint32_t index)
+std::int32_t path_finder::distance_to(std::uint32_t index)
 {
-	auto it = distance_map_.find(index);
-	if (it != std::end(distance_map_))
-		return it->second;
-	return -1;
+    return static_cast<std::int32_t>(distance_map_[index]);
 }
 
 namespace board_helper
@@ -190,6 +191,12 @@ void all_free(std::vector<std::uint32_t>& fields) {
 		if (board::empty(index)) {
 			fields.push_back(index);
 		}
+	}
+}
+
+void all(std::vector<std::uint32_t>& fields) {
+	for (std::uint32_t index = 0; index < board::rows_n * board::cols_n; ++index) {
+		fields.push_back(index);
 	}
 }
 

@@ -68,9 +68,16 @@ public:
 	{
 		auto receiver_entity = entity_manager::get(dmg.damage_receiver_id);
 
+
 		damage_pack damage_pack = dmg;
 
 		damage_pack.damage_value += receiver_entity.get<modification>()->damage_receiver_modifier_value();
+        if (dmg.damage_dealer_id != no_damage_dealer) {
+            auto dealer_entity = entity_manager::get(dmg.damage_dealer_id);
+            if (dealer_entity.contain<modification>()) {
+                damage_pack.damage_value += dealer_entity.get<modification>()->damage_dealer_modifier_value();
+            }
+        }
 
 		for (auto&& callback_pack : on_receive_damage_before_callbacks) {
 			callback_pack.second(damage_pack);

@@ -8,7 +8,7 @@
 #include <cstdint>
 
 struct effect {
-	virtual void set_effect(std::uint32_t entity_id) = 0;
+	virtual bool set_effect(std::uint32_t entity_id) = 0;
 	virtual void remove_effect(std::uint32_t entity_id) = 0;
 };
 

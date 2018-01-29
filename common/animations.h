@@ -75,7 +75,11 @@ enum class animation_def {
 	lightning_prepare,
 	lightning,
 	soul_out,
-	saw_passing
+	saw_passing,
+	arrow,
+	destruction,
+	fist_of_doom,
+	uselessness
 };
 
 struct animation_def_key_hash

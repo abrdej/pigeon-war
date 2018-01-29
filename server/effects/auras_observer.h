@@ -10,6 +10,7 @@
 #include <vector>
 #include <core/board.h>
 #include <core/path_finder.h>
+#include <managers/entity_manager.h>
 #include "base_effect.h"
 
 class auras_observer {
@@ -19,7 +20,7 @@ class auras_observer {
 	static auras_observer& get_instance() {
 		if (!impl) {
 			impl = std::make_unique<auras_observer>();
-			board::set_observer([]() {
+			board::on_change([]() {
 				auras_observer::observe();
 			});
 		}
@@ -34,6 +35,9 @@ public:
 	static void add_aura(std::uint32_t for_entity, const std::shared_ptr<effect>& aura) {
 		get_instance().auras.emplace(for_entity, aura);
 	}
+	static void remove_aura(std::uint32_t from_entity) {
+		get_instance().auras.erase(from_entity);
+	}
 
 	static void observe() {
 
@@ -44,22 +48,34 @@ public:
 		}
 		get_instance().entities_with_auras.clear();
 
+		std::vector<std::uint32_t> to_remove;
 
 		for (auto&& aura_pack : get_instance().auras) {
-			auto board_index = board::index_for(aura_pack.first);
 
-			std::vector<std::uint32_t> neighbors;
-			board_helper::neighboring_fields(board_index, neighbors, false);
+			if (entity_manager::alive(aura_pack.first)) {
+				auto board_index = board::index_for(aura_pack.first);
 
-			for (auto&& neighbour_index : neighbors) {
-				if (!board::empty(neighbour_index)) {
+				std::vector<std::uint32_t> neighbors;
+				board_helper::neighboring_fields(board_index, neighbors, false);
 
-					auto entity_id = board::at(neighbour_index);
-					aura_pack.second->set_effect(entity_id);
-					get_instance().entities_with_auras.emplace_back(board::at(neighbour_index), aura_pack.second);
+				for (auto&& neighbour_index : neighbors) {
+					if (!board::empty(neighbour_index)) {
+
+						auto entity_id = board::at(neighbour_index);
+						if (aura_pack.second->set_effect(entity_id)) {
+							get_instance().entities_with_auras.emplace_back(board::at(neighbour_index), aura_pack.second);
+						}
+					}
 				}
+			} else {
+				to_remove.push_back(aura_pack.first);
 			}
 		}
+
+		for (auto&& entity_id : to_remove) {
+			get_instance().auras.erase(entity_id);
+		}
+
 	}
 };
 
