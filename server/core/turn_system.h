@@ -9,6 +9,7 @@
 #include <memory>
 #include <unordered_set>
 #include <managers/players_manager.h>
+#include <utils/control_ptr.h>
 
 enum class frequency_types {
 	every_turn,
@@ -25,6 +26,7 @@ struct turn_callback_info {
 
 class turn_system
 {
+
 	struct callback_pack {
 		callback_pack() = default;
 		callback_pack(frequency_types frequency,
