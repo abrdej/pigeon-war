@@ -7,7 +7,7 @@
 
 #include "ability.h"
 
-class assassin_slash final : public ability {
+class assassin_slash final : public active_ability {
 public:
 	explicit assassin_slash(std::uint32_t entity_id);
 

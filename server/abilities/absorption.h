@@ -8,8 +8,9 @@
 #include "ability.h"
 #include "per_turn_usable.h"
 #include <unordered_map>
+#include <components/damage_pack.h>
 
-class absorption final : public ability, per_turn_usable {
+class absorption final : public active_ability, per_turn_usable {
 public:
     explicit absorption(std::uint32_t entity_id);
     ~absorption() override;

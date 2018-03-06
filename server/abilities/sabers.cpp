@@ -1,3 +1,4 @@
+#include <common/make_message.h>
 #include "sabers.h"
 #include "core/path_finder.h"
 #include "core/states_controller.h"
@@ -13,7 +14,7 @@ void sabers::prepare(std::uint32_t for_index)
 	states::state_controller::selected_index_ = for_index;
 	board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
 
-	states::state_controller::actual_targeting_type_ = states::target_types::enemy;
+	states::state_controller::actual_targeting_type_ = target_types::enemy;
 	states::state_controller::wait_for_action([this](std::uint32_t index)
 	{
 		return target(index);
@@ -42,7 +43,7 @@ void sabers::target(std::uint32_t target_index)
 			states::state_controller::possible_movements_, false);
 		states::state_controller::possible_movements_.push_back(target_index);
 
-		states::state_controller::actual_targeting_type_ = states::target_types::enemy;
+		states::state_controller::actual_targeting_type_ = target_types::enemy;
 		states::state_controller::wait_for_action([this](std::uint32_t index)
 		{
 			return target(index);
@@ -58,7 +59,7 @@ void sabers::use(std::uint32_t index_on)
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	sender::send(message_types::animation, animation_def::sabers, used_from_index, index_on);
+	sender::send(make_animation_message("sabers", used_from_index, index_on));
 
 	damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(index_on), entity_id));
 }

@@ -3,7 +3,6 @@
 #include <core/board.h>
 #include <core/path_finder.h>
 #include <core/states_controller.h>
-#include <core/animations_queue.h>
 #include "components/damage_taker.h"
 #include "managers/players_manager.h"
 
@@ -41,7 +40,7 @@ void interception::prepare(std::uint32_t for_index) {
     states::state_controller::selected_index_ = for_index;
     board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
 
-    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
+    states::state_controller::actual_targeting_type_ = target_types::enemy;
     states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
@@ -70,23 +69,23 @@ void interception::use(std::uint32_t index_on) {
 void interception::play_animation(std::uint32_t index_from, std::uint32_t index_on) {
     auto entity_id = board::take(index_from);
 
-    animations_queue::push_animation(animation_types::move,
-                                     index_from,
-                                     index_on,
-                                     entity_id,
-                                     bitmap_key::none);
-
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     index_on,
-                                     150,
-                                     0,
-                                     bitmap_key::ninja);
-
-    animations_queue::push_animation(animation_types::move,
-                                     index_on,
-                                     index_from,
-                                     entity_id,
-                                     bitmap_key::none);
+//    animations_queue::push_animation(animation_types::move,
+//                                     index_from,
+//                                     index_on,
+//                                     entity_id,
+//                                     bitmap_key::none);
+//
+//    animations_queue::push_animation(animation_types::flash_bitmap,
+//                                     index_on,
+//                                     150,
+//                                     0,
+//                                     bitmap_key::ninja);
+//
+//    animations_queue::push_animation(animation_types::move,
+//                                     index_on,
+//                                     index_from,
+//                                     entity_id,
+//                                     bitmap_key::none);
 
     board::give_back(entity_id, index_from);
 }

@@ -9,9 +9,9 @@
 #include "common/states.h"
 #include "core/states_controller.h"
 
-template <states::target_types TargetType = states::target_types::enemy,
+template <target_types TargetType = target_types::enemy,
 		bool Available = false>
-class neighboring_target_ability : public ability {
+class neighboring_target_ability : public active_ability {
 public:
 	void prepare(std::uint32_t for_index) override {
 		states::state_controller::selected_index_ = for_index;
@@ -25,7 +25,7 @@ public:
 	}
 	virtual void use(std::uint32_t use_on_index) = 0;
 protected:
-	const states::target_types target_type{TargetType};
+	const target_types target_type{TargetType};
 	const bool available{Available};
 };
 

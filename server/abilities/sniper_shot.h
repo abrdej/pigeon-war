@@ -8,7 +8,7 @@
 #include "ability.h"
 #include "per_turn_usable.h"
 
-class sniper_shot final : public ability, per_turn_usable
+class sniper_shot final : public active_ability, per_turn_usable
 {
 public:
     bitmap_key get_bitmap_key() const override {

@@ -16,25 +16,24 @@ struct sender {
 		send_fn = fn;
 	}
 
-	template <typename DataType>
-	static void send(const message_types& message, const DataType& x) {
-		sf::Packet packet;
-		packet << message << x;
-		send_fn(packet);
-    }
+//	template <typename... DataTypes>
+//	static void send(const message_types& message, DataTypes&&... x) {
+//
+//		sf::Packet packet;
+//		packet << message;
+//
+//		auto packer = [&packet](auto y) {
+//			packet << y;
+//		};
+//
+//		std::int32_t tab[] = {(packer(std::forward<DataTypes>(x)), 0)...};
+//
+//		send_fn(packet);
+//	}
 
-	template <typename... DataTypes>
-	static void send(const message_types& message, DataTypes&&... x) {
-
+	static void send(const std::string& message) {
 		sf::Packet packet;
 		packet << message;
-
-		auto packer = [&packet](auto y) {
-			packet << y;
-		};
-
-		std::int32_t tab[] = {(packer(std::forward<DataTypes>(x)), 0)...};
-
 		send_fn(packet);
 	}
 };

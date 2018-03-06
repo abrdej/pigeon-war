@@ -43,6 +43,10 @@ public:
 		get_instance().entity_id_to_player_id[entity_id] = neutral_id;
 	}
 
+	static void add_destructive_surroundings(std::uint32_t entity_id) {
+		get_instance().entity_id_to_player_id[entity_id] = destructive_surroundings_id;
+	}
+
 	static bool player_entity(std::uint32_t player_id, std::uint32_t entity_id) {
 		return get_instance().entity_id_to_player_id[entity_id] == player_id;
 	}
@@ -90,6 +94,7 @@ public:
 	}
 
 	static const std::uint32_t neutral_id = std::numeric_limits<std::uint32_t>::max();
+	static const std::uint32_t destructive_surroundings_id = std::numeric_limits<std::uint32_t>::max() - 1;
 	static const std::uint32_t no_player = std::numeric_limits<std::uint32_t>::max();
 
 private:

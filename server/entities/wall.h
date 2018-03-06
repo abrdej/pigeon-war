@@ -12,9 +12,9 @@ struct wall {
     {
         entity.name = "Wall";
 
-        entity.add<health_field>();
-
-        entity.add<bitmap_field>(entity.entity_id, bitmap_key::wall);
+        entity.add<health_field>(30);
+        entity.add<damage_taker>();
+        entity.add<modification>();
 
         return entity;
     }

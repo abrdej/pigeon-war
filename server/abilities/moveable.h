@@ -6,7 +6,7 @@
 #include <functional>
 #include "effects/base_effect.h"
 
-class moveable_base {
+class moveable_base : public active_ability {
     using move_callback_type = std::function<void(std::uint32_t, std::uint32_t, std::int32_t)>;
 
     std::unordered_map<std::uint32_t, moveable_base::move_callback_type> move_callbacks;
@@ -19,6 +19,8 @@ protected:
     }
 
 public:
+	MOVING_ABILITY()
+
     virtual void refresh_range() = 0;
     virtual bool has_range() const = 0;
     virtual void remove_range() = 0;
@@ -35,7 +37,7 @@ public:
     }
 };
 
-class moveable final : public ability, public moveable_base, turn_callback_helper  {
+class moveable final : public moveable_base, turn_callback_helper  {
 public:
     enum class types {
         path,
@@ -44,7 +46,7 @@ public:
 	explicit moveable(std::int32_t range, types type = types::path)
 		: range(range),
 		  base_range(range),
-          type(type) {
+		  movement_type(type) {
 		on_every_two_turns_from_next([this]() {
 			used = false;
 		});
@@ -81,7 +83,7 @@ private:
 	std::int32_t range;
 	const std::int32_t base_range;
 	bool used{false};
-    types type;
+    types movement_type;
 };
 
 

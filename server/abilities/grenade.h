@@ -13,15 +13,14 @@ public:
 		return bitmap_key::grenade;
 	}
 
-	std::string hint() const override;
-
+    DEFINE_DESC_ONE(grenade, damage)
 
 private:
 	void use(std::uint32_t index_on) override;
 
 private:
-	const std::int32_t damage = 12;
-	bool used_{false};
+	const std::int32_t damage{12};
+	bool used{false};
 };
 
 #endif

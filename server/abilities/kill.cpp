@@ -1,8 +1,9 @@
 #include <server/core/states_controller.h>
 #include <core/board.h>
 #include <managers/players_manager.h>
-#include <components/additions.h>
+#include <components/applied_effects.h>
 #include <managers/entity_manager.h>
+#include <common/make_message.h>
 #include "kill.h"
 #include "damage_dealers.h"
 #include "sender.h"
@@ -24,7 +25,7 @@ void kill::prepare(std::uint32_t for_index) {
                                        costs,
                                        range);
 
-    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
+    states::state_controller::actual_targeting_type_ = target_types::enemy;
     states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return set_landing(index);
@@ -41,7 +42,7 @@ void kill::set_landing(std::uint32_t for_index) {
         return;
     }
 
-    states::state_controller::actual_targeting_type_ = states::target_types::moving;
+    states::state_controller::actual_targeting_type_ = target_types::moving;
     states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
@@ -57,9 +58,9 @@ void kill::use(std::uint32_t index_on) {
 
     auto entity_id = board::at(used_from_index);
 
-    bool is_killer_instinct_active = has_component(entity_id, "killer_instinct");
+    bool is_killer_instinct_active = has_effect(entity_id, "killer_instinct");
 
-    sender::send(message_types::animation, animation_def::kill, used_from_index, index_on, target_index);
+    sender::send(make_animation_message("kill", used_from_index, index_on, target_index));
 
     board::move(used_from_index, index_on);
 

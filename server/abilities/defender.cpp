@@ -1,6 +1,5 @@
 #include <core/path_finder.h>
 #include <core/board.h>
-#include <core/animations_queue.h>
 #include <components/damage_taker.h>
 #include "defender.h"
 #include "damage_dealers.h"

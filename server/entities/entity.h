@@ -6,7 +6,6 @@
 
 #include "common/health_field.h"
 #include "common/bitmap_field.h"
-#include "abilities/abilities.h"
 
 enum class directions { right, left };
 

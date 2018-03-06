@@ -10,7 +10,7 @@
 
 class chopper;
 
-class spiral_of_fire final : public straight_target_ability<3, states::target_types::enemy, true>
+class spiral_of_fire final : public straight_target_ability<3, target_types::enemy, true>
 {
 public:
     spiral_of_fire();

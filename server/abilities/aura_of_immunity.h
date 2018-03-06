@@ -16,7 +16,7 @@ public:
 		return bitmap_key::defender;
 	}
 
-	std::string hint() const override;
+	DEFINE_DESC(aura_of_immunity, damage_reduction_for_friends, damage_reduction_for_owner)
 
 private:
 	std::uint32_t entity_id;

@@ -15,7 +15,7 @@ public:
         return bitmap_key::blow_the_ax;
     }
 
-    std::string hint() const override;
+    DEFINE_DESC_ONE(blow_the_ax, damage)
 
 private:
     void use(std::uint32_t index_on) override;

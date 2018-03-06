@@ -8,6 +8,7 @@
 #include <common/turn_status.h>
 #include <common/message_types.h>
 #include <gui/drawer_factory.h>
+#include <common/messages/messages.h>
 #include "caller.h"
 #include "requests.h"
 #include "animations_service.h"
@@ -86,135 +87,67 @@ void pigeon_war_client::receive_messages() {
 		sf::Packet packet;
 		socket.receive(packet);
 
-		message_types message;
+		std::string message;
 		packet >> message;
 
-		/*if (message == message_types::game_server_port) {
+		std::cout << message << "\n";
 
-			std::int32_t game_port;
-			packet >> game_port;
+		try {
 
-			socket.disconnect();
-			auto status = socket.connect(address, game_port);
+			using nlohmann::json;
+			json data = json::parse(message);
 
-			if (status != sf::Socket::Done) {
-				std::cout << "Socket connecting error\n";
-			}
+			if (data.count("client_id")) {
+				player_id = data["client_id"];
 
-			std::cout << "Received game port\n";
+			} else if (data.count("map_name")) {
+				std::string map_name;
+				map_name = data["map_name"];
+				window_.setTitle(map_name);
 
-		}*/ if (message == message_types::player_id) {
-			unpack(packet, player_id);
+			} else if (data.count("board")) {
+				state.board.fields_ = data["board"];
 
-			std::cout << "client player id: " << player_id << "\n";
+			} else if (data.count("entities_names")) {
+				json_to_unordered_map(data["entities_names"], state.entities_names);
 
-		} else if (message == message_types::board) {
-
-			unpack(packet, state.board.fields_);
-
-		} else if (message == message_types::entities_names) {
-			unpack(packet, state.entities_names);
-
-			for (auto&& names_pack : state.entities_names) {
-				drawing_manager::add_component(names_pack.first, drawer_factory::create(names_pack.first, names_pack.second));
-			}
-
-		} else if (message == message_types::healths) {
-
-			unpack(packet, state.healths);
-
-		} else if (message == message_types::end_turn) {
-
-			std::uint32_t active_player_id;
-			unpack(packet, active_player_id);
-
-			std::cout << "end_turn: " << active_player_id << "\n";
-
-		} else if (message == message_types::animations) {
-
-			unpack(packet, state.animations_queue);
-
-			for (auto&& animation_pack : state.animations_queue) {
-				if (animation_pack.animation_type == animation_types::move) {
-
-					std::int32_t from_index = animation_pack.x;
-					std::int32_t to_index = animation_pack.y;
-					std::int32_t entity_id = animation_pack.z;
-					auto btm_key = animation_pack.btm_key;
-
-					if (entity_id != -1) {
-						state.board.take(from_index);
-
-						animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
-						animation::base_player::play();
-
-						state.board.give_back(entity_id, to_index);
-
-					} else {
-						animation::player<animation::move>::launch(animation::move(from_index, to_index, btm_key));
-						animation::base_player::play();
-					}
-
-				} else if (animation_pack.animation_type == animation_types::flash_bitmap) {
-
-					std::int32_t from_index = animation_pack.x;
-					std::int32_t time = animation_pack.y;
-					auto btm_key = animation_pack.btm_key;
-
-					animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index, std::chrono::milliseconds(time), btm_key));
-					animation::base_player::play();
-
-				} else if (animation_pack.animation_type == animation_types::change_health) {
-
-					std::int32_t to_index = animation_pack.x;
-					std::int32_t change_health = animation_pack.y;
-
-					animation::player<animation::change_health>::launch(animation::change_health(to_index, change_health));
-					animation::base_player::play();
-
-				} else if (animation_pack.animation_type == animation_types::hide_show) {
-
-					std::int32_t index = animation_pack.x;
-					std::int32_t hide_show = animation_pack.y;
-					std::int32_t entity_id = animation_pack.z;
-
-					if (hide_show == 0) {
-						state.board.take(index);
-					} else {
-						state.board.give_back(entity_id, index);
-					}
-				} else if (animation_pack.animation_type == animation_types::change_bitmap) {
-					std::int32_t entity_id = animation_pack.x;
-					auto new_bitmap = animation_pack.btm_key;
-
-					drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(new_bitmap);
+				for (auto&& names_pack : state.entities_names) {
+					drawing_manager::add_component(names_pack.first, drawer_factory::create(names_pack.first, names_pack.second));
 				}
+
+			} else if (data.count("entities_healths")) {
+				json_to_unordered_map(data["entities_healths"], state.healths);
+
+			} else if (data.count("end_turn")) {
+				std::uint32_t active_player_id = data["end_turn"];
+				std::cout << "end_turn: " << active_player_id << "\n";
+
+			} else if (data.count("game_state")) {
+				state = data["game_state"];
+				update_for_entity();
+
+			} else if (data.count("local_state")) {
+				from_json(data["local_state"], lstate);
+				update_for_entity();
+
+			} else if (data.count("description")) {
+				std::string description = data["description"];
+				desc_pos = sf::Mouse::getPosition(window_);
+				hint_ptr = std::make_unique<hint>(desc_pos, description);
+
+			} else if (data.count("animation")) {
+				animations_service::handle(data, state);
 			}
 
-		} else if (message == message_types::game_state) {
+		} catch (nlohmann::detail::parse_error&) {
 
-			unpack(packet, state);
+			std::cout << "Parse error in: " << message << "\n";
 
-			update_for_entity();
+		} catch (nlohmann::detail::type_error&) {
 
-		} else if (message == message_types::local_state) {
+            std::cout << "Type error in: " << message << "\n";
 
-			unpack(packet, lstate);
-
-			update_for_entity();
-
-		} else if (message == message_types::description) {
-
-			std::string description;
-			unpack(packet, description);
-
-			desc_pos = sf::Mouse::getPosition(window_);
-			hint_ptr = std::make_unique<hint>(desc_pos, description);
-
-		} else if (message == message_types::animation) {
-
-			animations_service::handle(packet, state);
-		}
+        }
 	}
 }
 
@@ -337,7 +270,9 @@ void pigeon_war_client::update_for_entity()
 	if (lstate.selected_index == -1)
 		return;
 
-	buttons_panel_.set_for_entity_for(lstate.entity_name, lstate.button_bitmaps);
+	auto entity_id = state.board.at(lstate.selected_index);
+
+	buttons_panel_.set_for_entity_for(entity_id, lstate.entity_name, lstate.button_bitmaps);
 
 	auto this_entity_id = state.board.at(lstate.selected_index);
 

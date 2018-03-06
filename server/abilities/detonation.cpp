@@ -1,6 +1,5 @@
 #include <managers/entity_manager.h>
 #include <core/path_finder.h>
-#include <core/animations_queue.h>
 #include <components/damage_taker.h>
 #include "detonation.h"
 #include "damage_dealers.h"
@@ -22,11 +21,11 @@ detonation::detonation(std::uint32_t entity_id) {
 
             board::take(board::index_for(entity_id));
 
-            animations_queue::push_animation(animation_types::flash_bitmap,
-                                             board::to_index(from_cr.first, from_cr.second),
-                                             150,
-                                             0,
-                                             bitmap_key::detonation_anim);
+//            animations_queue::push_animation(animation_types::flash_bitmap,
+//                                             board::to_index(from_cr.first, from_cr.second),
+//                                             150,
+//                                             0,
+//                                             bitmap_key::detonation_anim);
 
             for (auto& index : neighbors) {
                 if (!board::empty(index))

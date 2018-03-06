@@ -6,16 +6,5 @@
 #define PIGEONWAR_POISON_EFFECT_H
 
 
-#include <cstdint>
-#include "base_effect.h"
-
-class poison_effect : public base_effect {
-	int32_t poison_damage;
-	int32_t poison_duration;
-
-	poison_effect(int32_t poison_damage, int32_t poison_duration) {
-
-	}
-};
 
 #endif //PIGEONWAR_POISON_EFFECT_H

@@ -13,7 +13,7 @@ public:
 		return bitmap_key::invisibility;
 	}
 
-	std::string hint() const override;
+	DEFINE_DESC_ONE(invisibility, duration)
 
 private:
 	void use(std::uint32_t on_index) override;
@@ -25,7 +25,7 @@ private:
 	std::uint32_t index{0};
 	std::int32_t turn_counter_{0};
 	std::int32_t duration{2};
-	callback_holder invisibility_callback;
+	turn_scoped_connection invisibility_callback;
 };
 
 #endif

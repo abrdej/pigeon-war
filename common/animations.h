@@ -81,7 +81,8 @@ enum class animation_def {
 	fist_of_doom,
 	uselessness,
 	meteorite_before,
-	meteorite
+	meteorite,
+	purification
 };
 
 struct animation_def_key_hash

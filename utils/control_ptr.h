@@ -19,8 +19,8 @@ public:
 	}
 	control_ptr(const control_ptr&) = default;
 	control_ptr& operator=(const control_ptr&) = default;
-	control_ptr(control_ptr&&) = default;
-	control_ptr& operator=(control_ptr&&) = default;
+	control_ptr(control_ptr&&) noexcept = default;
+	control_ptr& operator=(control_ptr&&) noexcept = default;
 
 	void destroy() {
 		*mem = nullptr;

@@ -9,6 +9,9 @@
 #include <server/abilities/bludgeon.h>
 #include <server/abilities/rage.h>
 #include <abilities/regeneration.h>
+#include <components/damage_taker.h>
+#include <components/applied_effects.h>
+#include <abilities/abilities.h>
 #include "entity.h"
 
 struct troll final
@@ -19,16 +22,16 @@ struct troll final
 
 		entity.add<health_field>(80);
 		entity.add<damage_taker>();
-		entity.add<addition>();
+		entity.add<applied_effects>();
 		entity.add<modification>();
 
 		auto abilities_ptr = entity.add<abilities>();
-		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<bludgeon>(entity.entity_id));
-		abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<rage>(entity.entity_id));
-		abilities_ptr->add_ability(abilities::ability_types::defensive, std::make_shared<regeneration>(entity.entity_id));
+		abilities_ptr->add_ability(std::make_shared<moveable>(3));
+		abilities_ptr->add_ability(std::make_shared<bludgeon>(entity.entity_id));
+		abilities_ptr->add_ability(std::make_shared<rage>(entity.entity_id));
+		abilities_ptr->add_ability(std::make_shared<regeneration>(entity.entity_id));
 
-		entity.add<bitmap_field>(entity.entity_id, bitmap_key::troll);
+		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::troll);
 
 		return entity;
 	}

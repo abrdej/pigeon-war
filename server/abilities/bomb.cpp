@@ -4,7 +4,6 @@
 #include <core/board.h>
 #include <managers/entity_manager.h>
 #include <unordered_map>
-#include <core/animations_queue.h>
 #include "sender.h"
 #include "common/animations.h"
 
@@ -27,7 +26,7 @@ void bomb_detonation::look_for_bombs() {
 void bomb_detonation::prepare(std::uint32_t for_index) {
 //	states::state_controller::actual_state_ = states::states_types::wait_for_action;
 //	states::state_controller::possible_movements_.push_back(for_index);
-//	states::state_controller::actual_targeting_type_ = states::target_types::caster;
+//	states::state_controller::actual_targeting_type_ = target_types::caster;
 //	states::state_controller::wait_for_action([this](std::uint32_t index)
 //											  {
 //												  return use(index);
@@ -39,7 +38,7 @@ void bomb_detonation::use(std::uint32_t for_index) {
 	std::vector<std::uint32_t> neightbords;
 	board_helper::neighboring_fields(for_index, neightbords, false);
 
-	animations_queue::push_animation(animation_types::flash_bitmap, for_index, 150, 0, bitmap_key::bum);
+//	animations_queue::push_animation(animation_types::flash_bitmap, for_index, 150, 0, bitmap_key::bum);
 
 	auto final_damage = damage;
 
@@ -71,7 +70,7 @@ void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 	std::vector<std::uint32_t> neightbords;
 	board_helper::neighboring_fields(index, neightbords, false);
 
-	animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::bum);
+//	animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::bum);
 
 //	auto final_damage = damage;
 //

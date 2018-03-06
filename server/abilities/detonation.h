@@ -7,7 +7,7 @@
 
 #include "ability.h"
 
-class detonation : public ability {
+class detonation : public active_ability {
 public:
     explicit detonation(std::uint32_t entity_id);
 

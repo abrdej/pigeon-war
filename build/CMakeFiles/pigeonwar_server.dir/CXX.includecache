@@ -401,8 +401,8 @@ core/turn_system.h
 ../server/abilities/core/turn_system.h
 functional
 -
-effects/base_effect.h
-../server/abilities/effects/base_effect.h
+applied_effects/base_effect.h
+../server/abilities/applied_effects/base_effect.h
 
 ..//server/abilities/poisoned_missile.h
 path_target_ability.h
@@ -853,8 +853,8 @@ core/turn_system.h
 ../server/abilities/core/turn_system.h
 functional
 -
-effects/base_effect.h
-../server/abilities/effects/base_effect.h
+applied_effects/base_effect.h
+../server/abilities/applied_effects/base_effect.h
 
 ../server/abilities/neighboring_target_ability.h
 ability.h
@@ -1047,8 +1047,8 @@ unordered_map
 -
 board.h
 ../server/core/board.h
-effects/base_effect.h
-../server/core/effects/base_effect.h
+applied_effects/base_effect.h
+../server/core/applied_effects/base_effect.h
 
 ../server/core/game.h
 cstddef
@@ -1110,15 +1110,15 @@ unordered_set
 managers/players_manager.h
 -
 
-../server/effects/aura_of_destruction_effect.h
+../server/applied_effects/aura_of_destruction_effect.h
 base_effect.h
-../server/effects/base_effect.h
+../server/applied_effects/base_effect.h
 
-../server/effects/aura_of_immunity_effect.h
+../server/applied_effects/aura_of_immunity_effect.h
 base_effect.h
-../server/effects/base_effect.h
+../server/applied_effects/base_effect.h
 
-../server/effects/auras_observer.h
+../server/applied_effects/auras_observer.h
 memory
 -
 unordered_map
@@ -1132,9 +1132,9 @@ core/path_finder.h
 managers/entity_manager.h
 -
 base_effect.h
-../server/effects/base_effect.h
+../server/applied_effects/base_effect.h
 
-../server/effects/base_effect.h
+../server/applied_effects/base_effect.h
 cstdint
 -
 
@@ -1825,9 +1825,9 @@ managers/entity_manager.h
 -
 components/power_field.h
 -
-effects/auras_observer.h
+applied_effects/auras_observer.h
 -
-effects/aura_of_destruction_effect.h
+applied_effects/aura_of_destruction_effect.h
 -
 components/damage_taker.h
 -
@@ -1855,9 +1855,9 @@ managers/entity_manager.h
 -
 managers/players_manager.h
 -
-effects/aura_of_immunity_effect.h
+applied_effects/aura_of_immunity_effect.h
 -
-effects/auras_observer.h
+applied_effects/auras_observer.h
 -
 aura_of_immunity.h
 /home/abrdej/pigeon-war/server/abilities/aura_of_immunity.h
@@ -2693,8 +2693,8 @@ core/turn_system.h
 /home/abrdej/pigeon-war/server/abilities/core/turn_system.h
 functional
 -
-effects/base_effect.h
-/home/abrdej/pigeon-war/server/abilities/effects/base_effect.h
+applied_effects/base_effect.h
+/home/abrdej/pigeon-war/server/abilities/applied_effects/base_effect.h
 
 /home/abrdej/pigeon-war/server/abilities/neighboring_target_ability.h
 ability.h
@@ -3531,8 +3531,8 @@ unordered_map
 -
 board.h
 /home/abrdej/pigeon-war/server/core/board.h
-effects/base_effect.h
-/home/abrdej/pigeon-war/server/core/effects/base_effect.h
+applied_effects/base_effect.h
+/home/abrdej/pigeon-war/server/core/applied_effects/base_effect.h
 
 /home/abrdej/pigeon-war/server/core/game.cpp
 game.h
@@ -3658,7 +3658,7 @@ unordered_set
 managers/players_manager.h
 -
 
-/home/abrdej/pigeon-war/server/effects/aura_of_destruction_effect.cpp
+/home/abrdej/pigeon-war/server/applied_effects/aura_of_destruction_effect.cpp
 managers/entity_manager.h
 -
 components/power_field.h
@@ -3666,15 +3666,15 @@ components/power_field.h
 components/modification.h
 -
 aura_of_destruction_effect.h
-/home/abrdej/pigeon-war/server/effects/aura_of_destruction_effect.h
+/home/abrdej/pigeon-war/server/applied_effects/aura_of_destruction_effect.h
 
-/home/abrdej/pigeon-war/server/effects/aura_of_destruction_effect.h
+/home/abrdej/pigeon-war/server/applied_effects/aura_of_destruction_effect.h
 base_effect.h
-/home/abrdej/pigeon-war/server/effects/base_effect.h
+/home/abrdej/pigeon-war/server/applied_effects/base_effect.h
 
-/home/abrdej/pigeon-war/server/effects/aura_of_immunity_effect.cpp
+/home/abrdej/pigeon-war/server/applied_effects/aura_of_immunity_effect.cpp
 aura_of_immunity_effect.h
-/home/abrdej/pigeon-war/server/effects/aura_of_immunity_effect.h
+/home/abrdej/pigeon-war/server/applied_effects/aura_of_immunity_effect.h
 components/additions.h
 -
 components/modification.h
@@ -3686,15 +3686,15 @@ common/animations.h
 managers/players_manager.h
 -
 
-/home/abrdej/pigeon-war/server/effects/aura_of_immunity_effect.h
+/home/abrdej/pigeon-war/server/applied_effects/aura_of_immunity_effect.h
 base_effect.h
-/home/abrdej/pigeon-war/server/effects/base_effect.h
+/home/abrdej/pigeon-war/server/applied_effects/base_effect.h
 
-/home/abrdej/pigeon-war/server/effects/auras_observer.cpp
+/home/abrdej/pigeon-war/server/applied_effects/auras_observer.cpp
 auras_observer.h
-/home/abrdej/pigeon-war/server/effects/auras_observer.h
+/home/abrdej/pigeon-war/server/applied_effects/auras_observer.h
 
-/home/abrdej/pigeon-war/server/effects/auras_observer.h
+/home/abrdej/pigeon-war/server/applied_effects/auras_observer.h
 memory
 -
 unordered_map
@@ -3708,9 +3708,9 @@ core/path_finder.h
 managers/entity_manager.h
 -
 base_effect.h
-/home/abrdej/pigeon-war/server/effects/base_effect.h
+/home/abrdej/pigeon-war/server/applied_effects/base_effect.h
 
-/home/abrdej/pigeon-war/server/effects/base_effect.h
+/home/abrdej/pigeon-war/server/applied_effects/base_effect.h
 cstdint
 -
 

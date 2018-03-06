@@ -16,12 +16,12 @@ public:
         return bitmap_key::immortality;
     }
 
-    std::string hint() const override;
+    DEFINE_DESC_ZERO(immortality)
 
 private:
     std::uint32_t entity_id;
     std::int32_t duration{1};
-    callback_holder immortality_holder;
+    turn_scoped_connection immortality_holder;
 };
 
 #endif //PIGEONWAR_IMMORTALITY_H

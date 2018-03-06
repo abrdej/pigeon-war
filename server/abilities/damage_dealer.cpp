@@ -22,14 +22,13 @@ std::int32_t damage_dealers::standard_damage_dealer(const damage_pack& dmg)
 		return 0;
 	}
 
-	damage_pack dmg_up = dmg;
-	dmg_up.damage_value = random_damage(dmg.damage_value);
+	damage_pack dmg_copy = dmg;
+	dmg_copy.damage_value = random_damage(dmg.damage_value);
 
-	auto dealt_damage = entity.get<damage_taker>()->receive_damage(dmg);
-
+	auto dealt_damage = entity.get<damage_taker>()->receive_damage(dmg_copy);
 
 	if (health_field_ptr->health <= 0 && health_field_ptr->is_destructible)
-		entity_manager::destroy(dmg.damage_receiver_id);
+		entity_manager::destroy(dmg_copy.damage_receiver_id);
 
 	return dealt_damage;
 }

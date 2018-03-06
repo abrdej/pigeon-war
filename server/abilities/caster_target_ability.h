@@ -9,13 +9,13 @@
 #include "common/states.h"
 #include "core/states_controller.h"
 
-class caster_target_ability : public ability {
+class caster_target_ability : public active_ability {
 public:
 	void prepare(std::uint32_t for_index) {
 		states::state_controller::actual_state_ = states::states_types::wait_for_action;
 		states::state_controller::possible_movements_.clear();
 		states::state_controller::possible_movements_.push_back(for_index);
-		states::state_controller::actual_targeting_type_ = states::target_types::caster;
+		states::state_controller::actual_targeting_type_ = target_types::caster;
 		states::state_controller::wait_for_action([this](std::uint32_t index)
 												  {
 													  return use(index);

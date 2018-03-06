@@ -153,7 +153,7 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::warrior_immortal, "warrior_imm.png");
     add_bitmap(bitmap_key::prison_connection, "prison_connection.png");
     add_bitmap(bitmap_key::poison_effect, "poison_effect.png");
-    add_bitmap(bitmap_key::rocket, "rocket_thrower.png");
+    add_bitmap(bitmap_key::rocket, "rocket.png");
     add_bitmap(bitmap_key::change_rocket_type, "mortar_thrower.png");
     add_bitmap(bitmap_key::combat_robot, "combat_robot.png");
     add_bitmap(bitmap_key::druid, "druid.png");
@@ -183,5 +183,9 @@ void bitmap_center::load()
     add_bitmap(bitmap_key::uselessness, "uselessness.png");
     add_bitmap(bitmap_key::wizzard, "wizzard.png");
     add_bitmap(bitmap_key::meteorite, "meteorite.png");
+    add_bitmap(bitmap_key::purification, "uselessness.png");
+    add_bitmap(bitmap_key::dragon, "dragon.png");
+    add_bitmap(bitmap_key::dragon_skin, "shield.png");
+    add_bitmap(bitmap_key::flame_burning, "power_bullet.png");
 }
 }

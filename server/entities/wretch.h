@@ -23,15 +23,13 @@ struct wretch final
         entity.add<health_field>(45);
         entity.add<power_field>(16);
         entity.add<damage_taker>();
-        entity.add<addition>();
+        entity.add<applied_effects>();
         entity.add<modification>();
 
         auto abilities_ptr = entity.add<abilities>();
-        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<wretch_moving>(entity.entity_id));
-        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<vicious_circle>(entity.entity_id));
-        abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<ball_and_chain>(entity.entity_id));
-
-        entity.add<bitmap_field>(entity.entity_id, bitmap_key::wretch);
+        abilities_ptr->add_ability(std::make_shared<wretch_moving>(entity.entity_id));
+        abilities_ptr->add_ability(std::make_shared<vicious_circle>(entity.entity_id));
+        abilities_ptr->add_ability(std::make_shared<ball_and_chain>(entity.entity_id));
 
         return entity;
     }

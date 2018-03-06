@@ -16,12 +16,12 @@
 class game_state;
 
 struct base_handler {
-	virtual void handle(sf::Packet& packet, game_state& g_state) = 0;
+	virtual void handle(nlohmann::json& data, game_state& g_state) = 0;
 };
 
 class animations_service {
 
-	std::unordered_map<animation_def, std::unique_ptr<base_handler>, animation_def_key_hash> services;
+	std::unordered_map<std::string, std::unique_ptr<base_handler>> services;
 
 	static std::unique_ptr<animations_service> impl;
 
@@ -34,15 +34,14 @@ class animations_service {
 	}
 
 	template <typename T>
-	void add(const animation_def& animation) {
-		services.emplace(animation, std::make_unique<T>());
+	void add(const std::string& animation_key) {
+		services.emplace(animation_key, std::make_unique<T>());
 	}
 
 public:
-	static void handle(sf::Packet& packet, game_state& g_state) {
-		animation_def animation;
-		unpack(packet, animation);
-		get_instance().services.at(animation)->handle(packet, g_state);
+	static void handle(nlohmann::json& data, game_state& g_state) {
+		std::string animation_name = data["animation"][0];
+		get_instance().services.at(animation_name)->handle(data["animation"], g_state);
 	}
 
 	void initialize();

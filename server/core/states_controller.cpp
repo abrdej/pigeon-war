@@ -8,7 +8,6 @@
 
 using states::state_controller;
 using states::states_types;
-using states::target_types;
 
 std::uint32_t state_controller::selected_index_ = states::no_selected_index;
 states_types state_controller::actual_state_ = states_types::waiting;
@@ -41,7 +40,7 @@ void state_controller::first_state(std::uint32_t select_from_index)
 		if (abilities_ptr->is_active) {
 			auto moveable = abilities_ptr->at(0);
 			if (moveable) {
-				moveable->operator()(states::state_controller::selected_index_);
+				try_prepare_ability(*moveable, states::state_controller::selected_index_);
 			}
 		}
 	}
@@ -68,7 +67,7 @@ bool state_controller::is_possible_movement(std::uint32_t index)
 
 bool state_controller::valid_target(std::uint32_t target_index) {
 
-	if (states::state_controller::actual_targeting_type_ == states::target_types::enemy) {
+	if (states::state_controller::actual_targeting_type_ == target_types::enemy) {
 
 		auto caster_id = board::at(states::state_controller::selected_index_);
 
@@ -87,16 +86,16 @@ bool state_controller::valid_target(std::uint32_t target_index) {
 
 		return players_funcs::enemy_entity(target_index);
 	}
-	else if (states::state_controller::actual_targeting_type_ == states::target_types::moving)
+	else if (states::state_controller::actual_targeting_type_ == target_types::moving)
 		return board::empty(target_index);
-	else if (states::state_controller::actual_targeting_type_ == states::target_types::friendly)
+	else if (states::state_controller::actual_targeting_type_ == target_types::friendly)
 		return players_funcs::player_entity(target_index);
-	else if (states::state_controller::actual_targeting_type_ == states::target_types::caster)
+	else if (states::state_controller::actual_targeting_type_ == target_types::caster)
 		return target_index == states::state_controller::selected_index_;
-	else if (states::state_controller::actual_targeting_type_ == states::target_types::neutral) {
+	else if (states::state_controller::actual_targeting_type_ == target_types::neutral) {
 		std::cout << "neutral: " << players_funcs::neutral_entity(target_index) << "\n";
 		return players_funcs::neutral_entity(target_index);
-	} else if (states::state_controller::actual_targeting_type_ == states::target_types::all) {
+	} else if (states::state_controller::actual_targeting_type_ == target_types::all) {
 		return true;
 	}
 	return false;

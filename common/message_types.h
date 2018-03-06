@@ -24,7 +24,8 @@ enum class message_types {
 	on_button,
 	on_board,
 	get_button_description,
-	get_effect
+	get_effect,
+	map_name
 };
 
 struct message_types_key_hash

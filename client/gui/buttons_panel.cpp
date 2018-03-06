@@ -2,6 +2,7 @@
 #include "buttons_panel.h"
 #include "view_constants.h"
 #include "bitmap_center.h"
+#include "drawing_manager.h"
 
 namespace view
 {
@@ -62,22 +63,24 @@ std::uint32_t buttons_panel::hit_button(sf::Vector2i cursor) const
     return std::numeric_limits<std::uint32_t>::max();
 }
 
-void buttons_panel::set_for_entity_for(const std::string& entity_name,
-									   const std::array<bitmap_key, 6>& button_bitmaps) {
+void buttons_panel::set_for_entity_for(std::uint32_t entity_id,
+                                       const std::string& entity_name,
+									   const std::array<bitmap_key, 5>& button_bitmaps) {
 
 	this->entity_name = entity_name;
 
-	for (std::uint32_t i = 1; i < 6; ++i) {
+	for (std::uint32_t i = 0; i < 5; ++i) {
 		if (button_bitmaps[i] != bitmap_key::none) {
-			buttons_[i - 1].icon(bitmap_center::get_bitmap(button_bitmaps[i]));
+			buttons_[i].icon(bitmap_center::get_bitmap(button_bitmaps[i]));
 		} else {
-			buttons_[i - 1].remove_icon();
-			hints[i - 1].clear();
+			buttons_[i].remove_icon();
+			hints[i].clear();
 		}
 	}
 
-	if (button_bitmaps[0] != bitmap_key::none) {
-		entity_logo.setTexture(view::bitmap_center::get_bitmap(button_bitmaps[0]));
+	if (entity_id != std::numeric_limits<decltype(entity_id)>::max()) {
+        auto bitmap_key = drawing_manager::get_bitmap_key_for(entity_id);
+		entity_logo.setTexture(view::bitmap_center::get_bitmap(bitmap_key));
 		entity_logo.setPosition(sf::Vector2f(constants::field_size / 4,
 											 constants::top_left_point.y + (board_container::rows_n) * constants::field_size +
 											 constants::field_size / 8));

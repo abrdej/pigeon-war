@@ -4,7 +4,7 @@
 #include "straight_target_ability.h"
 #include "per_turn_usable.h"
 
-class shoot final : public straight_target_ability<3>,
+class shoot final : public directed_target_ability<3>,
 					protected per_turn_callback
 {
 public:
@@ -14,14 +14,14 @@ public:
 		return bitmap_key::shoot;
 	}
 
-	std::string hint() const override;
+	DEFINE_DESC(shoot, damage, bullets, range)
 
 private:
 	void use(std::uint32_t index_on) override;
 
 private:
-	const std::int32_t damage{6};
 	const std::int32_t bullets_n{2};
+	const std::int32_t damage{6};
 	std::int32_t bullets;
 };
 

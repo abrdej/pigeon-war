@@ -5,7 +5,7 @@
 path_finder::path_finder(bool all_fields)
 		: start_index_(-1)
 {
-    board_graph.set_size(board::cols_n * board::rows_n);
+	board_graph.set_size(board::cols_n * board::rows_n);
 
 	board::for_each([this, &all_fields](std::uint32_t entity_id, std::uint32_t col, std::uint32_t row) {
 		auto rows_n = board::rows_n;
@@ -15,18 +15,18 @@ path_finder::path_finder(bool all_fields)
 		if (row < rows_n - 1) {
 			auto key_to = board::to_index(col, row + 1);
 			if (board::empty(key_to) || all_fields)
-                board_graph.add_edge(key_from, key_to);
+				board_graph.add_edge(key_from, key_to);
 
 			if (board::empty(key_from) || all_fields)
-                board_graph.add_edge(key_to, key_from);
+				board_graph.add_edge(key_to, key_from);
 		}
 		if (col < cols_n - 1) {
 			auto key_to = board::to_index(col + 1, row);
 			if (board::empty(key_to) || all_fields)
-                board_graph.add_edge(key_from, key_to);
+				board_graph.add_edge(key_from, key_to);
 
 			if (board::empty(key_from) || all_fields)
-                board_graph.add_edge(key_to, key_from);
+				board_graph.add_edge(key_to, key_from);
 		}
 	});
 }
@@ -48,8 +48,8 @@ std::uint32_t path_finder::find_first_satisfy_conditions(std::uint32_t from_inde
 }
 
 void path_finder::get_possible_movements(std::vector<std::uint32_t>& movements,
-                                         std::vector<std::uint32_t>& costs,
-                                         std::int32_t range)
+										 std::vector<std::uint32_t>& costs,
+										 std::int32_t range)
 {
 	movements.clear();
 	costs.clear();
@@ -74,75 +74,95 @@ void path_finder::path_to(std::uint32_t index, std::vector<std::uint32_t>& path)
 
 std::int32_t path_finder::distance_to(std::uint32_t index)
 {
-    return static_cast<std::int32_t>(distance_map_[index]);
+	return static_cast<std::int32_t>(distance_map_[index]);
 }
 
 namespace board_helper
 {
-void calc_straight(std::uint32_t from_index, std::vector<std::uint32_t>& movements, std::vector<std::uint32_t>& costs, std::int32_t range, bool skip_obstacles)
-{
+
+template <long unsigned int N>
+void calc_helper(const std::array<std::pair<std::int32_t, std::int32_t>, N>& ops,
+				 std::uint32_t from_index,
+				 std::vector<std::uint32_t>& movements,
+				 std::vector<std::uint32_t>& costs,
+				 std::int32_t range,
+				 bool skip_obstacles) {
+
 	movements.clear();
 	costs.clear();
 
 	auto fld = board::to_pos(from_index);
-	for (std::uint32_t i = fld.first - 1; i != -1; --i)
-	{
-		auto cost = fld.first - i;
-		if (cost > range)
-			break;
-		auto index = board::to_index(i, fld.second);
+	for (auto&& op : ops) {
+		for (std::uint32_t i = 1; i <= range; ++i) {
 
-		costs.push_back(cost);
-		movements.push_back(index);
+			auto next_pos = fld;
+			next_pos.first += (op.first * i);
+			next_pos.second += (op.second * i);
 
-		if (!board::empty(index) && !skip_obstacles)
-			break;
+			if (next_pos.first > 0 && next_pos.second > 0
+				&& next_pos.first <= board::cols_n && next_pos.second <= board::rows_n) {
+				auto index = board::to_index(next_pos.first, next_pos.second);
+
+				costs.push_back(i);
+				movements.push_back(index);
+
+				if (!board::empty(index) && !skip_obstacles)
+					break;
+			}
+		}
 	}
+}
 
-	for (std::uint32_t i = fld.first + 1; i < board::cols_n; ++i)
-	{
-		auto cost = i - fld.first;
-		if (cost > range)
-			break;
+void calc_straight(std::uint32_t from_index,
+				   std::vector<std::uint32_t>& movements,
+				   std::vector<std::uint32_t>& costs,
+				   std::int32_t range,
+				   bool skip_obstacles)
+{
+	const std::array<std::pair<std::int32_t, std::int32_t>, 4> ops = {
+			std::make_pair(-1, 0),
+			std::make_pair(+1, 0),
+			std::make_pair(0, +1),
+			std::make_pair(0, -1)
+    };
 
-		auto index = board::to_index(i, fld.second);
+	calc_helper(ops, from_index, movements, costs, range, skip_obstacles);
+}
 
-		costs.push_back(cost);
-		movements.push_back(index);
+void calc_diagonal(std::uint32_t from_index,
+				   std::vector<std::uint32_t>& movements,
+				   std::vector<std::uint32_t>& costs,
+				   std::int32_t range,
+				   bool skip_obstacles) {
 
-		if (!board::empty(index) && !skip_obstacles)
-			break;
-	}
+	const std::array<std::pair<std::int32_t, std::int32_t>, 4> ops = {
+			std::make_pair(-1, -1),
+			std::make_pair(+1, +1),
+			std::make_pair(-1, +1),
+			std::make_pair(+1, -1)
+	};
 
-	for (std::uint32_t i = fld.second - 1; i != -1; --i)
-	{
-		auto cost = fld.second - i;
-		if (cost > range)
-			break;
+	calc_helper(ops, from_index, movements, costs, range, skip_obstacles);
+}
 
-		auto index = board::to_index(fld.first, i);
+void calc_directed(std::uint32_t from_index,
+				   std::vector<std::uint32_t>& movements,
+				   std::vector<std::uint32_t>& costs,
+				   std::int32_t range,
+				   bool skip_obstacles) {
 
-		costs.push_back(cost);
-		movements.push_back(index);
+	const std::array<std::pair<std::int32_t, std::int32_t>, 8> ops = {
+			std::make_pair(-1, 0),
+			std::make_pair(+1, 0),
+			std::make_pair(0, +1),
+			std::make_pair(0, -1),
+			std::make_pair(-1, -1),
+			std::make_pair(+1, +1),
+			std::make_pair(-1, +1),
+			std::make_pair(+1, -1)
+	};
 
-		if (!board::empty(index) && !skip_obstacles)
-			break;
-	}
-
-	for (std::uint32_t i = fld.second + 1; i < board::rows_n; ++i)
-	{
-		auto cost = i - fld.second;
-		if (cost > range)
-			break;
-
-		auto index = board::to_index(fld.first, i);
-
-		costs.push_back(cost);
-		movements.push_back(index);
-
-		if (!board::empty(index) && !skip_obstacles)
-			break;
-	}
+	calc_helper(ops, from_index, movements, costs, range, skip_obstacles);
 }
 
 void neighboring_fields(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool available)

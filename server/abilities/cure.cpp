@@ -5,8 +5,10 @@
 #include <common/animations.h>
 #include <sender.h>
 #include <components/power_field.h>
-#include <components/additions.h>
+#include <components/applied_effects.h>
+#include <common/make_message.h>
 #include "cure.h"
+#include "power_cost_ability.h"
 
 cure::cure(std::uint32_t entity_id)
         : entity_id(entity_id) {}
@@ -18,14 +20,13 @@ void cure::use(std::uint32_t index_on) {
 		return;
 	}
 
-	auto& power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
-
-	if (power < power_cost)
+	if (!use_ability_at_the_expense_of_power(entity_id, power_cost)) {
 		return;
+	}
 
 	auto friend_id = board::at(index_on);
 
-	sender::send(message_types::animation, animation_def::cure, index_on);
+	sender::send(make_animation_message("cure", index_on));
 
     entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
                                                                      friend_id));
@@ -33,20 +34,19 @@ void cure::use(std::uint32_t index_on) {
     auto healing_amount_per_turn = this->healing_amount_per_turn;
     auto healing_duration = this->healing_duration;
 
-    auto healing_holder = make_every_two_turns_from_next_callback_holder(healing_duration,
-                                                                         [healing_amount_per_turn, friend_id]() {
-																			 if (entity_manager::alive(friend_id)) {
-																				 sender::send(message_types::animation, animation_def::cure, board::index_for(friend_id));
-																				 entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
-																																				  friend_id));
-																			 }
-                                                                         });
+	auto cure_connection = make_every_two_turns_from_next_callback_holder(healing_duration,
+																		  [healing_amount_per_turn, friend_id]() {
+																			  if (entity_manager::alive(friend_id)) {
+																				  sender::send(make_animation_message("cure", board::index_for(friend_id)));
+																				  entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
+																																				   friend_id));
+																			  }
+																		  });
 
-//    entity_manager::get(friend_id).get<addition>()->named_data.clear();
+	auto cure_effect = make_positive_effect("cure");
+	cure_effect->set_turn_connection(std::move(cure_connection));
 
-    add_component(friend_id, "cure_effect", healing_holder);
-
-	power -= power_cost;
+	add_effect(friend_id, cure_effect);
 
 	used = true;
 }

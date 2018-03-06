@@ -16,6 +16,12 @@ inline sf::Packet make_packet(const message_types& message, const T& x) {
 	return packet;
 }
 
+inline sf::Packet make_packet(const std::string& message) {
+	sf::Packet packet;
+	packet << message;
+	return packet;
+}
+
 //template <typename T>
 //inline sf::Packet make_packet(const message_types& message, const T& x) {
 //

@@ -2,6 +2,7 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <gui/bitmap_center.h>
+#include <common/make_message.h>
 #include "damage_dealers.h"
 #include "sender.h"
 #include "common/animations.h"
@@ -39,7 +40,7 @@ void giant_ram::use(std::uint32_t index_on) {
 
     auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
-    sender::send(message_types::animation, animation_def::giant_ram, used_from_index, index_to_move);
+    sender::send(make_animation_message("giant_ram", used_from_index, index_to_move));
 
     board::move(used_from_index, index_to_move);
 
@@ -79,14 +80,4 @@ void giant_ram::use(std::uint32_t index_on) {
     states::state_controller::custom_valid_targets[entity_id].clear();
 
     used = true;
-}
-
-std::string giant_ram::hint() const {
-
-    std::string desc;
-    desc = "Giant Ram - the giant will accelerate and attack all units in his path.\n"
-            "Damage: " + std::to_string(damage) + ".\n"
-            "This ability can be used only once per battle.";
-
-    return std::move(desc);
 }

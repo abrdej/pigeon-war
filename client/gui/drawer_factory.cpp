@@ -46,7 +46,8 @@ std::shared_ptr<drawable> drawer_factory::create(std::uint32_t entity_id, const 
 			{"Mechanical Saw", bitmap_key::mechanical_saw},
 			{"Commander", bitmap_key::commander},
 			{"Gin", bitmap_key::gin},
-			{"Wizzard", bitmap_key::wizzard}
+			{"Wizzard", bitmap_key::wizzard},
+			{"Dragon", bitmap_key::dragon}
 	};
 
 

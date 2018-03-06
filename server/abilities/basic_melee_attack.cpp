@@ -1,3 +1,4 @@
+#include <common/make_message.h>
 #include "basic_melee_attack.h"
 #include "core/path_finder.h"
 #include "core/states_controller.h"
@@ -15,7 +16,7 @@ void basic_melee_attack::use(std::uint32_t index_on)
 	auto used_from_index = states::state_controller::selected_index_;
 	auto caster_id = board::at(used_from_index);
 
-	sender::send(message_types::animation, animation_def::basic_melee_attack, used_from_index, index_on);
+	sender::send(make_animation_message("basic_melee_attack", used_from_index, index_on));
 
 	auto enemy_id = board::at(index_on);
 

@@ -1,4 +1,5 @@
 #include <core/states_controller.h>
+#include <common/make_message.h>
 #include "bludgeon.h"
 #include "damage_dealers.h"
 #include "sender.h"
@@ -56,11 +57,7 @@ void bludgeon::use(std::uint32_t index_on)
 		board::move(index_on, push_to_index);
 		board::move(used_from_index, index_on);
 
-		sender::send(message_types::animation,
-					 animation_def::bludgeon_push,
-					 used_from_index,
-					 index_on,
-					 push_to_index);
+		sender::send(make_animation_message("bludgeon_push", used_from_index, index_on, push_to_index));
 
 		damage_dealers::standard_damage_dealer(melee_damage(damage + rage_damage, enemy_id, entity_id));
 
@@ -68,10 +65,7 @@ void bludgeon::use(std::uint32_t index_on)
 		states::state_controller::selected_index_ = set_on_index;
 
 	} else {
-		sender::send(message_types::animation,
-					 animation_def::bludgeon,
-					 used_from_index,
-					 index_on);
+		sender::send(make_animation_message("bludgeon", used_from_index, index_on));
 
 		damage_dealers::standard_damage_dealer(melee_damage(damage + rage_damage, enemy_id, entity_id));
 

@@ -29,8 +29,8 @@ struct local_state {
 	std::vector<std::uint32_t> possible_movements;
 	std::unordered_set<std::uint32_t> valid_movements;
 	std::uint32_t selected_index{no_selection};
-	states::target_types actual_target_type{states::target_types::non};
-	std::array<bitmap_key, 6> button_bitmaps;
+	target_types actual_target_type{target_types::non};
+	std::array<bitmap_key, 5> button_bitmaps;
 	std::string entity_name;
 };
 

@@ -1,6 +1,7 @@
 #include "laser.h"
 #include "damage_dealers.h"
 #include <core/states_controller.h>
+#include <common/make_message.h>
 #include "sender.h"
 #include "common/animations.h"
 #include "components/damage_taker.h"
@@ -30,7 +31,7 @@ void laser::use(std::uint32_t index_on) {
 
 	auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
-	sender::send(message_types::animation, animation_def::laser, used_from_index, index_to_move);
+	sender::send(make_animation_message("laser", used_from_index, index_to_move));
 
 	if (hor_diff != 0) {
 		for (std::int32_t x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range); x = hor_diff > 0 ? x + 1 : x - 1) {

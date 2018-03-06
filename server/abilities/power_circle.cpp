@@ -2,10 +2,10 @@
 #include <core/board.h>
 #include <managers/entity_manager.h>
 #include <managers/players_manager.h>
-#include <core/animations_queue.h>
 #include "power_circle.h"
 #include "damage_dealers.h"
 #include "absorption.h"
+#include "abilities.h"
 
 power_circle::power_circle(std::uint32_t entity_id) {
 
@@ -20,7 +20,7 @@ power_circle::power_circle(std::uint32_t entity_id) {
         //damage_reduction = 0;
 
         auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-        auto absorption_ptr = std::static_pointer_cast<absorption>(abilities_ptr->type(abilities::ability_types::special));
+        auto absorption_ptr = abilities_ptr->get<absorption>();
 
         absorption_ptr->zero_dmg_reduction();
 
@@ -40,11 +40,11 @@ power_circle::power_circle(std::uint32_t entity_id) {
         from_cr.first -= 2;
         from_cr.second -= 2;
 
-        animations_queue::push_animation(animation_types::flash_bitmap,
-                                         board::to_index(from_cr.first, from_cr.second),
-                                         150,
-                                         -1,
-                                         bitmap_key::absorber_orbit);
+//        animations_queue::push_animation(animation_types::flash_bitmap,
+//                                         board::to_index(from_cr.first, from_cr.second),
+//                                         150,
+//                                         -1,
+//                                         bitmap_key::absorber_orbit);
 
         for (auto& index : aim_indexes) {
             if (!board::empty(index)) {
@@ -110,7 +110,7 @@ void power_circle::prepare(std::uint32_t for_index) {
 
     board_helper::circle(for_index, states::state_controller::possible_movements_, false);
 
-    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
+    states::state_controller::actual_targeting_type_ = target_types::enemy;
     states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
@@ -130,11 +130,11 @@ void power_circle::use(std::uint32_t index_on) {
 
     damage_dealers::standard_damage_dealer(magic_damage(damage, board::at(index_on), entity_id));
 
-    animations_queue::push_animation(animation_types::flash_bitmap,
-                                     index_on,
-                                     150,
-                                     -1,
-                                     bitmap_key::absorption);
+//    animations_queue::push_animation(animation_types::flash_bitmap,
+//                                     index_on,
+//                                     150,
+//                                     -1,
+//                                     bitmap_key::absorption);
 }
 
 void power_circle::play_animation(std::uint32_t index_on) {

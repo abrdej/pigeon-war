@@ -15,7 +15,7 @@ public:
         return bitmap_key::armor;
     }
 
-    std::string hint() const override;
+    DEFINE_DESC_ONE(armor, max_damage)
 
 private:
     std::int32_t max_damage{6};

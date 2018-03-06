@@ -9,5 +9,6 @@
 
 //static const std::string resources_directory = "@RES_DIR@/";
 static const std::string resources_directory = "res/";
+static const std::string maps_directory = "maps/";
 
 #endif //PIGEONWAR_CONFIG_H_IN_H

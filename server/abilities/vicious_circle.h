@@ -9,7 +9,7 @@
 #include "per_turn_usable.h"
 #include "possible_move_helper.h"
 
-class vicious_circle final : public ability, per_turn_usable
+class vicious_circle final : public active_ability, per_turn_usable
 {
 public:
     explicit vicious_circle(std::uint32_t entity_id);

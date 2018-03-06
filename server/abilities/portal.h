@@ -8,7 +8,7 @@
 #include "ability.h"
 #include "per_turn_usable.h"
 
-class portal final : public ability, per_turn_usable {
+class portal final : public active_ability, per_turn_usable {
 public:
 	explicit portal(std::uint32_t entity_id);
 	bitmap_key get_bitmap_key() const override {

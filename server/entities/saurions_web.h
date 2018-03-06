@@ -13,8 +13,6 @@ public:
 		entity.add<health_field>(20);
 		entity.add<damage_taker>();
 
-		entity.add<bitmap_field>(entity.entity_id, bitmap_key::saurions_web);
-
 		return entity;
 	}
 };

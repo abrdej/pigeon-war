@@ -1,1 +1,1 @@
-/usr/bin/c++  -O3 -DNDEBUG   CMakeFiles/pigeonwar_hot_seat.dir/hot_seat.cpp.o  -o pigeonwar_hot_seat /usr/local/lib/libboost_filesystem.a /usr/local/lib/libboost_system.a 
+/usr/bin/c++   -O3 -DNDEBUG   CMakeFiles/pigeonwar_hot_seat.dir/hot_seat.cpp.o  -o pigeonwar_hot_seat /usr/local/lib/libboost_filesystem.a /usr/local/lib/libboost_system.a 

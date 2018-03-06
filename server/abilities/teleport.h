@@ -7,7 +7,7 @@
 
 #include "ability.h"
 
-class teleport final : public ability
+class teleport final : public active_ability
 {
 public:
 	teleport() = default;

@@ -1,11 +1,10 @@
 #include <core/board.h>
 #include "animations_handlers.h"
 
-void magic_bullet_handler::handle(sf::Packet& packet, game_state& g_state) {
+void magic_bullet_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t from_index, to_index;
-	unpack(packet, from_index);
-	unpack(packet, to_index);
+	extract(data, from_index, to_index);
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(100),
@@ -25,11 +24,10 @@ void magic_bullet_handler::handle(sf::Packet& packet, game_state& g_state) {
 	animation::base_player::play();
 }
 
-void teleport_handler::handle(sf::Packet& packet, game_state& g_state) {
+void teleport_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t from_index, to_index;
-	unpack(packet, from_index);
-	unpack(packet, to_index);
+	extract(data, from_index, to_index);
 
 	auto entity_id = g_state.board.take(from_index);
 
@@ -46,8 +44,8 @@ void teleport_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(entity_id, to_index);
 }
 
-void drain_handler::handle(sf::Packet& packet, game_state& g_state) {
-	move_with_return_base_handler::handle(packet, g_state);
+void drain_handler::handle(nlohmann::json& data, game_state& g_state) {
+	move_with_return_base_handler::handle(data, g_state);
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(150),
@@ -55,23 +53,9 @@ void drain_handler::handle(sf::Packet& packet, game_state& g_state) {
 	animation::base_player::play();
 }
 
-void grenade_handler::handle(sf::Packet& packet, game_state& g_state) {
+void grenade_handler::handle(nlohmann::json& data, game_state& g_state) {
 
-	shot_base_handler::handle(packet, g_state);
-
-	auto from_cr = board::to_pos(to_index);
-	from_cr.first -= 1;
-	from_cr.second -= 1;
-
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
-																			   std::chrono::milliseconds(150),
-																			   bitmap_key::detonation_anim));
-	animation::base_player::play();
-}
-
-void flame_thrower_handler::handle(sf::Packet& packet, game_state& g_state) {
-
-	shot_base_handler::handle(packet, g_state);
+	shot_base_handler::handle(data, g_state);
 
 	auto from_cr = board::to_pos(to_index);
 	from_cr.first -= 1;
@@ -83,11 +67,24 @@ void flame_thrower_handler::handle(sf::Packet& packet, game_state& g_state) {
 	animation::base_player::play();
 }
 
-void giant_ram_handler::handle(sf::Packet& packet, game_state& g_state) {
+void flame_thrower_handler::handle(nlohmann::json& data, game_state& g_state) {
+
+	shot_base_handler::handle(data, g_state);
+
+	auto from_cr = board::to_pos(to_index);
+	from_cr.first -= 1;
+	from_cr.second -= 1;
+
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
+																			   std::chrono::milliseconds(150),
+																			   bitmap_key::detonation_anim));
+	animation::base_player::play();
+}
+
+void giant_ram_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t from_index, to_index;
-	unpack(packet, from_index);
-	unpack(packet, to_index);
+	extract(data, from_index, to_index);
 
 	auto entity_id = g_state.board.take(from_index);
 
@@ -101,11 +98,10 @@ void giant_ram_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(entity_id, to_index);
 }
 
-void saw_passing_handler::handle(sf::Packet& packet, game_state& g_state) {
+void saw_passing_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t from_index, to_index;
-	unpack(packet, from_index);
-	unpack(packet, to_index);
+	extract(data, from_index, to_index);
 
 	auto entity_id = g_state.board.take(from_index);
 
@@ -115,11 +111,9 @@ void saw_passing_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(entity_id, to_index);
 }
 
-void kill_handler::handle(sf::Packet& packet, game_state& g_state) {
+void kill_handler::handle(nlohmann::json& data, game_state& g_state) {
 	std::uint32_t from_index, to_index, enemy_index;
-	unpack(packet, from_index);
-	unpack(packet, to_index);
-	unpack(packet, enemy_index);
+	extract(data, from_index, to_index, enemy_index);
 
 	auto entity_id = g_state.board.take(from_index);
 
@@ -141,11 +135,11 @@ void kill_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(entity_id, to_index);
 }
 
-void spider_web_handler::handle(sf::Packet& packet, game_state& g_state) {
-	shot_base_handler::handle(packet, g_state);
+void spider_web_handler::handle(nlohmann::json& data, game_state& g_state) {
+	shot_base_handler::handle(data, g_state);
 
 	std::uint32_t land_index;
-	unpack(packet, land_index);
+	extract(data, land_index);
 
 	auto enemy_id = g_state.board.take(to_index);
 
@@ -163,11 +157,10 @@ void spider_web_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(enemy_id, land_index);
 }
 
-void spiral_of_fire_handler::handle(sf::Packet& packet, game_state& g_state) {
+void spiral_of_fire_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t from_index, to_index;
-	unpack(packet, from_index);
-	unpack(packet, to_index);
+	extract(data, from_index, to_index);
 
 	auto entity_id = g_state.board.take(from_index);
 
@@ -184,10 +177,10 @@ void spiral_of_fire_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(entity_id, from_index);
 }
 
-void sword_blow_handler::handle(sf::Packet& packet, game_state& g_state) {
+void sword_blow_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t index;
-	unpack(packet, index);
+	extract(data, index);
 
 	auto entity_id = g_state.board.take(index);
 
@@ -203,12 +196,10 @@ void sword_blow_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(entity_id, index);
 }
 
-void bludgeon_push_handler::handle(sf::Packet& packet, game_state& g_state) {
+void bludgeon_push_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t from_index, to_index, push_index;
-	unpack(packet, from_index);
-	unpack(packet, to_index);
-	unpack(packet, push_index);
+	extract(data, from_index, to_index, push_index);
 
 	auto caster_id = g_state.board.take(from_index);
 
@@ -227,9 +218,9 @@ void bludgeon_push_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(enemy_id, push_index);
 }
 
-void rage_handler::handle(sf::Packet& packet, game_state& g_state) {
+void rage_handler::handle(nlohmann::json& data, game_state& g_state) {
 	std::uint32_t index;
-	unpack(packet, index);
+	extract(data, index);
 
 	auto entity_id = g_state.board.take(index);
 
@@ -244,26 +235,25 @@ void rage_handler::handle(sf::Packet& packet, game_state& g_state) {
 	g_state.board.give_back(entity_id, index);
 }
 
-void change_health_handler::handle(sf::Packet& packet, game_state& g_state) {
+void change_health_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::int32_t to_index;
 	std::int32_t change_health;
 
-	unpack(packet, to_index);
-	unpack(packet, change_health);
+	extract(data, to_index, change_health);
 
 	animation::player<animation::change_health>::launch(animation::change_health(to_index, change_health));
 	animation::base_player::play();
 }
 
-void portal_handler::handle(sf::Packet& packet, game_state& g_state) {
+void portal_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t from_index, to_index;
-	unpack(packet, from_index);
-	unpack(packet, to_index);
-
     std::vector<std::pair<std::uint32_t, std::uint32_t>> neighboring_moves;
-    unpack(packet, neighboring_moves);
+
+	extract(data, from_index, to_index, neighboring_moves);
+
+	//neighboring_moves = data[3];
 
 	auto entity_id = g_state.board.take(from_index);
 
@@ -311,10 +301,10 @@ void portal_handler::handle(sf::Packet& packet, game_state& g_state) {
     }
 }
 
-void destruction_handler::handle(sf::Packet& packet, game_state& g_state) {
+void destruction_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t index;
-	unpack(packet, index);
+	extract(data, index);
 
 	//auto entity_id = g_state.board.take(index);
 
@@ -338,10 +328,10 @@ void destruction_handler::handle(sf::Packet& packet, game_state& g_state) {
 	//g_state.board.give_back(entity_id, index);
 }
 
-void fist_of_doom_handler::handle(sf::Packet& packet, game_state& g_state) {
+void fist_of_doom_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t to_index;
-	unpack(packet, to_index);
+	extract(data, to_index);
 
 	auto pos = board::to_pos(to_index);
 	pos.second = 0;
@@ -357,10 +347,10 @@ void fist_of_doom_handler::handle(sf::Packet& packet, game_state& g_state) {
 	animation::base_player::play();
 }
 
-void meteorite_handler::handle(sf::Packet& packet, game_state& g_state) {
+void meteorite_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	std::uint32_t to_index;
-	unpack(packet, to_index);
+	extract(data, to_index);
 
 	auto pos = board::to_pos(to_index);
 	pos.second = 0;

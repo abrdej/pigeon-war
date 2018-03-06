@@ -1,5 +1,6 @@
 #include <core/turn_system.h>
 #include <managers/entity_manager.h>
+#include <common/make_message.h>
 #include "immortality.h"
 #include "components/damage_taker.h"
 #include "sender.h"
@@ -15,7 +16,7 @@ immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
         if (health_pack.health == 0) {
             set_destructible(this->entity_id, false);
 
-            sender::send(message_types::animation, animation_def::set_immortality, this->entity_id);
+            sender::send(make_animation_message("set_immortality", this->entity_id));
 
             immortality_holder = make_after_n_round_callback_holder(duration, [this]() {
                 set_destructible(this->entity_id, true);
@@ -27,14 +28,4 @@ immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
 
         return final_damage;
     });
-}
-
-std::string immortality::hint() const {
-
-    std::string desc;
-    desc = "Immortality - when the health of the warrior drops to zero\n"
-            "the warrior becomes immortal for one more turn.";
-
-    return std::move(desc);
-
 }

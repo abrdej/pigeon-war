@@ -8,7 +8,7 @@
 #include <server/abilities/poisoned_missile.h>
 #include <server/abilities/long_range_missile.h>
 #include <components/damage_taker.h>
-#include <components/additions.h>
+#include <components/applied_effects.h>
 #include "entity.h"
 #include "server/abilities/abilities.h"
 #include "server/abilities/moveable.h"
@@ -22,14 +22,14 @@ public:
 
         entity.add<health_field>(35);
         entity.add<damage_taker>();
-        entity.add<addition>();
+        entity.add<applied_effects>();
         entity.add<modification>();
 
         auto abilities_ptr = entity.add<abilities>();
-        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<poisoned_missile>());
+        abilities_ptr->add_ability(std::make_shared<moveable>(3));
+        abilities_ptr->add_ability(std::make_shared<poisoned_missile>());
 
-        entity.add<bitmap_field>(entity.entity_id, bitmap_key::mouse);
+        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::mouse);
 
         return entity;
     }

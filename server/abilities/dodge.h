@@ -16,7 +16,7 @@ public:
 		return bitmap_key::dodge;
 	}
 
-	std::string hint() const override;
+	DEFINE_DESC_ONE(dodge, counter)
 
 private:
 	int counter{0};

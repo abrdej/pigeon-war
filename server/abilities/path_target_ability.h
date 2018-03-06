@@ -10,9 +10,9 @@
 #include "core/states_controller.h"
 
 template <std::int32_t Range,
-		states::target_types TargetType = states::target_types::enemy,
+		target_types TargetType = target_types::enemy,
 		bool AllFields = true>
-class path_target_ability : public ability {
+class path_target_ability : public active_ability {
 public:
 	void prepare(std::uint32_t for_index) override {
 
@@ -33,7 +33,7 @@ public:
 	virtual void use(std::uint32_t use_on_index) = 0;
 protected:
 	std::int32_t range{Range};
-	const states::target_types target_type{TargetType};
+	const target_types target_type{TargetType};
 	const bool all_fields{AllFields};
 };
 

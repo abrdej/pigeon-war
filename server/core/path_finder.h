@@ -12,13 +12,13 @@ public:
 	void calc(std::uint32_t from_index);
 
 	std::uint32_t find_first_satisfy_conditions(std::uint32_t from_index,
-                                                const std::function<bool(std::uint32_t)>& condition_fn);
+												const std::function<bool(std::uint32_t)>& condition_fn);
 
 	void get_possible_movements(std::vector<std::uint32_t>& movements,
 								std::vector<std::uint32_t>& costs,
 								std::int32_t range);
 
-    std::int32_t distance_to(std::uint32_t index);
+	std::int32_t distance_to(std::uint32_t index);
 	void path_to(std::uint32_t index, std::vector<std::uint32_t>& path);
 
 private:
@@ -31,6 +31,18 @@ private:
 namespace board_helper
 {
 void calc_straight(std::uint32_t from_index,
+				   std::vector<std::uint32_t>& movements,
+				   std::vector<std::uint32_t>& costs,
+				   std::int32_t range,
+				   bool skip_obstacles = false);
+
+void calc_diagonal(std::uint32_t from_index,
+				   std::vector<std::uint32_t>& movements,
+				   std::vector<std::uint32_t>& costs,
+				   std::int32_t range,
+				   bool skip_obstacles = false);
+
+void calc_directed(std::uint32_t from_index,
 				   std::vector<std::uint32_t>& movements,
 				   std::vector<std::uint32_t>& costs,
 				   std::int32_t range,

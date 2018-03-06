@@ -23,10 +23,6 @@
 game::game() {
 }
 
-void game::initialize(std::array<std::vector<std::uint32_t>, board::cols_n * board::rows_n>& x) {
-	x = board::fields_;
-}
-
 void game::on_board(std::uint32_t col, std::uint32_t row)
 {
 	using namespace states;
@@ -84,7 +80,7 @@ void game::on_button(std::uint32_t n)
 			if (abilities_ptr->is_active) {
 				auto entity_ability = abilities_ptr->at(n);
 				if (entity_ability) {
-					entity_ability->operator()(states::state_controller::selected_index_);
+					try_prepare_ability(*entity_ability, states::state_controller::selected_index_);
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 #include <core/states_controller.h>
 #include <managers/entity_manager.h>
+#include <common/make_message.h>
 #include "warrior_blow.h"
 #include "damage_dealers.h"
 #include "sender.h"
@@ -14,7 +15,7 @@ void warrior_blow::use(std::uint32_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
 
 
-    sender::send(message_types::animation, animation_def::warrior_blow, used_from_index, index_on);
+    sender::send(make_animation_message("warrior_blow", used_from_index, index_on));
 
     auto enemy_id = board::at(index_on);
 

@@ -3,9 +3,11 @@
 #include <sender.h>
 #include <common/animations.h>
 #include <components/damage_pack.h>
-#include <components/additions.h>
+#include <components/applied_effects.h>
+#include <common/make_message.h>
 #include "lightning.h"
 #include "damage_dealers.h"
+#include "power_cost_ability.h"
 
 lightning::lightning(std::uint32_t entity_id)
         : entity_id(entity_id) {}
@@ -20,32 +22,30 @@ void lightning::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto& power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
-
-    if (power < power_cost)
+    if (!use_ability_at_the_expense_of_power(entity_id, power_cost)) {
         return;
+    }
 
     auto used_from_index = states::state_controller::selected_index_;
     auto caster_id = board::at(used_from_index);
     auto enemy_id = board::at(index_on);
     auto damage = this->damage;
 
-    sender::send(message_types::animation, animation_def::lightning_prepare, index_on);
+    sender::send(make_animation_message("lightning_prepare", index_on));
 
-    auto lightning_holder = make_after_n_round_callback_holder(1,
+    auto lightning_connection = make_after_n_round_callback_holder(1,
                                                                [enemy_id, caster_id, damage]() mutable {
                                                                    if (entity_manager::alive(enemy_id)) {
-                                                                       sender::send(message_types::animation, animation_def::lightning, board::index_for(enemy_id));
+                                                                       sender::send(make_animation_message("lightning", board::index_for(enemy_id)));
                                                                        damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, entity_manager::alive(caster_id) ? caster_id : no_damage_dealer));
-                                                                       remove_component(enemy_id, "lightning_effect");
+                                                                       remove_effect(enemy_id, "lightning target");
                                                                    }
                                                                });
 
-    add_component(enemy_id,
-                  "lightning_effect",
-                  lightning_holder);
+    auto lightning_target = make_not_removable_negative_effect("lightning target");
+    lightning_target->set_turn_connection(std::move(lightning_connection));
 
-    power -= power_cost;
+    add_effect(enemy_id, lightning_target);
 
     used = true;
 }

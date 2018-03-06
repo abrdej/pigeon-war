@@ -24,7 +24,7 @@ private:
     bool is_barrier_active{false};
     bool was_barrier_active{false};
     std::int32_t barrier_strength{20};
-    callback_holder barrier_holder;
+    turn_scoped_connection barrier_holder;
 };
 
 

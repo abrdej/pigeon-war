@@ -7,14 +7,24 @@
 
 #include "animations_service.h"
 
+template <typename... DataTypes>
+void extract(nlohmann::json& data, DataTypes&... x) {
+
+	std::size_t index = 1;
+
+	auto extractor = [&data, &index](auto& y) {
+			y = data[index++].get<std::decay_t<decltype(y)>>();
+	};
+	std::int32_t tab[] = {(extractor(x), 0)...};
+}
+
 template <bitmap_key shot_bitmap_key, bitmap_key explosion_bitmap_key = bitmap_key::none>
 struct shot_base_handler : base_handler {
 	std::uint32_t from_index, to_index;
 
-	void handle(sf::Packet& packet, game_state& g_state) override {
+	void handle(nlohmann::json& data, game_state& g_state) override {
 
-		unpack(packet, from_index);
-		unpack(packet, to_index);
+		extract(data, from_index, to_index);
 
 		animation::player<animation::move>::launch(animation::move(from_index, to_index, shot_bitmap_key));
 		animation::base_player::play();
@@ -29,9 +39,8 @@ struct shot_base_handler : base_handler {
 struct move_base_handler : base_handler {
 	std::uint32_t from_index, to_index;
 
-	void handle(sf::Packet& packet, game_state& g_state) override {
-		unpack(packet, from_index);
-		unpack(packet, to_index);
+	void handle(nlohmann::json& data, game_state& g_state) override {
+		extract(data, from_index, to_index);
 
 		auto entity_id = g_state.board.take(from_index);
 
@@ -46,9 +55,8 @@ template <bitmap_key middle_bitmap_flush = bitmap_key::none>
 struct move_with_return_base_handler : base_handler {
 	std::uint32_t from_index, to_index;
 
-	void handle(sf::Packet& packet, game_state& g_state) override {
-		unpack(packet, from_index);
-		unpack(packet, to_index);
+	void handle(nlohmann::json& data, game_state& g_state) override {
+		extract(data, from_index, to_index);
 
 		auto entity_id = g_state.board.take(from_index);
 
@@ -73,8 +81,8 @@ template <bitmap_key flush_bitmap_key, bool hide_index = false, long time = 150>
 struct bitmap_flush_base_handler : base_handler {
 	std::uint32_t index;
 
-	void handle(sf::Packet& packet, game_state& g_state) override {
-		unpack(packet, index);
+	void handle(nlohmann::json& data, game_state& g_state) override {
+		extract(data, index);
 
 		std::uint32_t entity_id{0};
 
@@ -97,8 +105,8 @@ template <bitmap_key new_bitmap_key>
 struct change_bitmap_base_handler : base_handler {
 	std::uint32_t entity_id;
 
-	void handle(sf::Packet& packet, game_state& g_state) override {
-		unpack(packet, entity_id);
+	void handle(nlohmann::json& data, game_state& g_state) override {
+		extract(data, entity_id);
 
 		drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(new_bitmap_key);
 	}
@@ -117,7 +125,7 @@ struct dodge_handler : bitmap_flush_base_handler<bitmap_key::dodge, true> {
 };
 
 struct magic_bullet_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct magic_suck_handler : bitmap_flush_base_handler<bitmap_key::magic_suck> {
@@ -129,7 +137,7 @@ struct sniper_shot_handler : shot_base_handler<bitmap_key::sniper_shot, bitmap_k
 };
 
 struct teleport_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct poisoned_missile_handler : shot_base_handler<bitmap_key::poisoned_missile, bitmap_key::poisoned_missile_splush> {
@@ -141,11 +149,11 @@ struct laser_handler : shot_base_handler<bitmap_key::laser, bitmap_key::none> {
 };
 
 struct drain_handler : move_with_return_base_handler<bitmap_key::native_attack> {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct grenade_handler : shot_base_handler<bitmap_key::grenade> {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct power_bullet_handler : shot_base_handler<bitmap_key::power_bullet, bitmap_key::power_bullet_bum> {
@@ -185,7 +193,7 @@ struct counterattack_handler : move_with_return_base_handler<bitmap_key::native_
 };
 
 struct flame_thrower_handler : shot_base_handler<bitmap_key::flame_thrower> {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct giant_blow_handler : move_with_return_base_handler<bitmap_key::giant_blow> {
@@ -193,7 +201,7 @@ struct giant_blow_handler : move_with_return_base_handler<bitmap_key::giant_blow
 };
 
 struct giant_ram_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 
@@ -207,7 +215,7 @@ struct jaw_spider_handler : bitmap_flush_base_handler<bitmap_key::jaw_spider> {
 };
 
 struct kill_handler : move_with_return_base_handler<bitmap_key::killer_attack> {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct set_killer_instinct_handler : change_bitmap_base_handler<bitmap_key::killer_jump> {
@@ -225,15 +233,15 @@ struct spear_handler : move_with_return_base_handler<bitmap_key::guardian_attack
 };
 
 struct spider_web_handler : shot_base_handler<bitmap_key::spider_web> {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct spiral_of_fire_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct sword_blow_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct tongue_of_fire_handler : shot_base_handler<bitmap_key::tongue_of_fire> {
@@ -253,7 +261,7 @@ struct set_immortality_handler : change_bitmap_base_handler<bitmap_key::warrior_
 };
 
 struct bludgeon_push_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct bludgeon_handler : move_with_return_base_handler<bitmap_key::bum> {
@@ -261,7 +269,7 @@ struct bludgeon_handler : move_with_return_base_handler<bitmap_key::bum> {
 };
 
 struct rage_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct shiruken_handler : shot_base_handler<bitmap_key::shiruken, bitmap_key::shiruken_splash> {
@@ -293,7 +301,7 @@ struct end_sorcerer_attack_handler : change_bitmap_base_handler<bitmap_key::sorc
 };
 
 struct change_health_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct rocket_launcher_handler : shot_base_handler<bitmap_key::rocket, bitmap_key::bum> {
@@ -301,7 +309,7 @@ struct rocket_launcher_handler : shot_base_handler<bitmap_key::rocket, bitmap_ke
 };
 
 struct portal_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct cure_handler : bitmap_flush_base_handler<bitmap_key::cure_anim> {
@@ -321,7 +329,7 @@ struct soul_out_handler : bitmap_flush_base_handler<bitmap_key::suck_the_soul> {
 };
 
 struct saw_passing_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct arrow_handler : shot_base_handler<bitmap_key::arrow_anim> {
@@ -329,11 +337,11 @@ struct arrow_handler : shot_base_handler<bitmap_key::arrow_anim> {
 };
 
 struct destruction_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct fist_of_doom_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
 struct uselessness_handler : bitmap_flush_base_handler<bitmap_key::uselessness> {
@@ -345,8 +353,17 @@ struct meteorite_before_handler : bitmap_flush_base_handler<bitmap_key::uselessn
 };
 
 struct meteorite_handler : base_handler {
-	void handle(sf::Packet& packet, game_state& g_state) override;
+	void handle(nlohmann::json& data, game_state& g_state) override;
 };
+
+struct purification_handler : bitmap_flush_base_handler<bitmap_key::uselessness> {
+
+};
+
+struct flame_burning_handler : shot_base_handler<bitmap_key::power_bullet, bitmap_key::power_bullet_bum> {
+
+};
+
 
 
 #endif //PIGEONWAR_ANIMATIONS_HANDLERS_H

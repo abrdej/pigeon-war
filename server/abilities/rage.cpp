@@ -2,6 +2,7 @@
 #include "rage.h"
 #include "damage_dealers.h"
 #include <iostream>
+#include <common/make_message.h>
 #include "sender.h"
 #include "common/animations.h"
 #include "components/damage_taker.h"
@@ -28,7 +29,7 @@ void rage::use() {
 	std::vector<std::uint32_t> around_fields_ids;
 	board_helper::neighboring_fields(use_from_index, around_fields_ids, false);
 
-	sender::send(message_types::animation, animation_def::rage, use_from_index);
+	sender::send(make_animation_message("rage", use_from_index));
 
 	for (auto&& field_id : around_fields_ids) {
 		if (!board::empty(field_id)) {

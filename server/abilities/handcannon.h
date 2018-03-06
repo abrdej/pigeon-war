@@ -12,7 +12,6 @@ class handcannon final : public straight_target_ability<3>,
                          per_turn_usable
 {
 public:
-
     bitmap_key get_bitmap_key() const override {
         return bitmap_key::handcannon;
     }

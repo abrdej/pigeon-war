@@ -14,31 +14,21 @@
 #include <common/message_types.h>
 #include "packets_makers.h"
 #include "components/damage_taker.h"
+#include "json.hpp"
 
-//auto get_bitmaps() {
-//	std::unordered_map<std::uint32_t, bitmap_key> returned_map;
-//	entity_manager::for_all([&returned_map](base_entity entity) {
-//		returned_map.insert(std::make_pair(entity.entity_id, entity.get<bitmap_field>()->bmt_key));
-//	});
-//	return std::move(returned_map);
-//}
+class server {
 
-auto get_names() {
-	std::unordered_map<std::uint32_t, std::string> returned_map;
-	entity_manager::for_all([&returned_map](base_entity entity) {
-		returned_map.insert(std::make_pair(entity.entity_id, entity.name));
-	});
-	return std::move(returned_map);
-}
+	using json_data_type = nlohmann::json;
+	using callback_type = std::function<void(json_data_type&)>;
 
-struct server {
+    const std::uint32_t port;
 
-	std::unordered_map<message_types, std::function<void(sf::Packet&)>, message_types_key_hash> callbacks;
+    std::function<void(std::uint32_t)> initial_func;
+	std::unordered_map<std::string, callback_type> callbacks;
 	std::thread working_thread;
-	std::atomic_bool is_running;
+	std::atomic_bool is_running{false};
 
 	sf::SocketSelector selector;
-
 	sf::TcpListener listener;
 
 	std::vector<std::shared_ptr<sf::TcpSocket>> clients;
@@ -46,19 +36,23 @@ struct server {
 
 	boost::lockfree::spsc_queue<std::pair<std::uint32_t, sf::Packet>, boost::lockfree::capacity<30>> packets_to_send;
 
-	server(int port) {
+public:
+	explicit server(std::uint32_t port) : port(port) {}
 
-//		if (listener.listen(443) != sf::Socket::Done) {
-		if (listener.listen(port) != sf::Socket::Done) {
-			std::cout << "Listener error\n";
-		}
+    void start_listening() {
+        if (listener.listen(static_cast<unsigned short>(port)) != sf::Socket::Done) {
+            throw std::runtime_error("can't start listening to port: " + std::to_string(port));
+        }
+        selector.add(listener);
+    }
 
-		selector.add(listener);
-	}
-
-	void bind(const message_types& message, std::function<void(sf::Packet&)> func) {
-		callbacks.insert(std::make_pair(message, func));
+	void bind(const std::string& message_type, callback_type callback) {
+		callbacks.insert(std::make_pair(message_type, callback));
 	};
+
+    void set_initial_message(std::function<void(std::uint32_t client_id)> func) {
+        initial_func = std::move(func);
+    }
 
 	void send_notification(const sf::Packet& packet) {
 		packets_to_send.push(std::make_pair(std::numeric_limits<std::uint32_t>::max(), packet));
@@ -68,6 +62,7 @@ struct server {
 		packets_to_send.push(std::make_pair(index, packet));
 	}
 
+    // this is not thread safe?
 	bool is_single_client() const {
 		return clients.size() == 1;
 	}
@@ -92,7 +87,7 @@ struct server {
 
 						} else {
 
-							auto client_id = clients.size();
+							auto client_id = static_cast<std::uint32_t>(clients.size());
 
 							std::cout << "New client, next id: " << client_id << "\n";
 							std::cout << " remote address: " << client->getRemoteAddress().toString() << "\n";
@@ -100,11 +95,7 @@ struct server {
 							clients.emplace_back(client);
 							selector.add(*client);
 
-							// accept client and send data
-							send_notification_to(client_id, make_packet(message_types::player_id, static_cast<int>(client_id)));
-							send_notification_to(client_id, make_packet(message_types::board, board::fields_));
-							send_notification_to(client_id, make_packet(message_types::entities_names, get_names()));
-							send_notification_to(client_id, make_packet(message_types::healths, get_healths()));
+                            initial_func(client_id);
 						}
 					}
 
@@ -114,14 +105,26 @@ struct server {
 							sf::Packet request_packet;
 							client->receive(request_packet);
 
-							message_types request_message;
-							request_packet >> request_message;
+							std::string message;
+							request_packet >> message;
+							json_data_type data;
+
+                            std::cout << "message: " << message << "\n";
 
 							try {
-								callbacks.at(request_message)(request_packet);
-
+								data = json_data_type::parse(message);
 							} catch (...) {
-								//std::cout << "Catch: " << request_name << "\n";
+								std::cout << "json parse error!\n";
+								std::cout << "in: " << message << "\n";
+							}
+
+							std::cout << data.dump() << "\n";
+
+							for (auto&& callback_pack : callbacks) {
+								if (data.count(callback_pack.first)) {
+                                    std::cout << "call callback for message: " << callback_pack.first << "\n";
+									callback_pack.second(data[callback_pack.first]);
+								}
 							}
 						}
 					}
@@ -142,6 +145,10 @@ struct server {
 			}
 		});
 	}
+
+    void wait() {
+        working_thread.join();
+    }
 
 	void close() {
 		is_running = false;

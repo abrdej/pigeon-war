@@ -9,13 +9,15 @@
 #include "path_target_ability.h"
 #include "per_turn_usable.h"
 
-class cure : public path_target_ability<3, states::target_types::friendly>, per_turn_usable {
+class cure : public path_target_ability<3, target_types::friendly>, per_turn_usable {
 public:
 	explicit cure(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::cure;
 	}
+
+	DEFINE_DESC(cure, healing_amount_per_turn, healing_duration, power_cost)
 
 private:
 	void use(std::uint32_t index_on) override;

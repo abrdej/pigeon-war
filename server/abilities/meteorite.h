@@ -8,7 +8,7 @@
 #include "path_target_ability.h"
 #include "per_turn_usable.h"
 
-class meteorite : public ability, per_turn_usable {
+class meteorite : public active_ability, per_turn_usable {
 public:
     explicit meteorite(std::uint32_t entity_id);
 
@@ -27,7 +27,7 @@ private:
     std::int32_t damage{18};
     std::int32_t power_cost{12};
 
-    callback_holder meteorite_holder;
+    turn_scoped_connection meteorite_holder;
 };
 
 #endif //PIGEONWAR_METEORITE_H

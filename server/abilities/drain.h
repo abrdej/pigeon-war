@@ -11,13 +11,12 @@ public:
 		return bitmap_key::drain;
 	}
 
-	std::string hint() const override;
+	DEFINE_DESC(drain, damage, drain_amount)
 	
 private:
 	void use(std::uint32_t index_on) override;
 
 private:
-	const std::int32_t range = 1;
 	const std::int32_t damage = 10;
 	const std::int32_t drain_amount = 4;
 };

@@ -10,7 +10,7 @@
 #include "moveable.h"
 #include <functional>
 
-class wretch_moving final : public ability, public moveable_base, turn_callback_helper {
+class wretch_moving final : public moveable_base, turn_callback_helper {
 public:
     explicit wretch_moving(std::uint32_t entity_id);
 

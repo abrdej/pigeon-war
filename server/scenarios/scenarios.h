@@ -9,6 +9,6 @@
 
 class game;
 
-void create_scenario(game& game, const std::string& scenario_name);
+//void create_scenario(game& game, const std::string& scenario_name);
 
 #endif //PIGEONWAR_SCENARIOS_H

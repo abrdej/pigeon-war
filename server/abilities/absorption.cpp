@@ -1,7 +1,6 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <components/damage_taker.h>
-#include <core/animations_queue.h>
 #include "absorption.h"
 #include "damage_dealers.h"
 
@@ -24,7 +23,7 @@ void absorption::prepare(std::uint32_t for_index) {
                                        states::state_controller::possible_movements_costs_,
                                        range);
 
-    states::state_controller::actual_targeting_type_ = states::target_types::friendly;
+    states::state_controller::actual_targeting_type_ = target_types::friendly;
     states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
@@ -70,11 +69,11 @@ void absorption::use(std::uint32_t index_on) {
 
                             std::cout << "absorption_power: " << absorption_power << "\n";
 
-                            animations_queue::push_animation(animation_types::flash_bitmap,
-                                                             board::index_for(friendly_id),
-                                                             150,
-                                                             0,
-                                                             bitmap_key::absorption);
+//                            animations_queue::push_animation(animation_types::flash_bitmap,
+//                                                             board::index_for(friendly_id),
+//                                                             150,
+//                                                             0,
+//                                                             bitmap_key::absorption);
 
                             damage_dealers::standard_damage_dealer(last_dmg);
 
@@ -85,6 +84,6 @@ void absorption::use(std::uint32_t index_on) {
 }
 
 void absorption::play_animation(std::uint32_t from_index, std::uint32_t to_index) {
-    animations_queue::push_animation(animation_types::flash_bitmap, from_index, 150, 0, bitmap_key::absorption);
-    animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::absorption);
+    //animations_queue::push_animation(animation_types::flash_bitmap, from_index, 150, 0, bitmap_key::absorption);
+    //animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::absorption);
 }

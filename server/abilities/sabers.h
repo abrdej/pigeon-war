@@ -5,7 +5,7 @@
 #include <vector>
 #include "per_turn_usable.h"
 
-class sabers final : public ability, per_turn_usable
+class sabers final : public active_ability, per_turn_usable
 {
 public:
 

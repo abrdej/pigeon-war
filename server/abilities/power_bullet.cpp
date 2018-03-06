@@ -1,4 +1,5 @@
-#include <components/additions.h>
+#include <components/applied_effects.h>
+#include <common/make_message.h>
 #include "power_bullet.h"
 #include "core/states_controller.h"
 #include "damage_dealers.h"
@@ -14,22 +15,27 @@ void power_bullet::use(std::uint32_t index_on) {
     auto caster_id = board::at(used_from_index);
     auto enemy_id = board::at(index_on);
 
-    auto has_power_bullet_effect = has_component(enemy_id, "power_bullet_effect");
+    auto has_power_bullet_effect = has_effect(enemy_id, "effect of a power bullet");
 
-    sender::send(message_types::animation, animation_def::power_bullet, used_from_index, index_on);
+    sender::send(make_animation_message("power_bullet", used_from_index, index_on));
 
     damage_dealers::standard_damage_dealer(magic_damage(has_power_bullet_effect ?
                                                         damage_with_power_bullet_effect : full_damage,
                                                         board::at(index_on), caster_id));
 
-    auto power_bullet_effect_holder = make_after_n_round_callback_holder(duration_of_effect,
-                                       [enemy_id, caster_id]() mutable {
-                                           remove_component(enemy_id, "power_bullet_effect");
-                                       });
+    if (entity_manager::alive(enemy_id)) {
+        auto power_bullet_effect_connection = make_after_n_round_callback_holder(duration_of_effect,
+                                                                                 [enemy_id, caster_id]() mutable {
+                                                                                     remove_effect(enemy_id,
+                                                                                                   "effect of a power bullet");
+                                                                                 });
 
-    add_component(enemy_id,
-                  "power_bullet_effect",
-                  power_bullet_effect_holder);
+        auto power_bullet_effect = make_not_removable_positive_effect("effect of a power bullet");
+        power_bullet_effect->set_turn_connection(std::move(power_bullet_effect_connection));
+
+        add_effect(enemy_id,
+                   power_bullet_effect);
+    }
 
     used = true;
 }

@@ -9,7 +9,7 @@
 #include "entity.h"
 #include "abilities/moveable.h"
 #include "components/damage_taker.h"
-#include "components/additions.h"
+#include "components/applied_effects.h"
 
 
 class mechanical_saw final
@@ -21,14 +21,11 @@ public:
 
         entity.add<health_field>(65);
         entity.add<damage_taker>();
-        entity.add<addition>();
+        entity.add<applied_effects>();
         entity.add<modification>();
 
         auto abilities_ptr = entity.add<abilities>();
-        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<saw_passing>(entity.entity_id));
-
-
-        entity.add<bitmap_field>(entity.entity_id, bitmap_key::mechanical_saw);
+        abilities_ptr->add_ability(std::make_shared<saw_passing>(entity.entity_id));
 
         return entity;
     }

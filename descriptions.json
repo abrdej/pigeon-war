@@ -1,0 +1,22 @@
+{
+  "descriptions": {
+    "abilities": {
+      "shoot": "Shoot - the shooter can give a double shoot of: <damage> damage.\nRemaining shoots: <bullets>.\nRange: <range>.",
+      "armor": "Armor - limits the maximum damage from a single attack that Destroyer can receive to: <max_damage>.",
+      "grenade": "Grenade - deals area damage of: <damage> for main target and half of that around. It can be used only once per battle.",
+      "arrow": "Arrow - the commander can shoot an arrow within range of <range> and deal damage of <damage>.\nIt also applied effect of viewfinder.\nThis effect allows commander to target these units regardless of the distance.\nViewfinder lasts for <viewfinder_duration> turns.",
+      "aura_of_immunity": "Aura Of Immunity - giant offers a nearby allies aure\nwhich apply damage reduction of <damage_reduction_for_friends>.\nGiant also has constant damage reduction of <damage_reduction_for_owner>.",
+      "blow_the_ax": "Blow The Ax - deals damage of: <damage> to single target.",
+      "counterattack": "Counterattack - native performs a counterattack if\nthe attacker is within his range.\nCounterattack deals <damage>. It works only once per turn.",
+      "cure": "Cure - heals an ally by <healing_amount_per_turn> health and then the same amount every turn for <healing_duration> turns.\nMagic cost: <power_cost>.",
+      "dodge": "Dodge - samurai avoids every third attack.\nReceived attacks from the last dodge: <counter>.",
+      "drain": "Drain - deals damage of: <damage> and heals native by: <drain_amount> regardless of dealt damage.\nThis skill can heal over the base level of health.",
+      "giant_blow": "Giant Blow - deals damage of <damage>.\nEvery third attack additionally causes that the enemy can attack\nonly the giant for one turn.\n",
+      "giant_ram": "Giant Ram - the giant will accelerate and attack all units in his path.\nDamage: <damage>.\nThis ability can be used only once per battle.",
+      "hypnosis": "Hypnosis - causes that the enemy unit will not be able to make a move\nin the next turn.\nIt can be used only once per battle.",
+      "immortality": "Immortality - when the health of the warrior drops to zero\nthe warrior becomes immortal for one more turn.",
+      "invisibility": "Invisibility - saberhand becomes invisible and can't receive any damage\nthrough <duration> turns.\nThis ability can be used only once per battle\n",
+      "purification": "Purification - eliminates all removable negative effects from the unit.\nMagic cost: <power_cost>."
+    }
+  }
+}

@@ -46,20 +46,20 @@ private:
 	}
 	void draw_possible_movement(std::uint32_t index)
 	{
-		if (lstate.actual_target_type == states::target_types::non)
+		if (lstate.actual_target_type == target_types::non)
 			return;
 
 		sf::Sprite sprite;
 
-		if (lstate.actual_target_type == states::target_types::moving)
+		if (lstate.actual_target_type == target_types::moving)
 			sprite.setTexture(bitmap_center::grass_move_bitmap);
-		else if (lstate.actual_target_type == states::target_types::enemy)
+		else if (lstate.actual_target_type == target_types::enemy)
 		{
 			if (lstate.valid_movements.find(index) != std::end(lstate.valid_movements))
 				sprite.setTexture(bitmap_center::grass_damage_bitmap);
 			else
 				sprite.setTexture(bitmap_center::grass_attack_bitmap);
-		} else if (lstate.actual_target_type == states::target_types::friendly)
+		} else if (lstate.actual_target_type == target_types::friendly)
 		{
 			if (lstate.valid_movements.find(index) != std::end(lstate.valid_movements))
 				sprite.setTexture(bitmap_center::grass_boost_bitmap);

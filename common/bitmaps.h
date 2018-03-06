@@ -171,7 +171,11 @@ enum class bitmap_key {
 	fist_of_doom_ex2,
     uselessness,
 	wizzard,
-	meteorite
+	meteorite,
+	purification,
+	dragon,
+	dragon_skin,
+	flame_burning
 };
 
 struct bitmaps_key_hash

@@ -2,6 +2,7 @@
 #include <core/board.h>
 #include <entities/creature.h>
 #include <managers/entity_manager.h>
+#include <common/make_message.h>
 #include "chopper.h"
 #include "damage_dealers.h"
 #include "sender.h"
@@ -48,7 +49,7 @@ void chopper::use(std::uint32_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto caster_id = board::at(index_on);
 
-    sender::send(message_types::animation, animation_def::chopper, used_from_index, index_on);
+    sender::send(make_animation_message("chopper", used_from_index, index_on));
 
     auto enemy_id = board::at(index_on);
 
@@ -73,7 +74,7 @@ void chopper::set_fired() {
 
     auto entity = entity_manager::get(entity_id);
 
-    auto spiral_of_fire_ptr = std::static_pointer_cast<spiral_of_fire>(entity.get<abilities>()->type(abilities::ability_types::special));
+    auto spiral_of_fire_ptr = entity.get<abilities>()->get<spiral_of_fire>();
     spiral_of_fire_ptr->can_be_used = true;
 }
 

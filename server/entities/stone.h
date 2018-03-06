@@ -11,8 +11,6 @@ struct stone final
 
 		entity.add<health_field>();
 
-		entity.add<bitmap_field>(entity.entity_id, bitmap_key::stone);
-
 		return entity;
 	}
 };

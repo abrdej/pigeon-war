@@ -4,6 +4,7 @@
 #include <managers/players_manager.h>
 #include <managers/entity_manager.h>
 #include <components/power_field.h>
+#include <common/make_message.h>
 #include "portal.h"
 #include "possible_move_helper.h"
 
@@ -17,7 +18,7 @@ void portal::prepare(std::uint32_t for_index) {
 
 	board_helper::all_free(states::state_controller::possible_movements_);
 
-	states::state_controller::actual_targeting_type_ = states::target_types::moving;
+	states::state_controller::actual_targeting_type_ = target_types::moving;
 	states::state_controller::wait_for_action([this, for_index](std::uint32_t index)
 											  {
 												  return use(for_index, index);
@@ -64,7 +65,7 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
 
 	board::move(from_index, to_index);
 
-	sender::send(message_types::animation, animation_def::portal, from_index, to_index, neighboring_moves);
+	sender::send(make_animation_message("portal", from_index, to_index, neighboring_moves));
 
 	states::state_controller::selected_index_ = to_index;
 

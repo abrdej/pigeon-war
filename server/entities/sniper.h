@@ -18,15 +18,15 @@ struct sniper final
 
         entity.add<health_field>(35);
         entity.add<damage_taker>();
-        entity.add<addition>();
+        entity.add<applied_effects>();
         entity.add<modification>();
 
         auto abilities_ptr = entity.add<abilities>();
-        abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(3));
-        abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<sniper_shot>());
-        abilities_ptr->add_ability(abilities::ability_types::special, std::make_shared<hypnosis>());
+        abilities_ptr->add_ability(std::make_shared<moveable>(3));
+        abilities_ptr->add_ability(std::make_shared<sniper_shot>());
+        abilities_ptr->add_ability(std::make_shared<hypnosis>());
 
-        entity.add<bitmap_field>(entity.entity_id, bitmap_key::sniper);
+        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::sniper);
 
         return entity;
     }

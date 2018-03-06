@@ -92,11 +92,11 @@ bool attack_enemy::operator()(blackboard& blackboard)
 	auto selected_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(selected_index);
 	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-	auto offensive = abilities_ptr->type(abilities::ability_types::offensive);
+	auto offensive = abilities_ptr->of_type(ability_types::offensive);
 	if (!offensive)
 		return false;
 
-	(*offensive)(states::state_controller::selected_index_);
+	try_prepare_ability(*offensive, states::state_controller::selected_index_);
 	auto can_attack = states::state_controller::is_possible_movement(blackboard.nearest_enemy_index);
 	if (can_attack) {
 		states::state_controller::do_action(blackboard.nearest_enemy_index);
@@ -113,7 +113,7 @@ bool go_close_to::operator()(blackboard& blackboard)
 {
 	auto entity_id = board::at(blackboard.my_entity_index_);
 	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-	auto moving = abilities_ptr->type(abilities::ability_types::moving);
+	auto moving = abilities_ptr->of_type(ability_types::moving);
 	if (!moving)
 		return false;
 
@@ -140,7 +140,7 @@ bool go_close_to::operator()(blackboard& blackboard)
 	std::vector<std::uint32_t> path;
 	distance_finder.path_to(nearest_field, path);
 
-	(*moving)(blackboard.my_entity_index_);
+	try_prepare_ability(*moving, blackboard.my_entity_index_);
 	for (auto& step : path)
 	{
 		if (states::state_controller::is_possible_movement(step))
@@ -157,7 +157,7 @@ bool go_to::operator()(blackboard& blackboard)
 	auto entity_id = board::at(blackboard.my_entity_index_);
 
 	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-	auto moving = abilities_ptr->type(abilities::ability_types::moving);
+	auto moving = abilities_ptr->of_type(ability_types::moving);
 	if (!moving)
 		return false;
 
@@ -170,7 +170,7 @@ bool go_to::operator()(blackboard& blackboard)
 	std::vector<std::uint32_t> path;
 	path_finder.path_to(blackboard.destination_index, path);
 
-	(*moving)(blackboard.my_entity_index_);
+	try_prepare_ability(*moving, blackboard.my_entity_index_);
 
 	for (auto& step : path)
 	{
@@ -188,14 +188,14 @@ bool can_go_to::operator()(blackboard& blackboard)
 	auto entity_id = board::at(blackboard.my_entity_index_);
 
 	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-	auto moving = abilities_ptr->type(abilities::ability_types::moving);
+	auto moving = abilities_ptr->of_type(ability_types::moving);
 	if (!moving)
 		return false;
 
 	if (blackboard.destination_index == blackboard.my_entity_index_)
 		return true;
 
-	(*moving)(blackboard.my_entity_index_);
+	try_prepare_ability(*moving, blackboard.my_entity_index_);
 
 	return states::state_controller::is_possible_movement(blackboard.destination_index);
 }
@@ -205,7 +205,7 @@ bool find_position_for_shot::operator()(blackboard& blackboard)
 	auto selected_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(selected_index);
 	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-	auto offensive = abilities_ptr->type(abilities::ability_types::offensive);
+	auto offensive = abilities_ptr->of_type(ability_types::offensive);
 	if (!offensive)
 		return false;
 
@@ -214,7 +214,7 @@ bool find_position_for_shot::operator()(blackboard& blackboard)
 	auto destination_index = path_finder.find_first_satisfy_conditions(selected_index,
 																	   [&offensive, &blackboard](std::uint32_t index)->bool
 																	   {
-																		   (*offensive)(index);
+																		   try_prepare_ability(*offensive, index);
 																		   auto can_attack =
 																				   states::state_controller::is_possible_movement(blackboard.nearest_enemy_index);
 																		   if (can_attack)

@@ -9,9 +9,10 @@
 #include "server/abilities/abilities.h"
 #include <server/abilities/moveable.h>
 #include <components/damage_taker.h>
-#include <components/additions.h>
+#include <components/applied_effects.h>
 #include <components/power_field.h>
 #include <abilities/meteorite.h>
+#include <abilities/purification.h>
 
 class wizzard final
 {
@@ -23,15 +24,15 @@ public:
 		entity.add<health_field>(45);
 		entity.add<power_filed_with_charging>(entity.entity_id, 10, 10, 30);
 		entity.add<damage_taker>();
-		entity.add<addition>();
+		entity.add<applied_effects>();
 		entity.add<modification>();
 
 		auto abilities_ptr = entity.add<abilities>();
-		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<meteorite>(entity.entity_id));
+		abilities_ptr->add_ability(std::make_shared<moveable>(4));
+		abilities_ptr->add_ability(std::make_shared<meteorite>(entity.entity_id));
+		abilities_ptr->add_ability(std::make_shared<purification>(entity.entity_id));
 
-
-		entity.add<bitmap_field>(entity.entity_id, bitmap_key::wizzard);
+		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::wizzard);
 
 		return entity;
 	}

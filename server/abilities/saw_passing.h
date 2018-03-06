@@ -8,7 +8,7 @@
 #include "straight_target_ability.h"
 #include "per_turn_usable.h"
 
-class saw_passing final : public straight_target_ability<5, states::target_types::moving, true>,
+class saw_passing final : public straight_target_ability<5, target_types::moving, true>,
 						  per_turn_usable {
 public:
 	explicit saw_passing(std::uint32_t entity_id);

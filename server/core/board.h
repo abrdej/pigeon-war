@@ -133,4 +133,13 @@ public:
     static std::array<std::vector<std::uint32_t>, cols_n * rows_n> fields_;
 };
 
+namespace std {
+template <typename CharT>
+basic_ostream<CharT>& operator<<(basic_ostream<CharT>& os, const pair<uint32_t, uint32_t>& pos)
+{
+	os << "(" << pos.first << ", " << pos.second << ")";
+	return os;
+}
+} // std
+
 #endif

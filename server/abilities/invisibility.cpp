@@ -1,3 +1,4 @@
+#include <common/make_message.h>
 #include "invisibility.h"
 #include "managers/entity_manager.h"
 #include "core/board.h"
@@ -30,25 +31,14 @@ void invisibility::hide_me()
 {
 	index = board::index_for(entity_id);
 
-	sender::send(message_types::animation, animation_def::set_invisibility, entity_id);
+	sender::send(make_animation_message("set_invisibility", entity_id));
 
     set_destructible(entity_id, false);
 }
 
 void invisibility::show_me()
 {
-	sender::send(message_types::animation, animation_def::remove_invisibility, entity_id);
+	sender::send(make_animation_message("remove_invisibility", entity_id));
 
     set_destructible(entity_id, true);
-}
-
-std::string invisibility::hint() const {
-
-	std::string desc;
-
-	desc = "Invisibility - saberhand becomes invisible and can't receive any damage\n"
-				   " through " + std::to_string(duration) + " turns.\n"
-			"This ability can be used only once per battle\n";
-
-	return std::move(desc);
 }

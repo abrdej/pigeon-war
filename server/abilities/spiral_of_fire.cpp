@@ -6,6 +6,7 @@
 #include <gui/entity_drawer.h>
 #include <gui/drawing_manager.h>
 #include <managers/entity_manager.h>
+#include <common/make_message.h>
 #include "spiral_of_fire.h"
 #include "damage_dealers.h"
 #include "sender.h"
@@ -31,7 +32,7 @@ void spiral_of_fire::use(std::uint32_t index_on) {
 
     auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
-    sender::send(message_types::animation, animation_def::spiral_of_fire, used_from_index, index_to_move);
+    sender::send(make_animation_message("spiral_of_fire", used_from_index, index_to_move));
 
     std::vector<std::uint32_t> indexes;
 
@@ -71,7 +72,6 @@ void spiral_of_fire::use(std::uint32_t index_on) {
     can_be_used = false;
 
     auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-    auto ability = abilities_ptr->type(abilities::ability_types::offensive);
-    std::shared_ptr<chopper> ch = std::static_pointer_cast<chopper>(ability);
-    ch->remove_fired();
+    std::shared_ptr<chopper> chopper_ptr = abilities_ptr->get<chopper>();
+    chopper_ptr->remove_fired();
 }

@@ -3,6 +3,7 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <components/damage_taker.h>
+#include <common/make_message.h>
 #include "sender.h"
 #include "common/animations.h"
 
@@ -30,15 +31,6 @@ counterattack::counterattack(std::uint32_t entity_id)
 	}, damage_taker::on_receive_damage_policy::after);
 }
 
-std::string counterattack::hint() const {
-	std::string desc;
-	desc = "Counterattack - native performs a counterattack if\n"
-				   " the attacker is within his range.\n"
-			"Counterattack deals " + std::to_string(damage) + " damage. It works only once per turn.";
-
-	return std::move(desc);
-}
-
 void counterattack::use(std::uint32_t index_on) {
 
 	if (used) {
@@ -48,7 +40,7 @@ void counterattack::use(std::uint32_t index_on) {
 	auto entity_index = board::index_for(entity_id);
 	auto enemy_id = board::at(index_on);
 
-	sender::send(message_types::animation, animation_def::counterattack, entity_index, index_on);
+	sender::send(make_animation_message("counterattack", entity_index, index_on));
 
 	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
 

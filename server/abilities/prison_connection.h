@@ -26,7 +26,7 @@ private:
 	std::int32_t final_damage{0};
 	const std::int32_t duration{3};
 	std::deque<std::uint32_t> entities_with_effect;
-	std::deque<callback_holder> effect_holders;
+	std::deque<turn_scoped_connection> effect_holders;
 };
 
 

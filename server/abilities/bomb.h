@@ -7,12 +7,13 @@
 
 #include <entities/entity.h>
 #include "path_target_ability.h"
+#include "abilities.h"
 #include "core/turn_system.h"
 #include "moveable.h"
 #include <boost/circular_buffer.hpp>
 #include <managers/entity_manager.h>
 
-class bomb_detonation final : public ability, protected turn_callback_helper {
+class bomb_detonation final : public active_ability, protected turn_callback_helper {
 public:
 	explicit bomb_detonation(std::uint32_t bomb_id);
 
@@ -42,12 +43,12 @@ struct bomb_instance {
 		entity.name = "Bomba";
 		entity.add<health_field>();
 		auto abilities_ptr = entity.add<abilities>();
-		abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<bomb_detonation>(entity_id));
+		abilities_ptr->add_ability(std::make_shared<bomb_detonation>(entity_id));
 		return entity;
 	}
 };
 
-class bomb final : public path_target_ability<4, states::target_types::moving, true>,
+class bomb final : public path_target_ability<4, target_types::moving, true>,
 				   protected turn_callback_helper {
 public:
 	bomb();

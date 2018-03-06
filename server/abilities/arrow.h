@@ -15,7 +15,7 @@ public:
         return bitmap_key::arrow;
     }
 
-    std::string hint() const override;
+    DEFINE_DESC(arrow, damage, viewfinder_duration, range)
 
     void prepare(std::uint32_t for_index) override;
 

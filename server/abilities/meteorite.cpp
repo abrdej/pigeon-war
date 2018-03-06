@@ -4,7 +4,8 @@
 #include <sender.h>
 #include <common/animations.h>
 #include <components/damage_pack.h>
-#include <components/additions.h>
+#include <components/applied_effects.h>
+#include <common/make_message.h>
 #include "damage_dealers.h"
 
 meteorite::meteorite(std::uint32_t entity_id)
@@ -21,7 +22,7 @@ void meteorite::prepare(std::uint32_t for_index) {
 
 	board_helper::all(states::state_controller::possible_movements_);
 
-	states::state_controller::actual_targeting_type_ = states::target_types::all;
+	states::state_controller::actual_targeting_type_ = target_types::all;
 
 	states::state_controller::wait_for_action([this](std::uint32_t index)
 											  {
@@ -44,12 +45,12 @@ void meteorite::use(std::uint32_t index_on) {
 	auto caster_id = board::at(used_from_index);
 	auto damage = this->damage;
 
-	sender::send(message_types::animation, animation_def::meteorite_before, index_on);
+	sender::send(make_animation_message("meteorite_before", index_on));
 
 	meteorite_holder = make_after_n_round_callback_holder(1,
 														  [caster_id, index_on, damage]() mutable {
 
-															  sender::send(message_types::animation, animation_def::meteorite, index_on);
+															  sender::send(make_animation_message("meteorite", index_on));
 
 															  std::vector<std::uint32_t> neighbors;
 															  board_helper::neighboring_fields(index_on, neighbors, false);

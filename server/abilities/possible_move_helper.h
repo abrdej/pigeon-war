@@ -9,8 +9,8 @@
 #include <core/states_controller.h>
 #include "ability.h"
 
-#define ENEMY states::target_types::enemy
-#define MOVING states::target_types::moving
+#define ENEMY target_types::enemy
+#define MOVING target_types::moving
 
 #define PATH_FINDER_PREPARE(TARGET_TYPE) \
 void prepare(std::uint32_t for_index) override { \
@@ -47,6 +47,6 @@ return use(index); \
 
 
 #define STRAIGHT_PREPARE_ENEMY() \
-STRAIGHT_PREPARE(states::target_types::enemy) \
+STRAIGHT_PREPARE(target_types::enemy) \
 
 #endif //PIGEONWAR_POSSIBLE_MOVE_HELPER_H

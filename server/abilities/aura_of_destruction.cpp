@@ -3,9 +3,10 @@
 #include <effects/auras_observer.h>
 #include <effects/aura_of_destruction_effect.h>
 #include <components/damage_taker.h>
-#include <components/additions.h>
+#include <components/applied_effects.h>
 #include <sender.h>
 #include <common/animations.h>
+#include <common/make_message.h>
 #include "aura_of_destruction.h"
 #include "damage_dealers.h"
 
@@ -22,7 +23,7 @@ aura_of_destruction::aura_of_destruction(std::uint32_t entity_id)
         aura_power -= value_for_power;
 
         if (value_for_power > 0) {
-            sender::send(message_types::animation, animation_def::destruction, board::index_for(entity_id));
+            sender::send(make_animation_message("destruction", board::index_for(entity_id)));
 
             auto enemy_id = dmg.damage_dealer_id;
             if (enemy_id != no_damage_dealer) {
@@ -58,14 +59,14 @@ void aura_of_destruction::use(std::uint32_t use_on_index) {
 //
 //
 //                                                                               entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(-usable_dmg_increase);
-//                                                                               remove_component(friend_id, "destruction_effect");
+//                                                                               remove_effect(friend_id, "destruction_effect");
 //                                                                           });
 //
-//            add_component(friend_id, "destruction_effect", destruction_receiver);
+//            add_effect(friend_id, "destruction_effect", destruction_receiver);
 //        }
 //    }
 //
-//    sender::send(message_types::animation, animation_def::destruction, board::index_for(entity_id));
+//    sender::send(make_animation_message("destruction, board::index_for(entity_id));
 //
 //    auras_observer::observe();
 }

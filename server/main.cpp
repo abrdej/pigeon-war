@@ -2,15 +2,16 @@
 #include <core/board.h>
 #include <core/states_controller.h>
 #include <abilities/ability.h>
-#include <core/animations_queue.h>
+#include <abilities/abilities.h>
 #include <managers/players_manager.h>
 #include <chrono>
 #include <thread>
 #include <common/turn_status.h>
 #include <SFML/Network.hpp>
-#include <scenarios/scenarios.h>
-#include <components/additions.h>
+#include <scenarios/skirmish.h>
+#include <components/applied_effects.h>
 #include <managers/entity_manager.h>
+#include <common/make_message.h>
 #include "core/game.h"
 #include "common/game_state.h"
 #include "server.h"
@@ -19,6 +20,14 @@
 #include "cbor/cbor.h"
 #include "json.hpp"
 #include "common/messages/messages.h"
+
+auto get_names() {
+	std::unordered_map<std::uint32_t, std::string> returned_map;
+	entity_manager::for_all([&returned_map](base_entity entity) {
+		returned_map.insert(std::make_pair(entity.entity_id, entity.name));
+	});
+	return std::move(returned_map);
+}
 
 game_state get_game_state(game& g) {
 
@@ -32,7 +41,7 @@ game_state get_game_state(game& g) {
 	}
 
 	state.entities_names = get_names();
-	state.entities_additional_effects = get_additions();
+	state.entities_additional_effects = get_effects();
 
 	return std::move(state);
 }
@@ -53,12 +62,10 @@ local_state get_local_state(game& g) {
 
 	if (entity_id != board::empty_id) {
 
-		state.button_bitmaps[0] = entity.get<bitmap_field>()->bmt_key;
-
 		if (entity.contain<abilities>()) {
 			auto abilities_ptr = entity.get<abilities>();
-			for (std::int32_t i = 1; i < 6; ++i) {
-				auto ability = abilities_ptr->at(i - 1);
+			for (std::int32_t i = 0; i < 5; ++i) {
+				auto ability = abilities_ptr->at(i);
 				if (ability) {
 					state.button_bitmaps[i] = ability->get_bitmap_key();
 				}
@@ -80,105 +87,104 @@ local_state get_local_state(game& g) {
 
 int main(int argc, char** argv) {
 
-	int port = 5555;
+	std::int32_t port = 5555;
+	std::string map_name = "battlefield";
 
 	if (argc > 1) {
 		port = std::atoi(argv[1]);
 	}
+	if (argc == 3) {
+		map_name = std::string(argv[2]);
+	}
 
 	game g;
+	map_name = create_skirmish(g, map_name);
 
-	create_scenario(g,  "saurions_web");
+	server pigeon_war_server(port);
 
-	server binder(port);
-
-	sender::set_sender([&binder](sf::Packet packet) {
-		binder.send_notification(packet);
+	sender::set_sender([&pigeon_war_server](sf::Packet packet) {
+		pigeon_war_server.send_notification(packet);
 	});
 
-	binder.bind(message_types::on_board, [&](sf::Packet& packet) {
+	pigeon_war_server.set_initial_message([&](std::uint32_t client_id) {
+		pigeon_war_server.send_notification_to(client_id, make_packet(make_client_id_message(client_id)));
+        pigeon_war_server.send_notification_to(client_id, make_packet(make_map_name_message(map_name)));
+		pigeon_war_server.send_notification_to(client_id, make_packet(make_board_message(board::fields_)));
+		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_names_message(get_names())));
+		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_healths_message(get_healths())));
+	});
 
-		std::int32_t client_id;
-		std::uint32_t x;
-		std::uint32_t y;
+    using json_data_type = nlohmann::json;
 
-		packet >> client_id;
-		packet >> x;
-		packet >> y;
+	pigeon_war_server.bind("on_board", [&](json_data_type& data) {
 
-        bool single_client = binder.is_single_client();
+		std::cout << "on board\n";
+
+		std::int32_t client_id = data["client_id"];
+		std::uint32_t x = data["col"];
+		std::uint32_t y = data["row"];
+
+        bool single_client = pigeon_war_server.is_single_client();
 
 		if (client_id == players_manager::get_active_player_id() || single_client) {
 			g.on_board(x, y);
 
-//			binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
-			binder.send_notification(make_packet(message_types::local_state, get_local_state(g)));
-			binder.send_notification(make_packet(message_types::game_state, get_game_state(g)));
+			std::cout << "here\n";
 
+			pigeon_war_server.send_notification(make_packet(make_local_state_message(get_local_state(g))));
+
+			std::cout << "here2\n";
+
+			pigeon_war_server.send_notification(make_packet(make_game_state_message(get_game_state(g))));
+
+			std::cout << "here3\n";
 		}
 	});
 
-	binder.bind(message_types::on_button, [&](sf::Packet& packet) {
+	pigeon_war_server.bind("on_button", [&](json_data_type& data) {
 
-		std::int32_t client_id;
-		std::uint32_t n;
+		std::cout << "on button\n";
 
-		packet >> client_id;
-		packet >> n;
+		std::int32_t client_id = data["client_id"];
+		std::uint32_t button = data["button"];
 
-		std::cout << "N1: " << n << "\n";
-
-		const bool single_client = binder.is_single_client();
+		const bool single_client = pigeon_war_server.is_single_client();
 
 		if (client_id == players_manager::get_active_player_id() || single_client) {
 
 			std::cout << "client_id: " << client_id << " single_client:" << single_client << "\n";
 
-			g.on_button(n);
+			g.on_button(button);
 
-			std::cout << "N2: " << n << "\n";
-
-			if (n == 5) {
-
+			if (button == 5) {
 				auto active_player = players_manager::get_active_player_id();
-
-				sf::Packet result_packet;
-				result_packet << message_types::end_turn << active_player;
-
-				binder.send_notification(result_packet);
+				pigeon_war_server.send_notification(make_packet(make_end_turn_message(active_player)));
 			}
 
-//			binder.send_notification(make_packet(message_types::animations, animations_queue::pull_all()));
-
-			binder.send_notification(make_packet(message_types::local_state, get_local_state(g)));
-			binder.send_notification(make_packet(message_types::game_state, get_game_state(g)));
+			pigeon_war_server.send_notification(make_packet(make_local_state_message(get_local_state(g))));
+			pigeon_war_server.send_notification(make_packet(make_game_state_message(get_game_state(g))));
 		}
 	});
 
-	binder.bind(message_types::get_button_description, [&](sf::Packet& packet) {
+	pigeon_war_server.bind("get_button_description", [&](json_data_type& data) {
 
-		std::int32_t client_id;
-		std::uint32_t n;
-
-		packet >> client_id;
-		packet >> n;
+		std::int32_t client_id = data["client_id"];
+		std::uint32_t button = data["button"];
 
 		std::string description;
 
-		const bool single_client = binder.is_single_client();
+		const bool single_client = pigeon_war_server.is_single_client();
 
 		if (client_id == players_manager::get_active_player_id() || single_client) {
 
-			description = g.get_button_description(states::state_controller::selected_index_, n);
-
-			binder.send_notification_to(client_id, make_packet(message_types::description, description));
-
+			description = g.get_button_description(states::state_controller::selected_index_, button);
+			pigeon_war_server.send_notification_to(client_id, make_packet(make_description_message(description)));
 		}
 	});
 
-	binder.start();
-
-	binder.working_thread.join();
+	pigeon_war_server.start_listening();
+	pigeon_war_server.start();
+	pigeon_war_server.wait();
 
 	return 0;
 }

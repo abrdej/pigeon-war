@@ -1,5 +1,6 @@
 #include <core/states_controller.h>
 #include <components/damage_taker.h>
+#include <common/make_message.h>
 #include "magic_bullet.h"
 #include "damage_dealers.h"
 #include "sender.h"
@@ -20,7 +21,7 @@ magic_bullet::magic_bullet(std::uint32_t entity_id) {
                 if (!board::empty(index) && players_funcs::enemy_entity(index)) {
 
                     magic_power += magic_power_drain_amount;
-                    sender::send(message_types::animation, animation_def::magic_suck, index);
+                    sender::send(make_animation_message("magic_suck", index));
                 }
             }
         }
@@ -66,7 +67,7 @@ void magic_bullet::use(std::uint32_t index_on) {
 
     auto from_index = states::state_controller::selected_index_;
 
-    sender::send(message_types::animation, animation_def::magic_bullet, from_index, index_on);
+    sender::send(make_animation_message("magic_bullet", from_index, index_on));
 
     damage_dealers::standard_damage_dealer(magic_damage(magic_power, board::at(index_on), board::at(from_index)));
 

@@ -68,7 +68,6 @@ public:
 	{
 		auto receiver_entity = entity_manager::get(dmg.damage_receiver_id);
 
-
 		damage_pack damage_pack = dmg;
 
 		damage_pack.damage_value += receiver_entity.get<modification>()->damage_receiver_modifier_value();

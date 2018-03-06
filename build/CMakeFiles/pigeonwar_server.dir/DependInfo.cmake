@@ -114,7 +114,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../client"
   "../server"
   "../"
-  "/usr/local/include"
   )
 
 # Targets to which this target links.

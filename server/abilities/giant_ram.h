@@ -8,7 +8,7 @@
 #include "straight_target_ability.h"
 #include <vector>
 
-class giant_ram final : public straight_target_ability<5, states::target_types::enemy, true> {
+class giant_ram final : public straight_target_ability<5, target_types::enemy, true> {
 public:
     explicit giant_ram(std::uint32_t entity_id);
 
@@ -16,7 +16,7 @@ public:
         return bitmap_key::giant_ram;
     }
 
-    std::string hint() const override;
+    DEFINE_DESC_ONE(giant_ram, damage)
 
 private:
     void prepare(std::uint32_t for_index) override;

@@ -4,7 +4,8 @@
 #include <sender.h>
 #include <common/animations.h>
 #include <components/damage_pack.h>
-#include <components/additions.h>
+#include <components/applied_effects.h>
+#include <common/make_message.h>
 #include "damage_dealers.h"
 #include "possible_move_helper.h"
 
@@ -24,7 +25,7 @@ void fist_of_doom::prepare(std::uint32_t for_index) {
 
     board_helper::all(states::state_controller::possible_movements_);
 
-    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
+    states::state_controller::actual_targeting_type_ = target_types::enemy;
     states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
@@ -44,7 +45,7 @@ void fist_of_doom::use(std::uint32_t index_on) {
 
     auto damage = damage_per_power * power;
 
-    sender::send(message_types::animation, animation_def::fist_of_doom, index_on);
+    sender::send(make_animation_message("fist_of_doom", index_on));
 
     damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, caster_id));
 

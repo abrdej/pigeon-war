@@ -7,14 +7,14 @@
 
 #include "path_target_ability.h"
 
-class hypnosis final : public path_target_ability<4, states::target_types::enemy, true>
+class hypnosis final : public path_target_ability<4, target_types::enemy, true>
 {
 public:
 	bitmap_key get_bitmap_key() const override {
 		return bitmap_key::hypnosis;
 	}
 
-	std::string hint() const override;
+	DEFINE_DESC_ZERO(hypnosis)
 
 private:
 	void use(std::uint32_t index_on);

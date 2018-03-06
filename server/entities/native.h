@@ -15,15 +15,13 @@ public:
 
 		entity.add<health_field>(50);
 		entity.add<damage_taker>();
-		entity.add<addition>();
+		entity.add<applied_effects>();
 		entity.add<modification>();
 
 		auto abilities_ptr = entity.add<abilities>();
-		abilities_ptr->add_ability(abilities::ability_types::moving, std::make_shared<moveable>(4));
-		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<drain>());
-		abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<counterattack>(entity.entity_id));
-
-		entity.add<bitmap_field>(entity.entity_id, bitmap_key::native);
+		abilities_ptr->add_ability(std::make_shared<moveable>(4));
+		abilities_ptr->add_ability(std::make_shared<drain>());
+		abilities_ptr->add_ability(std::make_shared<counterattack>(entity.entity_id));
 
 		return entity;
 	}

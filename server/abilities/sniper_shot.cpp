@@ -1,6 +1,6 @@
 #include <core/states_controller.h>
-#include <core/animations_queue.h>
 #include <managers/entity_manager.h>
+#include <common/make_message.h>
 #include "sniper_shot.h"
 #include "damage_dealers.h"
 #include "sender.h"
@@ -33,7 +33,7 @@ void sniper_shot::prepare(std::uint32_t for_index) {
         states::state_controller::possible_movements_costs_.clear();
     }
 
-    states::state_controller::actual_targeting_type_ = states::target_types::enemy;
+    states::state_controller::actual_targeting_type_ = target_types::enemy;
     states::state_controller::wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
@@ -48,7 +48,7 @@ void sniper_shot::use(std::uint32_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
 
-    sender::send(message_types::animation, animation_def::sniper_shot, used_from_index, index_on);
+    sender::send(make_animation_message("sniper_shot", used_from_index, index_on));
 
     auto enemy_id = board::at(index_on);
 

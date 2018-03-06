@@ -3,6 +3,7 @@
 
 #include "entity.h"
 #include "server/abilities/tongue_of_fire.h"
+#include "server/components/applied_effects.h"
 
 class saurian final
 {
@@ -13,13 +14,11 @@ public:
 
 		entity.add<health_field>(35);
 		entity.add<damage_taker>();
-		entity.add<addition>();
+		entity.add<applied_effects>();
 		entity.add<modification>();
 
 		auto abilities_ptr = entity.add<abilities>();
-		abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<tongue_of_fire>());
-
-		entity.add<bitmap_field>(entity.entity_id, bitmap_key::saurian);
+		abilities_ptr->add_ability(std::make_shared<tongue_of_fire>());
 
 		return entity;
 	}

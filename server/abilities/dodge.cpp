@@ -1,3 +1,4 @@
+#include <common/make_message.h>
 #include "dodge.h"
 #include "sender.h"
 #include "common/animations.h"
@@ -13,7 +14,7 @@ dodge::dodge(std::uint32_t entity_id) {
 
 			auto index = board::index_for(entity_id);
 
-			sender::send(message_types::animation, animation_def::dodge, index);
+			sender::send(make_animation_message("dodge", index));
 
 			return 0;
 
@@ -24,12 +25,4 @@ dodge::dodge(std::uint32_t entity_id) {
 			return final_damage;
 		}
 	});
-}
-
-std::string dodge::hint() const {
-
-	std::string desc;
-	desc = "Dodge - samurai avoids every third attack.\n"
-			"Received attacks from the last dodge: " + std::to_string(counter) + ".";
-	return std::move(desc);
 }
