@@ -21,7 +21,7 @@ struct wretch final
         entity.name = "Wretch";
 
         entity.add<health_field>(45);
-        entity.add<power_field>(16);
+        entity.add<power_filed>(entity.entity_id, 16, 0, 16);
         entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();

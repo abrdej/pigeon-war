@@ -13,8 +13,15 @@ lightning::lightning(std::uint32_t entity_id)
         : entity_id(entity_id) {}
 
 std::string lightning::hint() const {
-    auto power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
-    return "Magic power: " + std::to_string(power);
+
+    auto power = entity_manager::get(entity_id).get<power_filed>()->power;
+
+    auto desc = get_desc("lightning");
+    str_replace(desc, "<power>", std::to_string(power));
+    str_replace(desc, "<damage>", std::to_string(damage));
+    str_replace(desc, "<power_cost>", std::to_string(power_cost));
+
+    return desc;
 }
 
 void lightning::use(std::uint32_t index_on) {

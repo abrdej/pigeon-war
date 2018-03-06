@@ -6,6 +6,7 @@
 #include <sender.h>
 #include <managers/entity_manager.h>
 #include <components/power_field.h>
+#include <components/damage_taker.h>
 
 flame_burning::flame_burning(std::uint32_t entity_id) {
 
@@ -23,9 +24,17 @@ void flame_burning::use(std::uint32_t index_on) {
 
     auto final_damage = damage;
 
-    if (entity_manager::get(enemy_id).contain<power_field>()) {
-        auto magic_burning = std::min(entity_manager::get(enemy_id).get<power_field>()->power, burn_magic_power);
-        entity_manager::get(enemy_id).get<power_field>()->power -= magic_burning;
+    if (entity_manager::get(enemy_id).contain<power_filed>()) {
+
+        std::cout << "here flame_burning\n";
+
+        auto magic_burning = std::min(entity_manager::get(enemy_id).get<power_filed>()->power, burn_magic_power);
+        auto& power = entity_manager::get(enemy_id).get<power_filed>()->power;
+
+        auto power_decrease = std::min(power, magic_burning);
+
+        power -= power_decrease;
+        play_power_change_animation(index_on, power_decrease);
         final_damage += magic_burning;
     }
 

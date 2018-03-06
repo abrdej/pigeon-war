@@ -69,4 +69,5 @@ void animations_service::initialize() {
 	add<meteorite_handler>("meteorite");
 	add<purification_handler>("purification");
 	add<flame_burning_handler>("flame_burning");
+	add<change_power_handler>("change_power");
 }

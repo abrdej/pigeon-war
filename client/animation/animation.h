@@ -140,15 +140,19 @@ struct flash_bitmap
 	bitmap_key bmt_key;
 };
 
-struct change_health
+struct show_number_change
 {
-	change_health(std::uint32_t for_index, std::int32_t change_by)
+	show_number_change(std::uint32_t for_index,
+					   std::int32_t change_by,
+					   const sf::Color& color)
 			: for_index(for_index),
-			  change_by(change_by)
+			  change_by(change_by),
+			  color(color)
 	{
 	}
 	std::uint32_t for_index;
 	std::int32_t change_by;
+	sf::Color color;
 };
 };
 

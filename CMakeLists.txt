@@ -69,8 +69,6 @@ set(SERVER_SOURCE_FILES
         server/managers/players_manager.cpp
         server/core/board.cpp
         utils/scenario_helper.h
-        server/scenarios/scenarios.h
-        server/scenarios/scenarios.cpp
         server/entities/tree.h
         server/abilities/sword_blow.cpp
         server/abilities/sword_blow.h

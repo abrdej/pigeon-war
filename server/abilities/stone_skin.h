@@ -15,7 +15,7 @@ public:
         return bitmap_key::stone_skin;
     }
 
-    std::string hint() const override;
+    DEFINE_DESC(stone_skin, damage_reduction, reduction_increase_amount)
 
 private:
     int damage_reduction{0};

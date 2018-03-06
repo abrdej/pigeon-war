@@ -20,6 +20,8 @@ public:
 		return bitmap_key::rocket;
 	}
 
+	DEFINE_DESC(rocket_launcher, base_damage, distance_bonus, rocket_change_bonus, range)
+
 	bool was_used() const {
 		return used;
 	}

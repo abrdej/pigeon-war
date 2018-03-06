@@ -14,7 +14,7 @@ public:
         return bitmap_key::sword_blow;
     }
 
-    std::string hint() const override;
+    DEFINE_DESC_ONE(sword_blow, damage)
 
 private:
     void use(std::uint32_t index_on) override;

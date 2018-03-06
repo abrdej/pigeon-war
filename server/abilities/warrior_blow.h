@@ -16,7 +16,7 @@ public:
         return bitmap_key::warrior_blow;
     }
 
-    std::string hint() const override;
+    DEFINE_DESC_ONE(warrior_blow, damage)
 
 private:
     void use(std::uint32_t index_on) override;

@@ -16,6 +16,8 @@ public:
 		return bitmap_key::jaw_spider;
 	}
 
+	DEFINE_DESC(jaw_spider, damage, bonus_for_spider_web_effect)
+
 	void set_used();
 
 private:

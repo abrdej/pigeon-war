@@ -15,7 +15,7 @@ aura_of_destruction::aura_of_destruction(std::uint32_t entity_id)
 
     on_receive_damage(entity_id, [this, entity_id](const damage_pack& dmg) mutable {
 
-        auto& aura_power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+        auto& aura_power = entity_manager::get(entity_id).get<power_filed>()->power;
 
         auto half_damage = 0.5 * dmg.damage_value;
 
@@ -36,7 +36,7 @@ aura_of_destruction::aura_of_destruction(std::uint32_t entity_id)
 
 void aura_of_destruction::use(std::uint32_t use_on_index) {
 
-//    auto& aura_power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+//    auto& aura_power = entity_manager::get(entity_id).get<power_filed>()->power;
 //
 //    if (aura_power < cost)
 //        return;

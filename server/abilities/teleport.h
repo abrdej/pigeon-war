@@ -15,7 +15,7 @@ public:
 		return bitmap_key::teleport;
 	}
 
-	std::string hint() const override;
+	DEFINE_DESC_ZERO(teleport)
 
 private:
 	void prepare(std::uint32_t for_index) override;

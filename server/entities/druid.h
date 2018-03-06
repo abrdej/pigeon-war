@@ -23,7 +23,7 @@ public:
 		entity.name = "Druid";
 
 		entity.add<health_field>(45);
-		entity.add<power_filed_with_charging>(entity.entity_id, 10, 10, 25);
+		entity.add<power_filed>(entity.entity_id, 10, 10, 25);
 		entity.add<damage_taker>();
 		entity.add<applied_effects>();
 		entity.add<modification>();
@@ -33,8 +33,6 @@ public:
 		abilities_ptr->add_ability(std::make_shared<lightning>(entity.entity_id));
 		abilities_ptr->add_ability(std::make_shared<cure>(entity.entity_id));
 		abilities_ptr->add_ability(std::make_shared<portal>(entity.entity_id));
-
-		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::druid);
 
 		return entity;
 	}

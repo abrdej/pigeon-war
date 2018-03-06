@@ -304,6 +304,10 @@ struct change_health_handler : base_handler {
 	void handle(nlohmann::json& data, game_state& g_state) override;
 };
 
+struct change_power_handler : base_handler {
+	void handle(nlohmann::json& data, game_state& g_state) override;
+};
+
 struct rocket_launcher_handler : shot_base_handler<bitmap_key::rocket, bitmap_key::bum> {
 
 };

@@ -16,7 +16,21 @@
       "hypnosis": "Hypnosis - causes that the enemy unit will not be able to make a move\nin the next turn.\nIt can be used only once per battle.",
       "immortality": "Immortality - when the health of the warrior drops to zero\nthe warrior becomes immortal for one more turn.",
       "invisibility": "Invisibility - saberhand becomes invisible and can't receive any damage\nthrough <duration> turns.\nThis ability can be used only once per battle\n",
-      "purification": "Purification - eliminates all removable negative effects from the unit.\nMagic cost: <power_cost>."
+      "purification": "Purification - eliminates all removable negative effects from the unit.\nMagic cost: <power_cost>.",
+      "dragon_skin": "Dragon Skin - reduce damage from magical attack by <magic_damage_reduction>.",
+      "flame_burning": "Flame Burning - deals damage of: <damage>.\nIf enemy has magic power it also burn <burn_magic_power> of it\nand deal additional damage equal to this amount.",
+      "moveable": "Move - standard way to move.\nRange: <range>.",
+      "warrior_blow": "Warrior Blow - deals the more damage the less warrior has health.\nBase damage is <damage>.",
+      "teleport": "Teleport - teleports the droid to a selected place on the map.\nIt can be used only once per battle.",
+      "sword_blow": "Sword Blow - deals damage of: <damage> to all units around the samurai.\nIf the samurai hits minimum tree units he performs an additional blow.",
+      "surroundings": "Surroundings - spider get <damage_reduction> damage reduction for each enemy\n in his neighborhood.Minimum damage is <min_damage>.",
+      "stone_skin": "Stone Skin - with each received attack golem\nincrease his damage reduction by <reduction_increase_amount> points.\nCurrent damage reduction: <damage_reduction>.",
+      "spider_web": "Spider Web - spider shoot his web within range of <range>.\nWeb deal <damage> damage, attracts the opponent and apply slow to him.",
+      "jaw_spider": "Jaw Spider - deals <damage> damage.\nIf enemy is under Spider Web effect it deals <bonus_for_spider_web_effect> additional damage.",
+      "lightning": "Lightning - mark enemy with lightning target.\nIn next turn lightning will hit enemy and deal <damage> damage.\nThis spell cost <power_cost> magic power.\nActual magic power: <power>.",
+      "sabers": "Sabers - saberhand can acquire several neighboring targets\nand deal each of them damage of: <damage>.",
+      "mortar_thrower": "Mortar Thrower - fires area missle to range <range> which deals <base_damage> of damage.\nIf Rocket Launcher was used earlier Mortar Thrower gain <rocket_change_bonus> additional damage.",
+      "rocket_launcher": "Rocket Launcher - fires missle to range <range> which deals <base_damage> + <distance_bonus> damage\nfor each unit of range.\nIf Mortar Thrower was used earlier Rocket Launcher gain <rocket_change_bonus> additional damage."
     }
   }
 }

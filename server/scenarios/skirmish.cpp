@@ -109,6 +109,43 @@ auto get_entities_starting_positions() {
     return std::move(positions);
 }
 
+std::vector<std::string> get_possible_to_choose_entities() {
+    std::vector<std::string> result = {
+            "wretch",
+            "wizzard",
+            "warrior",
+            "troll",
+            "thrower",
+            "spider",
+            "soul_hunter",
+            "sorcerer",
+            "sniper",
+            "shooter",
+            "samurai_rat",
+            "saberhand",
+            //"robot",
+            "poisoner",
+            "native",
+            "monk",
+            //"mechanical_saw",
+            //"killer",
+            "handthrower",
+            "guardian",
+            //"grenadier",
+            "golem",
+            "gin",
+            "giant",
+            "druid",
+            "droid",
+            "dragon",
+            "destroyer",
+            //"creature",
+            "commander",
+            "combat_robot"
+    };
+    return std::move(result);
+}
+
 std::string create_skirmish(game& game, const std::string& map_name) {
 
     auto name = read_map_from_json(maps_directory + map_name);
@@ -127,18 +164,23 @@ std::string create_skirmish(game& game, const std::string& map_name) {
 
     std::unordered_set<std::uint32_t> entities_to_choose;
 
-    auto init_entity = [&](auto x) {
-        using EntityType = decltype(x);
-        auto id = entity_manager::create<EntityType>();
+    auto entities = get_possible_to_choose_entities();
+    for (auto&& entity_name : entities) {
+
+        auto id = entities_factory::create(entity_name);
 
         auto pos = selecting_positions[i++];
+
+        if (selecting_positions.size() < i) {
+            break;
+        }
+
         board::insert(board::to_index(pos.first, pos.second), id);
+//        board::insert(i++, id);
         players_manager::add_neutral_entity(id);
 
         entities_to_choose.insert(id);
-    };
-
-    for_each(Entites{}, init_entity);
+    }
 
     std::int32_t entities_for_player = 4;
     std::int32_t selections = 0;
@@ -182,6 +224,7 @@ std::string create_skirmish(game& game, const std::string& map_name) {
 
                                     entities.clear();
                                 }
+
                             });
 
     return name;

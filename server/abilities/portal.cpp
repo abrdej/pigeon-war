@@ -30,7 +30,7 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
 	if (used)
 		return;
 
-	auto& power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+	auto& power = entity_manager::get(entity_id).get<power_filed>()->power;
 
 	if (power < power_cost)
 		return;

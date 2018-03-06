@@ -15,6 +15,8 @@ public:
 		return bitmap_key::long_range_missile;
 	}
 
+	//DEFINE_DESC(long_range_missile, start_damage, additional_damage)
+
 private:
 	void use(std::uint32_t index_on);
 	void play_animation(std::uint32_t from_index, std::uint32_t to_index);

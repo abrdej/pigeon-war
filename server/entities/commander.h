@@ -24,7 +24,7 @@ public:
         entity.name = "Commander";
 
         entity.add<health_field>(50);
-        entity.add<power_filed_with_charging>(entity.entity_id, 10, 5, 10);
+        entity.add<power_filed>(entity.entity_id, 10, 5, 10);
         entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();
@@ -33,8 +33,6 @@ public:
         abilities_ptr->add_ability(std::make_shared<moveable>(4));
         abilities_ptr->add_ability(std::make_shared<arrow>());
         abilities_ptr->add_ability(std::make_shared<aura_of_destruction>(entity.entity_id));
-
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::commander);
 
         return entity;
     }

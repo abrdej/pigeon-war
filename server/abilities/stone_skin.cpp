@@ -23,13 +23,3 @@ stone_skin::stone_skin(std::uint32_t entity_id) {
         return damage;
     });
 }
-
-std::string stone_skin::hint() const {
-
-    std::string desc;
-    desc = "Stone Skin - with each received attack golem\n"
-                   "increase his damage reduction by " + std::to_string(reduction_increase_amount) + " points.\n"
-            "Current damage reduction: " + std::to_string(damage_reduction) + ".";
-
-    return std::move(desc);
-}

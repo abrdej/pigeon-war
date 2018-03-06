@@ -11,10 +11,10 @@ wretch_moving::wretch_moving(std::uint32_t entity_id) : entity_id(entity_id) {
     after_player_turn(entity_id, [this]() {
         used = false;
         range = max_range;
-        auto power_field_ptr = entity_manager::get(this->entity_id).get<power_field>();
-        power_field_ptr->power = power_field_ptr->base_power;
+        auto power_field_ptr = entity_manager::get(this->entity_id).get<power_filed>();
+        power_field_ptr->power = power_field_ptr->max_power;
 
-        std::cout << "set power: " << power_field_ptr->base_power << "\n";
+        std::cout << "set power: " << power_field_ptr->max_power << "\n";
     });
 }
 
@@ -22,7 +22,7 @@ void wretch_moving::prepare(std::uint32_t for_index) {
     states::state_controller::selected_index_ = for_index;
     states::state_controller::actual_state_ = states::states_types::wait_for_action;
 
-    auto power = entity_manager::get(entity_id).get<power_field>()->power;
+    auto power = entity_manager::get(entity_id).get<power_filed>()->power;
 
     std::cout << "power: " << power << "\n";
 
@@ -52,7 +52,7 @@ void wretch_moving::move(std::uint32_t index_to) {
     std::int32_t cost = states::state_controller::possible_movements_costs_[i];
     std::cout << "cost: " << cost << "\n";
 
-    entity_manager::get(entity_id).get<power_field>()->power -= power_decrease_for_cost * cost;
+    entity_manager::get(entity_id).get<power_filed>()->power -= power_decrease_for_cost * cost;
 
     range = 0;
 

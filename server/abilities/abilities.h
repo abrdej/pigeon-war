@@ -7,11 +7,8 @@
 #include <cassert>
 #include <iostream>
 #include <typeindex>
-#include <SFML/Config.hpp>
 #include <algorithm>
 #include "ability.h"
-
-//class ability;
 
 class abilities final
 {

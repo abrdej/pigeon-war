@@ -31,8 +31,6 @@ public:
 		abilities_ptr->add_ability(std::make_shared<rocket_launcher>());
 		abilities_ptr->add_ability(std::make_shared<mortar_thrower>());
 
-		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::thrower);
-
 		return entity;
 	}
 };

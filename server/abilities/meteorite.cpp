@@ -12,7 +12,7 @@ meteorite::meteorite(std::uint32_t entity_id)
 		: entity_id(entity_id) {}
 
 std::string meteorite::hint() const {
-	auto power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+	auto power = entity_manager::get(entity_id).get<power_filed>()->power;
 	return "Magic power: " + std::to_string(power);
 }
 
@@ -36,7 +36,7 @@ void meteorite::use(std::uint32_t index_on) {
 	if (used)
 		return;
 
-	auto& power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+	auto& power = entity_manager::get(entity_id).get<power_filed>()->power;
 
 	if (power < power_cost)
 		return;

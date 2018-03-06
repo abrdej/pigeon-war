@@ -16,6 +16,8 @@ public:
         return bitmap_key::change_rocket_type;
     }
 
+    DEFINE_DESC(mortar_thrower, base_damage, rocket_change_bonus, range)
+
     bool was_used() const {
         return used;
     }

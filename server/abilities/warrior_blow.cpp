@@ -32,13 +32,3 @@ void warrior_blow::use(std::uint32_t index_on) {
 
     used = true;
 }
-
-std::string warrior_blow::hint() const {
-
-    std::string desc;
-    desc = "Warrior Blow - deals the more damage the less warrior has health.\n"
-            "Base damage is " + std::to_string(damage) + ".";
-
-
-    return std::move(desc);
-}

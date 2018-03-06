@@ -259,9 +259,9 @@ void pigeon_war_client::prepare_animations()
 														{
 															return animation::prepare_animation<animation::flash_bitmap_animation>(animation_player_impl_, flash_bitmap_data);
 														});
-	animation::player<animation::change_health>::connect([this](animation::change_health change_health_data)
+	animation::player<animation::show_number_change>::connect([this](animation::show_number_change change_health_data)
 														 {
-															 return animation::prepare_animation<animation::change_health_animation>(animation_player_impl_, change_health_data);
+															 return animation::prepare_animation<animation::show_number_change_animation>(animation_player_impl_, change_health_data);
 														 });
 }
 

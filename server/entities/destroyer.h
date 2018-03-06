@@ -29,8 +29,6 @@ public:
         abilities_ptr->add_ability(std::make_shared<blow_the_ax>());
         abilities_ptr->add_ability(std::make_shared<armor>(entity.entity_id));
 
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::destroyer);
-
         return entity;
     }
 };

@@ -31,8 +31,6 @@ public:
 		abilities_ptr->add_ability(std::make_shared<laser>());
 		abilities_ptr->add_ability(std::make_shared<teleport>());
 
-		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::droid);
-
 		return entity;
 	}
 };

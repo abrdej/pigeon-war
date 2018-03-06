@@ -45,21 +45,18 @@ void poisoned_missile::use(std::uint32_t index_on) {
                                                                                       }
                                                                                   });
 
-        std::cout << "here1\n";
-
         auto poison_effect = make_negative_effect("poisoned");
         poison_effect->set_turn_connection(std::move(poisoned_connection));
 
-        std::cout << "here2\n";
-
         add_effect(enemy_id, poison_effect);
-
-        std::cout << "here3\n";
     }
 
     auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
-    auto moveable_ptr = abilities_ptr->get<moveable>();
-    moveable_ptr->refresh_range();
+
+    auto moveable_ptr = std::dynamic_pointer_cast<moveable_base>(abilities_ptr->of_type(ability_types::moving));
+    if (moveable_ptr) {
+        moveable_ptr->refresh_range();
+    }
 
     used = true;
 }

@@ -19,6 +19,8 @@ public:
 
 	void set_used();
 
+	DEFINE_DESC(spider_web, damage, range);
+
 private:
     void use(std::uint32_t index_on) override;
 

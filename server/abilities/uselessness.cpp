@@ -19,7 +19,7 @@ uselessness::~uselessness() {
 }
 
 std::string uselessness::hint() const {
-    auto power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+    auto power = entity_manager::get(entity_id).get<power_filed>()->power;
     return "Magic power: " + std::to_string(power);
 }
 
@@ -28,7 +28,7 @@ void uselessness::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto& power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+    auto& power = entity_manager::get(entity_id).get<power_filed>()->power;
 
     auto used_from_index = states::state_controller::selected_index_;
     auto enemy_id = board::at(index_on);

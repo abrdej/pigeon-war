@@ -114,10 +114,11 @@ bool flash_bitmap_animation::run()
 	return false;
 }
 
-change_health_animation::change_health_animation(change_health change_health_data)
+show_number_change_animation::show_number_change_animation(show_number_change change_health_data)
 		: point_(view::board_index_to_point(change_health_data.for_index)),
 		  start_time_(std::chrono::system_clock::now()),
 		  change_by_(change_health_data.change_by),
+		  color(change_health_data.color),
 		  duration_(std::chrono::milliseconds(300))
 {
 	font_.loadFromFile(resources_directory + "verdanab.ttf");
@@ -126,10 +127,10 @@ change_health_animation::change_health_animation(change_health change_health_dat
 	point_.y -= view::constants::field_size / 3.;
 }
 
-void change_health_animation::draw(sf::RenderWindow& window)
+void show_number_change_animation::draw(sf::RenderWindow& window)
 {
-	sf::Color color = change_by_ < 0 ? sf::Color(210, 20, 15) : sf::Color(15, 210, 20);
-	color = (change_by_ == 0) ? sf::Color(15, 20, 210) : color;
+	//sf::Color color = change_by_ < 0 ? sf::Color(210, 20, 15) : sf::Color(15, 210, 20);
+	//color = (change_by_ == 0) ? sf::Color(15, 20, 210) : color;
 
 	sf::Text text;
 	text.setFont(font_);
@@ -139,7 +140,7 @@ void change_health_animation::draw(sf::RenderWindow& window)
 	window.draw(text);
 }
 
-bool change_health_animation::run()
+bool show_number_change_animation::run()
 {
 	using namespace std::chrono;
 	auto now_time = system_clock::now();

@@ -16,7 +16,6 @@
 #include "abilities/damage_dealers.h"
 #include "abilities/drain.h"
 #include "ai/ai_manager.h"
-#include "scenarios/scenarios.h"
 #include "utils/scenario_helper.h"
 #include <iostream>
 

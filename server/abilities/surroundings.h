@@ -15,6 +15,8 @@ public:
         return bitmap_key::surroundings;
     }
 
+    DEFINE_DESC(surroundings, damage_reduction, min_damage)
+
 private:
     int damage_reduction{3};
     int min_damage{3};

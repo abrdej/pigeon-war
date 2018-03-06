@@ -242,7 +242,21 @@ void change_health_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	extract(data, to_index, change_health);
 
-	animation::player<animation::change_health>::launch(animation::change_health(to_index, change_health));
+	sf::Color color = change_health < 0 ? sf::Color(210, 20, 15) : sf::Color(15, 210, 20);
+	color = (change_health == 0) ? sf::Color(15, 20, 210) : color;
+
+	animation::player<animation::show_number_change>::launch(animation::show_number_change(to_index, change_health, color));
+	animation::base_player::play();
+}
+
+void change_power_handler::handle(nlohmann::json& data, game_state& g_state) {
+
+	std::int32_t to_index;
+	std::int32_t change_power;
+
+	extract(data, to_index, change_power);
+
+	animation::player<animation::show_number_change>::launch(animation::show_number_change(to_index, change_power, sf::Color::Blue));
 	animation::base_player::play();
 }
 

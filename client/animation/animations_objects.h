@@ -63,16 +63,17 @@ private:
     std::chrono::milliseconds duration_;
 };
 
-class change_health_animation
+class show_number_change_animation
 {
 public:
-    explicit change_health_animation(change_health change_health_data);
+    explicit show_number_change_animation(show_number_change change_health_data);
     void draw(sf::RenderWindow& window);
     bool run();
 private:
     sf::Font font_;
     sf::Vector2f point_;
     std::int32_t change_by_;
+    sf::Color color;
     std::chrono::system_clock::time_point start_time_;
     std::chrono::milliseconds duration_;
 };

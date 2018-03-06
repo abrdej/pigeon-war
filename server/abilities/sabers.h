@@ -13,7 +13,7 @@ public:
 		return bitmap_key::sabers;
 	}
 
-	std::string hint() const override;
+	DEFINE_DESC_ONE(sabers, damage)
 
 private:
 	void prepare(std::uint32_t for_index) override;

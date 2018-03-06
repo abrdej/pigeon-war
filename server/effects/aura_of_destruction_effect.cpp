@@ -5,7 +5,7 @@
 
 bool aura_of_destruction_effect::set_effect(std::uint32_t entity_id) {
 
-    auto aura_power = entity_manager::get(this->entity_id).get<power_filed_with_charging>()->power;
+    auto aura_power = entity_manager::get(this->entity_id).get<power_filed>()->power;
 
     auto player_id = players_manager::player_for_entity(this->entity_id);
 

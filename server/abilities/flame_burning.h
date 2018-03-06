@@ -23,7 +23,6 @@ private:
     void use(std::uint32_t index_on) override;
 
 private:
-    bool used{false};
     std::int32_t damage{10};
     std::int32_t burn_magic_power{4};
 };

@@ -21,13 +21,13 @@ void vicious_circle::prepare(std::uint32_t for_index) {
                                                   return use(index);
                                               });
 
-    auto power = entity_manager::get(entity_id).get<power_field>()->power;
+    auto power = entity_manager::get(entity_id).get<power_filed>()->power;
 
     std::cout << "power: " << power << "\n";
 }
 
 std::string vicious_circle::hint() const {
-    auto power = entity_manager::get(entity_id).get<power_field>()->power;
+    auto power = entity_manager::get(entity_id).get<power_filed>()->power;
     return "Magic power: " + std::to_string(power);
 }
 
@@ -36,7 +36,7 @@ void vicious_circle::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto power = entity_manager::get(entity_id).get<power_field>()->power;
+    auto power = entity_manager::get(entity_id).get<power_filed>()->power;
 
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
@@ -45,7 +45,7 @@ void vicious_circle::use(std::uint32_t index_on) {
 
     damage_dealers::standard_damage_dealer(magic_damage(power, board::at(index_on), entity_id));
 
-    entity_manager::get(entity_id).get<power_field>()->power = 0;
+    entity_manager::get(entity_id).get<power_filed>()->power = 0;
 
     used = true;
 }

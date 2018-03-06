@@ -17,6 +17,8 @@
 
 void play_change_health_animation(std::uint32_t to_index, std::int32_t change_health);
 
+void play_power_change_animation(std::uint32_t to_index, std::int32_t change_power);
+
 std::unordered_map<std::uint32_t, std::int32_t> get_healths();
 
 class damage_taker {

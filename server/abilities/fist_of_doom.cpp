@@ -15,7 +15,7 @@ fist_of_doom::fist_of_doom(std::uint32_t entity_id)
 }
 
 std::string fist_of_doom::hint() const {
-    auto power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+    auto power = entity_manager::get(entity_id).get<power_filed>()->power;
     return "Magic power: " + std::to_string(power);
 }
 
@@ -37,7 +37,7 @@ void fist_of_doom::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto& power = entity_manager::get(entity_id).get<power_filed_with_charging>()->power;
+    auto& power = entity_manager::get(entity_id).get<power_filed>()->power;
 
     auto used_from_index = states::state_controller::selected_index_;
     auto caster_id = board::at(used_from_index);
