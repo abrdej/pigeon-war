@@ -6,7 +6,6 @@
 #define PIGEONWAR_STATES_H
 
 #include <limits>
-#include "add_enum.h"
 
 namespace states {
 
@@ -26,8 +25,5 @@ struct target_types_key_hash
         return static_cast<std::uint32_t>(t);
     }
 };
-
-PACKET_ADD_ENUM(states::states_types)
-PACKET_ADD_ENUM(target_types)
 
 #endif //PIGEONWAR_STATES_H

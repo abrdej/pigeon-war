@@ -11,8 +11,6 @@
 #include "animations.h"
 #include <unordered_set>
 #include <unordered_map>
-#include "packet_helper.h"
-#include "define_packet.h"
 #include "json.hpp"
 
 static const auto no_selection = std::numeric_limits<std::uint32_t>::max();
@@ -33,9 +31,5 @@ struct local_state {
 	std::array<std::string, 5> button_bitmaps;
 	std::string entity_name;
 };
-
-PACKET_DEFINE4(game_state, board, healths, entities_names, entities_additional_effects)
-
-PACKET_DEFINE6(local_state, possible_movements, valid_movements, selected_index, actual_target_type,  button_bitmaps, entity_name)
 
 #endif //PIGEONWAR_COMMON_DATA_H

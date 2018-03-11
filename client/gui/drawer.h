@@ -1,7 +1,6 @@
 #ifndef DRAWER_H
 #define DRAWER_H
 
-#include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include "client/gui/bitmap_center.h"
 #include "client/gui/view_constants.h"

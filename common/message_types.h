@@ -5,7 +5,6 @@
 #ifndef PIGEONWAR_MESSAGE_TYPES_H
 #define PIGEONWAR_MESSAGE_TYPES_H
 
-#include "add_enum.h"
 #include <unordered_map>
 
 enum class message_types {
@@ -36,8 +35,6 @@ struct message_types_key_hash
 		return static_cast<std::uint32_t>(t);
 	}
 };
-
-PACKET_ADD_ENUM(message_types)
 
 struct message_type_to_string {
 	static std::string convert() {

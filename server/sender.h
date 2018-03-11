@@ -6,7 +6,6 @@
 #define PIGEONWAR_SENDER_H
 
 #include <functional>
-#include <SFML/Network/Packet.hpp>
 #include <common/message_types.h>
 
 struct sender {

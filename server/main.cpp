@@ -7,7 +7,6 @@
 #include <chrono>
 #include <thread>
 #include <common/turn_status.h>
-#include <SFML/Network.hpp>
 #include <scenarios/skirmish.h>
 #include <components/applied_effects.h>
 #include <managers/entity_manager.h>

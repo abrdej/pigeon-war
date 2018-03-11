@@ -1,7 +1,6 @@
 #ifndef BOARD_PANEL_H
 #define BOARD_PANEL_H
 
-#include <SFML/Graphics.hpp>
 #include "my_button.h"
 
 namespace view

@@ -9,7 +9,6 @@
 #include <functional>
 #include <thread>
 #include <atomic>
-#include <SFML/Network.hpp>
 #include <boost/next_prior.hpp>
 #include <boost/lockfree/spsc_queue.hpp>
 #include <common/message_types.h>

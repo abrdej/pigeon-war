@@ -114,6 +114,4 @@ public:
     std::array<std::vector<std::uint32_t>, cols_n * rows_n> fields_;
 };
 
-PACKET_DEFINE1(board_container, fields_)
-
 #endif //PIGEONWAR_BOARD_CONTAINER_H

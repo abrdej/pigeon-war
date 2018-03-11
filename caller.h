@@ -5,7 +5,6 @@
 #ifndef PIGEONWAR_CALLER_H
 #define PIGEONWAR_CALLER_H
 
-#include <SFML/Network.hpp>
 #include "common/message_types.h"
 
 

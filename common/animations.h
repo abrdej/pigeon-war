@@ -8,8 +8,6 @@
 #include <tuple>
 #include <iostream>
 #include "bitmaps.h"
-#include "add_enum.h"
-#include "define_packet.h"
 
 enum class animation_types {
 	move,
@@ -94,9 +92,6 @@ struct animation_def_key_hash
 	}
 };
 
-PACKET_ADD_ENUM(animation_types)
-PACKET_ADD_ENUM(animation_def)
-
 struct animation_pack {
 	animation_pack() = default;
 	animation_pack(const animation_types& a, std::int32_t x, std::int32_t y, std::int32_t z, bitmap_key k)
@@ -111,7 +106,5 @@ struct animation_pack {
 
 	bitmap_key btm_key;
 };
-
-PACKET_DEFINE5(animation_pack, animation_type, x, y, z, btm_key)
 
 #endif //PIGEONWAR_ANIMATIONS_H
