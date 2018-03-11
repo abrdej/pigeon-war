@@ -10,7 +10,6 @@
 #include "server/abilities/laser.h"
 #include <server/abilities/moveable.h>
 #include <server/abilities/teleport.h>
-#include <gui/entity_drawer.h>
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>
 

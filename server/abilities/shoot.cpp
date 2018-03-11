@@ -1,4 +1,3 @@
-#include <gui/drawing_manager.h>
 #include <common/message_types.h>
 #include <fstream>
 #include <common/make_message.h>

@@ -3,7 +3,6 @@
 
 #include <server/abilities/drain.h>
 #include <server/abilities/wolf_herd.h>
-#include <gui/entity_drawer.h>
 #include "entity.h"
 #include "components/damage_taker.h"
 #include "server/abilities/moveable.h"

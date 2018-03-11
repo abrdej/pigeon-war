@@ -1,10 +1,7 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <entities/creature.h>
-#include <gui/bitmap_center.h>
 #include <common/managers.h>
-#include <gui/entity_drawer.h>
-#include <gui/drawing_manager.h>
 #include <managers/entity_manager.h>
 #include <common/make_message.h>
 #include "spiral_of_fire.h"

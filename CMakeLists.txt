@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5.1)
 project(pigeonwar)
 
-include_directories(${CMAKE_SOURCE_DIR}/client)
+#include_directories(${CMAKE_SOURCE_DIR}/client)
 include_directories(${CMAKE_SOURCE_DIR}/server)
 include_directories(${CMAKE_SOURCE_DIR})
 
@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
-set(RES_DIR "${CMAKE_SOURCE_DIR}/res")
+#set(RES_DIR "${CMAKE_SOURCE_DIR}/res")
 
 configure_file(config.h.in ${CMAKE_SOURCE_DIR}/config.h @ONLY)
 
@@ -25,8 +25,8 @@ if(UNIX)
     set(BOOST_LIBRARYDIR "/usr/lib/x86_64-linux-gnu")
 endif()
 
-find_package(SFML 2 REQUIRED network audio graphics window system)
-include_directories(${SFML_INCLUDE_DIR})
+#find_package(SFML 2 REQUIRED network audio graphics window system)
+#include_directories(${SFML_INCLUDE_DIR})
 
 if (WIN32)
     set(BOOST_INCLUDEDIR "C:/local/boost_1_65_1/")
@@ -314,81 +314,91 @@ set(SERVER_SOURCE_FILES
         server/scenarios/map_reader.cpp
         server/scenarios/map_reader.h
         common/make_message.cpp
-        common/make_message.h server/entities/dragon.cpp server/entities/dragon.h server/abilities/dragon_skin.cpp server/abilities/dragon_skin.h server/abilities/flame_burning.cpp server/abilities/flame_burning.h server/abilities/hiding.cpp server/abilities/hiding.h server/abilities/mortar_thrower.cpp server/abilities/mortar_thrower.h)
+        common/make_message.h
+        server/entities/dragon.cpp
+        server/entities/dragon.h
+        server/abilities/dragon_skin.cpp
+        server/abilities/dragon_skin.h
+        server/abilities/flame_burning.cpp
+        server/abilities/flame_burning.h
+        server/abilities/hiding.cpp
+        server/abilities/hiding.h
+        server/abilities/mortar_thrower.cpp
+        server/abilities/mortar_thrower.h)
 
-set(CLIENT_SOURCE_FILES
-        client/gui/bitmap_center.cpp
-        client/gui/bitmap_center.h
-        client/gui/board_panel.cpp
-        client/gui/board_panel.h
-        client/gui/buttons_panel.cpp
-        client/gui/buttons_panel.h
-        client/gui/drawable.cpp
-        client/gui/drawable.h
-        client/gui/drawer.cpp
-        client/gui/drawer.h
-        client/gui/drawing_manager.cpp
-        client/gui/drawing_manager.h
-        client/gui/entities_renderer.h
-        client/gui/entity_drawer.cpp
-        client/gui/entity_drawer.h
-        client/gui/my_button.cpp
-        client/gui/my_button.h
-        client/pigeon_war_client.cpp
-        client/pigeon_war_client.h
-        client/gui/shooter_drawing.h
-        client/gui/view_constants.h
-        client/animation/animation.cpp
-        client/animation/animation.h
-        client/animation/animation_impl.cpp
-        client/animation/animation_impl.h
-        client/animation/animations_objects.cpp
-        client/animation/animations_objects.h
-        common/health_field.h
-        common/bitmap_field.h
-        common/game_state.h
-        common/states.h
-        common/animations.h
-        common/turn_status.h
-        common/add_enum.h
-        common/packet_helper.h
-        common/define_packet.h
-        common/utils.h
-        caller.h
-        client/requests.cpp
-        client/requests.h
-        common/message_types.h
-        client/animations_service.cpp
-        client/animations_service.h
-        client/animations_handlers.cpp
-        client/animations_handlers.h
-        client/menu/menu.cpp
-        client/menu/menu.h
-        common/effects.h
-        client/gui/hint.cpp
-        client/gui/hint.h
-        client/screen.h
-        client/menu_screen.cpp
-        client/menu_screen.h
-        client/gui/drawer_factory.cpp
-        client/gui/drawer_factory.h
-        common/messages/messages.cpp
-        common/messages/messages.h
-        common/logging.h
-        common/read_message.cpp
-        common/read_message.h)
+#set(CLIENT_SOURCE_FILES
+#        client/gui/bitmap_center.cpp
+#        client/gui/bitmap_center.h
+#        client/gui/board_panel.cpp
+#        client/gui/board_panel.h
+#        client/gui/buttons_panel.cpp
+#        client/gui/buttons_panel.h
+#        client/gui/drawable.cpp
+#        client/gui/drawable.h
+#        client/gui/drawer.cpp
+#        client/gui/drawer.h
+#        client/gui/drawing_manager.cpp
+#        client/gui/drawing_manager.h
+#        client/gui/entities_renderer.h
+#        client/gui/entity_drawer.cpp
+#        client/gui/entity_drawer.h
+#        client/gui/my_button.cpp
+#        client/gui/my_button.h
+#        client/pigeon_war_client.cpp
+#        client/pigeon_war_client.h
+#        client/gui/shooter_drawing.h
+#        client/gui/view_constants.h
+#        client/animation/animation.cpp
+#        client/animation/animation.h
+#        client/animation/animation_impl.cpp
+#        client/animation/animation_impl.h
+#        client/animation/animations_objects.cpp
+#        client/animation/animations_objects.h
+#        common/health_field.h
+#        common/bitmap_field.h
+#        common/game_state.h
+#        common/states.h
+#        common/animations.h
+#        common/turn_status.h
+#        common/add_enum.h
+#        common/packet_helper.h
+#        common/define_packet.h
+#        common/utils.h
+#        caller.h
+#        client/requests.cpp
+#        client/requests.h
+#        common/message_types.h
+#        client/animations_service.cpp
+#        client/animations_service.h
+#        client/animations_handlers.cpp
+#        client/animations_handlers.h
+#        client/menu/menu.cpp
+#        client/menu/menu.h
+#        common/effects.h
+#        client/gui/hint.cpp
+#        client/gui/hint.h
+#        client/screen.h
+#        client/menu_screen.cpp
+#        client/menu_screen.h
+#        client/gui/drawer_factory.cpp
+#        client/gui/drawer_factory.h
+#        common/messages/messages.cpp
+#        common/messages/messages.h
+#        common/logging.h
+#        common/read_message.cpp
+#        common/read_message.h)
 
-add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
-target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
+#add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
+#target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
 
 add_executable(pigeonwar_server server/main.cpp ${SERVER_SOURCE_FILES})
-target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS} ${Boost_LOG_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(pigeonwar_server ${PLATFORM_LIBS} ${Boost_LOG_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
-add_executable(pigeonwar_hot_seat hot_seat.cpp)
-target_link_libraries(pigeonwar_hot_seat ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+#add_executable(pigeonwar_hot_seat hot_seat.cpp)
+#target_link_libraries(pigeonwar_hot_seat ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
-add_executable(pigeonwar_matching_server matching_server/matching_server.cpp matching_server/matcher.cpp matching_server/matcher.h)
-target_link_libraries(pigeonwar_matching_server ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+#add_executable(pigeonwar_matching_server matching_server/matching_server.cpp matching_server/matcher.cpp matching_server/matcher.h)
+#target_link_libraries(pigeonwar_matching_server ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 
 #add_executable(run_tests tests/shoot.cpp)
 #target_link_libraries(run_tests ${GTEST_LIBRARIES} pthread)

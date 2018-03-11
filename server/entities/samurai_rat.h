@@ -6,7 +6,6 @@
 #define PIGEONWAR_SAMURAI_RAT_H
 
 #include <server/abilities/dodge.h>
-#include <gui/entity_drawer.h>
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>
 #include "entity.h"

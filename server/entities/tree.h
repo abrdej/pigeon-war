@@ -5,7 +5,6 @@
 #ifndef PIGEONWAR_TREE_H
 #define PIGEONWAR_TREE_H
 
-#include <gui/entity_drawer.h>
 #include "entity.h"
 
 struct tree {

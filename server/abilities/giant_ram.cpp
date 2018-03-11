@@ -1,7 +1,6 @@
 #include "giant_ram.h"
 #include <core/states_controller.h>
 #include <core/board.h>
-#include <gui/bitmap_center.h>
 #include <common/make_message.h>
 #include "damage_dealers.h"
 #include "sender.h"
