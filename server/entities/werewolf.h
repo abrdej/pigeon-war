@@ -25,7 +25,7 @@ struct werewolf final
 		abilities_ptr->add_ability(std::make_shared<drain>());
 		abilities_ptr->add_ability(std::make_shared<wolf_herd>());
 
-		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::werewolf);
+		//entity.add<bitmap_field>(entity.entity_id, "werewolf);
 
 		return entity;
 	}

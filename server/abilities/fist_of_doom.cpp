@@ -45,7 +45,7 @@ void fist_of_doom::use(std::uint32_t index_on) {
 
     auto damage = damage_per_power * power;
 
-    sender::send(make_animation_message("fist_of_doom", index_on));
+    sender::send(make_action_message("fist_of_doom", index_on));
 
     damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, caster_id));
 

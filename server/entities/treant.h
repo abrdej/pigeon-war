@@ -26,7 +26,7 @@ struct treant final
             abilities_ptr->add_ability(std::make_shared<moveable>(2));
 //            abilities_ptr->add_ability(abilities::ability_types::offensive, std::make_shared<entangling>(entity.entity_id));
 //            abilities_ptr->add_ability(abilities::ability_types::passive, std::make_shared<recovery>(entity.entity_id));
-            //entity.add<bitmap_field>(entity.entity_id, bitmap_key::treant);
+            //entity.add<bitmap_field>(entity.entity_id, "treant);
 
             return entity;
     }

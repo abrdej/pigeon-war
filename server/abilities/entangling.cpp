@@ -24,7 +24,7 @@
 //                                                 index,
 //                                                 150,
 //                                                 0,
-//                                                 bitmap_key::healthing);
+//                                                 "healthing);
 //            }
 //        }
 //    });

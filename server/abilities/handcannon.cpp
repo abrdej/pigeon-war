@@ -24,7 +24,7 @@ void handcannon::use(std::uint32_t index_on) {
 
     std::cout << "active: " << is_active << " final_damage: " << final_damage << "\n";
 
-    sender::send(make_animation_message("handcannon", used_from_index, index_on));
+    sender::send(make_action_message("handcannon", used_from_index, index_on));
 
     damage_dealers::standard_damage_dealer(ranged_damage(final_damage, board::at(index_on), caster_id));
 

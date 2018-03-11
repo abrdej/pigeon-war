@@ -34,7 +34,7 @@ recovery::recovery(std::uint32_t id) : entity_id(id) {
 //                                                 index,
 //                                                 150,
 //                                                 -1,
-//                                                 bitmap_key::healthing);
+//                                                 "healthing);
 //            }
 //        }
 //

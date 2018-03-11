@@ -60,7 +60,7 @@ void suck_the_soul::use(std::uint32_t index_on) {
     auto enemy_id = board::at(index_on);
 
 
-    sender::send(make_animation_message("drain", used_from_index, index_on));
+    sender::send(make_action_message("drain", used_from_index, index_on));
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 
@@ -72,7 +72,7 @@ void suck_the_soul::use(std::uint32_t index_on) {
 		remove_effect(enemy_id, "sucked soul");
 
 	} else {
-		sender::send(make_animation_message("soul_out", index_on));
+		sender::send(make_action_message("soul_out", index_on));
 
 		auto suck_damage = damage_dealers::standard_damage_dealer(magic_damage(suck_amount, enemy_id, caster_id));
 
@@ -83,7 +83,10 @@ void suck_the_soul::use(std::uint32_t index_on) {
 		auto sucked_soul_connection = make_after_n_round_callback_holder(duration,
 																		 [enemy_id, caster_id, suck_damage, this]() mutable {
 
-																			 sender::send(make_animation_message("soul_out", board::index_for(enemy_id)));
+																			 sender::send(
+                                                                                     make_action_message("soul_out",
+                                                                                                         board::index_for(
+                                                                                                                 enemy_id)));
 
 																			 entity_manager::get(enemy_id).get<damage_taker>()->heal(healing(suck_damage,
 																																			 enemy_id));

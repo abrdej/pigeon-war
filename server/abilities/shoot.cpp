@@ -37,7 +37,7 @@ void shoot::use(std::uint32_t index_on)
 	LOG_DEBUG() << "to pos: " << board::to_pos(index_on) << "\n";
     LOG_DEBUG() << "remaining bullets: " << bullets << "\n";
 
-	sender::send(make_animation_message("shoot", used_from_index, index_on));
+	sender::send(make_action_message("shoot", used_from_index, index_on));
 
 	auto final_damage = damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
 

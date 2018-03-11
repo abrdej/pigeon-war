@@ -14,7 +14,7 @@ class suck_the_soul final : public neighboring_target_ability<>,
 public:
     explicit suck_the_soul(std::uint32_t entity_id);
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::drain;
+        return "drain";
     }
 
 

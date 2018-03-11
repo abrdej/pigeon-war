@@ -8,19 +8,19 @@ void magic_bullet_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(100),
-																			   bitmap_key::monk_use_1));
+																			   "monk_use_1));
 	animation::base_player::play();
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(100),
-																			   bitmap_key::monk_use_2));
+																			   "monk_use_2));
 	animation::base_player::play();
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(100),
-																			   bitmap_key::monk_use_3));
+																			   "monk_use_3));
 	animation::base_player::play();
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::magic_splash));
+																			   "magic_splash));
 	animation::base_player::play();
 }
 
@@ -33,12 +33,12 @@ void teleport_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(100),
-																			   bitmap_key::teleport));
+																			   "teleport));
 	animation::base_player::play();
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::teleport));
+																			   "teleport));
 	animation::base_player::play();
 
 	g_state.board.give_back(entity_id, to_index);
@@ -49,7 +49,7 @@ void drain_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::healthing));
+																			   "healthing));
 	animation::base_player::play();
 }
 
@@ -63,7 +63,7 @@ void grenade_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::detonation_anim));
+																			   "detonation_anim));
 	animation::base_player::play();
 }
 
@@ -77,7 +77,7 @@ void flame_thrower_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::detonation_anim));
+																			   "detonation_anim));
 	animation::base_player::play();
 }
 
@@ -88,12 +88,12 @@ void giant_ram_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	auto entity_id = g_state.board.take(from_index);
 
-	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(bitmap_key::giant_ram);
+	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap("giant_ram);
 
 	animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
 	animation::base_player::play();
 
-	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(bitmap_key::giant);
+	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap("giant);
 
 	g_state.board.give_back(entity_id, to_index);
 }
@@ -119,7 +119,7 @@ void kill_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::killer_jump));
+																			   "killer_jump));
 	animation::base_player::play();
 
 	animation::player<animation::move>::launch(animation::move(to_index, enemy_index, entity_id));
@@ -127,7 +127,7 @@ void kill_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(enemy_index,
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::killer_attack));
+																			   "killer_attack));
 
 	animation::player<animation::move>::launch(animation::move(enemy_index, to_index, entity_id));
 	animation::base_player::play();
@@ -145,13 +145,13 @@ void spider_web_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	if (to_index != land_index) {
 
-		animation::player<animation::move>::launch(animation::move(to_index, land_index, bitmap_key::spider_web));
+		animation::player<animation::move>::launch(animation::move(to_index, land_index, "spider_web));
 		animation::base_player::play();
 	}
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(land_index,
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::spider_web));
+																			   "spider_web));
 	animation::base_player::play();
 
 	g_state.board.give_back(enemy_id, land_index);
@@ -164,7 +164,7 @@ void spiral_of_fire_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	auto entity_id = g_state.board.take(from_index);
 
-	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(bitmap_key::spiral_of_fire);
+	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap("spiral_of_fire);
 
 	animation::player<animation::move>::launch(animation::move(from_index, to_index, entity_id));
 	animation::base_player::play();
@@ -172,7 +172,7 @@ void spiral_of_fire_handler::handle(nlohmann::json& data, game_state& g_state) {
 	animation::player<animation::move>::launch(animation::move(to_index, from_index, entity_id));
 	animation::base_player::play();
 
-	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap(bitmap_key::creature);
+	drawing_manager::typed_drawer_for<entity_drawer>(entity_id)->change_bitmap("creature);
 
 	g_state.board.give_back(entity_id, from_index);
 }
@@ -190,7 +190,7 @@ void sword_blow_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::samurai_rat_sword));
+																			   "samurai_rat_sword));
     animation::base_player::play();
 
 	g_state.board.give_back(entity_id, index);
@@ -206,7 +206,7 @@ void bludgeon_push_handler::handle(nlohmann::json& data, game_state& g_state) {
 	animation::player<animation::move_entity>::launch(animation::move_entity(from_index, to_index, caster_id));
 	animation::base_player::play();
 
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), bitmap_key::bum));
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(150), "bum));
 	animation::base_player::play();
 
 	g_state.board.give_back(caster_id, to_index);
@@ -230,7 +230,7 @@ void rage_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::troll_rage));
+																			   "troll_rage));
 
 	g_state.board.give_back(entity_id, index);
 }
@@ -280,32 +280,32 @@ void portal_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(100),
-																			   bitmap_key::portal_1));
+																			   "portal_1));
 	animation::base_player::play();
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
 																			   std::chrono::milliseconds(100),
-																			   bitmap_key::portal_2));
+																			   "portal_2));
 	animation::base_player::play();
 
     animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(from_index,
                                                                                std::chrono::milliseconds(100),
-                                                                               bitmap_key::portal_3));
+                                                                               "portal_3));
     animation::base_player::play();
 
     animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
                                                                                std::chrono::milliseconds(100),
-                                                                               bitmap_key::portal_3));
+                                                                               "portal_3));
     animation::base_player::play();
 
     animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
                                                                                std::chrono::milliseconds(100),
-                                                                               bitmap_key::portal_2));
+                                                                               "portal_2));
     animation::base_player::play();
 
     animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index,
                                                                                std::chrono::milliseconds(100),
-                                                                               bitmap_key::portal_1));
+                                                                               "portal_1));
     animation::base_player::play();
 
 	g_state.board.give_back(entity_id, to_index);
@@ -328,15 +328,15 @@ void destruction_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
 																			   std::chrono::milliseconds(75),
-																			   bitmap_key::destruction_1));
+																			   "destruction_1));
     animation::base_player::play();
     animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
                                                                                std::chrono::milliseconds(75),
-                                                                               bitmap_key::destruction_2));
+                                                                               "destruction_2));
     animation::base_player::play();
     animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
                                                                                std::chrono::milliseconds(75),
-                                                                               bitmap_key::destruction_3));
+                                                                               "destruction_3));
     animation::base_player::play();
 
 	//g_state.board.give_back(entity_id, index);
@@ -352,12 +352,12 @@ void fist_of_doom_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	auto from_index = board::to_index(pos.first, pos.second);
 
-	animation::player<animation::move>::launch(animation::move(from_index, to_index, bitmap_key::fist_of_doom));
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, "fist_of_doom));
 	animation::base_player::play();
 
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(100), bitmap_key::fist_of_doom_ex));
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(100), "fist_of_doom_ex));
 	animation::base_player::play();
-	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(100), bitmap_key::fist_of_doom_ex2));
+	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(to_index, std::chrono::milliseconds(100), "fist_of_doom_ex2));
 	animation::base_player::play();
 }
 
@@ -371,7 +371,7 @@ void meteorite_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	auto from_index = board::to_index(pos.first, pos.second);
 
-	animation::player<animation::move>::launch(animation::move(from_index, to_index, bitmap_key::meteorite));
+	animation::player<animation::move>::launch(animation::move(from_index, to_index, "meteorite));
 	animation::base_player::play();
 
 	auto from_cr = board::to_pos(to_index);
@@ -380,6 +380,6 @@ void meteorite_handler::handle(nlohmann::json& data, game_state& g_state) {
 
 	animation::player<animation::flash_bitmap>::launch(animation::flash_bitmap(board::to_index(from_cr.first, from_cr.second),
 																			   std::chrono::milliseconds(150),
-																			   bitmap_key::detonation_anim));
+																			   "detonation_anim));
 	animation::base_player::play();
 }

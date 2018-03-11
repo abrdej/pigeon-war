@@ -13,7 +13,7 @@ public:
     explicit protection_field(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::protection_field;
+		return "protection_field";
 	}
 
 	bool active() const {

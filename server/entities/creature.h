@@ -30,7 +30,7 @@ public:
         abilities_ptr->add_ability(std::make_shared<chopper>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<spiral_of_fire>());
 
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::creature);
+        //entity.add<bitmap_field>(entity.entity_id, "creature);
 
         return entity;
     }

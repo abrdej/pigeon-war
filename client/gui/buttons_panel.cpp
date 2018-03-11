@@ -70,7 +70,7 @@ void buttons_panel::set_for_entity_for(std::uint32_t entity_id,
 	this->entity_name = entity_name;
 
 	for (std::uint32_t i = 0; i < 5; ++i) {
-		if (button_bitmaps[i] != bitmap_key::none) {
+		if (button_bitmaps[i] != "none) {
 			buttons_[i].icon(bitmap_center::get_bitmap(button_bitmaps[i]));
 		} else {
 			buttons_[i].remove_icon();

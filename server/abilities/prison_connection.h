@@ -14,7 +14,7 @@ public:
 	explicit prison_connection(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::prison_connection;
+		return "prison_connection";
 	}
 
 private:

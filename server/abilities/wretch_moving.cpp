@@ -62,7 +62,7 @@ void wretch_moving::move(std::uint32_t index_to) {
 
     states::state_controller::selected_index_ = states::no_selected_index;
 
-    sender::send(make_animation_message("move", move_from_index, index_to));
+    sender::send(make_action_message("move", move_from_index, index_to));
 
     board::give_back(taken_id, index_to);
 

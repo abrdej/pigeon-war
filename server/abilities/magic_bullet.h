@@ -14,7 +14,7 @@ public:
     explicit magic_bullet(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::magic_bullet;
+        return "magic_bullet";
     }
 
     std::string hint() const override;

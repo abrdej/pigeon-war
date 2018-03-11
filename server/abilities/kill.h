@@ -14,7 +14,7 @@ public:
     kill();
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::kill;
+        return "kill";
     }
 
 private:

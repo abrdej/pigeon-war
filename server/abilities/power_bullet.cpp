@@ -17,7 +17,7 @@ void power_bullet::use(std::uint32_t index_on) {
 
     auto has_power_bullet_effect = has_effect(enemy_id, "effect of a power bullet");
 
-    sender::send(make_animation_message("power_bullet", used_from_index, index_on));
+    sender::send(make_action_message("power_bullet", used_from_index, index_on));
 
     damage_dealers::standard_damage_dealer(magic_damage(has_power_bullet_effect ?
                                                         damage_with_power_bullet_effect : full_damage,

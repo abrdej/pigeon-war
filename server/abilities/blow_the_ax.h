@@ -12,7 +12,7 @@ class blow_the_ax final : public straight_target_ability<1>,
                           per_turn_usable {
 public:
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::blow_the_ax;
+        return "blow_the_ax";
     }
 
     DEFINE_DESC_ONE(blow_the_ax, damage)

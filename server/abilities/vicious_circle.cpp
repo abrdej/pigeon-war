@@ -1,5 +1,4 @@
 #include <components/power_field.h>
-#include <animation/animation.h>
 #include <managers/entity_manager.h>
 #include <common/make_message.h>
 #include "vicious_circle.h"
@@ -41,7 +40,7 @@ void vicious_circle::use(std::uint32_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
     auto entity_id = board::at(used_from_index);
 
-    sender::send(make_animation_message("vicious_circle", index_on));
+    sender::send(make_action_message("vicious_circle", index_on));
 
     damage_dealers::standard_damage_dealer(magic_damage(power, board::at(index_on), entity_id));
 

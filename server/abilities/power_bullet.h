@@ -13,7 +13,7 @@ class power_bullet final : public straight_target_ability<2>, per_turn_usable
 public:
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::power_bullet;
+        return "power_bullet";
     }
 
     std::string hint() const override;

@@ -13,7 +13,7 @@ public:
     explicit giant_ram(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::giant_ram;
+        return "giant_ram";
     }
 
     DEFINE_DESC_ONE(giant_ram, damage)

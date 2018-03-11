@@ -29,7 +29,7 @@ void rage::use() {
 	std::vector<std::uint32_t> around_fields_ids;
 	board_helper::neighboring_fields(use_from_index, around_fields_ids, false);
 
-	sender::send(make_animation_message("rage", use_from_index));
+	sender::send(make_action_message("rage", use_from_index));
 
 	for (auto&& field_id : around_fields_ids) {
 		if (!board::empty(field_id)) {

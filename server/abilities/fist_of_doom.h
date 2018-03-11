@@ -12,7 +12,7 @@ public:
     explicit fist_of_doom(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::fist_of_doom;
+        return "fist_of_doom";
     }
 
     std::string hint() const override;

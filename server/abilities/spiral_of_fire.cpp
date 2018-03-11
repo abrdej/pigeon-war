@@ -32,7 +32,7 @@ void spiral_of_fire::use(std::uint32_t index_on) {
 
     auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
 
-    sender::send(make_animation_message("spiral_of_fire", used_from_index, index_to_move));
+    sender::send(make_action_message("spiral_of_fire", used_from_index, index_to_move));
 
     std::vector<std::uint32_t> indexes;
 

@@ -13,7 +13,7 @@ class shiruken final : public path_target_ability<4>, per_turn_usable
 public:
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::shiruken;
+        return "shiruken";
     }
 
 private:

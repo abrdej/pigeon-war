@@ -13,7 +13,7 @@ class handcannon final : public straight_target_ability<3>,
 {
 public:
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::handcannon;
+        return "handcannon";
     }
 
 private:

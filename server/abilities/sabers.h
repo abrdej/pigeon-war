@@ -10,7 +10,7 @@ class sabers final : public active_ability, per_turn_usable
 public:
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::sabers;
+		return "sabers";
 	}
 
 	DEFINE_DESC_ONE(sabers, damage)

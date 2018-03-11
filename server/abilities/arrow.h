@@ -12,7 +12,7 @@ class arrow final : public path_target_ability<3>, per_turn_usable
 {
 public:
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::arrow;
+        return "arrow";
     }
 
     DEFINE_DESC(arrow, damage, viewfinder_duration, range)

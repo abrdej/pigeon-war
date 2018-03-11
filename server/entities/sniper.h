@@ -26,7 +26,7 @@ struct sniper final
         abilities_ptr->add_ability(std::make_shared<sniper_shot>());
         abilities_ptr->add_ability(std::make_shared<hypnosis>());
 
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::sniper);
+        //entity.add<bitmap_field>(entity.entity_id, "sniper);
 
         return entity;
     }

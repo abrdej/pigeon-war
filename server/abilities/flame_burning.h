@@ -14,7 +14,7 @@ public:
     explicit flame_burning(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::flame_burning;
+        return "flame_burning";
     }
 
     DEFINE_DESC(flame_burning, damage, burn_magic_power)

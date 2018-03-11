@@ -43,7 +43,7 @@ void arrow::use(std::uint32_t index_on) {
     auto from_index = states::state_controller::selected_index_;
     auto caster_id = board::at(from_index);
 
-    sender::send(make_animation_message("arrow", from_index, index_on));
+    sender::send(make_action_message("arrow", from_index, index_on));
 
     auto enemy_id = board::at(index_on);
 

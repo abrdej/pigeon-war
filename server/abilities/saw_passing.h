@@ -14,7 +14,7 @@ public:
 	explicit saw_passing(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::mechanical_saw;
+		return "mechanical_saw";
 	}
 
 	std::string hint() const override;

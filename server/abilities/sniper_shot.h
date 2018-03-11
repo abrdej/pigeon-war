@@ -12,7 +12,7 @@ class sniper_shot final : public active_ability, per_turn_usable
 {
 public:
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::sniper_shot;
+        return "sniper_bullet";
     }
 
     std::string hint() const override;

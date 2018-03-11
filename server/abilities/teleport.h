@@ -12,7 +12,7 @@ class teleport final : public active_ability
 public:
 	teleport() = default;
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::teleport;
+		return "teleport";
 	}
 
 	DEFINE_DESC_ZERO(teleport)

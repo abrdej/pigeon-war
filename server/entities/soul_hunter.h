@@ -27,7 +27,7 @@ struct soul_hunter final
         abilities_ptr->add_ability(std::make_shared<moveable>(4));
         abilities_ptr->add_ability(std::make_shared<suck_the_soul>(entity.entity_id));
 
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::soul_hunter);
+        //entity.add<bitmap_field>(entity.entity_id, "soul_hunter);
 
         return entity;
     }

@@ -31,14 +31,14 @@ void invisibility::hide_me()
 {
 	index = board::index_for(entity_id);
 
-	sender::send(make_animation_message("set_invisibility", entity_id));
+	sender::send(make_action_message("set_invisibility", entity_id));
 
     set_destructible(entity_id, false);
 }
 
 void invisibility::show_me()
 {
-	sender::send(make_animation_message("remove_invisibility", entity_id));
+	sender::send(make_action_message("remove_invisibility", entity_id));
 
     set_destructible(entity_id, true);
 }

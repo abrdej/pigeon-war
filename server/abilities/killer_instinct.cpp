@@ -38,13 +38,13 @@ void killer_instinct::use(std::uint32_t index) {
 //	if (used)
 //		return;
 //
-//	sender::send(make_animation_message("set_killer_instinct, entity_id);
+//	sender::send(make_action_message("set_killer_instinct, entity_id);
 //
 //	auto killer_instinct_receiver = make_every_turn_callback_holder(1, [this]() mutable {
 //
 //		remove_effect(entity_id, "killer_instinct");
 //
-//		sender::send(make_animation_message("remove_killer_instinct, entity_id);
+//		sender::send(make_action_message("remove_killer_instinct, entity_id);
 //	});
 //
 //	add_effect(entity_id, "killer_instinct", std::move(killer_instinct_receiver));
@@ -55,7 +55,7 @@ void killer_instinct::use(std::uint32_t index) {
 //
 //	states::state_controller::selected_index_ = states::no_selected_index;
 //
-//	sender::send(make_animation_message("move, move_from_index, index);
+//	sender::send(make_action_message("move, move_from_index, index);
 //
 //	board::give_back(entity_id, index);
 //

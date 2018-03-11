@@ -15,7 +15,7 @@ public:
     ~uselessness() override;
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::uselessness;
+        return "uselessness";
     }
 
     std::string hint() const override;

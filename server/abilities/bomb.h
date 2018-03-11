@@ -18,7 +18,7 @@ public:
 	explicit bomb_detonation(std::uint32_t bomb_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::bomb_detonation;
+		return "bomb_detonation";
 	}
 
 	void prepare(std::uint32_t for_index) override;
@@ -54,7 +54,7 @@ public:
 	bomb();
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::bomb;
+		return "bomb";
 	}
 
 	void prepare(std::uint32_t for_index) override;

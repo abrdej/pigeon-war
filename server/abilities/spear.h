@@ -14,7 +14,7 @@ public:
     spear(std::uint32_t id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::spear;
+        return "spear";
     }
 
     std::string hint() const override;

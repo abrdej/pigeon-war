@@ -8,7 +8,7 @@ class drain final : public neighboring_target_ability<>, per_turn_usable
 {
 public:
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::drain;
+		return "drain";
 	}
 
 	DEFINE_DESC(drain, damage, drain_amount)

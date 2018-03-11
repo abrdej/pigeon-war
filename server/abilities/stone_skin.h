@@ -12,7 +12,7 @@ public:
     explicit stone_skin(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::stone_skin;
+        return "stone_skin";
     }
 
     DEFINE_DESC(stone_skin, damage_reduction, reduction_increase_amount)

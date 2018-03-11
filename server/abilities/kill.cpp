@@ -60,7 +60,7 @@ void kill::use(std::uint32_t index_on) {
 
     bool is_killer_instinct_active = has_effect(entity_id, "killer_instinct");
 
-    sender::send(make_animation_message("kill", used_from_index, index_on, target_index));
+    sender::send(make_action_message("kill", used_from_index, index_on, target_index));
 
     board::move(used_from_index, index_on);
 

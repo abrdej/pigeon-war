@@ -14,7 +14,7 @@ public:
 	explicit cure(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::cure;
+		return "cure";
 	}
 
 	DEFINE_DESC(cure, healing_amount_per_turn, healing_duration, power_cost)

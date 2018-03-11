@@ -20,7 +20,7 @@ void flame_burning::use(std::uint32_t index_on) {
     auto caster_id = board::at(used_from_index);
     auto enemy_id = board::at(index_on);
 
-    sender::send(make_animation_message("flame_burning", used_from_index, index_on));
+    sender::send(make_action_message("flame_burning", used_from_index, index_on));
 
     auto final_damage = damage;
 

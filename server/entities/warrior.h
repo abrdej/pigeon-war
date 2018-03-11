@@ -28,7 +28,7 @@ public:
         abilities_ptr->add_ability(std::make_shared<warrior_blow>());
         abilities_ptr->add_ability(std::make_shared<immortality>(entity.entity_id));
 
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::warrior);
+        //entity.add<bitmap_field>(entity.entity_id, "warrior);
 
         return entity;
     }

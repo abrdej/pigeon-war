@@ -15,7 +15,7 @@ void hypnosis::use(std::uint32_t index_on) {
 	if (used)
 		return;
 
-	sender::send(make_animation_message("hypnosis", index_on));
+	sender::send(make_action_message("hypnosis", index_on));
 
 	auto enemy_id = board::at(index_on);
 

@@ -8,7 +8,7 @@ class basic_melee_attack final : public neighboring_target_ability<>, per_turn_u
 {
 public:
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::basic_melee_attack;
+		return "basic_melee_attack";
 	}
 
 private:

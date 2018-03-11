@@ -23,7 +23,7 @@ aura_of_destruction::aura_of_destruction(std::uint32_t entity_id)
         aura_power -= value_for_power;
 
         if (value_for_power > 0) {
-            sender::send(make_animation_message("destruction", board::index_for(entity_id)));
+            sender::send(make_action_message("destruction", board::index_for(entity_id)));
 
             auto enemy_id = dmg.damage_dealer_id;
             if (enemy_id != no_damage_dealer) {
@@ -66,7 +66,7 @@ void aura_of_destruction::use(std::uint32_t use_on_index) {
 //        }
 //    }
 //
-//    sender::send(make_animation_message("destruction, board::index_for(entity_id));
+//    sender::send(make_action_message("destruction, board::index_for(entity_id));
 //
 //    auras_observer::observe();
 }

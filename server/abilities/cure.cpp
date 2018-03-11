@@ -26,7 +26,7 @@ void cure::use(std::uint32_t index_on) {
 
 	auto friend_id = board::at(index_on);
 
-	sender::send(make_animation_message("cure", index_on));
+	sender::send(make_action_message("cure", index_on));
 
     entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
                                                                      friend_id));
@@ -37,7 +37,10 @@ void cure::use(std::uint32_t index_on) {
 	auto cure_connection = make_every_two_turns_from_next_callback_holder(healing_duration,
 																		  [healing_amount_per_turn, friend_id]() {
 																			  if (entity_manager::alive(friend_id)) {
-																				  sender::send(make_animation_message("cure", board::index_for(friend_id)));
+																				  sender::send(
+                                                                                          make_action_message("cure",
+                                                                                                              board::index_for(
+                                                                                                                      friend_id)));
 																				  entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
 																																				   friend_id));
 																			  }

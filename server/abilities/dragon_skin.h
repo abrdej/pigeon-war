@@ -12,7 +12,7 @@ public:
     explicit dragon_skin(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::dragon_skin;
+        return "dragon_skin";
     }
 
     DEFINE_DESC_ONE(dragon_skin, magic_damage_reduction)

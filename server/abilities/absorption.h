@@ -16,7 +16,7 @@ public:
     ~absorption() override;
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::absorption;
+        return "absorption";
     }
 
     bool is_full() const {

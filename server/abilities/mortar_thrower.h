@@ -13,7 +13,7 @@ class mortar_thrower final : public path_target_ability<4>,
 {
 public:
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::change_rocket_type;
+        return "change_rocket_type";
     }
 
     DEFINE_DESC(mortar_thrower, base_damage, rocket_change_bonus, range)

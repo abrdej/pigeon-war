@@ -33,7 +33,7 @@ void spider_web::use(std::uint32_t index_on) {
 
     auto land_index = board::to_index(pos_1.first + x, pos_1.second + y);
 
-    sender::send(make_animation_message("spider_web", used_from_index, index_on, land_index));
+    sender::send(make_action_message("spider_web", used_from_index, index_on, land_index));
 
     auto enemy_id = board::at(index_on);
 

@@ -63,7 +63,7 @@ void assassin_slash::use(std::uint32_t index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
 
-//    animations_queue::push_animation(animation_types::flash_bitmap, marked_target_index, 150, 0, bitmap_key::assassin_slash);
+//    animations_queue::push_animation(animation_types::flash_bitmap, marked_target_index, 150, 0, "assassin_slash);
 
     auto entity_id = board::take(used_from_index);
     board::give_back(entity_id, index_on);
@@ -84,9 +84,9 @@ void assassin_slash::use(std::uint32_t index_on) {
 void assassin_slash::play_animation(std::uint32_t from_index, std::uint32_t to_index) {
     auto entity_id = board::take(from_index);
 
-//    animations_queue::push_animation(animation_types::move, from_index, to_index, entity_id, bitmap_key::none);
-//    animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::ninja_attack);
-//    animations_queue::push_animation(animation_types::move, to_index, from_index, entity_id, bitmap_key::none);
+//    animations_queue::push_animation(animation_types::move, from_index, to_index, entity_id, "none);
+//    animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, "ninja_attack);
+//    animations_queue::push_animation(animation_types::move, to_index, from_index, entity_id, "none);
 
     board::give_back(entity_id, from_index);
 }

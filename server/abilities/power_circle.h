@@ -17,7 +17,7 @@ public:
     ~power_circle() override;
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::power_circle;
+        return "power_circle";
     }
 
 private:

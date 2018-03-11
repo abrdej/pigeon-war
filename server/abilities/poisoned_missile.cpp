@@ -17,7 +17,7 @@ void poisoned_missile::use(std::uint32_t index_on) {
 
     auto from_index = states::state_controller::selected_index_;
 
-    sender::send(make_animation_message("poisoned_missile", from_index, index_on));
+    sender::send(make_action_message("poisoned_missile", from_index, index_on));
 
     auto entity_id = board::at(from_index);
     auto enemy_id = board::at(index_on);
@@ -32,7 +32,10 @@ void poisoned_missile::use(std::uint32_t index_on) {
         auto poisoned_connection = make_every_two_turns_from_next_callback_holder(poison_duration,
                                                                                   [enemy_id, poison_power](const turn_callback_info& info) mutable {
 
-                                                                                      sender::send(make_animation_message("poison", board::index_for(enemy_id)));
+                                                                                      sender::send(make_action_message(
+                                                                                              "poison",
+                                                                                              board::index_for(
+                                                                                                      enemy_id)));
 
                                                                                       damage_dealers::standard_damage_dealer(special_damage(poison_power, enemy_id));
 

@@ -38,7 +38,7 @@ void bomb_detonation::use(std::uint32_t for_index) {
 	std::vector<std::uint32_t> neightbords;
 	board_helper::neighboring_fields(for_index, neightbords, false);
 
-//	animations_queue::push_animation(animation_types::flash_bitmap, for_index, 150, 0, bitmap_key::bum);
+//	animations_queue::push_animation(animation_types::flash_bitmap, for_index, 150, 0, "bum);
 
 	auto final_damage = damage;
 
@@ -70,7 +70,7 @@ void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 	std::vector<std::uint32_t> neightbords;
 	board_helper::neighboring_fields(index, neightbords, false);
 
-//	animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, bitmap_key::bum);
+//	animations_queue::push_animation(animation_types::flash_bitmap, index, 150, 0, "bum);
 
 //	auto final_damage = damage;
 //

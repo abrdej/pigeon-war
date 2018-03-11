@@ -15,7 +15,7 @@ public:
     explicit vicious_circle(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::magic_energy;
+        return "magic_energy";
     }
 
     std::string hint() const override;

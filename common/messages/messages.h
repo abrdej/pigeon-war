@@ -58,13 +58,13 @@ inline void from_json(const nlohmann::json& j, states_types& x) {
 
 }
 
-inline void to_json(nlohmann::json& j, const bitmap_key& x) {
-	j = static_cast<std::int32_t>(x);
-}
-
-inline void from_json(const nlohmann::json& j, bitmap_key& x) {
-	x = static_cast<bitmap_key>(j.get<std::int32_t>());
-}
+//inline void to_json(nlohmann::json& j, const bitmap_key& x) {
+//	j = static_cast<std::int32_t>(x);
+//}
+//
+//inline void from_json(const nlohmann::json& j, bitmap_key& x) {
+//	x = static_cast<bitmap_key>(j.get<std::int32_t>());
+//}
 
 inline void to_json(nlohmann::json& j, const message_types& x) {
 	j = static_cast<std::int32_t>(x);

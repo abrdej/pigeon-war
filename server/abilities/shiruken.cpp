@@ -17,7 +17,7 @@ void shiruken::use(std::uint32_t index_on) {
 
     auto has_death_mark = has_effect(enemy_id, "death_mark");
 
-    sender::send(make_animation_message("shiruken", used_from_index, index_on));
+    sender::send(make_action_message("shiruken", used_from_index, index_on));
 
     damage_dealers::standard_damage_dealer(ranged_damage(has_death_mark ? damage + additional_damage_for_death_mark : damage, enemy_id, entity_id));
 

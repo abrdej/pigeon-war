@@ -73,7 +73,7 @@ void absorption::use(std::uint32_t index_on) {
 //                                                             board::index_for(friendly_id),
 //                                                             150,
 //                                                             0,
-//                                                             bitmap_key::absorption);
+//                                                             "absorption);
 
                             damage_dealers::standard_damage_dealer(last_dmg);
 
@@ -84,6 +84,6 @@ void absorption::use(std::uint32_t index_on) {
 }
 
 void absorption::play_animation(std::uint32_t from_index, std::uint32_t to_index) {
-    //animations_queue::push_animation(animation_types::flash_bitmap, from_index, 150, 0, bitmap_key::absorption);
-    //animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, bitmap_key::absorption);
+    //animations_queue::push_animation(animation_types::flash_bitmap, from_index, 150, 0, "absorption);
+    //animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, "absorption);
 }

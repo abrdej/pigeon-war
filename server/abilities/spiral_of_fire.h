@@ -16,7 +16,7 @@ public:
     spiral_of_fire();
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::spiral_of_fire;
+        return "spiral_of_fire";
     }
 
 private:

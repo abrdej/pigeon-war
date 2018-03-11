@@ -19,7 +19,7 @@ void grenade::use(std::uint32_t index_on)
 	std::vector<std::uint32_t> neighbors;
 	board_helper::neighboring_fields(index_on, neighbors, false);
 
-	sender::send(make_animation_message("grenade", used_from_index, index_on));
+	sender::send(make_action_message("grenade", used_from_index, index_on));
 
 	damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
 

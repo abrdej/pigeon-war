@@ -14,7 +14,7 @@ public:
     ~giant_blow() final;
 
     bitmap_key get_bitmap_key() const override {
-        return (counter == 2) ? bitmap_key::giant_blow_special : bitmap_key::giant_blow;
+        return (counter == 2) ? "giant_blow_special" : "giant_blow";
     }
 
     DEFINE_DESC_ONE(giant_blow, damage)

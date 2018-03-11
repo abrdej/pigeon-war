@@ -55,7 +55,7 @@ local_state get_local_state(game& g) {
 
 	state.actual_target_type = states::state_controller::actual_targeting_type_;
 
-	state.button_bitmaps.fill(bitmap_key::none);
+	state.button_bitmaps.fill("");
 
 	auto entity_id = board::at(states::state_controller::selected_index_);
 	auto entity = entity_manager::get(entity_id);
@@ -85,6 +85,15 @@ local_state get_local_state(game& g) {
 	return std::move(state);
 }
 
+auto get_entities() {
+    std::unordered_map<std::uint32_t, std::tuple<std::string, std::int32_t, std::uint32_t>> returned_map;
+    entity_manager::for_all([&returned_map](base_entity entity) {
+        returned_map.insert(std::make_pair(entity.entity_id,
+										   std::make_tuple(entity.name, entity.get<health_field>()->health, board::index_for(entity.entity_id))));
+    });
+    return std::move(returned_map);
+}
+
 int main(int argc, char** argv) {
 
 	std::int32_t port = 5555;
@@ -109,9 +118,12 @@ int main(int argc, char** argv) {
 	pigeon_war_server.set_initial_message([&](std::uint32_t client_id) {
 		pigeon_war_server.send_notification_to(client_id, make_packet(make_client_id_message(client_id)));
         pigeon_war_server.send_notification_to(client_id, make_packet(make_map_name_message(map_name)));
-		pigeon_war_server.send_notification_to(client_id, make_packet(make_board_message(board::fields_)));
-		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_names_message(get_names())));
-		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_healths_message(get_healths())));
+
+//		pigeon_war_server.send_notification_to(client_id, make_packet(make_board_message(board::fields_)));
+//		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_names_message(get_names())));
+//		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_healths_message(get_healths())));
+
+		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_pack_message(get_entities())));
 	});
 
     using json_data_type = nlohmann::json;

@@ -55,7 +55,7 @@ public:
 	DEFINE_DESC_ONE(moveable, range)
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::moveable;
+		return "moveable";
 	}
 
 	void refresh_range() override {

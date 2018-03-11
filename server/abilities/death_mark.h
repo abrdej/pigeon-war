@@ -15,7 +15,7 @@ public:
 	~death_mark();
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::assassin_slash;
+		return "assassin_slash";
 	}
 
 private:

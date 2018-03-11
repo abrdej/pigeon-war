@@ -8,7 +8,7 @@ class tongue_of_fire final : public path_target_ability<7>, per_turn_usable
 {
 public:
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::tongue_of_fire;
+		return "tongue_of_fire";
 	}
 
 private:

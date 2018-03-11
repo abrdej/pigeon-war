@@ -17,7 +17,7 @@ class rocket_launcher final : public straight_target_ability<5>,
 							  per_turn_usable {
 public:
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::rocket;
+		return "rocket";
 	}
 
 	DEFINE_DESC(rocket_launcher, base_damage, distance_bonus, rocket_change_bonus, range)

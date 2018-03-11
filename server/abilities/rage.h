@@ -14,7 +14,7 @@ struct rage final : public passive_ability,
 	explicit rage(std::uint32_t id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::rage;
+		return "rage";
 	}
 
 	void use();

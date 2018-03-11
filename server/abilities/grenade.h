@@ -10,7 +10,7 @@ public:
 	grenade() = default;
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::grenade;
+		return "grenade";
 	}
 
     DEFINE_DESC_ONE(grenade, damage)

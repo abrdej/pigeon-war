@@ -29,7 +29,7 @@ public:
         abilities_ptr->add_ability(std::make_shared<moveable>(3));
         abilities_ptr->add_ability(std::make_shared<poisoned_missile>());
 
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::mouse);
+        //entity.add<bitmap_field>(entity.entity_id, "mouse);
 
         return entity;
     }

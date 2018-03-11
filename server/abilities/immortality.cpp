@@ -16,7 +16,7 @@ immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
         if (health_pack.health == 0) {
             set_destructible(this->entity_id, false);
 
-            sender::send(make_animation_message("set_immortality", this->entity_id));
+            sender::send(make_action_message("set_immortality", this->entity_id));
 
             immortality_holder = make_after_n_round_callback_holder(duration, [this]() {
                 set_destructible(this->entity_id, true);

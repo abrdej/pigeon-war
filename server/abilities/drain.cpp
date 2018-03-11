@@ -18,7 +18,7 @@ void drain::use(std::uint32_t index_on)
 	auto used_from_index = states::state_controller::selected_index_;
 	auto entity_id = board::at(used_from_index);
 
-	sender::send(make_animation_message("drain", used_from_index, index_on));
+	sender::send(make_action_message("drain", used_from_index, index_on));
 
 	damage_dealers::standard_damage_dealer(damage_pack(damage,
 													   damage_types::MELEE,

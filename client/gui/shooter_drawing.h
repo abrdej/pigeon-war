@@ -41,7 +41,7 @@
 //    }
 //
 //    bitmap_key get_bitmap_key() override {
-//        return bitmap_key::shooter;
+//        return "shooter;
 //    }
 //
 //    void set_state(const States& x) {

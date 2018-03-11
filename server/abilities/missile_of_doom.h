@@ -14,7 +14,7 @@ public:
 	explicit missile_of_doom(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::power_bullet;
+		return "power_bullet";
 	}
 
 	std::string hint() const override;

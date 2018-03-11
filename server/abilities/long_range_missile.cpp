@@ -35,11 +35,11 @@ void long_range_missile::play_animation(std::uint32_t from_index, std::uint32_t 
 //									 from_index,
 //									 to_index,
 //									 -1,
-//									 bitmap_key::long_range_missile);
+//									 "long_range_missile);
 //
 //	animations_queue::push_animation(animation_types::flash_bitmap,
 //									 to_index,
 //									 150,
 //									 0,
-//									 bitmap_key::bum);
+//									 "bum);
 }

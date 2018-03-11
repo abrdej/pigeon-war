@@ -29,7 +29,7 @@ struct spider final
         abilities_ptr->add_ability(std::make_shared<spider_web>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<surroundings>(entity.entity_id));
 
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::spider);
+        //entity.add<bitmap_field>(entity.entity_id, "spider);
 
         return entity;
     }

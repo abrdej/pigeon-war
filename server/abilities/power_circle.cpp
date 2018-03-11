@@ -44,7 +44,7 @@ power_circle::power_circle(std::uint32_t entity_id) {
 //                                         board::to_index(from_cr.first, from_cr.second),
 //                                         150,
 //                                         -1,
-//                                         bitmap_key::absorber_orbit);
+//                                         "absorber_orbit);
 
         for (auto& index : aim_indexes) {
             if (!board::empty(index)) {
@@ -134,7 +134,7 @@ void power_circle::use(std::uint32_t index_on) {
 //                                     index_on,
 //                                     150,
 //                                     -1,
-//                                     bitmap_key::absorption);
+//                                     "absorption);
 }
 
 void power_circle::play_animation(std::uint32_t index_on) {

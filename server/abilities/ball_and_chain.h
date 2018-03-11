@@ -13,7 +13,7 @@ public:
 	explicit ball_and_chain(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::ball_and_chain;
+		return "ball_and_chain";
 	}
 
 private:

@@ -55,20 +55,20 @@ void prison_connection::use(std::uint32_t index_on) {
 
 	final_damage = base_damage + number_of_entities_with_effect * damage_per_entities_with_effect;
 
-	sender::send(make_animation_message("start_sorcerer_attack", entity_id));
+	sender::send(make_action_message("start_sorcerer_attack", entity_id));
 
 	for (auto&& entity_with_effect : entities_with_effect) {
 
 		if (entity_manager::alive(entity_with_effect)) {
 			auto index = board::index_for(entity_with_effect);
 
-			sender::send(make_animation_message("prison_connection", index));
+			sender::send(make_action_message("prison_connection", index));
 
 			damage_dealers::standard_damage_dealer(magic_damage(final_damage, board::at(index), entity_id));
 		}
 	}
 
-	sender::send(make_animation_message("end_sorcerer_attack", entity_id));
+	sender::send(make_action_message("end_sorcerer_attack", entity_id));
 
 	used = true;
 }

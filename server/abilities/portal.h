@@ -12,7 +12,7 @@ class portal final : public active_ability, per_turn_usable {
 public:
 	explicit portal(std::uint32_t entity_id);
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::portal;
+		return "portal";
 	}
 
 private:

@@ -13,7 +13,7 @@ public:
 	explicit aura_of_immunity(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::defender;
+		return "defender";
 	}
 
 	DEFINE_DESC(aura_of_immunity, damage_reduction_for_friends, damage_reduction_for_owner)

@@ -12,7 +12,7 @@ public:
 	void use(std::uint32_t index_on);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::wolf_herd;
+		return "wolf_herd";
 	}
 
 private:

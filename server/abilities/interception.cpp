@@ -73,19 +73,19 @@ void interception::play_animation(std::uint32_t index_from, std::uint32_t index_
 //                                     index_from,
 //                                     index_on,
 //                                     entity_id,
-//                                     bitmap_key::none);
+//                                     "none);
 //
 //    animations_queue::push_animation(animation_types::flash_bitmap,
 //                                     index_on,
 //                                     150,
 //                                     0,
-//                                     bitmap_key::ninja);
+//                                     "ninja);
 //
 //    animations_queue::push_animation(animation_types::move,
 //                                     index_on,
 //                                     index_from,
 //                                     entity_id,
-//                                     bitmap_key::none);
+//                                     "none);
 
     board::give_back(entity_id, index_from);
 }

@@ -35,7 +35,7 @@ void rocket_launcher::use(std::uint32_t index_on) {
 
 	auto final_damage = static_cast<std::int32_t>(base_damage + distance * distance_bonus + (has_bonus ? rocket_change_bonus : 0));
 
-	sender::send(make_animation_message("rocket_launcher", used_from_index, index_on));
+	sender::send(make_action_message("rocket_launcher", used_from_index, index_on));
 
 	damage_dealers::standard_damage_dealer(ranged_damage(final_damage, enemy_id, entity_id));
 

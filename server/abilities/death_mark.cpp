@@ -20,7 +20,7 @@ void death_mark::use(std::uint32_t index_on) {
 //	if (used)
 //		return;
 //
-//	sender::send(make_animation_message("death_mark, index_on);
+//	sender::send(make_action_message("death_mark, index_on);
 //
 //	enemy_id = board::at(index_on);
 //

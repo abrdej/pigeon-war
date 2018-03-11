@@ -25,7 +25,7 @@ struct shooter final
 		abilities_ptr->add_ability(std::make_shared<shoot>());
 		abilities_ptr->add_ability(std::make_shared<grenade>());
 
-		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::shooter);
+		//entity.add<bitmap_field>(entity.entity_id, "shooter);
 
 		return entity;
 	}

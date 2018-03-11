@@ -16,7 +16,7 @@ void sword_blow::use(std::uint32_t index_on) {
     std::vector<std::uint32_t> around_fields_ids;
     board_helper::neighboring_fields(used_from_index, around_fields_ids, false);
 
-    sender::send(make_animation_message("sword_blow", used_from_index));
+    sender::send(make_action_message("sword_blow", used_from_index));
 
     std::int32_t hit_entities_counter = 0;
 
@@ -31,7 +31,7 @@ void sword_blow::use(std::uint32_t index_on) {
 
     if (hit_entities_counter >= 3) {
 
-        sender::send(make_animation_message("sword_blow", used_from_index));
+        sender::send(make_action_message("sword_blow", used_from_index));
 
         for (auto&& field_id : around_fields_ids) {
             if (!board::empty(field_id)) {

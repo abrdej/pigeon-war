@@ -14,7 +14,7 @@ public:
     explicit purification(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::purification;
+        return "purification";
     }
 
     DEFINE_DESC_ONE(purification, power_cost)

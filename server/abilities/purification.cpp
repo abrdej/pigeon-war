@@ -25,7 +25,7 @@ void purification::use(std::uint32_t index_on) {
 
     auto friend_id = board::at(index_on);
 
-    sender::send(make_animation_message("purification", index_on));
+    sender::send(make_action_message("purification", index_on));
 
     remove_negative_effects(friend_id);
 

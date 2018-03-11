@@ -45,12 +45,12 @@ void meteorite::use(std::uint32_t index_on) {
 	auto caster_id = board::at(used_from_index);
 	auto damage = this->damage;
 
-	sender::send(make_animation_message("meteorite_before", index_on));
+	sender::send(make_action_message("meteorite_before", index_on));
 
 	meteorite_holder = make_after_n_round_callback_holder(1,
 														  [caster_id, index_on, damage]() mutable {
 
-															  sender::send(make_animation_message("meteorite", index_on));
+															  sender::send(make_action_message("meteorite", index_on));
 
 															  std::vector<std::uint32_t> neighbors;
 															  board_helper::neighboring_fields(index_on, neighbors, false);

@@ -13,7 +13,7 @@ public:
     explicit defender(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::defender;
+        return "defender";
     }
 
     void prepare(std::uint32_t for_index) override;

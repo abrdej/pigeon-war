@@ -13,7 +13,7 @@ public:
 	explicit dodge(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::dodge;
+		return "dodge";
 	}
 
 	DEFINE_DESC_ONE(dodge, counter)

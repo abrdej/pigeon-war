@@ -11,7 +11,7 @@
 class sword_blow final : public neighboring_target_ability<>, per_turn_usable {
 public:
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::sword_blow;
+        return "sword_blow";
     }
 
     DEFINE_DESC_ONE(sword_blow, damage)

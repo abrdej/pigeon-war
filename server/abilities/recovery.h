@@ -15,7 +15,7 @@ public:
     explicit recovery(std::uint32_t id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::recovery;
+        return "recovery";
     }
 
 private:

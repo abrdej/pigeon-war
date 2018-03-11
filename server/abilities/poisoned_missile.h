@@ -13,7 +13,7 @@ class poisoned_missile final : public path_target_ability<4>, per_turn_usable
 public:
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::poisoned_missile;
+        return "poisoned_missile";
     }
 
     std::string hint() const override;

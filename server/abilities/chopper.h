@@ -17,7 +17,7 @@ public:
     explicit chopper(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::chopper;
+        return "chopper";
     }
 
 private:

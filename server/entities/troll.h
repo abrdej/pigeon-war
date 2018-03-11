@@ -31,7 +31,7 @@ struct troll final
 		abilities_ptr->add_ability(std::make_shared<rage>(entity.entity_id));
 		abilities_ptr->add_ability(std::make_shared<regeneration>(entity.entity_id));
 
-		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::troll);
+		//entity.add<bitmap_field>(entity.entity_id, "troll);
 
 		return entity;
 	}

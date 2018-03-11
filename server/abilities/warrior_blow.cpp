@@ -15,7 +15,7 @@ void warrior_blow::use(std::uint32_t index_on) {
     auto used_from_index = states::state_controller::selected_index_;
 
 
-    sender::send(make_animation_message("warrior_blow", used_from_index, index_on));
+    sender::send(make_action_message("warrior_blow", used_from_index, index_on));
 
     auto enemy_id = board::at(index_on);
 

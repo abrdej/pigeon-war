@@ -12,7 +12,7 @@ class killer_instinct : public path_target_ability<7, target_types::moving> {
 public:
 	explicit killer_instinct(std::uint32_t entity_id);
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::killer_jump;
+		return "killer_jump";
 	}
 
 private:

@@ -26,7 +26,7 @@ public:
 		abilities_ptr->add_ability(std::make_shared<sabers>());
 		abilities_ptr->add_ability(std::make_shared<invisibility>(entity.entity_id));
 
-		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::saberhand);
+		//entity.add<bitmap_field>(entity.entity_id, "saberhand);
 
 		return entity;
 	}

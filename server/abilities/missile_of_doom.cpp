@@ -31,7 +31,7 @@ void missile_of_doom::use(std::uint32_t index_on) {
 	auto caster_id = board::at(used_from_index);
 	auto enemy_id = board::at(index_on);
 
-	sender::send(make_animation_message("power_bullet", used_from_index, index_on));
+	sender::send(make_action_message("power_bullet", used_from_index, index_on));
 
 	damage_dealers::standard_damage_dealer(ranged_damage(damage + accumulated_damage, enemy_id, caster_id));
 

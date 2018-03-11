@@ -25,6 +25,9 @@ std::string make_entities_names_message(const std::unordered_map<std::uint32_t, 
 
 std::string make_entities_healths_message(const std::unordered_map<std::uint32_t, std::int32_t>& healths);
 
+std::string make_entities_pack_message(const std::unordered_map<std::uint32_t,
+        std::tuple<std::string, std::int32_t, std::uint32_t>>& entities_pack);
+
 std::string make_local_state_message(const local_state& state);
 
 std::string make_game_state_message(const game_state& state);
@@ -33,8 +36,14 @@ std::string make_end_turn_message(std::uint32_t active_player);
 
 std::string make_description_message(const std::string& desc);
 
+std::string make_remove_entity_message(std::uint32_t entity_id);
+
+std::string make_create_entity_message(std::uint32_t entity_id,
+                                       const std::string& name,
+                                       std::int32_t health);
+
 template <typename... Args>
-std::string make_animation_message(const std::string& animation, Args&&... args) {
+std::string make_action_message(const std::string &animation, Args &&... args) {
     using nlohmann::json;
     json array_of_data;
 

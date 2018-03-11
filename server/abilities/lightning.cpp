@@ -38,12 +38,14 @@ void lightning::use(std::uint32_t index_on) {
     auto enemy_id = board::at(index_on);
     auto damage = this->damage;
 
-    sender::send(make_animation_message("lightning_prepare", index_on));
+    sender::send(make_action_message("lightning_prepare", index_on));
 
     auto lightning_connection = make_after_n_round_callback_holder(1,
                                                                [enemy_id, caster_id, damage]() mutable {
                                                                    if (entity_manager::alive(enemy_id)) {
-                                                                       sender::send(make_animation_message("lightning", board::index_for(enemy_id)));
+                                                                       sender::send(make_action_message("lightning",
+                                                                                                        board::index_for(
+                                                                                                                enemy_id)));
                                                                        damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, entity_manager::alive(caster_id) ? caster_id : no_damage_dealer));
                                                                        remove_effect(enemy_id, "lightning target");
                                                                    }

@@ -54,7 +54,7 @@ void uselessness::use(std::uint32_t index_on) {
 
     add_effect(enemy_id, uselessness_effect);
 
-    sender::send(make_animation_message("uselessness", index_on));
+    sender::send(make_action_message("uselessness", index_on));
 
     power = 0;
 

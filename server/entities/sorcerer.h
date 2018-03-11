@@ -27,7 +27,7 @@ struct sorcerer final
         abilities_ptr->add_ability(std::make_shared<moveable>(3));
         abilities_ptr->add_ability(std::make_shared<prison_connection>(entity.entity_id));
 
-        //entity.add<bitmap_field>(entity.entity_id, bitmap_key::sorcerer);
+        //entity.add<bitmap_field>(entity.entity_id, "sorcerer);
 
         return entity;
     }

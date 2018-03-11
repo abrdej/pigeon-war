@@ -13,7 +13,7 @@
 //    explicit entangling_life_suck();
 //
 //    bitmap_key get_bitmap_key() const override {
-//        return bitmap_key::entangling_life_suck;
+//        return "entangling_life_suck;
 //    }
 //
 //    void prepare(std::uint32_t for_index) override {}
@@ -46,7 +46,7 @@
 //    explicit entangling(std::uint32_t id);
 //
 //    bitmap_key get_bitmap_key() const override {
-//        return bitmap_key::entangling;
+//        return "entangling;
 //    }
 //
 //private:

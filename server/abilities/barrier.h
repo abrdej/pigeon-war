@@ -13,7 +13,7 @@ public:
     explicit barrier(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::immortality;
+        return "immortality";
     }
 
     std::string hint() const override;

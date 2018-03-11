@@ -30,7 +30,7 @@ struct local_state {
 	std::unordered_set<std::uint32_t> valid_movements;
 	std::uint32_t selected_index{no_selection};
 	target_types actual_target_type{target_types::non};
-	std::array<bitmap_key, 5> button_bitmaps;
+	std::array<std::string, 5> button_bitmaps;
 	std::string entity_name;
 };
 

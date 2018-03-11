@@ -65,7 +65,7 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
 
 	board::move(from_index, to_index);
 
-	sender::send(make_animation_message("portal", from_index, to_index, neighboring_moves));
+	sender::send(make_action_message("portal", from_index, to_index, neighboring_moves));
 
 	states::state_controller::selected_index_ = to_index;
 

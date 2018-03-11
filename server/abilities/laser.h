@@ -15,7 +15,7 @@ class laser final : public straight_target_ability<3>,
 public:
 	laser() = default;
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::laser;
+		return "laser";
 	}
 
 	std::string hint() const override;

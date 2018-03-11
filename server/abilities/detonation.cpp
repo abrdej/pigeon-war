@@ -25,7 +25,7 @@ detonation::detonation(std::uint32_t entity_id) {
 //                                             board::to_index(from_cr.first, from_cr.second),
 //                                             150,
 //                                             0,
-//                                             bitmap_key::detonation_anim);
+//                                             "detonation_anim);
 
             for (auto& index : neighbors) {
                 if (!board::empty(index))

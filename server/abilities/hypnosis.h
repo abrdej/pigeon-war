@@ -11,7 +11,7 @@ class hypnosis final : public path_target_ability<4, target_types::enemy, true>
 {
 public:
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::hypnosis;
+		return "hypnosis";
 	}
 
 	DEFINE_DESC_ZERO(hypnosis)

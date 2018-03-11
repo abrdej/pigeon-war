@@ -10,8 +10,8 @@
 enum class directions { right, left };
 
 struct base_entity : module_holder {
-	static constexpr uint64_t no_id{ std::numeric_limits<uint64_t>::max()};
-	uint64_t entity_id{no_id};
+	static constexpr uint32_t no_id{ std::numeric_limits<uint32_t>::max()};
+	uint32_t entity_id{no_id};
 
 	std::string name;
 };

@@ -32,7 +32,7 @@ public:
 		abilities_ptr->add_ability(std::make_shared<meteorite>(entity.entity_id));
 		abilities_ptr->add_ability(std::make_shared<purification>(entity.entity_id));
 
-		//entity.add<bitmap_field>(entity.entity_id, bitmap_key::wizzard);
+		//entity.add<bitmap_field>(entity.entity_id, "wizzard);
 
 		return entity;
 	}

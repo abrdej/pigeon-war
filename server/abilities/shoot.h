@@ -11,7 +11,7 @@ public:
 	shoot();
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::shoot;
+		return "bullet";
 	}
 
 	DEFINE_DESC(shoot, damage, bullets, range)

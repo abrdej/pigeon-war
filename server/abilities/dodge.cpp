@@ -14,7 +14,7 @@ dodge::dodge(std::uint32_t entity_id) {
 
 			auto index = board::index_for(entity_id);
 
-			sender::send(make_animation_message("dodge", index));
+			sender::send(make_action_message("dodge", index));
 
 			return 0;
 

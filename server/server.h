@@ -16,6 +16,7 @@
 #include "packets_makers.h"
 #include "components/damage_taker.h"
 #include "json.hpp"
+#include <boost/asio.hpp>
 
 class server {
 
@@ -31,6 +32,9 @@ class server {
 
 	sf::SocketSelector selector;
 	sf::TcpListener listener;
+
+    boost::asio::io_service io_service;
+
 
 	std::vector<std::shared_ptr<sf::TcpSocket>> clients;
 	std::unordered_map<std::string, std::uint32_t> addresses;
@@ -115,6 +119,7 @@ public:
 							try {
 								data = json_data_type::parse(message);
 							} catch (...) {
+								return;
 								std::cout << "json parse error!\n";
 								std::cout << "in: " << message << "\n";
 							}
@@ -137,7 +142,11 @@ public:
 
 					if (packet_pack.first == std::numeric_limits<std::uint32_t>::max()) {
 						for (auto&& client : clients) {
-							client->send(packet_pack.second);
+
+                            std::string message;
+                            packet_pack.second >> message;
+							client->send(message.c_str(), message.size());
+//                            client->send(packet_pack.second);
 						}
 					} else {
 						clients[packet_pack.first]->send(packet_pack.second);

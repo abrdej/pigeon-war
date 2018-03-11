@@ -11,7 +11,7 @@ class shield : public passive_ability {
 public:
     explicit shield(std::uint32_t entity_id);
     bitmap_key get_bitmap_key() const override {
-        return bitmap_key::shield;
+        return "shield";
     }
 
     std::string hint() const override;

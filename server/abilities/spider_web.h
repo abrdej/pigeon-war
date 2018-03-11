@@ -14,7 +14,7 @@ public:
     explicit spider_web(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::spider_web;
+		return "spider_web";
 	}
 
 	void set_used();

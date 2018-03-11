@@ -6,6 +6,8 @@
 #include <string>
 #include <unordered_map>
 #include <functional>
+#include <common/make_message.h>
+#include <sender.h>
 #include "entities/entity.h"
 #include "core/board.h"
 
@@ -44,6 +46,8 @@ public:
 		entities.erase(entity_id);
 
 		board::remove_entity(entity_id);
+
+		sender::send(make_remove_entity_message(entity_id));
 
 		call_destroy_callbacks(entity_id);
 	}

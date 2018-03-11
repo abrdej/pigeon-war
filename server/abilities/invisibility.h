@@ -10,7 +10,7 @@ public:
 	explicit invisibility(std::uint32_t id);
 
 	bitmap_key get_bitmap_key() const override {
-		return bitmap_key::invisibility;
+		return "invisibility";
 	}
 
 	DEFINE_DESC_ONE(invisibility, duration)

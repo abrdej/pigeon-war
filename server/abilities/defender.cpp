@@ -19,7 +19,7 @@ defender::defender(std::uint32_t entity_id) {
 //                                                     index,
 //                                                     150,
 //                                                     0,
-//                                                     bitmap_key::defender);
+//                                                     "defender);
 //
 //                    auto protected_id = board::at(index);
 //
@@ -31,12 +31,12 @@ defender::defender(std::uint32_t entity_id) {
 //                                                         enemy_index,
 //                                                         100,
 //                                                         0,
-//                                                         bitmap_key::defender);
+//                                                         "defender);
 //                        animations_queue::push_animation(animation_types::flash_bitmap,
 //                                                         enemy_index,
 //                                                         150,
 //                                                         0,
-//                                                         bitmap_key::defender_attack);
+//                                                         "defender_attack);
 //
 //                        damage_dealers::standard_damage_dealer(magic_damage(damage, dmg.damage_dealer_id, entity_id));
 //
