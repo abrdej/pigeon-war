@@ -29,8 +29,6 @@ struct samurai_rat final
 		abilities_ptr->add_ability(std::make_shared<sword_blow>());
 		abilities_ptr->add_ability(std::make_shared<dodge>(entity.entity_id));
 
-		//entity.add<bitmap_field>(entity.entity_id, "samurai_rat);
-
 		return entity;
 	}
 };

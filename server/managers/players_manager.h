@@ -7,7 +7,6 @@
 #include <memory>
 #include <algorithm>
 #include <iostream>
-#include <SFML/Config.hpp>
 
 class entity;
 

@@ -6,7 +6,6 @@
 #include <vector>
 #include <array>
 #include <boost/signals2.hpp>
-#include <SFML/Config.hpp>
 
 class board final {
 public:
