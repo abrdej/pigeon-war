@@ -1,3 +1,3 @@
 #include "sender.h"
 
- std::function<void(sf::Packet)> sender::send_fn;
+ std::function<void(std::string)> sender::send_fn;

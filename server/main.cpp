@@ -109,21 +109,16 @@ int main(int argc, char** argv) {
 	game g;
 	map_name = create_skirmish(g, map_name);
 
-	server pigeon_war_server(port);
+	tcp_server pigeon_war_server(port);
 
-	sender::set_sender([&pigeon_war_server](sf::Packet packet) {
-		pigeon_war_server.send_notification(packet);
+	sender::set_sender([&pigeon_war_server](std::string message) {
+		pigeon_war_server.send_notification(message);
 	});
 
 	pigeon_war_server.set_initial_message([&](std::uint32_t client_id) {
-		pigeon_war_server.send_notification_to(client_id, make_packet(make_client_id_message(client_id)));
-        pigeon_war_server.send_notification_to(client_id, make_packet(make_map_name_message(map_name)));
-
-//		pigeon_war_server.send_notification_to(client_id, make_packet(make_board_message(board::fields_)));
-//		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_names_message(get_names())));
-//		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_healths_message(get_healths())));
-
-		pigeon_war_server.send_notification_to(client_id, make_packet(make_entities_pack_message(get_entities())));
+		pigeon_war_server.send_notification_to(client_id, make_client_id_message(client_id));
+        pigeon_war_server.send_notification_to(client_id, make_map_name_message(map_name));
+		pigeon_war_server.send_notification_to(client_id, make_entities_pack_message(get_entities()));
 	});
 
     using json_data_type = nlohmann::json;
@@ -140,16 +135,8 @@ int main(int argc, char** argv) {
 
 		if (client_id == players_manager::get_active_player_id() || single_client) {
 			g.on_board(x, y);
-
-			std::cout << "here\n";
-
-			pigeon_war_server.send_notification(make_packet(make_local_state_message(get_local_state(g))));
-
-			std::cout << "here2\n";
-
-			pigeon_war_server.send_notification(make_packet(make_game_state_message(get_game_state(g))));
-
-			std::cout << "here3\n";
+			pigeon_war_server.send_notification(make_local_state_message(get_local_state(g)));
+			pigeon_war_server.send_notification(make_game_state_message(get_game_state(g)));
 		}
 	});
 
@@ -170,11 +157,11 @@ int main(int argc, char** argv) {
 
 			if (button == 5) {
 				auto active_player = players_manager::get_active_player_id();
-				pigeon_war_server.send_notification(make_packet(make_end_turn_message(active_player)));
+				pigeon_war_server.send_notification(make_end_turn_message(active_player));
 			}
 
-			pigeon_war_server.send_notification(make_packet(make_local_state_message(get_local_state(g))));
-			pigeon_war_server.send_notification(make_packet(make_game_state_message(get_game_state(g))));
+			pigeon_war_server.send_notification(make_local_state_message(get_local_state(g)));
+			pigeon_war_server.send_notification(make_game_state_message(get_game_state(g)));
 		}
 	});
 
@@ -190,13 +177,12 @@ int main(int argc, char** argv) {
 		if (client_id == players_manager::get_active_player_id() || single_client) {
 
 			description = g.get_button_description(states::state_controller::selected_index_, button);
-			pigeon_war_server.send_notification_to(client_id, make_packet(make_description_message(description)));
+			pigeon_war_server.send_notification_to(client_id, make_description_message(description));
 		}
 	});
 
-	pigeon_war_server.start_listening();
-	pigeon_war_server.start();
-	pigeon_war_server.wait();
+	pigeon_war_server.run();
+    pigeon_war_server.wait();
 
 	return 0;
 }

@@ -10,9 +10,9 @@
 #include <common/message_types.h>
 
 struct sender {
-	static std::function<void(sf::Packet)> send_fn;
+	static std::function<void(std::string)> send_fn;
 
-	static void set_sender(const std::function<void(sf::Packet)>& fn) {
+	static void set_sender(const std::function<void(std::string)>& fn) {
 		send_fn = fn;
 	}
 
@@ -32,9 +32,7 @@ struct sender {
 //	}
 
 	static void send(const std::string& message) {
-		sf::Packet packet;
-		packet << message;
-		send_fn(packet);
+		send_fn(message);
 	}
 };
 

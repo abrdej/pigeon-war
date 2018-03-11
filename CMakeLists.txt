@@ -38,8 +38,10 @@ set(Boost_USE_STATIC_LIBS ON)
 add_definitions(-DBOOST_ALL_DYN_LINK)
 add_definitions(-DBOOST_LOG_DYN_LINK)
 
-#find_package(Boost REQUIRED filesystem system log)
+find_package(Boost REQUIRED system)
 include_directories(${Boost_INCLUDE_DIRS})
+
+#include_directories(/home/abrdej/Libraries/beast/include/)
 
 # Locate GTest
 #find_package(GTest REQUIRED)
@@ -380,7 +382,7 @@ add_executable(pigeonwar_client client/main.cpp ${CLIENT_SOURCE_FILES})
 target_link_libraries(pigeonwar_client ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS})
 
 add_executable(pigeonwar_server server/main.cpp ${SERVER_SOURCE_FILES})
-target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS} ${Boost_LOG_LIBRARY})
+target_link_libraries(pigeonwar_server ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PLATFORM_LIBS} ${Boost_LOG_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
 add_executable(pigeonwar_hot_seat hot_seat.cpp)
 target_link_libraries(pigeonwar_hot_seat ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})
