@@ -41,7 +41,7 @@ add_definitions(-DBOOST_LOG_DYN_LINK)
 find_package(Boost REQUIRED system)
 include_directories(${Boost_INCLUDE_DIRS})
 
-#include_directories(/home/abrdej/Libraries/beast/include/)
+include_directories(~/beast/include/)
 
 # Locate GTest
 #find_package(GTest REQUIRED)
