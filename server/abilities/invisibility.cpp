@@ -5,7 +5,6 @@
 #include "entities/saberhand.h"
 #include "core/states_controller.h"
 #include "sender.h"
-#include "common/animations.h"
 
 invisibility::invisibility(std::uint32_t id)
 	: entity_id(id)

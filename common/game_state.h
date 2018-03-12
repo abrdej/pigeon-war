@@ -8,7 +8,6 @@
 #include "client/board_container.h"
 #include "common/states.h"
 #include "common/bitmaps.h"
-#include "animations.h"
 #include <unordered_set>
 #include <unordered_map>
 #include "json.hpp"
@@ -20,7 +19,6 @@ struct game_state {
 	std::unordered_map<std::uint32_t, std::int32_t> healths;
 	std::unordered_map<std::uint32_t, std::string> entities_names;
 	std::unordered_map<std::uint32_t, std::vector<std::string>> entities_additional_effects;
-	std::vector<animation_pack> animations_queue;
 };
 
 struct local_state {

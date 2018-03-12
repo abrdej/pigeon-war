@@ -3,7 +3,6 @@
 #include <core/states_controller.h>
 #include <common/make_message.h>
 #include "sender.h"
-#include "common/animations.h"
 #include "components/damage_taker.h"
 
 void laser::use(std::uint32_t index_on) {

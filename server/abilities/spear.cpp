@@ -3,7 +3,6 @@
 #include "spear.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 #include "components/damage_taker.h"
 
 spear::spear(std::uint32_t id) : entity_id(id) {

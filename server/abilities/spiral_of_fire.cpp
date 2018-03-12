@@ -7,7 +7,6 @@
 #include "spiral_of_fire.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 spiral_of_fire::spiral_of_fire() {
 

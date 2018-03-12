@@ -9,7 +9,6 @@
 #include "jaw_spider.h"
 #include "moveable.h"
 #include "sender.h"
-#include "common/animations.h"
 
 spider_web::spider_web(std::uint32_t entity_id) : caster_id(entity_id) {
 }

@@ -3,9 +3,7 @@
 
 #include <limits>
 #include "core/module_holder.h"
-
 #include "common/health_field.h"
-#include "common/bitmap_field.h"
 
 enum class directions { right, left };
 

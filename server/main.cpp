@@ -14,7 +14,6 @@
 #include "core/game.h"
 #include "common/game_state.h"
 #include "server.h"
-#include "common/packet_helper.h"
 #include "sender.h"
 #include "cbor/cbor.h"
 #include "json.hpp"

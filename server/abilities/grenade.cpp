@@ -1,11 +1,9 @@
 #include <common/make_message.h>
 #include "grenade.h"
-
 #include "core/states_controller.h"
 #include "core/path_finder.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 void grenade::use(std::uint32_t index_on)
 {

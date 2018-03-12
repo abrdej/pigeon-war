@@ -1,7 +1,6 @@
 #include "arrow.h"
 #include <core/board.h>
 #include <sender.h>
-#include <common/animations.h>
 #include <components/applied_effects.h>
 #include <common/logging.h>
 #include <common/make_message.h>

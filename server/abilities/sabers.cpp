@@ -5,7 +5,6 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 void sabers::prepare(std::uint32_t for_index)
 {

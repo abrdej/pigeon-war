@@ -10,7 +10,6 @@
 #include <algorithm>
 #include <functional>
 #include <limits>
-#include "common/define_packet.h"
 
 class board_container final {
 public:

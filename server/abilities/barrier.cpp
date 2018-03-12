@@ -3,7 +3,6 @@
 #include "immortality.h"
 #include "components/damage_taker.h"
 #include "sender.h"
-#include "common/animations.h"
 
 barrier::barrier(std::uint32_t entity_id) : entity_id(entity_id) {
 

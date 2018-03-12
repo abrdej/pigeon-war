@@ -9,7 +9,7 @@
 
 
 template <typename... Args>
-inline void send(sf::TcpSocket& socket, const message_types& message, Args&&... args) {
+inline void sen(sf::TcpSocket& socket, const message_types& message, Args&&... args) {
 
 	sf::Packet packet;
 	packet << message;

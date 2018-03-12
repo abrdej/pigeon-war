@@ -4,7 +4,6 @@
 #include "magic_bullet.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 #include "managers/players_manager.h"
 
 magic_bullet::magic_bullet(std::uint32_t entity_id) {

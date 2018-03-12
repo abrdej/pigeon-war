@@ -7,7 +7,6 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 #include "common/logging.h"
 #include "descriptions.h"
 

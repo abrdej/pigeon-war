@@ -4,7 +4,6 @@
 #include "damage_dealers.h"
 #include "components/damage_taker.h"
 #include "sender.h"
-#include "common/animations.h"
 
 protection_field::protection_field(std::uint32_t entity_id) {
 

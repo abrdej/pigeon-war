@@ -1,6 +1,5 @@
 #include "death_mark.h"
 #include "sender.h"
-#include "common/animations.h"
 #include "core/board.h"
 #include "components/applied_effects.h"
 #include "components/damage_taker.h"

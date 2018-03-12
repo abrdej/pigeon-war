@@ -8,7 +8,6 @@
 
 #include <memory>
 #include <unordered_map>
-#include <common/animations.h>
 #include <caller.h>
 #include <animation/animation.h>
 #include <common/game_state.h>

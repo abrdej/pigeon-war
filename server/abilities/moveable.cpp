@@ -1,6 +1,5 @@
 #include <sender.h>
 #include <core/board_effects.h>
-#include <common/animations.h>
 #include <common/make_message.h>
 #include "moveable.h"
 #include "core/states_controller.h"

@@ -1,7 +1,6 @@
 #include <core/board.h>
 #include <common/message_types.h>
 #include <sender.h>
-#include <common/animations.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 #include <common/make_message.h>

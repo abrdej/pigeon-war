@@ -6,7 +6,6 @@
 #include "abilities.h"
 #include "protection_field.h"
 #include "sender.h"
-#include "common/animations.h"
 
 void handcannon::use(std::uint32_t index_on) {
 

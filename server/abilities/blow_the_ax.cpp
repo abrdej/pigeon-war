@@ -3,7 +3,6 @@
 #include "blow_the_ax.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 void blow_the_ax::use(std::uint32_t index_on) {
 

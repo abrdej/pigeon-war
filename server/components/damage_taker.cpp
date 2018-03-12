@@ -1,5 +1,4 @@
 #include <sender.h>
-#include <common/animations.h>
 #include <common/make_message.h>
 #include "damage_taker.h"
 

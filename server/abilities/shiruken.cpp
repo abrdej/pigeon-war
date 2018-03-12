@@ -4,7 +4,6 @@
 #include "shiruken.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 void shiruken::use(std::uint32_t index_on) {
     if (used)

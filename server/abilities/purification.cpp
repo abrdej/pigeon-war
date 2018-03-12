@@ -5,7 +5,6 @@
 #include <core/board.h>
 #include <managers/entity_manager.h>
 #include <components/damage_taker.h>
-#include <common/animations.h>
 #include <sender.h>
 #include <components/power_field.h>
 #include <components/applied_effects.h>

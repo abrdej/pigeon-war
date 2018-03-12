@@ -20,7 +20,7 @@
 #include <boost/asio.hpp>
 #include <boost/asio/completion_condition.hpp>
 
-//#include <boost/beast.hpp>
+#include <boost/beast.hpp>
 
 using boost::asio::ip::tcp;
 
@@ -98,6 +98,7 @@ class tcp_server {
 
     boost::asio::io_service io_service;
 
+    std::unique_ptr<boost::beast::websocket::stream<tcp::socket>> ws_;
     tcp::acceptor acceptor_;
     std::vector<tcp_connection::connection_ptr> connections;
 
@@ -136,18 +137,24 @@ public:
                        const boost::system::error_code& error) {
         if (!error)
         {
-            new_connection->start_reading_from([this](const std::string& message) {
-				handle_message(message);
-			});
+            ws_ = std::make_unique<boost::beast::websocket::stream<tcp::socket>>(std::move(new_connection->socket()));
 
-			auto client_id = static_cast<std::uint32_t>(connections.size());
+            ws_->async_accept([](boost::system::error_code const& ec) {
+                std::cout << "message accepted\n";
+            });
 
-			std::cout << "New client, next id: " << client_id << "\n";
-
-            connections.emplace_back(new_connection);
-			initial_func(client_id);
-
-            start_accept();
+//            new_connection->start_reading_from([this](const std::string& message) {
+//				handle_message(message);
+//			});
+//
+//			auto client_id = static_cast<std::uint32_t>(connections.size());
+//
+//			std::cout << "New client, next id: " << client_id << "\n";
+//
+//            connections.emplace_back(new_connection);
+//			initial_func(client_id);
+//
+//            start_accept();
         }
     }
 

@@ -4,7 +4,6 @@
 #include <common/make_message.h>
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 giant_ram::giant_ram(std::uint32_t entity_id) : entity_id(entity_id) {
 

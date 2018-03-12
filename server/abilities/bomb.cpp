@@ -5,7 +5,6 @@
 #include <managers/entity_manager.h>
 #include <unordered_map>
 #include "sender.h"
-#include "common/animations.h"
 
 bomb_detonation::bomb_detonation(std::uint32_t bomb_id) : bomb_id(bomb_id) {
 //	onEveryRound([this]() {

@@ -6,8 +6,6 @@
 #include "chopper.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
-
 
 chopper::chopper(std::uint32_t entity_id) : entity_id(entity_id) {
     on_every_two_turns_from_next([this]() {

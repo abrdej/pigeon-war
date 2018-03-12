@@ -5,7 +5,6 @@
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>
 #include <sender.h>
-#include <common/animations.h>
 #include <common/make_message.h>
 #include "aura_of_destruction.h"
 #include "damage_dealers.h"

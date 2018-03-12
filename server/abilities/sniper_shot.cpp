@@ -4,7 +4,6 @@
 #include "sniper_shot.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 #include "managers/players_manager.h"
 
 void sniper_shot::prepare(std::uint32_t for_index) {

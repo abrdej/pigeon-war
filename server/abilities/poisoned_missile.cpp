@@ -8,7 +8,6 @@
 #include "damage_dealers.h"
 #include "abilities/moveable.h"
 #include "sender.h"
-#include "common/animations.h"
 
 void poisoned_missile::use(std::uint32_t index_on) {
 

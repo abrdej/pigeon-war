@@ -1,7 +1,6 @@
 #include <managers/entity_manager.h>
 #include <components/power_field.h>
 #include <sender.h>
-#include <common/animations.h>
 #include <components/damage_pack.h>
 #include <components/applied_effects.h>
 #include <common/make_message.h>

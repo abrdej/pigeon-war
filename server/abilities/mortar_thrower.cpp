@@ -1,7 +1,6 @@
 #include "mortar_thrower.h"
 
 #include <sender.h>
-#include <common/animations.h>
 #include <common/make_message.h>
 #include <managers/entity_manager.h>
 #include "rocket_launcher.h"

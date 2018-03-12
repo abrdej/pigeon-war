@@ -4,7 +4,6 @@
 #include "vicious_circle.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 vicious_circle::vicious_circle(std::uint32_t entity_id) : entity_id(entity_id) {
 }

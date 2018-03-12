@@ -3,7 +3,6 @@
 #include "bludgeon.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 bludgeon::bludgeon(std::uint32_t entity_id) {
 	after_player_turn(entity_id, [this]() {

@@ -4,7 +4,6 @@
 #include "warrior_blow.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 void warrior_blow::use(std::uint32_t index_on) {
 

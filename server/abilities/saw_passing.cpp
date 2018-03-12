@@ -5,7 +5,6 @@
 #include <common/make_message.h>
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 saw_passing::saw_passing(std::uint32_t entity_id) : entity_id(entity_id) {
 

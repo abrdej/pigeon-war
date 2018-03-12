@@ -5,7 +5,6 @@
 #include <components/applied_effects.h>
 #include <common/make_message.h>
 #include "uselessness.h"
-#include "common/animations.h"
 
 uselessness::uselessness(std::uint32_t entity_id) : entity_id(entity_id) {
 

@@ -4,7 +4,6 @@
 #include <iostream>
 #include <common/make_message.h>
 #include "sender.h"
-#include "common/animations.h"
 #include "components/damage_taker.h"
 
 rage::rage(std::uint32_t id) : entity_id(id) {

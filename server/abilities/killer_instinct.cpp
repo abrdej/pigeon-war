@@ -1,7 +1,6 @@
 #include <components/applied_effects.h>
 #include <core/board.h>
 #include <managers/entity_manager.h>
-#include <common/animations.h>
 #include "killer_instinct.h"
 #include "abilities.h"
 #include "sender.h"

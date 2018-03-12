@@ -1,7 +1,6 @@
 #include <common/make_message.h>
 #include "dodge.h"
 #include "sender.h"
-#include "common/animations.h"
 #include "components/damage_taker.h"
 
 dodge::dodge(std::uint32_t entity_id) {

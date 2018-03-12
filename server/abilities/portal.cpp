@@ -1,5 +1,4 @@
 #include <sender.h>
-#include <common/animations.h>
 #include <core/board.h>
 #include <managers/players_manager.h>
 #include <managers/entity_manager.h>

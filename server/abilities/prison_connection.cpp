@@ -5,7 +5,6 @@
 #include "damage_dealers.h"
 #include "managers/entity_manager.h"
 #include "sender.h"
-#include "common/animations.h"
 
 prison_connection::prison_connection(std::uint32_t entity_id)
 		: entity_id(entity_id) {}

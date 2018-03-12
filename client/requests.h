@@ -7,7 +7,6 @@
 
 #include <SFML/Network.hpp>
 #include <common/turn_status.h>
-#include <common/animations.h>
 #include <common/game_state.h>
 #include "board_container.h"
 #include "common/bitmaps.h"

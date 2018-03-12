@@ -6,7 +6,6 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 giant_blow::~giant_blow() {
     if (enemy_with_effect != std::numeric_limits<std::uint32_t>::max()) {

@@ -1,7 +1,6 @@
 #include <core/board.h>
 #include <components/applied_effects.h>
 #include <sender.h>
-#include <common/animations.h>
 #include <managers/players_manager.h>
 #include <common/make_message.h>
 #include "missile_of_doom.h"

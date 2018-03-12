@@ -1,6 +1,5 @@
 #include <core/path_finder.h>
 #include <core/states_controller.h>
-#include <common/animations.h>
 #include <sender.h>
 #include <common/make_message.h>
 #include "teleport.h"

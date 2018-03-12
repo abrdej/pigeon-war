@@ -8,7 +8,6 @@
 #include "abilities.h"
 #include "core/turn_system.h"
 #include "sender.h"
-#include "common/animations.h"
 
 void hypnosis::use(std::uint32_t index_on) {
 

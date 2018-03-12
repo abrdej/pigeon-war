@@ -7,7 +7,6 @@
 #include "kill.h"
 #include "damage_dealers.h"
 #include "sender.h"
-#include "common/animations.h"
 
 kill::kill() {
 
