@@ -21,7 +21,6 @@ public:
         internal_buffer += data;
         std::vector<std::string> messages;
 
-
         size_t pos = 0;
         std::string message;
         while ((pos = internal_buffer.find(delimiter)) != std::string::npos) {
@@ -29,7 +28,6 @@ public:
             messages.push_back(message);
             internal_buffer.erase(0, pos + delimiter.length());
         }
-
         return std::move(messages);
     }
 };

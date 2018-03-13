@@ -132,9 +132,13 @@ int main(int argc, char** argv) {
         bool single_client = pigeon_war_server.is_single_client();
 
 		if (client_id == players_manager::get_active_player_id() || single_client) {
+			std::cout << "on board1\n";
 			g.on_board(x, y);
+			std::cout << "on board2\n";
 			pigeon_war_server.send_notification(make_local_state_message(get_local_state(g)));
+			std::cout << "on board3\n";
 			pigeon_war_server.send_notification(make_game_state_message(get_game_state(g)));
+			std::cout << "on board4\n";
 		}
 	});
 
