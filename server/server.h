@@ -12,7 +12,6 @@
 #include <boost/next_prior.hpp>
 #include <boost/lockfree/spsc_queue.hpp>
 #include <common/message_types.h>
-#include "packets_makers.h"
 #include "components/damage_taker.h"
 #include "json.hpp"
 #include "message_joiner.h"

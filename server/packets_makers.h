@@ -1,8 +1,0 @@
-//
-// Created by abrdej on 05.01.18.
-//
-
-#ifndef PIGEONWAR_PACKETS_MAKERS_H
-#define PIGEONWAR_PACKETS_MAKERS_H
-
-#endif //PIGEONWAR_PACKETS_MAKERS_H
