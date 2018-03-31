@@ -29,7 +29,7 @@ public:
 
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(std::make_shared<moveable>(3));
-        abilities_ptr->add_ability(std::make_shared<bomb>());
+        abilities_ptr->add_ability(std::make_shared<bomb>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<detonation>(entity.entity_id));
 
         return entity;

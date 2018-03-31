@@ -131,17 +131,18 @@ std::vector<std::string> get_possible_to_choose_entities() {
             //"killer",
             "handthrower",
             "guardian",
-            //"grenadier",
+            "grenadier",
             "golem",
-            "gin",
+            //"gin",
+            "reaper",
             "giant",
             "druid",
             "droid",
-            "dragon",
+            //"dragon",
             "destroyer",
             //"creature",
-            "commander",
-            "combat_robot"
+            "commander"
+            //"combat_robot"
     };
     return std::move(result);
 }

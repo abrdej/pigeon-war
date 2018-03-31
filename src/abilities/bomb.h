@@ -35,32 +35,21 @@ private:
 	boost::circular_buffer<std::shared_ptr<std::uint32_t>>* buffer{nullptr};
 };
 
-struct bomb_instance {
-	static auto create(std::uint32_t entity_id)
-	{
-		base_entity entity;
-		entity.entity_id = entity_id;
-		entity.name = "Bomba";
-		entity.add<health_field>();
-		auto abilities_ptr = entity.add<abilities>();
-		abilities_ptr->add_ability(std::make_shared<bomb_detonation>(entity_id));
-		return entity;
-	}
-};
-
 class bomb final : public path_target_ability<4, target_types::moving, true>,
 				   protected turn_callback_helper {
 public:
-	bomb();
+	explicit bomb(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return "bomb";
 	}
 
-	void prepare(std::uint32_t for_index) override;
-	void use(std::uint32_t index_on);
+	void use(std::uint32_t index_on) override;
 
 private:
+	std::uint32_t entity_id;
+	std::int32_t bombs{0};
+
 };
 
 

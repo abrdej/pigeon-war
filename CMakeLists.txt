@@ -327,7 +327,7 @@ set(SOURCE_FILES
         src/utils/logging.h
         src/components/health_field.h
         src/ai/behavior_tree.h
-        )
+        src/entities/reaper.cpp src/entities/reaper.h src/abilities/charge.cpp src/abilities/charge.h src/entities/bomb_instance.cpp src/entities/bomb_instance.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server ${PLATFORM_LIBS} ${Boost_LOG_LIBRARY} ${Boost_SYSTEM_LIBRARY})

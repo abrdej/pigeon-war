@@ -52,7 +52,9 @@ std::uint32_t entities_factory::create(const std::string& entity_name) {
             DEF_CREATOR(destroyer),
             DEF_CREATOR(creature),
             DEF_CREATOR(commander),
-            DEF_CREATOR(combat_robot)
+            DEF_CREATOR(combat_robot),
+            DEF_CREATOR(reaper),
+            DEF_CREATOR(bomb_instance)
     };
 
     return creators.at(entity_name)();

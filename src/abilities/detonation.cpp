@@ -15,17 +15,9 @@ detonation::detonation(std::uint32_t entity_id) {
             std::vector<std::uint32_t> neighbors;
             board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);
 
-            auto from_cr = board::to_pos(board::index_for(entity_id));
-            from_cr.first -= 1;
-            from_cr.second -= 1;
+            auto entity_index = board::index_for(entity_id);
 
-            board::take(board::index_for(entity_id));
-
-//            animations_queue::push_animation(animation_types::flash_bitmap,
-//                                             board::to_index(from_cr.first, from_cr.second),
-//                                             150,
-//                                             0,
-//                                             "detonation_anim);
+            sender::send(make_action_message("detonation", entity_index));
 
             for (auto& index : neighbors) {
                 if (!board::empty(index))

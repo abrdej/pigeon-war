@@ -40,7 +40,8 @@ std::string make_remove_entity_message(std::uint32_t entity_id);
 
 std::string make_create_entity_message(std::uint32_t entity_id,
                                        const std::string& name,
-                                       std::int32_t health);
+                                       std::int32_t health,
+                                       std::uint32_t index);
 
 std::string make_move_entity_message(std::uint32_t entity_id,
                                      std::uint32_t from_index,

@@ -12,7 +12,7 @@ public:
     explicit detonation(std::uint32_t entity_id);
 
     bitmap_key get_bitmap_key() const override {
-        return "detonation";
+        return "selfdetonation";
     }
 
 private:

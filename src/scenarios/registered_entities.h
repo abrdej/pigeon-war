@@ -45,6 +45,8 @@
 #include <entities/gin.h>
 #include <entities/wizzard.h>
 #include <entities/dragon.h>
+#include <entities/reaper.h>
+#include <entities/bomb_instance.h>
 
 template <typename Tuple, typename F, size_t ...Indices>
 void for_each_impl(Tuple&& tuple, F&& f, std::index_sequence<Indices...>) {
@@ -95,7 +97,8 @@ using Entites = std::tuple<shooter,
         golem,
 
 //        mechanical_saw,
-        gin,
+        //gin,
+        reaper,
         soul_hunter,
         spider>;
 

@@ -3,7 +3,7 @@
 #include <core/states_controller.h>
 #include <core/board.h>
 #include <managers/entity_manager.h>
-#include <unordered_map>
+#include <entities/entities_factory.h>
 #include "sender.h"
 
 bomb_detonation::bomb_detonation(std::uint32_t bomb_id) : bomb_id(bomb_id) {
@@ -95,15 +95,26 @@ void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 	entity_manager::destroy(bomb_id);
 }
 
-bomb::bomb() {
-
-}
-
-void bomb::prepare(std::uint32_t for_index) {
-
+bomb::bomb(std::uint32_t entity_id) : entity_id(entity_id) {
+	after_player_turn(entity_id, [this]() {
+		++bombs;
+	});
 }
 
 void bomb::use(std::uint32_t index) {
+	if (bombs == 0)
+		return;
 
+	auto bomb_id = entities_factory::create("bomb_instance");
 
+	players_manager::add_entity_for_player(players_manager::player_for_entity(entity_id), bomb_id);
+	board::insert(index, bomb_id);
+
+    auto health = entity_manager::get(bomb_id).get<health_field>()->health;
+    auto name = entity_manager::get(bomb_id).name;
+
+//	sender::send(make_action_message("throw_bomb", index));
+	sender::send(make_create_entity_message(bomb_id, name, health, index));
+
+	--bombs;
 }
