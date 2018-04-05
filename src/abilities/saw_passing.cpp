@@ -37,7 +37,7 @@ void saw_passing::use(std::uint32_t index_on) {
 
 			auto index = board::to_index(to_pos.first + x, to_pos.second);
 
-			if (!board::empty(index)) {
+			if (!board::empty(index) && !players_manager::enemy_entity(players_manager::player_for_entity(entity_id), entity_id)) {
 				damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(index), entity_id));
 
 				if (std::abs(x) != std::abs(xx)) {
@@ -50,7 +50,7 @@ void saw_passing::use(std::uint32_t index_on) {
 
 			auto index = board::to_index(to_pos.first, to_pos.second + y);
 
-			if (!board::empty(index)) {
+			if (!board::empty(index) && !players_manager::enemy_entity(players_manager::player_for_entity(entity_id), entity_id)) {
 				damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(index), entity_id));
 
 				if (std::abs(y) != std::abs(yy)) {

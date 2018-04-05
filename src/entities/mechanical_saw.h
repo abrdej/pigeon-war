@@ -8,6 +8,7 @@
 #include <abilities/saw_passing.h>
 #include "entity.h"
 #include "abilities/moveable.h"
+#include "abilities/repair.h"
 #include "components/damage_taker.h"
 #include "components/applied_effects.h"
 
@@ -26,6 +27,7 @@ public:
 
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(std::make_shared<saw_passing>(entity.entity_id));
+        abilities_ptr->add_ability(std::make_shared<repair>(entity.entity_id));
 
         return entity;
     }

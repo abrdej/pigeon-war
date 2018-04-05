@@ -100,7 +100,7 @@ void calc_helper(const std::array<std::pair<std::int32_t, std::int32_t>, N>& ops
 			next_pos.second += (op.second * i);
 
 			if (next_pos.first > 0 && next_pos.second > 0
-				&& next_pos.first <= board::cols_n && next_pos.second <= board::rows_n) {
+				&& next_pos.first < board::cols_n && next_pos.second < board::rows_n) {
 				auto index = board::to_index(next_pos.first, next_pos.second);
 
 				costs.push_back(i);

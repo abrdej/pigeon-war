@@ -9,6 +9,7 @@
 #include <messages/make_message.h>
 
 #include "power_cost_ability.h"
+#include "damage_dealers.h"
 
 cure::cure(std::uint32_t entity_id)
         : entity_id(entity_id) {}
@@ -28,8 +29,7 @@ void cure::use(std::uint32_t index_on) {
 
 	sender::send(make_action_message("cure", index_on));
 
-    entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
-                                                                     friend_id));
+	standard_healing(healing_to_base_health(healing_amount_per_turn, friend_id));
 
     auto healing_amount_per_turn = this->healing_amount_per_turn;
     auto healing_duration = this->healing_duration;
@@ -41,8 +41,7 @@ void cure::use(std::uint32_t index_on) {
                                                                                           make_action_message("cure",
                                                                                                               board::index_for(
                                                                                                                       friend_id)));
-																				  entity_manager::get(friend_id).get<damage_taker>()->heal(healing(healing_amount_per_turn,
-																																				   friend_id));
+																				  standard_healing(healing_to_base_health(healing_amount_per_turn, friend_id));
 																			  }
 																		  });
 

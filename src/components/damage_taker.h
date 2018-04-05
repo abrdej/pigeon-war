@@ -98,17 +98,21 @@ public:
 		return received_damage;
 	}
 
-	std::int32_t heal(const damage_pack& heal_pack)
+	std::int32_t heal(const heal_pack& heal_pack)
 	{
-		auto receiver_entity = entity_manager::get(heal_pack.damage_receiver_id);
+		auto receiver_entity = entity_manager::get(heal_pack.receiver_id);
 
 		auto health_pack = receiver_entity.get<health_field>();
 
-		auto heal_amount = (std::min)(health_pack->health, heal_pack.damage_value);
+		auto heal_amount = heal_pack.heal_value;
+
+		if (heal_pack.heal_type == heal_types::to_base_health) {
+			heal_amount = std::min(heal_amount, health_pack->base_health - health_pack->health);
+		}
 
 		health_pack->health += heal_amount;
 
-		play_change_health_animation(board::index_for(heal_pack.damage_receiver_id), heal_amount);
+		play_change_health_animation(board::index_for(heal_pack.receiver_id), heal_amount);
 
 		return heal_amount;
 	}

@@ -17,8 +17,8 @@ endif()
 
 if(UNIX)
     set(PLATFORM_LIBS pthread)
-    set(BOOST_INCLUDEDIR "/usr/include")
-    set(BOOST_LIBRARYDIR "/usr/lib/x86_64-linux-gnu")
+    set(BOOST_INCLUDEDIR "/home/abrdej/libraries/boost_1_66_0")
+    set(BOOST_LIBRARYDIR "/home/abrdej/libraries/boost_1_66_0/stage/lib")
 endif()
 
 if (WIN32)
@@ -327,7 +327,7 @@ set(SOURCE_FILES
         src/utils/logging.h
         src/components/health_field.h
         src/ai/behavior_tree.h
-        src/entities/reaper.cpp src/entities/reaper.h src/abilities/charge.cpp src/abilities/charge.h src/entities/bomb_instance.cpp src/entities/bomb_instance.h)
+        src/entities/reaper.cpp src/entities/reaper.h src/abilities/charge.cpp src/abilities/charge.h src/entities/bomb_instance.cpp src/entities/bomb_instance.h src/abilities/repair.cpp src/abilities/repair.h src/entities/eye.cpp src/entities/eye.h src/abilities/transmission.cpp src/abilities/transmission.h src/abilities/eye_shoot.cpp src/abilities/eye_shoot.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server ${PLATFORM_LIBS} ${Boost_LOG_LIBRARY} ${Boost_SYSTEM_LIBRARY})

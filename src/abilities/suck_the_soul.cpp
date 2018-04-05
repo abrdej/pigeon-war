@@ -25,8 +25,7 @@ suck_the_soul::suck_the_soul(std::uint32_t entity_id) {
 				soul_health -= damage_for_soul_health;
 				soul_health = std::max(0, soul_health);
 
-				entity_manager::get(enemy_id).get<damage_taker>()->heal(healing(soul_health,
-																				enemy_id));
+				standard_healing(healing_to_base_health(soul_health, enemy_id));
 
 				remove_effect(enemy_id, "sucked soul");
 			} else {
@@ -87,8 +86,7 @@ void suck_the_soul::use(std::uint32_t index_on) {
                                                                                                          board::index_for(
                                                                                                                  enemy_id)));
 
-																			 entity_manager::get(enemy_id).get<damage_taker>()->heal(healing(suck_damage,
-																																			 enemy_id));
+																			 standard_healing(healing_to_base_health(suck_damage, enemy_id));
 
 																			 if (entity_manager::alive(caster_id)) {
 																				 souls.erase(std::begin(souls) + souls_mapped[enemy_id]);

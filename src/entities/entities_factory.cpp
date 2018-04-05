@@ -1,7 +1,6 @@
 #include "entities_factory.h"
 
 #include "scenarios/registered_entities.h"
-#include "grenadier.h"
 
 using creator = std::pair<std::string, std::function<std::uint32_t()>>;
 
@@ -54,7 +53,8 @@ std::uint32_t entities_factory::create(const std::string& entity_name) {
             DEF_CREATOR(commander),
             DEF_CREATOR(combat_robot),
             DEF_CREATOR(reaper),
-            DEF_CREATOR(bomb_instance)
+            DEF_CREATOR(bomb_instance),
+            DEF_CREATOR(eye)
     };
 
     return creators.at(entity_name)();

@@ -348,6 +348,8 @@ public:
                     std::cout << "in: " << message << "\n";
                 }
             }
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(25));
         }
         io_service_thread.join();
 	}

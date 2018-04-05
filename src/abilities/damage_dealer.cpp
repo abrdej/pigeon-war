@@ -33,8 +33,7 @@ std::int32_t damage_dealers::standard_damage_dealer(const damage_pack& dmg)
 	return dealt_damage;
 }
 
-std::int32_t damage_dealers::standard_healing(const damage_pack& dmg) {
+std::int32_t standard_healing(const heal_pack& hl) {
 
-	return entity_manager::get(dmg.damage_receiver_id).get<damage_taker>()->heal(healing(dmg.damage_value,
-																						 dmg.damage_receiver_id));
+	return entity_manager::get(hl.receiver_id).get<damage_taker>()->heal(hl);
 }

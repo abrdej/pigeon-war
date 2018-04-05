@@ -47,6 +47,8 @@
 #include <entities/dragon.h>
 #include <entities/reaper.h>
 #include <entities/bomb_instance.h>
+#include <entities/grenadier.h>
+#include <entities/eye.h>
 
 template <typename Tuple, typename F, size_t ...Indices>
 void for_each_impl(Tuple&& tuple, F&& f, std::index_sequence<Indices...>) {
