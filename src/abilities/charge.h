@@ -21,7 +21,7 @@ public:
 private:
     void use(std::uint32_t index_on) override;
 
-    std::int32_t damage{15};
+    std::int32_t damage{13};
     bool used{false};
     bool exhausted{false};
 };

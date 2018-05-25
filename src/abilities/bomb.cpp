@@ -113,7 +113,6 @@ void bomb::use(std::uint32_t index) {
     auto health = entity_manager::get(bomb_id).get<health_field>()->health;
     auto name = entity_manager::get(bomb_id).name;
 
-//	sender::send(make_action_message("throw_bomb", index));
 	sender::send(make_create_entity_message(bomb_id, name, health, index));
 
 	--bombs;
