@@ -11,7 +11,7 @@ dodge::dodge(std::uint32_t entity_id) {
 
 			counter = 0;
 
-			auto index = board::index_for(entity_id);
+			auto index = game::get<board>().index_for(entity_id);
 
 			sender::send(make_action_message("dodge", index));
 

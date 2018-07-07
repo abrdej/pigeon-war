@@ -10,7 +10,7 @@ bomb_detonation::bomb_detonation(std::uint32_t bomb_id) : bomb_id(bomb_id) {
 //	onEveryRound([this]() {
 //
 //		if (waited) {
-//			auto index = board::index_for(this->bomb_id);
+//			auto index = game::get<board>().index_for(this->bomb_id);
 //			use(index);
 //		}
 //
@@ -43,7 +43,7 @@ void bomb_detonation::use(std::uint32_t for_index) {
 
 	for (auto& index : neightbords)
 	{
-		auto id = board::at(index);
+		auto id = game::get<board>().at(index);
 		auto it = std::find_if(buffer->begin(), buffer->end(), [id](auto& ptr) {
 			return *ptr == id;
 		});
@@ -54,17 +54,17 @@ void bomb_detonation::use(std::uint32_t for_index) {
 
 	for (auto& index : neightbords)
 	{
-		if (!board::empty(index)) {
-			damage_dealers::standard_damage_dealer(special_damage(damage, board::at(index)));
+		if (!game::get<board>().empty(index)) {
+			damage_dealers::standard_damage_dealer(special_damage(damage, game::get<board>().at(index)));
 		}
 	}
 
-	entity_manager::destroy(bomb_id);
+	game::get<entity_manager>().destroy(bomb_id);
 }
 
 void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 
-	auto index = board::index_for(bomb_id);
+	auto index = game::get<board>().index_for(bomb_id);
 
 	std::vector<std::uint32_t> neightbords;
 	board_helper::neighboring_fields(index, neightbords, false);
@@ -75,7 +75,7 @@ void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 //
 //	for (auto& index : neightbords)
 //	{
-//		auto id = board::at(index);
+//		auto id = game::get<board>().at(index);
 //		auto it = std::find_if(buffer->begin(), buffer->end(), [id](auto& ptr) {
 //			return *ptr == id;
 //		});
@@ -86,13 +86,13 @@ void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 
 	for (auto& index : neightbords)
 	{
-		if (!board::empty(index)) {
-			damage_dealers::standard_damage_dealer(special_damage(damage, board::at(index)));
+		if (!game::get<board>().empty(index)) {
+			damage_dealers::standard_damage_dealer(special_damage(damage, game::get<board>().at(index)));
 		}
 
 	}
 
-	entity_manager::destroy(bomb_id);
+	game::get<entity_manager>().destroy(bomb_id);
 }
 
 bomb::bomb(std::uint32_t entity_id) : entity_id(entity_id) {
@@ -107,11 +107,11 @@ void bomb::use(std::uint32_t index) {
 
 	auto bomb_id = entities_factory::create("bomb_instance");
 
-	players_manager::add_entity_for_player(players_manager::player_for_entity(entity_id), bomb_id);
-	board::insert(index, bomb_id);
+	game::get<players_manager>().add_entity_for_player(game::get<players_manager>().player_for_entity(entity_id), bomb_id);
+	game::get<board>().insert(index, bomb_id);
 
-    auto health = entity_manager::get(bomb_id).get<health_field>()->health;
-    auto name = entity_manager::get(bomb_id).name;
+    auto health = game::get<entity_manager>().get(bomb_id).get<health_field>()->health;
+    auto name = game::get<entity_manager>().get(bomb_id).name;
 
 	sender::send(make_create_entity_message(bomb_id, name, health, index));
 

@@ -1,10 +1,10 @@
 #include <iostream>
 #include "turn_system.h"
 
-std::uint32_t turn_system::turn_n = 0;
-std::unordered_multimap<std::uint32_t, std::function<void()>> turn_system::tasks;
-
-turn_signal turn_system::next_turn_signal;
+//std::uint32_t turn_system::turn_n = 0;
+//std::unordered_multimap<std::uint32_t, std::function<void()>> turn_system::tasks;
+//
+//turn_signal turn_system::next_turn_signal;
 
 void turn_system::end_turn()
 {

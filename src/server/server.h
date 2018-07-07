@@ -321,7 +321,6 @@ public:
         while (is_running) {
 
             std::string message;
-
             while (messages_to_process.pop(message)) {
 
                 //auto pos = message.find("{");
@@ -348,7 +347,6 @@ public:
                     std::cout << "in: " << message << "\n";
                 }
             }
-
             std::this_thread::sleep_for(std::chrono::milliseconds(25));
         }
         io_service_thread.join();

@@ -10,7 +10,7 @@ recovery::recovery(std::uint32_t id) : entity_id(id) {
 //    onEveryRound([this]() {
 //        ++no_damage_counter;
 //
-//        auto this_index = board::index_for(entity_id);
+//        auto this_index = game::get<board>().index_for(entity_id);
 //        if (last_index == this_index)
 //            ++no_move_counter;
 //        else
@@ -28,7 +28,7 @@ recovery::recovery(std::uint32_t id) : entity_id(id) {
 //                                                            damage_types::UNDEFINED,
 //                                                            entity_id));
 //
-//                auto index = board::index_for(entity_id);
+//                auto index = game::get<board>().index_for(entity_id);
 //
 //                animations_queue::push_animation(animation_types::flash_bitmap,
 //                                                 index,

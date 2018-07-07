@@ -16,7 +16,7 @@ barrier::barrier(std::uint32_t entity_id) : entity_id(entity_id) {
 
 			damage = dmg.damage_value - damage_for_barrier;
 
-			play_change_health_animation(board::index_for(this->entity_id), damage_for_barrier);
+			play_change_health_animation(game::get<board>().index_for(this->entity_id), damage_for_barrier);
 		}
 
 		auto final_damage = std::min(health_pack.health, damage);

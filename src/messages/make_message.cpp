@@ -3,6 +3,12 @@
 
 using nlohmann::json;
 
+std::string make_map_size_message(const std::pair<std::uint32_t, std::uint32_t>& map_size) {
+    json data;
+    data["map_size"] = map_size;
+    return data.dump();
+}
+
 std::string make_client_id_message(std::uint32_t client_id) {
     json data;
     data["client_id"] = client_id;
@@ -28,7 +34,7 @@ std::string make_entities_healths_message(const std::unordered_map<std::uint32_t
 }
 
 std::string make_entities_pack_message(const std::unordered_map<std::uint32_t,
-        std::tuple<std::string, std::int32_t, std::uint32_t>>& entities_pack) {
+        std::tuple<std::string, std::int32_t, std::int32_t, std::uint32_t>>& entities_pack) {
     json data;
     data["entities_pack"] = entities_pack;
     return data.dump();

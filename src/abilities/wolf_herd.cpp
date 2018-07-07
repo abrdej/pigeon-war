@@ -26,10 +26,10 @@ void wolf_herd::use(std::uint32_t index_on) {
 
 		std::int32_t place_idx = uniform_dist(dre);
 
-		auto wolf_id = entity_manager::create<wolf>();
-		auto player_name = players_manager::get_active_player_id();
-		players_manager::add_entity_for_player(player_name, wolf_id);
-		board::insert(neighbors[place_idx], wolf_id);
+		auto wolf_id = game::get<entity_manager>().create<wolf>();
+		auto player_name = game::get<players_manager>().get_active_player_id();
+		game::get<players_manager>().add_entity_for_player(player_name, wolf_id);
+		game::get<board>().insert(neighbors[place_idx], wolf_id);
 
 		neighbors.erase(neighbors.begin() + place_idx);
 	}

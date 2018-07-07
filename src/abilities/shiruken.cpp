@@ -10,9 +10,9 @@ void shiruken::use(std::uint32_t index_on) {
         return;
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = board::at(used_from_index);
+    auto entity_id = game::get<board>().at(used_from_index);
 
-    auto enemy_id = board::at(index_on);
+    auto enemy_id = game::get<board>().at(index_on);
 
     auto has_death_mark = has_effect(enemy_id, "death_mark");
 

@@ -25,7 +25,7 @@ void teleport::use(std::uint32_t from_index, std::uint32_t to_index) {
 
 	sender::send(make_action_message("teleport", from_index, to_index));
 
-	board::move(from_index, to_index);
+	game::get<board>().move(from_index, to_index);
 
 	states::state_controller::selected_index_ = to_index;
 

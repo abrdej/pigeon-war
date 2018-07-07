@@ -19,7 +19,7 @@ suck_the_soul::suck_the_soul(std::uint32_t entity_id) {
         for (auto&& soul_pack : souls) {
             auto enemy_id = souls.front().first;
 
-			if (entity_manager::alive(enemy_id)) {
+			if (game::get<entity_manager>().alive(enemy_id)) {
 				auto soul_health = souls.front().second;
 
 				soul_health -= damage_for_soul_health;
@@ -54,15 +54,15 @@ void suck_the_soul::use(std::uint32_t index_on) {
 	used = true;
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = board::at(used_from_index);
-    auto enemy_id = board::at(index_on);
+    auto caster_id = game::get<board>().at(used_from_index);
+    auto enemy_id = game::get<board>().at(index_on);
 
 
     sender::send(make_action_message("drain", used_from_index, index_on));
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 
-	if (!entity_manager::alive(enemy_id)) {
+	if (!game::get<entity_manager>().alive(enemy_id)) {
 		return;
 	}
 
@@ -74,7 +74,7 @@ void suck_the_soul::use(std::uint32_t index_on) {
 
 		auto suck_damage = damage_dealers::standard_damage_dealer(magic_damage(suck_amount, enemy_id, caster_id));
 
-		if (!entity_manager::alive(enemy_id)) {
+		if (!game::get<entity_manager>().alive(enemy_id)) {
 			return;
 		}
 
@@ -83,12 +83,12 @@ void suck_the_soul::use(std::uint32_t index_on) {
 
 																			 sender::send(
                                                                                      make_action_message("soul_out",
-                                                                                                         board::index_for(
+                                                                                                         game::get<board>().index_for(
                                                                                                                  enemy_id)));
 
 																			 standard_healing(healing_to_base_health(suck_damage, enemy_id));
 
-																			 if (entity_manager::alive(caster_id)) {
+																			 if (game::get<entity_manager>().alive(caster_id)) {
 																				 souls.erase(std::begin(souls) + souls_mapped[enemy_id]);
 																				 souls_mapped.erase(enemy_id);
 																			 }

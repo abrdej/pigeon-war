@@ -19,7 +19,7 @@ immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
 
             immortality_holder = make_after_n_round_callback_holder(duration, [this]() {
                 set_destructible(this->entity_id, true);
-                entity_manager::destroy(this->entity_id);
+                game::get<entity_manager>().destroy(this->entity_id);
 
                 std::cout << "destroy\n";
             });

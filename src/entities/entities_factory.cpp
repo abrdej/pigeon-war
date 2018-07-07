@@ -7,7 +7,7 @@ using creator = std::pair<std::string, std::function<std::uint32_t()>>;
 template <typename T>
 creator def_creator(const std::string& entity_name) {
     return creator(entity_name, []() {
-        return entity_manager::create<T>();
+        return game::get<entity_manager>().create<T>();
     });
 }
 
@@ -21,6 +21,7 @@ std::uint32_t entities_factory::create(const std::string& entity_name) {
             DEF_CREATOR(wall),
             DEF_CREATOR(tree),
             DEF_CREATOR(fir),
+            DEF_CREATOR(fire),
             DEF_CREATOR(wretch),
             DEF_CREATOR(wizzard),
             DEF_CREATOR(warrior),

@@ -13,21 +13,21 @@ void rocket_launcher::use(std::uint32_t index_on) {
 		return;
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(used_from_index);
+	auto entity_id = game::get<board>().at(used_from_index);
 
-	auto mortal_thrower_ptr = entity_manager::get(entity_id).get<abilities>()->get<mortar_thrower>();
+	auto mortal_thrower_ptr = game::get<entity_manager>().get(entity_id).get<abilities>()->get<mortar_thrower>();
 	if (mortal_thrower_ptr->was_used())
 		return;
 
-	bool has_bonus = *entity_manager::get(entity_id).get<rocket_types>() != rocket_types::long_range_rocket;
-    *entity_manager::get(entity_id).get<rocket_types>() = rocket_types::long_range_rocket;
+	bool has_bonus = *game::get<entity_manager>().get(entity_id).get<rocket_types>() != rocket_types::long_range_rocket;
+    *game::get<entity_manager>().get(entity_id).get<rocket_types>() = rocket_types::long_range_rocket;
 
     std::cout << "has_bonus: " << has_bonus << "\n";
 
-	auto enemy_id = board::at(index_on);
+	auto enemy_id = game::get<board>().at(index_on);
 
-	auto used_from_pos = board::to_pos(used_from_index);
-	auto used_to_pos = board::to_pos(index_on);
+	auto used_from_pos = game::get<board>().to_pos(used_from_index);
+	auto used_to_pos = game::get<board>().to_pos(index_on);
 
 	auto distance = std::max(std::abs(static_cast<std::int32_t>(used_from_pos.first) - static_cast<std::int32_t>(used_to_pos.first)),
 							 std::abs(static_cast<std::int32_t>(used_from_pos.second) - static_cast<std::int32_t>(used_to_pos.second)));

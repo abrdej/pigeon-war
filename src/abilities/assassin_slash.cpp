@@ -25,8 +25,8 @@ void assassin_slash::prepare(std::uint32_t for_index) {
     states::state_controller::possible_movements_.clear();
 
     for (auto&& field_index : possible_fields) {
-        if (!board::empty(field_index) && players_funcs::enemy_entity(field_index)) {
-            auto enemy_id = board::at(field_index);
+        if (!game::get<board>().empty(field_index) && players_funcs::enemy_entity(field_index)) {
+            auto enemy_id = game::get<board>().at(field_index);
             auto has_death_mark = has_effect(enemy_id, "death_mark");
             if (has_death_mark) {
                 states::state_controller::possible_movements_.push_back(field_index);
@@ -65,28 +65,28 @@ void assassin_slash::use(std::uint32_t index_on) {
 
 //    animations_queue::push_animation(animation_types::flash_bitmap, marked_target_index, 150, 0, "assassin_slash);
 
-    auto entity_id = board::take(used_from_index);
-    board::give_back(entity_id, index_on);
+    auto entity_id = game::get<board>().take(used_from_index);
+    game::get<board>().give_back(entity_id, index_on);
 
     states::state_controller::selected_index_ = index_on;
 
     play_animation(index_on, marked_target_index);
 
-    auto enemy_id = board::at(marked_target_index);
+    auto enemy_id = game::get<board>().at(marked_target_index);
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
 
-    if (entity_manager::alive(enemy_id)) {
+    if (game::get<entity_manager>().alive(enemy_id)) {
         remove_effect(enemy_id, "death_mark");
     }
 }
 
 void assassin_slash::play_animation(std::uint32_t from_index, std::uint32_t to_index) {
-    auto entity_id = board::take(from_index);
+    auto entity_id = game::get<board>().take(from_index);
 
 //    animations_queue::push_animation(animation_types::move, from_index, to_index, entity_id, "none);
 //    animations_queue::push_animation(animation_types::flash_bitmap, to_index, 150, 0, "ninja_attack);
 //    animations_queue::push_animation(animation_types::move, to_index, from_index, entity_id, "none);
 
-    board::give_back(entity_id, from_index);
+    game::get<board>().give_back(entity_id, from_index);
 }

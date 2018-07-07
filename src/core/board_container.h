@@ -13,8 +13,6 @@
 
 class board_container final {
 public:
-	static const std::uint32_t cols_n = 15;
-	static const std::uint32_t rows_n = 10;
 	static const std::uint32_t empty_id = std::numeric_limits<std::uint32_t>::max();
 
 	inline void insert(std::uint32_t on_index, std::uint32_t entity_id)
@@ -103,14 +101,21 @@ public:
 	{
 		return std::make_pair(index % board_container::cols_n, index / board_container::cols_n);
 	}
-	inline static std::uint32_t to_index(std::uint32_t col, std::uint32_t row)
+	inline std::uint32_t to_index(std::uint32_t col, std::uint32_t row)
 	{
-		return col + row * board_container::cols_n;
+		return col + row * cols_n;
 	}
 	inline bool is_valid(std::uint32_t col, std::uint32_t row) {
 		return col >= 0 && col < cols_n && row >= 0 && row < rows_n;
 	}
-    std::array<std::vector<std::uint32_t>, cols_n * rows_n> fields_;
+    void set_size(std::uint32_t cols, std::uint32_t rows) {
+        cols_n = cols;
+        rows_n = rows;
+        fields_.resize(cols_n * rows_n);
+    }
+    std::uint32_t cols_n{0};
+    std::uint32_t rows_n{0};
+    std::vector<std::vector<std::uint32_t>> fields_;
 };
 
 #endif //PIGEONWAR_BOARD_CONTAINER_H

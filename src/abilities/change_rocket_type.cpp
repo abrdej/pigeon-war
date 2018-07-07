@@ -11,7 +11,7 @@ void change_rocket_type::use(std::uint32_t index_on) {
 	if (used)
 		return;
 
-	auto entity = entity_manager::get(entity_id);
+	auto entity = game::get<entity_manager>().get(entity_id);
 	auto rocket_launcher_ptr = entity.get<abilities>()->get<rocket_launcher>();
 
 	if (rocket_launcher_ptr->was_used()) {

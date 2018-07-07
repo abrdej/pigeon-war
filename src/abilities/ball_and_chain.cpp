@@ -15,9 +15,9 @@ void ball_and_chain::use(std::uint32_t index_on) {
 	if (used_)
 		return;
 
-	auto enemy_id = board::at(index_on);
+	auto enemy_id = game::get<board>().at(index_on);
 
-	auto abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
+	auto abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
 
 	auto moveable_ptr =  std::dynamic_pointer_cast<moveable_base>(abilities_ptr->of_type(ability_types::moving));
 	if (moveable_ptr) {
@@ -30,7 +30,7 @@ void ball_and_chain::use(std::uint32_t index_on) {
 				make_after_n_round_callback_holder(duration,
 												   [ball_and_chain_callback_id, enemy_id]() mutable {
 
-													   auto inner_enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
+													   auto inner_enemy_abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
 													   auto inner_moveable_ptr = std::dynamic_pointer_cast<moveable_base>(inner_enemy_abilities_ptr->of_type(ability_types::moving));
 
 													   if (inner_moveable_ptr) {

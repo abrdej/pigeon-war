@@ -22,7 +22,7 @@
 //		return *impl;
 //	}
 //
-//	std::array<std::unordered_map<std::uint32_t, std::shared_ptr<effect>>, board::cols_n * board::rows_n> effects;
+//	std::array<std::unordered_map<std::uint32_t, std::shared_ptr<effect>>, game::get<board>().cols_n * game::get<board>().rows_n> effects;
 //
 //public:
 //	static std::uint32_t put_effect(std::uint32_t board_index, const std::shared_ptr<effect>& x) {

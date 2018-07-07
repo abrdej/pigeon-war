@@ -13,16 +13,16 @@ void eye_shoot::use(std::uint32_t to_index) {
         return;
 
     auto from_index = states::state_controller::selected_index_;
-    auto entity_id = board::at(from_index);
+    auto entity_id = game::get<board>().at(from_index);
 
     sender::send(make_action_message("eye_shoot", from_index, to_index));
 
     damage_dealers::standard_damage_dealer(ranged_damage(base_damage,
-                                                         board::at(to_index),
+                                                         game::get<board>().at(to_index),
                                                          entity_id));
 
-    auto from_pos = board::to_pos(from_index);
-    auto to_pos = board::to_pos(to_index);
+    auto from_pos = game::get<board>().to_pos(from_index);
+    auto to_pos = game::get<board>().to_pos(to_index);
 
     auto dx = from_pos.first - to_pos.first;
     auto dy = from_pos.second - to_pos.second;
@@ -35,9 +35,9 @@ void eye_shoot::use(std::uint32_t to_index) {
     if (dx == 0) {
         for (int i = -1; i <= 1; i+=2) {
             for (auto shift : shifts) {
-                auto index = board::to_index(to_pos.first + i * shift, to_pos.second);
+                auto index = game::get<board>().to_index(to_pos.first + i * shift, to_pos.second);
                 index_shoot = index;
-                if (!board::empty(index)) {
+                if (!game::get<board>().empty(index)) {
                     indexes.emplace_back(index);
                     break;
                 }
@@ -47,9 +47,9 @@ void eye_shoot::use(std::uint32_t to_index) {
     } else {
         for (int i = -1; i <= 1; i+=2) {
             for (auto shift : shifts) {
-                auto index = board::to_index(to_pos.first, to_pos.second + i * shift);
+                auto index = game::get<board>().to_index(to_pos.first, to_pos.second + i * shift);
                 index_shoot = index;
-                if (!board::empty(index)) {
+                if (!game::get<board>().empty(index)) {
                     indexes.emplace_back(index);
                     break;
                 }
@@ -61,9 +61,9 @@ void eye_shoot::use(std::uint32_t to_index) {
     sender::send(make_action_message("eye_shoot_to_sides", to_index, sides_indexes));
 
     for (auto&& index : indexes) {
-        if (!board::empty(index))
+        if (!game::get<board>().empty(index))
             damage_dealers::standard_damage_dealer(ranged_damage(side_damage,
-                                                                 board::at(index),
+                                                                 game::get<board>().at(index),
                                                                  entity_id));
     }
 

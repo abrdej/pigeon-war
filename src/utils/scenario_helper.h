@@ -14,7 +14,7 @@ void if_any_die(std::initializer_list<std::uint32_t> entities_id, Callback callb
         callback();
     };
     for (auto&& entity_id : entities_id) {
-        entity_manager::on_destroy(entity_id, any_die);
+        game::get<entity_manager>().on_destroy(entity_id, any_die);
     }
 }
 
@@ -24,7 +24,7 @@ void if_any_die(std::vector<std::uint32_t> entities_id, Callback callback) {
         callback();
     };
     for (auto&& entity_id : entities_id) {
-        entity_manager::on_destroy(entity_id, any_die);
+        game::get<entity_manager>().on_destroy(entity_id, any_die);
     }
 }
 
@@ -38,7 +38,7 @@ void if_all_die(std::initializer_list<std::uint32_t> entities_id, Callback callb
         }
     };
     for (auto&& entity_id : entities_id) {
-        entity_manager::on_destroy(entity_id, someone_die);
+        game::get<entity_manager>().on_destroy(entity_id, someone_die);
     }
 }
 
@@ -52,7 +52,7 @@ void if_all_die(std::vector<std::uint32_t> entities_id, Callback callback) {
         }
     };
     for (auto&& entity_id : entities_id) {
-        entity_manager::on_destroy(entity_id, someone_die);
+        game::get<entity_manager>().on_destroy(entity_id, someone_die);
     }
 }
 

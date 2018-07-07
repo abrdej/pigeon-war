@@ -11,7 +11,7 @@ void arrow::prepare(std::uint32_t for_index) {
 
     path_target_ability::prepare(for_index);
 
-    states::state_controller::custom_valid_targets[board::at(for_index)].clear();
+    states::state_controller::custom_valid_targets[game::get<board>().at(for_index)].clear();
     std::unordered_set<std::uint32_t> valid_targets;
 
     for (auto&& index : states::state_controller::possible_movements_) {
@@ -20,12 +20,12 @@ void arrow::prepare(std::uint32_t for_index) {
         }
     }
 
-    states::state_controller::custom_valid_targets[board::at(for_index)] = std::move(valid_targets);
+    states::state_controller::custom_valid_targets[game::get<board>().at(for_index)] = std::move(valid_targets);
 
     for (auto&& entity_with_viewfinder : entities_with_viewfinder) {
-        if (entity_manager::alive(entity_with_viewfinder)) {
-            states::state_controller::custom_valid_targets[board::at(for_index)].insert(board::index_for(entity_with_viewfinder));
-            states::state_controller::possible_movements_.push_back(board::index_for(entity_with_viewfinder));
+        if (game::get<entity_manager>().alive(entity_with_viewfinder)) {
+            states::state_controller::custom_valid_targets[game::get<board>().at(for_index)].insert(game::get<board>().index_for(entity_with_viewfinder));
+            states::state_controller::possible_movements_.push_back(game::get<board>().index_for(entity_with_viewfinder));
         }
     }
 
@@ -40,15 +40,15 @@ void arrow::use(std::uint32_t index_on) {
     }
 
     auto from_index = states::state_controller::selected_index_;
-    auto caster_id = board::at(from_index);
+    auto caster_id = game::get<board>().at(from_index);
 
     sender::send(make_action_message("arrow", from_index, index_on));
 
-    auto enemy_id = board::at(index_on);
+    auto enemy_id = game::get<board>().at(index_on);
 
-    damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), caster_id));
+    damage_dealers::standard_damage_dealer(ranged_damage(damage, game::get<board>().at(index_on), caster_id));
 
-    if (entity_manager::alive(enemy_id)) {
+    if (game::get<entity_manager>().alive(enemy_id)) {
 
         auto viewfinder_connection =
                 make_after_n_round_callback_holder(viewfinder_duration,
@@ -56,13 +56,13 @@ void arrow::use(std::uint32_t index_on) {
 
                                                        if (info.ended) {
 
-                                                           if (entity_manager::alive(enemy_id)) {
+                                                           if (game::get<entity_manager>().alive(enemy_id)) {
                                                                remove_effect(enemy_id,
                                                                              "viewfinder");
                                                                LOG_DEBUG() << "remove viewfinder from entity of id:" << enemy_id << "\n";
                                                            }
 
-                                                           if (entity_manager::alive(caster_id)) {
+                                                           if (game::get<entity_manager>().alive(caster_id)) {
                                                                this->entities_with_viewfinder.erase(enemy_id);
                                                                LOG_DEBUG() << "erase entity of id:" << enemy_id << " from entities with viewfinder\n";
                                                            }
@@ -72,7 +72,7 @@ void arrow::use(std::uint32_t index_on) {
         auto viewfinder_effect = make_negative_effect("viewfinder");
         viewfinder_effect->set_turn_connection(std::move(viewfinder_connection));
         viewfinder_effect->set_on_destruction([this, caster_id, enemy_id]() {
-            if (entity_manager::alive(caster_id)) {
+            if (game::get<entity_manager>().alive(caster_id)) {
                 this->entities_with_viewfinder.erase(enemy_id);
                 LOG_DEBUG() << "erase entity of id:" << enemy_id << "from entities with viewfinder\n";
             }

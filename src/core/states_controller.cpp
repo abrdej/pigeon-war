@@ -5,6 +5,7 @@
 #include "abilities/abilities.h"
 #include "abilities/ability.h"
 #include "managers/players_manager.h"
+#include "core/game.h"
 
 using states::state_controller;
 using states::states_types;
@@ -30,8 +31,8 @@ void state_controller::first_state(std::uint32_t select_from_index)
 	selected_index_ = select_from_index;
 	std::uint32_t selected_index = states::state_controller::selected_index_;
 
-	auto entity_id = board::at(selected_index);
-	auto entity = entity_manager::get(entity_id);
+	auto entity_id = game::get<board>().at(selected_index);
+	auto entity = game::get<entity_manager>().get(entity_id);
 
 	if (entity.contain<abilities>()) {
 
@@ -69,12 +70,12 @@ bool state_controller::valid_target(std::uint32_t target_index) {
 
 	if (states::state_controller::actual_targeting_type_ == target_types::enemy) {
 
-		auto caster_id = board::at(states::state_controller::selected_index_);
+		auto caster_id = game::get<board>().at(states::state_controller::selected_index_);
 
 		std::uint32_t target_value = target_index;
 
 		if (custom_valid_target_type == custom_target_type::entity_id)
-			target_value = board::at(target_index);
+			target_value = game::get<board>().at(target_index);
 
 		if (!states::state_controller::custom_valid_targets[caster_id].empty()) {
 
@@ -87,7 +88,7 @@ bool state_controller::valid_target(std::uint32_t target_index) {
 		return players_funcs::enemy_entity(target_index);
 	}
 	else if (states::state_controller::actual_targeting_type_ == target_types::moving)
-		return board::empty(target_index);
+		return game::get<board>().empty(target_index);
 	else if (states::state_controller::actual_targeting_type_ == target_types::friendly)
 		return players_funcs::player_entity(target_index);
 	else if (states::state_controller::actual_targeting_type_ == target_types::caster)

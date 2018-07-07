@@ -31,11 +31,11 @@ void protection_field::use(std::uint32_t index_on) {
         return;
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = board::at(used_from_index);
+    auto entity_id = game::get<board>().at(used_from_index);
 
     sender::send(make_action_message("protection_field", used_from_index, index_on));
 
-    damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
+    damage_dealers::standard_damage_dealer(ranged_damage(damage, game::get<board>().at(index_on), entity_id));
 
     used = true;
 }

@@ -6,6 +6,7 @@
 #define PIGEONWAR_MONK_H
 
 #include <abilities/magic_bullet.h>
+#include <components/power_field.h>
 #include "entity.h"
 #include "abilities/abilities.h"
 #include "abilities/moveable.h"
@@ -18,6 +19,7 @@ public:
         entity.name = "Monk";
 
         entity.add<health_field>(45);
+        entity.add<power_filed>(entity.entity_id, 10, 0);
         entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();

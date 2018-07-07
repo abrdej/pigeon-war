@@ -6,11 +6,11 @@
 //entangling_life_suck::entangling_life_suck() {
 //    onEveryRound([this]() {
 //        std::int32_t dealed_damage = 0;
-//        if (entity_manager::alive(enemy_id)) {
+//        if (game::get<entity_manager>().alive(enemy_id)) {
 //            dealed_damage = damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, caster_id));
 //        }
 //
-//        if (entity_manager::alive(caster_id)) {
+//        if (game::get<entity_manager>().alive(caster_id)) {
 //            auto health_pack = healths_manager::component_for(caster_id);
 //            auto final_recovery = dealed_damage;
 //
@@ -18,7 +18,7 @@
 //            if (final_recovery > 0) {
 //                healths_manager::receive_damage(healing(final_recovery, caster_id));
 //
-//                auto index = board::index_for(caster_id);
+//                auto index = game::get<board>().index_for(caster_id);
 //
 //                animations_queue::push_animation(animation_types::flash_bitmap,
 //                                                 index,
@@ -50,20 +50,20 @@
 //void entangling::use(std::uint32_t index_on) {
 //
 //    auto used_from_index = states::state_controller::selected_index_;
-//    auto caster_id = board::at(used_from_index);
+//    auto caster_id = game::get<board>().at(used_from_index);
 //
-//    auto entangling_id = entity_manager::create<entangling_instance>();
-//    auto active_player_id = players_manager::get_active_player_id();
-//    players_manager::add_entity_for_player(active_player_id, entangling_id);
+//    auto entangling_id = game::get<entity_manager>().create<entangling_instance>();
+//    auto active_player_id = game::get<players_manager>().get_active_player_id();
+//    game::get<players_manager>().add_entity_for_player(active_player_id, entangling_id);
 //
 //    auto ability = abilities_manager::component_for(entangling_id).at(static_cast<std::int32_t>(abilities::ability_types::passive));
 //
-//    auto enemy_id = board::at(index_on);
+//    auto enemy_id = game::get<board>().at(index_on);
 //    auto life_suck = std::static_pointer_cast<entangling_life_suck>(ability);
 //    life_suck->set_enemy_id(enemy_id);
 //    life_suck->set_caster_id(caster_id);
 //
-//    board::insert(index_on, entangling_id);
+//    game::get<board>().insert(index_on, entangling_id);
 //
 //    damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, caster_id));
 //}

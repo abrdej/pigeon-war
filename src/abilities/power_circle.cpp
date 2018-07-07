@@ -19,7 +19,7 @@ power_circle::power_circle(std::uint32_t entity_id) {
 
         //damage_reduction = 0;
 
-        auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+        auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
         auto absorption_ptr = abilities_ptr->get<absorption>();
 
         absorption_ptr->zero_dmg_reduction();
@@ -34,29 +34,29 @@ power_circle::power_circle(std::uint32_t entity_id) {
         }
 
         std::vector<std::uint32_t> aim_indexes;
-        board_helper::circle(board::index_for(entity_id), aim_indexes, false);
+        board_helper::circle(game::get<board>().index_for(entity_id), aim_indexes, false);
 
-        auto from_cr = board::to_pos(board::index_for(entity_id));
+        auto from_cr = game::get<board>().to_pos(game::get<board>().index_for(entity_id));
         from_cr.first -= 2;
         from_cr.second -= 2;
 
 //        animations_queue::push_animation(animation_types::flash_bitmap,
-//                                         board::to_index(from_cr.first, from_cr.second),
+//                                         game::get<board>().to_index(from_cr.first, from_cr.second),
 //                                         150,
 //                                         -1,
 //                                         "absorber_orbit);
 
         for (auto& index : aim_indexes) {
-            if (!board::empty(index)) {
+            if (!game::get<board>().empty(index)) {
                 if (players_funcs::enemy_entity(index)) {
-                    damage_dealers::standard_damage_dealer(magic_damage(damage, board::at(index), entity_id));
+                    damage_dealers::standard_damage_dealer(magic_damage(damage, game::get<board>().at(index), entity_id));
 
                 } else if (players_funcs::player_entity(index)) {
 
                     //++damage_reduction;
                     absorption_ptr->increase_dmg_reduction();
 
-                    //auto friendly_id = board::at(index);
+                    //auto friendly_id = game::get<board>().at(index);
                     //auto dmg_rec = get_damage_receiver(friendly_id);
 
                     //dmg_rec_backup.insert(std::make_pair(friendly_id, dmg_rec));
@@ -81,7 +81,7 @@ power_circle::power_circle(std::uint32_t entity_id) {
 //                                                                 last_dmg.damage_value = std::max(last_dmg.damage_value - damage_reduction, 0);
 //
 //                                                                 animation::player<animation::flash_bitmap>::launch
-//                                                                         (animation::flash_bitmap(board::index_for(friendly_id),
+//                                                                         (animation::flash_bitmap(game::get<board>().index_for(friendly_id),
 //                                                                                                  std::chrono::milliseconds(150), "absorption.png"));
 //                                                                 animation::base_player::play();
 //
@@ -126,9 +126,9 @@ void power_circle::use(std::uint32_t index_on) {
     //bonus_active = false;
     //bonus_counter = 0;
 
-    auto entity_id = board::at(states::state_controller::selected_index_);
+    auto entity_id = game::get<board>().at(states::state_controller::selected_index_);
 
-    damage_dealers::standard_damage_dealer(magic_damage(damage, board::at(index_on), entity_id));
+    damage_dealers::standard_damage_dealer(magic_damage(damage, game::get<board>().at(index_on), entity_id));
 
 //    animations_queue::push_animation(animation_types::flash_bitmap,
 //                                     index_on,

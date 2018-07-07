@@ -12,89 +12,85 @@ class entity;
 
 class players_manager {
 
-	static std::unique_ptr<players_manager> impl;
-
-	static players_manager& get_instance() {
-		if (!impl) {
-			impl = std::make_unique<players_manager>();
-		}
-		return *impl;
-	}
+//	static std::unique_ptr<players_manager> impl;
+//
+//	static players_manager& get_instance() {
+//		if (!impl) {
+//			impl = std::make_unique<players_manager>();
+//		}
+//		return *impl;
+//	}
 
 public:
-	static std::uint32_t create_human_player(const std::string& player_name = "") {
-		auto& instance = get_instance();
-		instance.players.emplace_back(std::make_pair(player_name, false));
-		return instance.players.size() - 1;
+	std::uint32_t create_human_player(const std::string& player_name = "") {
+		players.emplace_back(std::make_pair(player_name, false));
+		return players.size() - 1;
 	}
 
-	static std::uint32_t create_ai_player(const std::string& player_name) {
-		auto& instance = get_instance();
-		instance.players.emplace_back(std::make_pair(player_name, true));
-		return instance.players.size() - 1;
+	std::uint32_t create_ai_player(const std::string& player_name) {
+		players.emplace_back(std::make_pair(player_name, true));
+		return players.size() - 1;
 	}
 
-	static void add_entity_for_player(std::uint32_t player_id, std::uint32_t entity_id) {
-		get_instance().entity_id_to_player_id[entity_id] = player_id;
+	void add_entity_for_player(std::uint32_t player_id, std::uint32_t entity_id) {
+		entity_id_to_player_id[entity_id] = player_id;
 	}
 
-	static void add_neutral_entity(std::uint32_t entity_id) {
-		get_instance().entity_id_to_player_id[entity_id] = neutral_id;
+	void add_neutral_entity(std::uint32_t entity_id) {
+		entity_id_to_player_id[entity_id] = neutral_id;
 	}
 
-	static void add_destructive_surroundings(std::uint32_t entity_id) {
-		get_instance().entity_id_to_player_id[entity_id] = destructive_surroundings_id;
+	void add_destructive_surroundings(std::uint32_t entity_id) {
+		entity_id_to_player_id[entity_id] = destructive_surroundings_id;
 	}
 
-	static bool player_entity(std::uint32_t player_id, std::uint32_t entity_id) {
-		return get_instance().entity_id_to_player_id[entity_id] == player_id;
+	bool player_entity(std::uint32_t player_id, std::uint32_t entity_id) {
+		return entity_id_to_player_id[entity_id] == player_id;
 	}
-	static bool active_player_entity(std::uint32_t entity_id) {
-		return get_instance().entity_id_to_player_id[entity_id] == get_instance().active_player_id;
-	}
-
-	static bool enemy_entity(std::uint32_t player_id, std::uint32_t entity_id) {
-		return get_instance().entity_id_to_player_id[entity_id] != player_id
-			   && get_instance().entity_id_to_player_id[entity_id] != neutral_id;
+	bool active_player_entity(std::uint32_t entity_id) {
+		return entity_id_to_player_id[entity_id] == active_player_id;
 	}
 
-	static bool neutral_entity(std::uint32_t entity_id) {
-		return get_instance().entity_id_to_player_id[entity_id] == neutral_id;
+	bool enemy_entity(std::uint32_t player_id, std::uint32_t entity_id) {
+		return entity_id_to_player_id[entity_id] != player_id
+			   && entity_id_to_player_id[entity_id] != neutral_id;
+	}
+
+	bool neutral_entity(std::uint32_t entity_id) {
+		return entity_id_to_player_id[entity_id] == neutral_id;
 	}
 
 
-	static std::string player_name(std::uint32_t player_id) {
-		return get_instance().players[player_id].first;
+	std::string player_name(std::uint32_t player_id) {
+		return players[player_id].first;
 	}
 
-	static std::uint32_t player_for_entity(std::uint32_t entity_id) {
-		auto it = get_instance().entity_id_to_player_id.find(entity_id);
-		if (it != std::end(get_instance().entity_id_to_player_id)) {
+	std::uint32_t player_for_entity(std::uint32_t entity_id) {
+		auto it = entity_id_to_player_id.find(entity_id);
+		if (it != std::end(entity_id_to_player_id)) {
 			return it->second;
 		} else {
 			return no_player;
 		}
 	}
 
-	static std::uint32_t get_active_player_id() {
-		return get_instance().active_player_id;
+	std::uint32_t get_active_player_id() {
+		return active_player_id;
 	}
 
-	static std::uint32_t next_player() {
-		auto& instance = get_instance();
-		auto next_player_id = ++instance.active_player_id % instance.players.size();
-		instance.active_player_id = next_player_id;
+	std::uint32_t next_player() {
+		auto next_player_id = ++active_player_id % players.size();
+		active_player_id = next_player_id;
 		return next_player_id;
 	}
 
-	static bool is_active_player_ai() {
-		auto& instance = get_instance();
-		return instance.players[instance.active_player_id].second;
+	bool is_active_player_ai() {
+		return players[active_player_id].second;
 	}
 
-	static const std::uint32_t neutral_id = std::numeric_limits<std::uint32_t>::max();
-	static const std::uint32_t destructive_surroundings_id = std::numeric_limits<std::uint32_t>::max() - 1;
-	static const std::uint32_t no_player = std::numeric_limits<std::uint32_t>::max();
+	const std::uint32_t neutral_id = std::numeric_limits<std::uint32_t>::max();
+	const std::uint32_t destructive_surroundings_id = std::numeric_limits<std::uint32_t>::max() - 1;
+	const std::uint32_t no_player = std::numeric_limits<std::uint32_t>::max();
 
 private:
 	std::vector<std::pair<std::string, bool>> players;

@@ -11,8 +11,8 @@ void power_bullet::use(std::uint32_t index_on) {
         return;
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = board::at(used_from_index);
-    auto enemy_id = board::at(index_on);
+    auto caster_id = game::get<board>().at(used_from_index);
+    auto enemy_id = game::get<board>().at(index_on);
 
     auto has_power_bullet_effect = has_effect(enemy_id, "effect of a power bullet");
 
@@ -20,9 +20,9 @@ void power_bullet::use(std::uint32_t index_on) {
 
     damage_dealers::standard_damage_dealer(magic_damage(has_power_bullet_effect ?
                                                         damage_with_power_bullet_effect : full_damage,
-                                                        board::at(index_on), caster_id));
+                                                        game::get<board>().at(index_on), caster_id));
 
-    if (entity_manager::alive(enemy_id)) {
+    if (game::get<entity_manager>().alive(enemy_id)) {
         auto power_bullet_effect_connection = make_after_n_round_callback_holder(duration_of_effect,
                                                                                  [enemy_id, caster_id]() mutable {
                                                                                      remove_effect(enemy_id,

@@ -10,9 +10,10 @@
 #include <components/applied_effects.h>
 #include <managers/entity_manager.h>
 #include <messages/make_message.h>
+#include <components/power_field.h>
 #include "core/game.h"
 #include "core/game_state.h"
-#include "server.h"
+#include "server/server.h"
 #include "sender.h"
 #include "external/json.hpp"
 #include "messages/messages.h"
@@ -20,7 +21,7 @@
 
 auto get_names() {
 	std::unordered_map<std::uint32_t, std::string> returned_map;
-	entity_manager::for_all([&returned_map](base_entity entity) {
+	game::get<entity_manager>().for_all([&returned_map](base_entity entity) {
 		returned_map.insert(std::make_pair(entity.entity_id, entity.name));
 	});
 	return std::move(returned_map);
@@ -30,9 +31,10 @@ game_state get_game_state(game& g) {
 
 	game_state state;
 	state.healths = get_healths();
+	state.board.set_size(game::get<board>().cols_n, game::get<board>().rows_n);
 
-	for (std::uint32_t i = 0; i < board::fields_.size(); ++i) {
-		for (auto&& elem : board::fields_[i]) {
+	for (std::uint32_t i = 0; i < game::get<board>().fields_.size(); ++i) {
+		for (auto&& elem : game::get<board>().fields_[i]) {
 			state.board.fields_[i].push_back(elem);
 		}
 	}
@@ -54,10 +56,10 @@ local_state get_local_state(game& g) {
 
 	state.button_bitmaps.fill("");
 
-	auto entity_id = board::at(states::state_controller::selected_index_);
-	auto entity = entity_manager::get(entity_id);
+	auto entity_id = game::get<board>().at(states::state_controller::selected_index_);
+	auto entity = game::get<entity_manager>().get(entity_id);
 
-	if (entity_id != board::empty_id) {
+	if (entity_id != game::get<board>().empty_id) {
 
 		if (entity.contain<abilities>()) {
 			auto abilities_ptr = entity.get<abilities>();
@@ -83,10 +85,14 @@ local_state get_local_state(game& g) {
 }
 
 auto get_entities() {
-    std::unordered_map<std::uint32_t, std::tuple<std::string, std::int32_t, std::uint32_t>> returned_map;
-    entity_manager::for_all([&returned_map](base_entity entity) {
+    std::unordered_map<std::uint32_t, std::tuple<std::string, std::int32_t, std::int32_t, std::uint32_t>> returned_map;
+    game::get<entity_manager>().for_all([&returned_map](base_entity entity) {
         returned_map.insert(std::make_pair(entity.entity_id,
-										   std::make_tuple(entity.name, entity.get<health_field>()->health, board::index_for(entity.entity_id))));
+										   std::make_tuple(entity.name,
+                                                           entity.get<health_field>()->health,
+                                                           entity.contain<power_filed>() ? entity.get<power_filed>()->power
+                                                                                         : std::numeric_limits<std::int32_t>::max(),
+                                                           game::get<board>().index_for(entity.entity_id))));
     });
     return std::move(returned_map);
 }
@@ -95,6 +101,7 @@ int main(int argc, char** argv) {
 
 	std::int32_t port = 5555;
 	std::string map_name = "battlefield";
+	std::pair<std::uint32_t, std::uint32_t> map_size;
 
 	if (argc > 1) {
 		port = std::atoi(argv[1]);
@@ -104,7 +111,7 @@ int main(int argc, char** argv) {
 	}
 
 	game g;
-	map_name = create_skirmish(g, map_name);
+    map_name = create_skirmish(g, map_name, map_size);
 
 	tcp_server pigeon_war_server(port);
 
@@ -113,6 +120,7 @@ int main(int argc, char** argv) {
 	});
 
 	pigeon_war_server.set_initial_message([&](std::uint32_t client_id) {
+		pigeon_war_server.send_notification_to(client_id, make_map_size_message(map_size));
 		pigeon_war_server.send_notification_to(client_id, make_client_id_message(client_id));
         pigeon_war_server.send_notification_to(client_id, make_map_name_message(map_name));
 		pigeon_war_server.send_notification_to(client_id, make_entities_pack_message(get_entities()));
@@ -130,7 +138,7 @@ int main(int argc, char** argv) {
 
         bool single_client = pigeon_war_server.is_single_client();
 
-		if (client_id == players_manager::get_active_player_id() || single_client) {
+		if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
 			g.on_board(x, y);
 			pigeon_war_server.send_notification(make_local_state_message(get_local_state(g)));
 			pigeon_war_server.send_notification(make_game_state_message(get_game_state(g)));
@@ -146,14 +154,14 @@ int main(int argc, char** argv) {
 
 		const bool single_client = pigeon_war_server.is_single_client();
 
-		if (client_id == players_manager::get_active_player_id() || single_client) {
+		if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
 
 			std::cout << "client_id: " << client_id << " single_client:" << single_client << "\n";
 
 			g.on_button(button);
 
 			if (button == 5) {
-				auto active_player = players_manager::get_active_player_id();
+				auto active_player = game::get<players_manager>().get_active_player_id();
 				pigeon_war_server.send_notification(make_end_turn_message(active_player));
 			}
 
@@ -171,7 +179,7 @@ int main(int argc, char** argv) {
 
 		const bool single_client = pigeon_war_server.is_single_client();
 
-		if (client_id == players_manager::get_active_player_id() || single_client) {
+		if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
 
 			description = g.get_button_description(states::state_controller::selected_index_, button);
 			pigeon_war_server.send_notification_to(client_id, make_description_message(description));

@@ -9,14 +9,14 @@ void long_range_missile::use(std::uint32_t index_on) {
 		return;
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(used_from_index);
+	auto entity_id = game::get<board>().at(used_from_index);
 
 	play_animation(used_from_index, index_on);
 
-	auto enemy_id = board::at(index_on);
+	auto enemy_id = game::get<board>().at(index_on);
 
-	auto used_from_pos = board::to_pos(used_from_index);
-	auto used_to_pos = board::to_pos(index_on);
+	auto used_from_pos = game::get<board>().to_pos(used_from_index);
+	auto used_to_pos = game::get<board>().to_pos(index_on);
 
 	auto distance = std::max(std::abs(static_cast<std::int32_t>(used_from_pos.first) - static_cast<std::int32_t>(used_to_pos.first)),
 							 std::abs(static_cast<std::int32_t>(used_from_pos.second) - static_cast<std::int32_t>(used_to_pos.second)));

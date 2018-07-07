@@ -13,7 +13,7 @@ void transmission::use(std::uint32_t from_index) {
     this->from_index = from_index;
 
     //path_finder path_finder;
-    //path_finder.calc(board::index_for(entity_id));
+    //path_finder.calc(game::get<board>().index_for(entity_id));
     //path_finder.get_possible_movements(states::state_controller::possible_movements_,
     //                                   states::state_controller::possible_movements_costs_,
     //                                   range);
@@ -32,7 +32,7 @@ void transmission::transmit(std::uint32_t to_index) {
 
     sender::send(make_action_message("transmission", from_index, to_index));
 
-    board::move(from_index, to_index);
+    game::get<board>().move(from_index, to_index);
 
     states::state_controller::possible_movements_.clear();
 

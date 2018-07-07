@@ -15,15 +15,15 @@ chopper::chopper(std::uint32_t entity_id) : entity_id(entity_id) {
     on_every_turn([this, entity_id]() {
         if (fired) {
 
-            auto index = board::index_for(entity_id);
+            auto index = game::get<board>().index_for(entity_id);
 
             std::vector<std::uint32_t> neighboring;
             board_helper::neighboring_fields(index, neighboring, false);
 
             for (auto& attack_index : neighboring) {
-                if (!board::empty(attack_index))
+                if (!game::get<board>().empty(attack_index))
                     damage_dealers::standard_damage_dealer(special_damage(fired_aura_dmg,
-                                                                         board::at(attack_index),
+                                                                         game::get<board>().at(attack_index),
                                                                          entity_id));
             }
         }
@@ -45,11 +45,11 @@ void chopper::use(std::uint32_t index_on) {
     }
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = board::at(index_on);
+    auto caster_id = game::get<board>().at(index_on);
 
     sender::send(make_action_message("chopper", used_from_index, index_on));
 
-    auto enemy_id = board::at(index_on);
+    auto enemy_id = game::get<board>().at(index_on);
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 
@@ -70,7 +70,7 @@ void chopper::set_fired() {
     damage = fired_damage;
     fired = true;
 
-    auto entity = entity_manager::get(entity_id);
+    auto entity = game::get<entity_manager>().get(entity_id);
 
     auto spiral_of_fire_ptr = entity.get<abilities>()->get<spiral_of_fire>();
     spiral_of_fire_ptr->can_be_used = true;

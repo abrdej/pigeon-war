@@ -47,7 +47,7 @@ void moveable::move(std::uint32_t index_to)
 
 	auto move_from_index = states::state_controller::selected_index_;
 
-	auto entity_id = board::take(move_from_index);
+	auto entity_id = game::get<board>().take(move_from_index);
 
 	call_move_callbacks(move_from_index, index_to, cost);
 
@@ -56,10 +56,10 @@ void moveable::move(std::uint32_t index_to)
 	sender::send(make_action_message("move", move_from_index, index_to));
 
 
-	std::int32_t from_col = board::to_pos(move_from_index).first;
-	std::int32_t to_col = board::to_pos(index_to).first;
+	std::int32_t from_col = game::get<board>().to_pos(move_from_index).first;
+	std::int32_t to_col = game::get<board>().to_pos(index_to).first;
 
-	board::give_back(entity_id, index_to);
+	game::get<board>().give_back(entity_id, index_to);
 
 	states::state_controller::selected_index_ = index_to;
 	states::state_controller::possible_movements_.clear();

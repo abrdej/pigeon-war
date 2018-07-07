@@ -14,7 +14,7 @@ void play_power_change_animation(std::uint32_t to_index, std::int32_t change_pow
 
 std::unordered_map<std::uint32_t, std::int32_t> get_healths() {
     std::unordered_map<std::uint32_t, std::int32_t> returned_map;
-    entity_manager::for_all([&returned_map](base_entity entity) {
+    game::get<entity_manager>().for_all([&returned_map](base_entity entity) {
         returned_map.insert(std::make_pair(entity.entity_id, entity.get<health_field>()->health));
     });
     return std::move(returned_map);

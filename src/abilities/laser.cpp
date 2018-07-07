@@ -11,10 +11,10 @@ void laser::use(std::uint32_t index_on) {
 		return;
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(used_from_index);
+	auto entity_id = game::get<board>().at(used_from_index);
 
-	auto from_pos = board::to_pos(index_on);
-	auto to_pos = board::to_pos(used_from_index);
+	auto from_pos = game::get<board>().to_pos(index_on);
+	auto to_pos = game::get<board>().to_pos(used_from_index);
 
 	std::int32_t hor_diff = static_cast<std::int32_t>(from_pos.first) - static_cast<std::int32_t>(to_pos.first);
 	std::int32_t ver_diff = static_cast<std::int32_t>(from_pos.second) - static_cast<std::int32_t>(to_pos.second);
@@ -28,35 +28,35 @@ void laser::use(std::uint32_t index_on) {
 		yy = (ver_diff > 0 ? 1 : -1) * range;
 	}
 
-	auto index_to_move = board::to_index(to_pos.first + xx, to_pos.second + yy);
+	auto index_to_move = game::get<board>().to_index(to_pos.first + xx, to_pos.second + yy);
 
 	sender::send(make_action_message("laser", used_from_index, index_to_move));
 
 	if (hor_diff != 0) {
 		for (std::int32_t x = hor_diff > 0 ? 1 : -1; std::abs(x) <= std::abs(range); x = hor_diff > 0 ? x + 1 : x - 1) {
 
-			auto index = board::to_index(to_pos.first + x, to_pos.second);
+			auto index = game::get<board>().to_index(to_pos.first + x, to_pos.second);
 
-			if (!board::empty(index)) {
-				auto enemy_id = board::at(index);
+			if (!game::get<board>().empty(index)) {
+				auto enemy_id = game::get<board>().at(index);
 				damage_dealers::standard_damage_dealer(special_damage(damage, enemy_id, entity_id));
 
-				if (entity_manager::get(enemy_id).contain<modification>()) {
-					entity_manager::get(enemy_id).get<modification>()->modify_damage_receiver_modifier_by(bonus_damage);
+				if (game::get<entity_manager>().get(enemy_id).contain<modification>()) {
+					game::get<entity_manager>().get(enemy_id).get<modification>()->modify_damage_receiver_modifier_by(bonus_damage);
 				}
 			}
 		}
 	} else {
 		for (std::int32_t y = ver_diff > 0 ? 1 : -1; abs(y) <= abs(range); y = ver_diff > 0 ? y + 1 : y - 1) {
 
-			auto index = board::to_index(to_pos.first, to_pos.second + y);
+			auto index = game::get<board>().to_index(to_pos.first, to_pos.second + y);
 
-			if (!board::empty(index)) {
-				auto enemy_id = board::at(index);
-				damage_dealers::standard_damage_dealer(special_damage(damage, board::at(index), entity_id));
+			if (!game::get<board>().empty(index)) {
+				auto enemy_id = game::get<board>().at(index);
+				damage_dealers::standard_damage_dealer(special_damage(damage, game::get<board>().at(index), entity_id));
 
-				if (entity_manager::get(enemy_id).contain<modification>()) {
-					entity_manager::get(enemy_id).get<modification>()->modify_damage_receiver_modifier_by(bonus_damage);
+				if (game::get<entity_manager>().get(enemy_id).contain<modification>()) {
+					game::get<entity_manager>().get(enemy_id).get<modification>()->modify_damage_receiver_modifier_by(bonus_damage);
 				}
 			}
 		}

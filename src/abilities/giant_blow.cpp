@@ -22,11 +22,11 @@ void giant_blow::use(std::uint32_t index_on)
     }
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = board::at(used_from_index);
+    auto caster_id = game::get<board>().at(used_from_index);
 
     sender::send(make_action_message("giant_blow", used_from_index, index_on));
 
-    auto enemy_id = board::at(index_on);
+    auto enemy_id = game::get<board>().at(index_on);
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 
@@ -34,7 +34,7 @@ void giant_blow::use(std::uint32_t index_on)
 
     enemy_with_effect = std::numeric_limits<std::uint32_t>::max();
 
-    if (entity_manager::alive(enemy_id)) {
+    if (game::get<entity_manager>().alive(enemy_id)) {
 
         if (counter == 3) {
             states::state_controller::custom_valid_targets[enemy_id].insert(caster_id);

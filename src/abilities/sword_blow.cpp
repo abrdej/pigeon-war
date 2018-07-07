@@ -10,7 +10,7 @@ void sword_blow::use(std::uint32_t index_on) {
         return;
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = board::at(used_from_index);
+    auto entity_id = game::get<board>().at(used_from_index);
 
     std::vector<std::uint32_t> around_fields_ids;
     board_helper::neighboring_fields(used_from_index, around_fields_ids, false);
@@ -20,8 +20,8 @@ void sword_blow::use(std::uint32_t index_on) {
     std::int32_t hit_entities_counter = 0;
 
     for (auto&& field_id : around_fields_ids) {
-        if (!board::empty(field_id)) {
-            auto final_damage = damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(field_id), entity_id));
+        if (!game::get<board>().empty(field_id)) {
+            auto final_damage = damage_dealers::standard_damage_dealer(melee_damage(damage, game::get<board>().at(field_id), entity_id));
             if (final_damage != 0) {
                 ++hit_entities_counter;
             }
@@ -33,8 +33,8 @@ void sword_blow::use(std::uint32_t index_on) {
         sender::send(make_action_message("sword_blow", used_from_index));
 
         for (auto&& field_id : around_fields_ids) {
-            if (!board::empty(field_id)) {
-                damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(field_id), entity_id));
+            if (!game::get<board>().empty(field_id)) {
+                damage_dealers::standard_damage_dealer(melee_damage(damage, game::get<board>().at(field_id), entity_id));
             }
         }
     }

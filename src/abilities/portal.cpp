@@ -29,13 +29,13 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
 	if (used)
 		return;
 
-	auto& power = entity_manager::get(entity_id).get<power_filed>()->power;
+	auto& power = game::get<entity_manager>().get(entity_id).get<power_filed>()->power;
 
 	if (power < power_cost)
 		return;
 
-	auto center_pos = board::to_pos(from_index);
-	auto destination_pos = board::to_pos(to_index);
+	auto center_pos = game::get<board>().to_pos(from_index);
+	auto destination_pos = game::get<board>().to_pos(to_index);
 
 	std::vector<std::uint32_t> around_fields_ids;
 	board_helper::neighboring_fields(from_index, around_fields_ids, false);
@@ -43,9 +43,9 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
     std::vector<std::pair<std::uint32_t, std::uint32_t>> neighboring_moves;
 
 	for (auto&& field_id : around_fields_ids) {
-		if (!board::empty(field_id) && !players_funcs::neutral_entity(field_id)) {
+		if (!game::get<board>().empty(field_id) && !players_funcs::neutral_entity(field_id)) {
 
-			auto pos = board::to_pos(field_id);
+			auto pos = game::get<board>().to_pos(field_id);
 
 			auto x_diff = center_pos.first - pos.first;
 			auto y_diff = center_pos.second - pos.second;
@@ -53,16 +53,16 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
 			auto x_dest = destination_pos.first - x_diff;
 			auto y_dest = destination_pos.second - y_diff;
 
-			auto dest_index = board::to_index(x_dest, y_dest);
+			auto dest_index = game::get<board>().to_index(x_dest, y_dest);
 
-			if (board::empty(dest_index)) {
-				board::move(field_id, dest_index);
+			if (game::get<board>().empty(dest_index)) {
+				game::get<board>().move(field_id, dest_index);
                 neighboring_moves.emplace_back(field_id, dest_index);
 			}
 		}
 	}
 
-	board::move(from_index, to_index);
+	game::get<board>().move(from_index, to_index);
 
 	sender::send(make_action_message("portal", from_index, to_index, neighboring_moves));
 

@@ -12,9 +12,7 @@ struct fire final
 	static auto create(base_entity& entity)
 	{
 		entity.name = "Fire";
-
 		entity.add<health_field>();
-
 		return entity;
 	}
 };

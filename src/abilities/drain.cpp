@@ -15,13 +15,13 @@ void drain::use(std::uint32_t index_on)
 	}
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(used_from_index);
+	auto entity_id = game::get<board>().at(used_from_index);
 
 	sender::send(make_action_message("drain", used_from_index, index_on));
 
 	damage_dealers::standard_damage_dealer(damage_pack(damage,
 													   damage_types::MELEE,
-													   board::at(index_on),
+													   game::get<board>().at(index_on),
 													   entity_id));
 
 	standard_healing(healing_above_base_health(drain_amount, entity_id));

@@ -1,6 +1,7 @@
 #include "skirmish.h"
 #include "registered_entities.h"
 #include "map_reader.h"
+#include "entities_reader.h"
 
 #include <core/game.h>
 #include <utils/creator_helper.h>
@@ -11,9 +12,9 @@ using creator_helper::pos;
 template <typename T>
 void create_around_map() {
     std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
-    for (std::int32_t i = 0; i < board::cols_n; ++i) {
-        for (std::int32_t j = 0; j < board::rows_n; ++j) {
-            if (i == 0 || j == 0 || i == board::cols_n - 1|| j == board::rows_n - 1) {
+    for (std::int32_t i = 0; i < game::get<board>().cols_n; ++i) {
+        for (std::int32_t j = 0; j < game::get<board>().rows_n; ++j) {
+            if (i == 0 || j == 0 || i == game::get<board>().cols_n - 1|| j == game::get<board>().rows_n - 1) {
                 trees_positions.push_back(pos(i, j));
             }
         }
@@ -58,8 +59,42 @@ struct map_factory {
     }
 };
 
-auto get_entities_selecting_positions() {
+//auto get_entities_selecting_positions() {
+//    std::vector<std::pair<std::uint32_t, std::uint32_t>> positions = {
+//            pos(5, 2),
+//            pos(6, 2),
+//            pos(7, 2),
+//            pos(8, 2),
+//            pos(9, 2),
+//
+//            pos(5, 3),
+//            pos(6, 3),
+//            pos(7, 3),
+//            pos(8, 3),
+//            pos(9, 3),
+//
+//            pos(5, 4),
+//            pos(6, 4),
+//            pos(7, 4),
+//            pos(8, 4),
+//            pos(9, 4),
+//
+//            pos(5, 5),
+//            pos(6, 5),
+//            pos(7, 5),
+//            pos(8, 5),
+//            pos(9, 5),
+//
+//            pos(5, 6),
+//            pos(6, 6),
+//            pos(7, 6),
+//            pos(8, 6),
+//            pos(9, 6)
+//    };
+//    return std::move(positions);
+//}
 
+auto get_entities_selecting_positions() {
     std::vector<std::pair<std::uint32_t, std::uint32_t>> positions = {
             pos(5, 2),
             pos(6, 2),
@@ -68,21 +103,12 @@ auto get_entities_selecting_positions() {
             pos(9, 2),
 
             pos(5, 3),
-            pos(6, 3),
-            pos(7, 3),
-            pos(8, 3),
             pos(9, 3),
 
             pos(5, 4),
-            pos(6, 4),
-            pos(7, 4),
-            pos(8, 4),
             pos(9, 4),
 
             pos(5, 5),
-            pos(6, 5),
-            pos(7, 5),
-            pos(8, 5),
             pos(9, 5),
 
             pos(5, 6),
@@ -148,9 +174,11 @@ std::vector<std::string> get_possible_to_choose_entities() {
     return std::move(result);
 }
 
-std::string create_skirmish(game& game, const std::string& map_name) {
+std::string create_skirmish(game& game,
+                            const std::string& map_name,
+                            std::pair<std::uint32_t, std::uint32_t>& map_size) {
 
-    auto name = read_map_from_json(maps_directory + map_name);
+    auto name = read_map_from_json(maps_directory + map_name, map_size);
 
     auto selecting_positions = get_entities_selecting_positions();
     auto starting_positions = get_entities_starting_positions();
@@ -159,14 +187,14 @@ std::string create_skirmish(game& game, const std::string& map_name) {
 
     std::array<std::uint32_t, number_of_players> players{};
     for (auto& player : players) {
-        player = players_manager::create_human_player();
+        player = game::get<players_manager>().create_human_player();
     }
 
     std::uint32_t i = 0;
 
     std::unordered_set<std::uint32_t> entities_to_choose;
 
-    auto entities = get_possible_to_choose_entities();
+    auto entities = read_entities_from_json(maps_directory + "entities");
     for (auto&& entity_name : entities) {
 
         auto id = entities_factory::create(entity_name);
@@ -177,9 +205,9 @@ std::string create_skirmish(game& game, const std::string& map_name) {
             break;
         }
 
-        board::insert(board::to_index(pos.first, pos.second), id);
-//        board::insert(i++, id);
-        players_manager::add_neutral_entity(id);
+        game::get<board>().insert(game::get<board>().to_index(pos.first, pos.second), id);
+//        game::get<board>().insert(i++, id);
+        game::get<players_manager>().add_neutral_entity(id);
 
         entities_to_choose.insert(id);
     }
@@ -195,9 +223,9 @@ std::string create_skirmish(game& game, const std::string& map_name) {
                             [=, entities = create_entities_container()](const turn_callback_info& info) mutable {
 
                                 auto pos = starting_positions[selections];
-                                auto new_index = board::to_index(pos.first, pos.second);
+                                auto new_index = game::get<board>().to_index(pos.first, pos.second);
 
-                                auto entity_id = board::move(states::state_controller::selected_index_, new_index);
+                                auto entity_id = game::get<board>().move(states::state_controller::selected_index_, new_index);
                                 sender::send(make_move_entity_message(entity_id,
                                                                       states::state_controller::selected_index_,
                                                                       new_index));
@@ -212,12 +240,12 @@ std::string create_skirmish(game& game, const std::string& map_name) {
 
                                 if (info.ended) {
                                     for (auto&& entity_to_remove : entities_to_choose) {
-                                        entity_manager::destroy(entity_to_remove);
+                                        game::get<entity_manager>().destroy(entity_to_remove);
                                     }
 
                                     for (auto&& player_pack : entities) {
                                         for (auto&& id : player_pack.second) {
-                                            players_manager::add_entity_for_player(player_pack.first, id);
+                                            game::get<players_manager>().add_entity_for_player(player_pack.first, id);
                                         }
                                     }
 //                                    for (auto&& player_pack : entities) {

@@ -18,12 +18,12 @@ void poisoned_missile::use(std::uint32_t index_on) {
 
     sender::send(make_action_message("poisoned_missile", from_index, index_on));
 
-    auto entity_id = board::at(from_index);
-    auto enemy_id = board::at(index_on);
+    auto entity_id = game::get<board>().at(from_index);
+    auto enemy_id = game::get<board>().at(index_on);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, entity_id));
 
-    if (entity_manager::alive(enemy_id)) {
+    if (game::get<entity_manager>().alive(enemy_id)) {
 
         auto poison_power = this->poison_power;
         auto poison_duration = this->poison_duration;
@@ -33,14 +33,14 @@ void poisoned_missile::use(std::uint32_t index_on) {
 
                                                                                       sender::send(make_action_message(
                                                                                               "poison",
-                                                                                              board::index_for(
+                                                                                              game::get<board>().index_for(
                                                                                                       enemy_id)));
 
                                                                                       damage_dealers::standard_damage_dealer(special_damage(poison_power, enemy_id));
 
                                                                                       if (info.ended) {
 
-                                                                                          if (entity_manager::alive(enemy_id)) {
+                                                                                          if (game::get<entity_manager>().alive(enemy_id)) {
                                                                                               remove_effect(enemy_id,
                                                                                                             "poisoned");
                                                                                           }
@@ -53,7 +53,7 @@ void poisoned_missile::use(std::uint32_t index_on) {
         add_effect(enemy_id, poison_effect);
     }
 
-    auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+    auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
 
     auto moveable_ptr = std::dynamic_pointer_cast<moveable_base>(abilities_ptr->of_type(ability_types::moving));
     if (moveable_ptr) {

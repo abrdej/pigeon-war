@@ -38,7 +38,7 @@ void absorption::use(std::uint32_t index_on) {
     used = true;
     auto used_from_index = states::state_controller::selected_index_;
 
-    auto friendly_id = board::at(index_on);
+    auto friendly_id = game::get<board>().at(index_on);
 
     if (protected_id != friendly_id) {
 
@@ -70,7 +70,7 @@ void absorption::use(std::uint32_t index_on) {
                             std::cout << "absorption_power: " << absorption_power << "\n";
 
 //                            animations_queue::push_animation(animation_types::flash_bitmap,
-//                                                             board::index_for(friendly_id),
+//                                                             game::get<board>().index_for(friendly_id),
 //                                                             150,
 //                                                             0,
 //                                                             "absorption);

@@ -13,11 +13,11 @@ void basic_melee_attack::use(std::uint32_t index_on)
 	}
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto caster_id = board::at(used_from_index);
+	auto caster_id = game::get<board>().at(used_from_index);
 
 	sender::send(make_action_message("basic_melee_attack", used_from_index, index_on));
 
-	auto enemy_id = board::at(index_on);
+	auto enemy_id = game::get<board>().at(index_on);
 
 	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 

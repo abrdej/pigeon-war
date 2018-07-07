@@ -21,7 +21,7 @@ void purification::use(std::uint32_t index_on) {
         return;
     }
 
-    auto friend_id = board::at(index_on);
+    auto friend_id = game::get<board>().at(index_on);
 
     sender::send(make_action_message("purification", index_on));
 

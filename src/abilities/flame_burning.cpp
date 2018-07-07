@@ -17,19 +17,19 @@ void flame_burning::use(std::uint32_t index_on) {
         return;
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = board::at(used_from_index);
-    auto enemy_id = board::at(index_on);
+    auto caster_id = game::get<board>().at(used_from_index);
+    auto enemy_id = game::get<board>().at(index_on);
 
     sender::send(make_action_message("flame_burning", used_from_index, index_on));
 
     auto final_damage = damage;
 
-    if (entity_manager::get(enemy_id).contain<power_filed>()) {
+    if (game::get<entity_manager>().get(enemy_id).contain<power_filed>()) {
 
         std::cout << "here flame_burning\n";
 
-        auto magic_burning = std::min(entity_manager::get(enemy_id).get<power_filed>()->power, burn_magic_power);
-        auto& power = entity_manager::get(enemy_id).get<power_filed>()->power;
+        auto magic_burning = std::min(game::get<entity_manager>().get(enemy_id).get<power_filed>()->power, burn_magic_power);
+        auto& power = game::get<entity_manager>().get(enemy_id).get<power_filed>()->power;
 
         auto power_decrease = std::min(power, magic_burning);
 

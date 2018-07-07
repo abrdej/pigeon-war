@@ -16,11 +16,11 @@ void jaw_spider::use(std::uint32_t index_on) {
 	}
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto caster_id = board::at(used_from_index);
+	auto caster_id = game::get<board>().at(used_from_index);
 
 	sender::send(make_action_message("jaw_spider", index_on));
 
-	auto enemy_id = board::at(index_on);
+	auto enemy_id = game::get<board>().at(index_on);
 
 	auto has_spider_web_effect = has_effect(enemy_id, "spider web");
 
@@ -30,7 +30,7 @@ void jaw_spider::use(std::uint32_t index_on) {
 
 	used = true;
 
-	auto abilities_ptr = entity_manager::get(caster_id).get<abilities>();
+	auto abilities_ptr = game::get<entity_manager>().get(caster_id).get<abilities>();
 
 	auto spider_web_ptr = abilities_ptr->get<spider_web>();
 	spider_web_ptr->set_used();

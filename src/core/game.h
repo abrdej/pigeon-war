@@ -4,6 +4,9 @@
 #include <cstddef>
 #include <core/game_state.h>
 #include "board.h"
+#include "module_holder.h"
+#include "managers/players_manager.h"
+#include <memory>
 
 class game
 {
@@ -15,6 +18,24 @@ public:
 
 	void defeat();
 	void victory();
+
+    static std::unordered_map<std::type_index, std::shared_ptr<void>> systems;
+
+    template <typename System>
+    static System& get() {
+		auto it = systems.find(typeid(System));
+		if (it == std::end(systems)) {
+			it = systems.emplace(typeid(System), std::make_shared<System>()).first;
+		}
+		return *std::static_pointer_cast<System>(it->second);
+    }
+
+	static game& get_instance() {
+		static game game;
+		return game;
+	}
 };
+
+
 
 #endif

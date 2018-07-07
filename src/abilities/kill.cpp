@@ -55,17 +55,17 @@ void kill::use(std::uint32_t index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
 
-    auto entity_id = board::at(used_from_index);
+    auto entity_id = game::get<board>().at(used_from_index);
 
     bool is_killer_instinct_active = has_effect(entity_id, "killer_instinct");
 
     sender::send(make_action_message("kill", used_from_index, index_on, target_index));
 
-    board::move(used_from_index, index_on);
+    game::get<board>().move(used_from_index, index_on);
 
     states::state_controller::selected_index_ = index_on;
 
-    auto enemy_id = board::at(target_index);
+    auto enemy_id = game::get<board>().at(target_index);
 
     damage_dealers::standard_damage_dealer(melee_damage(is_killer_instinct_active ? damage_with_killer_instinct : damage, enemy_id, entity_id));
 }

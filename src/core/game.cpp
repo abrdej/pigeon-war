@@ -19,6 +19,8 @@
 #include "utils/scenario_helper.h"
 #include <iostream>
 
+std::unordered_map<std::type_index, std::shared_ptr<void>> game::systems;
+
 game::game() {
 }
 
@@ -26,9 +28,9 @@ void game::on_board(std::uint32_t col, std::uint32_t row)
 {
 	using namespace states;
 
-	auto index = board::to_index(col, row);
+	auto index = game::get<board>().to_index(col, row);
 
-	if (board::empty(index) && state_controller::actual_state_ == states_types::waiting)
+	if (game::get<board>().empty(index) && state_controller::actual_state_ == states_types::waiting)
 		return;
 
 	else if (state_controller::actual_state_ == states_types::wait_for_action)
@@ -36,21 +38,21 @@ void game::on_board(std::uint32_t col, std::uint32_t row)
 		if (state_controller::is_possible_movement(index) && state_controller::valid_target(index))
 			state_controller::do_action(index);
 
-		else if (!board::empty(index) && players_funcs::player_entity(index))
+		else if (!game::get<board>().empty(index) && players_funcs::player_entity(index))
 			state_controller::first_state(index);
 
-		else if (!board::empty(index) && !players_funcs::player_entity(index))
+		else if (!game::get<board>().empty(index) && !players_funcs::player_entity(index))
 		{
 			state_controller::actual_state_ = states_types::waiting;
 			state_controller::actual_targeting_type_ = target_types::non;
 			state_controller::selected_index_ = index;
 		}
 	}
-	else if (!board::empty(index) && players_funcs::player_entity(index))
+	else if (!game::get<board>().empty(index) && players_funcs::player_entity(index))
 	{
 		state_controller::first_state(index);
 	}
-	else if (!board::empty(index) && !players_funcs::player_entity(index))
+	else if (!game::get<board>().empty(index) && !players_funcs::player_entity(index))
 	{
 		state_controller::actual_state_ = states_types::waiting;
 		state_controller::actual_targeting_type_ = target_types::non;
@@ -69,8 +71,8 @@ void game::on_button(std::uint32_t n)
 			return;
 		}
 
-		auto entity_id = board::at(selected_index);
-		auto entity = entity_manager::get(entity_id);
+		auto entity_id = game::get<board>().at(selected_index);
+		auto entity = game::get<entity_manager>().get(entity_id);
 
 		if (entity.contain<abilities>()) {
 
@@ -86,24 +88,15 @@ void game::on_button(std::uint32_t n)
 	}
 	if (n == 5)
 	{
-		std::cout << "yy1\n";
-		turn_system::end_turn();
-
-		std::cout << "yy2\n";
-
-		players_manager::next_player();
-
-		std::cout << "yy3\n";
-
+		game::get<turn_system>().end_turn();
+		game::get<players_manager>().next_player();
 		states::state_controller::first_state(players_funcs::active_player_first_entity_index());
 
-		std::cout << "yy4\n";
-
-//		if (players_manager::is_active_player_ai())
+//		if (game::get<players_manager>().is_active_player_ai())
 //		{
-//			ai_manager::perform_movement(players_manager::get_active_player_id());
+//			ai_manager::perform_movement(game::get<players_manager>().get_active_player_id());
 //			turn_system::end_turn();
-//			players_manager::next_player();
+//			game::get<players_manager>().next_player();
 //			states::state_controller::first_state(players_funcs::active_player_first_entity_index());
 //			//on_button(14);
 //		}
@@ -112,8 +105,8 @@ void game::on_button(std::uint32_t n)
 
 std::string game::get_button_description(std::uint32_t selected_index, std::uint32_t n) {
 
-	auto entity_id = board::at(selected_index);
-	auto entity = entity_manager::get(entity_id);
+	auto entity_id = game::get<board>().at(selected_index);
+	auto entity = game::get<entity_manager>().get(entity_id);
 
 	std::string description;
 

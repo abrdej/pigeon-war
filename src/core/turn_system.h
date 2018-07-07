@@ -12,6 +12,7 @@
 #include <utils/control_ptr.h>
 #include <utils/callback_holder.h>
 #include <boost/signals2.hpp>
+#include "game.h"
 
 enum class frequency_types {
 	every_turn,
@@ -91,89 +92,89 @@ class turn_system
 
 public:
 
-	static void end_turn();
-	static void on_turn(std::uint32_t turn_n, const std::function<void()>& task);
+	void end_turn();
+	void on_turn(std::uint32_t turn_n, const std::function<void()>& task);
 
-	static std::uint32_t get_callback_id() {
+	std::uint32_t get_callback_id() {
 		static std::uint32_t callback_id_gen = 0;
 		return callback_id_gen++;
 	}
 
-	static turn_scoped_connection set_callback(const frequency_types& frequency,
-											 int32_t duration,
-											 const std::function<void(turn_callback_info&)>& callback) {
+	turn_scoped_connection set_callback(const frequency_types& frequency,
+										int32_t duration,
+										const std::function<void(turn_callback_info&)>& callback) {
 
 		return turn_scoped_connection(next_turn_signal.connect_extended(turn_callback_wrapper(frequency, duration, callback)));
 	}
 
-	static turn_scoped_connection set_callback(const frequency_types& frequency,
-											 int32_t duration,
-											 const std::function<void()>& callback) {
+	turn_scoped_connection set_callback(const frequency_types& frequency,
+										int32_t duration,
+										const std::function<void()>& callback) {
 
 		return turn_scoped_connection(next_turn_signal.connect_extended(turn_callback_wrapper(frequency, duration,
 																							  [callback](turn_callback_info&) {
-			return callback();
-		})));
+																								  return callback();
+																							  })));
 	}
 
 private:
-	static std::uint32_t turn_n;
-	static std::unordered_multimap<std::uint32_t, std::function<void()>> tasks;
-	static turn_signal next_turn_signal;
+	std::uint32_t turn_n{0};
+	std::unordered_multimap<std::uint32_t, std::function<void()>> tasks;
+	turn_signal next_turn_signal;
 };
 
 template <typename Callback>
 inline auto make_every_turn_callback_holder(std::int32_t duration,
 											Callback callback) {
 
-    return turn_system::set_callback(frequency_types::every_turn,
-									 duration,
-									 callback);
+	return game::get<turn_system>().set_callback(frequency_types::every_turn,
+												 duration,
+												 callback);
 }
 
 template <typename Callback>
 inline void set_every_turn_callback(std::int32_t duration,
 									Callback callback) {
 
-	turn_system::set_callback(frequency_types::every_turn,
-							  duration,
-							  callback).release();
+	game::get<turn_system>().set_callback(frequency_types::every_turn,
+										  duration,
+										  callback).release();
 }
 
 template <typename Callback>
 inline auto make_every_two_turns_from_next_callback_holder(std::int32_t duration,
 														   Callback callback) {
 
-	return turn_system::set_callback(frequency_types::every_two_turns_from_next,
-									 duration,
-									 callback);
+	return game::get<turn_system>().set_callback(frequency_types::every_two_turns_from_next,
+												 duration,
+												 callback);
 }
 
 template <typename Callback>
 inline auto make_after_n_round_callback_holder(std::int32_t duration,
 											   Callback callback) {
 
-	return turn_system::set_callback(frequency_types::after_n_rounds,
-									 duration,
-									 callback);
+	return game::get<turn_system>().set_callback(frequency_types::after_n_rounds,
+												 duration,
+												 callback);
 }
 
 template <typename Callback>
 inline auto make_after_n_turns_callback_holder(std::int32_t duration,
 											   Callback callback) {
 
-	return turn_system::set_callback(frequency_types::after_n_turns,
-									 duration,
-									 callback);
+	return game::get<turn_system>().set_callback(frequency_types::after_n_turns,
+												 duration,
+												 callback);
 }
 
 template <typename Callback>
 inline void set_after_n_round_callback(std::int32_t duration,
 									   Callback callback) {
 
-	turn_system::set_callback(frequency_types::after_n_rounds,
-							  duration,
-							  callback).release();
+	game::get<turn_system>().set_callback(frequency_types::after_n_rounds,
+										  duration,
+										  callback).release();
 }
 
 class turn_callback_helper
@@ -181,23 +182,23 @@ class turn_callback_helper
 protected:
 	template <typename Callback>
 	void on_every_turn(Callback callback) {
-		on_every_turn_holder = std::move(turn_system::set_callback(frequency_types::every_turn, 0, callback));
+		on_every_turn_holder = std::move(game::get<turn_system>().set_callback(frequency_types::every_turn, 0, callback));
 	}
 	template <typename Callback>
 	void on_every_two_turns_from_this(Callback callback) {
-		on_every_two_turns_from_this_holder = std::move(turn_system::set_callback(frequency_types::every_two_turns_from_this, 0, callback));
+		on_every_two_turns_from_this_holder = std::move(game::get<turn_system>().set_callback(frequency_types::every_two_turns_from_this, 0, callback));
 	}
 	template <typename Callback>
 	void after_player_turn(std::uint32_t entity_id, Callback callback) {
-		after_player_turn_holder = std::move(turn_system::set_callback(frequency_types::every_turn, 0, [entity_id, callback]() {
-			if (players_manager::active_player_entity(entity_id)) {
+		after_player_turn_holder = std::move(game::get<turn_system>().set_callback(frequency_types::every_turn, 0, [entity_id, callback]() {
+			if (game::get<players_manager>().active_player_entity(entity_id)) {
 				callback();
 			}
 		}));
 	}
 	template <typename Callback>
 	void on_every_two_turns_from_next(Callback callback) {
-		on_every_two_turns_from_next_holder = std::move(turn_system::set_callback(frequency_types::every_two_turns_from_next, 0, callback));
+		on_every_two_turns_from_next_holder = std::move(game::get<turn_system>().set_callback(frequency_types::every_two_turns_from_next, 0, callback));
 	}
 
 private:

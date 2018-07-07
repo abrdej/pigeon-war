@@ -11,11 +11,11 @@ void blow_the_ax::use(std::uint32_t index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
 
-    auto entity_id = board::at(used_from_index);
+    auto entity_id = game::get<board>().at(used_from_index);
 
     sender::send(make_action_message("blow_the_ax", used_from_index, index_on));
 
-    damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(index_on), entity_id));
+    damage_dealers::standard_damage_dealer(melee_damage(damage, game::get<board>().at(index_on), entity_id));
 
     used = true;
 }

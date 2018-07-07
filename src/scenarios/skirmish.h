@@ -9,6 +9,8 @@
 
 class game;
 
-std::string create_skirmish(game& game, const std::string& map_name);
+std::string create_skirmish(game& game,
+                            const std::string& map_name,
+                            std::pair<std::uint32_t, std::uint32_t>& map_size);
 
 #endif //PIGEONWAR_SKIRMISH_H

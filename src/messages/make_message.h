@@ -9,6 +9,8 @@
 #include <unordered_map>
 #include "core/game_state.h"
 
+std::string make_map_size_message(const std::pair<std::uint32_t, std::uint32_t>& map_size);
+
 std::string make_client_id_message(std::uint32_t client_id);
 
 std::string make_map_name_message(const std::string& map_name);
@@ -26,7 +28,7 @@ std::string make_entities_names_message(const std::unordered_map<std::uint32_t, 
 std::string make_entities_healths_message(const std::unordered_map<std::uint32_t, std::int32_t>& healths);
 
 std::string make_entities_pack_message(const std::unordered_map<std::uint32_t,
-        std::tuple<std::string, std::int32_t, std::uint32_t>>& entities_pack);
+        std::tuple<std::string, std::int32_t, std::int32_t, std::uint32_t>>& entities_pack);
 
 std::string make_local_state_message(const local_state& state);
 

@@ -14,7 +14,7 @@ std::int32_t random_damage(std::int32_t damage) {
 
 std::int32_t damage_dealers::standard_damage_dealer(const damage_pack& dmg)
 {
-	base_entity entity = entity_manager::get(dmg.damage_receiver_id);
+	base_entity entity = game::get<entity_manager>().get(dmg.damage_receiver_id);
 
 	auto health_field_ptr = entity.get<health_field>();
 
@@ -28,12 +28,12 @@ std::int32_t damage_dealers::standard_damage_dealer(const damage_pack& dmg)
 	auto dealt_damage = entity.get<damage_taker>()->receive_damage(dmg_copy);
 
 	if (health_field_ptr->health <= 0 && health_field_ptr->is_destructible)
-		entity_manager::destroy(dmg_copy.damage_receiver_id);
+		game::get<entity_manager>().destroy(dmg_copy.damage_receiver_id);
 
 	return dealt_damage;
 }
 
 std::int32_t standard_healing(const heal_pack& hl) {
 
-	return entity_manager::get(hl.receiver_id).get<damage_taker>()->heal(hl);
+	return game::get<entity_manager>().get(hl.receiver_id).get<damage_taker>()->heal(hl);
 }

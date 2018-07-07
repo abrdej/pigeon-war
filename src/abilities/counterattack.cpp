@@ -11,11 +11,11 @@ counterattack::counterattack(std::uint32_t entity_id)
 
 	on_receive_damage(entity_id, [this](const damage_pack& dmg) {
 
-		if (entity_manager::get(this->entity_id).get<health_field>()->health > 0) {
-			auto enemy_index = board::index_for(dmg.damage_dealer_id);
+		if (game::get<entity_manager>().get(this->entity_id).get<health_field>()->health > 0) {
+			auto enemy_index = game::get<board>().index_for(dmg.damage_dealer_id);
 
 			std::vector<std::uint32_t> neighbors;
-			board_helper::neighboring_fields(board::index_for(this->entity_id),
+			board_helper::neighboring_fields(game::get<board>().index_for(this->entity_id),
 											 neighbors,
 											 false);
 
@@ -36,8 +36,8 @@ void counterattack::use(std::uint32_t index_on) {
 		return;
 	}
 
-	auto entity_index = board::index_for(entity_id);
-	auto enemy_id = board::at(index_on);
+	auto entity_index = game::get<board>().index_for(entity_id);
+	auto enemy_id = game::get<board>().at(index_on);
 
 	sender::send(make_action_message("counterattack", entity_index, index_on));
 

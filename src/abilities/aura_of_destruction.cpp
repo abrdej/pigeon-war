@@ -14,7 +14,7 @@ aura_of_destruction::aura_of_destruction(std::uint32_t entity_id)
 
     on_receive_damage(entity_id, [this, entity_id](const damage_pack& dmg) mutable {
 
-        auto& aura_power = entity_manager::get(entity_id).get<power_filed>()->power;
+        auto& aura_power = game::get<entity_manager>().get(entity_id).get<power_filed>()->power;
 
         auto half_damage = 0.5 * dmg.damage_value;
 
@@ -22,7 +22,7 @@ aura_of_destruction::aura_of_destruction(std::uint32_t entity_id)
         aura_power -= value_for_power;
 
         if (value_for_power > 0) {
-            sender::send(make_action_message("destruction", board::index_for(entity_id)));
+            sender::send(make_action_message("destruction", game::get<board>().index_for(entity_id)));
 
             auto enemy_id = dmg.damage_dealer_id;
             if (enemy_id != no_damage_dealer) {
@@ -35,7 +35,7 @@ aura_of_destruction::aura_of_destruction(std::uint32_t entity_id)
 
 void aura_of_destruction::use(std::uint32_t use_on_index) {
 
-//    auto& aura_power = entity_manager::get(entity_id).get<power_filed>()->power;
+//    auto& aura_power = game::get<entity_manager>().get(entity_id).get<power_filed>()->power;
 //
 //    if (aura_power < cost)
 //        return;
@@ -43,21 +43,21 @@ void aura_of_destruction::use(std::uint32_t use_on_index) {
 //    aura_power -= cost;
 //
 //    std::vector<std::uint32_t> neighbors;
-//    board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);
+//    board_helper::neighboring_fields(game::get<board>().index_for(entity_id), neighbors, false);
 //    for (auto& index : neighbors) {
-//        if (!board::empty(index) && players_funcs::player_entity(index)) {
+//        if (!game::get<board>().empty(index) && players_funcs::player_entity(index)) {
 //
-//            auto friend_id = board::at(index);
+//            auto friend_id = game::get<board>().at(index);
 //
 //            auto usable_dmg_increase = this->usable_damage_increase;
 //
-//            entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(usable_dmg_increase);
+//            game::get<entity_manager>().get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(usable_dmg_increase);
 //
 //            auto destruction_receiver = make_after_n_turns_callback_holder(duration,
 //                                                                           [usable_dmg_increase, friend_id]() mutable {
 //
 //
-//                                                                               entity_manager::get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(-usable_dmg_increase);
+//                                                                               game::get<entity_manager>().get(friend_id).get<modification>()->modify_damage_dealer_modifier_by(-usable_dmg_increase);
 //                                                                               remove_effect(friend_id, "destruction_effect");
 //                                                                           });
 //
@@ -65,7 +65,7 @@ void aura_of_destruction::use(std::uint32_t use_on_index) {
 //        }
 //    }
 //
-//    sender::send(make_action_message("destruction, board::index_for(entity_id));
+//    sender::send(make_action_message("destruction, game::get<board>().index_for(entity_id));
 //
 //    auras_observer::observe();
 }

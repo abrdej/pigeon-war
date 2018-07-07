@@ -27,8 +27,8 @@ void missile_of_doom::use(std::uint32_t index_on) {
 		return;
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto caster_id = board::at(used_from_index);
-	auto enemy_id = board::at(index_on);
+	auto caster_id = game::get<board>().at(used_from_index);
+	auto enemy_id = game::get<board>().at(index_on);
 
 	sender::send(make_action_message("power_bullet", used_from_index, index_on));
 

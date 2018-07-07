@@ -52,13 +52,13 @@ void sabers::target(std::uint32_t target_index)
 
 void sabers::use(std::uint32_t index_on)
 {
-	if (board::empty(index_on))
+	if (game::get<board>().empty(index_on))
 		return;
 
 	auto used_from_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(used_from_index);
+	auto entity_id = game::get<board>().at(used_from_index);
 
 	sender::send(make_action_message("sabers", used_from_index, index_on));
 
-	damage_dealers::standard_damage_dealer(melee_damage(damage, board::at(index_on), entity_id));
+	damage_dealers::standard_damage_dealer(melee_damage(damage, game::get<board>().at(index_on), entity_id));
 }

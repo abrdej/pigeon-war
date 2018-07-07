@@ -13,7 +13,7 @@ lightning::lightning(std::uint32_t entity_id)
 
 std::string lightning::hint() const {
 
-    auto power = entity_manager::get(entity_id).get<power_filed>()->power;
+    auto power = game::get<entity_manager>().get(entity_id).get<power_filed>()->power;
 
     auto desc = get_desc("lightning");
     str_replace(desc, "<power>", std::to_string(power));
@@ -33,19 +33,19 @@ void lightning::use(std::uint32_t index_on) {
     }
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = board::at(used_from_index);
-    auto enemy_id = board::at(index_on);
+    auto caster_id = game::get<board>().at(used_from_index);
+    auto enemy_id = game::get<board>().at(index_on);
     auto damage = this->damage;
 
     sender::send(make_action_message("lightning_prepare", index_on));
 
     auto lightning_connection = make_after_n_round_callback_holder(1,
                                                                [enemy_id, caster_id, damage]() mutable {
-                                                                   if (entity_manager::alive(enemy_id)) {
+                                                                   if (game::get<entity_manager>().alive(enemy_id)) {
                                                                        sender::send(make_action_message("lightning",
-                                                                                                        board::index_for(
+                                                                                                        game::get<board>().index_for(
                                                                                                                 enemy_id)));
-                                                                       damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, entity_manager::alive(caster_id) ? caster_id : no_damage_dealer));
+                                                                       damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, game::get<entity_manager>().alive(caster_id) ? caster_id : no_damage_dealer));
                                                                        remove_effect(enemy_id, "lightning target");
                                                                    }
                                                                });

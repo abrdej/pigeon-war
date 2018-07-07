@@ -28,16 +28,16 @@ void shoot::use(std::uint32_t index_on)
 
 	--bullets;
 	auto used_from_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(used_from_index);
+	auto entity_id = game::get<board>().at(used_from_index);
 
-	LOG_DEBUG() << "shoot used from pos: " << board::to_pos(used_from_index) << "\n";
+	LOG_DEBUG() << "shoot used from pos: " << game::get<board>().to_pos(used_from_index) << "\n";
 	LOG_DEBUG() << "by entity of id: " << entity_id << "\n";
-	LOG_DEBUG() << "to pos: " << board::to_pos(index_on) << "\n";
+	LOG_DEBUG() << "to pos: " << game::get<board>().to_pos(index_on) << "\n";
     LOG_DEBUG() << "remaining bullets: " << bullets << "\n";
 
 	sender::send(make_action_message("shoot", used_from_index, index_on));
 
-	auto final_damage = damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index_on), entity_id));
+	auto final_damage = damage_dealers::standard_damage_dealer(ranged_damage(damage, game::get<board>().at(index_on), entity_id));
 
 	LOG_DEBUG() << "dealt damage of: " << final_damage << "\n";
 }

@@ -20,8 +20,8 @@ void spider_web::use(std::uint32_t index_on) {
 
     auto used_from_index = states::state_controller::selected_index_;
 
-    auto pos_1 = board::to_pos(used_from_index);
-    auto pos_2 = board::to_pos(index_on);
+    auto pos_1 = game::get<board>().to_pos(used_from_index);
+    auto pos_2 = game::get<board>().to_pos(index_on);
 
     std::int32_t x = pos_2.first - pos_1.first;
     std::int32_t y = pos_2.second - pos_1.second;
@@ -30,19 +30,19 @@ void spider_web::use(std::uint32_t index_on) {
     if (y != 0)
         y = y / std::abs(y);
 
-    auto land_index = board::to_index(pos_1.first + x, pos_1.second + y);
+    auto land_index = game::get<board>().to_index(pos_1.first + x, pos_1.second + y);
 
     sender::send(make_action_message("spider_web", used_from_index, index_on, land_index));
 
-    auto enemy_id = board::at(index_on);
+    auto enemy_id = game::get<board>().at(index_on);
 
-    board::move(index_on, land_index);
+    game::get<board>().move(index_on, land_index);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, caster_id));
 
-    if (entity_manager::alive(enemy_id)) {
+    if (game::get<entity_manager>().alive(enemy_id)) {
 
-        auto enemy_abilities_ptr = entity_manager::get(enemy_id).get<abilities>();
+        auto enemy_abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
         auto moveable_base_ptr = std::dynamic_pointer_cast<moveable_base>(enemy_abilities_ptr->of_type(ability_types::moving));
         if (moveable_base_ptr) {
             moveable_base_ptr->set_slow_down(1);
@@ -62,7 +62,7 @@ void spider_web::use(std::uint32_t index_on) {
 
     used = true;
 
-    auto caster_abilities_ptr = entity_manager::get(caster_id).get<abilities>();
+    auto caster_abilities_ptr = game::get<entity_manager>().get(caster_id).get<abilities>();
     auto jaw_spider_ptr = caster_abilities_ptr->get<jaw_spider>();
     jaw_spider_ptr->set_used();
 }

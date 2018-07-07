@@ -21,14 +21,14 @@ void death_mark::use(std::uint32_t index_on) {
 //
 //	sender::send(make_action_message("death_mark, index_on);
 //
-//	enemy_id = board::at(index_on);
+//	enemy_id = game::get<board>().at(index_on);
 //
 //	auto death_mark_receiver = make_after_n_round_callback_holder(death_mark_duration,
 //																  [this]() {
 //		remove_effect(enemy_id, "death_mark");
 //		mark_removed = true;
 //
-//		set_damage_receiver(entity_id, entity_manager::get(entity_id).get<damage_taker>()->get_damage_receiver());
+//		set_damage_receiver(entity_id, game::get<entity_manager>().get(entity_id).get<damage_taker>()->get_damage_receiver());
 //	});
 //
 //	add_effect(enemy_id,

@@ -28,7 +28,7 @@ void invisibility::use(std::uint32_t on_index)
 
 void invisibility::hide_me()
 {
-	index = board::index_for(entity_id);
+	index = game::get<board>().index_for(entity_id);
 
 	sender::send(make_action_message("set_invisibility", entity_id));
 

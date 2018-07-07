@@ -19,13 +19,13 @@ void spear::use(std::uint32_t index_on) {
     used = true;
 
     auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = board::at(used_from_index);
+    auto entity_id = game::get<board>().at(used_from_index);
 
     sender::send(make_action_message("spear", used_from_index, index_on));
 
     std::int32_t full_damage = damage + accumulated_damage;
 
-    damage_dealers::standard_damage_dealer(melee_damage(full_damage, board::at(index_on), entity_id));
+    damage_dealers::standard_damage_dealer(melee_damage(full_damage, game::get<board>().at(index_on), entity_id));
 
     accumulated_damage = 0;
 }

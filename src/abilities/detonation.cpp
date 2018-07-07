@@ -13,15 +13,15 @@ detonation::detonation(std::uint32_t entity_id) {
 
         if (health_pack.health == 0) {
             std::vector<std::uint32_t> neighbors;
-            board_helper::neighboring_fields(board::index_for(entity_id), neighbors, false);
+            board_helper::neighboring_fields(game::get<board>().index_for(entity_id), neighbors, false);
 
-            auto entity_index = board::index_for(entity_id);
+            auto entity_index = game::get<board>().index_for(entity_id);
 
             sender::send(make_action_message("detonation", entity_index));
 
             for (auto& index : neighbors) {
-                if (!board::empty(index))
-                    damage_dealers::standard_damage_dealer(ranged_damage(damage, board::at(index), entity_id));
+                if (!game::get<board>().empty(index))
+                    damage_dealers::standard_damage_dealer(ranged_damage(damage, game::get<board>().at(index), entity_id));
             }
         }
 

@@ -6,6 +6,7 @@
 #include <entities/entities_factory.h>
 #include "managers/entity_manager.h"
 #include "managers/players_manager.h"
+#include "core/game.h"
 
 class board;
 class entity_manager;
@@ -24,9 +25,9 @@ template <typename T>
 void create_neutral_many(std::vector<std::pair<std::uint32_t, std::uint32_t>>& positions) {
     for (auto& position : positions)
     {
-        std::uint32_t id = entity_manager::create<T>();
-        board::insert(board::to_index(position.first, position.second), id);
-        players_manager::add_neutral_entity(id);
+        std::uint32_t id = game::get<entity_manager>().create<T>();
+        game::get<board>().insert(game::get<board>().to_index(position.first, position.second), id);
+        game::get<players_manager>().add_neutral_entity(id);
     }
 }
 
@@ -34,9 +35,9 @@ template <typename T>
 void create_neutral_many(std::initializer_list<std::pair<std::uint32_t, std::uint32_t>> positions) {
     for (auto& position : positions)
     {
-        std::uint32_t id = entity_manager::create<T>();
-        board::insert(board::to_index(position.first, position.second), id);
-        players_manager::add_neutral_entity(id);
+        std::uint32_t id = game::get<entity_manager>().create<T>();
+        game::get<board>().insert(game::get<board>().to_index(position.first, position.second), id);
+        game::get<players_manager>().add_neutral_entity(id);
     }
 }
 
@@ -44,8 +45,8 @@ inline void create_neutral_many(const std::string& entity_name, const std::vecto
     for (auto& position : positions)
     {
         std::uint32_t id = entities_factory::create(entity_name);
-        board::insert(board::to_index(position.first, position.second), id);
-        players_manager::add_neutral_entity(id);
+        game::get<board>().insert(game::get<board>().to_index(position.first, position.second), id);
+        game::get<players_manager>().add_neutral_entity(id);
     }
 }
 

@@ -4,6 +4,7 @@
 #include "core/board.h"
 #include "core/states_controller.h"
 #include "core/path_finder.h"
+#include "core/game.h"
 #include "abilities/abilities.h"
 #include <random>
 #include <thread>
@@ -90,8 +91,8 @@ bool find_nearest_enemy::operator()(blackboard& blackboard)
 bool attack_enemy::operator()(blackboard& blackboard)
 {
 	auto selected_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(selected_index);
-	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto entity_id = game::get<board>().at(selected_index);
+	auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
 	auto offensive = abilities_ptr->of_type(ability_types::offensive);
 	if (!offensive)
 		return false;
@@ -111,8 +112,8 @@ bool attack_enemy::operator()(blackboard& blackboard)
 
 bool go_close_to::operator()(blackboard& blackboard)
 {
-	auto entity_id = board::at(blackboard.my_entity_index_);
-	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto entity_id = game::get<board>().at(blackboard.my_entity_index_);
+	auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
 	auto moving = abilities_ptr->of_type(ability_types::moving);
 	if (!moving)
 		return false;
@@ -125,7 +126,7 @@ bool go_close_to::operator()(blackboard& blackboard)
 									 neighbors, false);
 
 	neighbors.erase(std::remove_if(std::begin(neighbors), std::end(neighbors), [&blackboard](std::uint32_t index) {
-		return !board::empty(index) && index != blackboard.my_entity_index_;
+		return !game::get<board>().empty(index) && index != blackboard.my_entity_index_;
 	}), std::end(neighbors));
 
 	auto nearest_field = *std::min_element(std::begin(neighbors), std::end(neighbors),
@@ -154,9 +155,9 @@ bool go_close_to::operator()(blackboard& blackboard)
 
 bool go_to::operator()(blackboard& blackboard)
 {
-	auto entity_id = board::at(blackboard.my_entity_index_);
+	auto entity_id = game::get<board>().at(blackboard.my_entity_index_);
 
-	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
 	auto moving = abilities_ptr->of_type(ability_types::moving);
 	if (!moving)
 		return false;
@@ -185,9 +186,9 @@ bool go_to::operator()(blackboard& blackboard)
 
 bool can_go_to::operator()(blackboard& blackboard)
 {
-	auto entity_id = board::at(blackboard.my_entity_index_);
+	auto entity_id = game::get<board>().at(blackboard.my_entity_index_);
 
-	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
 	auto moving = abilities_ptr->of_type(ability_types::moving);
 	if (!moving)
 		return false;
@@ -203,8 +204,8 @@ bool can_go_to::operator()(blackboard& blackboard)
 bool find_position_for_shot::operator()(blackboard& blackboard)
 {
 	auto selected_index = states::state_controller::selected_index_;
-	auto entity_id = board::at(selected_index);
-	auto abilities_ptr = entity_manager::get(entity_id).get<abilities>();
+	auto entity_id = game::get<board>().at(selected_index);
+	auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
 	auto offensive = abilities_ptr->of_type(ability_types::offensive);
 	if (!offensive)
 		return false;
@@ -238,7 +239,7 @@ bool find_best_aim::operator()(blackboard& blackboard) {
 	std::uint32_t min_health_enemy_id = 0;
 
 	for (auto&& enemy_id : enemies_indexes) {
-		auto health = entity_manager::get(enemy_id).get<health_field>()->health;
+		auto health = game::get<entity_manager>().get(enemy_id).get<health_field>()->health;
 
 		if (health < min_health) {
 			min_health = health;
