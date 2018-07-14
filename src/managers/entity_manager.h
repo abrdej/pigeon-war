@@ -9,7 +9,6 @@
 #include <messages/make_message.h>
 #include <sender.h>
 #include "entities/entity.h"
-#include "core/board.h"
 
 class entity_manager final
 {
@@ -44,20 +43,26 @@ public:
 	{
 		entities.erase(entity_id);
 
-		//game::get<board>().remove_entity(entity_id);
-
 		sender::send(make_remove_entity_message(entity_id));
 
 		call_destroy_callbacks(entity_id);
 	}
-	void on_destroy(std::uint32_t entity_id, const std::function<void()>& callback)
+//	void on_destroy(std::uint32_t entity_id, const std::function<void()>& callback)
+//	{
+//		on_destroy_callbacks[entity_id].push_back(callback);
+//	}
+	void on_destroy(std::uint32_t entity_id, std::function<void()> callback)
 	{
-		on_destroy_callbacks[entity_id].push_back(callback);
+		on_destroy_callbacks[entity_id].push_back(std::move(callback));
 	}
 	void call_destroy_callbacks(std::uint32_t entity_id)
 	{
-		for (auto& callback : on_destroy_callbacks[entity_id])
-			callback();
+		auto it = on_destroy_callbacks.find(entity_id);
+		if (it != std::end(on_destroy_callbacks)) {
+			for (auto&& callback : it->second)
+				callback();
+			on_destroy_callbacks.erase(it);
+		}
 	}
 	template <typename Function>
 	void for_all(Function function) {

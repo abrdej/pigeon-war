@@ -15,6 +15,9 @@ public:
     bitmap_key get_bitmap_key() const override {
         return "power_bullet";
     }
+    ability_types type() const override {
+        return ability_types::offensive;
+    }
 
     std::string hint() const override;
 

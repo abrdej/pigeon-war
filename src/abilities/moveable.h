@@ -58,6 +58,10 @@ public:
 		return "moveable";
 	}
 
+	ability_types type() const override {
+		return ability_types::moving;
+	}
+
 	void refresh_range() override {
 		used = false;
 	}

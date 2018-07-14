@@ -11,16 +11,6 @@
 class entity;
 
 class players_manager {
-
-//	static std::unique_ptr<players_manager> impl;
-//
-//	static players_manager& get_instance() {
-//		if (!impl) {
-//			impl = std::make_unique<players_manager>();
-//		}
-//		return *impl;
-//	}
-
 public:
 	std::uint32_t create_human_player(const std::string& player_name = "") {
 		players.emplace_back(std::make_pair(player_name, false));

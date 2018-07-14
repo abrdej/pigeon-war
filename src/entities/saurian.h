@@ -10,7 +10,7 @@ class saurian final
 public:
 	static auto create(base_entity& entity)
 	{
-		entity.name = "Saurion";
+		entity.name = "Saurian";
 
 		entity.add<health_field>(35);
 		entity.add<damage_taker>();

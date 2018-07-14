@@ -5,13 +5,16 @@
 #include "managers/managers.h"
 #include "ai.h"
 #include "behavior_tree.h"
-struct ai_component;
 
-class ai_manager : public base_manager<std::shared_ptr<behavior_tree::base_task<ai::behavior_tree_tasks::blackboard>>,
-	std::shared_ptr<behavior_tree::base_task<ai::behavior_tree_tasks::blackboard>>>
+class ai_manager
 {
+	std::unordered_map<std::uint32_t, std::shared_ptr<behavior_tree::base_task<ai::behavior_tree_tasks::blackboard>>>
+			behavior_trees;
+
 public:
-	static void perform_movement(std::uint32_t for_player_of_id);
+	void add_ai_for(std::uint32_t entity_id,
+	std::shared_ptr<behavior_tree::base_task<ai::behavior_tree_tasks::blackboard>> ai);
+	void perform_movement(std::uint32_t for_player_of_id);
 };
 
 #endif

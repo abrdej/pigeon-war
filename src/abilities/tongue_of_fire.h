@@ -10,6 +10,9 @@ public:
 	bitmap_key get_bitmap_key() const override {
 		return "tongue_of_fire";
 	}
+	ability_types type() const override {
+		return ability_types::offensive;
+	}
 
 private:
 	void use(std::uint32_t index_on) override;

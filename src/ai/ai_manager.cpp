@@ -2,13 +2,26 @@
 #include "core/states_controller.h"
 #include "core/board.h"
 
+void ai_manager::add_ai_for(std::uint32_t entity_id,
+							std::shared_ptr<behavior_tree::base_task<ai::behavior_tree_tasks::blackboard>> ai) {
+	behavior_trees.emplace(entity_id, ai);
+	game::get<entity_manager>().on_destroy(entity_id, [this, entity_id]() {
+		behavior_trees.erase(entity_id);
+	});
+}
+
 void ai_manager::perform_movement(std::uint32_t for_player_of_id)
 {
-	for (auto& elem : map_)
+	auto behavior_trees_copy = behavior_trees;
+	for (auto& behavior_tree_entry : behavior_trees_copy)
 	{
-		auto entity_index = game::get<board>().index_for(elem.first);
+		std::cout << "perform movement\n";
+		auto entity_index = game::get<board>().index_for(behavior_tree_entry.first);
 		states::state_controller::selected_index_ = entity_index;
-		ai::behavior_tree_tasks::blackboard blackboard(for_player_of_id, entity_index);
-		auto result = (*elem.second)(blackboard);
+        using namespace ai::behavior_tree_tasks;
+		blackboard blackboard;
+        blackboard.set_entry<entry_tag::player_id>(for_player_of_id);
+        blackboard.set_entry<entry_tag::my_entity_index_>(entity_index);
+		auto result = (*behavior_tree_entry.second)(blackboard);
 	}
 }

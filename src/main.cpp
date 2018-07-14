@@ -11,6 +11,9 @@
 #include <managers/entity_manager.h>
 #include <messages/make_message.h>
 #include <components/power_field.h>
+#include <scenarios/wolves_dinner.h>
+#include <scenarios/saurian_web_scenario.h>
+#include <scenarios/battle_with_a_golem_scenario.h>
 #include "core/game.h"
 #include "core/game_state.h"
 #include "server/server.h"
@@ -111,7 +114,12 @@ int main(int argc, char** argv) {
 	}
 
 	game g;
-    map_name = create_skirmish(g, map_name, map_size);
+//    map_name = create_skirmish(g, map_name, map_size);
+	game::get<board>().set_size(15, 10);
+//	create_wolves_dinner(g);
+//	create_saurian_web(g);
+	create_battle_with_a_golem_scenario();
+	map_name = "Wolves dinner";
 
 	tcp_server pigeon_war_server(port);
 

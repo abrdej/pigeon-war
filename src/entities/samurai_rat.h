@@ -5,6 +5,7 @@
 #ifndef PIGEONWAR_SAMURAI_RAT_H
 #define PIGEONWAR_SAMURAI_RAT_H
 
+#include <abilities/abilities.h>
 #include <abilities/dodge.h>
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>

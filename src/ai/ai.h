@@ -3,6 +3,7 @@
 
 #include <managers/players_manager.h>
 #include <ai/behavior_tree.h>
+#include <boost/any.hpp>
 
 class board;
 class entity_manager;
@@ -10,35 +11,60 @@ class path_finder;
 
 namespace ai
 {
-class ai_brain
-{
-public:
-	explicit ai_brain(std::uint32_t player_id);
-	void do_turn();
-private:
-	void move_entity(std::uint32_t entity_index);
-	//bool attack_if_can(std::uint32_t from_index, std::uint32_t on_index);
-	//void go_in_direction(std::uint32_t from_index, std::uint32_t to_index);
-private:
-	const std::uint32_t player_id;
-};
 
 namespace behavior_tree_tasks
 {
+
+namespace entry_tag {
+struct player_id{};
+struct my_entity_index_{};
+struct nearest_enemy_index{};
+struct destination_index{};
+}
+
+template <typename Tag>
+struct entry_traits {
+	using value_type = std::uint32_t;
+};
+
+template <typename Tag>
+using tag_type = typename entry_traits<Tag>::value_type;
+
+template <typename Tag>
+inline auto entry_construct_default() {
+	return tag_type<Tag>{};
+}
+
+template <>
+inline auto entry_construct_default<entry_tag::nearest_enemy_index>() {
+	return std::numeric_limits<std::uint32_t>::max();
+}
+
+template <>
+inline auto entry_construct_default<entry_tag::destination_index>() {
+	return std::numeric_limits<std::uint32_t>::max();
+}
+
 struct blackboard
 {
-	blackboard(std::uint32_t player_id,
-			   std::uint32_t entity_index)
-			: player_id(player_id),
-			  my_entity_index_(entity_index),
-			  nearest_enemy_index(-1),
-			  destination_index(-1)
-	{
+	template <typename EntryTag>
+	tag_type<EntryTag>& entry() {
+		auto it = entries.find(typeid(EntryTag));
+		if (it == std::end(entries)) {
+			it = entries.emplace(typeid(EntryTag), entry_construct_default<EntryTag>()).first;
+		}
+		return boost::any_cast<tag_type<EntryTag>&>(it->second);
 	}
-	std::uint32_t player_id;
-	std::uint32_t my_entity_index_;
-	std::uint32_t nearest_enemy_index;
-	std::uint32_t destination_index;
+	template <typename EntryTag>
+	bool entry(tag_type<EntryTag>& x) {
+		auto it = entries.find(typeid(EntryTag));
+		return (it != std::end(entries) && (x = boost::any_cast<tag_type<EntryTag>&>(it->second), true));
+	}
+	template <typename EntryTag>
+	void set_entry(const tag_type<EntryTag>& x) {
+		entries.emplace(typeid(EntryTag), x);
+	}
+	std::unordered_map<std::type_index, boost::any> entries;
 };
 
 template <typename TaskType>
@@ -47,46 +73,46 @@ std::shared_ptr<TaskType> make_task()
 	return std::make_shared<TaskType>();
 }
 
-class find_nearest_enemy : public behavior_tree::base_task<blackboard>
+struct find_nearest_enemy : behavior_tree::base_task<blackboard>
 {
-public:
-	virtual bool operator()(blackboard& blackboard) override;
-};
-
-class attack_enemy : public behavior_tree::base_task<blackboard>
-{
-public:
-	virtual bool operator()(blackboard& blackboard) override;
-};
-
-class go_close_to : public behavior_tree::base_task<blackboard>
-{
-public:
-	virtual bool operator()(blackboard& blackboard) override;
-};
-
-class find_position_for_shot : public behavior_tree::base_task<blackboard>
-{
-public:
-	virtual bool operator()(blackboard& blackboard) override;
-};
-
-class go_to : public behavior_tree::base_task<blackboard>
-{
-public:
-	virtual bool operator()(blackboard& blackboard) override;
-};
-
-struct can_go_to : public behavior_tree::base_task<blackboard> {
 	bool operator()(blackboard& blackboard) override;
 };
 
-struct find_best_aim : public behavior_tree::base_task<blackboard>
+struct attack_enemy : behavior_tree::base_task<blackboard>
+{
+	bool operator()(blackboard& blackboard) override;
+};
+
+struct go_close_to : behavior_tree::base_task<blackboard>
+{
+	bool operator()(blackboard& blackboard) override;
+};
+
+struct find_position_for_shot : behavior_tree::base_task<blackboard>
+{
+	bool operator()(blackboard& blackboard) override;
+};
+
+struct go_to : behavior_tree::base_task<blackboard>
+{
+	bool operator()(blackboard& blackboard) override;
+};
+
+struct can_go_to : behavior_tree::base_task<blackboard> {
+	bool operator()(blackboard& blackboard) override;
+};
+
+struct find_best_aim : behavior_tree::base_task<blackboard>
+{
+	bool operator()(blackboard& blackboard) override;
+};
+
+struct find_best_aim_for_golem : behavior_tree::base_task<blackboard>
 {
 	bool operator()(blackboard& blackboard) override;
 };
 
 }
-};
+}
 
 #endif
