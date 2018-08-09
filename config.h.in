@@ -1,14 +1,6 @@
-//
-// Created by abrde on 19.12.2017.
-//
-
-#ifndef PIGEONWAR_CONFIG_H_IN_H
-#define PIGEONWAR_CONFIG_H_IN_H
+#pragma once
 
 #include <string>
 
-//static const std::string resources_directory = "@RES_DIR@/";
-static const std::string resources_directory = "res/";
-static const std::string maps_directory = "maps/";
-
-#endif //PIGEONWAR_CONFIG_H_IN_H
+static const std::string resources_directory = "@CMAKE_SOURCE_DIR@/res/";
+static const std::string maps_directory = "@CMAKE_SOURCE_DIR@/maps/";

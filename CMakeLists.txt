@@ -13,6 +13,7 @@ configure_file(config.h.in ${CMAKE_SOURCE_DIR}/config.h @ONLY)
 if(WIN32)
     link_directories("${CMAKE_SOURCE_DIR}/lib")
 endif()
+
 if(UNIX)
     set(PLATFORM_LIBS pthread)
     set(BOOST_INCLUDEDIR "/home/abrdej/libraries/boost_1_66_0")
