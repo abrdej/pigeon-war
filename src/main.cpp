@@ -26,6 +26,11 @@
 
 int main(int argc, char** argv) {
 
+    // main server will start this.
+    // same initialization will be passed by config file
+    // maybe in json
+    // map name, entities to select, players token, etc.
+
 	// parse some initial arguments
 	// create game
 	// set up server
