@@ -1,6 +1,0 @@
-/home/abrdej/pigeon-war/build/CMakeFiles/edit_cache.dir
-/home/abrdej/pigeon-war/build/CMakeFiles/rebuild_cache.dir
-/home/abrdej/pigeon-war/build/CMakeFiles/pigeonwar_client.dir
-/home/abrdej/pigeon-war/build/CMakeFiles/pigeonwar_server.dir
-/home/abrdej/pigeon-war/build/CMakeFiles/pigeonwar_matching_server.dir
-/home/abrdej/pigeon-war/build/CMakeFiles/pigeonwar_hot_seat.dir
