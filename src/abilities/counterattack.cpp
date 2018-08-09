@@ -1,10 +1,10 @@
 #include "counterattack.h"
 #include "damage_dealers.h"
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <core/board.h>
 #include <components/damage_taker.h>
 #include <messages/make_message.h>
-#include "sender.h"
+#include "server/sender.h"
 
 counterattack::counterattack(std::uint32_t entity_id)
 		: entity_id(entity_id) {
@@ -12,10 +12,10 @@ counterattack::counterattack(std::uint32_t entity_id)
 	on_receive_damage(entity_id, [this](const damage_pack& dmg) {
 
 		if (game::get<entity_manager>().get(this->entity_id).get<health_field>()->health > 0) {
-			auto enemy_index = game::get<board>().index_for(dmg.damage_dealer_id);
+			auto enemy_index = game_board().index_for(dmg.damage_dealer_id);
 
 			std::vector<std::uint32_t> neighbors;
-			board_helper::neighboring_fields(game::get<board>().index_for(this->entity_id),
+			board_helper::neighboring_fields(game_board().index_for(this->entity_id),
 											 neighbors,
 											 false);
 
@@ -36,8 +36,8 @@ void counterattack::use(std::uint32_t index_on) {
 		return;
 	}
 
-	auto entity_index = game::get<board>().index_for(entity_id);
-	auto enemy_id = game::get<board>().at(index_on);
+	auto entity_index = game_board().index_for(entity_id);
+	auto enemy_id = game_board().at(index_on);
 
 	sender::send(make_action_message("counterattack", entity_index, index_on));
 

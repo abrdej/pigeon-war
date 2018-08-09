@@ -1,6 +1,6 @@
 #include <managers/entity_manager.h>
 #include <components/power_field.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <components/modification.h>
 #include <components/applied_effects.h>
 #include <messages/make_message.h>
@@ -29,8 +29,8 @@ void uselessness::use(std::uint32_t index_on) {
 
     auto& power = game::get<entity_manager>().get(entity_id).get<power_filed>()->power;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto enemy_id = game::get<board>().at(index_on);
+    auto used_from_index = game_control().selected_index_;
+    auto enemy_id = game_board().at(index_on);
 
     entity_id_with_uselessness = enemy_id;
 

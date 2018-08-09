@@ -1,18 +1,13 @@
-//
-// Created by abrde on 06.01.2018.
-//
+#pragma once
 
-#ifndef PIGEONWAR_GOLEM_H
-#define PIGEONWAR_GOLEM_H
-
-#include <abilities/stone_skin.h>
+#include <components/applied_effects.h>
+#include <components/damage_taker.h>
+#include <components/modification.h>
+#include <abilities/abilities.h>
+#include <abilities/moveable.h>
 #include <abilities/power_bullet.h>
-#include "entity.h"
-#include "abilities/abilities.h"
-#include "abilities/moveable.h"
-#include "abilities/defender.h"
-#include "abilities/giant_blow.h"
-#include "abilities/giant_ram.h"
+#include <abilities/stone_skin.h>
+#include <entities/entity.h>
 
 struct golem final
 {
@@ -33,6 +28,3 @@ struct golem final
         return entity;
     }
 };
-
-
-#endif //PIGEONWAR_GOLEM_H

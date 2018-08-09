@@ -1,14 +1,14 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <managers/entity_manager.h>
 #include <messages/make_message.h>
 #include "sniper_shot.h"
 #include "damage_dealers.h"
-#include "sender.h"
+#include "server/sender.h"
 #include "managers/players_manager.h"
 
 void sniper_shot::prepare(std::uint32_t for_index) {
 
-    states::state_controller::selected_index_ = for_index;
+    game_control().selected_index_ = for_index;
 
     bool enemy_close = false;
 
@@ -16,24 +16,24 @@ void sniper_shot::prepare(std::uint32_t for_index) {
     board_helper::neighboring_fields(for_index, neighbors, false);
     for (auto& neighbor_index : neighbors)
     {
-        if (!game::get<board>().empty(neighbor_index) && players_funcs::enemy_entity(neighbor_index)) {
+        if (!game_board().empty(neighbor_index) && players_funcs::enemy_entity(neighbor_index)) {
             enemy_close = true;
             break;
         }
     }
 
     if (!enemy_close) {
-        board_helper::calc_straight(for_index, states::state_controller::possible_movements_,
-                                    states::state_controller::possible_movements_costs_,
+        board_helper::calc_straight(for_index, game_control().possible_movements_,
+                                    game_control().possible_movements_costs_,
                                     range);
 
     } else {
-        states::state_controller::possible_movements_.clear();
-        states::state_controller::possible_movements_costs_.clear();
+        game_control().possible_movements_.clear();
+        game_control().possible_movements_costs_.clear();
     }
 
-    states::state_controller::actual_targeting_type_ = target_types::enemy;
-    states::state_controller::wait_for_action([this](std::uint32_t index)
+    game_control().actual_targeting_type_ = target_types::enemy;
+    game_control().wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
@@ -44,12 +44,12 @@ void sniper_shot::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = game::get<board>().at(used_from_index);
+    auto used_from_index = game_control().selected_index_;
+    auto entity_id = game_board().at(used_from_index);
 
     sender::send(make_action_message("sniper_shot", used_from_index, index_on));
 
-    auto enemy_id = game::get<board>().at(index_on);
+    auto enemy_id = game_board().at(index_on);
 
     auto health_pack = game::get<entity_manager>().get(enemy_id).get<health_field>();
     float health_percent = health_pack->health / static_cast<float>(health_pack->base_health) * 100.f;

@@ -6,7 +6,7 @@
 #define PIGEONWAR_POSSIBLE_MOVE_HELPER_H
 
 #include <core/path_finder.h>
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include "ability.h"
 
 #define ENEMY target_types::enemy

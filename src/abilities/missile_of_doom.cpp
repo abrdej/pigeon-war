@@ -1,6 +1,6 @@
 #include <core/board.h>
 #include <components/applied_effects.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <managers/players_manager.h>
 #include <messages/make_message.h>
 #include "missile_of_doom.h"
@@ -26,9 +26,9 @@ void missile_of_doom::use(std::uint32_t index_on) {
 	if (used)
 		return;
 
-	auto used_from_index = states::state_controller::selected_index_;
-	auto caster_id = game::get<board>().at(used_from_index);
-	auto enemy_id = game::get<board>().at(index_on);
+	auto used_from_index = game_control().selected_index_;
+	auto caster_id = game_board().at(used_from_index);
+	auto enemy_id = game_board().at(index_on);
 
 	sender::send(make_action_message("power_bullet", used_from_index, index_on));
 

@@ -4,7 +4,7 @@
 #include <effects/aura_of_destruction_effect.h>
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <messages/make_message.h>
 #include "aura_of_destruction.h"
 #include "damage_dealers.h"
@@ -22,7 +22,7 @@ aura_of_destruction::aura_of_destruction(std::uint32_t entity_id)
         aura_power -= value_for_power;
 
         if (value_for_power > 0) {
-            sender::send(make_action_message("destruction", game::get<board>().index_for(entity_id)));
+            sender::send(make_action_message("destruction", game_board().index_for(entity_id)));
 
             auto enemy_id = dmg.damage_dealer_id;
             if (enemy_id != no_damage_dealer) {
@@ -43,11 +43,11 @@ void aura_of_destruction::use(std::uint32_t use_on_index) {
 //    aura_power -= cost;
 //
 //    std::vector<std::uint32_t> neighbors;
-//    board_helper::neighboring_fields(game::get<board>().index_for(entity_id), neighbors, false);
+//    board_helper::neighboring_fields(game_board().index_for(entity_id), neighbors, false);
 //    for (auto& index : neighbors) {
-//        if (!game::get<board>().empty(index) && players_funcs::player_entity(index)) {
+//        if (!game_board().empty(index) && players_funcs::player_entity(index)) {
 //
-//            auto friend_id = game::get<board>().at(index);
+//            auto friend_id = game_board().at(index);
 //
 //            auto usable_dmg_increase = this->usable_damage_increase;
 //
@@ -65,7 +65,7 @@ void aura_of_destruction::use(std::uint32_t use_on_index) {
 //        }
 //    }
 //
-//    sender::send(make_action_message("destruction, game::get<board>().index_for(entity_id));
+//    sender::send(make_action_message("destruction, game_board().index_for(entity_id));
 //
 //    auras_observer::observe();
 }

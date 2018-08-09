@@ -1,14 +1,15 @@
 #ifndef ENTITY_MANAGER_H
 #define ENTITY_MANAGER_H
 
-#include <vector>
+#include <functional>
 #include <memory>
 #include <string>
 #include <unordered_map>
-#include <functional>
+#include <vector>
+
+#include <entities/entity.h>
 #include <messages/make_message.h>
-#include <sender.h>
-#include "entities/entity.h"
+#include <server/sender.h>
 
 class entity_manager final
 {
@@ -47,10 +48,6 @@ public:
 
 		call_destroy_callbacks(entity_id);
 	}
-//	void on_destroy(std::uint32_t entity_id, const std::function<void()>& callback)
-//	{
-//		on_destroy_callbacks[entity_id].push_back(callback);
-//	}
 	void on_destroy(std::uint32_t entity_id, std::function<void()> callback)
 	{
 		on_destroy_callbacks[entity_id].push_back(std::move(callback));

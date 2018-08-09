@@ -1,15 +1,11 @@
-//
-// Created by abrde on 01.12.2017.
-//
+#pragma once
 
-#ifndef PIGEONWAR_ADDITIONS_MANAGER_H
-#define PIGEONWAR_ADDITIONS_MANAGER_H
-
-#include "managers/entity_manager.h"
 #include <memory>
 #include <typeindex>
+
 #include <core/turn_system.h>
 #include <effects/base_effect.h>
+#include <managers/entity_manager.h>
 
 struct applied_effects {
     std::unordered_map<std::string, std::shared_ptr<applied_effect>> named_data;
@@ -60,5 +56,3 @@ inline std::unordered_map<std::uint32_t, std::vector<std::string>> get_effects()
     });
     return std::move(result);
 }
-
-#endif //PIGEONWAR_ADDITIONS_MANAGER_H

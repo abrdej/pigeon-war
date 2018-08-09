@@ -1,4 +1,3 @@
-#include <iostream>
 #include "turn_system.h"
 
 //std::uint32_t turn_system::turn_n = 0;

@@ -1,6 +1,6 @@
 #include "mortar_thrower.h"
 
-#include <sender.h>
+#include <server/sender.h>
 #include <messages/make_message.h>
 #include <managers/entity_manager.h>
 #include "rocket_launcher.h"
@@ -13,8 +13,8 @@ void mortar_thrower::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = game::get<board>().at(used_from_index);
+    auto used_from_index = game_control().selected_index_;
+    auto entity_id = game_board().at(used_from_index);
 
     auto rocket_launcher_ptr = game::get<entity_manager>().get(entity_id).get<abilities>()->get<rocket_launcher>();
     if (rocket_launcher_ptr->was_used())
@@ -32,12 +32,12 @@ void mortar_thrower::use(std::uint32_t index_on) {
 
     sender::send(make_action_message("flame_thrower", used_from_index, index_on));
 
-    damage_dealers::standard_damage_dealer(ranged_damage(real_damage, game::get<board>().at(index_on), entity_id));
+    damage_dealers::standard_damage_dealer(ranged_damage(real_damage, game_board().at(index_on), entity_id));
 
     for (auto& index : neighbors)
     {
-        if (!game::get<board>().empty(index))
-            damage_dealers::standard_damage_dealer(ranged_damage(real_damage, game::get<board>().at(index), entity_id));
+        if (!game_board().empty(index))
+            damage_dealers::standard_damage_dealer(ranged_damage(real_damage, game_board().at(index), entity_id));
     }
 
     used = true;

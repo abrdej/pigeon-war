@@ -7,7 +7,7 @@
 #include "core/board.h"
 #include "components/applied_effects.h"
 #include "components/modification.h"
-#include "sender.h"
+#include "server/sender.h"
 #include "moveable.h"
 
 aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)

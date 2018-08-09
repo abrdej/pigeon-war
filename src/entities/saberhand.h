@@ -1,13 +1,12 @@
-#ifndef SABERHAND_H
-#define SABERHAND_H
+#pragma once
 
-#include "entity.h"
-#include "abilities/abilities.h"
-#include "abilities/moveable.h"
-#include "abilities/sabers.h"
-#include "abilities/invisibility.h"
-#include "components/damage_taker.h"
-#include "components/applied_effects.h"
+#include <entities/entity.h>
+#include <abilities/abilities.h>
+#include <abilities/invisibility.h>
+#include <abilities/moveable.h>
+#include <abilities/sabers.h>
+#include <components/applied_effects.h>
+#include <components/damage_taker.h>
 
 class saberhand final
 {
@@ -26,10 +25,6 @@ public:
 		abilities_ptr->add_ability(std::make_shared<sabers>());
 		abilities_ptr->add_ability(std::make_shared<invisibility>(entity.entity_id));
 
-		//entity.add<bitmap_field>(entity.entity_id, "saberhand);
-
 		return entity;
 	}
 };
-
-#endif

@@ -1,4 +1,4 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <core/board.h>
 #include <components/applied_effects.h>
 #include <managers/entity_manager.h>
@@ -7,7 +7,7 @@
 #include "hypnosis.h"
 #include "abilities.h"
 #include "core/turn_system.h"
-#include "sender.h"
+#include "server/sender.h"
 
 void hypnosis::use(std::uint32_t index_on) {
 
@@ -16,7 +16,7 @@ void hypnosis::use(std::uint32_t index_on) {
 
 	sender::send(make_action_message("hypnosis", index_on));
 
-	auto enemy_id = game::get<board>().at(index_on);
+	auto enemy_id = game_board().at(index_on);
 
     auto enemy_abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
 	enemy_abilities_ptr->is_active = false;

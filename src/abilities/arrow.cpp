@@ -1,6 +1,6 @@
 #include "arrow.h"
 #include <core/board.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <components/applied_effects.h>
 #include <utils/logging.h>
 #include <messages/make_message.h>
@@ -11,25 +11,25 @@ void arrow::prepare(std::uint32_t for_index) {
 
     path_target_ability::prepare(for_index);
 
-    states::state_controller::custom_valid_targets[game::get<board>().at(for_index)].clear();
+    game_control().custom_valid_targets[game_board().at(for_index)].clear();
     std::unordered_set<std::uint32_t> valid_targets;
 
-    for (auto&& index : states::state_controller::possible_movements_) {
-        if (states::state_controller::valid_target(index)) {
+    for (auto&& index : game_control().possible_movements_) {
+        if (game_control().valid_target(index)) {
             valid_targets.insert(index);
         }
     }
 
-    states::state_controller::custom_valid_targets[game::get<board>().at(for_index)] = std::move(valid_targets);
+    game_control().custom_valid_targets[game_board().at(for_index)] = std::move(valid_targets);
 
     for (auto&& entity_with_viewfinder : entities_with_viewfinder) {
         if (game::get<entity_manager>().alive(entity_with_viewfinder)) {
-            states::state_controller::custom_valid_targets[game::get<board>().at(for_index)].insert(game::get<board>().index_for(entity_with_viewfinder));
-            states::state_controller::possible_movements_.push_back(game::get<board>().index_for(entity_with_viewfinder));
+            game_control().custom_valid_targets[game_board().at(for_index)].insert(game_board().index_for(entity_with_viewfinder));
+            game_control().possible_movements_.push_back(game_board().index_for(entity_with_viewfinder));
         }
     }
 
-    states::state_controller::custom_valid_target_type = states::state_controller::custom_target_type::board_index;
+    game_control().custom_valid_target_type = game_control().custom_target_type::board_index;
 }
 
 void arrow::use(std::uint32_t index_on) {
@@ -39,14 +39,14 @@ void arrow::use(std::uint32_t index_on) {
         return;
     }
 
-    auto from_index = states::state_controller::selected_index_;
-    auto caster_id = game::get<board>().at(from_index);
+    auto from_index = game_control().selected_index_;
+    auto caster_id = game_board().at(from_index);
 
     sender::send(make_action_message("arrow", from_index, index_on));
 
-    auto enemy_id = game::get<board>().at(index_on);
+    auto enemy_id = game_board().at(index_on);
 
-    damage_dealers::standard_damage_dealer(ranged_damage(damage, game::get<board>().at(index_on), caster_id));
+    damage_dealers::standard_damage_dealer(ranged_damage(damage, game_board().at(index_on), caster_id));
 
     if (game::get<entity_manager>().alive(enemy_id)) {
 

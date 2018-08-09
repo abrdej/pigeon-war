@@ -1,9 +1,4 @@
-//
-// Created by abrdej on 16.01.18.
-//
-
-#ifndef PIGEONWAR_DAMAGE_PACK_H
-#define PIGEONWAR_DAMAGE_PACK_H
+#pragma once
 
 #include <cstdint>
 #include <limits>
@@ -74,5 +69,3 @@ inline heal_pack healing_to_base_health(std::int32_t value, std::uint32_t receiv
 inline heal_pack healing_above_base_health(std::int32_t value, std::uint32_t receiver_id) {
     return heal_pack{value, receiver_id, heal_types::above_base_health};
 }
-
-#endif //PIGEONWAR_DAMAGE_PACK_H

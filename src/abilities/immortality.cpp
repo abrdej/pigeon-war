@@ -3,7 +3,7 @@
 #include <messages/make_message.h>
 #include "immortality.h"
 #include "components/damage_taker.h"
-#include "sender.h"
+#include "server/sender.h"
 
 immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
 

@@ -40,10 +40,10 @@ void charge::use(std::uint32_t index_on) {
     if (used || exhausted)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
+    auto used_from_index = game_control().selected_index_;
 
-    auto from_pos = game::get<board>().to_pos(used_from_index);
-    auto on_pos = game::get<board>().to_pos(index_on);
+    auto from_pos = game_board().to_pos(used_from_index);
+    auto on_pos = game_board().to_pos(index_on);
 
     std::int32_t x_diff = from_pos.first - on_pos.first;
     std::int32_t y_diff = from_pos.second - on_pos.second;
@@ -51,19 +51,19 @@ void charge::use(std::uint32_t index_on) {
     auto x = on_pos.first - x_diff;
     auto y = on_pos.second - y_diff;
 
-    auto index_to = game::get<board>().to_index(x, y);
+    auto index_to = game_board().to_index(x, y);
 
-    if (!game::get<board>().empty(index_to)) {
+    if (!game_board().empty(index_to)) {
         return;
     }
 
-    auto entity_id = game::get<board>().at(used_from_index);
+    auto entity_id = game_board().at(used_from_index);
 
     sender::send(make_action_message("charge", used_from_index, index_on, index_to));
 
-    damage_dealers::standard_damage_dealer(melee_damage(damage, game::get<board>().at(index_on), entity_id));
+    damage_dealers::standard_damage_dealer(melee_damage(damage, game_board().at(index_on), entity_id));
 
-    game::get<board>().move(used_from_index, index_to);
+    game_board().move(used_from_index, index_to);
 
     if (has_effect(entity_id, "insensitivity")) {
         std::cout << "has insensitivity\n";
@@ -89,8 +89,8 @@ void charge::use(std::uint32_t index_on) {
 
     sender::send(make_action_message("set_insensitivity", entity_id));
 
-    states::state_controller::selected_index_ = index_to;
-    states::state_controller::possible_movements_.clear();
+    game_control().selected_index_ = index_to;
+    game_control().possible_movements_.clear();
 
     used = true;
 }

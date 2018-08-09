@@ -1,4 +1,4 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <core/board.h>
 #include <components/damage_taker.h>
 #include "absorption.h"
@@ -15,16 +15,16 @@ absorption::~absorption() {
 }
 
 void absorption::prepare(std::uint32_t for_index) {
-    states::state_controller::selected_index_ = for_index;
+    game_control().selected_index_ = for_index;
 
     path_finder path_finder(true);
     path_finder.calc(for_index);
-    path_finder.get_possible_movements(states::state_controller::possible_movements_,
-                                       states::state_controller::possible_movements_costs_,
+    path_finder.get_possible_movements(game_control().possible_movements_,
+                                       game_control().possible_movements_costs_,
                                        range);
 
-    states::state_controller::actual_targeting_type_ = target_types::friendly;
-    states::state_controller::wait_for_action([this](std::uint32_t index)
+    game_control().actual_targeting_type_ = target_types::friendly;
+    game_control().wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
@@ -36,9 +36,9 @@ void absorption::use(std::uint32_t index_on) {
         return;
 
     used = true;
-    auto used_from_index = states::state_controller::selected_index_;
+    auto used_from_index = game_control().selected_index_;
 
-    auto friendly_id = game::get<board>().at(index_on);
+    auto friendly_id = game_board().at(index_on);
 
     if (protected_id != friendly_id) {
 
@@ -70,7 +70,7 @@ void absorption::use(std::uint32_t index_on) {
                             std::cout << "absorption_power: " << absorption_power << "\n";
 
 //                            animations_queue::push_animation(animation_types::flash_bitmap,
-//                                                             game::get<board>().index_for(friendly_id),
+//                                                             game_board().index_for(friendly_id),
 //                                                             150,
 //                                                             0,
 //                                                             "absorption);

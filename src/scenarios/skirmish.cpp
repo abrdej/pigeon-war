@@ -1,20 +1,20 @@
 #include "skirmish.h"
-#include "registered_entities.h"
-#include "map_reader.h"
-#include "entities_reader.h"
 
-#include <core/game.h>
-#include <utils/creator_helper.h>
 #include <config.h>
+#include <entities/entities_factory.h>
+#include <scenarios/creator_helper.h>
+#include <scenarios/entities_reader.h>
+#include <scenarios/map_reader.h>
+#include <scenarios/registered_entities.h>
 
 using creator_helper::pos;
 
 template <typename T>
 void create_around_map() {
     std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
-    for (std::int32_t i = 0; i < game::get<board>().cols_n; ++i) {
-        for (std::int32_t j = 0; j < game::get<board>().rows_n; ++j) {
-            if (i == 0 || j == 0 || i == game::get<board>().cols_n - 1|| j == game::get<board>().rows_n - 1) {
+    for (std::int32_t i = 0; i < game_board().cols_n; ++i) {
+        for (std::int32_t j = 0; j < game_board().rows_n; ++j) {
+            if (i == 0 || j == 0 || i == game_board().cols_n - 1|| j == game_board().rows_n - 1) {
                 trees_positions.push_back(pos(i, j));
             }
         }
@@ -174,8 +174,7 @@ std::vector<std::string> get_possible_to_choose_entities() {
     return std::move(result);
 }
 
-std::string create_skirmish(game& game,
-                            const std::string& map_name,
+std::string create_skirmish(const std::string& map_name,
                             std::pair<std::uint32_t, std::uint32_t>& map_size) {
 
     auto name = read_map_from_json(maps_directory + map_name, map_size);
@@ -205,8 +204,8 @@ std::string create_skirmish(game& game,
             break;
         }
 
-        game::get<board>().insert(game::get<board>().to_index(pos.first, pos.second), id);
-//        game::get<board>().insert(i++, id);
+        game_board().insert(game_board().to_index(pos.first, pos.second), id);
+//        game_board().insert(i++, id);
         game::get<players_manager>().add_neutral_entity(id);
 
         entities_to_choose.insert(id);
@@ -223,16 +222,16 @@ std::string create_skirmish(game& game,
                             [=, entities = create_entities_container()](const turn_callback_info& info) mutable {
 
                                 auto pos = starting_positions[selections];
-                                auto new_index = game::get<board>().to_index(pos.first, pos.second);
+                                auto new_index = game_board().to_index(pos.first, pos.second);
 
-                                auto entity_id = game::get<board>().move(states::state_controller::selected_index_, new_index);
+                                auto entity_id = game_board().move(game_control().selected_index_, new_index);
                                 sender::send(make_move_entity_message(entity_id,
-                                                                      states::state_controller::selected_index_,
+                                                                      game_control().selected_index_,
                                                                       new_index));
 
                                 entities[players[selections % 2]].push_back(entity_id);
 
-                                states::state_controller::selected_index_ = new_index;
+                                game_control().selected_index_ = new_index;
 
                                 entities_to_choose.erase(entity_id);
 

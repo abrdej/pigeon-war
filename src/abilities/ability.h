@@ -41,6 +41,13 @@ struct passive_ability : ability {
 
 };
 
+//template <ability_types Purpose, typename Type, typename... Args>
+//class typed_ability : virtual public ability, virtual public Type, public Args... {
+//    ability_types type() const override {
+//        return Purpose;
+//    }
+//};
+
 inline void try_prepare_ability(ability& x, std::uint32_t for_index) {
     try {
         dynamic_cast<active_ability&>(x).prepare(for_index);
@@ -52,6 +59,11 @@ inline void try_prepare_ability(ability& x, std::uint32_t for_index) {
 #define MOVING_ABILITY() \
 ability_types type() const override { \
     return ability_types::moving; \
+} \
+
+#define ABILITY_TYPE(ability_type) \
+ability_types type() const override { \
+    return ability_types::ability_type; \
 } \
 
 #endif

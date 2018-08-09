@@ -1,25 +1,26 @@
 #include "wolves_dinner.h"
-#include "core/game.h"
 
-#include <entities/samurai_rat.h>
 #include <ai/ai.h>
 #include <ai/ai_manager.h>
-#include <utils/creator_helper.h>
-#include <entities/wolf.h>
-#include <entities/stone.h>
-#include <managers/managers.h>
+#include <core/game_controller.h>
 #include <entities/tree.h>
-#include <utils/scenario_helper.h>
+#include <entities/samurai_rat.h>
+#include <entities/stone.h>
+#include <entities/wolf.h>
+#include <scenarios/creator_helper.h>
+#include <scenarios/scenario_helper.h>
 
-void create_wolves_dinner(game& game) {
 
-    auto& board_ref = game::get<board>();
-    auto& players_manager_ref = game::get<players_manager>();
+void create_wolves_dinner() {
+
+    game_board().set_size(15, 10);
+
+    auto& players_manager_ref = game_get<players_manager>();
 
     //auto shooter_id = entity_manager::create(entity_helper::turned_right(shooter::create()));
     auto samurai_id = game::get<entity_manager>().create<samurai_rat>();
     //board::insert(board::to_index(2, 3), shooter_id);
-    board_ref.insert(board_ref.to_index(2, 5), samurai_id);
+    game_board().insert(game_board().to_index(2, 5), samurai_id);
 
     auto tester_id = players_manager_ref.create_human_player("tester");
     auto enemy_id = players_manager_ref.create_ai_player("enemy");
@@ -45,15 +46,15 @@ void create_wolves_dinner(game& game) {
     for (auto&& wolf_pos : wolves_positions) {
         auto wolf_id = game::get<entity_manager>().create<wolf>();
         game::get<ai_manager>().add_ai_for(wolf_id, ai_sequence);
-        board_ref.insert(board_ref.to_index(wolf_pos.first, wolf_pos.second), wolf_id);
+        game_board().insert(game_board().to_index(wolf_pos.first, wolf_pos.second), wolf_id);
         players_manager_ref.add_entity_for_player(enemy_id, wolf_id);
         enemies_ids.push_back(wolf_id);
     }
 
     std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
-    for (std::int32_t i = 0; i < board_ref.cols_n; ++i) {
-        for (std::int32_t j = 0; j < board_ref.rows_n; ++j) {
-            if (i == 0 || j == 0 || i == board_ref.cols_n - 1|| j == board_ref.rows_n - 1) {
+    for (std::int32_t i = 0; i < game_board().cols_n; ++i) {
+        for (std::int32_t j = 0; j < game_board().rows_n; ++j) {
+            if (i == 0 || j == 0 || i == game_board().cols_n - 1|| j == game_board().rows_n - 1) {
                 trees_positions.push_back(pos(i, j));
             }
         }
@@ -67,10 +68,10 @@ void create_wolves_dinner(game& game) {
 
     if_any_die({samurai_id}, [&]() {
         std::cout << "defeat\n";
-        game.defeat();
+        game_control().defeat();
     });
     if_all_die(enemies_ids, [&]() {
         std::cout << "victory\n";
-        game.victory();
+        game_control().victory(tester_id);
     });
 }

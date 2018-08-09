@@ -5,7 +5,7 @@
 #ifndef PIGEONWAR_REGISTERED_ENTITIES_H
 #define PIGEONWAR_REGISTERED_ENTITIES_H
 
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <entities/shooter.h>
 #include <entities/destroyer.h>
 #include <entities/droid.h>

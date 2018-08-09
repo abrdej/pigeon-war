@@ -5,12 +5,13 @@
 #ifndef PIGEONWAR_DESTROYER_H
 #define PIGEONWAR_DESTROYER_H
 
+#include <abilities/abilities.h>
 #include <abilities/armor.h>
 #include <abilities/blow_the_ax.h>
+#include <abilities/moveable.h>
 #include <components/applied_effects.h>
-#include "entity.h"
-#include "abilities/abilities.h"
-#include "abilities/moveable.h"
+#include <components/damage_taker.h>
+#include <entities/entity.h>
 
 class destroyer final
 {

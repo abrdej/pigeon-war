@@ -1,22 +1,17 @@
-//
-// Created by abrdej on 16.01.18.
-//
-
-#ifndef PIGEONWAR_DAMAGE_TAKER_H
-#define PIGEONWAR_DAMAGE_TAKER_H
-
+#pragma once
 
 #include <cstdint>
-#include <unordered_map>
 #include <functional>
+#include <unordered_map>
+
+#include <components/damage_pack.h>
+#include <components/health_field.h>
 #include <components/modification.h>
 #include <core/board.h>
+#include <core/game.h>
 #include <managers/entity_manager.h>
-#include "damage_pack.h"
-#include "health_field.h"
-#include "core/game.h"
 
-void play_change_health_animation(std::uint32_t to_index, std::int32_t change_health);
+void play_change_health_animation(std::uint32_t to_index,  std::uint32_t entity_id, std::int32_t change_health);
 
 void play_power_change_animation(std::uint32_t to_index, std::int32_t change_power);
 
@@ -73,7 +68,9 @@ public:
 
 		damage_pack damage_pack = dmg;
 
-		damage_pack.damage_value += receiver_entity.get<modification>()->damage_receiver_modifier_value();
+		if (receiver_entity.contain<modification>()) {
+			damage_pack.damage_value += receiver_entity.get<modification>()->damage_receiver_modifier_value();
+		}
         if (dmg.damage_dealer_id != no_damage_dealer) {
             auto dealer_entity = game::get<entity_manager>().get(dmg.damage_dealer_id);
             if (dealer_entity.contain<modification>()) {
@@ -89,8 +86,8 @@ public:
 
 		auto received_damage = damage_receiver(*health_pack, damage_pack);
 
-		auto enemy_index = game::get<board>().index_for(damage_pack.damage_receiver_id);
-		play_change_health_animation(enemy_index, -received_damage);
+		auto enemy_index = game_board().index_for(damage_pack.damage_receiver_id);
+		play_change_health_animation(enemy_index, damage_pack.damage_receiver_id, -received_damage);
 
 		for (auto&& callback_pack : on_receive_damage_after_callbacks) {
 			callback_pack.second(damage_pack);
@@ -113,7 +110,7 @@ public:
 
 		health_pack->health += heal_amount;
 
-		play_change_health_animation(game::get<board>().index_for(heal_pack.receiver_id), heal_amount);
+		play_change_health_animation(game_board().index_for(heal_pack.receiver_id), heal_pack.receiver_id, heal_amount);
 
 		return heal_amount;
 	}
@@ -169,7 +166,3 @@ inline auto get_damage_receiver(std::uint32_t entity_id) {
 inline void set_destructible(std::uint32_t entity_id, bool value) {
 	game::get<entity_manager>().get(entity_id).get<health_field>()->is_destructible = value;
 }
-
-
-
-#endif //PIGEONWAR_DAMAGE_TAKER_H

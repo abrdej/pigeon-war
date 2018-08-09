@@ -15,7 +15,7 @@ class abilities final
 public:
 	bool is_active{true};
 
-	void add_ability(const std::shared_ptr<ability>& ability_ptr) {
+	void add_ability(std::shared_ptr<ability> ability_ptr) {
 
         abilities_.emplace_back(ability_ptr, typeid(*ability_ptr));
 	}

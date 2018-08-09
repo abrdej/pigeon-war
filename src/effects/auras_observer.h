@@ -19,7 +19,7 @@ class auras_observer {
 
 public:
 	auras_observer() {
-		game::get<board>().on_change([]() {
+		game_board().on_change([]() {
 			game::get<auras_observer>().observe();
 		});
 	}
@@ -41,17 +41,17 @@ public:
 
 		for (auto&& aura_pack : auras) {
 			if (game::get<entity_manager>().alive(aura_pack.first)) {
-				auto board_index = game::get<board>().index_for(aura_pack.first);
+				auto board_index = game_board().index_for(aura_pack.first);
 
 				std::vector<std::uint32_t> neighbors;
 				board_helper::neighboring_fields(board_index, neighbors, false);
 
 				for (auto&& neighbour_index : neighbors) {
-					if (!game::get<board>().empty(neighbour_index)) {
+					if (!game_board().empty(neighbour_index)) {
 
-						auto entity_id = game::get<board>().at(neighbour_index);
+						auto entity_id = game_board().at(neighbour_index);
 						if (aura_pack.second->set_effect(entity_id)) {
-							entities_with_auras.emplace_back(game::get<board>().at(neighbour_index), aura_pack.second);
+							entities_with_auras.emplace_back(game_board().at(neighbour_index), aura_pack.second);
 						}
 					}
 				}

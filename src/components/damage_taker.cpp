@@ -1,9 +1,9 @@
-#include <sender.h>
+#include <server/sender.h>
 #include <messages/make_message.h>
 #include "damage_taker.h"
 
-void play_change_health_animation(std::uint32_t to_index, std::int32_t change_health) {
-    sender::send(make_action_message("change_health", to_index, change_health));
+void play_change_health_animation(std::uint32_t to_index, std::uint32_t entity_id, std::int32_t change_health) {
+    sender::send(make_action_message("change_health", to_index, entity_id, change_health));
     sender::send(make_entities_healths_message(get_healths()));
 }
 

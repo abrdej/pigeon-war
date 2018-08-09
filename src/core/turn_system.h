@@ -1,18 +1,17 @@
-#ifndef TURN_H
-#define TURN_H
+#pragma once
 
-#include <vector>
-#include <string>
-#include <iostream>
-#include <unordered_map>
 #include <functional>
+#include <iostream>
 #include <memory>
+#include <string>
+#include <unordered_map>
 #include <unordered_set>
-#include <managers/players_manager.h>
-#include <utils/control_ptr.h>
-#include <utils/callback_holder.h>
+#include <vector>
+
 #include <boost/signals2.hpp>
-#include "game.h"
+
+#include <core/game.h>
+#include <managers/players_manager.h>
 
 enum class frequency_types {
 	every_turn,
@@ -207,5 +206,3 @@ private:
 	turn_scoped_connection on_every_two_turns_from_next_holder;
 	turn_scoped_connection after_player_turn_holder;
 };
-
-#endif

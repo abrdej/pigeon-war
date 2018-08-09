@@ -1,9 +1,11 @@
 #include "map_reader.h"
-#include <external/json.hpp>
-#include <fstream>
-#include <utils/creator_helper.h>
 
-#include "registered_entities.h"
+#include <fstream>
+
+#include <external/json.hpp>
+
+#include <scenarios/registered_entities.h>
+#include <scenarios/creator_helper.h>
 
 using nlohmann::json;
 
@@ -11,9 +13,9 @@ using creator_helper::pos;
 
 void create_around_map(const std::string& type_name) {
     std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
-    for (std::int32_t i = 0; i < game::get<board>().cols_n; ++i) {
-        for (std::int32_t j = 0; j < game::get<board>().rows_n; ++j) {
-            if (i == 0 || j == 0 || i == game::get<board>().cols_n - 1|| j == game::get<board>().rows_n - 1) {
+    for (std::int32_t i = 0; i < game_board().cols_n; ++i) {
+        for (std::int32_t j = 0; j < game_board().rows_n; ++j) {
+            if (i == 0 || j == 0 || i == game_board().cols_n - 1|| j == game_board().rows_n - 1) {
                 trees_positions.push_back(pos(i, j));
             }
         }
@@ -40,12 +42,11 @@ void try_set_around_map(const json& json_data) {
 std::string read_map_from_json(const std::string& json_file, std::pair<uint32_t, uint32_t>& map_size) {
 
     try {
-
         std::ifstream json_stream(json_file);
         auto json_data = json::parse(json_stream);
 
         map_size = json_data["size"];
-        game::get<board>().set_size(map_size.first, map_size.second);
+        game_board().set_size(map_size.first, map_size.second);
 
         try_set_around_map(json_data);
 
@@ -59,41 +60,9 @@ std::string read_map_from_json(const std::string& json_file, std::pair<uint32_t,
                 creator_helper::create_neutral_many(type, positions);
             }
         }
-//
-//        if (json_data.count("tree")) {
-//            std::vector<std::pair<std::uint32_t, std::uint32_t>> positions = json_data["tree"];
-//            creator_helper::create_neutral_many<tree>(positions);
-//
-//        }
-//
-//        if (json_data.count("stone")) {
-//            std::vector<std::pair<std::uint32_t, std::uint32_t>> positions = json_data["stone"];
-//            creator_helper::create_neutral_many<stone>(positions);
-//
-//        }
-//
-//        if (json_data.count("fir")) {
-//            std::vector<std::pair<std::uint32_t, std::uint32_t>> positions = json_data["fir"];
-//            creator_helper::create_neutral_many<fir>(positions);
-//        }
-//
-//        if (json_data.count("wall")) {
-//            std::vector<std::pair<std::uint32_t, std::uint32_t>> positions = json_data["wall"];
-////            creator_helper::create_neutral_many<wall>(positions);
-//
-//            for (auto& position : positions)
-//            {
-//                std::uint32_t id = game::get<entity_manager>().create<wall>();
-//                game::get<board>().insert(game::get<board>().to_index(position.first, position.second), id);
-//                game::get<players_manager>().add_destructive_surroundings(id);
-//            }
-//        }
-
         return json_data["name"];
 
     } catch (...) {
-
-
 
     }
 }

@@ -1,16 +1,16 @@
 #include "bomb.h"
 #include "damage_dealers.h"
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <core/board.h>
 #include <managers/entity_manager.h>
 #include <entities/entities_factory.h>
-#include "sender.h"
+#include "server/sender.h"
 
 bomb_detonation::bomb_detonation(std::uint32_t bomb_id) : bomb_id(bomb_id) {
 //	onEveryRound([this]() {
 //
 //		if (waited) {
-//			auto index = game::get<board>().index_for(this->bomb_id);
+//			auto index = game_board().index_for(this->bomb_id);
 //			use(index);
 //		}
 //
@@ -23,10 +23,10 @@ void bomb_detonation::look_for_bombs() {
 }
 
 void bomb_detonation::prepare(std::uint32_t for_index) {
-//	states::state_controller::actual_state_ = states::states_types::wait_for_action;
-//	states::state_controller::possible_movements_.push_back(for_index);
-//	states::state_controller::actual_targeting_type_ = target_types::caster;
-//	states::state_controller::wait_for_action([this](std::uint32_t index)
+//	game_control().actual_state_ = states::states_types::wait_for_action;
+//	game_control().possible_movements_.push_back(for_index);
+//	game_control().actual_targeting_type_ = target_types::caster;
+//	game_control().wait_for_action([this](std::uint32_t index)
 //											  {
 //												  return use(index);
 //											  });
@@ -43,7 +43,7 @@ void bomb_detonation::use(std::uint32_t for_index) {
 
 	for (auto& index : neightbords)
 	{
-		auto id = game::get<board>().at(index);
+		auto id = game_board().at(index);
 		auto it = std::find_if(buffer->begin(), buffer->end(), [id](auto& ptr) {
 			return *ptr == id;
 		});
@@ -54,8 +54,8 @@ void bomb_detonation::use(std::uint32_t for_index) {
 
 	for (auto& index : neightbords)
 	{
-		if (!game::get<board>().empty(index)) {
-			damage_dealers::standard_damage_dealer(special_damage(damage, game::get<board>().at(index)));
+		if (!game_board().empty(index)) {
+			damage_dealers::standard_damage_dealer(special_damage(damage, game_board().at(index)));
 		}
 	}
 
@@ -64,7 +64,7 @@ void bomb_detonation::use(std::uint32_t for_index) {
 
 void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 
-	auto index = game::get<board>().index_for(bomb_id);
+	auto index = game_board().index_for(bomb_id);
 
 	std::vector<std::uint32_t> neightbords;
 	board_helper::neighboring_fields(index, neightbords, false);
@@ -75,7 +75,7 @@ void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 //
 //	for (auto& index : neightbords)
 //	{
-//		auto id = game::get<board>().at(index);
+//		auto id = game_board().at(index);
 //		auto it = std::find_if(buffer->begin(), buffer->end(), [id](auto& ptr) {
 //			return *ptr == id;
 //		});
@@ -86,8 +86,8 @@ void bomb_detonation(std::uint32_t bomb_id, std::int32_t damage) {
 
 	for (auto& index : neightbords)
 	{
-		if (!game::get<board>().empty(index)) {
-			damage_dealers::standard_damage_dealer(special_damage(damage, game::get<board>().at(index)));
+		if (!game_board().empty(index)) {
+			damage_dealers::standard_damage_dealer(special_damage(damage, game_board().at(index)));
 		}
 
 	}
@@ -108,12 +108,9 @@ void bomb::use(std::uint32_t index) {
 	auto bomb_id = entities_factory::create("bomb_instance");
 
 	game::get<players_manager>().add_entity_for_player(game::get<players_manager>().player_for_entity(entity_id), bomb_id);
-	game::get<board>().insert(index, bomb_id);
+	game_board().insert(index, bomb_id);
 
-    auto health = game::get<entity_manager>().get(bomb_id).get<health_field>()->health;
-    auto name = game::get<entity_manager>().get(bomb_id).name;
-
-	sender::send(make_create_entity_message(bomb_id, name, health, index));
+	sender::send(make_create_entity_message(bomb_id));
 
 	--bombs;
 }

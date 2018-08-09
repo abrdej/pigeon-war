@@ -1,9 +1,4 @@
-//
-// Created by abrdej on 04.01.18.
-//
-
-#ifndef PIGEONWAR_BINDER_H
-#define PIGEONWAR_BINDER_H
+#pragma once
 
 #include <atomic>
 #include <functional>
@@ -106,7 +101,7 @@ class tcp_server {
     tcp::endpoint websocket_endpoint;
     tcp::acceptor acceptor_;
     tcp::acceptor websocket_acceptor_;
-    std::vector<tcp_connection::connection_ptr> connections;
+    std::vector<websocket_connection::connection_ptr> connections;
 
     const std::uint32_t port;
 
@@ -120,7 +115,7 @@ class tcp_server {
 	std::atomic_bool is_running{false};
 
 	void start_accept();
-	void handle_accept(tcp_connection::connection_ptr new_connection,
+	void handle_accept(websocket_connection::connection_ptr new_connection,
 					   const boost::system::error_code& error);
 	void handle_message(const std::string& message);
 	std::uint32_t get_new_client_id();
@@ -139,5 +134,3 @@ public:
 	void close();
     void wait();
 };
-
-#endif //PIGEONWAR_BINDER_H

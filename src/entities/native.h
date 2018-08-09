@@ -1,10 +1,13 @@
 #ifndef NATIVE_H
 #define NATIVE_H
 
-#include "entity.h"
-#include "abilities/abilities.h"
-#include "abilities/drain.h"
-#include "abilities/counterattack.h"
+#include <abilities/abilities.h>
+#include <abilities/counterattack.h>
+#include <abilities/drain.h>
+#include <abilities/moveable.h>
+#include <components/applied_effects.h>
+#include <components/damage_taker.h>
+#include <entities/entity.h>
 
 class native final
 {

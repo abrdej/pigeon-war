@@ -3,10 +3,10 @@
 #include <fstream>
 #include <messages/make_message.h>
 #include "core/path_finder.h"
-#include "core/states_controller.h"
+#include "core/game_controller.h"
 #include "core/board.h"
 #include "damage_dealers.h"
-#include "sender.h"
+#include "server/sender.h"
 #include "utils/logging.h"
 #include "utils/descriptions.h"
 
@@ -27,17 +27,17 @@ void shoot::use(std::uint32_t index_on)
 	}
 
 	--bullets;
-	auto used_from_index = states::state_controller::selected_index_;
-	auto entity_id = game::get<board>().at(used_from_index);
+	auto used_from_index = game_control().selected_index_;
+	auto entity_id = game_board().at(used_from_index);
 
-	LOG_DEBUG() << "shoot used from pos: " << game::get<board>().to_pos(used_from_index) << "\n";
+	LOG_DEBUG() << "shoot used from pos: " << game_board().to_pos(used_from_index) << "\n";
 	LOG_DEBUG() << "by entity of id: " << entity_id << "\n";
-	LOG_DEBUG() << "to pos: " << game::get<board>().to_pos(index_on) << "\n";
+	LOG_DEBUG() << "to pos: " << game_board().to_pos(index_on) << "\n";
     LOG_DEBUG() << "remaining bullets: " << bullets << "\n";
 
 	sender::send(make_action_message("shoot", used_from_index, index_on));
 
-	auto final_damage = damage_dealers::standard_damage_dealer(ranged_damage(damage, game::get<board>().at(index_on), entity_id));
+	auto final_damage = damage_dealers::standard_damage_dealer(ranged_damage(damage, game_board().at(index_on), entity_id));
 
 	LOG_DEBUG() << "dealt damage of: " << final_damage << "\n";
 }

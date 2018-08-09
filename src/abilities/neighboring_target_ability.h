@@ -7,18 +7,18 @@
 
 #include "ability.h"
 #include "core/states.h"
-#include "core/states_controller.h"
+#include "core/game_controller.h"
 
 template <target_types TargetType = target_types::enemy,
 		bool Available = false>
 class neighboring_target_ability : public active_ability {
 public:
 	void prepare(std::uint32_t for_index) override {
-		states::state_controller::selected_index_ = for_index;
-		board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, available);
+		game_control().selected_index_ = for_index;
+		board_helper::neighboring_fields(for_index, game_control().possible_movements_, available);
 
-		states::state_controller::actual_targeting_type_ = target_type;
-		states::state_controller::wait_for_action([this](std::uint32_t index)
+		game_control().actual_targeting_type_ = target_type;
+		game_control().wait_for_action([this](std::uint32_t index)
 												  {
 													  return use(index);
 												  });

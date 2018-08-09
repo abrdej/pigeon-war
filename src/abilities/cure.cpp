@@ -3,7 +3,7 @@
 #include <core/board.h>
 #include <managers/entity_manager.h>
 #include <components/damage_taker.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <components/power_field.h>
 #include <components/applied_effects.h>
 #include <messages/make_message.h>
@@ -25,7 +25,7 @@ void cure::use(std::uint32_t index_on) {
 		return;
 	}
 
-	auto friend_id = game::get<board>().at(index_on);
+	auto friend_id = game_board().at(index_on);
 
 	sender::send(make_action_message("cure", index_on));
 
@@ -39,7 +39,7 @@ void cure::use(std::uint32_t index_on) {
 																			  if (game::get<entity_manager>().alive(friend_id)) {
 																				  sender::send(
                                                                                           make_action_message("cure",
-                                                                                                              game::get<board>().index_for(
+                                                                                                              game_board().index_for(
                                                                                                                       friend_id)));
 																				  standard_healing(healing_to_base_health(healing_amount_per_turn, friend_id));
 																			  }

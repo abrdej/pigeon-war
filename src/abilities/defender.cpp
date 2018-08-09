@@ -10,10 +10,10 @@ defender::defender(std::uint32_t entity_id) {
 //        if (game::get<players_manager>().get_active_player_id() == game::get<players_manager>().player_for_entity(entity_id)) {
 //
 //            std::vector<std::uint32_t> neighbors;
-//            board_helper::neighboring_fields(game::get<board>().index_for(entity_id), neighbors, false);
+//            board_helper::neighboring_fields(game_board().index_for(entity_id), neighbors, false);
 //            for (auto& index : neighbors)
 //            {
-//                if (!game::get<board>().empty(index) && players_funcs::player_entity(index)) {
+//                if (!game_board().empty(index) && players_funcs::player_entity(index)) {
 //
 //                    animations_queue::push_animation(animation_types::flash_bitmap,
 //                                                     index,
@@ -21,11 +21,11 @@ defender::defender(std::uint32_t entity_id) {
 //                                                     0,
 //                                                     "defender);
 //
-//                    auto protected_id = game::get<board>().at(index);
+//                    auto protected_id = game_board().at(index);
 //
 //                    auto callback_id = on_receive_damage(protected_id, [this, entity_id](const damage_pack& dmg) {
 //
-//                        auto enemy_index = game::get<board>().index_for(dmg.damage_dealer_id);
+//                        auto enemy_index = game_board().index_for(dmg.damage_dealer_id);
 //
 //                        animations_queue::push_animation(animation_types::flash_bitmap,
 //                                                         enemy_index,

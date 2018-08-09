@@ -1,9 +1,4 @@
-//
-// Created by abrdej on 18.01.18.
-//
-
-#ifndef PIGEONWAR_MESSAGES_H
-#define PIGEONWAR_MESSAGES_H
+#pragma once
 
 #include "core/game_state.h"
 #include "external/json.hpp"
@@ -56,7 +51,7 @@ inline void from_json(const nlohmann::json& j, states_types& x) {
 
 }
 
-inline void to_json(nlohmann::json& j, const game_state& x) {
+inline void to_json(nlohmann::json& j, const global_game_state& x) {
 	j = nlohmann::json{
 			{"board", x.board.fields_},
 			{"healths", x.healths},
@@ -65,14 +60,14 @@ inline void to_json(nlohmann::json& j, const game_state& x) {
 	};
 }
 
-inline void from_json(const nlohmann::json& j, game_state& x) {
+inline void from_json(const nlohmann::json& j, global_game_state& x) {
 	x.board.fields_ = j.at("board").get<decltype(x.board.fields_)>();
 	json_to_unordered_map(j.at("healths"), x.healths);
 	json_to_unordered_map(j.at("entities_names"), x.entities_names);
 	json_to_unordered_map(j.at("entities_additional_effects"), x.entities_additional_effects);
 }
 
-inline void to_json(nlohmann::json& j, const local_state& x) {
+inline void to_json(nlohmann::json& j, const local_game_state& x) {
 
     static std::unordered_map<target_types, std::string, target_types_key_hash> converter = {
             {target_types::caster, "caster"},
@@ -93,7 +88,7 @@ inline void to_json(nlohmann::json& j, const local_state& x) {
 	};
 }
 
-inline void from_json(const nlohmann::json& j, local_state& x) {
+inline void from_json(const nlohmann::json& j, local_game_state& x) {
 
     static std::unordered_map<std::string, target_types> converter = {
             {"caster", target_types::caster},
@@ -113,7 +108,3 @@ inline void from_json(const nlohmann::json& j, local_state& x) {
 	x.button_bitmaps = j.at("button_bitmaps");
 	x.entity_name = j.at("entity_name");
 }
-
-
-
-#endif //PIGEONWAR_MESSAGES_H

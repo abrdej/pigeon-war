@@ -1,7 +1,7 @@
 #include "aura_of_immunity_effect.h"
 #include <components/applied_effects.h>
 #include <components/modification.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <managers/players_manager.h>
 
 bool aura_of_immunity_effect::set_effect(std::uint32_t entity_id) {

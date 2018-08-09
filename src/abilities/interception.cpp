@@ -2,7 +2,7 @@
 #include "damage_dealers.h"
 #include <core/board.h>
 #include <core/path_finder.h>
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include "components/damage_taker.h"
 #include "managers/players_manager.h"
 
@@ -14,10 +14,10 @@ interception::interception(std::uint32_t entity_id) {
 
             //is_active = false;
 
-            auto index = game::get<board>().index_for(entity_id);
+            auto index = game_board().index_for(entity_id);
 
-            auto backup_id = game::get<board>().take(index);
-            game::get<board>().give_back(backup_id, index);
+            auto backup_id = game_board().take(index);
+            game_board().give_back(backup_id, index);
 
             damage_accumulated += dmg.damage_value;
 
@@ -37,11 +37,11 @@ interception::interception(std::uint32_t entity_id) {
 }
 
 void interception::prepare(std::uint32_t for_index) {
-    states::state_controller::selected_index_ = for_index;
-    board_helper::neighboring_fields(for_index, states::state_controller::possible_movements_, false);
+    game_control().selected_index_ = for_index;
+    board_helper::neighboring_fields(for_index, game_control().possible_movements_, false);
 
-    states::state_controller::actual_targeting_type_ = target_types::enemy;
-    states::state_controller::wait_for_action([this](std::uint32_t index)
+    game_control().actual_targeting_type_ = target_types::enemy;
+    game_control().wait_for_action([this](std::uint32_t index)
                                               {
                                                   return use(index);
                                               });
@@ -52,12 +52,12 @@ void interception::use(std::uint32_t index_on) {
         return;
     }
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = game::get<board>().at(used_from_index);
+    auto used_from_index = game_control().selected_index_;
+    auto caster_id = game_board().at(used_from_index);
 
     play_animation(used_from_index, index_on);
 
-    auto enemy_id = game::get<board>().at(index_on);
+    auto enemy_id = game_board().at(index_on);
 
     damage_dealers::standard_damage_dealer(melee_damage(damage + damage_accumulated, enemy_id, caster_id));
 
@@ -67,7 +67,7 @@ void interception::use(std::uint32_t index_on) {
 }
 
 void interception::play_animation(std::uint32_t index_from, std::uint32_t index_on) {
-    auto entity_id = game::get<board>().take(index_from);
+    auto entity_id = game_board().take(index_from);
 
 //    animations_queue::push_animation(animation_types::move,
 //                                     index_from,
@@ -87,5 +87,5 @@ void interception::play_animation(std::uint32_t index_from, std::uint32_t index_
 //                                     entity_id,
 //                                     "none);
 
-    game::get<board>().give_back(entity_id, index_from);
+    game_board().give_back(entity_id, index_from);
 }

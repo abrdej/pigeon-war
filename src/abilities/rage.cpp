@@ -1,9 +1,9 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include "rage.h"
 #include "damage_dealers.h"
 #include <iostream>
 #include <messages/make_message.h>
-#include "sender.h"
+#include "server/sender.h"
 #include "components/damage_taker.h"
 
 rage::rage(std::uint32_t id) : entity_id(id) {
@@ -23,7 +23,7 @@ rage::rage(std::uint32_t id) : entity_id(id) {
 
 void rage::use() {
 
-	auto use_from_index = game::get<board>().index_for(entity_id);
+	auto use_from_index = game_board().index_for(entity_id);
 
 	std::vector<std::uint32_t> around_fields_ids;
 	board_helper::neighboring_fields(use_from_index, around_fields_ids, false);
@@ -31,8 +31,8 @@ void rage::use() {
 	sender::send(make_action_message("rage", use_from_index));
 
 	for (auto&& field_id : around_fields_ids) {
-		if (!game::get<board>().empty(field_id)) {
-			damage_dealers::standard_damage_dealer(melee_damage(damage, game::get<board>().at(field_id), entity_id));
+		if (!game_board().empty(field_id)) {
+			damage_dealers::standard_damage_dealer(melee_damage(damage, game_board().at(field_id), entity_id));
 		}
 	}
 }

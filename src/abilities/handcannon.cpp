@@ -1,19 +1,19 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <managers/entity_manager.h>
 #include <messages/make_message.h>
 #include "handcannon.h"
 #include "damage_dealers.h"
 #include "abilities.h"
 #include "protection_field.h"
-#include "sender.h"
+#include "server/sender.h"
 
 void handcannon::use(std::uint32_t index_on) {
 
     if (used)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = game::get<board>().at(used_from_index);
+    auto used_from_index = game_control().selected_index_;
+    auto caster_id = game_board().at(used_from_index);
 
     auto abilities_ptr = game::get<entity_manager>().get(caster_id).get<abilities>();
     auto protection_field_ptr = abilities_ptr->get<protection_field>();
@@ -25,7 +25,7 @@ void handcannon::use(std::uint32_t index_on) {
 
     sender::send(make_action_message("handcannon", used_from_index, index_on));
 
-    damage_dealers::standard_damage_dealer(ranged_damage(final_damage, game::get<board>().at(index_on), caster_id));
+    damage_dealers::standard_damage_dealer(ranged_damage(final_damage, game_board().at(index_on), caster_id));
 
     used = true;
 }

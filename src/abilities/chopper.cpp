@@ -1,11 +1,11 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <core/board.h>
 #include <entities/creature.h>
 #include <managers/entity_manager.h>
 #include <messages/make_message.h>
 #include "chopper.h"
 #include "damage_dealers.h"
-#include "sender.h"
+#include "server/sender.h"
 
 chopper::chopper(std::uint32_t entity_id) : entity_id(entity_id) {
     on_every_two_turns_from_next([this]() {
@@ -15,15 +15,15 @@ chopper::chopper(std::uint32_t entity_id) : entity_id(entity_id) {
     on_every_turn([this, entity_id]() {
         if (fired) {
 
-            auto index = game::get<board>().index_for(entity_id);
+            auto index = game_board().index_for(entity_id);
 
             std::vector<std::uint32_t> neighboring;
             board_helper::neighboring_fields(index, neighboring, false);
 
             for (auto& attack_index : neighboring) {
-                if (!game::get<board>().empty(attack_index))
+                if (!game_board().empty(attack_index))
                     damage_dealers::standard_damage_dealer(special_damage(fired_aura_dmg,
-                                                                         game::get<board>().at(attack_index),
+                                                                         game_board().at(attack_index),
                                                                          entity_id));
             }
         }
@@ -44,12 +44,12 @@ void chopper::use(std::uint32_t index_on) {
         return;
     }
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = game::get<board>().at(index_on);
+    auto used_from_index = game_control().selected_index_;
+    auto caster_id = game_board().at(index_on);
 
     sender::send(make_action_message("chopper", used_from_index, index_on));
 
-    auto enemy_id = game::get<board>().at(index_on);
+    auto enemy_id = game_board().at(index_on);
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 

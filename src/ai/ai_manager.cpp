@@ -1,5 +1,5 @@
 #include "ai_manager.h"
-#include "core/states_controller.h"
+#include "core/game_controller.h"
 #include "core/board.h"
 
 void ai_manager::add_ai_for(std::uint32_t entity_id,
@@ -16,8 +16,8 @@ void ai_manager::perform_movement(std::uint32_t for_player_of_id)
 	for (auto& behavior_tree_entry : behavior_trees_copy)
 	{
 		std::cout << "perform movement\n";
-		auto entity_index = game::get<board>().index_for(behavior_tree_entry.first);
-		states::state_controller::selected_index_ = entity_index;
+		auto entity_index = game_board().index_for(behavior_tree_entry.first);
+		game_control().selected_index_ = entity_index;
         using namespace ai::behavior_tree_tasks;
 		blackboard blackboard;
         blackboard.set_entry<entry_tag::player_id>(for_player_of_id);

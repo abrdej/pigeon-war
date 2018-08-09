@@ -1,5 +1,5 @@
 #include "death_mark.h"
-#include "sender.h"
+#include "server/sender.h"
 #include "core/board.h"
 #include "components/applied_effects.h"
 #include "components/damage_taker.h"
@@ -21,7 +21,7 @@ void death_mark::use(std::uint32_t index_on) {
 //
 //	sender::send(make_action_message("death_mark, index_on);
 //
-//	enemy_id = game::get<board>().at(index_on);
+//	enemy_id = game_board().at(index_on);
 //
 //	auto death_mark_receiver = make_after_n_round_callback_holder(death_mark_duration,
 //																  [this]() {

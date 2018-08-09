@@ -1,15 +1,16 @@
-#ifndef BOARD_H
-#define BOARD_H
+#pragma once
 
-#include <functional>
 #include <algorithm>
-#include <vector>
 #include <array>
+#include <functional>
+#include <vector>
+
 #include <boost/signals2.hpp>
-#include <messages/make_message.h>
-#include <sender.h>
+
+#include <core/game.h>
 #include <managers/entity_manager.h>
-#include "game.h"
+#include <messages/make_message.h>
+#include <server/sender.h>
 
 class board final {
 public:
@@ -44,6 +45,10 @@ public:
     std::vector<std::vector<std::uint32_t>> fields_;
 };
 
+inline auto& game_board() {
+	return game::get<board>();
+}
+
 namespace std {
 template <typename CharT>
 basic_ostream<CharT>& operator<<(basic_ostream<CharT>& os, const pair<uint32_t, uint32_t>& pos)
@@ -52,5 +57,3 @@ basic_ostream<CharT>& operator<<(basic_ostream<CharT>& os, const pair<uint32_t, 
 	return os;
 }
 } // namespace std
-
-#endif

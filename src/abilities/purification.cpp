@@ -4,7 +4,7 @@
 #include <core/board.h>
 #include <managers/entity_manager.h>
 #include <components/damage_taker.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <components/power_field.h>
 #include <components/applied_effects.h>
 #include <messages/make_message.h>
@@ -21,7 +21,7 @@ void purification::use(std::uint32_t index_on) {
         return;
     }
 
-    auto friend_id = game::get<board>().at(index_on);
+    auto friend_id = game_board().at(index_on);
 
     sender::send(make_action_message("purification", index_on));
 

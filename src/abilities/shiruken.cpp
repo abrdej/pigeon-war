@@ -1,18 +1,18 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <components/applied_effects.h>
 #include <messages/make_message.h>
 #include "shiruken.h"
 #include "damage_dealers.h"
-#include "sender.h"
+#include "server/sender.h"
 
 void shiruken::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = game::get<board>().at(used_from_index);
+    auto used_from_index = game_control().selected_index_;
+    auto entity_id = game_board().at(used_from_index);
 
-    auto enemy_id = game::get<board>().at(index_on);
+    auto enemy_id = game_board().at(index_on);
 
     auto has_death_mark = has_effect(enemy_id, "death_mark");
 

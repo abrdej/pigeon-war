@@ -1,9 +1,9 @@
-#ifndef PATH_FINDER_H
-#define PATH_FINDER_H
+#pragma once
 
-#include "utils/graph.h"
-#include <unordered_map>
 #include <functional>
+#include <unordered_map>
+
+#include <utils/graph.h>
 
 class path_finder
 {
@@ -56,5 +56,3 @@ void all_free(std::vector<std::uint32_t>& fields);
 
 void all(std::vector<std::uint32_t>& fields);
 };
-
-#endif

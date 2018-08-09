@@ -3,7 +3,7 @@
 
 #include <core/board.h>
 #include <messages/make_message.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <managers/entity_manager.h>
 #include <components/power_field.h>
 #include <components/damage_taker.h>
@@ -16,9 +16,9 @@ void flame_burning::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = game::get<board>().at(used_from_index);
-    auto enemy_id = game::get<board>().at(index_on);
+    auto used_from_index = game_control().selected_index_;
+    auto caster_id = game_board().at(used_from_index);
+    auto enemy_id = game_board().at(index_on);
 
     sender::send(make_action_message("flame_burning", used_from_index, index_on));
 

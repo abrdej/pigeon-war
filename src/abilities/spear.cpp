@@ -1,8 +1,8 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <messages/make_message.h>
 #include "spear.h"
 #include "damage_dealers.h"
-#include "sender.h"
+#include "server/sender.h"
 #include "components/damage_taker.h"
 
 spear::spear(std::uint32_t id) : entity_id(id) {
@@ -18,14 +18,14 @@ void spear::use(std::uint32_t index_on) {
 
     used = true;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto entity_id = game::get<board>().at(used_from_index);
+    auto used_from_index = game_control().selected_index_;
+    auto entity_id = game_board().at(used_from_index);
 
     sender::send(make_action_message("spear", used_from_index, index_on));
 
     std::int32_t full_damage = damage + accumulated_damage;
 
-    damage_dealers::standard_damage_dealer(melee_damage(full_damage, game::get<board>().at(index_on), entity_id));
+    damage_dealers::standard_damage_dealer(melee_damage(full_damage, game_board().at(index_on), entity_id));
 
     accumulated_damage = 0;
 }

@@ -4,7 +4,7 @@
 #include "core/board.h"
 #include "damage_dealers.h"
 #include "managers/entity_manager.h"
-#include "sender.h"
+#include "server/sender.h"
 
 prison_connection::prison_connection(std::uint32_t entity_id)
 		: entity_id(entity_id) {}
@@ -14,8 +14,8 @@ void prison_connection::use(std::uint32_t index_on) {
 	if (used)
 		return;
 
-	auto enemy_id = game::get<board>().at(index_on);
-	auto caster_id = game::get<board>().at(states::state_controller::selected_index_);
+	auto enemy_id = game_board().at(index_on);
+	auto caster_id = game_board().at(game_control().selected_index_);
 
 	auto prison_connection_connection = make_after_n_round_callback_holder(duration,
 																		   [this, enemy_id, caster_id]() {
@@ -59,11 +59,11 @@ void prison_connection::use(std::uint32_t index_on) {
 	for (auto&& entity_with_effect : entities_with_effect) {
 
 		if (game::get<entity_manager>().alive(entity_with_effect)) {
-			auto index = game::get<board>().index_for(entity_with_effect);
+			auto index = game_board().index_for(entity_with_effect);
 
 			sender::send(make_action_message("prison_connection", index));
 
-			damage_dealers::standard_damage_dealer(magic_damage(final_damage, game::get<board>().at(index), entity_id));
+			damage_dealers::standard_damage_dealer(magic_damage(final_damage, game_board().at(index), entity_id));
 		}
 	}
 

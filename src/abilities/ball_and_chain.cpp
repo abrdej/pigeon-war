@@ -15,7 +15,7 @@ void ball_and_chain::use(std::uint32_t index_on) {
 	if (used_)
 		return;
 
-	auto enemy_id = game::get<board>().at(index_on);
+	auto enemy_id = game_board().at(index_on);
 
 	auto abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
 

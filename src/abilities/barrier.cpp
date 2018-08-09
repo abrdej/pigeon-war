@@ -2,7 +2,7 @@
 #include <managers/entity_manager.h>
 #include "immortality.h"
 #include "components/damage_taker.h"
-#include "sender.h"
+#include "server/sender.h"
 
 barrier::barrier(std::uint32_t entity_id) : entity_id(entity_id) {
 
@@ -16,7 +16,7 @@ barrier::barrier(std::uint32_t entity_id) : entity_id(entity_id) {
 
 			damage = dmg.damage_value - damage_for_barrier;
 
-			play_change_health_animation(game::get<board>().index_for(this->entity_id), damage_for_barrier);
+			play_change_health_animation(game_board().index_for(this->entity_id), this->entity_id, damage_for_barrier);
 		}
 
 		auto final_damage = std::min(health_pack.health, damage);

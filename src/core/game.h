@@ -1,41 +1,27 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include <cstddef>
-#include <core/game_state.h>
-#include "board.h"
-#include "module_holder.h"
-#include "managers/players_manager.h"
 #include <memory>
+#include <typeindex>
+#include <unordered_map>
 
-class game
-{
+/**
+ * @brief Container for all building blocks of game.
+ */
+class game {
+    static std::unordered_map<std::type_index, std::shared_ptr<void>> blocks;
 public:
-	game();
-	void on_board(std::uint32_t col, std::uint32_t row);
-	void on_button(std::uint32_t n);
-	std::string get_button_description(std::uint32_t selected_index, std::uint32_t n);
-
-	void defeat();
-	void victory();
-
-    static std::unordered_map<std::type_index, std::shared_ptr<void>> systems;
-
-    template <typename System>
-    static System& get() {
-		auto it = systems.find(typeid(System));
-		if (it == std::end(systems)) {
-			it = systems.emplace(typeid(System), std::make_shared<System>()).first;
+    template <typename Block>
+    static Block& get() {
+		auto it = blocks.find(typeid(Block));
+		if (it == std::end(blocks)) {
+			it = blocks.emplace(typeid(Block), std::make_shared<Block>()).first;
 		}
-		return *std::static_pointer_cast<System>(it->second);
+		return *std::static_pointer_cast<Block>(it->second);
     }
-
-	static game& get_instance() {
-		static game game;
-		return game;
-	}
 };
 
-
-
-#endif
+template <typename Block>
+auto& game_get() {
+	return game::get<Block>();
+}

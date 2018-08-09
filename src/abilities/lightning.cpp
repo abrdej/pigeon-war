@@ -1,6 +1,6 @@
 #include <managers/entity_manager.h>
 #include <components/power_field.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <components/damage_pack.h>
 #include <components/applied_effects.h>
 #include <messages/make_message.h>
@@ -32,9 +32,9 @@ void lightning::use(std::uint32_t index_on) {
         return;
     }
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = game::get<board>().at(used_from_index);
-    auto enemy_id = game::get<board>().at(index_on);
+    auto used_from_index = game_control().selected_index_;
+    auto caster_id = game_board().at(used_from_index);
+    auto enemy_id = game_board().at(index_on);
     auto damage = this->damage;
 
     sender::send(make_action_message("lightning_prepare", index_on));
@@ -43,7 +43,7 @@ void lightning::use(std::uint32_t index_on) {
                                                                [enemy_id, caster_id, damage]() mutable {
                                                                    if (game::get<entity_manager>().alive(enemy_id)) {
                                                                        sender::send(make_action_message("lightning",
-                                                                                                        game::get<board>().index_for(
+                                                                                                        game_board().index_for(
                                                                                                                 enemy_id)));
                                                                        damage_dealers::standard_damage_dealer(magic_damage(damage, enemy_id, game::get<entity_manager>().alive(caster_id) ? caster_id : no_damage_dealer));
                                                                        remove_effect(enemy_id, "lightning target");

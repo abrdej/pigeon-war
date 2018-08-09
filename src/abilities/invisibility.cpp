@@ -3,8 +3,8 @@
 #include "managers/entity_manager.h"
 #include "core/board.h"
 #include "entities/saberhand.h"
-#include "core/states_controller.h"
-#include "sender.h"
+#include "core/game_controller.h"
+#include "server/sender.h"
 
 invisibility::invisibility(std::uint32_t id)
 	: entity_id(id)
@@ -28,7 +28,7 @@ void invisibility::use(std::uint32_t on_index)
 
 void invisibility::hide_me()
 {
-	index = game::get<board>().index_for(entity_id);
+	index = game_board().index_for(entity_id);
 
 	sender::send(make_action_message("set_invisibility", entity_id));
 

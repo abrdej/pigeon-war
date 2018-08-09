@@ -1,6 +1,6 @@
 #include <messages/make_message.h>
 #include "dodge.h"
-#include "sender.h"
+#include "server/sender.h"
 #include "components/damage_taker.h"
 
 dodge::dodge(std::uint32_t entity_id) {
@@ -11,7 +11,7 @@ dodge::dodge(std::uint32_t entity_id) {
 
 			counter = 0;
 
-			auto index = game::get<board>().index_for(entity_id);
+			auto index = game_board().index_for(entity_id);
 
 			sender::send(make_action_message("dodge", index));
 

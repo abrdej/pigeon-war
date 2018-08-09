@@ -1,34 +1,24 @@
 #include "battle_with_a_golem_scenario.h"
-#include "core/game.h"
 
-#include <entities/samurai_rat.h>
 #include <ai/ai.h>
 #include <ai/ai_manager.h>
-#include <utils/creator_helper.h>
-#include <entities/wolf.h>
-#include <entities/stone.h>
-#include <managers/managers.h>
-#include <entities/tree.h>
-#include <utils/scenario_helper.h>
-#include <entities/shooter.h>
-#include <entities/saurian.h>
-#include <entities/saberhand.h>
-#include <entities/native.h>
-#include <entities/saurian_web.h>
-#include <abilities/damage_dealers.h>
+#include <core/game.h>
 #include <entities/golem.h>
+#include <entities/saberhand.h>
+#include <entities/shooter.h>
 
-void create_battle_with_a_golem_scenario() {
+void scenarios::create_battle_with_a_golem_scenario() {
+
+    game_board().set_size(15, 10);
 
     auto& entity_manager_ref = game::get<entity_manager>();
-    auto& board_ref = game::get<board>();
     auto& players_manager_ref = game::get<players_manager>();
 
     auto shooter_id = entity_manager_ref.create<shooter>();
     auto saberhand_id = entity_manager_ref.create<saberhand>();
 
-    board_ref.insert(board_ref.to_index(2, 3), shooter_id);
-    board_ref.insert(board_ref.to_index(2, 5), saberhand_id);
+    game_board().insert(game_board().to_index(2, 3), shooter_id);
+    game_board().insert(game_board().to_index(2, 5), saberhand_id);
 
     auto tester_id = players_manager_ref.create_human_player("tester");
     auto enemy_id = players_manager_ref.create_ai_player("enemy");
@@ -57,6 +47,6 @@ void create_battle_with_a_golem_scenario() {
 
     auto golem_id = entity_manager_ref.create<golem>();
     game::get<ai_manager>().add_ai_for(golem_id, ai_sequence);
-    board_ref.insert(board_ref.to_index(10, 4), golem_id);
+    game_board().insert(game_board().to_index(10, 4), golem_id);
     players_manager_ref.add_entity_for_player(enemy_id, golem_id);
 }

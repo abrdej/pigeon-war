@@ -1,14 +1,10 @@
-//
-// Created by abrde on 20.12.2017.
-//
-
-#ifndef PIGEONWAR_MAGIC_POWER_MANAGER_H
-#define PIGEONWAR_MAGIC_POWER_MANAGER_H
+#pragma once
 
 #include <cstdint>
-#include "core/turn_system.h"
-#include "core/board.h"
-#include "sender.h"
+
+#include <core/board.h>
+#include <core/turn_system.h>
+#include <server/sender.h>
 
 struct power_filed : turn_callback_helper {
 	explicit power_filed(std::uint32_t entity_id,
@@ -24,7 +20,7 @@ struct power_filed : turn_callback_helper {
 				auto power_to_charge = std::min(this->max_power - this->power, this->charging_power_amount);
                 this->power += power_to_charge;
 				sender::send(make_action_message("change_power",
-												 game::get<board>().index_for(entity_id),
+												 game_board().index_for(entity_id),
 												 power_to_charge));
             });
         }
@@ -33,5 +29,3 @@ struct power_filed : turn_callback_helper {
 	std::int32_t charging_power_amount;
 	std::int32_t max_power;
 };
-
-#endif //PIGEONWAR_MAGIC_POWER_MANAGER_H

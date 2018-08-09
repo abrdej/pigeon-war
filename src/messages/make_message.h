@@ -1,13 +1,10 @@
-//
-// Created by abrdej on 07.02.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_MAKE_MESSAGE_H
-#define PIGEONWAR_MAKE_MESSAGE_H
+#include <unordered_map>
 
 #include <external/json.hpp>
-#include <unordered_map>
-#include "core/game_state.h"
+
+#include <core/game_state.h>
 
 std::string make_map_size_message(const std::pair<std::uint32_t, std::uint32_t>& map_size);
 
@@ -30,9 +27,9 @@ std::string make_entities_healths_message(const std::unordered_map<std::uint32_t
 std::string make_entities_pack_message(const std::unordered_map<std::uint32_t,
         std::tuple<std::string, std::int32_t, std::int32_t, std::uint32_t>>& entities_pack);
 
-std::string make_local_state_message(const local_state& state);
+std::string make_local_game_state_message(const local_game_state& state);
 
-std::string make_game_state_message(const game_state& state);
+std::string make_global_game_state_message(const global_game_state& state);
 
 std::string make_end_turn_message(std::uint32_t active_player);
 
@@ -43,11 +40,16 @@ std::string make_remove_entity_message(std::uint32_t entity_id);
 std::string make_create_entity_message(std::uint32_t entity_id,
                                        const std::string& name,
                                        std::int32_t health,
+                                       std::int32_t power,
                                        std::uint32_t index);
+
+std::string make_create_entity_message(std::uint32_t entity_id);
 
 std::string make_move_entity_message(std::uint32_t entity_id,
                                      std::uint32_t from_index,
                                      std::uint32_t to_index);
+
+std::string make_battle_end_message(std::uint32_t player_id);
 
 template <typename... Args>
 std::string make_action_message(const std::string &animation, Args &&... args) {
@@ -66,5 +68,3 @@ std::string make_action_message(const std::string &animation, Args &&... args) {
     data["animation"] = array_of_data;
     return data.dump();
 }
-
-#endif //PIGEONWAR_MAKE_MESSAGE_H

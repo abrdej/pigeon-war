@@ -1,3 +1,6 @@
+#include <managers/entity_manager.h>
+#include <core/game.h>
+#include <components/power_field.h>
 #include "make_message.h"
 #include "messages/messages.h"
 
@@ -40,13 +43,13 @@ std::string make_entities_pack_message(const std::unordered_map<std::uint32_t,
     return data.dump();
 }
 
-std::string make_local_state_message(const local_state& state) {
+std::string make_local_game_state_message(const local_game_state& state) {
     json data;
     data["local_state"] = state;
     return data.dump();
 }
 
-std::string make_game_state_message(const game_state& state) {
+std::string make_global_game_state_message(const global_game_state& state) {
     json data;
     data["game_state"] = state;
     return data.dump();
@@ -73,13 +76,25 @@ std::string make_remove_entity_message(std::uint32_t entity_id) {
 std::string make_create_entity_message(std::uint32_t entity_id,
                                        const std::string& name,
                                        std::int32_t health,
+                                       std::int32_t power,
                                        std::uint32_t index) {
     json data;
     data["create_entity"] = entity_id;
     data["name"] = name;
     data["health"] = health;
+    data["power"] = power;
     data["index"] = index;
     return data.dump();
+}
+
+std::string make_create_entity_message(std::uint32_t entity_id) {
+    return make_create_entity_message(entity_id,
+                                      game_get<entity_manager>().get(entity_id).name,
+                                      game_get<entity_manager>().get(entity_id).get<health_field>()->health,
+                                      game_get<entity_manager>().get(entity_id).contain<power_filed>() ?
+                                      game_get<entity_manager>().get(entity_id).get<power_filed>()->power :
+                                      0,
+                                      game_get<board>().index_for(entity_id));
 }
 
 std::string make_move_entity_message(std::uint32_t entity_id,
@@ -89,5 +104,11 @@ std::string make_move_entity_message(std::uint32_t entity_id,
     data["move_entity"] = entity_id;
     data["from_index"] = from_index;
     data["to_index"] = to_index;
+    return data.dump();
+}
+
+std::string make_battle_end_message(std::uint32_t player_id) {
+    json data;
+    data["battle_end"] = player_id;
     return data.dump();
 }

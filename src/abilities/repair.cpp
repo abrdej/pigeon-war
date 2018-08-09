@@ -14,7 +14,7 @@ void repair::use(std::uint32_t on_index) {
     if (used_)
         return;
 
-    sender::send(make_action_message("repair", game::get<board>().index_for(entity_id)));
+    sender::send(make_action_message("repair", game_board().index_for(entity_id)));
 
     standard_healing(healing_to_base_health(repair_amount, entity_id));
 

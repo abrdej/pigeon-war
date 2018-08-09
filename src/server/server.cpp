@@ -130,8 +130,8 @@ tcp_server::tcp_server(unsigned short port)
 }
 
 void tcp_server::start_accept() {
-    tcp_connection::connection_ptr new_connection =
-            tcp_connection::create(acceptor_.get_io_service());
+    websocket_connection::connection_ptr new_connection =
+            websocket_connection::create(acceptor_.get_io_service());
 
     acceptor_.async_accept(new_connection->socket(),
                            [this, new_connection](const boost::system::error_code& error) {
@@ -139,7 +139,7 @@ void tcp_server::start_accept() {
                            });
 }
 
-void tcp_server::handle_accept(tcp_connection::connection_ptr new_connection,
+void tcp_server::handle_accept(websocket_connection::connection_ptr new_connection,
                                const boost::system::error_code& error) {
     if (!error)
     {
@@ -151,12 +151,14 @@ void tcp_server::handle_accept(tcp_connection::connection_ptr new_connection,
         new_connection->set_reading_handler([this](const std::string& message) {
             handle_message(message);
         });
+        new_connection->get_ws();
 
         std::cout << "New client, next id: " << client_id << "\n";
 
         connections.emplace_back(new_connection);
-        new_connection->send_initial_message();
-        new_connection->start_reading();
+
+        //new_connection->send_initial_message();
+        //new_connection->start_reading();
 
         start_accept();
     }

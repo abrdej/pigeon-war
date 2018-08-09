@@ -1,9 +1,4 @@
-//
-// Created by abrdej on 08.01.18.
-//
-
-#ifndef PIGEONWAR_SENDER_H
-#define PIGEONWAR_SENDER_H
+#pragma once
 
 #include <functional>
 
@@ -18,5 +13,3 @@ struct sender {
 		send_fn(message);
 	}
 };
-
-#endif //PIGEONWAR_SENDER_H

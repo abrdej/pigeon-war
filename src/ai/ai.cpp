@@ -2,7 +2,7 @@
 #include "abilities/ability.h"
 #include "managers/players_manager.h"
 #include "core/board.h"
-#include "core/states_controller.h"
+#include "core/game_controller.h"
 #include "core/path_finder.h"
 #include "core/game.h"
 #include "abilities/abilities.h"
@@ -46,17 +46,17 @@ bool attack_enemy::operator()(blackboard &blackboard) {
 
     std::cout << "attack_enemy\n";
 
-    auto selected_index = states::state_controller::selected_index_;
-    auto entity_id = game::get<board>().at(selected_index);
+    auto selected_index = game_control().selected_index_;
+    auto entity_id = game_board().at(selected_index);
     auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
     auto offensive = abilities_ptr->of_type(ability_types::offensive);
     if (!offensive)
         return false;
 
-    try_prepare_ability(*offensive, states::state_controller::selected_index_);
-    auto can_attack = states::state_controller::is_possible_movement(blackboard.entry<entry_tag::nearest_enemy_index>());
+    try_prepare_ability(*offensive, game_control().selected_index_);
+    auto can_attack = game_control().is_possible_movement(blackboard.entry<entry_tag::nearest_enemy_index>());
     if (can_attack) {
-        states::state_controller::do_action(blackboard.entry<entry_tag::nearest_enemy_index>());
+        game_control().do_action(blackboard.entry<entry_tag::nearest_enemy_index>());
     }
 
     return can_attack;
@@ -66,7 +66,7 @@ bool go_close_to::operator()(blackboard &blackboard) {
 
     std::cout << "go_close_to\n";
 
-    auto entity_id = game::get<board>().at(blackboard.entry<entry_tag::my_entity_index_>());
+    auto entity_id = game_board().at(blackboard.entry<entry_tag::my_entity_index_>());
     auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
     auto moving = abilities_ptr->of_type(ability_types::moving);
     if (!moving)
@@ -81,7 +81,7 @@ bool go_close_to::operator()(blackboard &blackboard) {
 
     neighbors.erase(
             std::remove_if(std::begin(neighbors), std::end(neighbors), [&blackboard](std::uint32_t index) {
-                return !game::get<board>().empty(index) && index != blackboard.entry<entry_tag::my_entity_index_>();
+                return !game_board().empty(index) && index != blackboard.entry<entry_tag::my_entity_index_>();
             }), std::end(neighbors));
 
     auto nearest_field = *std::min_element(std::begin(neighbors), std::end(neighbors),
@@ -99,8 +99,8 @@ bool go_close_to::operator()(blackboard &blackboard) {
 
     try_prepare_ability(*moving, blackboard.entry<entry_tag::my_entity_index_>());
     for (auto &step : path) {
-        if (states::state_controller::is_possible_movement(step)) {
-            states::state_controller::do_action(step);
+        if (game_control().is_possible_movement(step)) {
+            game_control().do_action(step);
             return true;
         }
     }
@@ -111,7 +111,7 @@ bool go_to::operator()(blackboard &blackboard) {
 
     std::cout << "go_to\n";
 
-    auto entity_id = game::get<board>().at(blackboard.entry<entry_tag::my_entity_index_>());
+    auto entity_id = game_board().at(blackboard.entry<entry_tag::my_entity_index_>());
 
     auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
     auto moving = abilities_ptr->of_type(ability_types::moving);
@@ -130,8 +130,8 @@ bool go_to::operator()(blackboard &blackboard) {
     try_prepare_ability(*moving, blackboard.entry<entry_tag::my_entity_index_>());
 
     for (auto &step : path) {
-        if (states::state_controller::is_possible_movement(step)) {
-            states::state_controller::do_action(step);
+        if (game_control().is_possible_movement(step)) {
+            game_control().do_action(step);
             return true;
         }
     }
@@ -142,7 +142,7 @@ bool can_go_to::operator()(blackboard &blackboard) {
 
     std::cout << "can_go_to\n";
 
-    auto entity_id = game::get<board>().at(blackboard.entry<entry_tag::my_entity_index_>());
+    auto entity_id = game_board().at(blackboard.entry<entry_tag::my_entity_index_>());
 
     auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
     auto moving = abilities_ptr->of_type(ability_types::moving);
@@ -154,15 +154,15 @@ bool can_go_to::operator()(blackboard &blackboard) {
 
     try_prepare_ability(*moving, blackboard.entry<entry_tag::my_entity_index_>());
 
-    return states::state_controller::is_possible_movement(blackboard.entry<entry_tag::destination_index>());
+    return game_control().is_possible_movement(blackboard.entry<entry_tag::destination_index>());
 }
 
 bool find_position_for_shot::operator()(blackboard &blackboard) {
 
     std::cout << "find_position_for_shot\n";
 
-    auto selected_index = states::state_controller::selected_index_;
-    auto entity_id = game::get<board>().at(selected_index);
+    auto selected_index = game_control().selected_index_;
+    auto entity_id = game_board().at(selected_index);
     auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
     auto offensive = abilities_ptr->of_type(ability_types::offensive);
     if (!offensive)
@@ -176,7 +176,7 @@ bool find_position_for_shot::operator()(blackboard &blackboard) {
                                                                            try_prepare_ability(*offensive,
                                                                                                index);
                                                                            auto can_attack =
-                                                                                   states::state_controller::is_possible_movement(
+                                                                                   game_control().is_possible_movement(
                                                                                            blackboard.entry<entry_tag::nearest_enemy_index>());
                                                                            return can_attack;
                                                                        });
@@ -197,7 +197,7 @@ bool find_best_aim::operator()(blackboard &blackboard) {
     std::uint32_t min_health_enemy_index = 0;
 
     for (auto &&enemy_index : enemies_indexes) {
-        auto enemy_id = game::get<board>().at(enemy_index);
+        auto enemy_id = game_board().at(enemy_index);
         auto health = game::get<entity_manager>().get(enemy_id).get<health_field>()->health;
 
         if (health < min_health) {
@@ -225,7 +225,7 @@ bool find_best_aim_for_golem::operator()(blackboard &blackboard) {
     std::uint32_t min_health_enemy_index = 0;
 
     for (auto &&enemy_index : enemies_indexes) {
-        auto enemy_id = game::get<board>().at(enemy_index);
+        auto enemy_id = game_board().at(enemy_index);
 
         auto has_power_bullet_effect =
                 game::get<entity_manager>().get(enemy_id).get<applied_effects>()->has("effect of a power bullet");

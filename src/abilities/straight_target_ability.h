@@ -7,7 +7,7 @@
 
 #include "ability.h"
 #include "core/states.h"
-#include "core/states_controller.h"
+#include "core/game_controller.h"
 
 template <std::int32_t Range,
 		target_types TargetType = target_types::enemy,
@@ -15,14 +15,14 @@ template <std::int32_t Range,
 class straight_target_ability : public active_ability {
 public:
 	void prepare(std::uint32_t index) override {
-		states::state_controller::selected_index_ = index;
+		game_control().selected_index_ = index;
 
-		board_helper::calc_straight(index, states::state_controller::possible_movements_,
-									states::state_controller::possible_movements_costs_,
+		board_helper::calc_straight(index, game_control().possible_movements_,
+									game_control().possible_movements_costs_,
 									range, skip_obstacles);
 
-		states::state_controller::actual_targeting_type_ = target_type;
-		states::state_controller::wait_for_action([this](std::uint32_t used_on_index)
+		game_control().actual_targeting_type_ = target_type;
+		game_control().wait_for_action([this](std::uint32_t used_on_index)
 												  {
 													  return use(used_on_index);
 												  });
@@ -40,14 +40,14 @@ template <std::int32_t Range,
 class diagonal_target_ability : public active_ability {
 public:
 	void prepare(std::uint32_t index) override {
-		states::state_controller::selected_index_ = index;
+		game_control().selected_index_ = index;
 
-		board_helper::calc_diagonal(index, states::state_controller::possible_movements_,
-									states::state_controller::possible_movements_costs_,
+		board_helper::calc_diagonal(index, game_control().possible_movements_,
+									game_control().possible_movements_costs_,
 									range, skip_obstacles);
 
-		states::state_controller::actual_targeting_type_ = target_type;
-		states::state_controller::wait_for_action([this](std::uint32_t used_on_index)
+		game_control().actual_targeting_type_ = target_type;
+		game_control().wait_for_action([this](std::uint32_t used_on_index)
 												  {
 													  return use(used_on_index);
 												  });
@@ -65,14 +65,14 @@ template <std::int32_t Range,
 class directed_target_ability : public active_ability {
 public:
 	void prepare(std::uint32_t index) override {
-		states::state_controller::selected_index_ = index;
+		game_control().selected_index_ = index;
 
-		board_helper::calc_directed(index, states::state_controller::possible_movements_,
-									states::state_controller::possible_movements_costs_,
+		board_helper::calc_directed(index, game_control().possible_movements_,
+									game_control().possible_movements_costs_,
 									range, skip_obstacles);
 
-		states::state_controller::actual_targeting_type_ = target_type;
-		states::state_controller::wait_for_action([this](std::uint32_t used_on_index)
+		game_control().actual_targeting_type_ = target_type;
+		game_control().wait_for_action([this](std::uint32_t used_on_index)
 												  {
 													  return use(used_on_index);
 												  });

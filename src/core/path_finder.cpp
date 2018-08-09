@@ -1,31 +1,32 @@
 #include "path_finder.h"
-#include "board.h"
-#include "abilities/moveable.h"
+
+#include <abilities/moveable.h>
+#include <core/board.h>
 
 path_finder::path_finder(bool all_fields)
 		: start_index_(-1)
 {
-	board_graph.set_size(game::get<board>().cols_n * game::get<board>().rows_n);
+	board_graph.set_size(game_board().cols_n * game_board().rows_n);
 
-	game::get<board>().for_each([this, &all_fields](std::uint32_t entity_id, std::uint32_t col, std::uint32_t row) {
-		auto rows_n = game::get<board>().rows_n;
-		auto cols_n = game::get<board>().cols_n;
-		auto key_from = game::get<board>().to_index(col, row);
+	game_board().for_each([this, &all_fields](std::uint32_t entity_id, std::uint32_t col, std::uint32_t row) {
+		auto rows_n = game_board().rows_n;
+		auto cols_n = game_board().cols_n;
+		auto key_from = game_board().to_index(col, row);
 
 		if (row < rows_n - 1) {
-			auto key_to = game::get<board>().to_index(col, row + 1);
-			if (game::get<board>().empty(key_to) || all_fields)
+			auto key_to = game_board().to_index(col, row + 1);
+			if (game_board().empty(key_to) || all_fields)
 				board_graph.add_edge(key_from, key_to);
 
-			if (game::get<board>().empty(key_from) || all_fields)
+			if (game_board().empty(key_from) || all_fields)
 				board_graph.add_edge(key_to, key_from);
 		}
 		if (col < cols_n - 1) {
-			auto key_to = game::get<board>().to_index(col + 1, row);
-			if (game::get<board>().empty(key_to) || all_fields)
+			auto key_to = game_board().to_index(col + 1, row);
+			if (game_board().empty(key_to) || all_fields)
 				board_graph.add_edge(key_from, key_to);
 
-			if (game::get<board>().empty(key_from) || all_fields)
+			if (game_board().empty(key_from) || all_fields)
 				board_graph.add_edge(key_to, key_from);
 		}
 	});
@@ -91,7 +92,7 @@ void calc_helper(const std::array<std::pair<std::int32_t, std::int32_t>, N>& ops
 	movements.clear();
 	costs.clear();
 
-	auto fld = game::get<board>().to_pos(from_index);
+	auto fld = game_board().to_pos(from_index);
 	for (auto&& op : ops) {
 		for (std::uint32_t i = 1; i <= range; ++i) {
 
@@ -100,13 +101,13 @@ void calc_helper(const std::array<std::pair<std::int32_t, std::int32_t>, N>& ops
 			next_pos.second += (op.second * i);
 
 			if (next_pos.first > 0 && next_pos.second > 0
-				&& next_pos.first < game::get<board>().cols_n && next_pos.second < game::get<board>().rows_n) {
-				auto index = game::get<board>().to_index(next_pos.first, next_pos.second);
+				&& next_pos.first < game_board().cols_n && next_pos.second < game_board().rows_n) {
+				auto index = game_board().to_index(next_pos.first, next_pos.second);
 
 				costs.push_back(i);
 				movements.push_back(index);
 
-				if (!game::get<board>().empty(index) && !skip_obstacles)
+				if (!game_board().empty(index) && !skip_obstacles)
 					break;
 			}
 		}
@@ -168,18 +169,18 @@ void calc_directed(std::uint32_t from_index,
 void neighboring_fields(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool available)
 {
 	fields.clear();
-	auto fld = game::get<board>().to_pos(for_index);
+	auto fld = game_board().to_pos(for_index);
 
 	for (std::int32_t col = -1; col <= 1; ++col) {
 		for (std::int32_t row = -1; row <= 1; ++row)
 		{
 			auto col_index = fld.first + col;
 			auto row_index = fld.second + row;
-			auto index = game::get<board>().to_index(col_index, row_index);
-			if ((col || row) && col_index < game::get<board>().cols_n
-				&& row_index < game::get<board>().rows_n && (!available || game::get<board>().empty(index)))
+			auto index = game_board().to_index(col_index, row_index);
+			if ((col || row) && col_index < game_board().cols_n
+				&& row_index < game_board().rows_n && (!available || game_board().empty(index)))
 			{
-				fields.push_back(game::get<board>().to_index(col_index, row_index));
+				fields.push_back(game_board().to_index(col_index, row_index));
 			}
 		}
 	}
@@ -188,18 +189,18 @@ void neighboring_fields(std::uint32_t for_index, std::vector<std::uint32_t>& fie
 void circle(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool available) {
 
 	fields.clear();
-	auto fld = game::get<board>().to_pos(for_index);
+	auto fld = game_board().to_pos(for_index);
 
 	for (std::int32_t col = -2; col <= 2; ++col) {
 		for (std::int32_t row = -2; row <= 2; ++row) {
 			if (abs(col) == 2 || abs(row) == 2) {
 				auto col_index = fld.first + col;
 				auto row_index = fld.second + row;
-				auto index = game::get<board>().to_index(col_index, row_index);
-				if ((col || row) && col_index < game::get<board>().cols_n
-					&& row_index < game::get<board>().rows_n && (!available || game::get<board>().empty(index)))
+				auto index = game_board().to_index(col_index, row_index);
+				if ((col || row) && col_index < game_board().cols_n
+					&& row_index < game_board().rows_n && (!available || game_board().empty(index)))
 				{
-					fields.push_back(game::get<board>().to_index(col_index, row_index));
+					fields.push_back(game_board().to_index(col_index, row_index));
 				}
 			}
 		}
@@ -207,15 +208,15 @@ void circle(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool av
 }
 
 void all_free(std::vector<std::uint32_t>& fields) {
-	for (std::uint32_t index = 0; index < game::get<board>().rows_n * game::get<board>().cols_n; ++index) {
-		if (game::get<board>().empty(index)) {
+	for (std::uint32_t index = 0; index < game_board().rows_n * game_board().cols_n; ++index) {
+		if (game_board().empty(index)) {
 			fields.push_back(index);
 		}
 	}
 }
 
 void all(std::vector<std::uint32_t>& fields) {
-	for (std::uint32_t index = 0; index < game::get<board>().rows_n * game::get<board>().cols_n; ++index) {
+	for (std::uint32_t index = 0; index < game_board().rows_n * game_board().cols_n; ++index) {
 		fields.push_back(index);
 	}
 }

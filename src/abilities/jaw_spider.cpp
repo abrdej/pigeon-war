@@ -1,4 +1,4 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <core/board.h>
 #include <components/applied_effects.h>
 #include <managers/entity_manager.h>
@@ -7,7 +7,7 @@
 #include "abilities.h"
 #include "damage_dealers.h"
 #include "spider_web.h"
-#include "sender.h"
+#include "server/sender.h"
 
 void jaw_spider::use(std::uint32_t index_on) {
 
@@ -15,12 +15,12 @@ void jaw_spider::use(std::uint32_t index_on) {
 		return;
 	}
 
-	auto used_from_index = states::state_controller::selected_index_;
-	auto caster_id = game::get<board>().at(used_from_index);
+	auto used_from_index = game_control().selected_index_;
+	auto caster_id = game_board().at(used_from_index);
 
 	sender::send(make_action_message("jaw_spider", index_on));
 
-	auto enemy_id = game::get<board>().at(index_on);
+	auto enemy_id = game_board().at(index_on);
 
 	auto has_spider_web_effect = has_effect(enemy_id, "spider web");
 

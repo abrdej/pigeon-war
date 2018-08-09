@@ -1,10 +1,10 @@
-#ifndef MOVEABLE_H
-#define MOVEABLE_H
+#pragma once
 
-#include "ability.h"
-#include "core/turn_system.h"
 #include <functional>
-#include "effects/base_effect.h"
+
+#include <abilities/ability.h>
+#include <core/turn_system.h>
+#include <effects/base_effect.h>
 
 class moveable_base : public active_ability {
     using move_callback_type = std::function<void(std::uint32_t, std::uint32_t, std::int32_t)>;
@@ -58,10 +58,6 @@ public:
 		return "moveable";
 	}
 
-	ability_types type() const override {
-		return ability_types::moving;
-	}
-
 	void refresh_range() override {
 		used = false;
 	}
@@ -91,6 +87,3 @@ private:
 	bool used{false};
     types movement_type;
 };
-
-
-#endif

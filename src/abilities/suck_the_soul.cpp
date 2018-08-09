@@ -1,7 +1,7 @@
 #include "suck_the_soul.h"
 
 #include <core/board.h>
-#include <sender.h>
+#include <server/sender.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 #include <messages/make_message.h>
@@ -53,9 +53,9 @@ void suck_the_soul::use(std::uint32_t index_on) {
     }
 	used = true;
 
-    auto used_from_index = states::state_controller::selected_index_;
-    auto caster_id = game::get<board>().at(used_from_index);
-    auto enemy_id = game::get<board>().at(index_on);
+    auto used_from_index = game_control().selected_index_;
+    auto caster_id = game_board().at(used_from_index);
+    auto enemy_id = game_board().at(index_on);
 
 
     sender::send(make_action_message("drain", used_from_index, index_on));
@@ -83,7 +83,7 @@ void suck_the_soul::use(std::uint32_t index_on) {
 
 																			 sender::send(
                                                                                      make_action_message("soul_out",
-                                                                                                         game::get<board>().index_for(
+                                                                                                         game_board().index_for(
                                                                                                                  enemy_id)));
 
 																			 standard_healing(healing_to_base_health(suck_damage, enemy_id));

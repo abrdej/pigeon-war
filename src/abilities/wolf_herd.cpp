@@ -1,5 +1,5 @@
 #include "wolf_herd.h"
-#include "core/states_controller.h"
+#include "core/game_controller.h"
 #include "entities/wolf.h"
 #include "managers/entity_manager.h"
 #include "managers/players_manager.h"
@@ -29,7 +29,7 @@ void wolf_herd::use(std::uint32_t index_on) {
 		auto wolf_id = game::get<entity_manager>().create<wolf>();
 		auto player_name = game::get<players_manager>().get_active_player_id();
 		game::get<players_manager>().add_entity_for_player(player_name, wolf_id);
-		game::get<board>().insert(neighbors[place_idx], wolf_id);
+		game_board().insert(neighbors[place_idx], wolf_id);
 
 		neighbors.erase(neighbors.begin() + place_idx);
 	}

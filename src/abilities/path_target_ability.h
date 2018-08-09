@@ -7,7 +7,7 @@
 
 #include "ability.h"
 #include "core/states.h"
-#include "core/states_controller.h"
+#include "core/game_controller.h"
 
 template <std::int32_t Range,
 		target_types TargetType = target_types::enemy,
@@ -16,16 +16,16 @@ class path_target_ability : public active_ability {
 public:
 	void prepare(std::uint32_t for_index) override {
 
-		states::state_controller::selected_index_ = for_index;
+		game_control().selected_index_ = for_index;
 
 		path_finder path_finder(all_fields);
 		path_finder.calc(for_index);
-		path_finder.get_possible_movements(states::state_controller::possible_movements_,
-										   states::state_controller::possible_movements_costs_,
+		path_finder.get_possible_movements(game_control().possible_movements_,
+										   game_control().possible_movements_costs_,
 										   range);
 
-		states::state_controller::actual_targeting_type_ = target_type;
-		states::state_controller::wait_for_action([this](std::uint32_t index)
+		game_control().actual_targeting_type_ = target_type;
+		game_control().wait_for_action([this](std::uint32_t index)
 												  {
 													  return use(index);
 												  });

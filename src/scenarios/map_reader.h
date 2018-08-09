@@ -1,12 +1,5 @@
-//
-// Created by abrdej on 06.02.18.
-//
-
-#ifndef PIGEONWAR_MAP_READER_H
-#define PIGEONWAR_MAP_READER_H
+#pragma once
 
 #include <string>
 
 std::string read_map_from_json(const std::string& json_file, std::pair<uint32_t, uint32_t>& map_size);
-
-#endif //PIGEONWAR_MAP_READER_H

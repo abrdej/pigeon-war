@@ -1,4 +1,4 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <managers/entity_manager.h>
 #include <effects/poison_effect.h>
 #include <abilities/abilities.h>
@@ -7,19 +7,19 @@
 #include "poisoned_missile.h"
 #include "damage_dealers.h"
 #include "abilities/moveable.h"
-#include "sender.h"
+#include "server/sender.h"
 
 void poisoned_missile::use(std::uint32_t index_on) {
 
     if (used)
         return;
 
-    auto from_index = states::state_controller::selected_index_;
+    auto from_index = game_control().selected_index_;
 
     sender::send(make_action_message("poisoned_missile", from_index, index_on));
 
-    auto entity_id = game::get<board>().at(from_index);
-    auto enemy_id = game::get<board>().at(index_on);
+    auto entity_id = game_board().at(from_index);
+    auto enemy_id = game_board().at(index_on);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, entity_id));
 
@@ -33,7 +33,7 @@ void poisoned_missile::use(std::uint32_t index_on) {
 
                                                                                       sender::send(make_action_message(
                                                                                               "poison",
-                                                                                              game::get<board>().index_for(
+                                                                                              game_board().index_for(
                                                                                                       enemy_id)));
 
                                                                                       damage_dealers::standard_damage_dealer(special_damage(poison_power, enemy_id));

@@ -1,4 +1,4 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <managers/entity_manager.h>
 #include <components/applied_effects.h>
 #include <effects/web_effect.h>
@@ -8,7 +8,7 @@
 #include "abilities.h"
 #include "jaw_spider.h"
 #include "moveable.h"
-#include "sender.h"
+#include "server/sender.h"
 
 spider_web::spider_web(std::uint32_t entity_id) : caster_id(entity_id) {
 }
@@ -18,10 +18,10 @@ void spider_web::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto used_from_index = states::state_controller::selected_index_;
+    auto used_from_index = game_control().selected_index_;
 
-    auto pos_1 = game::get<board>().to_pos(used_from_index);
-    auto pos_2 = game::get<board>().to_pos(index_on);
+    auto pos_1 = game_board().to_pos(used_from_index);
+    auto pos_2 = game_board().to_pos(index_on);
 
     std::int32_t x = pos_2.first - pos_1.first;
     std::int32_t y = pos_2.second - pos_1.second;
@@ -30,13 +30,13 @@ void spider_web::use(std::uint32_t index_on) {
     if (y != 0)
         y = y / std::abs(y);
 
-    auto land_index = game::get<board>().to_index(pos_1.first + x, pos_1.second + y);
+    auto land_index = game_board().to_index(pos_1.first + x, pos_1.second + y);
 
     sender::send(make_action_message("spider_web", used_from_index, index_on, land_index));
 
-    auto enemy_id = game::get<board>().at(index_on);
+    auto enemy_id = game_board().at(index_on);
 
-    game::get<board>().move(index_on, land_index);
+    game_board().move(index_on, land_index);
 
     damage_dealers::standard_damage_dealer(ranged_damage(damage, enemy_id, caster_id));
 

@@ -1,10 +1,10 @@
 #include <messages/make_message.h>
 #include "basic_melee_attack.h"
 #include "core/path_finder.h"
-#include "core/states_controller.h"
+#include "core/game_controller.h"
 #include "core/board.h"
 #include "damage_dealers.h"
-#include "sender.h"
+#include "server/sender.h"
 
 void basic_melee_attack::use(std::uint32_t index_on)
 {
@@ -12,12 +12,12 @@ void basic_melee_attack::use(std::uint32_t index_on)
 		return;
 	}
 
-	auto used_from_index = states::state_controller::selected_index_;
-	auto caster_id = game::get<board>().at(used_from_index);
+	auto used_from_index = game_control().selected_index_;
+	auto caster_id = game_board().at(used_from_index);
 
 	sender::send(make_action_message("basic_melee_attack", used_from_index, index_on));
 
-	auto enemy_id = game::get<board>().at(index_on);
+	auto enemy_id = game_board().at(index_on);
 
 	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
 

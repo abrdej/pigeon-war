@@ -1,4 +1,4 @@
-#include <sender.h>
+#include <server/sender.h>
 #include <messages/make_message.h>
 #include <managers/entity_manager.h>
 #include "rocket_launcher.h"
@@ -12,8 +12,8 @@ void rocket_launcher::use(std::uint32_t index_on) {
 	if (used)
 		return;
 
-	auto used_from_index = states::state_controller::selected_index_;
-	auto entity_id = game::get<board>().at(used_from_index);
+	auto used_from_index = game_control().selected_index_;
+	auto entity_id = game_board().at(used_from_index);
 
 	auto mortal_thrower_ptr = game::get<entity_manager>().get(entity_id).get<abilities>()->get<mortar_thrower>();
 	if (mortal_thrower_ptr->was_used())
@@ -24,10 +24,10 @@ void rocket_launcher::use(std::uint32_t index_on) {
 
     std::cout << "has_bonus: " << has_bonus << "\n";
 
-	auto enemy_id = game::get<board>().at(index_on);
+	auto enemy_id = game_board().at(index_on);
 
-	auto used_from_pos = game::get<board>().to_pos(used_from_index);
-	auto used_to_pos = game::get<board>().to_pos(index_on);
+	auto used_from_pos = game_board().to_pos(used_from_index);
+	auto used_to_pos = game_board().to_pos(index_on);
 
 	auto distance = std::max(std::abs(static_cast<std::int32_t>(used_from_pos.first) - static_cast<std::int32_t>(used_to_pos.first)),
 							 std::abs(static_cast<std::int32_t>(used_from_pos.second) - static_cast<std::int32_t>(used_to_pos.second)));

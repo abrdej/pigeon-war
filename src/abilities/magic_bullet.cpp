@@ -1,10 +1,10 @@
-#include <core/states_controller.h>
+#include <core/game_controller.h>
 #include <components/damage_taker.h>
 #include <messages/make_message.h>
 #include <components/power_field.h>
 #include "magic_bullet.h"
 #include "damage_dealers.h"
-#include "sender.h"
+#include "server/sender.h"
 #include "managers/players_manager.h"
 
 magic_bullet::magic_bullet(std::uint32_t entity_id)
@@ -18,10 +18,10 @@ magic_bullet::magic_bullet(std::uint32_t entity_id)
             power->power += magic_power_accumulation_amount;
 
             std::vector<std::uint32_t> neighbors;
-            board_helper::neighboring_fields(game::get<board>().index_for(entity_id), neighbors, false);
+            board_helper::neighboring_fields(game_board().index_for(entity_id), neighbors, false);
             for (auto& index : neighbors)
             {
-                if (!game::get<board>().empty(index) && players_funcs::enemy_entity(index)) {
+                if (!game_board().empty(index) && players_funcs::enemy_entity(index)) {
                     power->power += magic_power_drain_amount;
 //                    magic_power += magic_power_drain_amount;
                     sender::send(make_action_message("magic_suck", index));
@@ -39,7 +39,7 @@ magic_bullet::magic_bullet(std::uint32_t entity_id)
 //        magic_power -= damage_for_magic_power;
         power->power -= damage_for_magic_power;
         sender::send(make_action_message("change_power",
-                                         game::get<board>().index_for(entity_id), damage_for_magic_power));
+                                         game_board().index_for(entity_id), damage_for_magic_power));
 
 //        auto remaining_damage = dmg.damage_value - damage_for_magic_power;
         auto remaining_damage = half_damage + half_damage - damage_for_magic_power;
@@ -73,14 +73,14 @@ void magic_bullet::use(std::uint32_t index_on) {
     if (used)
         return;
 
-    auto from_index = states::state_controller::selected_index_;
+    auto from_index = game_control().selected_index_;
 
     auto power = game::get<entity_manager>().get(entity_id).get<power_filed>();
 
 
     sender::send(make_action_message("magic_bullet", from_index, index_on));
 
-    damage_dealers::standard_damage_dealer(magic_damage(power->power, game::get<board>().at(index_on), game::get<board>().at(from_index)));
+    damage_dealers::standard_damage_dealer(magic_damage(power->power, game_board().at(index_on), game_board().at(from_index)));
 
     auto change_power = -power->power;
     power->power = 0;

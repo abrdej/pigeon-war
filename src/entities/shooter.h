@@ -1,13 +1,12 @@
-#ifndef SHOOTER_H
-#define SHOOTER_H
+#pragma once
 
-#include "entity.h"
-#include "abilities/moveable.h"
-#include "abilities/abilities.h"
-#include "abilities/shoot.h"
-#include "abilities/grenade.h"
-#include "components/damage_taker.h"
-#include "components/applied_effects.h"
+#include <abilities/abilities.h>
+#include <abilities/grenade.h>
+#include <abilities/moveable.h>
+#include <abilities/shoot.h>
+#include <components/applied_effects.h>
+#include <components/damage_taker.h>
+#include <entities/entity.h>
 
 struct shooter final
 {
@@ -25,10 +24,6 @@ struct shooter final
 		abilities_ptr->add_ability(std::make_shared<shoot>());
 		abilities_ptr->add_ability(std::make_shared<grenade>());
 
-		//entity.add<bitmap_field>(entity.entity_id, "shooter);
-
 		return entity;
 	}
 };
-
-#endif

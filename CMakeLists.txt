@@ -43,7 +43,7 @@ set(SOURCE_FILES
         src/ai/ai_manager.cpp
         src/abilities/basic_melee_attack.cpp
         src/core/board.cpp
-        src/utils/creator_helper.cpp
+        src/scenarios/creator_helper.cpp
         src/abilities/damage_dealers.h
         src/abilities/damage_dealer.cpp
         src/abilities/drain.cpp
@@ -54,13 +54,13 @@ set(SOURCE_FILES
         src/abilities/moveable.cpp
         src/core/turn_system.cpp
         src/abilities/tongue_of_fire.cpp
-        src/core/states_controller.cpp
+        src/core/game_controller.cpp
         src/abilities/shoot.cpp
         src/abilities/sabers.cpp
         src/core/path_finder.cpp
         src/managers/players_manager.cpp
         src/core/board.cpp
-        src/utils/scenario_helper.h
+        src/scenarios/scenario_helper.h
         src/entities/tree.h
         src/abilities/sword_blow.cpp
         src/abilities/sword_blow.h
@@ -69,7 +69,7 @@ set(SOURCE_FILES
         src/entities/poisoner.h
         src/abilities/poisoned_missile.cpp
         src/abilities/poisoned_missile.h
-        src/utils/scenario_helper.h
+        src/scenarios/scenario_helper.h
         src/entities/stone.h
         src/entities/tree.h
         src/entities/samurai_rat.h
@@ -221,8 +221,8 @@ set(SOURCE_FILES
         src/abilities/straight_target_ability.cpp
         src/abilities/straight_target_ability.h
         src/abilities/per_turn_usable.h
-        src/sender.h
-        src/sender.cpp
+        src/server/sender.h
+        src/server/sender.cpp
         src/abilities/neighboring_target_ability.h
         src/abilities/path_target_ability.h
         src/abilities/caster_target_ability.h
@@ -251,8 +251,6 @@ set(SOURCE_FILES
         src/abilities/missile_of_doom.h
         src/abilities/barrier.cpp
         src/abilities/barrier.h
-        src/core/board_effects.cpp
-        src/core/board_effects.h
         src/abilities/portal.cpp
         src/abilities/portal.h
         src/abilities/cure.cpp
@@ -321,13 +319,12 @@ set(SOURCE_FILES
         src/utils/create_methods.h
         src/messages/messages.h
         src/core/game_state.h
-        src/managers/managers.h
         src/core/states.h
         src/utils/for_each_in_tuple.h
         src/utils/logging.h
         src/components/health_field.h
         src/ai/behavior_tree.h
-        src/entities/reaper.cpp src/entities/reaper.h src/abilities/charge.cpp src/abilities/charge.h src/entities/bomb_instance.cpp src/entities/bomb_instance.h src/abilities/repair.cpp src/abilities/repair.h src/entities/eye.cpp src/entities/eye.h src/abilities/transmission.cpp src/abilities/transmission.h src/abilities/eye_shoot.cpp src/abilities/eye_shoot.h src/scenarios/entities_reader.cpp src/scenarios/entities_reader.h src/scenarios/wolves_dinner.cpp src/scenarios/wolves_dinner.h src/scenarios/saurian_web_scenario.cpp src/scenarios/saurian_web_scenario.h src/scenarios/battle_with_a_golem_scenario.cpp src/scenarios/battle_with_a_golem_scenario.h src/server/server.cpp)
+        src/entities/reaper.cpp src/entities/reaper.h src/abilities/charge.cpp src/abilities/charge.h src/entities/bomb_instance.cpp src/entities/bomb_instance.h src/abilities/repair.cpp src/abilities/repair.h src/entities/eye.cpp src/entities/eye.h src/abilities/transmission.cpp src/abilities/transmission.h src/abilities/eye_shoot.cpp src/abilities/eye_shoot.h src/scenarios/entities_reader.cpp src/scenarios/entities_reader.h src/scenarios/wolves_dinner.cpp src/scenarios/wolves_dinner.h src/scenarios/saurian_web_scenario.cpp src/scenarios/saurian_web_scenario.h src/scenarios/battle_with_a_golem_scenario.cpp src/scenarios/battle_with_a_golem_scenario.h src/server/server.cpp src/managers/get_entity_names.cpp src/managers/get_entity_names.h src/managers/get_entities.cpp src/managers/get_entities.h src/core/get_game_state.cpp src/core/get_game_state.h src/core/get_button_description.cpp src/core/get_button_description.h src/scenarios/total_destruction.cpp src/scenarios/total_destruction.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server ${PLATFORM_LIBS} ${Boost_LOG_LIBRARY} ${Boost_SYSTEM_LIBRARY})
