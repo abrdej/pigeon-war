@@ -12,13 +12,12 @@ void warrior_blow::use(std::uint32_t index_on) {
     }
 
     auto used_from_index = game_control().selected_index_;
+    auto caster_id = game_board().at(used_from_index);
 
-
-    sender::send(make_action_message("warrior_blow", used_from_index, index_on));
+    sender::send(make_action_message("warrior_blow", caster_id, index_on));
 
     auto enemy_id = game_board().at(index_on);
 
-    auto caster_id = game_board().at(used_from_index);
     auto health_pack_ptr = game::get<entity_manager>().get(caster_id).get<health_field>();
 
     auto missing_health = health_pack_ptr->base_health - health_pack_ptr->health;

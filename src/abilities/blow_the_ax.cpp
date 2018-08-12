@@ -13,7 +13,7 @@ void blow_the_ax::use(std::uint32_t index_on) {
 
     auto entity_id = game_board().at(used_from_index);
 
-    sender::send(make_action_message("blow_the_ax", used_from_index, index_on));
+    sender::send(make_action_message("blow_the_ax", entity_id, index_on));
 
     damage_dealers::standard_damage_dealer(melee_damage(damage, game_board().at(index_on), entity_id));
 

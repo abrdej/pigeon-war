@@ -38,8 +38,7 @@ magic_bullet::magic_bullet(std::uint32_t entity_id)
         auto damage_for_magic_power = std::min<std::int32_t>(power->power, half_damage);
 //        magic_power -= damage_for_magic_power;
         power->power -= damage_for_magic_power;
-        sender::send(make_action_message("change_power",
-                                         game_board().index_for(entity_id), damage_for_magic_power));
+        sender::send(make_action_message("change_power", entity_id, damage_for_magic_power));
 
 //        auto remaining_damage = dmg.damage_value - damage_for_magic_power;
         auto remaining_damage = half_damage + half_damage - damage_for_magic_power;
@@ -78,14 +77,14 @@ void magic_bullet::use(std::uint32_t index_on) {
     auto power = game::get<entity_manager>().get(entity_id).get<power_filed>();
 
 
-    sender::send(make_action_message("magic_bullet", from_index, index_on));
+    sender::send(make_action_message("magic_bullet", entity_id, index_on));
 
     damage_dealers::standard_damage_dealer(magic_damage(power->power, game_board().at(index_on), game_board().at(from_index)));
 
     auto change_power = -power->power;
     power->power = 0;
 
-    sender::send(make_action_message("change_power", from_index, change_power));
+    sender::send(make_action_message("change_power", entity_id, change_power));
 
     first_used = true;
 

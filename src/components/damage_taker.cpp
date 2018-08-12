@@ -3,13 +3,11 @@
 #include "damage_taker.h"
 
 void play_change_health_animation(std::uint32_t to_index, std::uint32_t entity_id, std::int32_t change_health) {
-    sender::send(make_action_message("change_health", to_index, entity_id, change_health));
-    sender::send(make_entities_healths_message(get_healths()));
+    sender::send(make_action_message("change_health", entity_id, change_health));
 }
 
 void play_power_change_animation(std::uint32_t to_index, std::int32_t change_power) {
-    sender::send(make_action_message("change_power", to_index, change_power));
-//    sender::send(make_entities_healths_message(get_healths()));
+    sender::send(make_action_message("change_power", game_board().at(to_index), change_power));
 }
 
 std::unordered_map<std::uint32_t, std::int32_t> get_healths() {
