@@ -50,8 +50,8 @@ void moveable::move(std::uint32_t index_to)
 
 	game_control().selected_index_ = no_selected_index;
 
-	sender::send(make_action_message("move", move_from_index, index_to));
-
+//	sender::send(make_action_message("move", move_from_index, index_to));
+	sender::send(make_action_message("move", entity_id, index_to));
 
 	std::int32_t from_col = game_board().to_pos(move_from_index).first;
 	std::int32_t to_col = game_board().to_pos(index_to).first;

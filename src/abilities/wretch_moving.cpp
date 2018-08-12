@@ -61,7 +61,8 @@ void wretch_moving::move(std::uint32_t index_to) {
 
     game_control().selected_index_ = no_selected_index;
 
-    sender::send(make_action_message("move", move_from_index, index_to));
+//    sender::send(make_action_message("move", move_from_index, index_to));
+    sender::send(make_action_message("move", taken_id, index_to));
 
     game_board().give_back(taken_id, index_to);
 
