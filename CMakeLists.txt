@@ -27,13 +27,8 @@ if (WIN32)
 endif()
 
 set(Boost_USE_STATIC_LIBS ON)
-#add_definitions(-DBOOST_ALL_DYN_LINK)
-#add_definitions(-DBOOST_LOG_DYN_LINK)
-#add_definitions(-DBOOST_SYSTEM_NO_DEPRECATED)
 add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY)
 
-
-#find_package(Boost REQUIRED system)
 include_directories(${Boost_INCLUDE_DIRS})
 
 set(SOURCE_FILES
@@ -359,4 +354,3 @@ set(SOURCE_FILES
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server ${PLATFORM_LIBS})
-        #${Boost_SYSTEM_LIBRARY})

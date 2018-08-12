@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
 	// set up server
 	// run server
 
-	std::int32_t port = 5555;
+	std::int32_t port = 8080;
 	std::string map_name = "battlefield";
 	std::pair<std::uint32_t, std::uint32_t> map_size;
 
@@ -48,9 +48,9 @@ int main(int argc, char** argv) {
 	}
 
 	// create game
-    map_name = create_skirmish(map_name, map_size);
+//    map_name = create_skirmish(map_name, map_size);
 //	create_wolves_dinner();
-//	create_saurian_web();
+	create_saurian_web();
 //	scenarios::create_total_destruction();
 //    scenarios::create_battle_with_a_golem_scenario();
 //	map_name = "Battle with a golem";

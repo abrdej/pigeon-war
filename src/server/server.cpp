@@ -10,20 +10,44 @@ tcp::socket& websocket_connection::socket() {
     return socket_;
 }
 
+/// Returns `true` if the request indicates a WebSocket upgrade
+//bool is_upgrade(const boost::beast::http::request_header& req)
+//{
+//    if(req.method != "GET")
+//        return false;
+//    if(req.version < 11)
+//        return false;
+//    if(! boost::beast::http::is_upgrade(req))
+//        return false;
+//    if(! boost::beast::http::token_list{req.fields["Upgrade"]}.exists("websocket"))
+//        return false;
+//    if( req.fields["Sec-WebSocket-Version"] != "13")
+//        return false;
+//    return true;
+//}
+
 void websocket_connection::get_ws() {
     ws_ = std::make_unique<boost::beast::websocket::stream<tcp::socket>>(std::move(socket_));
-    ws_->binary(true);
-    ws_->async_accept_ex([](auto& m) {
-                             m.insert(boost::beast::http::field::sec_websocket_protocol, "binary");
-                         },
-                         [this](const boost::system::error_code& ec) {
-                             if (ec) {
-                                 std::cout << ec.message() << "\n";
-                             }
+    //ws_->binary(true);
+//    ws_->async_accept_ex([](auto& m) {
+//                             m.insert(boost::beast::http::field::sec_websocket_protocol, "binary");
+//                         },
+//                         [this](const boost::system::error_code& ec) {
+//                             if (ec) {
+//                                 std::cout << "get ws: " << ec.message() << "\n";
+//                             }
+//
+//                             start_reading();
+//                             initial_handler();
+//                         });
+    ws_->async_accept([this](const boost::system::error_code& ec) {
+        if (ec) {
+            std::cout << "get ws: " << ec.message() << "\n";
+        }
 
-                             start_reading();
-                             initial_handler();
-                         });
+        start_reading();
+        initial_handler();
+    });
 }
 
 void websocket_connection::start_reading() {
@@ -35,6 +59,7 @@ void websocket_connection::start_reading() {
 
                                       if (error) {
                                           std::cout << "error: " << error.message() << "\n";
+                                          throw error;
                                       }
 
                                       std::string message_data(boost::asio::buffer_cast<char const*>(
@@ -98,6 +123,8 @@ void tcp_connection::start_reading() {
                                               boost::beast::buffers_front(buffer.data())),
                                                                boost::asio::buffer_size(buffer.data()));
 
+                                      std::cout << "message_data: " << message_data << "\n";
+
                                       auto messages = joiner.add_message_data(message_data);
 
                                       for (auto&& message : messages) {
@@ -130,8 +157,8 @@ tcp_server::tcp_server(unsigned short port)
 }
 
 void tcp_server::start_accept() {
-    websocket_connection::connection_ptr new_connection =
-            websocket_connection::create(acceptor_.get_io_service());
+    Connection::connection_ptr new_connection =
+            Connection::create(acceptor_.get_io_service());
 
     acceptor_.async_accept(new_connection->socket(),
                            [this, new_connection](const boost::system::error_code& error) {
@@ -139,7 +166,7 @@ void tcp_server::start_accept() {
                            });
 }
 
-void tcp_server::handle_accept(websocket_connection::connection_ptr new_connection,
+void tcp_server::handle_accept(Connection::connection_ptr new_connection,
                                const boost::system::error_code& error) {
     if (!error)
     {
@@ -157,8 +184,8 @@ void tcp_server::handle_accept(websocket_connection::connection_ptr new_connecti
 
         connections.emplace_back(new_connection);
 
-        //new_connection->send_initial_message();
-        //new_connection->start_reading();
+//        new_connection->send_initial_message();
+//        new_connection->start_reading();
 
         start_accept();
     }

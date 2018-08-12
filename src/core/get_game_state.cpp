@@ -33,28 +33,31 @@ local_game_state get_local_game_state() {
 
     local_state.button_bitmaps.fill("");
 
-    auto entity_id = game_board().at(game_control().selected_index_);
-    auto entity = game::get<entity_manager>().get(entity_id);
+    // verify this
+    if (game_control().selected_index_ != no_selected_index) {
+        auto entity_id = game_board().at(game_control().selected_index_);
+        auto entity = game::get<entity_manager>().get(entity_id);
 
-    if (entity_id != game_board().empty_id) {
+        if (entity_id != game_board().empty_id) {
 
-        if (entity.contain<abilities>()) {
-            auto abilities_ptr = entity.get<abilities>();
-            for (std::int32_t i = 0; i < 5; ++i) {
-                auto ability = abilities_ptr->at(i);
-                if (ability) {
-                    local_state.button_bitmaps[i] = ability->get_bitmap_key();
+            if (entity.contain<abilities>()) {
+                auto abilities_ptr = entity.get<abilities>();
+                for (std::int32_t i = 0; i < 5; ++i) {
+                    auto ability = abilities_ptr->at(i);
+                    if (ability) {
+                        local_state.button_bitmaps[i] = ability->get_bitmap_key();
+                    }
                 }
             }
         }
-    }
 
-    local_state.entity_name = entity.name;
-    local_state.selected_index = game_control().selected_index_;
+        local_state.entity_name = entity.name;
+        local_state.selected_index = game_control().selected_index_;
 
-    for (auto&& move : game_control().possible_movements_) {
-        if (game_control().valid_target(move)) {
-            local_state.valid_movements.insert(move);
+        for (auto&& move : game_control().possible_movements_) {
+            if (game_control().valid_target(move)) {
+                local_state.valid_movements.insert(move);
+            }
         }
     }
 

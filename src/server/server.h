@@ -92,6 +92,8 @@ private:
 
 class tcp_server {
 
+	using Connection = websocket_connection;
+
     using json_data_type = nlohmann::json;
     using callback_type = std::function<void(json_data_type&)>;
 
@@ -101,7 +103,7 @@ class tcp_server {
     tcp::endpoint websocket_endpoint;
     tcp::acceptor acceptor_;
     tcp::acceptor websocket_acceptor_;
-    std::vector<websocket_connection::connection_ptr> connections;
+    std::vector<Connection::connection_ptr> connections;
 
     const std::uint32_t port;
 
@@ -115,7 +117,7 @@ class tcp_server {
 	std::atomic_bool is_running{false};
 
 	void start_accept();
-	void handle_accept(websocket_connection::connection_ptr new_connection,
+	void handle_accept(Connection::connection_ptr new_connection,
 					   const boost::system::error_code& error);
 	void handle_message(const std::string& message);
 	std::uint32_t get_new_client_id();
