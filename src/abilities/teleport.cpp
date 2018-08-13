@@ -23,7 +23,7 @@ void teleport::use(std::uint32_t from_index, std::uint32_t to_index) {
 	if (used)
 		return;
 
-	sender::send(make_action_message("teleport", from_index, to_index));
+	sender::send(make_action_message("teleport", game_board().at(from_index), to_index));
 
 	game_board().move(from_index, to_index);
 

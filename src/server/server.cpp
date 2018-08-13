@@ -28,6 +28,7 @@ tcp::socket& websocket_connection::socket() {
 
 void websocket_connection::get_ws() {
     ws_ = std::make_unique<boost::beast::websocket::stream<tcp::socket>>(std::move(socket_));
+    socket_ = nullptr;
     //ws_->binary(true);
 //    ws_->async_accept_ex([](auto& m) {
 //                             m.insert(boost::beast::http::field::sec_websocket_protocol, "binary");
@@ -40,13 +41,14 @@ void websocket_connection::get_ws() {
 //                             start_reading();
 //                             initial_handler();
 //                         });
-    ws_->async_accept([this](const boost::system::error_code& ec) {
-        if (ec) {
-            std::cout << "get ws: " << ec.message() << "\n";
+    ws_->async_accept([me = shared_from_this()](const boost::system::error_code& error) {
+        if (error) {
+            std::cout << "get ws: " << error.message() << "\n";
+            throw error;
         }
 
-        start_reading();
-        initial_handler();
+        me->start_reading();
+        me->initial_handler();
     });
 }
 
@@ -54,7 +56,7 @@ void websocket_connection::start_reading() {
     boost::asio::async_read_until(*ws_,
                                   buffer,
                                   "\n",
-                                  [this](const boost::system::error_code& error,
+                                  [me = shared_from_this()](const boost::system::error_code& error,
                                          size_t bytes_transferred) {
 
                                       if (error) {
@@ -63,18 +65,18 @@ void websocket_connection::start_reading() {
                                       }
 
                                       std::string message_data(boost::asio::buffer_cast<char const*>(
-                                              boost::beast::buffers_front(buffer.data())),
-                                                               boost::asio::buffer_size(buffer.data()));
+                                              boost::beast::buffers_front(me->buffer.data())),
+                                                               boost::asio::buffer_size(me->buffer.data()));
 
-                                      auto messages = joiner.add_message_data(message_data);
+                                      auto messages = me->joiner.add_message_data(message_data);
 
                                       for (auto&& message : messages) {
-                                          read_handler(message);
+                                          me->read_handler(message);
                                       }
 
-                                      buffer.consume(buffer.size() + 1);
+                                      me->buffer.consume(buffer.size() + 1);
 
-                                      start_reading();
+                                      me->start_reading();
                                   });
 }
 
@@ -83,6 +85,7 @@ void websocket_connection::send(const std::string& message) {
     ws_->write(boost::asio::buffer(message), er);
     if (er) {
         std::cout << "dfdsfdsf: " << er.message() << "\n";
+        throw er;
     }
     //ws_->binary(false);
 }

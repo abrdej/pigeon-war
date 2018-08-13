@@ -19,7 +19,5 @@ void tongue_of_fire::use(std::uint32_t index_on)
 
 	damage_dealers::standard_damage_dealer(ranged_damage(damage, game_board().at(index_on), entity_id));
 
-	// show damage animation // for example. -9 dmg
-
 	used = true;
 }

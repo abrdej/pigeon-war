@@ -48,8 +48,8 @@ int main(int argc, char** argv) {
 	}
 
 	// create game
-    map_name = create_skirmish(map_name, map_size);
-//	create_wolves_dinner();
+//    map_name = create_skirmish(map_name, map_size);
+	create_wolves_dinner();
 //	create_saurian_web();
 //	scenarios::create_total_destruction();
 //    scenarios::create_battle_with_a_golem_scenario();

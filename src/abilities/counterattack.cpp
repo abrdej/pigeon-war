@@ -38,7 +38,7 @@ void counterattack::use(std::uint32_t index_on) {
 
 	auto enemy_id = game_board().at(index_on);
 
-	sender::send(make_action_message("counterattack", enemy_id, index_on));
+	sender::send(make_action_message("counterattack", entity_id, index_on));
 
 	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
 

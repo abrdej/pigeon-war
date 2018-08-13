@@ -4,7 +4,7 @@
 #include "entity.h"
 #include "abilities/abilities.h"
 #include "abilities/moveable.h"
-#include "abilities/basic_melee_attack.h"
+#include "abilities/claws.h"
 #include "components/damage_taker.h"
 #include "components/applied_effects.h"
 
@@ -22,7 +22,7 @@ public:
 
 		auto abilities_ptr = entity.add<abilities>();
 		abilities_ptr->add_ability(std::make_shared<moveable>(3));
-		abilities_ptr->add_ability(std::make_shared<basic_melee_attack>());
+		abilities_ptr->add_ability(std::make_shared<claws>());
 
 		return entity;
 	}

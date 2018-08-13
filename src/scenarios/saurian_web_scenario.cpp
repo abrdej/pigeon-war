@@ -25,14 +25,27 @@ void create_saurian_web() {
     auto saurion2_id = entity_manager_ref.create<saurian>();
     auto saurion3_id = entity_manager_ref.create<saurian>();
     auto saurion4_id = entity_manager_ref.create<saurian>();
+    auto saurion5_id = entity_manager_ref.create<saurian>();
 
-    auto ai_sequence = behavior_tree::helper::Sequence<ai::behavior_tree_tasks::blackboard,
-            ai::behavior_tree_tasks::attack_enemy, ai::behavior_tree_tasks::find_nearest_enemy>::create();
+    auto best_aim_sequence = behavior_tree::helper::Sequence<
+            ai::behavior_tree_tasks::blackboard,
+            ai::behavior_tree_tasks::attack_enemy,
+            ai::behavior_tree_tasks::find_best_aim>::create();
+
+    auto nearest_aim_sequence = behavior_tree::helper::Sequence<
+            ai::behavior_tree_tasks::blackboard,
+            ai::behavior_tree_tasks::attack_enemy,
+            ai::behavior_tree_tasks::find_nearest_enemy>::create();
+
+    auto ai_sequence = std::make_shared<behavior_tree::selector<ai::behavior_tree_tasks::blackboard>>();
+    ai_sequence->add_task(best_aim_sequence);
+    ai_sequence->add_task(nearest_aim_sequence);
 
     game::get<ai_manager>().add_ai_for(saurion1_id, ai_sequence);
     game::get<ai_manager>().add_ai_for(saurion2_id, ai_sequence);
     game::get<ai_manager>().add_ai_for(saurion3_id, ai_sequence);
     game::get<ai_manager>().add_ai_for(saurion4_id, ai_sequence);
+    game::get<ai_manager>().add_ai_for(saurion5_id, ai_sequence);
 
     game_board().insert(game_board().to_index(2, 3), shooter_id);
     game_board().insert(game_board().to_index(2, 5), saberhand_id);
@@ -41,6 +54,7 @@ void create_saurian_web() {
     game_board().insert(game_board().to_index(12, 2), saurion2_id);
     game_board().insert(game_board().to_index(12, 6), saurion3_id);
     game_board().insert(game_board().to_index(4, 1), saurion4_id);
+    game_board().insert(game_board().to_index(7, 9), saurion5_id);
 
     auto tester_id = players_manager_ref.create_human_player("tester");
     auto enemy_id = players_manager_ref.create_ai_player("enemy");
@@ -50,6 +64,7 @@ void create_saurian_web() {
     players_manager_ref.add_entity_for_player(enemy_id, saurion2_id);
     players_manager_ref.add_entity_for_player(enemy_id, saurion3_id);
     players_manager_ref.add_entity_for_player(enemy_id, saurion4_id);
+    players_manager_ref.add_entity_for_player(enemy_id, saurion5_id);
 
     using creator_helper::pos;
     creator_helper::create_neutral_many("stone", {pos(5, 0), pos(5, 1), pos(9, 9), pos(1, 8), pos(14, 8)});

@@ -4,11 +4,11 @@
 #include "neighboring_target_ability.h"
 #include "per_turn_usable.h"
 
-class basic_melee_attack final : public neighboring_target_ability<>, per_turn_usable
+class claws final : public neighboring_target_ability<>, per_turn_usable
 {
 public:
 	bitmap_key get_bitmap_key() const override {
-		return "basic_melee_attack";
+		return "claws";
 	}
 	ability_types type() const override {
 		return ability_types::offensive;

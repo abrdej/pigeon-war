@@ -36,7 +36,7 @@ set(SOURCE_FILES
         src/entities/entity.h
         src/ai/ai.cpp
         src/ai/ai_manager.cpp
-        src/abilities/basic_melee_attack.cpp
+        src/abilities/claws.cpp
         src/core/board.cpp
         src/scenarios/creator_helper.cpp
         src/abilities/damage_dealers.h
