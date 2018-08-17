@@ -1,13 +1,11 @@
-//
-// Created by abrdej on 05.02.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_DESCRIPTIONS_H
-#define PIGEONWAR_DESCRIPTIONS_H
-
-#include "external/json.hpp"
-#include <iostream>
 #include <fstream>
+#include <iostream>
+
+#include <external/json.hpp>
+
+#include <config.h>
 
 template <typename T>
 inline std::string to_string_wrapper(const T& x) {
@@ -29,10 +27,18 @@ void str_replace(std::string& text, const std::string& from, const T& to) {
 }
 
 inline std::string get_desc(const std::string& ability_name) {
-    std::ifstream ifs("/home/abrdej/pigeon-war/descriptions.json");
+    std::ifstream ifs(resources_directory + "descriptions.json");
     nlohmann::json j = nlohmann::json::parse(ifs);
 
     std::string desc = j["descriptions"]["abilities"][ability_name];
+    return desc;
+}
+
+inline std::string get_effect_desc(const std::string& effect) {
+    std::ifstream ifs(resources_directory + "descriptions.json");
+    nlohmann::json j = nlohmann::json::parse(ifs);
+
+    std::string desc = j["descriptions"]["effects"][effect];
     return desc;
 }
 
@@ -76,10 +82,10 @@ inline std::string get_desc(const std::string& ability_name) {
 #define FOR_EACH(what, x, ...) FOR_EACH_(FOR_EACH_NARG(x, __VA_ARGS__), what, x, __VA_ARGS__)
 
 #define DESC_REPLACE(desc, name) \
-	str_replace(desc, std::string("<") + #name + std::string(">"), name); \
+	str_replace(desc, std::string("<") + #name + std::string(">"), name);
 
 #define DESC_REPLACE_WITH_DESC(name) \
-    DESC_REPLACE(desc, name) \
+    DESC_REPLACE(desc, name)
 
 
 #define DEFINE_DESC(ability_name, ...) \
@@ -87,19 +93,17 @@ inline std::string get_desc(const std::string& ability_name) {
         auto desc = get_desc(#ability_name); \
         FOR_EACH(DESC_REPLACE_WITH_DESC, __VA_ARGS__) \
         return std::move(desc); \
-    } \
+    }
 
 #define DEFINE_DESC_ZERO(ability_name) \
     std::string hint() const override { \
         auto desc = get_desc(#ability_name); \
         return std::move(desc); \
-    } \
+    }
 
 #define DEFINE_DESC_ONE(ability_name, field) \
     std::string hint() const override { \
         auto desc = get_desc(#ability_name); \
         DESC_REPLACE_WITH_DESC(field) \
         return std::move(desc); \
-    } \
-
-#endif //PIGEONWAR_DESCRIPTIONS_H
+    }

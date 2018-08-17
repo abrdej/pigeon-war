@@ -28,7 +28,6 @@ tcp::socket& websocket_connection::socket() {
 
 void websocket_connection::get_ws() {
     ws_ = std::make_unique<boost::beast::websocket::stream<tcp::socket>>(std::move(socket_));
-    socket_ = nullptr;
     //ws_->binary(true);
 //    ws_->async_accept_ex([](auto& m) {
 //                             m.insert(boost::beast::http::field::sec_websocket_protocol, "binary");
@@ -74,7 +73,7 @@ void websocket_connection::start_reading() {
                                           me->read_handler(message);
                                       }
 
-                                      me->buffer.consume(buffer.size() + 1);
+                                      me->buffer.consume(me->buffer.size() + 1);
 
                                       me->start_reading();
                                   });

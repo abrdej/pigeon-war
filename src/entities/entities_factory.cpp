@@ -2,6 +2,8 @@
 
 #include "scenarios/registered_entities.h"
 
+#include <entities/spectre.h>
+
 using creator = std::pair<std::string, std::function<std::uint32_t()>>;
 
 template <typename T>
@@ -55,7 +57,8 @@ std::uint32_t entities_factory::create(const std::string& entity_name) {
             DEF_CREATOR(combat_robot),
             DEF_CREATOR(reaper),
             DEF_CREATOR(bomb_instance),
-            DEF_CREATOR(eye)
+            DEF_CREATOR(eye),
+            DEF_CREATOR(spectre)
     };
 
     return creators.at(entity_name)();

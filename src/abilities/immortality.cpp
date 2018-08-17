@@ -1,9 +1,9 @@
-#include <core/turn_system.h>
+#include "immortality.h"
+
+#include <components/damage_taker.h>
 #include <managers/entity_manager.h>
 #include <messages/make_message.h>
-#include "immortality.h"
-#include "components/damage_taker.h"
-#include "server/sender.h"
+#include <server/sender.h>
 
 immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
 
@@ -20,8 +20,6 @@ immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {
             immortality_holder = make_after_n_round_callback_holder(duration, [this]() {
                 set_destructible(this->entity_id, true);
                 game::get<entity_manager>().destroy(this->entity_id);
-
-                std::cout << "destroy\n";
             });
         }
 

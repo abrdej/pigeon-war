@@ -1,13 +1,11 @@
-#ifndef GRENADE_H
-#define GRENADE_H
+#pragma once
 
-#include "path_target_ability.h"
-#include <vector>
+#include <abilities/path_target_ability.h>
 
 class grenade final : public path_target_ability<3>
 {
 public:
-	grenade() = default;
+	explicit grenade(std::uint32_t entity_id);
 
 	bitmap_key get_bitmap_key() const override {
 		return "grenade";
@@ -16,11 +14,10 @@ public:
     DEFINE_DESC_ONE(grenade, damage)
 
 private:
-	void use(std::uint32_t index_on) override;
+	void use(std::uint32_t on_index) override;
 
 private:
+	const std::uint32_t entity_id;
 	const std::int32_t damage{12};
 	bool used{false};
 };
-
-#endif

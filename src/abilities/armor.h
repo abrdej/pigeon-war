@@ -1,11 +1,6 @@
-//
-// Created by abrdej on 17.11.17.
-//
+#pragma once
 
-#ifndef PIGEONWAR_ARMOR_H
-#define PIGEONWAR_ARMOR_H
-
-#include "ability.h"
+#include <abilities/ability.h>
 
 class armor : public passive_ability {
 public:
@@ -20,6 +15,3 @@ public:
 private:
     std::int32_t max_damage{6};
 };
-
-
-#endif //PIGEONWAR_ARMOR_H

@@ -1,43 +1,25 @@
 #include "shoot.h"
 
-#include <fstream>
+#include <abilities/damage_dealers.h>
+#include <core/board.h>
+#include <core/game_controller.h>
+#include <core/path_finder.h>
 #include <messages/make_message.h>
-#include "core/path_finder.h"
-#include "core/game_controller.h"
-#include "core/board.h"
-#include "damage_dealers.h"
-#include "server/sender.h"
-#include "utils/logging.h"
-#include "utils/descriptions.h"
+#include <server/sender.h>
+#include <utils/descriptions.h>
 
-shoot::shoot()
-		: bullets(bullets_n)
-{
-	on_every_two_turns_from_next([this]() {
-		bullets = bullets_n;
-        LOG_DEBUG() << "shoot refresh bullets count to: " << bullets << "\n";
-	});
+shoot::shoot(std::uint32_t entity_id) : entity_id(entity_id), bullets(bullets_per_turn) {
+    on_every_two_turns_from_next([this]() {
+        bullets = bullets_per_turn;
+    });
 }
 
-void shoot::use(std::uint32_t index_on)
-{
-	if (bullets == 0) {
-		LOG_DEBUG() << "bullets == 0" << "\n";
-		return;
-	}
+void shoot::use(std::uint32_t on_index) {
+    if (bullets == 0) {
+        return;
+    }
+    --bullets;
 
-	--bullets;
-	auto used_from_index = game_control().selected_index_;
-	auto entity_id = game_board().at(used_from_index);
-
-	LOG_DEBUG() << "shoot used from pos: " << game_board().to_pos(used_from_index) << "\n";
-	LOG_DEBUG() << "by entity of id: " << entity_id << "\n";
-	LOG_DEBUG() << "to pos: " << game_board().to_pos(index_on) << "\n";
-    LOG_DEBUG() << "remaining bullets: " << bullets << "\n";
-
-	sender::send(make_action_message("shoot", used_from_index, index_on));
-
-	auto final_damage = damage_dealers::standard_damage_dealer(ranged_damage(damage, game_board().at(index_on), entity_id));
-
-	LOG_DEBUG() << "dealt damage of: " << final_damage << "\n";
+    sender::send(make_action_message("shoot", game_control().selected_index_, on_index));
+    damage_dealers::standard_damage_dealer(ranged_damage(damage, game_board().at(on_index), entity_id));
 }

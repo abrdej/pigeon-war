@@ -1,0 +1,23 @@
+#include "sorcerer.h"
+
+#include <abilities/abilities.h>
+#include <abilities/moveable.h>
+#include <abilities/prison_connection.h>
+#include <components/applied_effects.h>
+#include <components/damage_taker.h>
+
+base_entity sorcerer::create(base_entity& entity)
+{
+    entity.name = "Sorcerer";
+
+    entity.add<health_field>(45);
+    entity.add<damage_taker>();
+    entity.add<applied_effects>();
+    entity.add<modification>();
+
+    auto abilities_ptr = entity.add<abilities>();
+    abilities_ptr->add_ability(std::make_shared<moveable>(3));
+    abilities_ptr->add_ability(std::make_shared<prison_connection>(entity.entity_id));
+
+    return entity;
+}

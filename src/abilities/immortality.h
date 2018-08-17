@@ -1,12 +1,7 @@
-//
-// Created by abrde on 04.12.2017.
-//
+#pragma once
 
-#ifndef PIGEONWAR_IMMORTALITY_H
-#define PIGEONWAR_IMMORTALITY_H
-
-#include "ability.h"
-#include "core/turn_system.h"
+#include <abilities/ability.h>
+#include <core/turn_system.h>
 
 class immortality : public passive_ability {
 public:
@@ -19,9 +14,7 @@ public:
     DEFINE_DESC_ZERO(immortality)
 
 private:
-    std::uint32_t entity_id;
-    std::int32_t duration{1};
+    const std::uint32_t entity_id;
+    const std::int32_t duration{1};
     turn_scoped_connection immortality_holder;
 };
-
-#endif //PIGEONWAR_IMMORTALITY_H

@@ -112,6 +112,15 @@ struct find_best_aim_for_golem : behavior_tree::base_task<blackboard>
 	bool operator()(blackboard& blackboard) override;
 };
 
+class run_around : public behavior_tree::base_task<blackboard> {
+public:
+	run_around();
+	bool operator()(blackboard& blackboard) override;
+private:
+	std::vector<std::pair<std::int32_t, std::int32_t>> shifts;
+	std::size_t shift_index;
+};
+
 }
 }
 

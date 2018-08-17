@@ -84,13 +84,17 @@ bool go_close_to::operator()(blackboard &blackboard) {
                 return !game_board().empty(index) && index != blackboard.entry<entry_tag::my_entity_index_>();
             }), std::end(neighbors));
 
-    auto nearest_field = *std::min_element(std::begin(neighbors), std::end(neighbors),
-                                           [&distance_finder](std::uint32_t first_elem,
-                                                              std::uint32_t second_elem) {
-                                               return distance_finder.distance_to(first_elem) <
-                                                      distance_finder.distance_to(second_elem);
-                                           });
+    auto nearest_field_it = std::min_element(std::begin(neighbors), std::end(neighbors),
+                                             [&distance_finder](std::uint32_t first_elem,
+                                                                std::uint32_t second_elem) {
+                                                 return distance_finder.distance_to(first_elem) <
+                                                        distance_finder.distance_to(second_elem);
+                                             });
+    if (nearest_field_it == std::end(neighbors)) {
+        return false;
+    }
 
+    auto nearest_field = *nearest_field_it;
     if (nearest_field == blackboard.entry<entry_tag::my_entity_index_>())
         return true;
 
@@ -241,6 +245,43 @@ bool find_best_aim_for_golem::operator()(blackboard &blackboard) {
 
     blackboard.entry<entry_tag::nearest_enemy_index>() = min_health_enemy_index;
 
+    return true;
+}
+
+run_around::run_around()
+        : shifts({{1, 0}, {0, 1}, {0, 1}, {-1, 0}, {-1, 0}, {0, -1}, {0, -1}, {1, 0}}),
+          shift_index(0) {
+}
+
+bool run_around::operator()(blackboard& blackboard) {
+
+    auto entity_index = blackboard.entry<entry_tag::my_entity_index_>();
+    auto entity_id = game_board().at(entity_index);
+
+    auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
+    auto moving = abilities_ptr->of_type(ability_types::moving);
+    if (!moving)
+        return false;
+
+    auto pos = game_board().to_pos(entity_index);
+    auto shift = shifts[(shift_index++ % shifts.size())];
+    pos.first += shift.first;
+    pos.second += shift.second;
+    auto dest_index = game_board().to_index(pos.first, pos.second);
+
+    try_prepare_ability(*moving, blackboard.entry<entry_tag::my_entity_index_>());
+
+    if (game_control().is_possible_movement(dest_index)) {
+        game_control().do_action(dest_index);
+        return true;
+    } else {
+        if (!game_board().empty(dest_index) &&
+                game::get<players_manager>().enemy_entity(blackboard.entry<entry_tag::player_id>(),
+                                                          game_board().at(dest_index))) {
+            blackboard.entry<entry_tag::nearest_enemy_index>() = dest_index;
+            return false;
+        }
+    }
     return true;
 }
 

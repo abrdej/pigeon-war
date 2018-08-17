@@ -1,9 +1,12 @@
+#include "warrior_blow.h"
+
+#include <abilities/damage_dealers.h>
 #include <core/game_controller.h>
 #include <managers/entity_manager.h>
 #include <messages/make_message.h>
-#include "warrior_blow.h"
-#include "damage_dealers.h"
-#include "server/sender.h"
+#include <server/sender.h>
+
+warrior_blow::warrior_blow(std::uint32_t entity_id) : entity_id(entity_id) {}
 
 void warrior_blow::use(std::uint32_t index_on) {
 
@@ -11,14 +14,9 @@ void warrior_blow::use(std::uint32_t index_on) {
         return;
     }
 
-    auto used_from_index = game_control().selected_index_;
-    auto caster_id = game_board().at(used_from_index);
+    sender::send(make_action_message("warrior_blow", entity_id, index_on));
 
-    sender::send(make_action_message("warrior_blow", caster_id, index_on));
-
-    auto enemy_id = game_board().at(index_on);
-
-    auto health_pack_ptr = game::get<entity_manager>().get(caster_id).get<health_field>();
+    auto health_pack_ptr = game::get<entity_manager>().get(entity_id).get<health_field>();
 
     auto missing_health = health_pack_ptr->base_health - health_pack_ptr->health;
 
@@ -26,7 +24,7 @@ void warrior_blow::use(std::uint32_t index_on) {
 
     auto final_damage = damage_increase_factor * damage_per_factor + damage;
 
-    damage_dealers::standard_damage_dealer(melee_damage(final_damage, enemy_id, caster_id));
+    damage_dealers::standard_damage_dealer(melee_damage(final_damage, game_board().at(index_on), entity_id));
 
     used = true;
 }

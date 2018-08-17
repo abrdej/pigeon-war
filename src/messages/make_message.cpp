@@ -67,6 +67,12 @@ std::string make_description_message(const std::string& desc) {
     return data.dump();
 }
 
+std::string make_effect_description_message(const std::string& desc) {
+    json data;
+    data["effect_description"] = desc;
+    return data.dump();
+}
+
 std::string make_remove_entity_message(std::uint32_t entity_id) {
     json data;
     data["remove_entity"] = entity_id;

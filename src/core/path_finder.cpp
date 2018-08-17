@@ -64,12 +64,18 @@ void path_finder::get_possible_movements(std::vector<std::uint32_t>& movements,
 
 void path_finder::path_to(std::uint32_t index, std::vector<std::uint32_t>& path)
 {
+	if (sequence_map_.empty())
+		return;
 	auto path_index = index;
 	path.push_back(index);
-	while (path_index != start_index_)
+    int i = 0;
+	while (path_index != start_index_ && i++ != 100)
 	{
 		path_index = sequence_map_[path_index];
 		path.push_back(path_index);
+
+        std::cout << "start_index_: " << path_index << "\n";
+        std::cout << "path_index: " << path_index << "\n";
 	}
 }
 

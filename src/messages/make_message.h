@@ -35,6 +35,8 @@ std::string make_end_turn_message(std::uint32_t active_player);
 
 std::string make_description_message(const std::string& desc);
 
+std::string make_effect_description_message(const std::string& desc);
+
 std::string make_remove_entity_message(std::uint32_t entity_id);
 
 std::string make_create_entity_message(std::uint32_t entity_id,

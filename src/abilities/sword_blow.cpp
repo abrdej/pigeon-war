@@ -20,11 +20,12 @@ void sword_blow::use(std::uint32_t index_on) {
     std::int32_t hit_entities_counter = 0;
 
     for (auto&& field_id : around_fields_ids) {
-        if (!game_board().empty(field_id)) {
+        if (!game_board().empty(field_id) &&
+                game_get<entity_manager>().get(game_board().at(field_id)).get<health_field>()->is_destructible) {
             auto final_damage = damage_dealers::standard_damage_dealer(melee_damage(damage, game_board().at(field_id), entity_id));
-            if (final_damage != 0) {
+            //if (final_damage != 0) {
                 ++hit_entities_counter;
-            }
+            //}
         }
     }
 

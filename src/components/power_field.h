@@ -8,9 +8,9 @@
 
 struct power_filed : turn_callback_helper {
 	explicit power_filed(std::uint32_t entity_id,
-									   std::int32_t initial_power,
-									   std::int32_t charging_power_amount,
-									   std::int32_t max_power = 0)
+						 std::int32_t initial_power,
+						 std::int32_t charging_power_amount,
+						 std::int32_t max_power = 0)
 			: power(initial_power),
 			  charging_power_amount(charging_power_amount),
 			  max_power(max_power) {
@@ -27,3 +27,10 @@ struct power_filed : turn_callback_helper {
 	std::int32_t charging_power_amount;
 	std::int32_t max_power;
 };
+
+inline std::int32_t change_power(power_filed& x, std::int32_t amount) {
+	auto past_power = x.power;
+    x.power = std::min(x.power + amount, x.max_power);
+    x.power = std::max(x.power, 0);
+	return x.power - past_power;
+}

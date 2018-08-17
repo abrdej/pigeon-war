@@ -38,7 +38,9 @@ struct active_ability : ability {
 };
 
 struct passive_ability : ability {
-
+    ability_types type() const override {
+        return ability_types::passive;
+    }
 };
 
 //template <ability_types Purpose, typename Type, typename... Args>

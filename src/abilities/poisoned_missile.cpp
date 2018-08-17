@@ -42,12 +42,12 @@ void poisoned_missile::use(std::uint32_t index_on) {
 
                                                                                           if (game::get<entity_manager>().alive(enemy_id)) {
                                                                                               remove_effect(enemy_id,
-                                                                                                            "poisoned");
+                                                                                                            "poisoning");
                                                                                           }
                                                                                       }
                                                                                   });
 
-        auto poison_effect = make_negative_effect("poisoned");
+        auto poison_effect = make_negative_effect("poisoning");
         poison_effect->set_turn_connection(std::move(poisoned_connection));
 
         add_effect(enemy_id, poison_effect);

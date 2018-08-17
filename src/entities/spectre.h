@@ -1,9 +1,8 @@
 #pragma once
 
-#include "entity.h"
+#include <entities/entity.h>
 
-class warrior final
+struct spectre final
 {
-public:
     static base_entity create(base_entity& entity);
 };

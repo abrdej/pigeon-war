@@ -7,6 +7,7 @@
 #include <entities/samurai_rat.h>
 #include <entities/stone.h>
 #include <entities/wolf.h>
+#include <entities/spectre.h>
 #include <scenarios/creator_helper.h>
 #include <scenarios/scenario_helper.h>
 
@@ -22,10 +23,14 @@ void create_wolves_dinner() {
     //board::insert(board::to_index(2, 3), shooter_id);
     game_board().insert(game_board().to_index(2, 5), samurai_id);
 
+    auto spectre_id = game::get<entity_manager>().create<spectre>();
+    game_board().insert(game_board().to_index(2, 6), spectre_id);
+
     auto tester_id = players_manager_ref.create_human_player("tester");
     auto enemy_id = players_manager_ref.create_ai_player("enemy");
     //players::add_entity_for_player("tester", shooter_id);
     players_manager_ref.add_entity_for_player(tester_id, samurai_id);
+    players_manager_ref.add_entity_for_player(tester_id, spectre_id);
 
     auto ai_sequence = behavior_tree::helper::Sequence<
             ai::behavior_tree_tasks::blackboard,

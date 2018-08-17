@@ -2,6 +2,10 @@
 
 #include <initializer_list>
 #include <memory>
+#include <vector>
+
+#include <core/game.h>
+#include <managers/entity_manager.h>
 
 template <typename Callback>
 void if_any_die(std::initializer_list<std::uint32_t> entities_id, Callback callback) {

@@ -350,7 +350,7 @@ set(SOURCE_FILES
         src/core/get_button_description.cpp
         src/core/get_button_description.h
         src/scenarios/total_destruction.cpp
-        src/scenarios/total_destruction.h)
+        src/scenarios/total_destruction.h src/entities/spectre.cpp src/entities/spectre.h src/abilities/cleaver.cpp src/abilities/cleaver.h src/abilities/havoc.cpp src/abilities/havoc.h src/abilities/immateriality.cpp src/abilities/immateriality.h src/scenarios/dark_forest.cpp src/scenarios/dark_forest.h src/entities/pixie.cpp src/entities/pixie.h src/abilities/poke.cpp src/abilities/poke.h src/entities/shooter.cpp src/core/get_effect_description.cpp src/core/get_effect_description.h src/entities/destroyer.cpp src/entities/warrior.cpp src/entities/sorcerer.cpp src/utils/algorithm.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server ${PLATFORM_LIBS})
