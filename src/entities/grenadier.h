@@ -18,7 +18,7 @@
 class grenadier final
 {
 public:
-    static auto create(base_entity& entity)
+    static void create(base_entity& entity)
     {
         entity.name = "Grenadier";
 
@@ -31,8 +31,6 @@ public:
         abilities_ptr->add_ability(std::make_shared<moveable>(3));
         abilities_ptr->add_ability(std::make_shared<bomb>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<detonation>(entity.entity_id));
-
-        return entity;
     }
 };
 

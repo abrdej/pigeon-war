@@ -16,7 +16,7 @@
 
 struct wretch final
 {
-    static auto create(base_entity& entity)
+    static void create(base_entity& entity)
     {
         entity.name = "Wretch";
 
@@ -30,8 +30,6 @@ struct wretch final
         abilities_ptr->add_ability(std::make_shared<wretch_moving>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<vicious_circle>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<ball_and_chain>(entity.entity_id));
-
-        return entity;
     }
 };
 

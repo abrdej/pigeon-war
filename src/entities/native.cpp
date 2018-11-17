@@ -1,15 +1,14 @@
-#include "warrior.h"
+#include "native.h"
 
 #include <abilities/abilities.h>
-#include <abilities/immortality.h>
+#include <abilities/counterattack.h>
+#include <abilities/drain.h>
 #include <abilities/moveable.h>
-#include <abilities/warrior_blow.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 
-void warrior::create(base_entity& entity)
-{
-    entity.name = "Warrior";
+void native::create(base_entity& entity) {
+    entity.name = "Native";
 
     entity.add<health_field>(50);
     entity.add<damage_taker>();
@@ -18,6 +17,6 @@ void warrior::create(base_entity& entity)
 
     auto abilities_ptr = entity.add<abilities>();
     abilities_ptr->add_ability(std::make_shared<moveable>(4));
-    abilities_ptr->add_ability(std::make_shared<warrior_blow>(entity.entity_id));
-    abilities_ptr->add_ability(std::make_shared<immortality>(entity.entity_id));
+    abilities_ptr->add_ability(std::make_shared<drain>(entity.entity_id));
+    abilities_ptr->add_ability(std::make_shared<counterattack>(entity.entity_id));
 }

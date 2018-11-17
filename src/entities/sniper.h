@@ -28,7 +28,7 @@ struct sniper final
 
         //entity.add<bitmap_field>(entity.entity_id, "sniper);
 
-        return entity;
+
     }
 };
 

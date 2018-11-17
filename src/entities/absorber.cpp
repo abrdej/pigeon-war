@@ -6,7 +6,7 @@
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>
 
-base_entity absorber::create(base_entity &entity) {
+void absorber::create(base_entity& entity) {
     entity.name = "Absorber";
 
     entity.add<health_field>(50);
@@ -18,6 +18,4 @@ base_entity absorber::create(base_entity &entity) {
     abilities_ptr->add_ability(std::make_shared<moveable>(4));
     abilities_ptr->add_ability(std::make_shared<absorption>(entity.entity_id));
     abilities_ptr->add_ability(std::make_shared<power_circle>(entity.entity_id));
-
-    return entity;
 }

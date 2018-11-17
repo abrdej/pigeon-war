@@ -22,7 +22,7 @@ void jaw_spider::use(std::uint32_t index_on) {
 
 	auto enemy_id = game_board().at(index_on);
 
-	auto has_spider_web_effect = has_effect(enemy_id, "spider web");
+	auto has_spider_web_effect = has_effect(enemy_id, "spider_web_slow");
 
 	auto final_damage = has_spider_web_effect ? damage + bonus_for_spider_web_effect : damage;
 

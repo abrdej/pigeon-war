@@ -14,7 +14,7 @@ void power_bullet::use(std::uint32_t index_on) {
     auto caster_id = game_board().at(used_from_index);
     auto enemy_id = game_board().at(index_on);
 
-    auto has_power_bullet_effect = has_effect(enemy_id, "effect of a power bullet");
+    auto has_power_bullet_effect = has_effect(enemy_id, "power_bullet_effect");
 
     sender::send(make_action_message("power_bullet", used_from_index, index_on));
 
@@ -26,10 +26,10 @@ void power_bullet::use(std::uint32_t index_on) {
         auto power_bullet_effect_connection = make_after_n_round_callback_holder(duration_of_effect,
                                                                                  [enemy_id, caster_id]() mutable {
                                                                                      remove_effect(enemy_id,
-                                                                                                   "effect of a power bullet");
+                                                                                                   "power_bullet_effect");
                                                                                  });
 
-        auto power_bullet_effect = make_not_removable_positive_effect("effect of a power bullet");
+        auto power_bullet_effect = make_not_removable_positive_effect("power_bullet_effect");
         power_bullet_effect->set_turn_connection(std::move(power_bullet_effect_connection));
 
         add_effect(enemy_id,

@@ -6,8 +6,7 @@
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>
 
-base_entity reaper::create(base_entity& entity) {
-
+void reaper::create(base_entity& entity) {
     entity.name = "Reaper";
 
     entity.add<health_field>(45);
@@ -18,6 +17,4 @@ base_entity reaper::create(base_entity& entity) {
     auto abilities_ptr = entity.add<abilities>();
     abilities_ptr->add_ability(std::make_shared<moveable>(3));
     abilities_ptr->add_ability(std::make_shared<charge>(entity.entity_id));
-
-    return entity;
 }

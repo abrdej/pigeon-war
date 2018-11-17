@@ -141,7 +141,7 @@ std::vector<std::string> get_possible_to_choose_entities() {
             "wizzard",
             "warrior",
             "troll",
-            //"thrower",
+            //"rocket_thrower",
             "eye",
             "spider",
             "soul_hunter",

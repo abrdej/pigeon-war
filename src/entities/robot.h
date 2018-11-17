@@ -25,7 +25,7 @@ struct robot final
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(std::make_shared<moveable>(4));
 
-        return entity;
+
     }
 };
 

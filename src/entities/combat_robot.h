@@ -9,7 +9,7 @@
 
 struct combat_robot final
 {
-	static base_entity create(base_entity& entity);
+	static void create(base_entity& entity);
 };
 
 #endif //PIGEONWAR_COMBAT_TOBOT_H

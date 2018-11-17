@@ -6,7 +6,7 @@
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 
-base_entity pixie::create(base_entity& entity) {
+void pixie::create(base_entity& entity) {
     entity.name = "Pixie";
 
     entity.add<health_field>(30);
@@ -17,6 +17,4 @@ base_entity pixie::create(base_entity& entity) {
     auto abilities_ptr = entity.add<abilities>();
     abilities_ptr->add_ability(std::make_shared<moveable>(1));
     abilities_ptr->add_ability(std::make_shared<poke>());
-
-    return entity;
 }

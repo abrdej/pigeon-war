@@ -26,6 +26,9 @@ void cleaver::use(std::uint32_t index_on)
 
     auto power_charge_amount = change_power(*power_module, power_charge);
 
+    std::cout << "power_charge_amount: " << power_charge_amount << "\n";
+    std::cout << "power: " << power_module->power << "\n";
+
     sender::send(make_action_message("spectre_power_charging", entity_id, power_charge_amount));
 
     used = true;

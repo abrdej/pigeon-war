@@ -14,7 +14,7 @@
 class handthrower final
 {
 public:
-    static auto create(base_entity& entity)
+    static void create(base_entity& entity)
     {
         entity.name = "Handthrower";
 
@@ -27,8 +27,6 @@ public:
         abilities_ptr->add_ability(std::make_shared<moveable>(3));
         abilities_ptr->add_ability(std::make_shared<handcannon>());
         abilities_ptr->add_ability(std::make_shared<protection_field>(entity.entity_id));
-
-        return entity;
     }
 };
 

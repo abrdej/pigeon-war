@@ -31,7 +31,7 @@ public:
 
         //entity.add<bitmap_field>(entity.entity_id, "mouse);
 
-        return entity;
+
     }
 };
 

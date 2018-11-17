@@ -1,10 +1,13 @@
-#include <messages/make_message.h>
 #include "sabers.h"
-#include "core/path_finder.h"
-#include "core/game_controller.h"
-#include "core/board.h"
-#include "damage_dealers.h"
-#include "server/sender.h"
+
+#include <abilities/damage_dealers.h>
+#include <core/board.h>
+#include <core/game_controller.h>
+#include <core/path_finder.h>
+#include <messages/make_message.h>
+#include <server/sender.h>
+
+sabers::sabers(std::uint32_t entity_id) : entity_id(entity_id) {}
 
 void sabers::prepare(std::uint32_t for_index)
 {
@@ -28,14 +31,13 @@ void sabers::target(std::uint32_t target_index)
 		if (used)
 			return;
 
-		for (auto ti : targets_)
-			use(ti);
+		for (auto targeted_index : targets_)
+			use(targeted_index);
 		use(target_index);
 
 		used = true;
-	}
-	else
-	{
+
+	} else {
 		targets_.push_back(target_index);
 
 		board_helper::neighboring_fields(target_index,
@@ -54,9 +56,6 @@ void sabers::use(std::uint32_t index_on)
 {
 	if (game_board().empty(index_on))
 		return;
-
-	auto used_from_index = game_control().selected_index_;
-	auto entity_id = game_board().at(used_from_index);
 
 	sender::send(make_action_message("sabers", entity_id, index_on));
 

@@ -12,8 +12,8 @@
 #include <entities/saberhand.h>
 #include <entities/treant.h>
 #include <entities/native.h>
-#include <entities/fire.h>
-#include <entities/thrower.h>
+#include <entities/environment.h>
+#include <entities/rocket_thrower.h>
 #include <entities/guardian.h>
 #include <entities/creature.h>
 #include <entities/handthrower.h>
@@ -23,16 +23,11 @@
 #include <entities/monk.h>
 #include <entities/ninja.h>
 #include <entities/absorber.h>
-#include <entities/water.h>
 #include <entities/samurai_rat.h>
-#include <entities/wall.h>
 #include <entities/warrior.h>
-#include <entities/fir.h>
 #include <entities/wretch.h>
 #include <entities/killer.h>
 #include <entities/giant.h>
-#include <entities/tree.h>
-#include <entities/stone.h>
 #include <entities/golem.h>
 #include <entities/sorcerer.h>
 #include <entities/combat_robot.h>
@@ -80,7 +75,7 @@ using Entites = std::tuple<shooter,
 //        grenadier,
         //ninja,
         //treant,
-        thrower,
+        rocket_thrower,
 //        killer,
         wizzard,
         druid,

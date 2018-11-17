@@ -10,8 +10,10 @@
 
 struct werewolf final
 {
-	static auto create(base_entity& entity)
+	static void create(base_entity& entity)
 	{
+		base_entity entity;
+		entity.entity_id = entity_id;
 		entity.name = "Werewolf";
 
 		entity.add<health_field>(60);
@@ -23,10 +25,6 @@ struct werewolf final
 		abilities_ptr->add_ability(std::make_shared<moveable>(4));
 		abilities_ptr->add_ability(std::make_shared<drain>());
 		abilities_ptr->add_ability(std::make_shared<wolf_herd>());
-
-		//entity.add<bitmap_field>(entity.entity_id, "werewolf);
-
-		return entity;
 	}
 };
 

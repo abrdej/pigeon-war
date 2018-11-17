@@ -26,11 +26,9 @@ public:
 	inline std::uint32_t create()
 	{
 		auto entity_id = generate_id();
-
-		auto result = entities.emplace(entity_id, base_entity());
-        result.first->second.entity_id = entity_id;
-		EntityFactory::create(result.first->second);
-
+		auto& entity = entities.emplace(entity_id, base_entity()).first->second;
+		entity.entity_id = entity_id;
+		EntityFactory::create(entity);
 		return entity_id;
 	}
 	base_entity get(std::uint32_t entity_id) {

@@ -7,8 +7,7 @@
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 
-base_entity dragon::create(base_entity& entity) {
-
+void dragon::create(base_entity& entity) {
     entity.name = "Dragon";
 
     entity.add<health_field>(45);
@@ -20,6 +19,4 @@ base_entity dragon::create(base_entity& entity) {
     abilities_ptr->add_ability(std::make_shared<moveable>(3));
     abilities_ptr->add_ability(std::make_shared<flame_burning>(entity.entity_id));
     abilities_ptr->add_ability(std::make_shared<dragon_skin>(entity.entity_id));
-
-    return entity;
 }

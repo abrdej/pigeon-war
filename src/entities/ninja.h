@@ -28,7 +28,7 @@ public:
         abilities_ptr->add_ability(std::make_shared<shiruken>());
         abilities_ptr->add_ability(std::make_shared<death_mark>(entity.entity_id));
 
-        return entity;
+
     }
 };
 

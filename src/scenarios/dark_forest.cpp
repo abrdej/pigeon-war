@@ -2,10 +2,10 @@
 
 #include <ai/ai_manager.h>
 #include <core/board.h>
+#include <entities/environment.h>
 #include <entities/pixie.h>
 #include <entities/samurai_rat.h>
 #include <entities/spectre.h>
-#include <entities/tree.h>
 #include <managers/players_manager.h>
 #include <scenarios/creator_helper.h>
 #include <scenarios/map_reader.h>

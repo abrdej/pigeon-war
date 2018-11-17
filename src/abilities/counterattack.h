@@ -1,12 +1,7 @@
-//
-// Created by abrdej on 30.11.17.
-//
+#pragma once
 
-#ifndef PIGEONWAR_COUNTERATTACK_H
-#define PIGEONWAR_COUNTERATTACK_H
-
-#include "ability.h"
-#include "per_turn_usable.h"
+#include <abilities/ability.h>
+#include <abilities/per_turn_usable.h>
 
 class counterattack final : public passive_ability,
 							per_turn_usable
@@ -24,8 +19,6 @@ private:
 	void use(std::uint32_t index_on);
 
 private:
-	std::uint32_t entity_id;
-	std::int32_t damage{10};
+	const std::uint32_t entity_id;
+	const std::int32_t damage{10};
 };
-
-#endif //PIGEONWAR_COUNTERATTACK_H

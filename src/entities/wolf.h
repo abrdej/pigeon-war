@@ -11,7 +11,7 @@
 class wolf final
 {
 public:
-	static auto create(base_entity& entity)
+	static void create(base_entity& entity)
 	{
 		entity.name = "Wolf";
 
@@ -23,8 +23,6 @@ public:
 		auto abilities_ptr = entity.add<abilities>();
 		abilities_ptr->add_ability(std::make_shared<moveable>(3));
 		abilities_ptr->add_ability(std::make_shared<claws>());
-
-		return entity;
 	}
 };
 

@@ -1,10 +1,11 @@
 #include "counterattack.h"
-#include "damage_dealers.h"
-#include <core/game_controller.h>
-#include <core/board.h>
+
+#include <abilities/damage_dealers.h>
 #include <components/damage_taker.h>
+#include <core/board.h>
+#include <core/game_controller.h>
 #include <messages/make_message.h>
-#include "server/sender.h"
+#include <server/sender.h>
 
 counterattack::counterattack(std::uint32_t entity_id)
 		: entity_id(entity_id) {
@@ -20,7 +21,6 @@ counterattack::counterattack(std::uint32_t entity_id)
 											 false);
 
 			for (auto&& index : neighbors) {
-				std::cout << index << "\n";
 				if (index == enemy_index) {
 					use(enemy_index);
 					break;
@@ -36,11 +36,9 @@ void counterattack::use(std::uint32_t index_on) {
 		return;
 	}
 
-	auto enemy_id = game_board().at(index_on);
-
 	sender::send(make_action_message("counterattack", entity_id, index_on));
 
-	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, entity_id));
+	damage_dealers::standard_damage_dealer(melee_damage(damage, game_board().at(index_on), entity_id));
 
 	used = true;
 }

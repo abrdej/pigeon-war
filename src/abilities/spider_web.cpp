@@ -50,10 +50,10 @@ void spider_web::use(std::uint32_t index_on) {
             auto slow_down_connection = make_after_n_turns_callback_holder(duration,
                                                                          [enemy_id, moveable_base_ptr]() mutable {
                                                                              moveable_base_ptr->remove_slow_down();
-                                                                             remove_effect(enemy_id, "spider web");
+                                                                             remove_effect(enemy_id, "spider_web_slow");
                                                                          });
 
-            auto web_effect = make_negative_effect("spider web");
+            auto web_effect = make_negative_effect("spider_web_slow");
             web_effect->set_turn_connection(std::move(slow_down_connection));
 
             add_effect(enemy_id, web_effect);

@@ -1,9 +1,11 @@
 #include "saurian_web_scenario.h"
 
-#include <core/game.h>
 #include <abilities/damage_dealers.h>
 #include <ai/ai.h>
 #include <ai/ai_manager.h>
+#include <core/game.h>
+#include <core/game_controller.h>
+#include <core/turn_system.h>
 #include <entities/native.h>
 #include <entities/saberhand.h>
 #include <entities/saurian.h>

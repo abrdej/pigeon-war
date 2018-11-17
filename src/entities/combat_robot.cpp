@@ -6,7 +6,7 @@
 #include "abilities/missile_of_doom.h"
 #include "abilities/barrier.h"
 
-base_entity combat_robot::create(base_entity& entity)
+void combat_robot::create(base_entity& entity)
 {
     entity.name = "Combat Robot";
 
@@ -19,6 +19,4 @@ base_entity combat_robot::create(base_entity& entity)
     abilities_ptr->add_ability(std::make_shared<moveable>(3));
     abilities_ptr->add_ability(std::make_shared<missile_of_doom>(entity.entity_id));
     abilities_ptr->add_ability(std::make_shared<barrier>(entity.entity_id));
-
-    return entity;
 }

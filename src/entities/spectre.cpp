@@ -9,12 +9,12 @@
 #include <components/damage_taker.h>
 #include <components/power_field.h>
 
-base_entity spectre::create(base_entity& entity)
+void spectre::create(base_entity& entity)
 {
     entity.name = "Spectre";
 
     entity.add<health_field>(35);
-    entity.add<power_filed>(entity.entity_id, 0, 0, 18);
+    entity.add<power_filed>(entity.entity_id, 0, 0, 20);
     entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
@@ -24,6 +24,4 @@ base_entity spectre::create(base_entity& entity)
     abilities_ptr->add_ability(std::make_shared<cleaver>(entity.entity_id));
     abilities_ptr->add_ability(std::make_shared<havoc>(entity.entity_id));
     abilities_ptr->add_ability(std::make_shared<immateriality>(entity.entity_id));
-
-    return entity;
 }

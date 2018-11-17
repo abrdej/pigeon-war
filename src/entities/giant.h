@@ -15,7 +15,7 @@
 
 struct giant final
 {
-    static auto create(base_entity& entity)
+    static void create(base_entity& entity)
     {
         entity.name = "Giant";
 
@@ -29,8 +29,6 @@ struct giant final
         abilities_ptr->add_ability(std::make_shared<giant_blow>());
         abilities_ptr->add_ability(std::make_shared<giant_ram>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<aura_of_immunity>(entity.entity_id));
-
-        return entity;
     }
 };
 

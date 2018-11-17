@@ -16,7 +16,7 @@
 class creature final
 {
 public:
-    static auto create(base_entity& entity)
+    static void create(base_entity& entity)
     {
         entity.name = "Fiery Hedgehog";
 
@@ -29,10 +29,6 @@ public:
         abilities_ptr->add_ability(std::make_shared<moveable>(4));
         abilities_ptr->add_ability(std::make_shared<chopper>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<spiral_of_fire>());
-
-        //entity.add<bitmap_field>(entity.entity_id, "creature);
-
-        return entity;
     }
 };
 

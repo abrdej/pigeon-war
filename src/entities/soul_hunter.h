@@ -29,7 +29,7 @@ struct soul_hunter final
 
         //entity.add<bitmap_field>(entity.entity_id, "soul_hunter);
 
-        return entity;
+
     }
 };
 

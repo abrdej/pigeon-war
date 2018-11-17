@@ -1,5 +1,6 @@
 #include "shield.h"
-#include "components/damage_taker.h"
+
+#include <components/damage_taker.h>
 
 shield::shield(std::uint32_t entity_id) {
 
@@ -15,12 +16,4 @@ shield::shield(std::uint32_t entity_id) {
 
         return final_damage;
     });
-}
-
-std::string shield::hint() const {
-
-    std::string desc;
-    desc = "Shield - guardian receive only 50% percent from ranged damage.\n";
-
-    return std::move(desc);
 }

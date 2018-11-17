@@ -1,11 +1,6 @@
-//
-// Created by abrde on 01.12.2017.
-//
+#pragma once
 
-#ifndef PIGEONWAR_SHILED_H
-#define PIGEONWAR_SHILED_H
-
-#include "ability.h"
+#include <abilities/ability.h>
 
 class shield : public passive_ability {
 public:
@@ -14,10 +9,8 @@ public:
         return "shield";
     }
 
-    std::string hint() const override;
+    DEFINE_DESC_ZERO(shield)
 
 private:
-    float range_attack_reduction{0.5f};
+    const float range_attack_reduction{0.5f};
 };
-
-#endif //PIGEONWAR_SHILED_H

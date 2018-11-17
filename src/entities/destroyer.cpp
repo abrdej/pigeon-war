@@ -7,7 +7,7 @@
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 
-base_entity destroyer::create(base_entity& entity)
+void destroyer::create(base_entity& entity)
 {
     entity.name = "Destroyer";
 
@@ -20,6 +20,4 @@ base_entity destroyer::create(base_entity& entity)
     abilities_ptr->add_ability(std::make_shared<moveable>(3));
     abilities_ptr->add_ability(std::make_shared<blow_the_ax>(entity.entity_id));
     abilities_ptr->add_ability(std::make_shared<armor>(entity.entity_id));
-
-    return entity;
 }

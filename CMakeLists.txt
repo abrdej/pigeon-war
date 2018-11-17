@@ -56,7 +56,6 @@ set(SOURCE_FILES
         src/managers/players_manager.cpp
         src/core/board.cpp
         src/scenarios/scenario_helper.h
-        src/entities/tree.h
         src/abilities/sword_blow.cpp
         src/abilities/sword_blow.h
         src/abilities/bludgeon.h
@@ -65,8 +64,6 @@ set(SOURCE_FILES
         src/abilities/poisoned_missile.cpp
         src/abilities/poisoned_missile.h
         src/scenarios/scenario_helper.h
-        src/entities/stone.h
-        src/entities/tree.h
         src/entities/samurai_rat.h
         src/entities/troll.h
         src/abilities/rage.cpp
@@ -93,7 +90,6 @@ set(SOURCE_FILES
         src/abilities/entangling.h
         src/abilities/recovery.cpp
         src/abilities/recovery.h
-        src/entities/fire.h
         src/abilities/teleport.h
         src/abilities/wolf_herd.cpp
         src/abilities/wolf_herd.h
@@ -112,8 +108,7 @@ set(SOURCE_FILES
         src/abilities/entangling.h
         src/abilities/recovery.cpp
         src/abilities/recovery.h
-        src/entities/fire.h
-        src/entities/thrower.h
+        src/entities/rocket_thrower.h
         src/abilities/flame_thrower.cpp
         src/abilities/flame_thrower.h
         src/abilities/counterattack.cpp
@@ -173,9 +168,6 @@ set(SOURCE_FILES
         src/abilities/assassin_slash.cpp
         src/abilities/assassin_slash.h
         src/abilities/assassin_slash.h
-        src/entities/water.h
-        src/entities/wall.h
-        src/entities/fir.h
         src/entities/wretch.h
         src/abilities/vicious_circle.cpp
         src/abilities/vicious_circle.h
@@ -350,7 +342,7 @@ set(SOURCE_FILES
         src/core/get_button_description.cpp
         src/core/get_button_description.h
         src/scenarios/total_destruction.cpp
-        src/scenarios/total_destruction.h src/entities/spectre.cpp src/entities/spectre.h src/abilities/cleaver.cpp src/abilities/cleaver.h src/abilities/havoc.cpp src/abilities/havoc.h src/abilities/immateriality.cpp src/abilities/immateriality.h src/scenarios/dark_forest.cpp src/scenarios/dark_forest.h src/entities/pixie.cpp src/entities/pixie.h src/abilities/poke.cpp src/abilities/poke.h src/entities/shooter.cpp src/core/get_effect_description.cpp src/core/get_effect_description.h src/entities/destroyer.cpp src/entities/warrior.cpp src/entities/sorcerer.cpp src/utils/algorithm.h)
+        src/scenarios/total_destruction.h src/entities/spectre.cpp src/entities/spectre.h src/abilities/cleaver.cpp src/abilities/cleaver.h src/abilities/havoc.cpp src/abilities/havoc.h src/abilities/immateriality.cpp src/abilities/immateriality.h src/scenarios/dark_forest.cpp src/scenarios/dark_forest.h src/entities/pixie.cpp src/entities/pixie.h src/abilities/poke.cpp src/abilities/poke.h src/entities/shooter.cpp src/core/get_effect_description.cpp src/core/get_effect_description.h src/entities/destroyer.cpp src/entities/warrior.cpp src/entities/sorcerer.cpp src/utils/algorithm.h src/entities/guardian.cpp src/entities/native.cpp src/entities/saberhand.cpp src/entities/saurian.cpp src/entities/saurian_web.cpp src/entities/commander.cpp src/entities/rocket_thrower.cpp src/entities/environment.cpp src/entities/environment.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server ${PLATFORM_LIBS})

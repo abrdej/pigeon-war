@@ -16,7 +16,7 @@
 class droid final
 {
 public:
-	static auto create(base_entity& entity)
+	static void create(base_entity& entity)
 	{
 		entity.name = "Droid";
 
@@ -29,8 +29,6 @@ public:
 		abilities_ptr->add_ability(std::make_shared<moveable>(3));
 		abilities_ptr->add_ability(std::make_shared<laser>());
 		abilities_ptr->add_ability(std::make_shared<teleport>());
-
-		return entity;
 	}
 };
 

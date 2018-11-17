@@ -16,7 +16,7 @@
 class mechanical_saw final
 {
 public:
-    static auto create(base_entity& entity)
+    static void create(base_entity& entity)
     {
         entity.name = "Mechanical Saw";
 
@@ -28,8 +28,6 @@ public:
         auto abilities_ptr = entity.add<abilities>();
         abilities_ptr->add_ability(std::make_shared<saw_passing>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<repair>(entity.entity_id));
-
-        return entity;
     }
 };
 

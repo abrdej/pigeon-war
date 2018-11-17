@@ -17,7 +17,7 @@
 class wizzard final
 {
 public:
-	static auto create(base_entity& entity)
+	static void create(base_entity& entity)
 	{
 		entity.name = "Wizzard";
 
@@ -31,10 +31,6 @@ public:
 		abilities_ptr->add_ability(std::make_shared<moveable>(4));
 		abilities_ptr->add_ability(std::make_shared<meteorite>(entity.entity_id));
 		abilities_ptr->add_ability(std::make_shared<purification>(entity.entity_id));
-
-		//entity.add<bitmap_field>(entity.entity_id, "wizzard);
-
-		return entity;
 	}
 };
 

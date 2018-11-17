@@ -14,7 +14,7 @@
 class monk final
 {
 public:
-    static auto create(base_entity& entity)
+    static void create(base_entity& entity)
     {
         entity.name = "Monk";
 
@@ -28,7 +28,7 @@ public:
         abilities_ptr->add_ability(std::make_shared<moveable>(3));
         abilities_ptr->add_ability(std::make_shared<magic_bullet>(entity.entity_id));
 
-        return entity;
+
     }
 };
 

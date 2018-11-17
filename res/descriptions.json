@@ -29,16 +29,23 @@
       "jaw_spider": "Jaw Spider - deals <damage> damage.\nIf enemy is under Spider Web effect it deals <bonus_for_spider_web_effect> additional damage.",
       "lightning": "Lightning - mark enemy with lightning target.\nIn next turn lightning will hit enemy and deal <damage> damage.\nThis spell cost <power_cost> magic power.\nActual magic power: <power>.",
       "sabers": "Sabers - saberhand can acquire several neighboring targets\nand deal each of them damage of: <damage>.",
-      "mortar_thrower": "Mortar Thrower - fires area missle to range <range> which deals <base_damage> of damage.\nIf Rocket Launcher was used earlier Mortar Thrower gain <rocket_change_bonus> additional damage.",
-      "rocket_launcher": "Rocket Launcher - fires missle to range <range> which deals <base_damage> + <distance_bonus> damage\nfor each unit of range.\nIf Mortar Thrower was used earlier Rocket Launcher gain <rocket_change_bonus> additional damage.",
+      "mortar_thrower": "Mortar Thrower - fires area missile with range <range> which deals <base_damage> of damage.\nIf Rocket Launcher was used earlier Mortar Thrower gain <rocket_change_bonus> additional damage.",
+      "rocket_launcher": "Rocket Launcher - fires missile to range <range> which deals <base_damage> + <distance_bonus> damage\nfor each unit of range.\nIf Mortar Thrower was used earlier Rocket Launcher gain <rocket_change_bonus> additional damage.",
       "cleaver": "Cleaver - deals damage of <damage>.\nEach attack also charge spectre power for havoc.\nWhen power is fully charged cleaver can't be used.",
       "havoc": "Havoc - deals massive magic damage (<damage>) at a long distance. To use havoc spectre need to gather power which is charged by cleaver attack.\nTo use havoc <required_power> is required.",
       "immateriality": "Immateriality - Spectre ignore every first damage received in each turn.",
-      "prison_connection": "Prison Connection - The Sorcerer throw a spell that deals <base_damage> of magic damage and apply prison connection effect. This effect last <duration> turns and causes to receive damage by every entity with it when sorcerer will use this skill next time. Additionally, for ech entity with a prison connection he gain <damage_per_entities_with_effect> to base damage."
+      "prison_connection": "Prison Connection - The Sorcerer throw a spell that deals <base_damage> of magic damage and apply prison connection effect. This effect last <duration> turns and causes to receive damage by every entity with it when sorcerer will use this skill next time. Additionally, for ech entity with a prison connection he gain <damage_per_entities_with_effect> to base damage.",
+      "spear": "Spear - deals damage of <damage>.\nAdditionally for every received attack, guardian accumulates <additional_damage> damage which is consumed in the next attack.\nAccumulated damage: <accumulated_damage>.",
+      "shield": "Shield - the Guardian receive only 50% percent from ranged damage.",
+      "aura_of_destruction": "Aura Of Destruction - the Commander is protected by a magical aura with the strength equal his power points. If he will be attacked half of the damage received can be returned to his opponent in the form of a magical attack, consuming the aura power points."
     },
     "effects": {
       "viewfinder": "Viewfinder - the commander can use the arrow ability regardless of the distance from entity with applied effect.",
-      "poisoning": "Poisoning - deals a slight damage with each turn."
+      "poisoning": "Poisoning - deals a slight damage with each turn.",
+      "power_bullet_effect": "Power Bullet Effect - golem attacks to this entity will deal only 1/3 of his normal damage.",
+      "spider_web_slow": "Spider Web Slow - entity is slow down to range of 1 for one turn.",
+      "hypnotised": "Hypnotised - entity is hypnotised and can't do any move for one turn.",
+      "prison_connection": "Prison Connection - this entity will also receive damage from Sorcerer if he attack any other entity."
     }
   }
 }

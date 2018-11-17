@@ -18,7 +18,7 @@
 class druid final
 {
 public:
-	static auto create(base_entity& entity)
+	static void create(base_entity& entity)
 	{
 		entity.name = "Druid";
 
@@ -33,8 +33,6 @@ public:
 		abilities_ptr->add_ability(std::make_shared<lightning>(entity.entity_id));
 		abilities_ptr->add_ability(std::make_shared<cure>(entity.entity_id));
 		abilities_ptr->add_ability(std::make_shared<portal>(entity.entity_id));
-
-		return entity;
 	}
 };
 

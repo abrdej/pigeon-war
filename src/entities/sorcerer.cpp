@@ -6,7 +6,7 @@
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 
-base_entity sorcerer::create(base_entity& entity)
+void sorcerer::create(base_entity& entity)
 {
     entity.name = "Sorcerer";
 
@@ -18,6 +18,4 @@ base_entity sorcerer::create(base_entity& entity)
     auto abilities_ptr = entity.add<abilities>();
     abilities_ptr->add_ability(std::make_shared<moveable>(3));
     abilities_ptr->add_ability(std::make_shared<prison_connection>(entity.entity_id));
-
-    return entity;
 }

@@ -16,7 +16,7 @@
 
 struct samurai_rat final
 {
-	static auto create(base_entity& entity)
+	static void create(base_entity& entity)
 	{
 		entity.name = "Samurai";
 
@@ -29,8 +29,6 @@ struct samurai_rat final
 		abilities_ptr->add_ability(std::make_shared<moveable>(4));
 		abilities_ptr->add_ability(std::make_shared<sword_blow>());
 		abilities_ptr->add_ability(std::make_shared<dodge>(entity.entity_id));
-
-		return entity;
 	}
 };
 

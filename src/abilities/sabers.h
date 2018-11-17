@@ -1,17 +1,16 @@
-#ifndef SABERS_H
-#define SABERS_H
+#pragma once
 
-#include "ability.h"
 #include <vector>
-#include "per_turn_usable.h"
+
+#include <abilities/ability.h>
+#include <abilities/per_turn_usable.h>
 
 class sabers final : public active_ability, per_turn_usable
 {
 public:
+	explicit sabers(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
-		return "sabers";
-	}
+	BITMAP(sabers)
 
 	DEFINE_DESC_ONE(sabers, damage)
 
@@ -21,9 +20,8 @@ private:
 	void use(std::uint32_t index_on);
 
 private:
+	const std::uint32_t entity_id;
 	const std::int32_t range = 1;
 	const std::int32_t damage = 7;
 	std::vector<std::uint32_t> targets_;
 };
-
-#endif

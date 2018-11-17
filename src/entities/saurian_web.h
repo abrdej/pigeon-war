@@ -1,19 +1,7 @@
-#ifndef SAURIONS_WEB_H
-#define SAURIONS_WEB_H
+#pragma once
 
-#include "entity.h"
+#include <entities/entity.h>
 
-struct saurian_web final
-{
-	static auto create(base_entity& entity)
-	{
-		entity.name = "Saurian Web";
-
-		entity.add<health_field>(20);
-		entity.add<damage_taker>();
-
-		return entity;
-	}
+struct saurian_web final {
+	static void create(base_entity& entity);
 };
-
-#endif

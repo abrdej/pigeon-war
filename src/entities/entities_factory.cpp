@@ -28,7 +28,7 @@ std::uint32_t entities_factory::create(const std::string& entity_name) {
             DEF_CREATOR(wizzard),
             DEF_CREATOR(warrior),
             DEF_CREATOR(troll),
-            DEF_CREATOR(thrower),
+            DEF_CREATOR(rocket_thrower),
             DEF_CREATOR(spider),
             DEF_CREATOR(soul_hunter),
             DEF_CREATOR(sorcerer),

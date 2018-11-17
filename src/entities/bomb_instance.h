@@ -8,7 +8,7 @@
 #include "entity.h"
 
 struct bomb_instance {
-    static base_entity create(base_entity& entity);
+    static void create(base_entity& entity);
 };
 
 

@@ -15,7 +15,7 @@
 
 struct gin final
 {
-    static auto create(base_entity& entity)
+    static void create(base_entity& entity)
     {
         entity.name = "Gin";
 
@@ -29,8 +29,6 @@ struct gin final
         abilities_ptr->add_ability(std::make_shared<moveable>(3));
         abilities_ptr->add_ability(std::make_shared<fist_of_doom>(entity.entity_id));
         abilities_ptr->add_ability(std::make_shared<uselessness>(entity.entity_id));
-
-        return entity;
     }
 };
 

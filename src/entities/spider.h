@@ -31,7 +31,7 @@ struct spider final
 
         //entity.add<bitmap_field>(entity.entity_id, "spider);
 
-        return entity;
+
     }
 };
 

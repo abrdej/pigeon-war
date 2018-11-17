@@ -3,9 +3,8 @@
 #include <ai/ai.h>
 #include <ai/ai_manager.h>
 #include <core/game_controller.h>
-#include <entities/tree.h>
+#include <entities/environment.h>
 #include <entities/samurai_rat.h>
-#include <entities/stone.h>
 #include <entities/wolf.h>
 #include <entities/spectre.h>
 #include <scenarios/creator_helper.h>
