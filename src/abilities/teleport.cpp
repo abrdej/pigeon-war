@@ -1,9 +1,7 @@
-#include <core/path_finder.h>
+#include <abilities/teleport.h>
+
+#include <core/board.h>
 #include <core/game_controller.h>
-#include <server/sender.h>
-#include <messages/make_message.h>
-#include "teleport.h"
-#include "core/board.h"
 
 void teleport::prepare(std::uint32_t for_index) {
 

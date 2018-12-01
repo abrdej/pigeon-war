@@ -1,4 +1,4 @@
-#include "rocket_launcher.h"
+#include <abilities/rocket_launcher.h>
 
 #include <abilities/abilities.h>
 #include <abilities/damage_dealers.h>

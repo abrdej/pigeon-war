@@ -1,19 +1,19 @@
 #pragma once
-#include "path_target_ability.h"
-#include "per_turn_usable.h"
 
-class tongue_of_fire final : public path_target_ability<7>, per_turn_usable
-{
+#include <abilities/path_target_ability.h>
+#include <abilities/per_turn_usable.h>
+
+class tongue_of_fire final : public path_target_ability<7>, per_turn_usable {
 public:
-	explicit tongue_of_fire(std::uint32_t entity_id);
-	BITMAP(tongue_of_fire);
-	ability_types type() const override {
-		return ability_types::offensive;
-	}
+    explicit tongue_of_fire(std::uint32_t entity_id);
+
+    ADD_BITMAP_GETTER(tongue_of_fire)
+    ABILITY_TYPE(offensive)
 
 private:
-	void use(std::uint32_t index_on) override;
+    void use(std::uint32_t index_on) override;
+
 private:
-	const std::uint32_t entity_id;
-	const std::int32_t damage = 9;
+    const std::uint32_t entity_id;
+    const std::int32_t damage = 9;
 };

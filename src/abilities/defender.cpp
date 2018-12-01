@@ -13,7 +13,7 @@ defender::defender(std::uint32_t entity_id) {
 //            board_helper::neighboring_fields(game_board().index_for(entity_id), neighbors, false);
 //            for (auto& index : neighbors)
 //            {
-//                if (!game_board().empty(index) && players_funcs::player_entity(index)) {
+//                if (!game_board().empty(index) && players_helpers::is_player_entity(index)) {
 //
 //                    animations_queue::push_animation(animation_types::flash_bitmap,
 //                                                     index,

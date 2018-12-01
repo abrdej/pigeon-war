@@ -1,11 +1,7 @@
-//
-// Created by abrdej on 17.01.18.
-//
-
-#ifndef PIGEONWAR_BASE_EFFECT_H
-#define PIGEONWAR_BASE_EFFECT_H
+#pragma once
 
 #include <cstdint>
+
 #include <core/turn_system.h>
 
 struct effect {
@@ -96,5 +92,3 @@ inline std::shared_ptr<applied_effect> make_not_removable_negative_effect(const 
 	effect->effect_type = effect_types::negative;
 	return effect;
 }
-
-#endif //PIGEONWAR_BASE_EFFECT_H

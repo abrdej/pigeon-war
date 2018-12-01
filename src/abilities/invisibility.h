@@ -8,7 +8,7 @@ class invisibility final : public caster_target_ability
 public:
 	explicit invisibility(std::uint32_t id);
 
-	BITMAP(invisibility);
+	ADD_BITMAP_GETTER(invisibility);
 	DEFINE_DESC_ONE(invisibility, duration)
 
 private:

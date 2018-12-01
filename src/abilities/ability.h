@@ -61,7 +61,7 @@ ability_types type() const override { \
     return ability_types::ability_type; \
 }
 
-#define BITMAP(bitmap) \
+#define ADD_BITMAP_GETTER(bitmap) \
 bitmap_key get_bitmap_key() const override { \
     return #bitmap; \
 }

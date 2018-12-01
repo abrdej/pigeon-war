@@ -186,7 +186,7 @@ std::string create_skirmish(const std::string& map_name,
 
     std::array<std::uint32_t, number_of_players> players{};
     for (auto& player : players) {
-        player = game::get<players_manager>().create_human_player();
+        player = game::get<players_manager>().create_human_player("");
     }
 
     std::uint32_t i = 0;

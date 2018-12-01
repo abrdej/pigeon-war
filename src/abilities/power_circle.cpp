@@ -48,10 +48,10 @@ power_circle::power_circle(std::uint32_t entity_id) {
 
         for (auto& index : aim_indexes) {
             if (!game_board().empty(index)) {
-                if (players_funcs::enemy_entity(index)) {
+                if (players_helpers::is_enemy_entity(index)) {
                     damage_dealers::standard_damage_dealer(magic_damage(damage, game_board().at(index), entity_id));
 
-                } else if (players_funcs::player_entity(index)) {
+                } else if (players_helpers::is_player_entity(index)) {
 
                     //++damage_reduction;
                     absorption_ptr->increase_dmg_reduction();

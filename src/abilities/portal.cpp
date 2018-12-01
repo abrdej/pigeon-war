@@ -43,7 +43,7 @@ void portal::use(std::uint32_t from_index, std::uint32_t to_index) {
     std::vector<std::pair<std::uint32_t, std::uint32_t>> neighboring_moves;
 
 	for (auto&& field_id : around_fields_ids) {
-		if (!game_board().empty(field_id) && !players_funcs::neutral_entity(field_id)) {
+		if (!game_board().empty(field_id) && !players_helpers::is_neutral_entity(field_id)) {
 
 			auto pos = game_board().to_pos(field_id);
 

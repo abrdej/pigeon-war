@@ -10,7 +10,7 @@ class sabers final : public active_ability, per_turn_usable
 public:
 	explicit sabers(std::uint32_t entity_id);
 
-	BITMAP(sabers)
+	ADD_BITMAP_GETTER(sabers)
 
 	DEFINE_DESC_ONE(sabers, damage)
 

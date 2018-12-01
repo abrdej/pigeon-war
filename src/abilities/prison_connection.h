@@ -7,9 +7,7 @@ class prison_connection : public path_target_ability<4>, per_turn_usable {
 public:
 	explicit prison_connection(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
-		return "prison_connection";
-	}
+	ADD_BITMAP_GETTER(prison_connection)
 
 	DEFINE_DESC(prison_connection, base_damage, damage_per_entities_with_effect, duration)
 

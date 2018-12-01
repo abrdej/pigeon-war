@@ -1,12 +1,6 @@
-#include "shoot.h"
+#include <abilities/shoot.h>
 
 #include <abilities/damage_dealers.h>
-#include <core/board.h>
-#include <core/game_controller.h>
-#include <core/path_finder.h>
-#include <messages/make_message.h>
-#include <server/sender.h>
-#include <utils/descriptions.h>
 
 shoot::shoot(std::uint32_t entity_id) : entity_id(entity_id), bullets(bullets_per_turn) {
     on_every_two_turns_from_next([this]() {

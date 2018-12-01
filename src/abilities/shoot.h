@@ -10,9 +10,7 @@ class shoot final : public directed_target_ability<3>,
 public:
 	explicit shoot(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
-		return "bullet";
-	}
+	ADD_BITMAP_GETTER(bullet)
 
 	DEFINE_DESC(shoot, damage, bullets)
 

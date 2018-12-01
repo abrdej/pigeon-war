@@ -1,19 +1,12 @@
-//
-// Created by abrde on 06.01.2018.
-//
+#pragma once
 
-#ifndef PIGEONWAR_STONE_SKIN_H
-#define PIGEONWAR_STONE_SKIN_H
-
-#include "ability.h"
+#include <abilities/ability.h>
 
 class stone_skin : public passive_ability {
 public:
     explicit stone_skin(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
-        return "stone_skin";
-    }
+    ADD_BITMAP_GETTER(stone_skin)
 
     DEFINE_DESC(stone_skin, damage_reduction, reduction_increase_amount)
 
@@ -21,5 +14,3 @@ private:
     int damage_reduction{0};
     int reduction_increase_amount{1};
 };
-
-#endif //PIGEONWAR_STONE_SKIN_H

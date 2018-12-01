@@ -1,14 +1,11 @@
-#include <core/game_controller.h>
-#include <managers/entity_manager.h>
+#include <abilities/spider_web.h>
+
+#include <abilities/abilities.h>
+#include <abilities/damage_dealers.h>
+#include <abilities/jaw_spider.h>
+#include <abilities/moveable.h>
+
 #include <components/applied_effects.h>
-#include <effects/web_effect.h>
-#include <messages/make_message.h>
-#include "spider_web.h"
-#include "damage_dealers.h"
-#include "abilities.h"
-#include "jaw_spider.h"
-#include "moveable.h"
-#include "server/sender.h"
 
 spider_web::spider_web(std::uint32_t entity_id) : caster_id(entity_id) {
 }
@@ -43,15 +40,17 @@ void spider_web::use(std::uint32_t index_on) {
     if (game::get<entity_manager>().alive(enemy_id)) {
 
         auto enemy_abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
-        auto moveable_base_ptr = std::dynamic_pointer_cast<moveable_base>(enemy_abilities_ptr->of_type(ability_types::moving));
+        auto moveable_base_ptr = std::dynamic_pointer_cast<moveable_base>(
+                enemy_abilities_ptr->of_type(ability_types::moving));
         if (moveable_base_ptr) {
             moveable_base_ptr->set_slow_down(1);
 
             auto slow_down_connection = make_after_n_turns_callback_holder(duration,
-                                                                         [enemy_id, moveable_base_ptr]() mutable {
-                                                                             moveable_base_ptr->remove_slow_down();
-                                                                             remove_effect(enemy_id, "spider_web_slow");
-                                                                         });
+                                                                           [enemy_id, moveable_base_ptr]() mutable {
+                                                                               moveable_base_ptr->remove_slow_down();
+                                                                               remove_effect(enemy_id,
+                                                                                             "spider_web_slow");
+                                                                           });
 
             auto web_effect = make_negative_effect("spider_web_slow");
             web_effect->set_turn_connection(std::move(slow_down_connection));

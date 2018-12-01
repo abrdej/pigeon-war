@@ -12,7 +12,7 @@ class rocket_launcher final : public straight_target_ability<5>,
 							  per_turn_usable {
 public:
 	explicit rocket_launcher(std::uint32_t entity_id);
-	BITMAP(rocket)
+	ADD_BITMAP_GETTER(rocket)
 
 	DEFINE_DESC(rocket_launcher, base_damage, distance_bonus, rocket_change_bonus, range)
 

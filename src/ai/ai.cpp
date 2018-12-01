@@ -23,7 +23,7 @@ bool find_nearest_enemy::operator()(blackboard &blackboard) {
     std::cout << "find_nearest_enemy\n";
 
     std::vector<std::uint32_t> enemies_indexes;
-    players_funcs::enemy_entities_indexes(blackboard.entry<entry_tag::player_id>(), enemies_indexes);
+    players_helpers::enemy_entities_indexes(blackboard.entry<entry_tag::player_id>(), enemies_indexes);
     if (enemies_indexes.empty())
         return false;
 
@@ -193,7 +193,7 @@ bool find_best_aim::operator()(blackboard &blackboard) {
     std::cout << "find_best_aim\n";
 
     std::vector<std::uint32_t> enemies_indexes;
-    players_funcs::enemy_entities_indexes(blackboard.entry<entry_tag::player_id>(), enemies_indexes);
+    players_helpers::enemy_entities_indexes(blackboard.entry<entry_tag::player_id>(), enemies_indexes);
     if (enemies_indexes.empty())
         return false;
 
@@ -220,7 +220,7 @@ bool find_best_aim_for_golem::operator()(blackboard &blackboard) {
     std::cout << "find_best_aim_for_golem\n";
 
     std::vector<std::uint32_t> enemies_indexes;
-    players_funcs::enemy_entities_indexes(blackboard.entry<entry_tag::player_id>(), enemies_indexes);
+    players_helpers::enemy_entities_indexes(blackboard.entry<entry_tag::player_id>(), enemies_indexes);
 
     if (enemies_indexes.empty())
         return false;

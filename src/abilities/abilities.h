@@ -1,14 +1,14 @@
-#ifndef ABILITIES_H
-#define ABILITIES_H
+#pragma once
 
-#include <vector>
-#include <memory>
-#include <unordered_map>
+#include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <memory>
 #include <typeindex>
-#include <algorithm>
-#include "ability.h"
+#include <unordered_map>
+#include <vector>
+
+#include <abilities/ability.h>
 
 class abilities final
 {
@@ -52,11 +52,8 @@ public:
 		}
 	}
 	auto size() const {
-
 		return abilities_.size();
 	}
 private:
 	std::vector<std::pair<std::shared_ptr<ability>, std::type_index>> abilities_;
 };
-
-#endif

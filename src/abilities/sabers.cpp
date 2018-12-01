@@ -1,4 +1,4 @@
-#include "sabers.h"
+#include <abilities/sabers.h>
 
 #include <abilities/damage_dealers.h>
 #include <core/board.h>

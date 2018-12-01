@@ -7,7 +7,7 @@ class arrow final : public path_target_ability<3>, per_turn_usable
 {
 public:
     explicit arrow(std::uint32_t entity_id);
-    BITMAP(arrow)
+    ADD_BITMAP_GETTER(arrow)
     ABILITY_TYPE(offensive)
     DEFINE_DESC(arrow, damage, viewfinder_duration, range)
 

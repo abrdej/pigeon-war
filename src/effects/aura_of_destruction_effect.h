@@ -1,12 +1,6 @@
-//
-// Created by abrde on 27.01.2018.
-//
+#pragma once
 
-#ifndef PIGEONWAR_AURA_OF_DESTRUCTION_EFFECT_H
-#define PIGEONWAR_AURA_OF_DESTRUCTION_EFFECT_H
-
-
-#include "base_effect.h"
+#include <effects/base_effect.h>
 
 class aura_of_destruction_effect : public effect {
 public:
@@ -19,6 +13,3 @@ private:
     std::uint32_t entity_id;
     std::int32_t damage_increase;
 };
-
-
-#endif //PIGEONWAR_AURA_OF_DESTRUCTION_EFFECT_H

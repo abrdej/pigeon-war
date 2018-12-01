@@ -1,11 +1,6 @@
-//
-// Created by abrdej on 18.01.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_AURA_OF_IMMUNITY_EFFECT_H
-#define PIGEONWAR_AURA_OF_IMMUNITY_EFFECT_H
-
-#include "base_effect.h"
+#include <effects/base_effect.h>
 
 class aura_of_immunity_effect : public effect {
 public:
@@ -19,6 +14,3 @@ private:
     std::uint32_t entity_id;
     std::int32_t damage_reduction;
 };
-
-
-#endif //PIGEONWAR_AURA_OF_IMMUNITY_EFFECT_H

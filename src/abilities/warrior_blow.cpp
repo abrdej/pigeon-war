@@ -1,4 +1,4 @@
-#include "warrior_blow.h"
+#include <abilities/warrior_blow.h>
 
 #include <abilities/damage_dealers.h>
 #include <core/game_controller.h>

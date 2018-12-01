@@ -124,6 +124,7 @@ std::pair<std::uint32_t, std::uint32_t> board::to_pos(std::uint32_t index)
 {
     return std::make_pair(index % cols_n, index / cols_n);
 }
+
 std::uint32_t board::to_index(std::uint32_t col, std::uint32_t row)
 {
     return col + row * cols_n;

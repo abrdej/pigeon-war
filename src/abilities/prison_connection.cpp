@@ -1,4 +1,4 @@
-#include "prison_connection.h"
+#include <abilities/prison_connection.h>
 
 #include <abilities/damage_dealers.h>
 #include <components/applied_effects.h>

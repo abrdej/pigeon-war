@@ -25,7 +25,7 @@ void assassin_slash::prepare(std::uint32_t for_index) {
     game_control().possible_movements_.clear();
 
     for (auto&& field_index : possible_fields) {
-        if (!game_board().empty(field_index) && players_funcs::enemy_entity(field_index)) {
+        if (!game_board().empty(field_index) && players_helpers::is_enemy_entity(field_index)) {
             auto enemy_id = game_board().at(field_index);
             auto has_death_mark = has_effect(enemy_id, "death_mark");
             if (has_death_mark) {

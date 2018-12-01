@@ -1,22 +1,14 @@
-//
-// Created by abrde on 14.12.2017.
-//
+#pragma once
 
-#ifndef PIGEONWAR_WRETCH_MOVING_H
-#define PIGEONWAR_WRETCH_MOVING_H
-
-#include "ability.h"
-#include "core/turn_system.h"
-#include "moveable.h"
-#include <functional>
+#include <abilities/ability.h>
+#include <abilities/moveable.h>
+#include <core/turn_system.h>
 
 class wretch_moving final : public moveable_base, turn_callback_helper {
 public:
     explicit wretch_moving(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
-        return "moveable";
-    }
+    ADD_BITMAP_GETTER(moveable);
 
     void refresh_range() override {
         used = false;
@@ -49,6 +41,3 @@ private:
     const std::int32_t power_decrease_for_cost{2};
     bool used{false};
 };
-
-
-#endif //PIGEONWAR_WRETCH_MOVING_H

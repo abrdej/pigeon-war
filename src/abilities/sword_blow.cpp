@@ -1,8 +1,6 @@
-#include <messages/make_message.h>
-#include "sword_blow.h"
-#include "core/game_controller.h"
-#include "damage_dealers.h"
-#include "server/sender.h"
+#include <abilities/sword_blow.h>
+
+#include <abilities/damage_dealers.h>
 
 void sword_blow::use(std::uint32_t index_on) {
 
@@ -21,10 +19,11 @@ void sword_blow::use(std::uint32_t index_on) {
 
     for (auto&& field_id : around_fields_ids) {
         if (!game_board().empty(field_id) &&
-                game_get<entity_manager>().get(game_board().at(field_id)).get<health_field>()->is_destructible) {
-            auto final_damage = damage_dealers::standard_damage_dealer(melee_damage(damage, game_board().at(field_id), entity_id));
+            game_get<entity_manager>().get(game_board().at(field_id)).get<health_field>()->is_destructible) {
+            auto final_damage = damage_dealers::standard_damage_dealer(
+                    melee_damage(damage, game_board().at(field_id), entity_id));
             //if (final_damage != 0) {
-                ++hit_entities_counter;
+            ++hit_entities_counter;
             //}
         }
     }

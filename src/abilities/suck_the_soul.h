@@ -1,23 +1,14 @@
-//
-// Created by abrde on 20.01.2018.
-//
+#pragma once
 
-#ifndef PIGEONWAR_SUCK_THE_SOUL_H
-#define PIGEONWAR_SUCK_THE_SOUL_H
-
-#include "neighboring_target_ability.h"
-#include "per_turn_usable.h"
+#include <abilities/neighboring_target_ability.h>
+#include <abilities/per_turn_usable.h>
 
 class suck_the_soul final : public neighboring_target_ability<>,
-                            per_turn_usable
-{
+                            per_turn_usable {
 public:
     explicit suck_the_soul(std::uint32_t entity_id);
-    bitmap_key get_bitmap_key() const override {
-        return "drain";
-    }
 
-
+    ADD_BITMAP_GETTER(drain)
 
 private:
     void use(std::uint32_t index_on) override;
@@ -30,6 +21,3 @@ private:
     std::vector<std::pair<std::uint32_t, std::int32_t>> souls;
     std::unordered_map<std::uint32_t, std::size_t> souls_mapped;
 };
-
-
-#endif //PIGEONWAR_SUCK_THE_SOUL_H

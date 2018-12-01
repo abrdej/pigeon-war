@@ -1,5 +1,6 @@
-#include "stone_skin.h"
-#include "components/damage_taker.h"
+#include <abilities/stone_skin.h>
+
+#include <components/damage_taker.h>
 
 stone_skin::stone_skin(std::uint32_t entity_id) {
 

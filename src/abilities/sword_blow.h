@@ -1,19 +1,11 @@
-//
-// Created by abrdej on 11.11.17.
-//
+#pragma once
 
-#ifndef PIGEONWAR_SWORD_BLOW_H
-#define PIGEONWAR_SWORD_BLOW_H
-
-#include "neighboring_target_ability.h"
-#include "per_turn_usable.h"
+#include <abilities/neighboring_target_ability.h>
+#include <abilities/per_turn_usable.h>
 
 class sword_blow final : public neighboring_target_ability<>, per_turn_usable {
 public:
-    bitmap_key get_bitmap_key() const override {
-        return "sword_blow";
-    }
-
+    ADD_BITMAP_GETTER(sword_blow)
     DEFINE_DESC_ONE(sword_blow, damage)
 
 private:
@@ -22,6 +14,3 @@ private:
 private:
     const std::int32_t damage = 10;
 };
-
-
-#endif //PIGEONWAR_SWORD_BLOW_H

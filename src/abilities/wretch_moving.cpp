@@ -1,10 +1,7 @@
-#include <core/game_controller.h>
-#include <core/board.h>
-#include <server/sender.h>
+#include <abilities/wretch_moving.h>
+
 #include <components/power_field.h>
-#include <managers/entity_manager.h>
-#include <messages/make_message.h>
-#include "wretch_moving.h"
+#include <core/game_controller.h>
 
 wretch_moving::wretch_moving(std::uint32_t entity_id) : entity_id(entity_id) {
     after_player_turn(entity_id, [this]() {
@@ -32,10 +29,9 @@ void wretch_moving::prepare(std::uint32_t for_index) {
                                        used ? 0 : std::min(range, power));
 
     game_control().actual_targeting_type_ = target_types::moving;
-    game_control().wait_for_action([this](std::uint32_t index)
-                                              {
-                                                  return move(index);
-                                              });
+    game_control().wait_for_action([this](std::uint32_t index) {
+        return move(index);
+    });
 }
 
 void wretch_moving::move(std::uint32_t index_to) {
@@ -44,7 +40,7 @@ void wretch_moving::move(std::uint32_t index_to) {
     }
 
     std::uint32_t i = 0;
-    for ( ; i < game_control().possible_movements_.size(); ++i) {
+    for (; i < game_control().possible_movements_.size(); ++i) {
         if (game_control().possible_movements_[i] == index_to)
             break;
     }
@@ -61,7 +57,6 @@ void wretch_moving::move(std::uint32_t index_to) {
 
     game_control().selected_index_ = no_selected_index;
 
-//    sender::send(make_action_message("move", move_from_index, index_to));
     sender::send(make_action_message("move", taken_id, index_to));
 
     game_board().give_back(taken_id, index_to);

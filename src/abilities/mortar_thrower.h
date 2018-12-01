@@ -7,7 +7,7 @@ class mortar_thrower final : public path_target_ability<4>, per_turn_usable {
 public:
     explicit mortar_thrower(std::uint32_t entity_id);
 
-    BITMAP(flame_thrower)
+    ADD_BITMAP_GETTER(flame_thrower)
 
     DEFINE_DESC(mortar_thrower, base_damage, rocket_change_bonus, range)
 

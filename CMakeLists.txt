@@ -42,7 +42,6 @@ set(SOURCE_FILES
         src/abilities/damage_dealers.h
         src/abilities/damage_dealer.cpp
         src/abilities/drain.cpp
-        src/managers/entity_manager.cpp
         src/core/game.cpp
         src/abilities/grenade.cpp
         src/abilities/invisibility.cpp

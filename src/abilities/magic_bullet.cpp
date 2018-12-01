@@ -1,11 +1,8 @@
-#include <core/game_controller.h>
+#include <abilities/magic_bullet.h>
+
+#include <abilities/damage_dealers.h>
 #include <components/damage_taker.h>
-#include <messages/make_message.h>
 #include <components/power_field.h>
-#include "magic_bullet.h"
-#include "damage_dealers.h"
-#include "server/sender.h"
-#include "managers/players_manager.h"
 
 magic_bullet::magic_bullet(std::uint32_t entity_id)
         : entity_id(entity_id) {
@@ -19,9 +16,8 @@ magic_bullet::magic_bullet(std::uint32_t entity_id)
 
             std::vector<std::uint32_t> neighbors;
             board_helper::neighboring_fields(game_board().index_for(entity_id), neighbors, false);
-            for (auto& index : neighbors)
-            {
-                if (!game_board().empty(index) && players_funcs::enemy_entity(index)) {
+            for (auto& index : neighbors) {
+                if (!game_board().empty(index) && players_helpers::is_enemy_entity(index)) {
                     power->power += magic_power_drain_amount;
 //                    magic_power += magic_power_drain_amount;
                     sender::send(make_action_message("magic_suck", index));
@@ -56,13 +52,13 @@ std::string magic_bullet::hint() const {
 
     std::string desc;
     desc = "Magic Bullet - monk accumulates " + std::to_string(magic_power_accumulation_amount) +
-            " magic points for each turn.\n"
-            "In addition, he accumulates " + std::to_string(magic_power_drain_amount) +
-            " magic points for each enemy in his neighborhood.\n"
-            "Magic point can be used to deal damage equal to the amount of magic points.\n"
-            "Additionally, half of the damage that monk receive firstly must destroys\n"
-                    " the magic shiled which is formed from this points.\n"
-            "Magic power: " + std::to_string(power->power) + ".";
+           " magic points for each turn.\n"
+                   "In addition, he accumulates " + std::to_string(magic_power_drain_amount) +
+           " magic points for each enemy in his neighborhood.\n"
+                   "Magic point can be used to deal damage equal to the amount of magic points.\n"
+                   "Additionally, half of the damage that monk receive firstly must destroys\n"
+                   " the magic shiled which is formed from this points.\n"
+                   "Magic power: " + std::to_string(power->power) + ".";
 
     return std::move(desc);
 }
@@ -79,7 +75,8 @@ void magic_bullet::use(std::uint32_t index_on) {
 
     sender::send(make_action_message("magic_bullet", entity_id, index_on));
 
-    damage_dealers::standard_damage_dealer(magic_damage(power->power, game_board().at(index_on), game_board().at(from_index)));
+    damage_dealers::standard_damage_dealer(
+            magic_damage(power->power, game_board().at(index_on), game_board().at(from_index)));
 
     auto change_power = -power->power;
     power->power = 0;
