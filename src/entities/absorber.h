@@ -1,16 +1,7 @@
-//
-// Created by abrde on 13.12.2017.
-//
+#pragma once
 
-#ifndef PIGEONWAR_ABSORBER_H
-#define PIGEONWAR_ABSORBER_H
+#include <entities/entity.h>
 
-#include "entity.h"
-
-
-struct absorber final
-{
+struct absorber final {
     static void create(base_entity& entity);
 };
-
-#endif //PIGEONWAR_ABSORBER_H

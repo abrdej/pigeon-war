@@ -1,24 +1,20 @@
-#include <messages/make_message.h>
-#include "claws.h"
-#include "core/path_finder.h"
-#include "core/game_controller.h"
-#include "core/board.h"
-#include "damage_dealers.h"
-#include "server/sender.h"
+#include <abilities/claws.h>
 
-void claws::use(std::uint32_t index_on)
-{
-	if (used) {
-		return;
-	}
+#include <abilities/damage_dealers.h>
+#include <core/board.h>
 
-	auto caster_id = game_board().at(game_control().selected_index_);
+void claws::use(std::uint32_t index_on) {
+    if (used) {
+        return;
+    }
 
-	sender::send(make_action_message("claws", caster_id, index_on));
+    auto caster_id = game_board().at(game_control().selected_index_);
 
-	auto enemy_id = game_board().at(index_on);
+    sender::send(make_action_message("claws", caster_id, index_on));
 
-	damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
+    auto enemy_id = game_board().at(index_on);
 
-	used = true;
+    damage_dealers::standard_damage_dealer(melee_damage(damage, enemy_id, caster_id));
+
+    used = true;
 }

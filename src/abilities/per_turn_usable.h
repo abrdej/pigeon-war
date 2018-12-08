@@ -1,9 +1,4 @@
-//
-// Created by abrdej on 08.01.18.
-//
-
-#ifndef PIGEONWAR_PER_TURN_USABLE_H
-#define PIGEONWAR_PER_TURN_USABLE_H
+#pragma once
 
 #include <core/turn_system.h>
 
@@ -20,5 +15,3 @@ public:
 protected:
 	bool used{false};
 };
-
-#endif //PIGEONWAR_PER_TURN_USABLE_H

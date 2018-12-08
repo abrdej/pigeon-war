@@ -1,6 +1,7 @@
 #include <abilities/tongue_of_fire.h>
 
 #include <abilities/damage_dealers.h>
+#include <core/board.h>
 
 tongue_of_fire::tongue_of_fire(std::uint32_t entity_id) : entity_id(entity_id) {}
 

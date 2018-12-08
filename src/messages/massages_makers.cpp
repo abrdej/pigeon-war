@@ -1,8 +1,8 @@
 #include <managers/entity_manager.h>
 #include <core/game.h>
 #include <components/power_field.h>
-#include "make_message.h"
-#include "messages/messages.h"
+#include "massages_makers.h"
+#include "messages/from_to_json.h"
 
 using nlohmann::json;
 

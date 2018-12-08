@@ -3,7 +3,7 @@
 #include <server/sender.h>
 #include <components/damage_pack.h>
 #include <components/applied_effects.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include "lightning.h"
 #include "damage_dealers.h"
 #include "power_cost_ability.h"

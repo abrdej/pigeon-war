@@ -18,7 +18,7 @@ namespace ai {
 namespace behavior_tree_tasks {
 using namespace behavior_tree;
 
-bool find_nearest_enemy::operator()(blackboard &blackboard) {
+bool find_nearest_enemy::operator()(blackboard& blackboard) {
 
     std::cout << "find_nearest_enemy\n";
 
@@ -31,7 +31,7 @@ bool find_nearest_enemy::operator()(blackboard &blackboard) {
     distance_finder.calc(blackboard.entry<entry_tag::my_entity_index_>());
 
     std::vector<std::uint32_t> distances_to_enemies;
-    for (auto &enemy_index : enemies_indexes)
+    for (auto& enemy_index : enemies_indexes)
         distances_to_enemies.push_back(distance_finder.distance_to(enemy_index));
 
     auto min_it = std::min_element(std::begin(distances_to_enemies),
@@ -42,7 +42,7 @@ bool find_nearest_enemy::operator()(blackboard &blackboard) {
     return true;
 }
 
-bool attack_enemy::operator()(blackboard &blackboard) {
+bool attack_enemy::operator()(blackboard& blackboard) {
 
     std::cout << "attack_enemy\n";
 
@@ -62,7 +62,7 @@ bool attack_enemy::operator()(blackboard &blackboard) {
     return can_attack;
 }
 
-bool go_close_to::operator()(blackboard &blackboard) {
+bool go_close_to::operator()(blackboard& blackboard) {
 
     std::cout << "go_close_to\n";
 
@@ -102,7 +102,7 @@ bool go_close_to::operator()(blackboard &blackboard) {
     distance_finder.path_to(nearest_field, path);
 
     try_prepare_ability(*moving, blackboard.entry<entry_tag::my_entity_index_>());
-    for (auto &step : path) {
+    for (auto& step : path) {
         if (game_control().is_possible_movement(step)) {
             game_control().do_action(step);
             return true;
@@ -111,7 +111,7 @@ bool go_close_to::operator()(blackboard &blackboard) {
     return false;
 }
 
-bool go_to::operator()(blackboard &blackboard) {
+bool go_to::operator()(blackboard& blackboard) {
 
     std::cout << "go_to\n";
 
@@ -133,7 +133,7 @@ bool go_to::operator()(blackboard &blackboard) {
 
     try_prepare_ability(*moving, blackboard.entry<entry_tag::my_entity_index_>());
 
-    for (auto &step : path) {
+    for (auto& step : path) {
         if (game_control().is_possible_movement(step)) {
             game_control().do_action(step);
             return true;
@@ -142,7 +142,7 @@ bool go_to::operator()(blackboard &blackboard) {
     return false;
 }
 
-bool can_go_to::operator()(blackboard &blackboard) {
+bool can_go_to::operator()(blackboard& blackboard) {
 
     std::cout << "can_go_to\n";
 
@@ -161,7 +161,7 @@ bool can_go_to::operator()(blackboard &blackboard) {
     return game_control().is_possible_movement(blackboard.entry<entry_tag::destination_index>());
 }
 
-bool find_position_for_shot::operator()(blackboard &blackboard) {
+bool find_position_for_shot::operator()(blackboard& blackboard) {
 
     std::cout << "find_position_for_shot\n";
 
@@ -188,7 +188,7 @@ bool find_position_for_shot::operator()(blackboard &blackboard) {
     return destination_index != -1;
 }
 
-bool find_best_aim::operator()(blackboard &blackboard) {
+bool find_best_aim::operator()(blackboard& blackboard) {
 
     std::cout << "find_best_aim\n";
 
@@ -200,7 +200,7 @@ bool find_best_aim::operator()(blackboard &blackboard) {
     std::int32_t min_health = std::numeric_limits<std::int32_t>::max();
     std::uint32_t min_health_enemy_index = 0;
 
-    for (auto &&enemy_index : enemies_indexes) {
+    for (auto&& enemy_index : enemies_indexes) {
         auto enemy_id = game_board().at(enemy_index);
         auto health = game::get<entity_manager>().get(enemy_id).get<health_field>()->health;
 
@@ -215,7 +215,7 @@ bool find_best_aim::operator()(blackboard &blackboard) {
     return true;
 }
 
-bool find_best_aim_for_golem::operator()(blackboard &blackboard) {
+bool find_best_aim_for_golem::operator()(blackboard& blackboard) {
 
     std::cout << "find_best_aim_for_golem\n";
 
@@ -228,7 +228,7 @@ bool find_best_aim_for_golem::operator()(blackboard &blackboard) {
     std::int32_t min_health = std::numeric_limits<std::int32_t>::max();
     std::uint32_t min_health_enemy_index = 0;
 
-    for (auto &&enemy_index : enemies_indexes) {
+    for (auto enemy_index : enemies_indexes) {
         auto enemy_id = game_board().at(enemy_index);
 
         auto has_power_bullet_effect =
@@ -249,7 +249,14 @@ bool find_best_aim_for_golem::operator()(blackboard &blackboard) {
 }
 
 run_around::run_around()
-        : shifts({{1, 0}, {0, 1}, {0, 1}, {-1, 0}, {-1, 0}, {0, -1}, {0, -1}, {1, 0}}),
+        : shifts({{1,  0},
+                  {0,  1},
+                  {0,  1},
+                  {-1, 0},
+                  {-1, 0},
+                  {0,  -1},
+                  {0,  -1},
+                  {1,  0}}),
           shift_index(0) {
 }
 
@@ -276,8 +283,8 @@ bool run_around::operator()(blackboard& blackboard) {
         return true;
     } else {
         if (!game_board().empty(dest_index) &&
-                game::get<players_manager>().enemy_entity(blackboard.entry<entry_tag::player_id>(),
-                                                          game_board().at(dest_index))) {
+            game::get<players_manager>().enemy_entity(blackboard.entry<entry_tag::player_id>(),
+                                                      game_board().at(dest_index))) {
             blackboard.entry<entry_tag::nearest_enemy_index>() = dest_index;
             return false;
         }

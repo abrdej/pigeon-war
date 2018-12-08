@@ -3,7 +3,7 @@
 #include <abilities/damage_dealers.h>
 #include <components/damage_taker.h>
 #include <core/game_controller.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include <server/sender.h>
 
 spear::spear(std::uint32_t id) : entity_id(id) {

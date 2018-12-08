@@ -2,7 +2,7 @@
 
 #include <components/damage_taker.h>
 #include <managers/entity_manager.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include <server/sender.h>
 
 immortality::immortality(std::uint32_t entity_id) : entity_id(entity_id) {

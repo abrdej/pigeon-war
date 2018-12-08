@@ -9,7 +9,7 @@
 
 #include <core/game.h>
 #include <managers/entity_manager.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include <server/sender.h>
 
 class board final {

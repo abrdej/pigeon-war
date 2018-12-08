@@ -1,26 +1,15 @@
-//
-// Created by abrdej on 17.11.17.
-//
+#pragma once
 
-#ifndef PIGEONWAR_DODGE_H
-#define PIGEONWAR_DODGE_H
+#include <abilities/ability.h>
 
-#include "ability.h"
-
-class dodge final : public passive_ability
-{
+class dodge final : public passive_ability {
 public:
-	explicit dodge(std::uint32_t entity_id);
+    explicit dodge(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
-		return "dodge";
-	}
+    ADD_BITMAP_GETTER(dodge)
 
-	DEFINE_DESC_ONE(dodge, counter)
+    DEFINE_DESC_ONE(dodge, counter)
 
 private:
-	int counter{0};
+    int counter{0};
 };
-
-
-#endif //PIGEONWAR_DODGE_H

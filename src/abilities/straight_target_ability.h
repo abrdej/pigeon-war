@@ -1,13 +1,8 @@
-//
-// Created by abrdej on 08.01.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_STRAIGHT_TARGET_TYPE_ABILITY_H
-#define PIGEONWAR_STRAIGHT_TARGET_TYPE_ABILITY_H
-
-#include "ability.h"
-#include "core/states.h"
-#include "core/game_controller.h"
+#include <abilities/ability.h>
+#include <core/game_controller.h>
+#include <core/states.h>
 
 template <std::int32_t Range,
 		target_types TargetType = target_types::enemy,
@@ -83,5 +78,3 @@ protected:
 	const target_types target_type{TargetType};
 	const bool skip_obstacles{SkipObstacles};
 };
-
-#endif //PIGEONWAR_STRAIGHT_TARGET_TYPE_ABILITY_H

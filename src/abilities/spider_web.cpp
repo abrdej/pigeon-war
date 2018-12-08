@@ -4,8 +4,8 @@
 #include <abilities/damage_dealers.h>
 #include <abilities/jaw_spider.h>
 #include <abilities/moveable.h>
-
 #include <components/applied_effects.h>
+#include <core/board.h>
 
 spider_web::spider_web(std::uint32_t entity_id) : caster_id(entity_id) {
 }

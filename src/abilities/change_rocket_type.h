@@ -1,28 +1,18 @@
-//
-// Created by abrdej on 17.01.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_CHANGE_ROCKET_TYPE_H
-#define PIGEONWAR_CHANGE_ROCKET_TYPE_H
-
-#include "caster_target_ability.h"
-#include "per_turn_usable.h"
+#include <abilities/caster_target_ability.h>
+#include <abilities/per_turn_usable.h>
 
 class change_rocket_type final : public caster_target_ability,
-								 per_turn_usable
-{
+                                 per_turn_usable {
 public:
-	explicit change_rocket_type(std::uint32_t entity_id);
+    explicit change_rocket_type(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
-		return "change_rocket_type";
-	}
+    ADD_BITMAP_GETTER(change_rocket_type)
 
 private:
-	void use(std::uint32_t index_on) override;
+    void use(std::uint32_t index_on) override;
 
 private:
-	std::uint32_t entity_id;
+    std::uint32_t entity_id;
 };
-
-#endif //PIGEONWAR_CHANGE_ROCKET_TYPE_H

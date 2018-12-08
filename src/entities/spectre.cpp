@@ -1,4 +1,4 @@
-#include "spectre.h"
+#include <entities/spectre.h>
 
 #include <abilities/abilities.h>
 #include <abilities/cleaver.h>
@@ -9,8 +9,7 @@
 #include <components/damage_taker.h>
 #include <components/power_field.h>
 
-void spectre::create(base_entity& entity)
-{
+void spectre::create(base_entity& entity) {
     entity.name = "Spectre";
 
     entity.add<health_field>(35);

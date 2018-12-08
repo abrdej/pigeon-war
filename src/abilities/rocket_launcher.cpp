@@ -5,7 +5,7 @@
 #include <abilities/mortar_thrower.h>
 #include <core/board.h>
 #include <managers/entity_manager.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include <server/sender.h>
 
 rocket_launcher::rocket_launcher(std::uint32_t entity_id) : entity_id(entity_id) {}

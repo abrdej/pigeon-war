@@ -2,7 +2,7 @@
 #include "damage_dealers.h"
 
 #include <core/board.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include <server/sender.h>
 #include <managers/entity_manager.h>
 #include <components/power_field.h>

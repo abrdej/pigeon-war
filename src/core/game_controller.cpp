@@ -8,6 +8,7 @@
 #include <core/turn_system.h>
 #include <managers/entity_manager.h>
 #include <managers/players_manager.h>
+#include <utils/algorithm.h>
 
 void game_controller::set_entity_default_state(std::uint32_t select_from_index) {
     if (select_from_index == no_selected_index)
@@ -116,8 +117,7 @@ void game_controller::do_action(std::uint32_t index) {
 }
 
 bool game_controller::is_possible_movement(std::uint32_t index) {
-    return std::find(std::begin(possible_movements_), std::end(possible_movements_), index)
-           != std::end(possible_movements_);
+    return has_value(possible_movements_, index);
 }
 
 bool game_controller::valid_target(std::uint32_t target_index) {

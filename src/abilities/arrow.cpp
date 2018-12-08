@@ -1,10 +1,10 @@
-#include "arrow.h"
+#include <abilities/arrow.h>
 
 #include <abilities/damage_dealers.h>
 #include <components/applied_effects.h>
 #include <core/board.h>
 #include <managers/entity_manager.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include <server/sender.h>
 
 arrow::arrow(std::uint32_t entity_id) : entity_id(entity_id) {}

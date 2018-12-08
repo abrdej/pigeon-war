@@ -1,9 +1,4 @@
-//
-// Created by abrdej on 11.03.18.
-//
-
-#ifndef PIGEONWAR_MESSAGE_JOINER_H
-#define PIGEONWAR_MESSAGE_JOINER_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -31,5 +26,3 @@ public:
         return std::move(messages);
     }
 };
-
-#endif //PIGEONWAR_MESSAGE_JOINER_H

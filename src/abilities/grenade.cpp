@@ -1,9 +1,10 @@
-#include "grenade.h"
+#include <abilities/grenade.h>
 
+#include <core/board.h>
 #include <core/game_controller.h>
 #include <core/path_finder.h>
 #include <abilities/damage_dealers.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include <server/sender.h>
 
 grenade::grenade(std::uint32_t entity_id) : entity_id(entity_id) {}

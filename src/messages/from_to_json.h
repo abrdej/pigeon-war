@@ -1,7 +1,7 @@
 #pragma once
 
-#include "core/game_state.h"
-#include "external/json.hpp"
+#include <external/json.hpp>
+#include <core/game_state.h>
 
 template <typename K, typename T>
 void json_to_unordered_map(const nlohmann::json& j, std::unordered_map<K, T>& x) {

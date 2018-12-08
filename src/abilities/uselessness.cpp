@@ -3,7 +3,7 @@
 #include <server/sender.h>
 #include <components/modification.h>
 #include <components/applied_effects.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include "uselessness.h"
 
 uselessness::uselessness(std::uint32_t entity_id) : entity_id(entity_id) {

@@ -3,7 +3,7 @@
 #include <managers/players_manager.h>
 #include <managers/entity_manager.h>
 #include <components/power_field.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include "portal.h"
 #include "possible_move_helper.h"
 

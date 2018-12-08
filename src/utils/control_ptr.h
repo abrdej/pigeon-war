@@ -1,9 +1,4 @@
-//
-// Created by abrdej on 30.01.18.
-//
-
-#ifndef PIGEONWAR_CONTROL_PTR_H
-#define PIGEONWAR_CONTROL_PTR_H
+#pragma once
 
 #include <memory>
 
@@ -33,5 +28,3 @@ public:
 		return (*mem).get();
 	}
 };
-
-#endif //PIGEONWAR_CONTROL_PTR_H

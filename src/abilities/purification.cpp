@@ -7,7 +7,7 @@
 #include <server/sender.h>
 #include <components/power_field.h>
 #include <components/applied_effects.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 
 purification::purification(std::uint32_t entity_id) : entity_id(entity_id) {}
 

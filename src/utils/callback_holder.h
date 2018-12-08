@@ -1,12 +1,7 @@
-//
-// Created by abrdej on 02.02.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_CALLBACK_HOLDER_H
-#define PIGEONWAR_CALLBACK_HOLDER_H
-
-#include <memory>
 #include <functional>
+#include <memory>
 
 template <typename... Args>
 class hard_callback_holder;
@@ -68,5 +63,3 @@ public:
     hard_callback_holder(hard_callback_holder&&) noexcept = default;
     hard_callback_holder& operator=(hard_callback_holder&&) noexcept = default;
 };
-
-#endif //PIGEONWAR_CALLBACK_HOLDER_H

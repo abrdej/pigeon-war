@@ -1,13 +1,7 @@
-#include "drain.h"
+#include <abilities/drain.h>
 
 #include <abilities/damage_dealers.h>
 #include <components/damage_taker.h>
-#include <core/board.h>
-#include <core/game_controller.h>
-#include <core/path_finder.h>
-#include <managers/entity_manager.h>
-#include <messages/make_message.h>
-#include <server/sender.h>
 
 drain::drain(std::uint32_t entity_id) : entity_id(entity_id) {}
 

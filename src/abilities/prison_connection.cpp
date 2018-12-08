@@ -1,12 +1,10 @@
 #include <abilities/prison_connection.h>
 
+#include <boost/range/algorithm_ext/erase.hpp>
+
 #include <abilities/damage_dealers.h>
 #include <components/applied_effects.h>
 #include <core/board.h>
-#include <managers/entity_manager.h>
-#include <messages/make_message.h>
-#include <server/sender.h>
-#include <utils/algorithm.h>
 
 prison_connection::prison_connection(std::uint32_t entity_id)
         : entity_id(entity_id) {}
@@ -27,7 +25,7 @@ void prison_connection::use(std::uint32_t index_on) {
 
                                                    if (game::get<entity_manager>().alive(
                                                            caster_id)) {
-                                                       remove_erase(entities_with_effect, enemy_id);
+                                                       boost::remove_erase(entities_with_effect, enemy_id);
                                                    }
                                                });
 
@@ -35,7 +33,7 @@ void prison_connection::use(std::uint32_t index_on) {
     prison_connection->set_turn_connection(std::move(prison_connection_connection));
     prison_connection->set_on_destruction([this, caster_id, enemy_id]() {
         if (game::get<entity_manager>().alive(caster_id)) {
-            remove_erase(entities_with_effect, enemy_id);
+            boost::remove_erase(entities_with_effect, enemy_id);
         }
     });
 

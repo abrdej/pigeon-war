@@ -1,8 +1,8 @@
 #include <abilities/sniper_shot.h>
 
 #include <abilities/damage_dealers.h>
+#include <core/board.h>
 #include <core/game_controller.h>
-
 
 void sniper_shot::prepare(std::uint32_t for_index) {
 

@@ -1,17 +1,11 @@
-//
-// Created by abrdej on 08.01.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_CASTER_TARGET_ABILITY_H
-#define PIGEONWAR_CASTER_TARGET_ABILITY_H
+#include <abilities/ability.h>
+#include <core/game_controller.h>
+#include <core/states.h>
 
-#include "ability.h"
-#include "core/states.h"
-#include "core/game_controller.h"
-
-class caster_target_ability : public active_ability {
-public:
-	void prepare(std::uint32_t for_index) {
+struct caster_target_ability : active_ability {
+	void prepare(std::uint32_t for_index) override {
 		game_control().actual_state_ = states_types::wait_for_action;
 		game_control().possible_movements_.clear();
 		game_control().possible_movements_.push_back(for_index);
@@ -23,5 +17,3 @@ public:
 	}
 	virtual void use(std::uint32_t use_on_index) = 0;
 };
-
-#endif //PIGEONWAR_CASTER_TARGET_ABILITY_H

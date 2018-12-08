@@ -5,7 +5,7 @@
 #include <core/game_controller.h>
 #include <entities/saberhand.h>
 #include <managers/entity_manager.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include <server/sender.h>
 
 invisibility::invisibility(std::uint32_t id)

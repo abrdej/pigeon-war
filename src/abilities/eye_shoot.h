@@ -1,21 +1,13 @@
-//
-// Created by abrdej on 02.04.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_EYE_SHOOT_H
-#define PIGEONWAR_EYE_SHOOT_H
+#include <abilities/straight_target_ability.h>
+#include <abilities/per_turn_usable.h>
 
-#include "straight_target_ability.h"
-#include "per_turn_usable.h"
-
-class eye_shoot final : public straight_target_ability<3>,
-                        per_turn_usable {
+class eye_shoot final : public straight_target_ability<3>, per_turn_usable {
 public:
     eye_shoot();
 
-    bitmap_key get_bitmap_key() const override {
-        return "eye_shoot";
-    }
+    ADD_BITMAP_GETTER(eye_shoot)
 
     DEFINE_DESC(eye_shoot, base_damage, side_damage)
 
@@ -26,6 +18,3 @@ private:
     const std::int32_t base_damage{8};
     const std::int32_t side_damage{16};
 };
-
-
-#endif //PIGEONWAR_EYE_SHOOT_H

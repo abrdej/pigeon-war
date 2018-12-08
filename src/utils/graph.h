@@ -1,5 +1,4 @@
-#ifndef GRAPH_H
-#define GRAPH_H
+#pragma once
 
 #include <queue>
 #include <vector>
@@ -63,12 +62,12 @@ void breadth_search(graph& g,
 	}
 }
 
-template <typename T, typename ConditionFunc>
+template <typename T, typename Condition>
 auto breadth_search(graph& g,
                     const typename graph::vertex_descriptor& initial_vertex,
                     std::vector<T>& distances_map,
                     std::vector<typename graph::vertex_descriptor>& sequence_map,
-                    const ConditionFunc& condition_func)
+                    Condition condition)
 {
     using vertex_descriptor = typename graph::vertex_descriptor;
 
@@ -89,10 +88,10 @@ auto breadth_search(graph& g,
         auto& adjacent_vertices  = vertices[vertex];
         q.pop();
 
-        if (condition_func(vertex))
+        if (condition(vertex))
             return vertex;
 
-        for (auto&& adjacent_vertex : adjacent_vertices) {
+        for (auto adjacent_vertex : adjacent_vertices) {
 
             if (distances_map[adjacent_vertex] == std::numeric_limits<std::int32_t>::max())
             {
@@ -105,5 +104,3 @@ auto breadth_search(graph& g,
 
     return std::numeric_limits<vertex_descriptor>::max();
 }
-
-#endif

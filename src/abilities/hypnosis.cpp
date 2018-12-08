@@ -3,7 +3,7 @@
 #include <components/applied_effects.h>
 #include <managers/entity_manager.h>
 #include <effects/hypnosis_effect.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include "hypnosis.h"
 #include "abilities.h"
 #include "core/turn_system.h"

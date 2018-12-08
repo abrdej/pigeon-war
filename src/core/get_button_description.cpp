@@ -2,9 +2,8 @@
 
 #include <abilities/abilities.h>
 #include <core/board.h>
-#include <managers/entity_manager.h>
 
-std::string get_button_description(std::uint32_t selected_index, std::uint32_t n) {
+std::string get_button_description(std::uint32_t selected_index, std::uint32_t button_id) {
     auto entity_id = game_board().at(selected_index);
     auto entity = game::get<entity_manager>().get(entity_id);
 
@@ -13,7 +12,7 @@ std::string get_button_description(std::uint32_t selected_index, std::uint32_t n
         auto abilities_ptr = entity.get<abilities>();
         if (abilities_ptr && abilities_ptr->is_active) {
 
-            auto entity_ability = abilities_ptr->at(n);
+            auto entity_ability = abilities_ptr->at(button_id);
             if (entity_ability) {
                 description = entity_ability->hint();
             }

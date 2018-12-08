@@ -7,9 +7,8 @@ class drain final : public neighboring_target_ability<>, per_turn_usable
 {
 public:
 	explicit drain(std::uint32_t entity_id);
-	bitmap_key get_bitmap_key() const override {
-		return "drain";
-	}
+
+	ADD_BITMAP_GETTER(drain)
 
 	DEFINE_DESC(drain, damage, drain_amount)
 	

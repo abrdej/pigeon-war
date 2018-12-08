@@ -1,11 +1,9 @@
-#include "eye_shoot.h"
+#include <abilities/eye_shoot.h>
 
-#include <core/board.h>
 #include <abilities/damage_dealers.h>
+#include <core/board.h>
 
-eye_shoot::eye_shoot() {
-
-}
+eye_shoot::eye_shoot() {}
 
 void eye_shoot::use(std::uint32_t to_index) {
 
@@ -33,7 +31,7 @@ void eye_shoot::use(std::uint32_t to_index) {
     std::array<int, 2> shifts{1, 2};
     std::vector<std::uint32_t> indexes;
     if (dx == 0) {
-        for (int i = -1; i <= 1; i+=2) {
+        for (int i = -1; i <= 1; i += 2) {
             for (auto shift : shifts) {
                 auto index = game_board().to_index(to_pos.first + i * shift, to_pos.second);
                 index_shoot = index;
@@ -45,7 +43,7 @@ void eye_shoot::use(std::uint32_t to_index) {
             sides_indexes.emplace_back(index_shoot);
         }
     } else {
-        for (int i = -1; i <= 1; i+=2) {
+        for (int i = -1; i <= 1; i += 2) {
             for (auto shift : shifts) {
                 auto index = game_board().to_index(to_pos.first, to_pos.second + i * shift);
                 index_shoot = index;

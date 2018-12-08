@@ -2,7 +2,6 @@
 
 #include <entities/entity.h>
 
-struct spectre final
-{
+struct spectre final {
     static void create(base_entity& entity);
 };

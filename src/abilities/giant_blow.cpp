@@ -1,5 +1,5 @@
 #include <components/applied_effects.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include "giant_blow.h"
 #include "core/path_finder.h"
 #include "core/game_controller.h"

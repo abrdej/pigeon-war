@@ -1,10 +1,7 @@
 #include <abilities/warrior_blow.h>
 
 #include <abilities/damage_dealers.h>
-#include <core/game_controller.h>
-#include <managers/entity_manager.h>
-#include <messages/make_message.h>
-#include <server/sender.h>
+#include <core/board.h>
 
 warrior_blow::warrior_blow(std::uint32_t entity_id) : entity_id(entity_id) {}
 

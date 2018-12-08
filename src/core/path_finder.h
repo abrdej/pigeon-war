@@ -12,7 +12,7 @@ public:
 	void calc(std::uint32_t from_index);
 
 	std::uint32_t find_first_satisfy_conditions(std::uint32_t from_index,
-												const std::function<bool(std::uint32_t)>& condition_fn);
+												const std::function<bool(std::uint32_t)>& condition);
 
 	void get_possible_movements(std::vector<std::uint32_t>& movements,
 								std::vector<std::uint32_t>& costs,
@@ -55,4 +55,5 @@ void circle(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool av
 void all_free(std::vector<std::uint32_t>& fields);
 
 void all(std::vector<std::uint32_t>& fields);
-};
+
+} // namespace board_helper

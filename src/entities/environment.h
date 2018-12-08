@@ -27,4 +27,3 @@ ENVIRONMENT(stone, Stone);
 ENVIRONMENT(water, Water);
 
 ENVIRONMENT_DESTRUCTIBLE(wall, Wall, 30);
-

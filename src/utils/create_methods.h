@@ -1,9 +1,6 @@
-#ifndef CREATE_METHODS_H
-#define CREATE_METHODS_H
+#pragma once
 
 #include <memory>
-
-#include "entities/shooter.h"
 
 namespace create_methods
 {
@@ -13,6 +10,3 @@ namespace create_methods
 		return std::make_shared<T>();
 	}
 }
-
-
-#endif

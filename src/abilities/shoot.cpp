@@ -1,6 +1,7 @@
 #include <abilities/shoot.h>
 
 #include <abilities/damage_dealers.h>
+#include <core/board.h>
 
 shoot::shoot(std::uint32_t entity_id) : entity_id(entity_id), bullets(bullets_per_turn) {
     on_every_two_turns_from_next([this]() {

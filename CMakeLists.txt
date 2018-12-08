@@ -287,8 +287,8 @@ set(SOURCE_FILES
         src/scenarios/registered_entities.h
         src/scenarios/map_reader.cpp
         src/scenarios/map_reader.h
-        src/messages/make_message.cpp
-        src/messages/make_message.h
+        src/messages/massages_makers.cpp
+        src/messages/massages_makers.h
         src/entities/dragon.cpp
         src/entities/dragon.h
         src/abilities/dragon_skin.cpp
@@ -303,7 +303,7 @@ set(SOURCE_FILES
         src/core/board_container.h
         src/utils/graph.h
         src/utils/create_methods.h
-        src/messages/messages.h
+        src/messages/from_to_json.h
         src/core/game_state.h
         src/core/states.h
         src/utils/for_each_in_tuple.h

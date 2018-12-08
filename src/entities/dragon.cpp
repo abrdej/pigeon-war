@@ -1,4 +1,4 @@
-#include "dragon.h"
+#include <entities/dragon.h>
 
 #include <abilities/abilities.h>
 #include <abilities/dragon_skin.h>

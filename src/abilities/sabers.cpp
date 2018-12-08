@@ -3,9 +3,7 @@
 #include <abilities/damage_dealers.h>
 #include <core/board.h>
 #include <core/game_controller.h>
-#include <core/path_finder.h>
-#include <messages/make_message.h>
-#include <server/sender.h>
+#include <utils/algorithm.h>
 
 sabers::sabers(std::uint32_t entity_id) : entity_id(entity_id) {}
 
@@ -25,8 +23,7 @@ void sabers::prepare(std::uint32_t for_index)
 
 void sabers::target(std::uint32_t target_index)
 {
-	auto result = std::find(std::begin(targets_), std::end(targets_), target_index);
-	if (result != std::end(targets_))
+	if (has_value(targets_, target_index))
 	{
 		if (used)
 			return;

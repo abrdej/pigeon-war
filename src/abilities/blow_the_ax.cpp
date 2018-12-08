@@ -1,9 +1,7 @@
-#include "blow_the_ax.h"
+#include <abilities/blow_the_ax.h>
 
 #include <abilities/damage_dealers.h>
-#include <core/game_controller.h>
-#include <messages/make_message.h>
-#include <server/sender.h>
+#include <core/board.h>
 
 blow_the_ax::blow_the_ax(std::uint32_t entity_id) : entity_id(entity_id) {}
 

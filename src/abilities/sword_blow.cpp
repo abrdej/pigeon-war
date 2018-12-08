@@ -1,6 +1,7 @@
 #include <abilities/sword_blow.h>
 
 #include <abilities/damage_dealers.h>
+#include <core/board.h>
 
 void sword_blow::use(std::uint32_t index_on) {
 

@@ -2,8 +2,9 @@
 #include "damage_dealers.h"
 #include <core/path_finder.h>
 #include <core/game_controller.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include "server/sender.h"
+#include <core/board.h>
 
 void flame_thrower::use(std::uint32_t index_on) {
 

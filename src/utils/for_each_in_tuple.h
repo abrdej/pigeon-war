@@ -1,9 +1,4 @@
-//
-// Created by abrdej on 04.01.18.
-//
-
-#ifndef PIGEONWAR_UTILS_H
-#define PIGEONWAR_UTILS_H
+#pragma once
 
 #include <tuple>
 
@@ -39,5 +34,3 @@ void for_each_in_tuple(std::tuple<Ts...>& t, F f)
 {
     detail::for_each(t, f, detail::gen_seq<sizeof...(Ts)>());
 }
-
-#endif //PIGEONWAR_UTILS_H

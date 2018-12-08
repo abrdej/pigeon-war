@@ -1,8 +1,9 @@
 #include <core/game_controller.h>
-#include <messages/make_message.h>
+#include <messages/massages_makers.h>
 #include "bludgeon.h"
 #include "damage_dealers.h"
 #include "server/sender.h"
+#include <core/board.h>
 
 bludgeon::bludgeon(std::uint32_t entity_id) {
 	after_player_turn(entity_id, [this]() {
