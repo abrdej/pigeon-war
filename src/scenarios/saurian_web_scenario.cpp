@@ -1,7 +1,7 @@
 #include "saurian_web_scenario.h"
 
 #include <abilities/damage_dealers.h>
-#include <ai/ai.h>
+#include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include <core/game.h>
 #include <core/game_controller.h>
@@ -29,25 +29,11 @@ void create_saurian_web() {
     auto saurion4_id = entity_manager_ref.create<saurian>();
     auto saurion5_id = entity_manager_ref.create<saurian>();
 
-    auto best_aim_sequence = behavior_tree::helper::Sequence<
-            ai::behavior_tree_tasks::blackboard,
-            ai::behavior_tree_tasks::attack_enemy,
-            ai::behavior_tree_tasks::find_best_aim>::create();
-
-    auto nearest_aim_sequence = behavior_tree::helper::Sequence<
-            ai::behavior_tree_tasks::blackboard,
-            ai::behavior_tree_tasks::attack_enemy,
-            ai::behavior_tree_tasks::find_nearest_enemy>::create();
-
-    auto ai_sequence = std::make_shared<behavior_tree::selector<ai::behavior_tree_tasks::blackboard>>();
-    ai_sequence->add_task(best_aim_sequence);
-    ai_sequence->add_task(nearest_aim_sequence);
-
-    game::get<ai_manager>().add_ai_for(saurion1_id, ai_sequence);
-    game::get<ai_manager>().add_ai_for(saurion2_id, ai_sequence);
-    game::get<ai_manager>().add_ai_for(saurion3_id, ai_sequence);
-    game::get<ai_manager>().add_ai_for(saurion4_id, ai_sequence);
-    game::get<ai_manager>().add_ai_for(saurion5_id, ai_sequence);
+    game::get<ai_manager>().add_ai_for(saurion1_id, ai::make_ai<saurian>());
+    game::get<ai_manager>().add_ai_for(saurion2_id, ai::make_ai<saurian>());
+    game::get<ai_manager>().add_ai_for(saurion3_id, ai::make_ai<saurian>());
+    game::get<ai_manager>().add_ai_for(saurion4_id, ai::make_ai<saurian>());
+    game::get<ai_manager>().add_ai_for(saurion5_id, ai::make_ai<saurian>());
 
     game_board().insert(game_board().to_index(2, 3), shooter_id);
     game_board().insert(game_board().to_index(2, 5), saberhand_id);

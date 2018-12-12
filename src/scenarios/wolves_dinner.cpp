@@ -1,6 +1,6 @@
 #include "wolves_dinner.h"
 
-#include <ai/ai.h>
+#include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include <core/game_controller.h>
 #include <entities/environment.h>
@@ -22,21 +22,21 @@ void create_wolves_dinner() {
     //board::insert(board::to_index(2, 3), shooter_id);
     game_board().insert(game_board().to_index(2, 5), samurai_id);
 
-    auto spectre_id = game::get<entity_manager>().create<spectre>();
-    game_board().insert(game_board().to_index(2, 6), spectre_id);
+//    auto spectre_id = game::get<entity_manager>().create<spectre>();
+//    game_board().insert(game_board().to_index(2, 6), spectre_id);
 
     auto tester_id = players_manager_ref.create_human_player("tester");
     auto enemy_id = players_manager_ref.create_ai_player("enemy");
     //players::add_entity_for_player("tester", shooter_id);
     players_manager_ref.add_entity_for_player(tester_id, samurai_id);
-    players_manager_ref.add_entity_for_player(tester_id, spectre_id);
+//    players_manager_ref.add_entity_for_player(tester_id, spectre_id);
 
-    auto ai_sequence = behavior_tree::helper::Sequence<
-            ai::behavior_tree_tasks::blackboard,
-            ai::behavior_tree_tasks::attack_enemy,
-            ai::behavior_tree_tasks::go_close_to,
-            ai::behavior_tree_tasks::find_nearest_enemy
-    >::create();
+//    auto ai_sequence = behavior_tree::helper::Sequence<
+//            ai::behavior_tree_tasks::blackboard,
+//            ai::behavior_tree_tasks::attack_enemy,
+//            ai::behavior_tree_tasks::go_close_to,
+//            ai::behavior_tree_tasks::find_nearest_enemy
+//    >::create();
 
     using creator_helper::pos;
     std::vector<std::pair<std::uint32_t, std::uint32_t>> wolves_positions = {
@@ -49,7 +49,7 @@ void create_wolves_dinner() {
     std::vector<std::uint32_t> enemies_ids;
     for (auto&& wolf_pos : wolves_positions) {
         auto wolf_id = game::get<entity_manager>().create<wolf>();
-        game::get<ai_manager>().add_ai_for(wolf_id, ai_sequence);
+        game::get<ai_manager>().add_ai_for(wolf_id, ai::make_ai<wolf>());
         game_board().insert(game_board().to_index(wolf_pos.first, wolf_pos.second), wolf_id);
         players_manager_ref.add_entity_for_player(enemy_id, wolf_id);
         enemies_ids.push_back(wolf_id);

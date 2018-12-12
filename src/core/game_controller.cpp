@@ -91,7 +91,8 @@ void game_controller::on_button(std::uint32_t n) {
         set_entity_default_state(players_helpers::active_player_first_entity_index());
 
         if (game::get<players_manager>().is_active_player_ai()) {
-            game::get<ai_manager>().perform_movement(game::get<players_manager>().get_active_player_id());
+//            game::get<ai_manager>().perform_movement(game::get<players_manager>().get_active_player_id());
+            game::get<ai_manager>().perform_movement_new_ai(game::get<players_manager>().get_active_player_id());
             game::get<turn_system>().end_turn();
             game::get<players_manager>().next_player();
             set_entity_default_state(players_helpers::active_player_first_entity_index());

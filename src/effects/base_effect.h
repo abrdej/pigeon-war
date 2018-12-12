@@ -22,8 +22,8 @@ class applied_effect {
 private:
 	std::string name;
 	std::string description;
-	effect_types effect_type;
-	bool effect_removable;
+	effect_types effect_type{effect_types::negative};
+	bool effect_removable{false};
     turn_scoped_connection turn_connection;
     std::function<void()> on_destruction{nullptr};
 

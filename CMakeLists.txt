@@ -34,7 +34,6 @@ include_directories(${Boost_INCLUDE_DIRS})
 set(SOURCE_FILES
         src/core/module_holder.h
         src/entities/entity.h
-        src/ai/ai.cpp
         src/ai/ai_manager.cpp
         src/abilities/claws.cpp
         src/core/board.cpp
@@ -309,7 +308,6 @@ set(SOURCE_FILES
         src/utils/for_each_in_tuple.h
         src/utils/logging.h
         src/components/health_field.h
-        src/ai/behavior_tree.h
         src/entities/reaper.cpp
         src/entities/reaper.h
         src/abilities/charge.cpp
@@ -341,7 +339,7 @@ set(SOURCE_FILES
         src/core/get_button_description.cpp
         src/core/get_button_description.h
         src/scenarios/total_destruction.cpp
-        src/scenarios/total_destruction.h src/entities/spectre.cpp src/entities/spectre.h src/abilities/cleaver.cpp src/abilities/cleaver.h src/abilities/havoc.cpp src/abilities/havoc.h src/abilities/immateriality.cpp src/abilities/immateriality.h src/scenarios/dark_forest.cpp src/scenarios/dark_forest.h src/entities/pixie.cpp src/entities/pixie.h src/abilities/poke.cpp src/abilities/poke.h src/entities/shooter.cpp src/core/get_effect_description.cpp src/core/get_effect_description.h src/entities/destroyer.cpp src/entities/warrior.cpp src/entities/sorcerer.cpp src/utils/algorithm.h src/entities/guardian.cpp src/entities/native.cpp src/entities/saberhand.cpp src/entities/saurian.cpp src/entities/saurian_web.cpp src/entities/commander.cpp src/entities/rocket_thrower.cpp src/entities/environment.cpp src/entities/environment.h)
+        src/scenarios/total_destruction.h src/entities/spectre.cpp src/entities/spectre.h src/abilities/cleaver.cpp src/abilities/cleaver.h src/abilities/havoc.cpp src/abilities/havoc.h src/abilities/immateriality.cpp src/abilities/immateriality.h src/scenarios/dark_forest.cpp src/scenarios/dark_forest.h src/entities/pixie.cpp src/entities/pixie.h src/abilities/poke.cpp src/abilities/poke.h src/entities/shooter.cpp src/core/get_effect_description.cpp src/core/get_effect_description.h src/entities/destroyer.cpp src/entities/warrior.cpp src/entities/sorcerer.cpp src/utils/algorithm.h src/entities/guardian.cpp src/entities/native.cpp src/entities/saberhand.cpp src/entities/saurian.cpp src/entities/saurian_web.cpp src/entities/commander.cpp src/entities/rocket_thrower.cpp src/entities/environment.cpp src/entities/environment.h src/ai/behavior_node.cpp src/ai/behavior_node.h src/ai/target_finders.cpp src/ai/target_finders.h src/ai/movers.cpp src/ai/movers.h src/ai/nodes_compositions.h src/ai/ai_knowledge.h src/ai/action_makers.cpp src/ai/action_makers.h src/ai/ai_factories.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server ${PLATFORM_LIBS})

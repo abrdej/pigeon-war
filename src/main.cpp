@@ -41,7 +41,8 @@ int main(int argc, char** argv) {
 	std::int32_t port = 8080;
 //	std::string map_name = "battlefield";
 	std::string map_name = "winter_forest";
-	std::string scenario = "skirmish";
+//	std::string scenario = "skirmish";
+	std::string scenario = "dark_forest";
 	std::pair<std::uint32_t, std::uint32_t> map_size;
 
 	if (argc > 1) {

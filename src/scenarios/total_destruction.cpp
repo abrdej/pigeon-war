@@ -1,6 +1,6 @@
-#include "total_destruction.h"
+#include <scenarios/total_destruction.h>
 
-#include <ai/ai.h>
+#include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include <entities/destroyer.h>
 #include <entities/golem.h>
@@ -38,17 +38,8 @@ void scenarios::create_total_destruction() {
     for (auto&& wolve_index : wolves_indexes) {
         auto wolf_id = game::get<entity_manager>().create<wolf>();
         game_board().insert(wolve_index, wolf_id);
-
         game_get<players_manager>().add_entity_for_player(enemy_id, wolf_id);
-
-        auto ai_sequence = behavior_tree::helper::Sequence<
-                ai::behavior_tree_tasks::blackboard,
-                ai::behavior_tree_tasks::attack_enemy,
-                ai::behavior_tree_tasks::go_close_to,
-                ai::behavior_tree_tasks::find_nearest_enemy
-        >::create();
-
-        game_get<ai_manager>().add_ai_for(wolf_id, ai_sequence);
+        game_get<ai_manager>().add_ai_for(wolf_id, ai::make_ai<wolf>());
     }
 
     set_after_n_round_callback(2, [tester_id]() {

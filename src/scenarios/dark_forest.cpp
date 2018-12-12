@@ -1,12 +1,11 @@
 #include "dark_forest.h"
 
+#include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include <core/board.h>
-#include <entities/environment.h>
 #include <entities/pixie.h>
 #include <entities/samurai_rat.h>
 #include <entities/spectre.h>
-#include <managers/players_manager.h>
 #include <scenarios/creator_helper.h>
 #include <scenarios/map_reader.h>
 #include <scenarios/scenario_helper.h>
@@ -29,13 +28,7 @@ void scenario::create_dark_forest() {
     players_manager_ref.add_entity_for_player(tester_id, samurai_id);
     players_manager_ref.add_entity_for_player(enemy_id, spectre_id);
 
-    using AiSequence = behavior_tree::helper::Sequence<
-            ai::behavior_tree_tasks::blackboard,
-            ai::behavior_tree_tasks::attack_enemy,
-            ai::behavior_tree_tasks::go_close_to,
-            ai::behavior_tree_tasks::find_nearest_enemy>;
-
-    game::get<ai_manager>().add_ai_for(spectre_id, AiSequence::create());
+    game::get<ai_manager>().add_ai_for(spectre_id, ai::make_ai<spectre>());
 
     using creator_helper::pos;
     std::vector<std::pair<std::uint32_t, std::uint32_t>> pixies_positions = {
@@ -46,12 +39,8 @@ void scenario::create_dark_forest() {
             pos(7, 5)
     };
     for (auto&& pixie_pos : pixies_positions) {
-        using PixesAi = behavior_tree::helper::Selector<
-                ai::behavior_tree_tasks::blackboard,
-                ai::behavior_tree_tasks::attack_enemy,
-                ai::behavior_tree_tasks::run_around>;
         auto pixie_id = game::get<entity_manager>().create<pixie>();
-        game::get<ai_manager>().add_ai_for(pixie_id, PixesAi::create());
+        game::get<ai_manager>().add_ai_for(pixie_id, ai::make_ai<pixie>());
         game_board().insert(game_board().to_index(pixie_pos.first, pixie_pos.second), pixie_id);
         players_manager_ref.add_entity_for_player(enemy_id, pixie_id);
     }

@@ -1,16 +1,16 @@
 #pragma once
 
-#include <memory>
-
-#include <ai/ai.h>
-#include <ai/behavior_tree.h>
+#include <ai/behavior_node.h>
 
 class ai_manager {
-	using BaseTask = behavior_tree::base_task<ai::behavior_tree_tasks::blackboard>;
-	using BaseTaskPtr = std::shared_ptr<BaseTask>;
-	std::unordered_map<std::uint32_t, BaseTaskPtr> behavior_trees;
+	std::unordered_map<std::uint32_t, ai::behavior_node_ptr> behavior_trees_;
+
+	ai::ai_knowledge game_scope_knowledge_;
 
 public:
-	void add_ai_for(std::uint32_t entity_id, BaseTaskPtr ai);
-	void perform_movement(std::uint32_t for_player_of_id);
+	void add_ai_for(std::uint32_t entity_id, ai::behavior_node_ptr behavior_tree);
+	void perform_movement_new_ai(std::uint32_t player_id);
+
+	ai::ai_knowledge& game_scope_knowledge();
+	const ai::ai_knowledge& game_scope_knowledge() const;
 };

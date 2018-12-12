@@ -4,10 +4,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include <core/board.h>
-#include <core/path_finder.h>
 #include <effects/base_effect.h>
-#include <managers/entity_manager.h>
 
 class auras_observer {
     std::unordered_map<std::uint32_t, std::shared_ptr<effect>> auras;
