@@ -16,7 +16,6 @@ private:
     void use(std::uint32_t index_on) override;
 
 private:
-//    std::int32_t magic_power{10};
     std::uint32_t entity_id;
     std::int32_t magic_power_accumulation_amount{10};
     std::int32_t magic_power_drain_amount{4};

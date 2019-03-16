@@ -72,15 +72,13 @@ class turn_system {
 
             } else if (frequency == frequency_types::after_n_rounds) {
                 if (++number_of_calls == duration * 2) {
-                    turn_callback_info info{true,
-                                            conn};
+                    turn_callback_info info{true, conn};
                     callback(info);
                     conn.disconnect();
                 }
             } else if (frequency == frequency_types::after_n_turns) {
                 if (++number_of_calls == duration) {
-                    turn_callback_info info{true,
-                                            conn};
+                    turn_callback_info info{true, conn};
                     callback(info);
                     conn.disconnect();
                 }
@@ -111,11 +109,11 @@ public:
                                         int32_t duration,
                                         const std::function<void()>& callback) {
 
-        return turn_scoped_connection(next_turn_signal.connect_extended(turn_callback_wrapper(frequency, duration,
-                                                                                              [callback](
-                                                                                                      turn_callback_info&) {
-                                                                                                  return callback();
-                                                                                              })));
+        return turn_scoped_connection(next_turn_signal.connect_extended(
+                turn_callback_wrapper(frequency, duration,
+                                      [callback](turn_callback_info&) {
+                                          return callback();
+                                      })));
     }
 
 private:

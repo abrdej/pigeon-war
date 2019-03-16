@@ -194,7 +194,7 @@ std::string create_skirmish(const std::string& map_name,
     std::unordered_set<std::uint32_t> entities_to_choose;
 
     auto entities = read_entities_from_json(maps_directory + "entities");
-    for (auto&& entity_name : entities) {
+    for (const auto& entity_name : entities) {
 
         auto id = entities_factory::create(entity_name);
 

@@ -1,6 +1,6 @@
-#include "entities_factory.h"
+#include <entities/entities_factory.h>
 
-#include "scenarios/registered_entities.h"
+#include <scenarios/registered_entities.h>
 
 #include <entities/spectre.h>
 
@@ -17,7 +17,6 @@ creator def_creator(const std::string& entity_name) {
     def_creator<name>(#name) \
 
 std::uint32_t entities_factory::create(const std::string& entity_name) {
-
     static std::unordered_map<std::string, std::function<std::uint32_t()>> creators = {
             DEF_CREATOR(stone),
             DEF_CREATOR(wall),

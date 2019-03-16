@@ -9,6 +9,9 @@ magic_bullet::magic_bullet(std::uint32_t entity_id)
     auto power = game::get<entity_manager>().get(entity_id).get<power_filed>();
 
     after_player_turn(entity_id, [this, entity_id, power]() {
+
+        std::cout << "after_player_turn\n";
+
         if (first_used) {
             used = false;
 //            magic_power += magic_power_accumulation_amount;
@@ -16,7 +19,7 @@ magic_bullet::magic_bullet(std::uint32_t entity_id)
 
             std::vector<std::uint32_t> neighbors;
             board_helper::neighboring_fields(game_board().index_for(entity_id), neighbors, false);
-            for (auto& index : neighbors) {
+            for (auto index : neighbors) {
                 if (!game_board().empty(index) && players_helpers::is_enemy_entity(index)) {
                     power->power += magic_power_drain_amount;
 //                    magic_power += magic_power_drain_amount;

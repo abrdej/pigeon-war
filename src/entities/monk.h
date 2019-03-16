@@ -14,8 +14,7 @@
 class monk final
 {
 public:
-    static void create(base_entity& entity)
-    {
+    static void create(base_entity& entity) {
         entity.name = "Monk";
 
         entity.add<health_field>(45);
