@@ -1,24 +1,18 @@
-//
-// Created by abrdej on 02.04.18.
-//
+#pragma once
 
-#ifndef PIGEONWAR_TRANSMISSION_H
-#define PIGEONWAR_TRANSMISSION_H
+#include <abilities/path_target_ability.h>
 
-#include "path_target_ability.h"
-
-class transmission final : public path_target_ability<4>
-{
+class transmission final : public path_target_ability<4> {
 public:
     explicit transmission(std::uint32_t entity_id);
-    bitmap_key get_bitmap_key() const override {
-        return "transmission";
-    }
+
+    ADD_BITMAP_GETTER(transmission)
 
     DEFINE_DESC_ZERO(transmission)
 
 private:
-    void use(std::uint32_t from_index) override;
+    void use(std::uint32_t on_index) override;
+
     void transmit(std::uint32_t to_index);
 
 private:
@@ -26,5 +20,3 @@ private:
     bool used{false};
     std::uint32_t from_index;
 };
-
-#endif //PIGEONWAR_TRANSMISSION_H

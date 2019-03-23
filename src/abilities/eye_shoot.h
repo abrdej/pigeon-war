@@ -5,7 +5,7 @@
 
 class eye_shoot final : public straight_target_ability<3>, per_turn_usable {
 public:
-    eye_shoot();
+    eye_shoot() = default;
 
     ADD_BITMAP_GETTER(eye_shoot)
 

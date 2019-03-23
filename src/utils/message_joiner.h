@@ -23,6 +23,6 @@ public:
             messages.push_back(message);
             internal_buffer.erase(0, pos + delimiter.length());
         }
-        return std::move(messages);
+        return messages;
     }
 };

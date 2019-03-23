@@ -3,8 +3,6 @@
 #include <abilities/damage_dealers.h>
 #include <core/board.h>
 
-eye_shoot::eye_shoot() {}
-
 void eye_shoot::use(std::uint32_t to_index) {
 
     if (used)

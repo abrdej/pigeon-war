@@ -1,11 +1,11 @@
-#include "eye.h"
+#include <entities/eye.h>
 
-#include "abilities/abilities.h"
-#include "abilities/eye_shoot.h"
-#include "abilities/moveable.h"
-#include "abilities/transmission.h"
-#include "components/damage_taker.h"
-#include "components/applied_effects.h"
+#include <abilities/abilities.h>
+#include <abilities/eye_shoot.h>
+#include <abilities/moveable.h>
+#include <abilities/transmission.h>
+#include <components/applied_effects.h>
+#include <components/damage_taker.h>
 
 void eye::create(base_entity& entity) {
     entity.name = "Eye";

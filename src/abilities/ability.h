@@ -14,27 +14,29 @@
  *
  */
 
-enum class ability_types { moving = 0, offensive, special, defensive, passive, not_defined };
+enum class ability_types {
+    moving = 0, offensive, special, defensive, passive, not_defined
+};
 
-class ability
-{
+class ability {
 protected:
-	virtual ~ability() = default;
+    virtual ~ability() = default;
 
 public:
-	virtual std::string hint() const {
+    virtual std::string hint() const {
         std::string desc("desc");
         return std::move(desc);
-	}
+    }
+
     virtual ability_types type() const {
         return ability_types::not_defined;
     }
 
-	virtual bitmap_key get_bitmap_key() const = 0;
+    virtual bitmap_key get_bitmap_key() const = 0;
 };
 
 struct active_ability : ability {
-	virtual void prepare(std::uint32_t for_index) = 0;
+    virtual void prepare(std::uint32_t for_index) = 0;
 };
 
 struct passive_ability : ability {
