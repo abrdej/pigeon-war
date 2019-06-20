@@ -18,6 +18,7 @@ global_game_state get_global_game_state() {
     }
 
     state.entities_names = get_entity_names();
+    state.entities_players = get_entity_players();
     state.entities_additional_effects = get_effects();
 
     return std::move(state);

@@ -56,6 +56,7 @@ inline void to_json(nlohmann::json& j, const global_game_state& x) {
 			{"board", x.board.fields_},
 			{"healths", x.healths},
 			{"entities_names", x.entities_names},
+			{"entities_players", x.entities_players},
 			{"entities_additional_effects", x.entities_additional_effects}
 	};
 }
@@ -64,6 +65,7 @@ inline void from_json(const nlohmann::json& j, global_game_state& x) {
 	x.board.fields_ = j.at("board").get<decltype(x.board.fields_)>();
 	json_to_unordered_map(j.at("healths"), x.healths);
 	json_to_unordered_map(j.at("entities_names"), x.entities_names);
+	json_to_unordered_map(j.at("entities_players"), x.entities_players);
 	json_to_unordered_map(j.at("entities_additional_effects"), x.entities_additional_effects);
 }
 

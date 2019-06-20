@@ -15,6 +15,7 @@ struct global_game_state {
 	board_container board;
 	std::unordered_map<std::uint32_t, std::int32_t> healths;
 	std::unordered_map<std::uint32_t, std::string> entities_names;
+	std::unordered_map<std::uint32_t, std::uint32_t> entities_players;
 	std::unordered_map<std::uint32_t, std::vector<std::string>> entities_additional_effects;
 };
 

@@ -38,21 +38,4 @@ inline bool has_effect(std::uint32_t entity_id, const std::string &effect_name) 
 
 void remove_negative_effects(std::uint32_t entity_id);
 
-inline std::unordered_map<std::uint32_t, std::vector<std::string>> get_effects() {
-
-    std::unordered_map<std::uint32_t, std::vector<std::string>> result;
-
-    game::get<entity_manager>().for_all([&result](base_entity entity) {
-
-        if (entity.contain<applied_effects>()) {
-            std::shared_ptr<applied_effects> effect_ptr = entity.get<applied_effects>();
-
-            auto& field = result[entity.entity_id];
-
-            for (auto&& effect : effect_ptr->named_data) {
-                field.push_back(effect.second->get_name());
-            }
-        }
-    });
-    return std::move(result);
-}
+std::unordered_map<std::uint32_t, std::vector<std::string>> get_effects();

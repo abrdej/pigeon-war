@@ -40,8 +40,9 @@ void game_controller::on_board(std::uint32_t col, std::uint32_t row) {
         return;
 
     else if (actual_state_ == states_types::wait_for_action) {
-        if (is_possible_movement(index) && valid_target(index))
+        if (is_possible_movement(index) && valid_target(index)) {
             do_action(index);
+        }
 
         else if (!game_board().empty(index) && players_helpers::is_player_entity(index))
             set_entity_default_state(index);
