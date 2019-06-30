@@ -4,32 +4,16 @@ project(pigeonwar)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR})
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 configure_file(config.h.in ${CMAKE_SOURCE_DIR}/config.h @ONLY)
 
-if(WIN32)
-    link_directories("${CMAKE_SOURCE_DIR}/lib")
-endif()
-
-if(UNIX)
-    set(PLATFORM_LIBS pthread)
-    set(BOOST_INCLUDEDIR "/home/abrdej/libraries/boost_1_66_0")
-    set(BOOST_LIBRARYDIR "/home/abrdej/libraries/boost_1_66_0/stage/lib")
-endif()
-
-if (WIN32)
-    set(BOOST_INCLUDEDIR "C:/local/boost_1_65_1/")
-    set(BOOST_LIBRARYDIR "C:/local/boost_1_65_1/lib64-msvc-14.1")
-    set(BOOST_ROOT "C:/local/boost_1_65_1/boost")
-endif()
-
 set(Boost_USE_STATIC_LIBS ON)
 add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY)
 
-include_directories(${Boost_INCLUDE_DIRS})
+include_directories(/home/abrdej/libraries/boost)
 
 set(SOURCE_FILES
         src/core/module_holder.h
@@ -185,12 +169,10 @@ set(SOURCE_FILES
         src/entities/native.h
         src/entities/killer.h
         src/entities/giant.h
-
         src/effects/aura_of_immunity_effect.cpp
         src/effects/aura_of_immunity_effect.h
         src/effects/auras_observer.cpp
         src/effects/auras_observer.h
-
         src/server/server.h
         src/abilities/defender.cpp
         src/abilities/defender.h
@@ -339,7 +321,48 @@ set(SOURCE_FILES
         src/core/get_button_description.cpp
         src/core/get_button_description.h
         src/scenarios/total_destruction.cpp
-        src/scenarios/total_destruction.h src/entities/spectre.cpp src/entities/spectre.h src/abilities/cleaver.cpp src/abilities/cleaver.h src/abilities/havoc.cpp src/abilities/havoc.h src/abilities/immateriality.cpp src/abilities/immateriality.h src/scenarios/dark_forest.cpp src/scenarios/dark_forest.h src/entities/pixie.cpp src/entities/pixie.h src/abilities/poke.cpp src/abilities/poke.h src/entities/shooter.cpp src/core/get_effect_description.cpp src/core/get_effect_description.h src/entities/destroyer.cpp src/entities/warrior.cpp src/entities/sorcerer.cpp src/utils/algorithm.h src/entities/guardian.cpp src/entities/native.cpp src/entities/saberhand.cpp src/entities/saurian.cpp src/entities/saurian_web.cpp src/entities/commander.cpp src/entities/rocket_thrower.cpp src/entities/environment.cpp src/entities/environment.h src/ai/behavior_node.cpp src/ai/behavior_node.h src/ai/target_finders.cpp src/ai/target_finders.h src/ai/movers.cpp src/ai/movers.h src/ai/nodes_compositions.h src/ai/ai_knowledge.h src/ai/action_makers.cpp src/ai/action_makers.h src/ai/ai_factories.h)
+        src/scenarios/total_destruction.h
+        src/entities/spectre.cpp
+        src/entities/spectre.h
+        src/abilities/cleaver.cpp
+        src/abilities/cleaver.h
+        src/abilities/havoc.cpp
+        src/abilities/havoc.h
+        src/abilities/immateriality.cpp
+        src/abilities/immateriality.h
+        src/scenarios/dark_forest.cpp
+        src/scenarios/dark_forest.h
+        src/entities/pixie.cpp
+        src/entities/pixie.h
+        src/abilities/poke.cpp
+        src/abilities/poke.h
+        src/entities/shooter.cpp
+        src/core/get_effect_description.cpp
+        src/core/get_effect_description.h
+        src/entities/destroyer.cpp
+        src/entities/warrior.cpp
+        src/entities/sorcerer.cpp
+        src/utils/algorithm.h
+        src/entities/guardian.cpp
+        src/entities/native.cpp
+        src/entities/saberhand.cpp
+        src/entities/saurian.cpp
+        src/entities/saurian_web.cpp
+        src/entities/commander.cpp
+        src/entities/rocket_thrower.cpp
+        src/entities/environment.cpp
+        src/entities/environment.h
+        src/ai/behavior_node.cpp
+        src/ai/behavior_node.h
+        src/ai/target_finders.cpp
+        src/ai/target_finders.h
+        src/ai/movers.cpp
+        src/ai/movers.h
+        src/ai/nodes_compositions.h
+        src/ai/ai_knowledge.h
+        src/ai/action_makers.cpp
+        src/ai/action_makers.h
+        src/ai/ai_factories.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
-target_link_libraries(pigeonwar_server ${PLATFORM_LIBS})
+target_link_libraries(pigeonwar_server pthread)

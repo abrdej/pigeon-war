@@ -2,8 +2,8 @@
 
 using boost::asio::ip::tcp;
 
-websocket_connection::connection_ptr websocket_connection::create(boost::asio::io_service& io_service) {
-    return connection_ptr(new websocket_connection(io_service));
+websocket_connection::connection_ptr websocket_connection::create(executor_type executor) {
+    return connection_ptr(new websocket_connection(executor));
 }
 
 tcp::socket& websocket_connection::socket() {
@@ -89,8 +89,8 @@ void websocket_connection::send(const std::string& message) {
     //ws_->binary(false);
 }
 
-websocket_connection::websocket_connection(boost::asio::io_service& io_service)
-        : socket_(io_service) {}
+websocket_connection::websocket_connection(executor_type executor)
+        : socket_(executor) {}
 
 void websocket_connection::handle_write(const boost::system::error_code& /*error*/,
                                         size_t /*bytes_transferred*/)
@@ -160,7 +160,7 @@ tcp_server::tcp_server(unsigned short port)
 
 void tcp_server::start_accept() {
     Connection::connection_ptr new_connection =
-            Connection::create(acceptor_.get_io_service());
+            Connection::create(acceptor_.get_executor());
 
     acceptor_.async_accept(new_connection->socket(),
                            [this, new_connection](const boost::system::error_code& error) {
