@@ -365,7 +365,14 @@ set(SOURCE_FILES
         src/ai/action_makers.h
         src/ai/ai_factories.h
         src/abilities/smokescreen.cpp
-        src/abilities/smokescreen.h)
+        src/abilities/smokescreen.h
+        src/entities/snake.cpp
+        src/entities/snake.h
+        src/abilities/revolver.cpp
+        src/abilities/revolver.h
+        src/abilities/fast_draw.cpp
+        src/abilities/fast_draw.h
+        )
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server pthread)

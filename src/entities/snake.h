@@ -1,14 +1,7 @@
-//
-// Created by abrdej on 30.06.19.
-//
+#pragma once
 
-#ifndef PIGEONWAR_SNAKE_H
-#define PIGEONWAR_SNAKE_H
+#include <entities/entity.h>
 
-
-class snake {
-
+struct snake final {
+  static void create(base_entity& entity);
 };
-
-
-#endif //PIGEONWAR_SNAKE_H

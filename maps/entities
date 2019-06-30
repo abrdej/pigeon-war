@@ -1,3 +1,3 @@
 {
-  "entities": ["shooter", "poisoner", "destroyer", "warrior", "druid", "spider", "eye", "sniper", "samurai_rat", "reaper", "poisoner", "wizzard", "monk", "spectre", "soul_hunter", "commander"]
+  "entities": ["shooter", "snake", "poisoner", "destroyer", "warrior", "druid", "spider", "eye", "sniper", "samurai_rat", "reaper", "wizzard", "monk", "spectre", "soul_hunter", "commander"]
 }

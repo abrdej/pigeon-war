@@ -1,14 +1,21 @@
-//
-// Created by abrdej on 30.06.19.
-//
+#pragma once
 
-#ifndef PIGEONWAR_FAST_DRAW_H
-#define PIGEONWAR_FAST_DRAW_H
+#include <abilities/ability.h>
+#include <abilities/per_turn_usable.h>
 
+class fast_draw final : public passive_ability
+{
+public:
+  explicit fast_draw(std::uint32_t entity_id);
 
-class fast_draw {
+  ADD_BITMAP_GETTER(fast_draw)
 
+  DEFINE_DESC_ONE(fast_draw, damage)
+
+private:
+  void use(std::uint32_t index_on);
+
+  const std::uint32_t entity_id;
+  const std::int32_t damage{8};
+  const std::int32_t range{4};
 };
-
-
-#endif //PIGEONWAR_FAST_DRAW_H

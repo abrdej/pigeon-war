@@ -57,6 +57,7 @@ std::uint32_t entities_factory::create(const std::string& entity_name) {
       DEF_CREATOR(bomb_instance),
       DEF_CREATOR(eye),
       DEF_CREATOR(spectre)
+      DEF_CREATOR(snake)
     };
     return creators.at(entity_name)();
 }
