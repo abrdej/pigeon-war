@@ -1,8 +1,8 @@
 {
   "descriptions": {
     "abilities": {
-      "shoot": "Shoot - the Shooter can fire two bullets per turn each deals <damage> damage.\nRemaining bullets: <bullets>.\n",
-      "grenade": "Grenade - the Shooter can throw out a grenade that will deal <damage> damage to the main target and half of that to targets around it.\nIt can be used only once per battle.",
+      "shoot": "Shoot - the Shooter can fire two bullets per turn each deals <damage_> damage.\nRemaining bullets: <bullets_>.\n",
+      "grenade": "Grenade - the Shooter can throw out a grenade that will deal <damage_> damage to the main target and half of that to targets around it.\nIt can be used only once per battle.",
       "blow_the_ax": "Blow The Ax - deals damage of: <damage> to single target.",
       "armor": "Armor - limits the maximum damage from a single attack that Destroyer can receive to: <max_damage>.",
       "arrow": "Arrow - the commander can shoot an arrow within range of <range> and deal damage of <damage>.\nIt also applied effect of viewfinder.\nThis effect allows commander to target these units regardless of the distance.\nViewfinder lasts for <viewfinder_duration> turns.",
