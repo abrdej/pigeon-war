@@ -14,6 +14,10 @@ public:
 
 	DEFINE_DESC(shoot, damage, bullets)
 
+	bool usable() const override {
+		return bullets != 0;
+	}
+
 private:
 	void use(std::uint32_t on_index) override;
 

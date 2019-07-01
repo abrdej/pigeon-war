@@ -11,6 +11,10 @@ public:
 	ADD_BITMAP_GETTER(invisibility);
 	DEFINE_DESC_ONE(invisibility, duration)
 
+	bool usable() const override {
+		return !used_;
+	}
+
 private:
 	void use(std::uint32_t on_index) override;
 	void hide_me();

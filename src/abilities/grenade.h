@@ -11,7 +11,11 @@ public:
 		return "grenade";
 	}
 
-    DEFINE_DESC_ONE(grenade, damage)
+	DEFINE_DESC_ONE(grenade, damage)
+
+	bool usable() const override {
+		return !used;
+	}
 
 private:
 	void use(std::uint32_t on_index) override;

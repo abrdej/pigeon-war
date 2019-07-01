@@ -25,5 +25,6 @@ struct local_game_state {
 	std::uint32_t selected_index{no_selection};
 	target_types actual_target_type{target_types::non};
 	std::array<std::string, 5> button_bitmaps;
+	std::array<bool, 5> usable;
 	std::string entity_name;
 };

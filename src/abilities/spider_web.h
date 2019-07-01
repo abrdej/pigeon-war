@@ -14,6 +14,10 @@ public:
 
 	void set_used();
 
+	bool usable() const override {
+		return !used;
+	}
+
 private:
     void use(std::uint32_t index_on) override;
 

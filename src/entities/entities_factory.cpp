@@ -22,6 +22,7 @@ std::uint32_t entities_factory::create(const std::string& entity_name) {
             DEF_CREATOR(wall),
             DEF_CREATOR(tree),
             DEF_CREATOR(fir),
+            DEF_CREATOR(water),
             DEF_CREATOR(fire),
             DEF_CREATOR(wretch),
             DEF_CREATOR(wizzard),

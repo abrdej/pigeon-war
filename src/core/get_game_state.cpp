@@ -33,6 +33,7 @@ local_game_state get_local_game_state() {
     local_state.actual_target_type = game_control().actual_targeting_type_;
 
     local_state.button_bitmaps.fill("");
+    local_state.usable.fill(false);
 
     // verify this
     if (game_control().selected_index_ != no_selected_index) {
@@ -47,6 +48,7 @@ local_game_state get_local_game_state() {
                     auto ability = abilities_ptr->at(i);
                     if (ability) {
                         local_state.button_bitmaps[i] = ability->get_bitmap_key();
+                        local_state.usable[i] = ability->usable();
                     }
                 }
             }

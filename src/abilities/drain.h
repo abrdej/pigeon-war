@@ -11,7 +11,11 @@ public:
 	ADD_BITMAP_GETTER(drain)
 
 	DEFINE_DESC(drain, damage, drain_amount)
-	
+
+	bool usable() const override {
+		return !used;
+	}
+
 private:
 	void use(std::uint32_t index_on) override;
 

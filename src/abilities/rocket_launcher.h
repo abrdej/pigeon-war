@@ -19,8 +19,13 @@ public:
 	bool was_used() const {
 		return used;
 	}
+	
 	void set_used() {
 		used = true;
+	}
+
+	bool usable() const override {
+		return !used;
 	}
 
 private:

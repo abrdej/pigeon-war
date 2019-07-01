@@ -77,6 +77,10 @@ public:
 		range = base_range;
 	}
 
+	bool usable() const override {
+		return has_range();
+	}
+
 private:
 	void prepare(std::uint32_t for_index) override;
 	void move(std::uint32_t index_to);

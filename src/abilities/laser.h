@@ -14,11 +14,16 @@ class laser final : public straight_target_ability<3>,
 {
 public:
 	laser() = default;
+
 	bitmap_key get_bitmap_key() const override {
 		return "laser";
 	}
 
 	std::string hint() const override;
+
+	bool usable() const override {
+		return !used;
+	}
 
 private:
 	void use(std::uint32_t index) override;

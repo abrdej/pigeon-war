@@ -16,6 +16,10 @@ public:
 
 	DEFINE_DESC_ZERO(hypnosis)
 
+	bool usable() const override {
+		return !used;
+	}
+
 private:
 	void use(std::uint32_t index_on);
 

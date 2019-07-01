@@ -86,27 +86,28 @@ inline void to_json(nlohmann::json& j, const local_game_state& x) {
 			{"selected_index", x.selected_index},
 			{"actual_target_type", converter.at(x.actual_target_type)},
 			{"button_bitmaps", x.button_bitmaps},
+			{"usable", x.usable},
 			{"entity_name", x.entity_name}
 	};
 }
 
 inline void from_json(const nlohmann::json& j, local_game_state& x) {
+	static std::unordered_map<std::string, target_types> converter = {
+		{"caster", target_types::caster},
+		{"enemy", target_types::enemy},
+		{"friendly", target_types::friendly},
+		{"neutral", target_types::neutral},
+		{"moving", target_types::moving},
+		{"all", target_types::all},
+		{"non", target_types::non}
+	};
 
-    static std::unordered_map<std::string, target_types> converter = {
-            {"caster", target_types::caster},
-            {"enemy", target_types::enemy},
-            {"friendly", target_types::friendly},
-            {"neutral", target_types::neutral},
-            {"moving", target_types::moving},
-            {"all", target_types::all},
-            {"non", target_types::non}
-    };
-
-    x.possible_movements = j.at("possible_movements").get<decltype(x.possible_movements)>();
-    x.valid_movements = j.at("valid_movements").get<decltype(x.valid_movements)>();
-    x.selected_index = j.at("selected_index");
-    std::string temp = j.at("actual_target_type");
-    x.actual_target_type = converter.at(temp);
+	x.possible_movements = j.at("possible_movements").get<decltype(x.possible_movements)>();
+	x.valid_movements = j.at("valid_movements").get<decltype(x.valid_movements)>();
+	x.selected_index = j.at("selected_index");
+	std::string temp = j.at("actual_target_type");
+	x.actual_target_type = converter.at(temp);
 	x.button_bitmaps = j.at("button_bitmaps");
+	x.usable = j.at("usable");
 	x.entity_name = j.at("entity_name");
 }

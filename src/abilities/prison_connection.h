@@ -11,6 +11,10 @@ public:
 
 	DEFINE_DESC(prison_connection, base_damage, damage_per_entities_with_effect, duration)
 
+	bool usable() const override {
+		return !used;
+	}
+
 private:
 	void use(std::uint32_t index_on) override;
 

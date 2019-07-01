@@ -6,19 +6,23 @@
 class magic_bullet final : public path_target_ability<3>, protected per_turn_callback
 {
 public:
-    explicit magic_bullet(std::uint32_t entity_id);
+  explicit magic_bullet(std::uint32_t entity_id);
 
-    ADD_BITMAP_GETTER(magic_bullet)
+  ADD_BITMAP_GETTER(magic_bullet)
 
-    std::string hint() const override;
+  std::string hint() const override;
+
+  bool usable() const override {
+    return !used;
+  }
 
 private:
-    void use(std::uint32_t index_on) override;
+  void use(std::uint32_t index_on) override;
 
 private:
-    std::uint32_t entity_id;
-    std::int32_t magic_power_accumulation_amount{10};
-    std::int32_t magic_power_drain_amount{4};
-    bool used{false};
-    bool first_used{false};
+  std::uint32_t entity_id;
+  std::int32_t magic_power_accumulation_amount{10};
+  std::int32_t magic_power_drain_amount{4};
+  bool used{false};
+  bool first_used{false};
 };
