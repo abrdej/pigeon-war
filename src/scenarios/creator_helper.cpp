@@ -3,7 +3,7 @@
 #include <entities/entities_factory.h>
 
 creator_helper::pos_type creator_helper::pos(std::uint32_t col, std::uint32_t row) {
-	return std::make_pair(col, row);
+    return std::make_pair(col, row);
 }
 
 void creator_helper::create_neutral_many(const std::string& entity_name,

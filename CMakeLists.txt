@@ -265,7 +265,7 @@ set(SOURCE_FILES
         src/abilities/power_cost_ability.h
         src/scenarios/skirmish.cpp
         src/scenarios/skirmish.h
-        src/scenarios/registered_entities.h
+        src/entities/all_entities.h
         src/scenarios/map_reader.cpp
         src/scenarios/map_reader.h
         src/messages/massages_makers.cpp

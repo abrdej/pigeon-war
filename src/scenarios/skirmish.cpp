@@ -5,7 +5,7 @@
 #include <scenarios/creator_helper.h>
 #include <scenarios/entities_reader.h>
 #include <scenarios/map_reader.h>
-#include <scenarios/registered_entities.h>
+#include <entities/all_entities.h>
 
 using creator_helper::pos;
 
