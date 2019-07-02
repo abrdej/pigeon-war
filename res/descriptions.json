@@ -1,14 +1,14 @@
 {
   "descriptions": {
     "abilities": {
-      "shoot": "Shoot - the Shooter can fire two bullets per turn each deals <damage_> damage.\nRemaining bullets: <bullets_>.\n",
+      "shoot": "Shoot - the Shooter can fire two bullets per turn. Each one deals <damage_> damage.\nRemaining bullets: <bullets_>.\n",
       "grenade": "Grenade - the Shooter can throw out a grenade that will deal <damage_> damage to the main target and half of that to targets around it.\nIt can be used only once per battle.",
       "blow_the_ax": "Blow The Ax - deals damage of: <damage> to single target.",
       "armor": "Armor - limits the maximum damage from a single attack that Destroyer can receive to: <max_damage>.",
       "arrow": "Arrow - the commander can shoot an arrow within range of <range> and deal damage of <damage>.\nIt also applied effect of viewfinder.\nThis effect allows commander to target these units regardless of the distance.\nViewfinder lasts for <viewfinder_duration> turns.",
       "aura_of_immunity": "Aura Of Immunity - giant offers a nearby allies aure\nwhich apply damage reduction of <damage_reduction_for_friends>.\nGiant also has constant damage reduction of <damage_reduction_for_owner>.",
       "counterattack": "Counterattack - native performs a counterattack if\nthe attacker is within his range.\nCounterattack deals <damage>. It works only once per turn.",
-      "cure": "Cure - heals an ally by <healing_amount_per_turn> health and then the same amount every turn for <healing_duration> turns.\nMagic cost: <power_cost>.",
+      "cure": "Cure - heals the ally by <healing_amount_per_turn> points for <healing_duration> turns.\nMagic cost: <power_cost>.",
       "dodge": "Dodge - samurai avoids every third attack.\nReceived attacks from the last dodge: <counter>.",
       "drain": "Drain - deals damage of: <damage> and heals native by: <drain_amount> regardless of dealt damage.\nThis skill can heal over the base level of health.",
       "giant_blow": "Giant Blow - deals damage of <damage>.\nEvery third attack additionally causes that the enemy can attack\nonly the giant for one turn.\n",
@@ -27,7 +27,7 @@
       "stone_skin": "Stone Skin - with each received attack golem\nincrease his damage reduction by <reduction_increase_amount> points.\nCurrent damage reduction: <damage_reduction>.",
       "spider_web": "Spider Web - spider shoot his web within range of <range>.\nWeb deal <damage> damage, attracts the opponent and apply slow to him.",
       "jaw_spider": "Jaw Spider - deals <damage> damage.\nIf enemy is under Spider Web effect it deals <bonus_for_spider_web_effect> additional damage.",
-      "lightning": "Lightning - mark enemy with lightning target.\nIn next turn lightning will hit enemy and deal <damage> damage.\nThis spell cost <power_cost> magic power.\nActual magic power: <power>.",
+      "lightning": "Lightning - mark enemy with lightning target.\nIn next turn lightning will hit enemy and deal <damage> damage.\nMagic power cost: <power_cost>.",
       "sabers": "Sabers - saberhand can acquire several neighboring targets\nand deal each of them damage of: <damage>.",
       "mortar_thrower": "Mortar Thrower - fires area missile with range <range> which deals <base_damage> of damage.\nIf Rocket Launcher was used earlier Mortar Thrower gain <rocket_change_bonus> additional damage.",
       "rocket_launcher": "Rocket Launcher - fires missile to range <range> which deals <base_damage> + <distance_bonus> damage\nfor each unit of range.\nIf Mortar Thrower was used earlier Rocket Launcher gain <rocket_change_bonus> additional damage.",

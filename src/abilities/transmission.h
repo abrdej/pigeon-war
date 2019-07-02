@@ -2,7 +2,7 @@
 
 #include <abilities/path_target_ability.h>
 
-class transmission final : public path_target_ability<4> {
+class transmission final : public path_target_ability<4, target_types::all> {
 public:
     explicit transmission(std::uint32_t entity_id);
 
