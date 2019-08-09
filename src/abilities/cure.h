@@ -9,7 +9,7 @@
 #include "path_target_ability.h"
 #include "per_turn_usable.h"
 
-class cure : public path_target_ability<3, target_types::friendly>, per_turn_usable {
+class cure : public path_target_ability, per_turn_usable {
 public:
 	explicit cure(std::uint32_t entity_id);
 

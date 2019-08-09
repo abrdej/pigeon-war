@@ -1,22 +1,29 @@
 #pragma once
 
 #include <cstdint>
+#include <unordered_map>
+
+enum class modifiers {
+  damage_receiver,
+  damage_dealer,
+  shot_range,
+  move_range
+};
+
+struct modifiers_key_hash {
+  template <typename T>
+  std::size_t operator()(T t) const {
+    return static_cast<std::size_t>(t);
+  }
+};
 
 class modification {
-	std::int32_t damage_receiver_modifier{0};
-    std::int32_t damage_dealer_modifier{0};
-
+  std::unordered_map<modifiers, std::int32_t, modifiers_key_hash> modifiers_;
 public:
-    void modify_damage_receiver_modifier_by(std::int32_t x) {
-        damage_receiver_modifier += x;
-    }
-    void modify_damage_dealer_modifier_by(std::int32_t x) {
-        damage_dealer_modifier += x;
-    }
-    std::int32_t damage_receiver_modifier_value() const {
-        return damage_receiver_modifier;
-    }
-    std::int32_t damage_dealer_modifier_value() const {
-        return damage_dealer_modifier;
-    }
+  void modify_by(modifiers modifier, std::int32_t value) {
+    modifiers_[modifier] += value;
+  }
+  std::int32_t value(modifiers modifier) {
+    return modifiers_[modifier];
+  }
 };

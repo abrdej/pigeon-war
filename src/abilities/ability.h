@@ -49,6 +49,10 @@ struct passive_ability : ability {
   }
 };
 
+struct ranged_ability : active_ability {
+  std::int32_t range{0};
+};
+
 inline void try_prepare_ability(ability& x, std::uint32_t for_index) {
   try {
     dynamic_cast<active_ability&>(x).prepare(for_index);

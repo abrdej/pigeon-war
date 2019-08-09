@@ -12,7 +12,7 @@
 #include "damage_dealers.h"
 
 cure::cure(std::uint32_t entity_id)
-        : entity_id(entity_id) {}
+        : path_target_ability(3, target_types::friendly), entity_id(entity_id) {}
 
 
 void cure::use(std::uint32_t index_on) {

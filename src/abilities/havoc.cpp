@@ -6,7 +6,8 @@
 #include <messages/massages_makers.h>
 #include <server/sender.h>
 
-havoc::havoc(std::uint32_t entity_id) : entity_id(entity_id) {}
+havoc::havoc(std::uint32_t entity_id)
+  : path_target_ability(6), entity_id(entity_id) {}
 
 bool havoc::usable() const {
   auto& power = game_get<entity_manager>().get(entity_id).get<power_filed>()->power;

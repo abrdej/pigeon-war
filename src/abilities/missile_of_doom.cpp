@@ -6,7 +6,8 @@
 #include "missile_of_doom.h"
 #include "damage_dealers.h"
 
-missile_of_doom::missile_of_doom(std::uint32_t entity_id) {
+missile_of_doom::missile_of_doom(std::uint32_t entity_id)
+	: path_target_ability(3) {
 	after_player_turn(entity_id, [this, entity_id]() {
 		if (!used && accumulated_damage == 0) {
 			accumulated_damage += damage;

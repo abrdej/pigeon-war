@@ -9,6 +9,8 @@
 #include "core/turn_system.h"
 #include "server/sender.h"
 
+hypnosis::hypnosis() : path_target_ability(4, target_types::enemy, true) {}
+
 void hypnosis::use(std::uint32_t index_on) {
 
 	if (used)

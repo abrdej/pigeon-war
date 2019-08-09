@@ -6,7 +6,8 @@
 #include "damage_dealers.h"
 #include "abilities.h"
 
-ball_and_chain::ball_and_chain(std::uint32_t entity_id) : entity_id(entity_id) {
+ball_and_chain::ball_and_chain(std::uint32_t entity_id)
+	: path_target_ability(3), entity_id(entity_id) {
 
 }
 

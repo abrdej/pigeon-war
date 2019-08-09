@@ -14,8 +14,9 @@ bool aura_of_immunity_effect::set_effect(std::uint32_t entity_id) {
 
         std::cout << "Apply aura\n";
 
-        game::get<entity_manager>().get(entity_id).get<modification>()->modify_damage_receiver_modifier_by(
-                -damage_reduction);
+        game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(
+          modifiers::damage_receiver,
+          -damage_reduction);
 
         return true;
     }
@@ -27,7 +28,7 @@ void aura_of_immunity_effect::remove_effect(std::uint32_t entity_id) {
 
         std::cout << "Remove aura\n";
 
-        game::get<entity_manager>().get(entity_id).get<modification>()->modify_damage_receiver_modifier_by(
-                damage_reduction);
+        game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(
+          modifiers::damage_receiver, damage_reduction);
     }
 }

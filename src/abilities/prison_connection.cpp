@@ -7,7 +7,7 @@
 #include <core/board.h>
 
 prison_connection::prison_connection(std::uint32_t entity_id)
-        : entity_id(entity_id) {}
+        : path_target_ability(4), entity_id(entity_id) {}
 
 void prison_connection::use(std::uint32_t index_on) {
 

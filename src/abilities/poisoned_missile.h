@@ -1,20 +1,14 @@
-//
-// Created by abrdej on 14.11.17.
-//
+#pragma once
 
-#ifndef PIGEONWAR_POISONED_MISSILE_H
-#define PIGEONWAR_POISONED_MISSILE_H
+#include <abilities/path_target_ability.h>
+#include <abilities/per_turn_usable.h>
 
-#include "path_target_ability.h"
-#include "per_turn_usable.h"
-
-class poisoned_missile final : public path_target_ability<4>, per_turn_usable
+class poisoned_missile final : public path_target_ability, per_turn_usable
 {
 public:
+  explicit poisoned_missile(std::uint32_t entity_id);
 
-  bitmap_key get_bitmap_key() const override {
-    return "poisoned_missile";
-  }
+  ADD_BITMAP_GETTER(poisoned_missile)
 
   std::string hint() const override;
 
@@ -26,9 +20,7 @@ private:
   void use(std::uint32_t index_on) override;
 
 private:
-  const std::int32_t damage{6};
-  const std::int32_t poison_power{5};
-  const std::int32_t poison_duration{3};
+  const std::int32_t damage_{6};
+  const std::int32_t poison_power_{5};
+  const std::int32_t poison_duration_{3};
 };
-
-#endif //PIGEONWAR_POISONED_MISSILE_H

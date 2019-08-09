@@ -42,6 +42,7 @@ set(SOURCE_FILES
         src/abilities/sword_blow.h
         src/abilities/bludgeon.h
         src/abilities/bludgeon.cpp
+        src/entities/poisoner.cpp
         src/entities/poisoner.h
         src/abilities/poisoned_missile.cpp
         src/abilities/poisoned_missile.h
@@ -362,7 +363,9 @@ set(SOURCE_FILES
         src/ai/ai_knowledge.h
         src/ai/action_makers.cpp
         src/ai/action_makers.h
-        src/ai/ai_factories.h)
+        src/ai/ai_factories.h
+        src/abilities/smokescreen.cpp
+        src/abilities/smokescreen.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server pthread)

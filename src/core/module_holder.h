@@ -24,7 +24,7 @@ public:
         if (it != std::end(modules))
             return std::static_pointer_cast<T>(it->second);
         else {
-            std::cout << "get component which doesn't exist\n" << typeid(T).name() << "\n";
+            std::cout << "get component which doesn't exist: " << typeid(T).name() << "\n";
             return std::shared_ptr<T>();
         }
     }

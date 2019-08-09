@@ -7,7 +7,7 @@
 
 
 killer_instinct::killer_instinct(std::uint32_t entity_id)
-		: entity_id(entity_id) {
+		: path_target_ability(7, target_types::moving), entity_id(entity_id) {
 }
 
 void killer_instinct::prepare(std::uint32_t for_index) {

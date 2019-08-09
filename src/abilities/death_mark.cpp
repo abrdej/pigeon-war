@@ -4,7 +4,7 @@
 #include "components/applied_effects.h"
 #include "components/damage_taker.h"
 
-death_mark::death_mark(std::uint32_t entity_id) : entity_id(entity_id) {
+death_mark::death_mark(std::uint32_t entity_id) : path_target_ability(3), entity_id(entity_id) {
 
 }
 

@@ -42,7 +42,7 @@ void laser::use(std::uint32_t index_on) {
 				damage_dealers::standard_damage_dealer(special_damage(damage, enemy_id, entity_id));
 
 				if (game::get<entity_manager>().get(enemy_id).contain<modification>()) {
-					game::get<entity_manager>().get(enemy_id).get<modification>()->modify_damage_receiver_modifier_by(bonus_damage);
+					game::get<entity_manager>().get(enemy_id).get<modification>()->modify_by(modifiers::damage_receiver, bonus_damage);
 				}
 			}
 		}
@@ -56,7 +56,7 @@ void laser::use(std::uint32_t index_on) {
 				damage_dealers::standard_damage_dealer(special_damage(damage, game_board().at(index), entity_id));
 
 				if (game::get<entity_manager>().get(enemy_id).contain<modification>()) {
-					game::get<entity_manager>().get(enemy_id).get<modification>()->modify_damage_receiver_modifier_by(bonus_damage);
+					game::get<entity_manager>().get(enemy_id).get<modification>()->modify_by(modifiers::damage_receiver, bonus_damage);
 				}
 			}
 		}

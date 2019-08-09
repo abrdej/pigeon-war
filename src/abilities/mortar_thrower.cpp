@@ -8,7 +8,8 @@
 #include <messages/massages_makers.h>
 #include <server/sender.h>
 
-mortar_thrower::mortar_thrower(std::uint32_t entity_id) : entity_id(entity_id) {}
+mortar_thrower::mortar_thrower(std::uint32_t entity_id)
+  : path_target_ability(4), entity_id(entity_id) {}
 
 void mortar_thrower::use(std::uint32_t on_index) {
 

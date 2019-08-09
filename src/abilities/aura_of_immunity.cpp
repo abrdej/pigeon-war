@@ -13,7 +13,7 @@
 aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)
 		: entity_id(entity_id) {
 
-	game::get<entity_manager>().get(entity_id).get<modification>()->modify_damage_receiver_modifier_by(-damage_reduction_for_owner);
+	game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(modifiers::damage_receiver, -damage_reduction_for_owner);
 
 	game::get<auras_observer>().add_aura(entity_id, std::make_shared<aura_of_immunity_effect>(entity_id, damage_reduction_for_friends));
 

@@ -7,9 +7,11 @@
 
 #include "path_target_ability.h"
 
-class hypnosis final : public path_target_ability<4, target_types::enemy, true>
+class hypnosis final : public path_target_ability
 {
 public:
+	hypnosis();
+
 	bitmap_key get_bitmap_key() const override {
 		return "hypnosis";
 	}

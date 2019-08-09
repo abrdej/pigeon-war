@@ -9,7 +9,7 @@
 #include "per_turn_usable.h"
 
 
-class death_mark : public path_target_ability<3> {
+class death_mark : public path_target_ability {
 public:
 	explicit death_mark(std::uint32_t entity_id);
 	~death_mark();

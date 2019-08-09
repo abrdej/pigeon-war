@@ -8,7 +8,7 @@
 #include "path_target_ability.h"
 #include "per_turn_usable.h"
 
-class uselessness : public path_target_ability<3> {
+class uselessness : public path_target_ability {
 public:
     explicit uselessness(std::uint32_t entity_id);
 

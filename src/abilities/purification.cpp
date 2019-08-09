@@ -9,23 +9,25 @@
 #include <components/applied_effects.h>
 #include <messages/massages_makers.h>
 
-purification::purification(std::uint32_t entity_id) : entity_id(entity_id) {}
+purification::purification(std::uint32_t entity_id)
+  : path_target_ability(3, target_types::friendly),
+    entity_id(entity_id) {}
 
 void purification::use(std::uint32_t index_on) {
 
-    if (used) {
-        return;
-    }
+  if (used) {
+    return;
+  }
 
-    if (!use_ability_at_the_expense_of_power(entity_id, power_cost)) {
-        return;
-    }
+  if (!use_ability_at_the_expense_of_power(entity_id, power_cost)) {
+    return;
+  }
 
-    auto friend_id = game_board().at(index_on);
+  auto friend_id = game_board().at(index_on);
 
-    sender::send(make_action_message("purification", index_on));
+  sender::send(make_action_message("purification", index_on));
 
-    remove_negative_effects(friend_id);
+  remove_negative_effects(friend_id);
 
-    used = true;
+  used = true;
 }

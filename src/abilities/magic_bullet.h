@@ -3,7 +3,7 @@
 #include <abilities/path_target_ability.h>
 #include <abilities/per_turn_usable.h>
 
-class magic_bullet final : public path_target_ability<3>, protected per_turn_callback
+class magic_bullet final : public path_target_ability, protected per_turn_callback
 {
 public:
   explicit magic_bullet(std::uint32_t entity_id);

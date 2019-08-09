@@ -5,7 +5,7 @@
 #include <components/power_field.h>
 
 magic_bullet::magic_bullet(std::uint32_t entity_id)
-    : entity_id(entity_id) {
+    : path_target_ability(3), entity_id(entity_id) {
 
   auto power = game::get<entity_manager>().get(entity_id).get<power_filed>();
 

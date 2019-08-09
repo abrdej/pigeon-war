@@ -4,6 +4,7 @@
 #include <abilities/grenade.h>
 #include <abilities/moveable.h>
 #include <abilities/shoot.h>
+#include <abilities/smokescreen.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 
@@ -19,4 +20,5 @@ void shooter::create(base_entity& entity) {
     abilities_ptr->add_ability(std::make_shared<moveable>(4));
     abilities_ptr->add_ability(std::make_shared<shoot>(entity.entity_id));
     abilities_ptr->add_ability(std::make_shared<grenade>(entity.entity_id));
+    abilities_ptr->add_ability(std::make_shared<smokescreen>(entity.entity_id));
 }

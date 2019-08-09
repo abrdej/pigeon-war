@@ -3,13 +3,14 @@
 #include "path_target_ability.h"
 #include "per_turn_usable.h"
 
-class havoc final : public path_target_ability<6>
-{
+class havoc final : public path_target_ability {
 public:
   explicit havoc(std::uint32_t entity_id);
+
   bitmap_key get_bitmap_key() const override {
     return "havoc";
   }
+
   ability_types type() const override {
     return ability_types::special;
   }

@@ -35,7 +35,7 @@ private:
 	boost::circular_buffer<std::shared_ptr<std::uint32_t>>* buffer{nullptr};
 };
 
-class bomb final : public path_target_ability<4, target_types::moving, true>,
+class bomb final : public path_target_ability,
 				   protected turn_callback_helper {
 public:
 	explicit bomb(std::uint32_t entity_id);

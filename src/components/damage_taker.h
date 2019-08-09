@@ -76,12 +76,12 @@ public:
         damage_pack damage_pack = dmg;
 
         if (receiver_entity.contain<modification>()) {
-            damage_pack.damage_value += receiver_entity.get<modification>()->damage_receiver_modifier_value();
+            damage_pack.damage_value += receiver_entity.get<modification>()->value(modifiers::damage_receiver);
         }
         if (dmg.damage_dealer_id != no_damage_dealer) {
             auto dealer_entity = game::get<entity_manager>().get(dmg.damage_dealer_id);
             if (dealer_entity.contain<modification>()) {
-                damage_pack.damage_value += dealer_entity.get<modification>()->damage_dealer_modifier_value();
+                damage_pack.damage_value += dealer_entity.get<modification>()->value(modifiers::damage_dealer);
             }
         }
 

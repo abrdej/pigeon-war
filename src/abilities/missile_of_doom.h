@@ -8,7 +8,7 @@
 #include "path_target_ability.h"
 #include "per_turn_usable.h"
 
-class missile_of_doom final : public path_target_ability<3>, protected turn_callback_helper
+class missile_of_doom final : public path_target_ability, protected turn_callback_helper
 {
 public:
 	explicit missile_of_doom(std::uint32_t entity_id);

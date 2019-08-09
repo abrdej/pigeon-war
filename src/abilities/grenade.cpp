@@ -3,7 +3,8 @@
 #include <abilities/damage_dealers.h>
 #include <core/board.h>
 
-grenade::grenade(std::uint32_t entity_id) : entity_id_(entity_id) {}
+grenade::grenade(std::uint32_t entity_id)
+  : path_target_ability(3), entity_id_(entity_id) {}
 
 void grenade::use(std::uint32_t on_index) {
   if (used_)

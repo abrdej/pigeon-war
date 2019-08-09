@@ -2,7 +2,7 @@
 
 #include <abilities/path_target_ability.h>
 
-class grenade final : public path_target_ability<3> {
+class grenade final : public path_target_ability {
 public:
   explicit grenade(std::uint32_t entity_id);
 

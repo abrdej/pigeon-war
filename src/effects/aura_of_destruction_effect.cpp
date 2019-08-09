@@ -17,7 +17,7 @@ bool aura_of_destruction_effect::set_effect(std::uint32_t entity_id) {
 
         std::cout << "Apply aura\n";
 
-        game::get<entity_manager>().get(entity_id).get<modification>()->modify_damage_dealer_modifier_by(
+        game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(modifiers::damage_dealer,
                 damage_increase);
 
         return true;
@@ -26,5 +26,5 @@ bool aura_of_destruction_effect::set_effect(std::uint32_t entity_id) {
 }
 
 void aura_of_destruction_effect::remove_effect(std::uint32_t entity_id) {
-    game::get<entity_manager>().get(entity_id).get<modification>()->modify_damage_dealer_modifier_by(-damage_increase);
+    game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(modifiers::damage_dealer, -damage_increase);
 }

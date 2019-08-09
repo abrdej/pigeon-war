@@ -6,7 +6,8 @@
 #include <messages/massages_makers.h>
 #include "uselessness.h"
 
-uselessness::uselessness(std::uint32_t entity_id) : entity_id(entity_id) {
+uselessness::uselessness(std::uint32_t entity_id)
+  : path_target_ability(3), entity_id(entity_id) {
 
 }
 
@@ -37,11 +38,11 @@ void uselessness::use(std::uint32_t index_on) {
     auto reduction = damage_reduction_for_power * power;
     auto dmg_reduction_for_power = damage_reduction_for_power;
 
-    game::get<entity_manager>().get(enemy_id).get<modification>()->modify_damage_dealer_modifier_by(-reduction);
+    game::get<entity_manager>().get(enemy_id).get<modification>()->modify_by(modifiers::damage_dealer, -reduction);
 
     auto uselessness_connection = make_every_two_turns_from_next_callback_holder(power,
                                                                                [enemy_id, dmg_reduction_for_power](const turn_callback_info& info) mutable {
-                                                                                   game::get<entity_manager>().get(enemy_id).get<modification>()->modify_damage_dealer_modifier_by(dmg_reduction_for_power);
+                                                                                   game::get<entity_manager>().get(enemy_id).get<modification>()->modify_by(modifiers::damage_dealer, dmg_reduction_for_power);
                                                                                    if (info.ended) {
                                                                                        remove_effect(enemy_id,
                                                                                                      "uselessness");

@@ -7,7 +7,8 @@
 #include <messages/massages_makers.h>
 #include <server/sender.h>
 
-arrow::arrow(std::uint32_t entity_id) : entity_id(entity_id) {}
+arrow::arrow(std::uint32_t entity_id)
+  : path_target_ability(3), entity_id(entity_id) {}
 
 void arrow::prepare(std::uint32_t for_index) {
 

@@ -3,7 +3,7 @@
 #include <abilities/path_target_ability.h>
 #include <abilities/per_turn_usable.h>
 
-class prison_connection : public path_target_ability<4>, per_turn_usable {
+class prison_connection : public path_target_ability, per_turn_usable {
 public:
 	explicit prison_connection(std::uint32_t entity_id);
 
