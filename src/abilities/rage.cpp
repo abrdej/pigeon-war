@@ -18,7 +18,7 @@ rage::rage(std::uint32_t id) : entity_id(id) {
 			use();
 			damage_this_turn = 0;
 		}
-	}, damage_taker::on_receive_damage_policy::after);
+	}, on_receive_damage_policy::after);
 }
 
 void rage::use() {

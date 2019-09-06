@@ -11,7 +11,7 @@ void saurian::create(base_entity& entity)
     entity.name = "Saurian";
 
     entity.add<health_field>(35);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
 

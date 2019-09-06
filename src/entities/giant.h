@@ -20,7 +20,7 @@ struct giant final
         entity.name = "Giant";
 
         entity.add<health_field>(70);
-        entity.add<damage_taker>();
+        // entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();
 

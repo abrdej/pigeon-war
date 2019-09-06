@@ -9,7 +9,7 @@
 spear::spear(std::uint32_t id) : entity_id(id) {
     on_receive_damage(entity_id, [this](const damage_pack& dmg) mutable {
        accumulated_damage += additional_damage;
-    }, damage_taker::on_receive_damage_policy::after);
+    }, on_receive_damage_policy::after);
 }
 
 void spear::use(std::uint32_t on_index) {

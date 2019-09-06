@@ -12,7 +12,7 @@ void saberhand::create(base_entity& entity)
     entity.name = "Saberhand";
 
     entity.add<health_field>(60);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
 

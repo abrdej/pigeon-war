@@ -2,8 +2,9 @@
 
 #include <abilities/abilities.h>
 #include <core/board.h>
+#include <core/defs.h>
 
-std::string get_button_description(std::uint32_t selected_index, std::uint32_t button_id) {
+std::string get_button_description(index_t selected_index, std::uint32_t button_id) {
     auto entity_id = game_board().at(selected_index);
     auto entity = game::get<entity_manager>().get(entity_id);
 

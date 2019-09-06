@@ -11,7 +11,7 @@ void poisoner::create(base_entity& entity) {
   entity.name = "Poisoner";
 
   entity.add<health_field>(35);
-  entity.add<damage_taker>();
+  // entity.add<damage_taker>();
   entity.add<applied_effects>();
   entity.add<modification>();
 

@@ -39,3 +39,6 @@
 #include <entities/grenadier.h>
 #include <entities/eye.h>
 #include <entities/spectre.h>
+#include <entities/snake.h>
+#include <entities/trailer.h>
+#include <entities/sentinel.h>

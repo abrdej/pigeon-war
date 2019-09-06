@@ -11,10 +11,12 @@ public:
 
   std::string hint() const override;
 
+  bool usable() const override;
+
 private:
   void use(std::uint32_t index_on) override;
 
-  std::uint32_t entity_id;
-  std::int32_t damage{12};
-  std::int32_t power_cost{10};
+  std::uint32_t entity_id_;
+  std::int32_t damage_{12};
+  std::int32_t power_cost_{10};
 };

@@ -5,7 +5,8 @@
 #include <core/game_controller.h>
 
 revolver::revolver(std::uint32_t entity_id)
-  : entity_id(entity_id) {
+  : path_target_ability(3),
+    entity_id(entity_id) {
   on_every_two_turns_from_next([this]() {
     used = false;
     additional_shot = false;

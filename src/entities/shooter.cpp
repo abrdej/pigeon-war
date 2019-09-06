@@ -12,7 +12,7 @@ void shooter::create(base_entity& entity) {
     entity.name = "Shooter";
 
     entity.add<health_field>(50);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
 

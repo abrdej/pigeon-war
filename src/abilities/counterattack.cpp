@@ -24,7 +24,7 @@ counterattack::counterattack(std::uint32_t entity_id)
                 }
             }
         }
-    }, damage_taker::on_receive_damage_policy::after);
+    }, on_receive_damage_policy::after);
 }
 
 void counterattack::use(std::uint32_t index_on) {

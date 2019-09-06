@@ -4,7 +4,7 @@
 #include <abilities/per_turn_usable.h>
 #include <abilities/path_target_ability.h>
 
-class revolver final : public path_target_ability<4>,
+class revolver final : public path_target_ability,
                        turn_callback_helper
 {
 public:
@@ -13,6 +13,10 @@ public:
   ADD_BITMAP_GETTER(revolver)
 
   DEFINE_DESC_ONE(revolver, damage)
+
+  bool usable() const override {
+    return !used;
+  }
 
 private:
   void use(std::uint32_t index_on) final;

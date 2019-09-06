@@ -43,7 +43,7 @@ void uselessness::use(std::uint32_t index_on) {
     auto uselessness_connection = make_every_two_turns_from_next_callback_holder(power,
                                                                                [enemy_id, dmg_reduction_for_power](const turn_callback_info& info) mutable {
                                                                                    game::get<entity_manager>().get(enemy_id).get<modification>()->modify_by(modifiers::damage_dealer, dmg_reduction_for_power);
-                                                                                   if (info.ended) {
+                                                                                   if (info.is_ending) {
                                                                                        remove_effect(enemy_id,
                                                                                                      "uselessness");
                                                                                    }

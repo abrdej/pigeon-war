@@ -1,6 +1,7 @@
 #pragma once
 
 #include <limits>
+#include <cstdint>
 
 static const std::int32_t indestructible = std::numeric_limits<std::int32_t>::max();
 

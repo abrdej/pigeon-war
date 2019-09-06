@@ -17,7 +17,7 @@ struct sniper final
         entity.name = "Sniper";
 
         entity.add<health_field>(35);
-        entity.add<damage_taker>();
+        // entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();
 

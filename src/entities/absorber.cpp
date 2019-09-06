@@ -10,7 +10,7 @@ void absorber::create(base_entity& entity) {
     entity.name = "Absorber";
 
     entity.add<health_field>(50);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
 

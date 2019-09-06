@@ -18,7 +18,7 @@ public:
         entity.name = "Killer";
 
         entity.add<health_field>(40);
-        entity.add<damage_taker>();
+        // entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();
 

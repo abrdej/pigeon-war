@@ -1,6 +1,7 @@
 #ifndef WEREWOLF_H
 #define WEREWOLF_H
 
+#include <abilities/abilities.h>
 #include <abilities/drain.h>
 #include <abilities/wolf_herd.h>
 #include "entity.h"
@@ -12,12 +13,10 @@ struct werewolf final
 {
 	static void create(base_entity& entity)
 	{
-		base_entity entity;
-		entity.entity_id = entity_id;
 		entity.name = "Werewolf";
 
 		entity.add<health_field>(60);
-		entity.add<damage_taker>();
+		// entity.add<damage_taker>();
 		entity.add<applied_effects>();
 		entity.add<modification>();
 

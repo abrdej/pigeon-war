@@ -8,5 +8,5 @@ void saurian_web::create(base_entity& entity)
     entity.name = "Saurian Web";
 
     entity.add<health_field>(20);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
 }

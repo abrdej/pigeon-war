@@ -170,8 +170,8 @@ set(SOURCE_FILES
         src/entities/native.h
         src/entities/killer.h
         src/entities/giant.h
-        src/effects/aura_of_immunity_effect.cpp
-        src/effects/aura_of_immunity_effect.h
+        src/effects/aura_of_armor_effect.cpp
+        src/effects/aura_of_armor_effect.h
         src/effects/auras_observer.cpp
         src/effects/auras_observer.h
         src/server/server.h
@@ -372,7 +372,12 @@ set(SOURCE_FILES
         src/abilities/revolver.h
         src/abilities/fast_draw.cpp
         src/abilities/fast_draw.h
-        )
+        src/entities/trailer.cpp
+        src/entities/trailer.h
+        src/abilities/talons.cpp
+        src/abilities/talons.h
+        src/abilities/trash_trail.cpp
+        src/abilities/trash_trail.h src/entities/sentinel.cpp src/entities/sentinel.h src/abilities/stamp.cpp src/abilities/stamp.h src/abilities/sparks.cpp src/abilities/sparks.h src/core/defs.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server pthread)

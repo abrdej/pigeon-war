@@ -10,7 +10,7 @@ void pixie::create(base_entity& entity) {
     entity.name = "Pixie";
 
     entity.add<health_field>(30);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
 

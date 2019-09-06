@@ -40,7 +40,7 @@ defender::defender(std::uint32_t entity_id) {
 //
 //                        damage_dealers::standard_damage_dealer(magic_damage(damage, dmg.damage_dealer_id, entity_id));
 //
-//                    }, damage_taker::on_receive_damage_policy::after);
+//                    }, on_receive_damage_policy::after);
 //
 //                    callbacks_ids.emplace_back(protected_id, callback_id);
 //                }

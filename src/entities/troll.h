@@ -21,7 +21,7 @@ struct troll final
 		entity.name = "Troll";
 
 		entity.add<health_field>(80);
-		entity.add<damage_taker>();
+		// entity.add<damage_taker>();
 		entity.add<applied_effects>();
 		entity.add<modification>();
 

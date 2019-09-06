@@ -8,7 +8,7 @@
       "arrow": "Arrow - the commander can shoot an arrow within range of <range> and deal damage of <damage>.\nIt also applied effect of viewfinder.\nThis effect allows commander to target these units regardless of the distance.\nViewfinder lasts for <viewfinder_duration> turns.",
       "aura_of_immunity": "Aura Of Immunity - giant offers a nearby allies aure\nwhich apply damage reduction of <damage_reduction_for_friends>.\nGiant also has constant damage reduction of <damage_reduction_for_owner>.",
       "counterattack": "Counterattack - native performs a counterattack if\nthe attacker is within his range.\nCounterattack deals <damage>. It works only once per turn.",
-      "cure": "Cure - heals the ally by <healing_amount_per_turn> points for <healing_duration> turns.\nMagic cost: <power_cost>.",
+      "cure": "Cure - heals the ally by <healing_amount_per_turn_> points for <healing_duration_> turns.\nMagic cost: <power_cost_>.",
       "dodge": "Dodge - samurai avoids every third attack.\nReceived attacks from the last dodge: <counter>.",
       "drain": "Drain - deals damage of: <damage> and heals native by: <drain_amount> regardless of dealt damage.\nThis skill can heal over the base level of health.",
       "giant_blow": "Giant Blow - deals damage of <damage>.\nEvery third attack additionally causes that the enemy can attack\nonly the giant for one turn.\n",
@@ -22,7 +22,7 @@
       "moveable": "Move - standard way to move.\nRange: <range>.",
       "warrior_blow": "Warrior Blow - deals the more damage the less warrior has health.\nBase damage is <damage>.",
       "teleport": "Teleport - teleports the droid to a selected place on the map.\nIt can be used only once per battle.",
-      "sword_blow": "Sword Blow - deals damage of: <damage> to all units around the samurai.\nIf the samurai hits minimum tree units he performs an additional blow.",
+      "sword_blow": "Sword Blow - deals damage of: <damage_> to all units around the samurai.\nIf the samurai hits minimum tree units he performs an additional blow.",
       "surroundings": "Surroundings - spider get <damage_reduction> damage reduction for each enemy\n in his neighborhood.Minimum damage is <min_damage>.",
       "stone_skin": "Stone Skin - with each received attack golem\nincrease his damage reduction by <reduction_increase_amount> points.\nCurrent damage reduction: <damage_reduction>.",
       "spider_web": "Spider Web - spider shoot his web within range of <range>.\nWeb deal <damage> damage, attracts the opponent and apply slow to him.",
@@ -37,7 +37,8 @@
       "prison_connection": "Prison Connection - The Sorcerer throw a spell that deals <base_damage> of magic damage and apply prison connection effect. This effect last <duration> turns and causes to receive damage by every entity with it when sorcerer will use this skill next time. Additionally, for ech entity with a prison connection he gain <damage_per_entities_with_effect> to base damage.",
       "spear": "Spear - deals damage of <damage>.\nAdditionally for every received attack, guardian accumulates <additional_damage> damage which is consumed in the next attack.\nAccumulated damage: <accumulated_damage>.",
       "shield": "Shield - the Guardian receive only 50% percent from ranged damage.",
-      "aura_of_destruction": "Aura Of Destruction - the Commander is protected by a magical aura with the strength equal his power points. If he will be attacked half of the damage received can be returned to his opponent in the form of a magical attack, consuming the aura power points."
+      "aura_of_destruction": "Aura Of Destruction - the Commander is protected by a magical aura with the strength equal his power points. If he will be attacked half of the damage received can be returned to his opponent in the form of a magical attack, consuming the aura power points.",
+      "stamp": "Stamp - deal <damage_> damage.\nEvery third attack apply stun on the enemy.\nStun last <stun_duration_> turn.\nStanned entity can't move.\nAttacks from last stun: <stamps_>."
     },
     "effects": {
       "viewfinder": "Viewfinder - the commander can use the arrow ability regardless of the distance from entity with applied effect.",

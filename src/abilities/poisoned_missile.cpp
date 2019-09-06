@@ -35,7 +35,7 @@ void poisoned_missile::use(std::uint32_t index_on) {
 
           damage_dealers::standard_damage_dealer(special_damage(poison_power, enemy_id));
 
-          if (info.ended) {
+          if (info.is_ending) {
             if (game::get<entity_manager>().alive(enemy_id)) {
               remove_effect(enemy_id, "poisoning");
             }

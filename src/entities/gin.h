@@ -21,7 +21,7 @@ struct gin final
 
         entity.add<health_field>(45);
         entity.add<power_filed>(entity.entity_id, 0, 1);
-        entity.add<damage_taker>();
+        // entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();
 

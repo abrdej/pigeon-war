@@ -23,7 +23,6 @@ public:
 
 		entity.add<health_field>(45);
 		entity.add<power_filed>(entity.entity_id, 10, 10, 30);
-		entity.add<damage_taker>();
 		entity.add<applied_effects>();
 		entity.add<modification>();
 

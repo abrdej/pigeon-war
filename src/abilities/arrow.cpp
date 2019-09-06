@@ -53,7 +53,7 @@ void arrow::use(std::uint32_t index_on) {
         auto viewfinder_connection =
                 make_after_n_round_callback_holder(viewfinder_duration,
                                                    [this, enemy_id, caster_id](const turn_callback_info& info) mutable {
-                                                       if (info.ended) {
+                                                       if (info.is_ending) {
                                                            if (game::get<entity_manager>().alive(enemy_id)) {
                                                                remove_effect(enemy_id, "viewfinder");
                                                            }

@@ -1,9 +1,9 @@
-#include <effects/aura_of_immunity_effect.h>
+#include <effects/aura_of_armor_effect.h>
 
 #include <components/applied_effects.h>
 #include <components/modification.h>
 
-bool aura_of_immunity_effect::set_effect(std::uint32_t entity_id) {
+bool aura_of_armor_effect::set_effect(std::uint32_t entity_id) {
 
     auto player_id = game::get<players_manager>().player_for_entity(this->entity_id);
 
@@ -23,7 +23,7 @@ bool aura_of_immunity_effect::set_effect(std::uint32_t entity_id) {
     return false;
 }
 
-void aura_of_immunity_effect::remove_effect(std::uint32_t entity_id) {
+void aura_of_armor_effect::remove_effect(std::uint32_t entity_id) {
     if (game::get<entity_manager>().get(entity_id).contain<modification>()) {
 
         std::cout << "Remove aura\n";

@@ -28,7 +28,7 @@ fast_draw::fast_draw(std::uint32_t entity_id)
         }
       }
     }
-  }, damage_taker::on_receive_damage_policy::after);
+  }, on_receive_damage_policy::after);
 }
 
 void fast_draw::use(std::uint32_t index_on) {

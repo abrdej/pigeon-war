@@ -16,7 +16,7 @@ struct golem final
         entity.name = "Golem";
 
         entity.add<health_field>(60);
-        entity.add<damage_taker>();
+        // entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();
 

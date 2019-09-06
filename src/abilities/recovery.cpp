@@ -5,7 +5,7 @@ recovery::recovery(std::uint32_t id) : entity_id(id) {
 
 //    on_receive_damage(entity_id, [this](const damage_pack&) {
 //        no_damage_counter = 0;
-//    }, damage_taker::on_receive_damage_policy::after);
+//    }, on_receive_damage_policy::after);
 //
 //    onEveryRound([this]() {
 //        ++no_damage_counter;

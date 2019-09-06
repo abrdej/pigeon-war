@@ -15,7 +15,6 @@ struct TYPE { \
     static void create(base_entity& entity) { \
         entity.name = #NAME; \
         entity.add<health_field>(HEALTH); \
-        entity.add<damage_taker>(); \
         entity.add<modification>(); \
     } \
 }

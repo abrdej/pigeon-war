@@ -14,7 +14,7 @@ void commander::create(base_entity& entity)
 
     entity.add<health_field>(50);
     entity.add<power_filed>(entity.entity_id, 10, 5, 10);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
 

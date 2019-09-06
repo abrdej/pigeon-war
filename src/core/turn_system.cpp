@@ -1,17 +1,15 @@
 #include <core/turn_system.h>
 
 void turn_system::end_turn() {
-    ++turn_n;
+  ++this_turn_;
+  next_turn_signal_();
 
-    next_turn_signal();
-
-    auto result = tasks.equal_range(turn_n);
-    auto it = result.first;
-    for (; it != result.second; ++it) {
-        it->second();
-    }
+  auto result = on_turn_scheduled_.equal_range(this_turn_);
+  for (auto it = result.first; it != result.second; ++it) {
+    it->second();
+  }
 }
 
-void turn_system::on_turn(std::uint32_t turn_n, const std::function<void()>& task) {
-    tasks.emplace(turn_n, task);
+void turn_system::on_turn(std::uint32_t n, const turn_callback& callback) {
+  on_turn_scheduled_.emplace(n, callback);
 }

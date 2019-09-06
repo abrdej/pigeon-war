@@ -237,7 +237,7 @@ std::string create_skirmish(const std::string& map_name,
 
                                 ++selections;
 
-                                if (info.ended) {
+                                if (info.is_ending) {
                                     for (auto&& entity_to_remove : entities_to_choose) {
                                         game::get<entity_manager>().destroy(entity_to_remove);
                                     }

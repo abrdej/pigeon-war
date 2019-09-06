@@ -14,7 +14,7 @@ void spectre::create(base_entity& entity) {
 
     entity.add<health_field>(35);
     entity.add<power_filed>(entity.entity_id, 0, 0, 20);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
 

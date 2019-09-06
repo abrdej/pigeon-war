@@ -11,7 +11,7 @@ void native::create(base_entity& entity) {
     entity.name = "Native";
 
     entity.add<health_field>(50);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
 

@@ -12,7 +12,7 @@ void rocket_thrower::create(base_entity& entity)
     entity.name = "Rocket Thrower";
 
     entity.add<health_field>(40);
-    entity.add<damage_taker>();
+    // entity.add<damage_taker>();
     entity.add<applied_effects>();
     entity.add<modification>();
     entity.add<rocket_types>(rocket_types::long_range_rocket);

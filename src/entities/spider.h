@@ -19,7 +19,7 @@ struct spider final
         entity.name = "Spider";
 
         entity.add<health_field>(45);
-        entity.add<damage_taker>();
+        // entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();
 

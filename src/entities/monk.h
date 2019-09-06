@@ -19,7 +19,7 @@ public:
 
         entity.add<health_field>(45);
         entity.add<power_filed>(entity.entity_id, 10, 0);
-        entity.add<damage_taker>();
+        // entity.add<damage_taker>();
         entity.add<applied_effects>();
         entity.add<modification>();
 
