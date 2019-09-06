@@ -13,5 +13,5 @@ DEFINE_BEHAVIOR_NODE(find_lowest_health_target)
 
 DEFINE_BEHAVIOR_NODE(find_best_target_for_golem)
 
-} // namespace nodes
-} // namespace ai
+}  // namespace nodes
+}  // namespace ai

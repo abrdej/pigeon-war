@@ -4,31 +4,26 @@
 #include <components/modification.h>
 
 bool aura_of_armor_effect::set_effect(std::uint32_t entity_id) {
+  auto player_id = game::get<players_manager>().player_for_entity(this->entity_id);
 
-    auto player_id = game::get<players_manager>().player_for_entity(this->entity_id);
+  if (player_id != players_ids::no_player_id &&
+      game::get<players_manager>().player_entity(player_id, entity_id) &&
+      game::get<entity_manager>().get(entity_id).contain<modification>()) {
+    std::cout << "Apply aura\n";
 
+    game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(
+        modifiers::damage_receiver, -damage_reduction);
 
-    if (player_id != players_ids::no_player_id &&
-        game::get<players_manager>().player_entity(player_id, entity_id) &&
-        game::get<entity_manager>().get(entity_id).contain<modification>()) {
-
-        std::cout << "Apply aura\n";
-
-        game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(
-          modifiers::damage_receiver,
-          -damage_reduction);
-
-        return true;
-    }
-    return false;
+    return true;
+  }
+  return false;
 }
 
 void aura_of_armor_effect::remove_effect(std::uint32_t entity_id) {
-    if (game::get<entity_manager>().get(entity_id).contain<modification>()) {
+  if (game::get<entity_manager>().get(entity_id).contain<modification>()) {
+    std::cout << "Remove aura\n";
 
-        std::cout << "Remove aura\n";
-
-        game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(
-          modifiers::damage_receiver, damage_reduction);
-    }
+    game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(
+        modifiers::damage_receiver, damage_reduction);
+  }
 }

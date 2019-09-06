@@ -7,5 +7,5 @@ namespace nodes {
 
 DEFINE_BEHAVIOR_NODE(attack_enemy)
 
-} // namespace nodes
-} // namespace ai
+}  // namespace nodes
+}  // namespace ai

@@ -4,4 +4,4 @@ namespace scenario {
 
 void create_dark_forest();
 
-} // namespace scenario
+}  // namespace scenario

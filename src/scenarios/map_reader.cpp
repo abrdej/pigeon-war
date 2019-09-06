@@ -38,10 +38,10 @@ void handle_around_map(const json& json_data) {
   }
 }
 
-std::string read_map_from_json(const std::string& json_file, std::pair<uint32_t, uint32_t>& map_size) {
+std::string read_map_from_json(const std::string& json_file,
+                               std::pair<uint32_t, uint32_t>& map_size) {
   std::ifstream json_stream(json_file);
   auto json_data = json::parse(json_stream);
-
 
   // TODO: probably we don't want to set map size in such a way (if any)
   map_size = json_data["size"];
@@ -49,9 +49,7 @@ std::string read_map_from_json(const std::string& json_file, std::pair<uint32_t,
 
   handle_around_map(json_data);
 
-  std::array<std::string, 6> objects = {
-    "tree", "stone", "fir", "wall", "fire", "water"
-  };
+  std::array<std::string, 6> objects = {"tree", "stone", "fir", "wall", "fire", "water"};
 
   for (const auto& object : objects) {
     if (json_data.count(object)) {

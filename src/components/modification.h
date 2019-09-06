@@ -3,12 +3,7 @@
 #include <cstdint>
 #include <unordered_map>
 
-enum class modifiers {
-  damage_receiver,
-  damage_dealer,
-  shot_range,
-  move_range
-};
+enum class modifiers { damage_receiver, damage_dealer, shot_range, move_range };
 
 struct modifiers_key_hash {
   template <typename T>
@@ -19,11 +14,8 @@ struct modifiers_key_hash {
 
 class modification {
   std::unordered_map<modifiers, std::int32_t, modifiers_key_hash> modifiers_;
-public:
-  void modify_by(modifiers modifier, std::int32_t value) {
-    modifiers_[modifier] += value;
-  }
-  std::int32_t value(modifiers modifier) {
-    return modifiers_[modifier];
-  }
+
+ public:
+  void modify_by(modifiers modifier, std::int32_t value) { modifiers_[modifier] += value; }
+  std::int32_t value(modifiers modifier) { return modifiers_[modifier]; }
 };
