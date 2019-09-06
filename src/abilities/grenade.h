@@ -4,7 +4,7 @@
 
 class grenade final : public path_target_ability {
 public:
-  explicit grenade(std::uint32_t entity_id);
+  explicit grenade(id_t entity_id);
 
   ADD_BITMAP_GETTER(grenade)
 
@@ -15,10 +15,10 @@ public:
   }
 
 private:
-  void use(std::uint32_t on_index) override;
+  void use(index_t on_index) override;
 
 private:
-  const std::uint32_t entity_id_;
+  const id_t entity_id_;
   const std::int32_t damage_{12};
   bool used_{false};
 };

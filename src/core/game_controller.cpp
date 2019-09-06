@@ -10,11 +10,11 @@
 #include <managers/players_manager.h>
 #include <utils/algorithm.h>
 
-void game_controller::set_entity_default_state(std::uint32_t select_from_index) {
+void game_controller::set_entity_default_state(index_t select_from_index) {
   if (select_from_index == no_selected_index) return;
 
   selected_index_ = select_from_index;
-  std::uint32_t selected_index = selected_index_;
+  index_t selected_index = selected_index_;
 
   auto entity_id = game_board().at(selected_index);
   auto entity = game::get<entity_manager>().get(entity_id);
@@ -110,13 +110,13 @@ void game_controller::wait_for_action(const std::function<void(std::uint32_t ind
   action_ = caller;
 }
 
-void game_controller::do_action(std::uint32_t index) { action_(index); }
+void game_controller::do_action(index_t index) { action_(index); }
 
-bool game_controller::is_possible_movement(std::uint32_t index) {
+bool game_controller::is_possible_movement(index_t index) {
   return has_value(possible_movements_, index);
 }
 
-bool game_controller::valid_target(std::uint32_t target_index) {
+bool game_controller::valid_target(index_t target_index) {
   switch (actual_targeting_type_) {
     case target_types::enemy: {
       auto caster_id = game_board().at(selected_index_);

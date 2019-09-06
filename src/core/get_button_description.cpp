@@ -1,8 +1,7 @@
-#include "get_button_description.h"
+#include <core/get_button_description.h>
 
 #include <abilities/abilities.h>
 #include <core/board.h>
-#include <core/defs.h>
 
 std::string get_button_description(index_t selected_index, std::uint32_t button_id) {
   auto entity_id = game_board().at(selected_index);

@@ -2,11 +2,12 @@
 
 #include <abilities/per_turn_usable.h>
 #include <abilities/straight_target_ability.h>
+#include <core/defs.h>
 
 class shoot final : public directed_target_ability<3>,
                     protected per_turn_callback {
 public:
-  explicit shoot(std::uint32_t entity_id);
+  explicit shoot(id_t entity_id);
 
   ADD_BITMAP_GETTER(bullet)
 
@@ -17,9 +18,9 @@ public:
   }
 
 private:
-  void use(std::uint32_t on_index) override;
+  void use(index_t on_index) override;
 
-  const std::uint32_t entity_id_;
+  const id_t entity_id_;
   const std::int32_t bullets_per_turn_{2};
   const std::int32_t damage_{6};
   std::int32_t bullets_{bullets_per_turn_};

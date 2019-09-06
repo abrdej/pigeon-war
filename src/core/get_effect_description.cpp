@@ -1,4 +1,4 @@
-#include "get_effect_description.h"
+#include <core/get_effect_description.h>
 
 #include <utils/descriptions.h>
 

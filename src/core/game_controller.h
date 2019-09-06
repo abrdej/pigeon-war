@@ -6,6 +6,7 @@
 #include <utility>
 #include <vector>
 
+#include <core/defs.h>
 #include <core/game.h>
 #include <core/path_finder.h>
 #include <core/states.h>
@@ -18,19 +19,19 @@ class game_controller {
   void on_button(std::uint32_t n);
   void defeat();
   void victory(std::uint32_t player_id);
-  void wait_for_action(const std::function<void(std::uint32_t index)>& caller);
-  void do_action(std::uint32_t index);
-  bool is_possible_movement(std::uint32_t index);
-  void set_entity_default_state(std::uint32_t select_from_index);
-  bool valid_target(std::uint32_t target_index);
+  void wait_for_action(const std::function<void(index_t index)>& caller);
+  void do_action(index_t index);
+  bool is_possible_movement(index_t index);
+  void set_entity_default_state(index_t select_from_index);
+  bool valid_target(index_t target_index);
 
-  std::uint32_t selected_index_{no_selected_index};
+  index_t selected_index_{no_selected_index};
   states_types actual_state_{states_types::waiting};
   target_types actual_targeting_type_{target_types::non};
-  std::vector<std::uint32_t> possible_movements_;
-  std::vector<std::uint32_t> possible_movements_costs_;
+  std::vector<index_t> possible_movements_;
+  std::vector<index_t> possible_movements_costs_;
 
-  std::unordered_map<std::uint32_t, std::unordered_set<std::uint32_t>> custom_valid_targets;
+  std::unordered_map<index_t, std::unordered_set<index_t>> custom_valid_targets;
 
   enum class custom_target_type { board_index, entity_id };
 

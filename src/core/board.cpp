@@ -6,13 +6,13 @@ void board::insert(std::uint32_t on_index, std::uint32_t entity_id) {
   game::get<entity_manager>().on_destroy(entity_id,
                                          [this, entity_id]() { remove_entity(entity_id); });
 
-  board_change_signal();
+  board_change_signal_();
 }
 
 void board::remove(std::uint32_t from_index) {
   fields_[from_index].pop_back();
 
-  board_change_signal();
+  board_change_signal_();
 }
 
 std::uint32_t board::move(std::uint32_t from_index, std::uint32_t to_index) {
@@ -20,7 +20,7 @@ std::uint32_t board::move(std::uint32_t from_index, std::uint32_t to_index) {
   fields_[from_index].pop_back();
   fields_[to_index].push_back(entity_id);
 
-  board_change_signal();
+  board_change_signal_();
 
   return entity_id;
 }
@@ -29,7 +29,7 @@ std::uint32_t board::take(std::uint32_t from_index) {
   auto entity_id = fields_[from_index].back();
   fields_[from_index].pop_back();
 
-  board_change_signal();
+  board_change_signal_();
 
   return entity_id;
 }
@@ -38,14 +38,14 @@ std::uint32_t board::take_bottom(std::uint32_t from_index) {
   auto entity_id = fields_[from_index].front();
   fields_[from_index].erase(std::begin(fields_[from_index]));
 
-  board_change_signal();
+  board_change_signal_();
 
   return entity_id;
 }
 
 void board::give_back(std::uint32_t entity_id, std::uint32_t to_index) {
   fields_[to_index].push_back(entity_id);
-  board_change_signal();
+  board_change_signal_();
 }
 
 std::uint32_t board::at(std::uint32_t at_index) {
@@ -82,7 +82,7 @@ void board::remove_entity(std::uint32_t entity_id) {
     }
   }
 
-  board_change_signal();
+  board_change_signal_();
 }
 
 void board::for_each(const std::function<void(std::uint32_t entity_id, std::uint32_t col,

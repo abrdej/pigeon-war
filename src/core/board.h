@@ -12,16 +12,15 @@
 #include <messages/massages_makers.h>
 #include <server/sender.h>
 
-class board final {
- public:
+struct board {
   static const std::uint32_t empty_id = std::numeric_limits<std::uint32_t>::max();
 
-  using board_change_signal_type = boost::signals2::signal<void()>;
-  board_change_signal_type board_change_signal;
+  using board_change_signal = boost::signals2::signal<void()>;
+  board_change_signal board_change_signal_;
 
   template <typename SlotType>
   void on_change(SlotType x) {
-    board_change_signal.connect(x);
+    board_change_signal_.connect(x);
   }
 
   void insert(std::uint32_t on_index, std::uint32_t entity_id);

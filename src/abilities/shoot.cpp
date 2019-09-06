@@ -3,13 +3,13 @@
 #include <abilities/damage_dealers.h>
 #include <core/board.h>
 
-shoot::shoot(std::uint32_t entity_id) : entity_id_(entity_id) {
+shoot::shoot(id_t entity_id) : entity_id_(entity_id) {
   on_every_two_turns_from_next([this]() {
     bullets_ = bullets_per_turn_;
   });
 }
 
-void shoot::use(std::uint32_t on_index) {
+void shoot::use(index_t on_index) {
   if (bullets_ == 0) {
     return;
   }

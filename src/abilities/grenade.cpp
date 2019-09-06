@@ -3,16 +3,16 @@
 #include <abilities/damage_dealers.h>
 #include <core/board.h>
 
-grenade::grenade(std::uint32_t entity_id)
+grenade::grenade(id_t entity_id)
   : path_target_ability(3), entity_id_(entity_id) {}
 
-void grenade::use(std::uint32_t on_index) {
+void grenade::use(index_t on_index) {
   if (used_)
     return;
 
   used_ = true;
 
-  std::vector<std::uint32_t> neighbors;
+  std::vector<index_t> neighbors;
   board_helper::neighboring_fields(on_index, neighbors, false);
 
   sender::send(make_action_message("grenade", game_control().selected_index_, on_index));
