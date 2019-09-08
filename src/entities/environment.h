@@ -1,23 +1,23 @@
-#include <entities/entity.h>
 #include <components/damage_taker.h>
 #include <components/modification.h>
+#include <entities/entity.h>
 
-#define ENVIRONMENT(TYPE, NAME)\
-struct TYPE { \
+#define ENVIRONMENT(TYPE, NAME)               \
+  struct TYPE {                               \
     static void create(base_entity& entity) { \
-        entity.name = #NAME; \
-        entity.add<health_field>(); \
-    } \
-}
+      entity.name = #NAME;                    \
+      entity.add<health_field>();             \
+    }                                         \
+  }
 
 #define ENVIRONMENT_DESTRUCTIBLE(TYPE, NAME, HEALTH) \
-struct TYPE { \
-    static void create(base_entity& entity) { \
-        entity.name = #NAME; \
-        entity.add<health_field>(HEALTH); \
-        entity.add<modification>(); \
-    } \
-}
+  struct TYPE {                                      \
+    static void create(base_entity& entity) {        \
+      entity.name = #NAME;                           \
+      entity.add<health_field>(HEALTH);              \
+      entity.add<modification>();                    \
+    }                                                \
+  }
 
 ENVIRONMENT(tree, Tree);
 ENVIRONMENT(fir, Fir);
