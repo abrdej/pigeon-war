@@ -18,7 +18,7 @@ struct knowledge_box {
   bool has(const std::string& key) const { return data_.count(key) != 0; }
   template <typename T>
   void insert(const std::string& key, const T& x) {
-    data_.emplace(key, x);
+    data_[key] = x;
   }
 };
 

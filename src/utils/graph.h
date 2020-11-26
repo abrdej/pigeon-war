@@ -7,7 +7,7 @@
 #include <vector>
 
 struct graph {
-  using vertex_descriptor = std::size_t;
+  using vertex_descriptor = std::uint32_t;
   using vertex_type = std::vector<vertex_descriptor>;
   using adjacency_list_type = std::vector<vertex_type>;
 
