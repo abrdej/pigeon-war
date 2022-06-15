@@ -4,6 +4,8 @@
 
 #include <external/json.hpp>
 
+#include <core/logger.h>
+
 #include <abilities/abilities.h>
 
 #include <components/applied_effects.h>
@@ -108,9 +110,9 @@ int main(int argc, char** argv) {
   };
 
   pigeon_war_server.on_message([&](std::uint32_t client_id, const std::string& message) {
-    json_data_type data;
+    LOG(debug) << "Got new message: " << message << ", from client: " << client_id << "\n";
 
-    std::cout << "Got new message: " << message << "\n";
+    json_data_type data;
 
     try {
       data = json_data_type::parse(message);
