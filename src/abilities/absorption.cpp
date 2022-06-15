@@ -67,7 +67,7 @@ void absorption::use(std::uint32_t index_on) {
                             absorption_power = std::min(absorption_power + last_dmg.damage_value,
                                                         max_absorption_power);
 
-                            std::cout << "absorption_power: " << absorption_power << "\n";
+                            LOG(debug) << "absorption_power: " << absorption_power << "\n";
 
 //                            animations_queue::push_animation(animation_types::flash_bitmap,
 //                                                             game_board().index_for(friendly_id),

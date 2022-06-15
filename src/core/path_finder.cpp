@@ -62,8 +62,8 @@ void path_finder::path_to(std::uint32_t index, std::vector<std::uint32_t>& path)
     path_index = sequence_map_[path_index];
     path.push_back(path_index);
 
-    std::cout << "start_index_: " << path_index << "\n";
-    std::cout << "path_index: " << path_index << "\n";
+    LOG(debug) << "start_index_: " << path_index << "\n";
+    LOG(debug) << "path_index: " << path_index << "\n";
   }
 }
 

@@ -382,7 +382,6 @@ set(SOURCE_FILES
   src/utils/descriptions.h
   src/utils/for_each_in_tuple.h
   src/utils/graph.h
-  src/utils/logging.h
   src/utils/message_joiner.h)
 
 add_executable(pigeon_war src/main.cpp ${SOURCE_FILES})

@@ -10,7 +10,7 @@ namespace ai {
 namespace nodes {
 
 bool attack_enemy::operator()(ai_knowledge& knowledge) {
-  std::cout << "try run attack_enemy node\n";
+  LOG(debug) << "try run attack_enemy node\n";
 
   auto entity_id = active_entity_id(knowledge);
   auto entity_index = active_entity_index(knowledge);

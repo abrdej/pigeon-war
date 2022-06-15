@@ -64,11 +64,11 @@ void create_wolves_dinner() {
   creator_helper::create_neutral_many<stone>({pos(1, 1), pos(5, 5)});
 
   if_any_die({samurai_id}, [&]() {
-    std::cout << "defeat\n";
+    LOG(debug) << "defeat\n";
     game_control().defeat();
   });
   if_all_die(enemies_ids, [&]() {
-    std::cout << "victory\n";
+    LOG(debug) << "victory\n";
     game_control().victory(tester_id);
   });
 }

@@ -7,7 +7,7 @@ void moveable::prepare(std::uint32_t for_index) {
   game_control().selected_index_ = for_index;
   game_control().actual_state_ = states_types::wait_for_action;
 
-	std::cout << "range: " << range << "\n";
+	LOG(debug) << "range: " << range << "\n";
 
   if (movement_type == types::path) {
     path_finder path_finder(skip_collisions_);

@@ -21,7 +21,7 @@ void vicious_circle::prepare(std::uint32_t for_index) {
 
     auto power = game::get<entity_manager>().get(entity_id).get<power_filed>()->power;
 
-    std::cout << "power: " << power << "\n";
+    LOG(debug) << "power: " << power << "\n";
 }
 
 std::string vicious_circle::hint() const {

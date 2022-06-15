@@ -10,6 +10,7 @@
 #include <boost/beast/websocket.hpp>
 
 #include <server/message.h>
+#include <core/logger.h>
 
 namespace networking {
 
@@ -66,9 +67,9 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
   void accept_handshake() {
     web_socket_.async_accept([this](boost::beast::error_code ec) {
       if (ec) {
-        std::cout << "Failed to accept: " << ec.message() << "\n";
+        LOG(debug) << "Failed to accept: " << ec.message() << "\n";
       } else {
-        std::cout << "Accepted with id: " << id_ << "\n";
+        LOG(debug) << "Accepted with id: " << id_ << "\n";
         on_accepted_(shared_from_this());
         read_message();
       }
@@ -85,7 +86,7 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
               write_message();
             }
           } else {
-            std::cout << "Write body fail for: " << id_ << ".\n";
+            LOG(debug) << "Write body fail for: " << id_ << ".\n";
             web_socket_.close(boost::beast::websocket::close_code::going_away);
           }
         });
@@ -98,7 +99,7 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
                                 add_incoming_message();
 
                               } else {
-                                std::cout << "Read body fail for: " << id_ << ".\n";
+                                LOG(debug) << "Read body fail for: " << id_ << ".\n";
                                 web_socket_.close(boost::beast::websocket::close_code::going_away);
                               }
                             });

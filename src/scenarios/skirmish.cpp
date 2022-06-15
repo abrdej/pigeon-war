@@ -194,7 +194,7 @@ std::string create_skirmish(const std::string& map_name,
 
         if (info.is_ending) {
 
-          std::cout << "Need to destroy the following entities: " << entities_to_choose.size() << "\n";
+          LOG(debug) << "Need to destroy the following entities: " << entities_to_choose.size() << "\n";
 
           for (auto&& entity_to_remove : entities_to_choose) {
             game::get<entity_manager>().destroy(entity_to_remove);
@@ -207,7 +207,7 @@ std::string create_skirmish(const std::string& map_name,
           }
           //                                    for (auto&& player_pack : entities) {
           //                                        if_all_die(player_pack.second, [&]() {
-          //                                            std::cout << player_pack.first << "
+          //                                            LOG(debug) << player_pack.first << "
           //                                            win!!!\n"; game.defeat();
           //                                        });
           //                                    }

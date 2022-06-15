@@ -67,7 +67,7 @@ void create_saurian_web() {
 
   auto web_poison_connection = make_every_two_turns_from_next_callback_holder(
       std::numeric_limits<std::int32_t>::max(), [native_id]() {
-        std::cout << "receive damage\n";
+        LOG(debug) << "receive damage\n";
         damage_dealers::standard_damage_dealer(special_damage(4, native_id));
       });
   std::shared_ptr<turn_scoped_connection> connection =
@@ -79,7 +79,7 @@ void create_saurian_web() {
                                   players_manager_ref.add_entity_for_player(tester_id, native_id);
                                 });
 
-  if_any_die({shooter_id, saberhand_id, native_id}, [&]() { std::cout << "defeat\n"; });
+  if_any_die({shooter_id, saberhand_id, native_id}, [&]() { LOG(debug) << "defeat\n"; });
   if_all_die({saurion1_id, saurion2_id, saurion3_id, saurion4_id},
              [&]() { game_control().victory(tester_id); });
 }

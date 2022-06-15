@@ -87,9 +87,9 @@ int main(int argc, char** argv) {
   networking::server pigeon_war_server(port);
 
   sender::set_sender([&pigeon_war_server](std::string message) {
-    std::cout << "Sending the message to all\n";
+    LOG(debug) << "Sending the message to all\n";
     pigeon_war_server.send_message_to_all(message);
-    std::cout << "Sending the message to all: ready\n";
+    LOG(debug) << "Sending the message to all: ready\n";
   });
 
   // TODO: do we want to use client_id or connection ptr??
@@ -117,25 +117,25 @@ int main(int argc, char** argv) {
     try {
       data = json_data_type::parse(message);
 
-      std::cout << "data: \n" << data.dump() << "\n";
+      LOG(debug) << "data: \n" << data.dump() << "\n";
 
       for (auto&& callback_pack : callbacks) {
         if (data.count(callback_pack.first)) {
-          std::cout << "call callback for message: " << callback_pack.first << "\n";
+          LOG(debug) << "call callback for message: " << callback_pack.first << "\n";
           callback_pack.second(data[callback_pack.first]);
         }
       }
 
     } catch (std::exception& e) {
-      std::cout << "json parse error!\n";
-      std::cout << "in: " << message << "\n";
-      std::cout << "what: " << e.what() << "\n";
+      LOG(debug) << "json parse error!\n";
+      LOG(debug) << "in: " << message << "\n";
+      LOG(debug) << "what: " << e.what() << "\n";
     }
   });
 
   bind("on_board", [&](json_data_type& data) {
 
-    std::cout << "on board\n";
+    LOG(debug) << "on board\n";
 
     std::int32_t client_id = data["client_id"];
     std::uint32_t x = data["col"];
@@ -152,7 +152,7 @@ int main(int argc, char** argv) {
 
   bind("on_button", [&](json_data_type& data) {
 
-    std::cout << "on button\n";
+    LOG(debug) << "on button\n";
 
     std::int32_t client_id = data["client_id"];
     std::uint32_t button = data["button"];
@@ -161,7 +161,7 @@ int main(int argc, char** argv) {
 
     if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
 
-      std::cout << "client_id: " << client_id << " single_client:" << single_client << "\n";
+      LOG(debug) << "client_id: " << client_id << " single_client:" << single_client << "\n";
 
       game_control().on_button(button);
 

@@ -21,7 +21,7 @@ void long_range_missile::use(std::uint32_t index_on) {
 	auto distance = std::max(std::abs(static_cast<std::int32_t>(used_from_pos.first) - static_cast<std::int32_t>(used_to_pos.first)),
 							 std::abs(static_cast<std::int32_t>(used_from_pos.second) - static_cast<std::int32_t>(used_to_pos.second)));
 
-	std::cout << "distance: " << distance << "\n";
+	LOG(debug) << "distance: " << distance << "\n";
 
 	std::int32_t final_damage = static_cast<std::int32_t>(start_damage + distance * additional_damage);
 

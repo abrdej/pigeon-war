@@ -71,7 +71,7 @@ void bludgeon::use(std::uint32_t index_on)
 
 	rage_damage += 1;
 
-	std::cout << "Rage damage :" << rage_damage << "\n";
+	LOG(debug) << "Rage damage :" << rage_damage << "\n";
 
 	used = true;
 }

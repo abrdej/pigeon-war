@@ -44,7 +44,7 @@ void sniper_shot::use(std::uint32_t index_on) {
   auto health_pack = game::get<entity_manager>().get(enemy_id).get<health_field>();
   float health_percent = health_pack->health / static_cast<float>(health_pack->base_health) * 100.f;
 
-  std::cout << "health_percent: " << health_percent << "\n";
+  LOG(debug) << "health_percent: " << health_percent << "\n";
 
   std::int32_t final_damage = damage;
 

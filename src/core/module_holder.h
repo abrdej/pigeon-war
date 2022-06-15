@@ -5,6 +5,8 @@
 #include <typeindex>
 #include <unordered_map>
 
+#include <core/logger.h>
+
 class module_holder {
  public:
   template <typename T, typename... Args>
@@ -26,7 +28,7 @@ class module_holder {
     if (it != std::end(modules))
       return std::static_pointer_cast<T>(it->second);
     else {
-      std::cout << "get component which doesn't exist: " << typeid(T).name() << "\n";
+      LOG(debug) << "get component which doesn't exist: " << typeid(T).name() << "\n";
       return std::shared_ptr<T>();
     }
   }
@@ -37,7 +39,7 @@ class module_holder {
     if (it != std::end(modules))
       return std::static_pointer_cast<T>(it->second);
     else {
-      std::cout << "get component which doesn't exist\n" << typeid(T).name() << "\n";
+      LOG(debug) << "get component which doesn't exist\n" << typeid(T).name() << "\n";
       return std::shared_ptr<T>();
     }
   }

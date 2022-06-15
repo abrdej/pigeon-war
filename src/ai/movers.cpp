@@ -58,7 +58,7 @@ bool go_close_to_impl(ai_knowledge& knowledge, std::uint32_t target_index) {
 }  // namespace
 
 bool go_to::operator()(ai_knowledge& knowledge) {
-  std::cout << "try run go_to node\n";
+  LOG(debug) << "try run go_to node\n";
 
   auto entity_id = active_entity_id(knowledge);
   auto entity_index = active_entity_index(knowledge);
@@ -94,7 +94,7 @@ bool go_to::operator()(ai_knowledge& knowledge) {
 }
 
 bool go_close_to_destination::operator()(ai_knowledge& knowledge) {
-  std::cout << "try run go_close_to_destination node\n";
+  LOG(debug) << "try run go_close_to_destination node\n";
 
   auto entity_id = active_entity_id(knowledge);
 
@@ -108,7 +108,7 @@ bool go_close_to_destination::operator()(ai_knowledge& knowledge) {
 }
 
 bool go_close_to_target_index::operator()(ai_knowledge& knowledge) {
-  std::cout << "try run go_close_to_target_index node\n";
+  LOG(debug) << "try run go_close_to_target_index node\n";
 
   auto entity_id = active_entity_id(knowledge);
 
@@ -122,7 +122,7 @@ bool go_close_to_target_index::operator()(ai_knowledge& knowledge) {
 }
 
 bool can_go_to::operator()(ai_knowledge& knowledge) {
-  std::cout << "try run can_go_to node\n";
+  LOG(debug) << "try run can_go_to node\n";
 
   auto entity_id = active_entity_id(knowledge);
   auto entity_index = active_entity_index(knowledge);
