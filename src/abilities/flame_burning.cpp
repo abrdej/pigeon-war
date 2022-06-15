@@ -26,7 +26,7 @@ void flame_burning::use(std::uint32_t index_on) {
 
     if (game::get<entity_manager>().get(enemy_id).contain<power_filed>()) {
 
-        LOG(debug) << "here flame_burning\n";
+        LOG(debug) << "here flame_burning";
 
         auto magic_burning = std::min(game::get<entity_manager>().get(enemy_id).get<power_filed>()->power, burn_magic_power);
         auto& power = game::get<entity_manager>().get(enemy_id).get<power_filed>()->power;

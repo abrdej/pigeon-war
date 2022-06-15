@@ -20,7 +20,7 @@ void str_replace(std::string& text, const std::string& from, const T& to) {
     text.replace(text.find(from), from.length(), to_string_wrapper(to));
 
   } catch (const std::exception& e) {
-    std::cerr << "str_replace exception: " << e.what() << "\n";
+    std::cerr << "str_replace exception: " << e.what();
   }
 }
 

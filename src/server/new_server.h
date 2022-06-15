@@ -24,7 +24,7 @@ class server {
 
   bool start() {
     try {
-      LOG(debug) << "Waiting for connections on port: " << acceptor_.local_endpoint().port() << "\n";
+      LOG(debug) << "Waiting for connections on port: " << acceptor_.local_endpoint().port();
 
       wait_for_connections();
       context_thread_ = std::thread([this]() {
@@ -32,7 +32,7 @@ class server {
       });
 
     } catch (std::exception& e) {
-      LOG(debug) << "Exception thrown in server::start(): " << e.what() << "\n";
+      LOG(debug) << "Exception thrown in server::start(): " << e.what();
       return false;
     }
     return true;
@@ -111,7 +111,7 @@ class server {
   void wait_for_connections() {
     acceptor_.async_accept([this](boost::system::error_code ec, boost::asio::ip::tcp::socket socket) {
       if (!ec) {
-        LOG(debug) << "New client connected: " << socket.remote_endpoint().address().to_string() << "\n";
+        LOG(debug) << "New client connected: " << socket.remote_endpoint().address().to_string();
 
         auto new_connection =
             std::make_shared<web_socket_connection>(context_, std::move(socket), messages_in_);
@@ -121,11 +121,11 @@ class server {
           connections_.emplace(new_connection->get_id(), std::move(new_connection));
 
         } else {
-          LOG(debug) << "Client denied.\n";
+          LOG(debug) << "Client denied.";
         }
 
       } else {
-        LOG(debug) << "Connection failed\n";
+        LOG(debug) << "Connection failed";
       }
       wait_for_connections();
     });

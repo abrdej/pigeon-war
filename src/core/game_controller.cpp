@@ -65,7 +65,7 @@ void game_controller::on_button(std::uint32_t n) {
     auto selected_index = game_control().selected_index_;
 
     if (!players_helpers::is_player_entity(selected_index)) {
-      LOG(debug) << "not player entity\n";
+      LOG(debug) << "not player entity";
       return;
     }
 
@@ -127,7 +127,7 @@ bool game_controller::valid_target(index_t target_index) {
         target_value = game_board().at(target_index);
 
       if (!custom_valid_targets[caster_id].empty()) {
-        LOG(debug) << "custom\n";
+        LOG(debug) << "custom";
 
         return custom_valid_targets[caster_id].find(target_value) !=
                std::end(custom_valid_targets[caster_id]);

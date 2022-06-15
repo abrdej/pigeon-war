@@ -9,7 +9,7 @@ bool aura_of_armor_effect::set_effect(std::uint32_t entity_id) {
   if (player_id != players_ids::no_player_id &&
       game::get<players_manager>().player_entity(player_id, entity_id) &&
       game::get<entity_manager>().get(entity_id).contain<modification>()) {
-    LOG(debug) << "Apply aura\n";
+    LOG(debug) << "Apply aura";
 
     game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(
         modifiers::damage_receiver, -damage_reduction);
@@ -21,7 +21,7 @@ bool aura_of_armor_effect::set_effect(std::uint32_t entity_id) {
 
 void aura_of_armor_effect::remove_effect(std::uint32_t entity_id) {
   if (game::get<entity_manager>().get(entity_id).contain<modification>()) {
-    LOG(debug) << "Remove aura\n";
+    LOG(debug) << "Remove aura";
 
     game::get<entity_manager>().get(entity_id).get<modification>()->modify_by(
         modifiers::damage_receiver, damage_reduction);

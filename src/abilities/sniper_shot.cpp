@@ -44,7 +44,7 @@ void sniper_shot::use(std::uint32_t index_on) {
   auto health_pack = game::get<entity_manager>().get(enemy_id).get<health_field>();
   float health_percent = health_pack->health / static_cast<float>(health_pack->base_health) * 100.f;
 
-  LOG(debug) << "health_percent: " << health_percent << "\n";
+  LOG(debug) << "health_percent: " << health_percent;
 
   std::int32_t final_damage = damage;
 
@@ -64,7 +64,7 @@ std::string sniper_shot::hint() const {
          "If the target is below 50% of health deals additional: " +
          std::to_string(damage) +
          " damage.\n"
-         "Sniper can't give a shot when the enemy unit is in his neighborhood.\n";
+         "Sniper can't give a shot when the enemy unit is in his neighborhood.";
   "Range: " + std::to_string(range) + ".";
 
   return std::move(desc);

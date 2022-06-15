@@ -67,9 +67,9 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
   void accept_handshake() {
     web_socket_.async_accept([this](boost::beast::error_code ec) {
       if (ec) {
-        LOG(debug) << "Failed to accept: " << ec.message() << "\n";
+        LOG(debug) << "Failed to accept: " << ec.message();
       } else {
-        LOG(debug) << "Accepted with id: " << id_ << "\n";
+        LOG(debug) << "Accepted with id: " << id_;
         on_accepted_(shared_from_this());
         read_message();
       }
@@ -86,7 +86,7 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
               write_message();
             }
           } else {
-            LOG(debug) << "Write body fail for: " << id_ << ".\n";
+            LOG(debug) << "Write body fail for: " << id_ << ".";
             web_socket_.close(boost::beast::websocket::close_code::going_away);
           }
         });
@@ -99,7 +99,7 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
                                 add_incoming_message();
 
                               } else {
-                                LOG(debug) << "Read body fail for: " << id_ << ".\n";
+                                LOG(debug) << "Read body fail for: " << id_ << ".";
                                 web_socket_.close(boost::beast::websocket::close_code::going_away);
                               }
                             });

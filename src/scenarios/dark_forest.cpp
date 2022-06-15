@@ -41,11 +41,11 @@ void scenario::create_dark_forest() {
   }
 
   if_any_die({samurai_id}, [&]() {
-    LOG(debug) << "defeat\n";
+    LOG(debug) << "defeat";
     game_control().defeat();
   });
   if_any_die({spectre_id}, [&]() {
-    LOG(debug) << "victory\n";
+    LOG(debug) << "victory";
     game_control().victory(tester_id);
   });
 }

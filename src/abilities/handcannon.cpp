@@ -22,7 +22,7 @@ void handcannon::use(std::uint32_t index_on) {
 
     auto final_damage = is_active ? bonus_damage + damage : damage;
 
-    LOG(debug) << "active: " << is_active << " final_damage: " << final_damage << "\n";
+    LOG(debug) << "active: " << is_active << " final_damage: " << final_damage;
 
     sender::send(make_action_message("handcannon", used_from_index, index_on));
 

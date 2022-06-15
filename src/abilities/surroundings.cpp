@@ -30,7 +30,7 @@ surroundings::surroundings(std::uint32_t entity_id) {
                                      std::max(min_damage,
                                               dmg.damage_value - enemies_in_neighborhood * damage_reduction));
 
-        LOG(debug) << "enemies_in_neighborhood: " << enemies_in_neighborhood << "\n";
+        LOG(debug) << "enemies_in_neighborhood: " << enemies_in_neighborhood;
 
         health_pack.health -= final_damage;
 

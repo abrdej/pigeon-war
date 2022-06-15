@@ -16,7 +16,7 @@ stone_skin::stone_skin(std::uint32_t entity_id) {
 
             damage_reduction += reduction_increase_amount;
 
-            LOG(debug) << "damage_reduction: " << damage_reduction << "\n";
+            LOG(debug) << "damage_reduction: " << damage_reduction;
         }
 
         health_pack.health -= damage;

@@ -35,7 +35,7 @@ void websocket_connection::get_ws() {
   //                         },
   //                         [this](const boost::system::error_code& ec) {
   //                             if (ec) {
-  //                                 LOG(debug) << "get ws: " << ec.message() << "\n";
+  //                                 LOG(debug) << "get ws: " << ec.message();
   //                             }
   //
   //                             start_reading();
@@ -43,7 +43,7 @@ void websocket_connection::get_ws() {
   //                         });
   ws_->async_accept([me = shared_from_this()](const boost::system::error_code& error) {
     if (error) {
-      LOG(debug) << "get ws: " << error.message() << "\n";
+      LOG(debug) << "get ws: " << error.message();
       throw error;
     }
 
@@ -57,7 +57,7 @@ void websocket_connection::start_reading() {
       *ws_, buffer, "\n",
       [me = shared_from_this()](const boost::system::error_code& error, size_t bytes_transferred) {
         if (error) {
-          LOG(debug) << "error: " << error.message() << "\n";
+          LOG(debug) << "error: " << error.message();
           throw error;
         }
 
@@ -81,7 +81,7 @@ void websocket_connection::send(const std::string& message) {
   boost::system::error_code er;
   ws_->write(boost::asio::buffer(message), er);
   if (er) {
-    LOG(debug) << "dfdsfdsf: " << er.message() << "\n";
+    LOG(debug) << "dfdsfdsf: " << er.message();
     throw er;
   }
   // ws_->binary(false);
@@ -105,14 +105,14 @@ void tcp_connection::start_reading() {
       socket_, buffer, "\n",
       [this](const boost::system::error_code& error, size_t bytes_transferred) {
         if (error) {
-          LOG(debug) << "error: " << error.message() << "\n";
+          LOG(debug) << "error: " << error.message();
         }
 
         std::string message_data(
             boost::asio::buffer_cast<char const*>(boost::beast::buffers_front(buffer.data())),
             boost::asio::buffer_size(buffer.data()));
 
-        LOG(debug) << "message_data: " << message_data << "\n";
+        LOG(debug) << "message_data: " << message_data;
 
         auto messages = joiner.add_message_data(message_data);
 
@@ -141,7 +141,7 @@ tcp_server::tcp_server(unsigned short port)
   acceptor_.open(endpoint.protocol(), ec);
   start_accept();
 
-  LOG(debug) << "Starting server on port: " << port << "\n";
+  LOG(debug) << "Starting server on port: " << port;
 }
 
 void tcp_server::start_accept() {
@@ -163,7 +163,7 @@ void tcp_server::handle_accept(Connection::connection_ptr new_connection,
         [this](const std::string& message) { handle_message(message); });
     new_connection->get_ws();
 
-    LOG(debug) << "New client, next id: " << client_id << "\n";
+    LOG(debug) << "New client, next id: " << client_id;
 
     connections.emplace_back(new_connection);
 
@@ -195,7 +195,7 @@ void tcp_server::send_notification(std::string message) {
 }
 
 void tcp_server::send_notification_to(std::uint32_t index, std::string message) {
-  LOG(debug) << "send message to him: " << message << "\n";
+  LOG(debug) << "send message to him: " << message;
   connections[index]->send(message + "\n");
 }
 
@@ -210,25 +210,25 @@ void tcp_server::run() {
   while (is_running) {
     std::string message;
     while (messages.pop(message)) {
-      LOG(debug) << "message: " << message << "\n";
+      LOG(debug) << "message: " << message;
 
       json_data_type data;
 
       try {
         data = json_data_type::parse(message);
 
-        LOG(debug) << "data: \n" << data.dump() << "\n";
+        LOG(debug) << "data: \n" << data.dump();
 
         for (auto&& callback_pack : callbacks) {
           if (data.count(callback_pack.first)) {
-            LOG(debug) << "call callback for message: " << callback_pack.first << "\n";
+            LOG(debug) << "call callback for message: " << callback_pack.first;
             callback_pack.second(data[callback_pack.first]);
           }
         }
 
       } catch (...) {
-        LOG(debug) << "json parse error!\n";
-        LOG(debug) << "in: " << message << "\n";
+        LOG(debug) << "json parse error!";
+        LOG(debug) << "in: " << message;
       }
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(25));

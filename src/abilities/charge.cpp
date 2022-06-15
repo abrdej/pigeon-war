@@ -78,9 +78,9 @@ void charge::use(std::uint32_t index_on) {
   attacked_enemies_.emplace_back(enemy_id);
 
   //  if (has_effect(entity_id, "insensitivity")) {
-//    LOG(debug) << "has insensitivity\n";
+//    LOG(debug) << "has insensitivity";
 //  } else {
-//    LOG(debug) << "no insensitivity\n";
+//    LOG(debug) << "no insensitivity";
 //  };
 //
 //  set_destructible(entity_id, false);

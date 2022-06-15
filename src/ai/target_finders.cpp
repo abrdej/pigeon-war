@@ -12,7 +12,7 @@ namespace ai {
 namespace nodes {
 
 bool find_nearest_enemy::operator()(ai_knowledge& knowledge) {
-  LOG(debug) << "try run find_nearest_enemy node\n";
+  LOG(debug) << "try run find_nearest_enemy node";
 
   auto player_id = active_player_id(knowledge);
 
@@ -41,7 +41,7 @@ bool find_nearest_enemy::operator()(ai_knowledge& knowledge) {
 }
 
 bool find_position_for_shot::operator()(ai_knowledge& knowledge) {
-  LOG(debug) << "try run find_position_for_shot node\n";
+  LOG(debug) << "try run find_position_for_shot node";
 
   auto entity_index = active_entity_index(knowledge);
   auto entity_id = active_entity_id(knowledge);
@@ -72,7 +72,7 @@ bool find_position_for_shot::operator()(ai_knowledge& knowledge) {
 }
 
 bool find_lowest_health_target::operator()(ai_knowledge& knowledge) {
-  LOG(debug) << "try run find_lowest_health_target node\n";
+  LOG(debug) << "try run find_lowest_health_target node";
 
   auto player_id = active_player_id(knowledge);
   auto entity_id = active_entity_id(knowledge);
@@ -101,7 +101,7 @@ bool find_lowest_health_target::operator()(ai_knowledge& knowledge) {
 }
 
 bool find_best_target_for_golem::operator()(ai_knowledge& knowledge) {
-  LOG(debug) << "try run find_best_target_for_golem node\n";
+  LOG(debug) << "try run find_best_target_for_golem node";
 
   auto player_id = active_player_id(knowledge);
   auto entity_id = active_entity_id(knowledge);

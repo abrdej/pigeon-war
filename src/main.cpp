@@ -1,15 +1,9 @@
-#include <iostream>
 #include <chrono>
 #include <thread>
 
 #include <external/json.hpp>
 
 #include <core/logger.h>
-
-#include <abilities/abilities.h>
-
-#include <components/applied_effects.h>
-#include <components/damage_taker.h>
 
 #include <core/game_controller.h>
 #include <core/get_button_description.h>
@@ -18,6 +12,7 @@
 
 #include <managers/get_entities.h>
 #include <managers/get_entity_names.h>
+#include <managers/players_manager.h>
 
 #include <scenarios/battle_with_a_golem_scenario.h>
 #include <scenarios/dark_forest.h>
@@ -26,8 +21,9 @@
 #include <scenarios/total_destruction.h>
 #include <scenarios/wolves_dinner.h>
 
-//#include <server/server.h>
 #include <server/new_server.h>
+#include <server/sender.h>
+#include <messages/massages_makers.h>
 
 int main(int argc, char** argv) {
 
@@ -45,8 +41,9 @@ int main(int argc, char** argv) {
 	std::string map_name = "battlefield";
 //  std::string map_name = "winter_forest";
 //  std::string map_name = "river_land";
-  std::string scenario = "skirmish";
+//  std::string scenario = "skirmish";
 //	std::string scenario = "dark_forest";
+	std::string scenario = "saurian_web";
   std::pair<std::uint32_t, std::uint32_t> map_size{15, 10};
 
   if (argc > 1) {
@@ -60,16 +57,16 @@ int main(int argc, char** argv) {
   static std::unordered_map<std::string, std::function<void()>>
       scenario_loader = {
       {"skirmish", [&map_name, &map_size]() {
-        map_name = create_skirmish(map_name + ".json", map_size);
+//        map_name = create_skirmish(map_name + ".json", map_size);
       }},
       {"saurian_web", []() {
         create_saurian_web();
       }},
       {"wolves_dinner", []() {
-        create_wolves_dinner();
+//        create_wolves_dinner();
       }},
       {"dark_forest", []() {
-        scenario::create_dark_forest();
+//        scenario::create_dark_forest();
       }}
   };
   scenario_loader.at(scenario)();
@@ -87,9 +84,7 @@ int main(int argc, char** argv) {
   networking::server pigeon_war_server(port);
 
   sender::set_sender([&pigeon_war_server](std::string message) {
-    LOG(debug) << "Sending the message to all\n";
     pigeon_war_server.send_message_to_all(message);
-    LOG(debug) << "Sending the message to all: ready\n";
   });
 
   // TODO: do we want to use client_id or connection ptr??
@@ -110,32 +105,32 @@ int main(int argc, char** argv) {
   };
 
   pigeon_war_server.on_message([&](std::uint32_t client_id, const std::string& message) {
-    LOG(debug) << "Got new message: " << message << ", from client: " << client_id << "\n";
+    LOG(debug) << "Got new message: " << message << ", from client: " << client_id;
 
     json_data_type data;
 
     try {
       data = json_data_type::parse(message);
 
-      LOG(debug) << "data: \n" << data.dump() << "\n";
+      LOG(debug) << "data: \n" << data.dump();
 
       for (auto&& callback_pack : callbacks) {
         if (data.count(callback_pack.first)) {
-          LOG(debug) << "call callback for message: " << callback_pack.first << "\n";
+          LOG(debug) << "call callback for message: " << callback_pack.first;
           callback_pack.second(data[callback_pack.first]);
         }
       }
 
     } catch (std::exception& e) {
-      LOG(debug) << "json parse error!\n";
-      LOG(debug) << "in: " << message << "\n";
-      LOG(debug) << "what: " << e.what() << "\n";
+      LOG(debug) << "json parse error!";
+      LOG(debug) << "in: " << message;
+      LOG(debug) << "what: " << e.what();
     }
   });
 
   bind("on_board", [&](json_data_type& data) {
 
-    LOG(debug) << "on board\n";
+    LOG(debug) << "on board";
 
     std::int32_t client_id = data["client_id"];
     std::uint32_t x = data["col"];
@@ -152,7 +147,7 @@ int main(int argc, char** argv) {
 
   bind("on_button", [&](json_data_type& data) {
 
-    LOG(debug) << "on button\n";
+    LOG(debug) << "on button";
 
     std::int32_t client_id = data["client_id"];
     std::uint32_t button = data["button"];
@@ -161,7 +156,7 @@ int main(int argc, char** argv) {
 
     if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
 
-      LOG(debug) << "client_id: " << client_id << " single_client:" << single_client << "\n";
+      LOG(debug) << "client_id: " << client_id << " single_client:" << single_client;
 
       game_control().on_button(button);
 
