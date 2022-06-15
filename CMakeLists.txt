@@ -377,7 +377,7 @@ set(SOURCE_FILES
         src/abilities/talons.cpp
         src/abilities/talons.h
         src/abilities/trash_trail.cpp
-        src/abilities/trash_trail.h src/entities/sentinel.cpp src/entities/sentinel.h src/abilities/stamp.cpp src/abilities/stamp.h src/abilities/sparks.cpp src/abilities/sparks.h src/core/defs.h)
+        src/abilities/trash_trail.h src/entities/sentinel.cpp src/entities/sentinel.h src/abilities/stamp.cpp src/abilities/stamp.h src/abilities/sparks.cpp src/abilities/sparks.h src/core/defs.h src/server/new_server.cpp src/server/new_server.h src/server/web_socket_connection.h src/server/message.h)
 
 add_executable(pigeonwar_server src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeonwar_server pthread)

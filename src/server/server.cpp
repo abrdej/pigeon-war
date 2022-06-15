@@ -138,6 +138,8 @@ tcp_server::tcp_server(unsigned short port)
   boost::system::error_code ec;
   acceptor_.open(endpoint.protocol(), ec);
   start_accept();
+
+  std::cout << "Starting server on port: " << port << "\n";
 }
 
 void tcp_server::start_accept() {

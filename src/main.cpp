@@ -24,7 +24,8 @@
 #include <scenarios/total_destruction.h>
 #include <scenarios/wolves_dinner.h>
 
-#include <server/server.h>
+//#include <server/server.h>
+#include <server/new_server.h>
 
 int main(int argc, char** argv) {
 
@@ -38,7 +39,7 @@ int main(int argc, char** argv) {
   // set up server
   // run server
 
-  std::int32_t port = 8080;
+  std::int32_t port = 60000;
 	std::string map_name = "battlefield";
 //  std::string map_name = "winter_forest";
 //  std::string map_name = "river_land";
@@ -79,22 +80,58 @@ int main(int argc, char** argv) {
 //    scenarios::create_battle_with_a_golem_scenario();
 //	map_name = "Battle with a golem";
 
-  tcp_server pigeon_war_server(port);
+//  tcp_server pigeon_war_server(port);
+
+  networking::server pigeon_war_server(port);
 
   sender::set_sender([&pigeon_war_server](std::string message) {
-    pigeon_war_server.send_notification(message);
+    std::cout << "Sending the message to all\n";
+    pigeon_war_server.send_message_to_all(message);
+    std::cout << "Sending the message to all: ready\n";
   });
 
-  pigeon_war_server.set_initial_message([&](std::uint32_t client_id) {
-    pigeon_war_server.send_notification_to(client_id, make_map_size_message(map_size));
-    pigeon_war_server.send_notification_to(client_id, make_client_id_message(client_id));
-    pigeon_war_server.send_notification_to(client_id, make_map_name_message(map_name));
-    pigeon_war_server.send_notification_to(client_id, make_entities_pack_message(get_entities()));
+  // TODO: do we want to use client_id or connection ptr??
+  pigeon_war_server.on_client_accepted([&](std::shared_ptr<networking::web_socket_connection> client) {
+    pigeon_war_server.send_message(client->get_id(), make_map_size_message(map_size));
+    pigeon_war_server.send_message(client->get_id(), make_client_id_message(client->get_id()));
+    pigeon_war_server.send_message(client->get_id(), make_map_name_message(map_name));
+    pigeon_war_server.send_message(client->get_id(), make_entities_pack_message(get_entities()));
   });
 
+  // TODO: this could be extracted as a message processor
   using json_data_type = nlohmann::json;
+  using callback_type = std::function<void(json_data_type&)>;
+  std::unordered_map<std::string, callback_type> callbacks;
 
-  pigeon_war_server.bind("on_board", [&](json_data_type& data) {
+  auto bind = [&](const std::string& message_type, callback_type callback) {
+    callbacks.insert(std::make_pair(message_type, callback));
+  };
+
+  pigeon_war_server.on_message([&](std::uint32_t client_id, const std::string& message) {
+    json_data_type data;
+
+    std::cout << "Got new message: " << message << "\n";
+
+    try {
+      data = json_data_type::parse(message);
+
+      std::cout << "data: \n" << data.dump() << "\n";
+
+      for (auto&& callback_pack : callbacks) {
+        if (data.count(callback_pack.first)) {
+          std::cout << "call callback for message: " << callback_pack.first << "\n";
+          callback_pack.second(data[callback_pack.first]);
+        }
+      }
+
+    } catch (std::exception& e) {
+      std::cout << "json parse error!\n";
+      std::cout << "in: " << message << "\n";
+      std::cout << "what: " << e.what() << "\n";
+    }
+  });
+
+  bind("on_board", [&](json_data_type& data) {
 
     std::cout << "on board\n";
 
@@ -102,23 +139,23 @@ int main(int argc, char** argv) {
     std::uint32_t x = data["col"];
     std::uint32_t y = data["row"];
 
-    bool single_client = pigeon_war_server.is_single_client();
+    bool single_client = pigeon_war_server.number_of_clients() == 1;
 
     if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
       game_control().on_board(x, y);
-      pigeon_war_server.send_notification(make_local_game_state_message(get_local_game_state()));
-      pigeon_war_server.send_notification(make_global_game_state_message(get_global_game_state()));
+      pigeon_war_server.send_message_to_all(make_local_game_state_message(get_local_game_state()));
+      pigeon_war_server.send_message_to_all(make_global_game_state_message(get_global_game_state()));
     }
   });
 
-  pigeon_war_server.bind("on_button", [&](json_data_type& data) {
+  bind("on_button", [&](json_data_type& data) {
 
     std::cout << "on button\n";
 
     std::int32_t client_id = data["client_id"];
     std::uint32_t button = data["button"];
 
-    const bool single_client = pigeon_war_server.is_single_client();
+    const bool single_client = pigeon_war_server.number_of_clients() == 1;
 
     if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
 
@@ -128,47 +165,56 @@ int main(int argc, char** argv) {
 
       if (button == 5) {
         auto active_player = game::get<players_manager>().get_active_player_id();
-        pigeon_war_server.send_notification(make_end_turn_message(active_player));
+        pigeon_war_server.send_message_to_all(make_end_turn_message(active_player));
       }
 
-      pigeon_war_server.send_notification(make_local_game_state_message(get_local_game_state()));
-      pigeon_war_server.send_notification(make_global_game_state_message(get_global_game_state()));
+      pigeon_war_server.send_message_to_all(make_local_game_state_message(get_local_game_state()));
+      pigeon_war_server.send_message_to_all(make_global_game_state_message(get_global_game_state()));
     }
   });
 
-  pigeon_war_server.bind("get_button_description", [&](json_data_type& data) {
+  bind("get_button_description", [&](json_data_type& data) {
 
-    std::int32_t client_id = data["client_id"];
+    // TODO: uint32 or int32??
+    std::uint32_t client_id = data["client_id"];
     std::uint32_t button = data["button"];
 
     std::string description;
 
-    const bool single_client = pigeon_war_server.is_single_client();
+    const bool single_client = pigeon_war_server.number_of_clients() == 1;
 
     if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
 
       description = get_button_description(game_control().selected_index_, button);
-      pigeon_war_server.send_notification_to(client_id, make_description_message(description));
+      pigeon_war_server.send_message(client_id, make_description_message(description));
     }
   });
 
-  pigeon_war_server.bind("get_effect_description", [&](json_data_type& data) {
+  bind("get_effect_description", [&](json_data_type& data) {
 
     std::int32_t client_id = data["client_id"];
     std::string effect = data["effect"];
 
     std::string description;
 
-    const bool single_client = pigeon_war_server.is_single_client();
+    const bool single_client = pigeon_war_server.number_of_clients() == 1;
 
     if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
       description = get_effect_description(effect);
-      pigeon_war_server.send_notification_to(client_id, make_effect_description_message(description));
+      pigeon_war_server.send_message(client_id, make_effect_description_message(description));
     }
   });
 
-  pigeon_war_server.run();
-  pigeon_war_server.wait();
+//  pigeon_war_server.run();
+//  pigeon_war_server.wait();
+
+  pigeon_war_server.start();
+  // TODO: replace this with run: pigeon_war_server.update()
+
+  while (true) {
+    pigeon_war_server.update();
+    std::this_thread::sleep_for(std::chrono::milliseconds(50));
+  }
 
   return 0;
 }

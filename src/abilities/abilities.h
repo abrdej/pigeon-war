@@ -32,7 +32,7 @@ public:
     std::shared_ptr<Type> get() const {
         auto it = boost::range::find_if(abilities_,
                                         [](const std::pair<std::shared_ptr<ability>, std::type_index>& x) -> bool {
-                                            x.second == std::type_index(typeid(Type));
+                                            return x.second == std::type_index(typeid(Type));
                                         });
         return it != std::end(abilities_) ? std::static_pointer_cast<Type>(it->first) : nullptr;
     }

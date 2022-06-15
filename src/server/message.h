@@ -1,0 +1,8 @@
+//
+// Created by abrdej on 09.06.22.
+//
+
+#ifndef PIGEONWAR_SRC_SERVER_MESSAGE_H_
+#define PIGEONWAR_SRC_SERVER_MESSAGE_H_
+
+#endif //PIGEONWAR_SRC_SERVER_MESSAGE_H_
