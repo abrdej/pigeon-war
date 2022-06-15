@@ -6,18 +6,18 @@
 
 class shoot final : public directed_target_ability<3>,
                     protected per_turn_callback {
-public:
+ public:
   explicit shoot(id_t entity_id);
 
   ADD_BITMAP_GETTER(bullet)
 
   DEFINE_DESC(shoot, damage_, bullets_)
 
-  bool usable() const override {
+  [[nodiscard]] bool usable() const override {
     return bullets_ != 0;
   }
 
-private:
+ private:
   void use(index_t on_index) override;
 
   const id_t entity_id_;
