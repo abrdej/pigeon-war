@@ -2,4 +2,4 @@ cmake-build-debug
 CMakeSettings.json
 .vs
 .idea
-config.h
+src/config.h
