@@ -23,8 +23,6 @@ void saberhand_factory::create(base_entity& entity) {
   abilities_ptr->add_ability(std::make_shared<moveable>(4));
   abilities_ptr->add_ability(std::make_shared<sabers>(entity.entity_id));
   abilities_ptr->add_ability(std::make_shared<invisibility>(entity.entity_id));
-
-  LOG(debug) << "Saberhand ready";
 }
 
 entity_factory_interface_ptr create_saberhand_factory() {

@@ -2,7 +2,7 @@
 #define WEREWOLF_H
 
 #include <abilities/abilities.h>
-#include <abilities/drain.h>
+#include "entities/native/drain.h"
 #include <abilities/wolf_herd.h>
 #include "entity.h"
 #include "components/damage_taker.h"

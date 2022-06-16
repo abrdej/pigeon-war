@@ -54,8 +54,6 @@ set(SOURCE_FILES
 #  src/abilities/claws.cpp
 #  src/abilities/cleaver.cpp
 #  src/abilities/cleaver.h
-  src/abilities/counterattack.cpp
-  src/abilities/counterattack.h
 #  src/abilities/cure.cpp
 #  src/abilities/cure.h
   src/abilities/damage_dealer.cpp
@@ -72,7 +70,6 @@ set(SOURCE_FILES
 #  src/abilities/dodge.h
 #  src/abilities/dragon_skin.cpp
 #  src/abilities/dragon_skin.h
-  src/abilities/drain.cpp
 #  src/abilities/entangling.cpp
 #  src/abilities/entangling.cpp
 #  src/abilities/entangling.h
@@ -167,8 +164,8 @@ set(SOURCE_FILES
 #  src/abilities/shield.h
 #  src/abilities/shiruken.cpp
 #  src/abilities/shiruken.h
-  src/abilities/smokescreen.cpp
-  src/abilities/smokescreen.h
+#  src/abilities/smokescreen.cpp
+#  src/abilities/smokescreen.h
 #  src/abilities/sniper_shot.cpp
 #  src/abilities/sniper_shot.h
 #  src/abilities/sparks.cpp
@@ -196,7 +193,6 @@ set(SOURCE_FILES
 #  src/abilities/teleport.cpp
 #  src/abilities/teleport.h
 #  src/abilities/teleport.h
-  src/entities/saurian/tongue_of_fire.cpp
 #  src/abilities/transmission.cpp
 #  src/abilities/transmission.h
 #  src/abilities/trash_trail.cpp
@@ -298,9 +294,7 @@ set(SOURCE_FILES
 #  src/entities/killer.h
 #  src/entities/mechanical_saw.h
 #  src/entities/monk.h
-  src/entities/native.cpp
-  src/entities/native.h
-#  src/entities/ninja.h
+  #  src/entities/ninja.h
 #  src/entities/pixie.cpp
 #  src/entities/pixie.h
 #  src/entities/poisoner.cpp
@@ -311,8 +305,6 @@ set(SOURCE_FILES
 #  src/entities/rocket_thrower.cpp
 #  src/entities/rocket_thrower.h
 #  src/entities/samurai_rat.h
-  src/entities/saurian/saurian.cpp
-  src/entities/saurian/saurian_web.cpp
 #  src/entities/sentinel.cpp
 #  src/entities/sentinel.h
 #  src/entities/snake.cpp
@@ -383,6 +375,7 @@ target_include_directories(game_core PUBLIC src external)
 target_link_libraries(game_core PUBLIC Boost::headers Boost::system Boost::log pthread dl)
 
 # entities
+add_subdirectory(src/entities/native)
 add_subdirectory(src/entities/saberhand)
 add_subdirectory(src/entities/saurian)
 add_subdirectory(src/entities/shooter)

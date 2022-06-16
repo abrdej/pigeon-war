@@ -8,11 +8,13 @@ int main(int argc, char** argv) {
   auto saberhand_id = factory.create("saberhand");
   auto saurian_id = factory.create("saurian");
   auto saurian_web_id = factory.create("saurian_web");
+  auto native_id = factory.create("native");
 
   (void)shooter_id;
   (void)saberhand_id;
   (void)saurian_id;
   (void)saurian_web_id;
+  (void)native_id;
 
   game::get<entity_manager>().clear();
 

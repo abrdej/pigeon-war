@@ -6,7 +6,6 @@
 #include <core/game.h>
 #include <core/game_controller.h>
 #include <core/turn_system.h>
-#include <entities/native.h>
 #include <scenarios/creator_helper.h>
 #include <scenarios/scenario_helper.h>
 #include <entities/entities_factory.h>
@@ -56,7 +55,7 @@ void create_saurian_web() {
   creator_helper::create_neutral_many("stone",
                                       {pos(5, 0), pos(5, 1), pos(9, 9), pos(1, 8), pos(14, 8)});
 
-  auto native_id = entity_manager_ref.create<native>();
+  auto native_id = game::get<entities_factory>().create("native");
   game_board().insert(game_board().to_index(12, 4), native_id);
   players_manager_ref.add_neutral_entity(native_id);
 
