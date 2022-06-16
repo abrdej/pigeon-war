@@ -1,9 +1,9 @@
-#include <abilities/sabers.h>
+#include "sabers.h"
 
-#include <abilities/damage_dealers.h>
-#include <core/board.h>
-#include <core/game_controller.h>
-#include <utils/algorithm.h>
+#include "abilities/damage_dealers.h"
+#include "core/board.h"
+#include "core/game_controller.h"
+#include "utils/algorithm.h"
 
 sabers::sabers(std::uint32_t entity_id)
     : configurable("sabers"),

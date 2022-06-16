@@ -1,12 +1,11 @@
 #include "invisibility.h"
 
-#include <components/damage_taker.h>
-#include <core/board.h>
-#include <core/game_controller.h>
-#include <entities/saberhand.h>
-#include <managers/entity_manager.h>
-#include <messages/massages_makers.h>
-#include <server/sender.h>
+#include "components/damage_taker.h"
+#include "core/board.h"
+#include "core/game_controller.h"
+#include "managers/entity_manager.h"
+#include "messages/massages_makers.h"
+#include "server/sender.h"
 
 invisibility::invisibility(std::uint32_t id)
 	: entity_id(id) {}

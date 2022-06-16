@@ -7,11 +7,11 @@
 #include <core/game_controller.h>
 #include <core/turn_system.h>
 #include <entities/native.h>
-#include <entities/saberhand.h>
 #include <entities/saurian.h>
 #include <entities/saurian_web.h>
 #include <scenarios/creator_helper.h>
 #include <scenarios/scenario_helper.h>
+#include <entities/entities_factory.h>
 
 void create_saurian_web() {
   game_board().set_size(15, 10);
@@ -19,8 +19,8 @@ void create_saurian_web() {
   auto &entity_manager_ref = game::get<entity_manager>();
   auto &players_manager_ref = game::get<players_manager>();
 
-//  auto shooter_id = entity_manager_ref.create<shooter>();
-  auto saberhand_id = entity_manager_ref.create<saberhand>();
+  auto shooter_id = game::get<entities_factory>().create("shooter");
+  auto saberhand_id = game::get<entities_factory>().create("saberhand");
   auto saurion1_id = entity_manager_ref.create<saurian>();
   auto saurion2_id = entity_manager_ref.create<saurian>();
   auto saurion3_id = entity_manager_ref.create<saurian>();
@@ -33,7 +33,7 @@ void create_saurian_web() {
   game::get<ai_manager>().add_ai_for(saurion4_id, ai::make_ai<saurian>());
   game::get<ai_manager>().add_ai_for(saurion5_id, ai::make_ai<saurian>());
 
-//  game_board().insert(game_board().to_index(2, 3), shooter_id);
+  game_board().insert(game_board().to_index(2, 3), shooter_id);
   game_board().insert(game_board().to_index(2, 5), saberhand_id);
 
   game_board().insert(game_board().to_index(13, 4), saurion1_id);
@@ -44,7 +44,7 @@ void create_saurian_web() {
 
   auto tester_id = players_manager_ref.create_human_player("tester");
   auto enemy_id = players_manager_ref.create_ai_player("enemy");
-//  players_manager_ref.add_entity_for_player(tester_id, shooter_id);
+  players_manager_ref.add_entity_for_player(tester_id, shooter_id);
   players_manager_ref.add_entity_for_player(tester_id, saberhand_id);
   players_manager_ref.add_entity_for_player(enemy_id, saurion1_id);
   players_manager_ref.add_entity_for_player(enemy_id, saurion2_id);

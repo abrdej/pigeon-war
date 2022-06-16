@@ -105,7 +105,6 @@ set(SOURCE_FILES
 #  src/abilities/immortality.h
 #  src/abilities/interception.cpp
 #  src/abilities/interception.h
-  src/abilities/invisibility.cpp
 #  src/abilities/jaw_spider.cpp
 #  src/abilities/jaw_spider.h
 #  src/abilities/kill.cpp
@@ -162,7 +161,6 @@ set(SOURCE_FILES
 #  src/abilities/revolver.h
 #  src/abilities/rocket_launcher.cpp
 #  src/abilities/rocket_launcher.h
-  src/abilities/sabers.cpp
 #  src/abilities/saw_passing.cpp
 #  src/abilities/saw_passing.h
 #  src/abilities/shield.cpp
@@ -312,7 +310,6 @@ set(SOURCE_FILES
 #  src/entities/robot.h
 #  src/entities/rocket_thrower.cpp
 #  src/entities/rocket_thrower.h
-  src/entities/saberhand.cpp
 #  src/entities/samurai_rat.h
   src/entities/saurian.cpp
   src/entities/saurian.h
@@ -388,6 +385,7 @@ target_link_libraries(game_core PUBLIC Boost::headers Boost::system Boost::log p
 
 # entities
 add_subdirectory(src/entities/shooter)
+add_subdirectory(src/entities/saberhand)
 
 add_executable(pigeon_war src/main.cpp)
 target_link_libraries(pigeon_war game_core)

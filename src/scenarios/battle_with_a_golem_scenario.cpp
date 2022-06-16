@@ -3,7 +3,6 @@
 #include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include <entities/golem.h>
-#include <entities/saberhand.h>
 
 void scenarios::create_battle_with_a_golem_scenario() {
   game_board().set_size(15, 10);

@@ -31,6 +31,11 @@ class entity_manager final {
     return entity_id;
   }
 
+  void clear() {
+    entities.clear();
+    on_destroy_callbacks.clear();
+  }
+
   template <typename EntityFactory>
   inline std::uint32_t create() {
     auto entity_id = generate_id();

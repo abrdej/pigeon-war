@@ -1,3 +1,4 @@
 {
-  "shooter": "libshooter.so"
+  "shooter": "src/entities/shooter/libshooter.so",
+  "saberhand": "src/entities/saberhand/libsaberhand.so"
 }

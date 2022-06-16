@@ -1,7 +1,7 @@
 #pragma once
 
-#include <abilities/caster_target_ability.h>
-#include <core/turn_system.h>
+#include "abilities/caster_target_ability.h"
+#include "core/turn_system.h"
 
 class invisibility final : public caster_target_ability
 {
