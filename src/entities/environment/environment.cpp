@@ -14,7 +14,7 @@ entity_factory_interface_ptr create_##TYPE##_factory() { \
 }
 
 struct environment_factory : public entity_factory_interface {
-  explicit environment_factory(std::string name, std::int32_t health = -1);
+  explicit environment_factory(std::string name, std::int32_t health = indestructible);
   void create(base_entity& entity) override;
   std::string name_;
   std::int32_t health_;
@@ -25,9 +25,7 @@ environment_factory::environment_factory(std::string name, std::int32_t health)
 
 void environment_factory::create(base_entity& entity) {
   entity.name = name_;
-  if (health_ > 0) {
-    entity.add<health_field>();
-  }
+  entity.add<health_field>(health_);
 }
 
 ENVIRONMENT_FACTORY_CREATOR(tree, Tree);

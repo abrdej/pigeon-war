@@ -13,7 +13,11 @@
 struct saurian {};
 
 void create_saurian_web() {
+  LOG(debug) << "creating saurian web scenario";
+
   game_board().set_size(15, 10);
+
+  LOG(debug) << "saurian web size: " << game_board().cols_n * game_board().rows_n;
 
   auto &entity_manager_ref = game::get<entity_manager>();
   auto &players_manager_ref = game::get<players_manager>();

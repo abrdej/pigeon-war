@@ -368,7 +368,7 @@ set(SOURCE_FILES
   src/utils/graph.h
   src/utils/message_joiner.h)
 
-add_library(game_core ${SOURCE_FILES})
+add_library(game_core SHARED ${SOURCE_FILES})
 target_include_directories(game_core PUBLIC src external)
 target_link_libraries(game_core PUBLIC Boost::headers Boost::system Boost::log pthread dl)
 

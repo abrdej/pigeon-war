@@ -1,3 +1,6 @@
 #include <core/game.h>
 
-std::unordered_map<std::type_index, std::shared_ptr<void>> game::blocks;
+game& game::get_game() {
+  static game game_instance;
+  return game_instance;
+}

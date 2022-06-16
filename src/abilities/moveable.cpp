@@ -7,17 +7,20 @@ void moveable::prepare(std::uint32_t for_index) {
   game_control().selected_index_ = for_index;
   game_control().actual_state_ = states_types::wait_for_action;
 
-	LOG(debug) << "range: " << range;
+  LOG(debug) << "range: " << range;
 
   if (movement_type == types::path) {
     path_finder path_finder(skip_collisions_);
     path_finder.calc(for_index);
     path_finder.get_possible_movements(game_control().possible_movements_,
-                                       game_control().possible_movements_costs_, used ? 0 : range);
+                                       game_control().possible_movements_costs_,
+                                       used ? 0 : range);
 
   } else if (movement_type == types::straight) {
-    board_helper::calc_straight(game_control().selected_index_, game_control().possible_movements_,
-                                game_control().possible_movements_costs_, used ? 0 : range);
+    board_helper::calc_straight(game_control().selected_index_,
+                                game_control().possible_movements_,
+                                game_control().possible_movements_costs_,
+                                used ? 0 : range);
   }
 
   game_control().actual_targeting_type_ = target_types::moving;

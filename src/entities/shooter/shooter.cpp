@@ -8,12 +8,17 @@
 #include <entities/shooter/grenade.h>
 #include <entities/shooter/shoot.h>
 
+#include <core/game.h>
+#include <core/board.h>
+
 struct shooter_factory : public entity_factory_interface {
   void create(base_entity& entity) override;
 };
 
 void shooter_factory::create(base_entity& entity) {
   entity.name = "Shooter";
+
+  LOG(debug) << "shooter_factory size: " << game_board().cols_n * game_board().rows_n;
 
   entity.add<health_field>(50);
   entity.add<applied_effects>();

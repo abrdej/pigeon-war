@@ -28,7 +28,7 @@ class module_holder {
     if (it != std::end(modules))
       return std::static_pointer_cast<T>(it->second);
     else {
-      LOG(debug) << "get component which doesn't exist: " << typeid(T).name();
+      LOG(error) << "get component which doesn't exist: " << typeid(T).name();
       return std::shared_ptr<T>();
     }
   }
@@ -39,7 +39,7 @@ class module_holder {
     if (it != std::end(modules))
       return std::static_pointer_cast<T>(it->second);
     else {
-      LOG(debug) << "get component which doesn't exist\n" << typeid(T).name();
+      LOG(error) << "get component which doesn't exist: " << typeid(T).name();
       return std::shared_ptr<T>();
     }
   }

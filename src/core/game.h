@@ -9,18 +9,21 @@
  * @brief Container for all building blocks of game.
  */
 class game {
-  using any_ptr = std::shared_ptr<void>;
-  static std::unordered_map<std::type_index, any_ptr> blocks;
-
  public:
+  static game& get_game();
+
   template <typename Block>
   static Block& get() {
+    auto& blocks = get_game().blocks_;
     auto it = blocks.find(typeid(Block));
     if (it == std::end(blocks)) {
       it = blocks.emplace(typeid(Block), std::make_shared<Block>()).first;
     }
     return *std::static_pointer_cast<Block>(it->second);
   }
+
+ private:
+  std::unordered_map<std::type_index, std::shared_ptr<void>> blocks_;
 };
 
 template <typename Block>
