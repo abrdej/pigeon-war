@@ -1,4 +1,6 @@
 {
   "shooter": "src/entities/shooter/libshooter.so",
-  "saberhand": "src/entities/saberhand/libsaberhand.so"
+  "saberhand": "src/entities/saberhand/libsaberhand.so",
+  "saurian": "src/entities/saurian/libsaurian.so",
+  "saurian_web": "src/entities/saurian/libsaurian.so"
 }

@@ -1,41 +1,35 @@
-#include "invisibility.h"
+#include <entities/saberhand/invisibility.h>
 
-#include "components/damage_taker.h"
-#include "core/board.h"
-#include "core/game_controller.h"
-#include "managers/entity_manager.h"
-#include "messages/massages_makers.h"
-#include "server/sender.h"
+#include <components/damage_taker.h>
+#include <core/board.h>
+#include <messages/massages_makers.h>
+#include <server/sender.h>
 
-invisibility::invisibility(std::uint32_t id)
-	: entity_id(id) {}
+invisibility::invisibility(std::uint32_t id) : entity_id(id) {}
 
-void invisibility::use(std::uint32_t on_index)
-{
-	if (used_)
-        return;
+void invisibility::use(std::uint32_t on_index) {
+  if (used_)
+    return;
 
-    hide_me();
+  hide_me();
 
-	invisibility_callback = make_after_n_round_callback_holder(duration, [this]() {
-		show_me();
-    });
+  invisibility_callback = make_after_n_round_callback_holder(duration, [this]() {
+    show_me();
+  });
 
-	used_ = true;
+  used_ = true;
 }
 
-void invisibility::hide_me()
-{
-	index = game_board().index_for(entity_id);
+void invisibility::hide_me() {
+  index = game_board().index_for(entity_id);
 
-	sender::send(make_action_message("set_invisibility", entity_id));
+  sender::send(make_action_message("set_invisibility", entity_id));
 
-    set_destructible(entity_id, false);
+  set_destructible(entity_id, false);
 }
 
-void invisibility::show_me()
-{
-	sender::send(make_action_message("remove_invisibility", entity_id));
+void invisibility::show_me() {
+  sender::send(make_action_message("remove_invisibility", entity_id));
 
-    set_destructible(entity_id, true);
+  set_destructible(entity_id, true);
 }

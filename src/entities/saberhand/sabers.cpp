@@ -1,14 +1,12 @@
-#include "sabers.h"
+#include <entities/saberhand/sabers.h>
 
-#include "abilities/damage_dealers.h"
-#include "core/board.h"
-#include "core/game_controller.h"
-#include "utils/algorithm.h"
+#include <abilities/damage_dealers.h>
+#include <core/board.h>
+#include <core/game_controller.h>
+#include <utils/algorithm.h>
 
 sabers::sabers(std::uint32_t entity_id)
-    : configurable("sabers"),
-      entity_id_(entity_id),
-      damage_(get_param<decltype(damage_)>("damage")) {
+    : configurable("sabers"), entity_id_(entity_id), damage_(get_param<decltype(damage_)>("damage")) {
 
   LOG(debug) << "entity_id: " << entity_id_;
   LOG(debug) << "damage: " << damage_;
@@ -33,7 +31,7 @@ void sabers::target(std::uint32_t target_index) {
 
     // fetch targets as we may become dead
     auto targets = std::move(targets_);
-    for (auto targeted_index: targets) {
+    for (auto targeted_index : targets) {
       use(targeted_index);
     }
     use(target_index);

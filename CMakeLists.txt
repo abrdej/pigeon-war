@@ -196,7 +196,7 @@ set(SOURCE_FILES
 #  src/abilities/teleport.cpp
 #  src/abilities/teleport.h
 #  src/abilities/teleport.h
-  src/abilities/tongue_of_fire.cpp
+  src/entities/saurian/tongue_of_fire.cpp
 #  src/abilities/transmission.cpp
 #  src/abilities/transmission.h
 #  src/abilities/trash_trail.cpp
@@ -311,9 +311,8 @@ set(SOURCE_FILES
 #  src/entities/rocket_thrower.cpp
 #  src/entities/rocket_thrower.h
 #  src/entities/samurai_rat.h
-  src/entities/saurian.cpp
-  src/entities/saurian.h
-  src/entities/saurian_web.cpp
+  src/entities/saurian/saurian.cpp
+  src/entities/saurian/saurian_web.cpp
 #  src/entities/sentinel.cpp
 #  src/entities/sentinel.h
 #  src/entities/snake.cpp
@@ -384,8 +383,9 @@ target_include_directories(game_core PUBLIC src external)
 target_link_libraries(game_core PUBLIC Boost::headers Boost::system Boost::log pthread dl)
 
 # entities
-add_subdirectory(src/entities/shooter)
 add_subdirectory(src/entities/saberhand)
+add_subdirectory(src/entities/saurian)
+add_subdirectory(src/entities/shooter)
 
 add_executable(pigeon_war src/main.cpp)
 target_link_libraries(pigeon_war game_core)

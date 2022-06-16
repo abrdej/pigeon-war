@@ -7,11 +7,11 @@
 #include <core/game_controller.h>
 #include <core/turn_system.h>
 #include <entities/native.h>
-#include <entities/saurian.h>
-#include <entities/saurian_web.h>
 #include <scenarios/creator_helper.h>
 #include <scenarios/scenario_helper.h>
 #include <entities/entities_factory.h>
+
+struct saurian {};
 
 void create_saurian_web() {
   game_board().set_size(15, 10);
@@ -21,36 +21,36 @@ void create_saurian_web() {
 
   auto shooter_id = game::get<entities_factory>().create("shooter");
   auto saberhand_id = game::get<entities_factory>().create("saberhand");
-  auto saurion1_id = entity_manager_ref.create<saurian>();
-  auto saurion2_id = entity_manager_ref.create<saurian>();
-  auto saurion3_id = entity_manager_ref.create<saurian>();
-  auto saurion4_id = entity_manager_ref.create<saurian>();
-  auto saurion5_id = entity_manager_ref.create<saurian>();
+  auto saurian1_id = game::get<entities_factory>().create("saurian");
+  auto saurian2_id = game::get<entities_factory>().create("saurian");
+  auto saurian3_id = game::get<entities_factory>().create("saurian");
+  auto saurian4_id = game::get<entities_factory>().create("saurian");
+  auto saurian5_id = game::get<entities_factory>().create("saurian");
 
-  game::get<ai_manager>().add_ai_for(saurion1_id, ai::make_ai<saurian>());
-  game::get<ai_manager>().add_ai_for(saurion2_id, ai::make_ai<saurian>());
-  game::get<ai_manager>().add_ai_for(saurion3_id, ai::make_ai<saurian>());
-  game::get<ai_manager>().add_ai_for(saurion4_id, ai::make_ai<saurian>());
-  game::get<ai_manager>().add_ai_for(saurion5_id, ai::make_ai<saurian>());
+  game::get<ai_manager>().add_ai_for(saurian1_id, ai::make_ai<saurian>());
+  game::get<ai_manager>().add_ai_for(saurian2_id, ai::make_ai<saurian>());
+  game::get<ai_manager>().add_ai_for(saurian3_id, ai::make_ai<saurian>());
+  game::get<ai_manager>().add_ai_for(saurian4_id, ai::make_ai<saurian>());
+  game::get<ai_manager>().add_ai_for(saurian5_id, ai::make_ai<saurian>());
 
   game_board().insert(game_board().to_index(2, 3), shooter_id);
   game_board().insert(game_board().to_index(2, 5), saberhand_id);
 
-  game_board().insert(game_board().to_index(13, 4), saurion1_id);
-  game_board().insert(game_board().to_index(12, 2), saurion2_id);
-  game_board().insert(game_board().to_index(12, 6), saurion3_id);
-  game_board().insert(game_board().to_index(4, 1), saurion4_id);
-  game_board().insert(game_board().to_index(7, 9), saurion5_id);
+  game_board().insert(game_board().to_index(13, 4), saurian1_id);
+  game_board().insert(game_board().to_index(12, 2), saurian2_id);
+  game_board().insert(game_board().to_index(12, 6), saurian3_id);
+  game_board().insert(game_board().to_index(4, 1), saurian4_id);
+  game_board().insert(game_board().to_index(7, 9), saurian5_id);
 
   auto tester_id = players_manager_ref.create_human_player("tester");
   auto enemy_id = players_manager_ref.create_ai_player("enemy");
   players_manager_ref.add_entity_for_player(tester_id, shooter_id);
   players_manager_ref.add_entity_for_player(tester_id, saberhand_id);
-  players_manager_ref.add_entity_for_player(enemy_id, saurion1_id);
-  players_manager_ref.add_entity_for_player(enemy_id, saurion2_id);
-  players_manager_ref.add_entity_for_player(enemy_id, saurion3_id);
-  players_manager_ref.add_entity_for_player(enemy_id, saurion4_id);
-  players_manager_ref.add_entity_for_player(enemy_id, saurion5_id);
+  players_manager_ref.add_entity_for_player(enemy_id, saurian1_id);
+  players_manager_ref.add_entity_for_player(enemy_id, saurian2_id);
+  players_manager_ref.add_entity_for_player(enemy_id, saurian3_id);
+  players_manager_ref.add_entity_for_player(enemy_id, saurian4_id);
+  players_manager_ref.add_entity_for_player(enemy_id, saurian5_id);
 
   using creator_helper::pos;
   creator_helper::create_neutral_many("stone",
@@ -60,7 +60,7 @@ void create_saurian_web() {
   game_board().insert(game_board().to_index(12, 4), native_id);
   players_manager_ref.add_neutral_entity(native_id);
 
-  auto saurian_web_id = entity_manager_ref.create<saurian_web>();
+  auto saurian_web_id = game::get<entities_factory>().create("saurian_web");
   game_board().insert(game_board().to_index(12, 4), saurian_web_id);
   players_manager_ref.add_entity_for_player(enemy_id, saurian_web_id);
 
@@ -79,6 +79,6 @@ void create_saurian_web() {
                                 });
 
 //  if_any_die({shooter_id, saberhand_id, native_id}, [&]() { LOG(debug) << "defeat"; });
-  if_all_die({saurion1_id, saurion2_id, saurion3_id, saurion4_id},
+  if_all_die({saurian1_id, saurian2_id, saurian3_id, saurian4_id},
              [&]() { game_control().victory(tester_id); });
 }
