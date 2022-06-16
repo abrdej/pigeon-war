@@ -3,5 +3,11 @@
   "saberhand": "src/entities/saberhand/libsaberhand.so",
   "saurian": "src/entities/saurian/libsaurian.so",
   "saurian_web": "src/entities/saurian/libsaurian.so",
-  "native": "src/entities/native/libnative.so"
+  "native": "src/entities/native/libnative.so",
+  "tree": "src/entities/environment/libenvironment.so",
+  "fir": "src/entities/environment/libenvironment.so",
+  "fire": "src/entities/environment/libenvironment.so",
+  "stone": "src/entities/environment/libenvironment.so",
+  "water": "src/entities/environment/libenvironment.so",
+  "wall": "src/entities/environment/libenvironment.so"
 }

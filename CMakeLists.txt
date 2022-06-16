@@ -279,8 +279,6 @@ set(SOURCE_FILES
   src/entities/entities_factory.cpp
   src/entities/entities_factory.h
 #  src/entities/entity.h
-#  src/entities/environment.cpp
-#  src/entities/environment.h
 #  src/entities/eye.cpp
 #  src/entities/eye.h
 #  src/entities/giant.h
@@ -374,7 +372,8 @@ add_library(game_core ${SOURCE_FILES})
 target_include_directories(game_core PUBLIC src external)
 target_link_libraries(game_core PUBLIC Boost::headers Boost::system Boost::log pthread dl)
 
-# entities
+# entities plugins
+add_subdirectory(src/entities/environment)
 add_subdirectory(src/entities/native)
 add_subdirectory(src/entities/saberhand)
 add_subdirectory(src/entities/saurian)

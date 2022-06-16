@@ -3,7 +3,6 @@
 //#include <entities/destroyer.h>
 //#include <entities/droid.h>
 //#include <entities/treant.h>
-//#include <entities/environment.h>
 //#include <entities/rocket_thrower.h>
 //#include <entities/guardian.h>
 //#include <entities/creature.h>

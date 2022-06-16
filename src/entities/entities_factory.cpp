@@ -16,8 +16,13 @@
 
 inline std::string get_entity_plugin_path(const std::string& entity_name) {
   std::ifstream ifs(config_directory + "entity_plugins.json");
-  nlohmann::json parsed = nlohmann::json::parse(ifs);
-  return parsed[entity_name];
+  try {
+    nlohmann::json parsed = nlohmann::json::parse(ifs);
+    return parsed[entity_name];
+  } catch (std::exception& e) {
+    LOG(error) << "no entity plugin for: " << std::quoted(entity_name) << ", what: " << e.what();
+  }
+  return {};
 }
 
 struct entity_plugin {

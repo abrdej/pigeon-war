@@ -3,7 +3,6 @@
 #include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include <core/game_controller.h>
-#include <entities/environment.h>
 #include <entities/samurai_rat.h>
 #include <entities/spectre.h>
 #include <entities/wolf.h>
@@ -56,12 +55,12 @@ void create_wolves_dinner() {
       }
     }
   }
-  creator_helper::create_neutral_many<tree>(trees_positions);
-  creator_helper::create_neutral_many<tree>({pos(7, 1), pos(8, 1), pos(9, 1), pos(9, 2)});
-  creator_helper::create_neutral_many<tree>(
-      {pos(8, 8), pos(9, 8), pos(8, 6), pos(9, 6), pos(10, 8), pos(11, 8), pos(10, 7), pos(11, 7)});
-  creator_helper::create_neutral_many<tree>({pos(4, 4), pos(5, 4), pos(4, 5), pos(4, 6)});
-  creator_helper::create_neutral_many<stone>({pos(1, 1), pos(5, 5)});
+  creator_helper::create_neutral_many("tree", trees_positions);
+  creator_helper::create_neutral_many("tree", {pos(7, 1), pos(8, 1), pos(9, 1), pos(9, 2)});
+  creator_helper::create_neutral_many("tree", {pos(8, 8), pos(9, 8), pos(8, 6), pos(9, 6),
+                                               pos(10, 8), pos(11, 8), pos(10, 7), pos(11, 7)});
+  creator_helper::create_neutral_many("tree", {pos(4, 4), pos(5, 4), pos(4, 5), pos(4, 6)});
+  creator_helper::create_neutral_many("tree", {pos(1, 1), pos(5, 5)});
 
   if_any_die({samurai_id}, [&]() {
     LOG(debug) << "defeat";
