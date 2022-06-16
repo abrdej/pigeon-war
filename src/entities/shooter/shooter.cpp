@@ -29,7 +29,4 @@ entity_factory_interface_ptr create_shooter_factory() {
   return std::make_shared<shooter_factory>();
 }
 
-BOOST_DLL_ALIAS(
-    create_shooter_factory,
-    shooter
-)
+BOOST_DLL_ALIAS(create_shooter_factory, shooter)

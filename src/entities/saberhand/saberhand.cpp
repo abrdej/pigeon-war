@@ -29,7 +29,4 @@ entity_factory_interface_ptr create_saberhand_factory() {
   return std::make_shared<saberhand_factory>();
 }
 
-BOOST_DLL_ALIAS(
-    create_saberhand_factory,
-    saberhand
-)
+BOOST_DLL_ALIAS(create_saberhand_factory, saberhand)

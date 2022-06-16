@@ -17,7 +17,4 @@ entity_factory_interface_ptr create_saurian_web_factory() {
   return std::make_shared<saurian_web_factory>();
 }
 
-BOOST_DLL_ALIAS(
-    create_saurian_web_factory,
-    saurian_web
-)
+BOOST_DLL_ALIAS(create_saurian_web_factory, saurian_web)

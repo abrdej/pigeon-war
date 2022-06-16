@@ -3,8 +3,7 @@
 #include <abilities/damage_dealers.h>
 #include <core/board.h>
 
-tongue_of_fire::tongue_of_fire(std::uint32_t entity_id)
-    : path_target_ability(7), entity_id(entity_id) {}
+tongue_of_fire::tongue_of_fire(std::uint32_t entity_id) : path_target_ability(7), entity_id(entity_id) {}
 
 void tongue_of_fire::use(std::uint32_t index_on) {
   if (used) {
