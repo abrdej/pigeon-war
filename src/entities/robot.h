@@ -8,8 +8,8 @@
 #include "entity.h"
 #include "abilities/moveable.h"
 #include "abilities/abilities.h"
-#include "abilities/shoot.h"
-#include "abilities/grenade.h"
+#include "entities/shooter/shoot.h"
+#include "entities/shooter/grenade.h"
 
 struct robot final
 {

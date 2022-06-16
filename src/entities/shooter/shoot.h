@@ -1,11 +1,11 @@
 #pragma once
 
-#include <abilities/per_turn_usable.h>
-#include <abilities/straight_target_ability.h>
-#include <core/defs.h>
+#include "abilities/per_turn_usable.h"
+#include "abilities/straight_target_ability.h"
+#include "core/configurable.h"
+#include "core/defs.h"
 
-class shoot final : public directed_target_ability<3>,
-                    protected per_turn_callback {
+class shoot final : public directed_target_ability<3>, protected per_turn_callback, protected configurable {
  public:
   explicit shoot(id_t entity_id);
 

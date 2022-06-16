@@ -10,6 +10,8 @@ configure_file(src/config.h.in ${CMAKE_SOURCE_DIR}/src/config.h @ONLY)
 
 find_package(Boost COMPONENTS log system REQUIRED)
 
+add_compile_options(-fPIC)
+
 set(SOURCE_FILES
   src/abilities/abilities.h
   src/abilities/ability.h
@@ -89,7 +91,6 @@ set(SOURCE_FILES
 #  src/abilities/giant_blow.h
 #  src/abilities/giant_ram.cpp
 #  src/abilities/giant_ram.h
-  src/abilities/grenade.cpp
 #  src/abilities/handcannon.cpp
 #  src/abilities/handcannon.h
 #  src/abilities/havoc.cpp
@@ -168,7 +169,6 @@ set(SOURCE_FILES
 #  src/abilities/shield.h
 #  src/abilities/shiruken.cpp
 #  src/abilities/shiruken.h
-  src/abilities/shoot.cpp
   src/abilities/smokescreen.cpp
   src/abilities/smokescreen.h
 #  src/abilities/sniper_shot.cpp
@@ -319,8 +319,6 @@ set(SOURCE_FILES
   src/entities/saurian_web.cpp
 #  src/entities/sentinel.cpp
 #  src/entities/sentinel.h
-  src/entities/shooter.cpp
-  src/entities/shooter.h
 #  src/entities/snake.cpp
 #  src/entities/snake.h
 #  src/entities/sniper.h
@@ -384,6 +382,16 @@ set(SOURCE_FILES
   src/utils/graph.h
   src/utils/message_joiner.h)
 
-add_executable(pigeon_war src/main.cpp ${SOURCE_FILES})
-target_include_directories(pigeon_war PRIVATE src external)
-target_link_libraries(pigeon_war Boost::headers Boost::system Boost::log pthread)
+add_library(game_core ${SOURCE_FILES})
+target_include_directories(game_core PUBLIC src external)
+target_link_libraries(game_core PUBLIC Boost::headers Boost::system Boost::log pthread dl)
+
+# entities
+add_subdirectory(src/entities/shooter)
+
+add_executable(pigeon_war src/main.cpp)
+target_link_libraries(pigeon_war game_core)
+
+add_executable(tester src/tester.cpp)
+target_link_libraries(tester game_core)
+target_link_libraries(tester)

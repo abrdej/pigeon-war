@@ -1,7 +1,7 @@
-#include <abilities/grenade.h>
+#include "grenade.h"
 
-#include <abilities/damage_dealers.h>
-#include <core/board.h>
+#include "abilities/damage_dealers.h"
+#include "core/board.h"
 
 grenade::grenade(id_t entity_id)
   : path_target_ability(3), entity_id_(entity_id) {}

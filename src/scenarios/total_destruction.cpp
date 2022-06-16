@@ -4,7 +4,6 @@
 #include <ai/ai_manager.h>
 #include <entities/destroyer.h>
 #include <entities/golem.h>
-#include <entities/shooter.h>
 #include <entities/warrior.h>
 #include <entities/wolf.h>
 

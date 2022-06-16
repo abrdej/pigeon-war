@@ -25,7 +25,7 @@ void str_replace(std::string& text, const std::string& from, const T& to) {
 }
 
 inline std::string get_desc(const std::string& ability_name) {
-  std::ifstream ifs(resources_directory + "descriptions.json");
+  std::ifstream ifs(config_directory + "descriptions.json");
   nlohmann::json j = nlohmann::json::parse(ifs);
 
   std::string desc = j["descriptions"]["abilities"][ability_name];
@@ -33,7 +33,7 @@ inline std::string get_desc(const std::string& ability_name) {
 }
 
 inline std::string get_effect_desc(const std::string& effect) {
-  std::ifstream ifs(resources_directory + "descriptions.json");
+  std::ifstream ifs(config_directory + "descriptions.json");
   nlohmann::json j = nlohmann::json::parse(ifs);
 
   std::string desc = j["descriptions"]["effects"][effect];

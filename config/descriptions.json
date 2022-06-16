@@ -28,7 +28,7 @@
       "spider_web": "Spider Web - spider shoot his web within range of <range>.\nWeb deal <damage> damage, attracts the opponent and apply slow to him.",
       "jaw_spider": "Jaw Spider - deals <damage> damage.\nIf enemy is under Spider Web effect it deals <bonus_for_spider_web_effect> additional damage.",
       "lightning": "Lightning - mark enemy with lightning target.\nIn next turn lightning will hit enemy and deal <damage> damage.\nMagic power cost: <power_cost>.",
-      "sabers": "Sabers - saberhand can acquire several neighboring targets\nand deal each of them damage of: <damage>.",
+      "sabers": "Sabers - saberhand can acquire several neighboring targets\nand deal each of them damage of: <damage_>.",
       "mortar_thrower": "Mortar Thrower - fires area missile with range <range> which deals <base_damage> of damage.\nIf Rocket Launcher was used earlier Mortar Thrower gain <rocket_change_bonus> additional damage.",
       "rocket_launcher": "Rocket Launcher - fires missile to range <range> which deals <base_damage> + <distance_bonus> damage\nfor each unit of range.\nIf Mortar Thrower was used earlier Rocket Launcher gain <rocket_change_bonus> additional damage.",
       "cleaver": "Cleaver - deals damage of <damage>.\nEach attack also charge spectre power for havoc.\nWhen power is fully charged cleaver can't be used.",

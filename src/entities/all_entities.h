@@ -1,6 +1,5 @@
 #pragma once
 
-#include <entities/shooter.h>
 #include <entities/destroyer.h>
 #include <entities/droid.h>
 #include <entities/saberhand.h>

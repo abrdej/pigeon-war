@@ -1,6 +1,6 @@
 #pragma once
 
-#include <abilities/path_target_ability.h>
+#include "abilities/path_target_ability.h"
 
 class grenade final : public path_target_ability {
 public:

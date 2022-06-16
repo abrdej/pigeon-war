@@ -127,8 +127,7 @@ void calc_directed(std::uint32_t from_index, std::vector<std::uint32_t>& movemen
   calc_helper(ops, from_index, movements, costs, range, skip_obstacles);
 }
 
-void neighboring_fields(std::uint32_t for_index, std::vector<std::uint32_t>& fields,
-                        bool available) {
+void neighboring_fields(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool available) {
   fields.clear();
   auto fld = game_board().to_pos(for_index);
 
