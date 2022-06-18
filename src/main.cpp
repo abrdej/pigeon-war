@@ -32,7 +32,8 @@ int main(int argc, char** argv) {
 
   // TODO: nice parsing parameters from argv
   std::int32_t port = 60000;
-  std::string scenario = "saurian_web";
+//  std::string scenario = "saurian_web";
+  std::string scenario = "wolves_dinner";
   std::pair<std::uint32_t, std::uint32_t> map_size{15, 10};
 
   if (argc > 1) {

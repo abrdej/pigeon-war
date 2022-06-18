@@ -58,6 +58,7 @@ add_subdirectory(src/entities/wolf)
 
 ## scenario plugins
 add_subdirectory(src/scenarios/saurian_web)
+add_subdirectory(src/scenarios/wolves_dinner)
 
 add_executable(pigeon_war src/main.cpp src/message_processor.cpp)
 target_link_libraries(pigeon_war turn_based impl networking)

@@ -7,7 +7,7 @@
 #include <turn_based/moveable.h>
 
 DEFINE_ENTITY_FACTORY(samurai_rat) {
-  entity.name = "Samurai Rat";
+  entity.name = "Samurai";
 
   entity.add<health_field>(60);
   entity.add<applied_effects>();

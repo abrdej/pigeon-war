@@ -1,7 +1,5 @@
 #include <boost/dll/alias.hpp>
 
-#include <turn_based/scenario_factory_interface.h>
-
 #include <config.h>
 #include <impl/scenarios/map_reader.h>
 #include <impl/scenarios/scenario_helper.h>
@@ -12,6 +10,7 @@
 #include <turn_based/entities_factory.h>
 #include <turn_based/game.h>
 #include <turn_based/game_controller.h>
+#include <turn_based/scenario_factory_interface.h>
 #include <turn_based/turn_system.h>
 
 struct saurian_web_scenario_factory : public scenario_factory_interface {

@@ -1,3 +1,4 @@
 {
-  "saurian_ai": "src/entities/saurian/libsaurian.so"
+  "saurian_ai": "src/entities/saurian/libsaurian.so",
+  "wolf_ai": "src/entities/wolf/libwolf.so"
 }

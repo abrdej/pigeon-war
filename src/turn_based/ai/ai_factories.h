@@ -17,13 +17,6 @@ template <typename Entity>
 behavior_node_ptr make_ai();
 
 template <>
-inline behavior_node_ptr make_ai<wolf>() {
-  return ai::construct::make_sequence(std::make_shared<ai::nodes::find_lowest_health_target>(),
-                                      std::make_shared<ai::nodes::go_close_to_target_index>(),
-                                      std::make_shared<ai::nodes::attack_enemy>());
-}
-
-template <>
 inline behavior_node_ptr make_ai<saurian>() {
   auto lowest_health_target_sequence =
       ai::construct::make_sequence(std::make_shared<ai::nodes::find_lowest_health_target>(),
