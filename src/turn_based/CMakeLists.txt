@@ -4,18 +4,19 @@ add_library(turn_based SHARED
   ai/behavior_node.cpp
   ai/movers.cpp
   ai/target_finders.cpp
+  ai_factory.cpp
+  board.cpp
   components/applied_effects.cpp
   components/damage_taker.cpp
   components/modification.cpp
-  managers/players_manager.cpp
-  messages/massages_makers.cpp
-  board.cpp
   configurable.cpp
   damage_dealers.cpp
   entities_factory.cpp
   game.cpp
   game_controller.cpp
   logger.cpp
+  managers/players_manager.cpp
+  messages/massages_makers.cpp
   moveable.cpp
   path_finder.cpp
   scenario_factory.cpp

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <boost/config.hpp>
 
 #include <turn_based/entity.h>

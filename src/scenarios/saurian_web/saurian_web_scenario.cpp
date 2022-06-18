@@ -7,13 +7,12 @@
 #include <impl/scenarios/scenario_helper.h>
 #include <turn_based/ai/ai_factories.h>
 #include <turn_based/ai/ai_manager.h>
+#include <turn_based/ai_factory.h>
 #include <turn_based/damage_dealers.h>
 #include <turn_based/entities_factory.h>
 #include <turn_based/game.h>
 #include <turn_based/game_controller.h>
 #include <turn_based/turn_system.h>
-
-struct saurian {};
 
 struct saurian_web_scenario_factory : public scenario_factory_interface {
   void create() override;
@@ -37,12 +36,11 @@ void saurian_web_scenario_factory::create() {
   auto saurian4_id = game::get<entities_factory>().create("saurian");
   auto saurian5_id = game::get<entities_factory>().create("saurian");
 
-  // TODO: make factory for ai
-  game::get<ai_manager>().add_ai_for(saurian1_id, ai::make_ai<saurian>());
-  game::get<ai_manager>().add_ai_for(saurian2_id, ai::make_ai<saurian>());
-  game::get<ai_manager>().add_ai_for(saurian3_id, ai::make_ai<saurian>());
-  game::get<ai_manager>().add_ai_for(saurian4_id, ai::make_ai<saurian>());
-  game::get<ai_manager>().add_ai_for(saurian5_id, ai::make_ai<saurian>());
+  game::get<ai_manager>().add_ai_for(saurian1_id, game::get<ai_factory>().create("saurian_ai"));
+  game::get<ai_manager>().add_ai_for(saurian2_id, game::get<ai_factory>().create("saurian_ai"));
+  game::get<ai_manager>().add_ai_for(saurian3_id, game::get<ai_factory>().create("saurian_ai"));
+  game::get<ai_manager>().add_ai_for(saurian4_id, game::get<ai_factory>().create("saurian_ai"));
+  game::get<ai_manager>().add_ai_for(saurian5_id, game::get<ai_factory>().create("saurian_ai"));
 
   game_board().insert(game_board().to_index(2, 3), shooter_id);
   game_board().insert(game_board().to_index(2, 5), saberhand_id);

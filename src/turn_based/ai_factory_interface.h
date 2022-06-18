@@ -1,8 +1,14 @@
-//
-// Created by abrdej on 18.06.22.
-//
+#pragma once
 
-#ifndef PIGEON_WAR_SRC_TURN_BASED_AI_FACTORY_INTERFACE_H_
-#define PIGEON_WAR_SRC_TURN_BASED_AI_FACTORY_INTERFACE_H_
+#include <memory>
 
-#endif //PIGEON_WAR_SRC_TURN_BASED_AI_FACTORY_INTERFACE_H_
+#include <boost/config.hpp>
+
+#include <turn_based/ai/behavior_node.h>
+
+struct BOOST_SYMBOL_VISIBLE ai_factory_interface {
+  virtual ai::behavior_node_ptr create() = 0;
+  virtual ~ai_factory_interface() = default;
+};
+
+using ai_factory_interface_ptr = std::shared_ptr<ai_factory_interface>;
