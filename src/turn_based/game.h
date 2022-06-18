@@ -4,6 +4,7 @@
 #include <memory>
 #include <typeindex>
 #include <unordered_map>
+#include <vector>
 
 /**
  * @brief Container for all building blocks of game.
@@ -18,11 +19,14 @@ class game {
     auto it = blocks.find(typeid(Block));
     if (it == std::end(blocks)) {
       it = blocks.emplace(typeid(Block), std::make_shared<Block>()).first;
+      // required to ensure destruction order of blocks.
+      get_game().ordering_.push_back(it->second);
     }
     return *std::static_pointer_cast<Block>(it->second);
   }
 
  private:
+  std::vector<std::shared_ptr<void>> ordering_;
   std::unordered_map<std::type_index, std::shared_ptr<void>> blocks_;
 };
 
