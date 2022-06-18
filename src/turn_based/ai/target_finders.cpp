@@ -7,8 +7,7 @@
 #include <turn_based/board.h>
 #include <turn_based/components/applied_effects.h>
 
-namespace ai {
-namespace nodes {
+namespace ai::nodes {
 
 bool find_nearest_enemy::operator()(ai_knowledge& knowledge) {
   LOG(debug) << "try run find_nearest_enemy node";
@@ -19,7 +18,7 @@ bool find_nearest_enemy::operator()(ai_knowledge& knowledge) {
   players_helpers::enemy_entities_indexes(player_id, enemies_indexes);
   if (enemies_indexes.empty()) return false;
 
-  auto entity_index = active_entity_index(knowledge);
+  auto entity_index = game_board().index_for(active_entity_id(knowledge));
 
   path_finder distance_finder(true);
   distance_finder.calc(entity_index);
@@ -42,7 +41,7 @@ bool find_nearest_enemy::operator()(ai_knowledge& knowledge) {
 bool find_position_for_shot::operator()(ai_knowledge& knowledge) {
   LOG(debug) << "try run find_position_for_shot node";
 
-  auto entity_index = active_entity_index(knowledge);
+  auto entity_index = game_board().index_for(active_entity_id(knowledge));
   auto entity_id = active_entity_id(knowledge);
 
   if (!knowledge.entity(entity_id).has("target_enemy_index")) {
@@ -138,5 +137,4 @@ bool find_best_target_for_golem::operator()(ai_knowledge& knowledge) {
   return true;
 }
 
-}  // namespace nodes
-}  // namespace ai
+}  // namespace ai::nodes

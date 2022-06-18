@@ -2,6 +2,8 @@
 
 #include <vector>
 
+#include <boost/hana.hpp>
+
 #include <turn_based/ai/behavior_node.h>
 
 namespace ai {
@@ -39,15 +41,14 @@ using node_ptr = std::shared_ptr<Node>;
 
 namespace construct {
 namespace detail {
-inline void apply_node_to_branch(branch_node& branch, behavior_node_ptr node) {
-  branch.add_node(std::move(node));
-};
 
 template <typename... Nodes>
 inline void apply_nodes_to_branch(branch_node& branch, node_ptr<Nodes>... nodes) {
-  int apply[] = {(apply_node_to_branch(branch, std::move(nodes)), 0)...};
-  (void)apply;
-};
+  boost::hana::for_each(boost::hana::make_tuple(nodes...), [&](auto node) {
+    branch.add_node(std::move(node));
+  });
+}
+
 }  // namespace detail
 
 template <typename Type, typename... Args>

@@ -7,7 +7,7 @@
 namespace ai {
 
 struct behavior_node {
-    virtual bool operator()(ai_knowledge& knowledge) = 0;
+  virtual bool operator()(ai_knowledge& knowledge) = 0;
 };
 
 using behavior_node_ptr = std::shared_ptr<behavior_node>;
@@ -15,7 +15,7 @@ using behavior_node_ptr = std::shared_ptr<behavior_node>;
 #define DEFINE_BEHAVIOR_NODE(NAME) \
 class NAME : public behavior_node { \
 public: \
-    bool operator()(ai_knowledge& knowledge) override; \
+  bool operator()(ai_knowledge& knowledge) override; \
 };
 
 } // namespace ai

@@ -15,7 +15,7 @@ bool attack_enemy::operator()(ai_knowledge& knowledge) {
   LOG(debug) << "try run attack_enemy node";
 
   auto entity_id = active_entity_id(knowledge);
-  auto entity_index = active_entity_index(knowledge);
+  auto entity_index = game_board().index_for(active_entity_id(knowledge));
 
   if (!knowledge.entity(entity_id).has("target_enemy_index")) {
     return false;

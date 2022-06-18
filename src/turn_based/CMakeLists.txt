@@ -1,7 +1,6 @@
 add_library(turn_based SHARED
   ai/action_makers.cpp
   ai/ai_manager.cpp
-  ai/behavior_node.cpp
   ai/movers.cpp
   ai/target_finders.cpp
   ai_factory.cpp

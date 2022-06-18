@@ -11,13 +11,12 @@
 #include <turn_based/managers/players_manager.h>
 #include <turn_based/managers/entity_manager.h>
 
-namespace ai {
-namespace nodes {
-
+namespace ai::nodes {
 namespace {
+
 bool go_close_to_impl(ai_knowledge& knowledge, std::uint32_t target_index) {
   auto entity_id = active_entity_id(knowledge);
-  auto entity_index = active_entity_index(knowledge);
+  auto entity_index = game_board().index_for(active_entity_id(knowledge));
 
   auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
   auto moving = abilities_ptr->of_type(ability_types::moving);
@@ -56,13 +55,14 @@ bool go_close_to_impl(ai_knowledge& knowledge, std::uint32_t target_index) {
   }
   return false;
 }
+
 }  // namespace
 
 bool go_to::operator()(ai_knowledge& knowledge) {
   LOG(debug) << "try run go_to node";
 
   auto entity_id = active_entity_id(knowledge);
-  auto entity_index = active_entity_index(knowledge);
+  auto entity_index = game_board().index_for(active_entity_id(knowledge));
 
   auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
   auto moving = abilities_ptr->of_type(ability_types::moving);
@@ -126,7 +126,7 @@ bool can_go_to::operator()(ai_knowledge& knowledge) {
   LOG(debug) << "try run can_go_to node";
 
   auto entity_id = active_entity_id(knowledge);
-  auto entity_index = active_entity_index(knowledge);
+  auto entity_index = game_board().index_for(active_entity_id(knowledge));
 
   auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
   auto moving = abilities_ptr->of_type(ability_types::moving);
@@ -149,7 +149,7 @@ run_around::run_around()
 bool run_around::operator()(ai_knowledge& knowledge) {
   auto player_id = active_player_id(knowledge);
   auto entity_id = active_entity_id(knowledge);
-  auto entity_index = active_entity_index(knowledge);
+  auto entity_index = game_board().index_for(active_entity_id(knowledge));
 
   auto abilities_ptr = game::get<entity_manager>().get(entity_id).get<abilities>();
   auto moving = abilities_ptr->of_type(ability_types::moving);
@@ -177,5 +177,4 @@ bool run_around::operator()(ai_knowledge& knowledge) {
   return true;
 }
 
-}  // namespace nodes
-}  // namespace ai
+}  // namespace ai::nodes

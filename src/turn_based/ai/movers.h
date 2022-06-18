@@ -2,8 +2,7 @@
 
 #include <turn_based/ai/behavior_node.h>
 
-namespace ai {
-namespace nodes {
+namespace ai::nodes {
 
 DEFINE_BEHAVIOR_NODE(go_to)
 
@@ -23,5 +22,4 @@ class run_around : public behavior_node {
   std::size_t shift_index;
 };
 
-}  // namespace nodes
-}  // namespace ai
+}  // namespace ai::nodes

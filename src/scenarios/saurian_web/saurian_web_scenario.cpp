@@ -5,9 +5,9 @@
 #include <config.h>
 #include <impl/scenarios/map_reader.h>
 #include <impl/scenarios/scenario_helper.h>
-#include <turn_based/ai/ai_factories.h>
 #include <turn_based/ai/ai_manager.h>
 #include <turn_based/ai_factory.h>
+#include <turn_based/board.h>
 #include <turn_based/damage_dealers.h>
 #include <turn_based/entities_factory.h>
 #include <turn_based/game.h>
