@@ -1,4 +1,6 @@
-#include <impl/scenarios/saurian_web_scenario.h>
+#include <boost/dll/alias.hpp>
+
+#include <turn_based/scenario_factory_interface.h>
 
 #include <config.h>
 #include <impl/scenarios/map_reader.h>
@@ -13,7 +15,11 @@
 
 struct saurian {};
 
-void create_saurian_web() {
+struct saurian_web_scenario_factory : public scenario_factory_interface {
+  void create() override;
+};
+
+void saurian_web_scenario_factory::create() {
   LOG(debug) << "creating saurian web scenario";
 
   std::pair<uint32_t, uint32_t> map_size;
@@ -90,3 +96,9 @@ void create_saurian_web() {
                                         "Ale im dokopaliśmy! Brawo chłopaki!");
              });
 }
+
+scenario_factory_interface_ptr create_saurian_web_scenario_factory() {
+  return std::make_shared<saurian_web_scenario_factory>();
+}
+
+BOOST_DLL_ALIAS(create_saurian_web_scenario_factory, saurian_web)

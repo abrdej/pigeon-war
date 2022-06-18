@@ -39,8 +39,6 @@ set(SOURCE_FILES
   src/impl/scenarios/entities_reader.h
   src/impl/scenarios/map_reader.cpp
   src/impl/scenarios/map_reader.h
-  src/impl/scenarios/saurian_web_scenario.cpp
-  src/impl/scenarios/saurian_web_scenario.h
   src/impl/scenarios/scenario_helper.h
   src/impl/scenarios/scenario_helper.h
   src/impl/game_state/get_entity_names.cpp)
@@ -55,6 +53,9 @@ add_subdirectory(src/entities/native)
 add_subdirectory(src/entities/saberhand)
 add_subdirectory(src/entities/saurian)
 add_subdirectory(src/entities/shooter)
+
+## scenario plugins
+add_subdirectory(src/scenarios/saurian_web)
 
 add_executable(pigeon_war src/main.cpp)
 target_link_libraries(pigeon_war turn_based impl networking)

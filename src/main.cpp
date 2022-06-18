@@ -12,15 +12,9 @@
 
 #include <impl/game_state/get_entities.h>
 #include <impl/game_state/get_entity_names.h>
-#include <turn_based/managers/players_manager.h>
 #include <turn_based/board.h>
-
-#include <impl/scenarios/battle_with_a_golem_scenario.h>
-#include <impl/scenarios/dark_forest.h>
-#include <impl/scenarios/saurian_web_scenario.h>
-#include <impl/scenarios/skirmish.h>
-#include <impl/scenarios/total_destruction.h>
-#include <impl/scenarios/wolves_dinner.h>
+#include <turn_based/managers/players_manager.h>
+#include <turn_based/scenario_factory.h>
 
 #include <networking/new_server.h>
 #include <turn_based/sender.h>
@@ -55,22 +49,7 @@ int main(int argc, char** argv) {
     map_name = std::string(argv[3]);
   }
 
-  static std::unordered_map<std::string, std::function<void()>>
-      scenario_loader = {
-      {"skirmish", [&map_name, &map_size]() {
-//        map_name = create_skirmish(map_name + ".json", map_size);
-      }},
-      {"saurian_web", []() {
-        create_saurian_web();
-      }},
-      {"wolves_dinner", []() {
-//        create_wolves_dinner();
-      }},
-      {"dark_forest", []() {
-//        scenario::create_dark_forest();
-      }}
-  };
-  scenario_loader.at(scenario)();
+  game::get<scenario_factory>().create(scenario);
 
   // create game
 //    map_name = create_skirmish(map_name, map_size);

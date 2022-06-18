@@ -7,7 +7,6 @@ add_library(impl SHARED
   scenarios/creator_helper.cpp
   scenarios/entities_reader.cpp
   scenarios/map_reader.cpp
-  scenarios/saurian_web_scenario.cpp
   )
 target_include_directories(impl PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/external)
 target_link_libraries(impl PRIVATE turn_based)

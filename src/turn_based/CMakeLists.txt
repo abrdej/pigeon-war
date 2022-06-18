@@ -18,6 +18,7 @@ add_library(turn_based SHARED
   logger.cpp
   moveable.cpp
   path_finder.cpp
+  scenario_factory.cpp
   sender.cpp
   straight_target_ability.cpp
   turn_system.cpp)
