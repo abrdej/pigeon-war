@@ -1,12 +1,12 @@
 #pragma once
 
-#include <abilities/abilities.h>
+#include <turn_based/abilities.h>
 #include <abilities/dodge.h>
-#include <abilities/moveable.h>
+#include <turn_based/moveable.h>
 #include <abilities/sword_blow.h>
 #include <components/applied_effects.h>
 #include <components/modification.h>
-#include <entities/entity.h>
+#include <turn_based/entity.h>
 
 struct samurai_rat final {
   static void create(base_entity& entity) {

@@ -7,9 +7,9 @@
 
 #include <abilities/shiruken.h>
 #include <abilities/death_mark.h>
-#include "entity.h"
-#include "abilities/abilities.h"
-#include "abilities/moveable.h"
+#include <turn_based/entity.h>
+#include <turn_based/abilities.h>
+#include <turn_based/moveable.h>
 
 class ninja final
 {

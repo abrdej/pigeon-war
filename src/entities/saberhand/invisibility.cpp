@@ -1,9 +1,9 @@
-#include <entities/saberhand/invisibility.h>
+#include <invisibility.h>
 
-#include <components/damage_taker.h>
-#include <core/board.h>
-#include <messages/massages_makers.h>
-#include <server/sender.h>
+#include <turn_based/components/damage_taker.h>
+#include <turn_based/board.h>
+#include <turn_based/messages/massages_makers.h>
+#include <turn_based/sender.h>
 
 invisibility::invisibility(std::uint32_t id) : entity_id(id) {}
 

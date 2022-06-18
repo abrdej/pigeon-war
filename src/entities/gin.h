@@ -6,12 +6,12 @@
 #define PIGEONWAR_GIN_H
 
 #include <abilities/uselessness.h>
-#include "entity.h"
-#include "abilities/abilities.h"
-#include "abilities/moveable.h"
-#include "abilities/fist_of_doom.h"
-#include "components/applied_effects.h"
-#include "components/damage_taker.h"
+#include <turn_based/entity.h>
+#include <turn_based/abilities.h>
+#include <turn_based/moveable.h>
+#include <abilities/fist_of_doom.h>
+#include <components/applied_effects.h>
+#include <components/damage_taker.h>
 
 struct gin final
 {

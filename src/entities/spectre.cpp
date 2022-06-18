@@ -1,10 +1,10 @@
-#include <entities/spectre.h>
+#include <spectre.h>
 
-#include <abilities/abilities.h>
+#include <turn_based/abilities.h>
 #include <abilities/cleaver.h>
 #include <abilities/havoc.h>
 #include <abilities/immateriality.h>
-#include <abilities/moveable.h>
+#include <turn_based/moveable.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 #include <components/power_field.h>

@@ -1,7 +1,7 @@
-#include "absorber.h"
-#include <abilities/abilities.h>
+#include <absorber.h>
+#include <turn_based/abilities.h>
 #include <abilities/absorption.h>
-#include <abilities/moveable.h>
+#include <turn_based/moveable.h>
 #include <abilities/power_circle.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>

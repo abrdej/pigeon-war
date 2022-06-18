@@ -1,9 +1,9 @@
-#include <entities/dragon.h>
+#include <dragon.h>
 
-#include <abilities/abilities.h>
+#include <turn_based/abilities.h>
 #include <abilities/dragon_skin.h>
 #include <abilities/flame_burning.h>
-#include <abilities/moveable.h>
+#include <turn_based/moveable.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 

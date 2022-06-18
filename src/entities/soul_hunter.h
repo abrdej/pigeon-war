@@ -9,8 +9,8 @@
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>
 #include <abilities/suck_the_soul.h>
-#include "entity.h"
-#include "abilities/moveable.h"
+#include <turn_based/entity.h>
+#include <turn_based/moveable.h>
 
 struct soul_hunter final
 {

@@ -1,7 +1,7 @@
-#include <entities/native/drain.h>
+#include <drain.h>
 
-#include <abilities/damage_dealers.h>
-#include <components/damage_taker.h>
+#include <turn_based/damage_dealers.h>
+#include <turn_based/components/damage_taker.h>
 
 drain::drain(std::uint32_t entity_id) : entity_id(entity_id) {}
 

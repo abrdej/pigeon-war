@@ -1,7 +1,7 @@
 #pragma once
 
-#include <abilities/path_target_ability.h>
-#include <abilities/per_turn_usable.h>
+#include <turn_based/path_target_ability.h>
+#include <turn_based/per_turn_usable.h>
 
 class tongue_of_fire final : public path_target_ability, per_turn_usable {
  public:

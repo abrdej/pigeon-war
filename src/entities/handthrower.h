@@ -5,11 +5,11 @@
 #ifndef PIGEONWAR_HANDTHROWER_H
 #define PIGEONWAR_HANDTHROWER_H
 
-#include "entity.h"
-#include "abilities/abilities.h"
-#include "abilities/moveable.h"
-#include "abilities/handcannon.h"
-#include "abilities/protection_field.h"
+#include <turn_based/entity.h>
+#include <turn_based/abilities.h>
+#include <turn_based/moveable.h>
+#include <abilities/handcannon.h>
+#include <abilities/protection_field.h>
 
 class handthrower final
 {

@@ -5,7 +5,7 @@
 #ifndef PIGEONWAR_BOMB_INSTANCE_H
 #define PIGEONWAR_BOMB_INSTANCE_H
 
-#include "entity.h"
+#include <turn_based/entity.h>
 
 struct bomb_instance {
     static void create(base_entity& entity);

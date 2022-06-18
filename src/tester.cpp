@@ -1,6 +1,6 @@
-#include <core/game.h>
-#include <entities/entities_factory.h>
-#include <managers/entity_manager.h>
+#include <turn_based/game.h>
+#include <turn_based/entities_factory.h>
+#include <turn_based/managers/entity_manager.h>
 
 int main(int argc, char** argv) {
   entities_factory factory;

@@ -5,11 +5,11 @@
 #ifndef PIGEONWAR_ROBO_H
 #define PIGEONWAR_ROBO_H
 
-#include "entity.h"
-#include "abilities/moveable.h"
-#include "abilities/abilities.h"
-#include "entities/shooter/shoot.h"
-#include "entities/shooter/grenade.h"
+#include <turn_based/entity.h>
+#include <turn_based/moveable.h>
+#include <turn_based/abilities.h>
+#include <pigeon_war/entities/shooter/shoot.h>
+#include <pigeon_war/entities/shooter/grenade.h>
 
 struct robot final
 {

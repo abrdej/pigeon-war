@@ -1,7 +1,7 @@
 #include <boost/dll/alias.hpp>
 
-#include <components/health_field.h>
-#include <entities/entity_factory_interface.h>
+#include <turn_based/components/health_field.h>
+#include <turn_based/entity_factory_interface.h>
 
 #define ENVIRONMENT_FACTORY_CREATOR(TYPE, NAME) \
 entity_factory_interface_ptr create_##TYPE##_factory() { \

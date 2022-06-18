@@ -6,9 +6,9 @@
 #define PIGEONWAR_KILLER_H
 
 #include <abilities/kill.h>
-#include "entity.h"
-#include "abilities/moveable.h"
-#include "abilities/killer_instinct.h"
+#include <turn_based/entity.h>
+#include <turn_based/moveable.h>
+#include <abilities/killer_instinct.h>
 
 class killer final
 {

@@ -1,7 +1,7 @@
-#include <entities/sentinel.h>
+#include <sentinel.h>
 
-#include <abilities/abilities.h>
-#include <abilities/moveable.h>
+#include <turn_based/abilities.h>
+#include <turn_based/moveable.h>
 #include <abilities/stamp.h>
 #include <abilities/sparks.h>
 #include <components/applied_effects.h>

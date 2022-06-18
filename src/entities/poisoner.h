@@ -1,6 +1,6 @@
 #pragma once
 
-#include <entities/entity.h>
+#include <turn_based/entity.h>
 
 class poisoner final {
  public:

@@ -1,7 +1,7 @@
 #include <boost/dll/alias.hpp>
 
-#include <components/health_field.h>
-#include <entities/entity_factory_interface.h>
+#include <turn_based/components/health_field.h>
+#include <turn_based/entity_factory_interface.h>
 
 struct saurian_web_factory : public entity_factory_interface {
   void create(base_entity& entity) override;

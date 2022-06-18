@@ -1,6 +1,6 @@
 #pragma once
 
-#include <entities/entity.h>
+#include <turn_based/entity.h>
 
 struct guardian final {
     static void create(base_entity& entity);

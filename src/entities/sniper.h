@@ -6,9 +6,9 @@
 #define PIGEONWAR_SNIPER_H
 
 #include <abilities/hypnosis.h>
-#include "entity.h"
-#include "abilities/moveable.h"
-#include "abilities/sniper_shot.h"
+#include <turn_based/entity.h>
+#include <turn_based/moveable.h>
+#include <abilities/sniper_shot.h>
 
 struct sniper final
 {

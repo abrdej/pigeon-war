@@ -1,12 +1,12 @@
 #include <boost/dll/alias.hpp>
 
-#include <abilities/abilities.h>
-#include <abilities/moveable.h>
-#include <components/applied_effects.h>
-#include <components/damage_taker.h>
-#include <entities/entity_factory_interface.h>
-#include <entities/native/counterattack.h>
-#include <entities/native/drain.h>
+#include <turn_based/abilities.h>
+#include <turn_based/moveable.h>
+#include <turn_based/components/applied_effects.h>
+#include <turn_based/components/damage_taker.h>
+#include <turn_based/entity_factory_interface.h>
+#include <counterattack.h>
+#include <drain.h>
 
 struct native_factory : public entity_factory_interface {
   void create(base_entity& entity) override;

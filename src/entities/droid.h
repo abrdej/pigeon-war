@@ -5,10 +5,10 @@
 #ifndef PIGEONWAR_DROID_H
 #define PIGEONWAR_DROID_H
 
-#include "entity.h"
-#include "abilities/abilities.h"
-#include "abilities/laser.h"
-#include <abilities/moveable.h>
+#include <turn_based/entity.h>
+#include <turn_based/abilities.h>
+#include <abilities/laser.h>
+#include <turn_based/moveable.h>
 #include <abilities/teleport.h>
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>

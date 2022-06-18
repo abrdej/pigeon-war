@@ -1,9 +1,9 @@
 #pragma once
 
-#include "abilities/per_turn_usable.h"
-#include "abilities/straight_target_ability.h"
-#include "core/configurable.h"
-#include "core/defs.h"
+#include <turn_based/per_turn_usable.h>
+#include <turn_based/straight_target_ability.h>
+#include <turn_based/configurable.h>
+#include <turn_based/defs.h>
 
 class shoot final : public directed_target_ability<3>, protected per_turn_callback, protected configurable {
  public:

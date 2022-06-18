@@ -1,9 +1,9 @@
-#include "destroyer.h"
+#include <destroyer.h>
 
-#include <abilities/abilities.h>
+#include <turn_based/abilities.h>
 #include <abilities/armor.h>
 #include <abilities/blow_the_ax.h>
-#include <abilities/moveable.h>
+#include <turn_based/moveable.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 

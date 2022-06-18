@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include <abilities/ability.h>
-#include <abilities/per_turn_usable.h>
-#include <core/configurable.h>
+#include <turn_based/ability.h>
+#include <turn_based/per_turn_usable.h>
+#include <turn_based/configurable.h>
 
 class sabers final : public active_ability, per_turn_usable, configurable {
  public:

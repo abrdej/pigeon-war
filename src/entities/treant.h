@@ -5,10 +5,10 @@
 #ifndef PIGEONWAR_TREANT_H
 #define PIGEONWAR_TREANT_H
 
-#include "entity.h"
+#include <turn_based/entity.h>
 #include <abilities/entangling.h>
 #include <abilities/recovery.h>
-#include "abilities/moveable.h"
+#include <turn_based/moveable.h>
 
 
 struct treant final

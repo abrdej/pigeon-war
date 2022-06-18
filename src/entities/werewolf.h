@@ -1,13 +1,13 @@
 #ifndef WEREWOLF_H
 #define WEREWOLF_H
 
-#include <abilities/abilities.h>
-#include "entities/native/drain.h"
+#include <turn_based/abilities.h>
+#include <pigeon_war/entities/native/drain.h>
 #include <abilities/wolf_herd.h>
-#include "entity.h"
-#include "components/damage_taker.h"
-#include <abilities/moveable.h>
-#include "components/applied_effects.h"
+#include <turn_based/entity.h>
+#include <components/damage_taker.h>
+#include <turn_based/moveable.h>
+#include <components/applied_effects.h>
 
 struct werewolf final
 {

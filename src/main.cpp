@@ -3,27 +3,28 @@
 
 #include <external/json.hpp>
 
-#include <core/logger.h>
+#include <turn_based/logger.h>
 
-#include <core/game_controller.h>
-#include <core/get_button_description.h>
-#include <core/get_effect_description.h>
-#include <core/get_game_state.h>
+#include <turn_based/game_controller.h>
+#include <impl/game_state/get_button_description.h>
+#include <impl/game_state/get_effect_description.h>
+#include <impl/game_state/get_game_state.h>
 
-#include <managers/get_entities.h>
-#include <managers/get_entity_names.h>
-#include <managers/players_manager.h>
+#include <impl/game_state/get_entities.h>
+#include <impl/game_state/get_entity_names.h>
+#include <turn_based/managers/players_manager.h>
+#include <turn_based/board.h>
 
-#include <scenarios/battle_with_a_golem_scenario.h>
-#include <scenarios/dark_forest.h>
-#include <scenarios/saurian_web_scenario.h>
-#include <scenarios/skirmish.h>
-#include <scenarios/total_destruction.h>
-#include <scenarios/wolves_dinner.h>
+#include <impl/scenarios/battle_with_a_golem_scenario.h>
+#include <impl/scenarios/dark_forest.h>
+#include <impl/scenarios/saurian_web_scenario.h>
+#include <impl/scenarios/skirmish.h>
+#include <impl/scenarios/total_destruction.h>
+#include <impl/scenarios/wolves_dinner.h>
 
-#include <server/new_server.h>
-#include <server/sender.h>
-#include <messages/massages_makers.h>
+#include <networking/new_server.h>
+#include <turn_based/sender.h>
+#include <turn_based/messages/massages_makers.h>
 
 int main(int argc, char** argv) {
 
@@ -93,6 +94,12 @@ int main(int argc, char** argv) {
     pigeon_war_server.send_message(client->get_id(), make_client_id_message(client->get_id()));
     pigeon_war_server.send_message(client->get_id(), make_map_name_message(map_name));
     pigeon_war_server.send_message(client->get_id(), make_entities_pack_message(get_entities()));
+
+    pigeon_war_server.send_message(client->get_id(), make_entity_talk_message(game_board().to_index(2, 3),
+                                                                              "Wygląda że jaszczury uwięziły tubylca. "
+                                                                              "Jeśli go uwolnimy powinien się do nas przyłączyć!"));
+    pigeon_war_server.send_message(client->get_id(), make_entity_talk_message(game_board().to_index(2, 5),
+                                                                              "Trzeba się tam jakoś przedostać"));
   });
 
   // TODO: this could be extracted as a message processor

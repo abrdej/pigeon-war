@@ -1,9 +1,11 @@
-#include <entities/saberhand/sabers.h>
+#include <sabers.h>
 
-#include <abilities/damage_dealers.h>
-#include <core/board.h>
-#include <core/game_controller.h>
-#include <utils/algorithm.h>
+#include <turn_based/damage_dealers.h>
+#include <turn_based/board.h>
+#include <turn_based/game_controller.h>
+#include <turn_based/utils/algorithm.h>
+#include <turn_based/logger.h>
+#include <turn_based/managers/entity_manager.h>
 
 sabers::sabers(std::uint32_t entity_id)
     : configurable("sabers"), entity_id_(entity_id), damage_(get_param<decltype(damage_)>("damage")) {

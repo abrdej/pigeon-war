@@ -1,7 +1,7 @@
 #pragma once
 
-#include <abilities/neighboring_target_ability.h>
-#include <abilities/per_turn_usable.h>
+#include <turn_based/neighboring_target_ability.h>
+#include <turn_based/per_turn_usable.h>
 
 class drain final : public neighboring_target_ability<>, per_turn_usable {
  public:

@@ -1,7 +1,7 @@
-#include <entities/saurian/tongue_of_fire.h>
+#include <tongue_of_fire.h>
 
-#include <abilities/damage_dealers.h>
-#include <core/board.h>
+#include <turn_based/damage_dealers.h>
+#include <turn_based/board.h>
 
 tongue_of_fire::tongue_of_fire(std::uint32_t entity_id) : path_target_ability(7), entity_id(entity_id) {}
 

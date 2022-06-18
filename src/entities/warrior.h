@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entity.h"
+#include <turn_based/entity.h>
 
 class warrior final
 {

@@ -1,10 +1,10 @@
 #include <boost/dll/alias.hpp>
 
-#include <abilities/abilities.h>
-#include <components/applied_effects.h>
-#include <components/modification.h>
-#include <entities/entity_factory_interface.h>
-#include <entities/saurian/tongue_of_fire.h>
+#include <turn_based/abilities.h>
+#include <turn_based/components/applied_effects.h>
+#include <turn_based/components/modification.h>
+#include <turn_based/entity_factory_interface.h>
+#include <tongue_of_fire.h>
 
 struct saurian_factory : public entity_factory_interface {
   void create(base_entity& entity) override;

@@ -1,10 +1,10 @@
-#include "combat_robot.h"
-#include "abilities/abilities.h"
-#include "abilities/barrier.h"
-#include "abilities/missile_of_doom.h"
-#include "abilities/moveable.h"
-#include "components/applied_effects.h"
-#include "components/damage_taker.h"
+#include <combat_robot.h>
+#include <turn_based/abilities.h>
+#include <abilities/barrier.h>
+#include <abilities/missile_of_doom.h>
+#include <turn_based/moveable.h>
+#include <components/applied_effects.h>
+#include <components/damage_taker.h>
 
 void combat_robot::create(base_entity& entity) {
   entity.name = "Combat Robot";

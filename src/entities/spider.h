@@ -7,10 +7,10 @@
 
 #include <abilities/surroundings.h>
 #include <abilities/jaw_spider.h>
-#include "entity.h"
-#include "abilities/moveable.h"
-#include "abilities/abilities.h"
-#include "abilities/spider_web.h"
+#include <turn_based/entity.h>
+#include <turn_based/moveable.h>
+#include <turn_based/abilities.h>
+#include <abilities/spider_web.h>
 
 struct spider final
 {

@@ -1,8 +1,8 @@
-#include <entities/native/counterattack.h>
+#include <counterattack.h>
 
-#include <abilities/damage_dealers.h>
-#include <components/damage_taker.h>
-#include <core/game_controller.h>
+#include <turn_based/damage_dealers.h>
+#include <turn_based/components/damage_taker.h>
+#include <turn_based/game_controller.h>
 
 counterattack::counterattack(std::uint32_t entity_id) : entity_id(entity_id) {
   on_receive_damage(entity_id, [this](const damage_pack& dmg) {

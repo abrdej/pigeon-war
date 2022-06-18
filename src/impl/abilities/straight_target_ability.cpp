@@ -1,0 +1,1 @@
+#include <straight_target_ability.h>

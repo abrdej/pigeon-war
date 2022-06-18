@@ -5,7 +5,7 @@
 #ifndef PIGEONWAR_COMBAT_TOBOT_H
 #define PIGEONWAR_COMBAT_TOBOT_H
 
-#include "entity.h"
+#include <turn_based/entity.h>
 
 struct combat_robot final
 {

@@ -1,15 +1,14 @@
 #include <boost/dll/alias.hpp>
 
-#include <abilities/abilities.h>
-#include <abilities/moveable.h>
-#include <abilities/smokescreen.h>
-#include <components/applied_effects.h>
-#include <entities/entity_factory_interface.h>
-#include <entities/shooter/grenade.h>
-#include <entities/shooter/shoot.h>
+#include <turn_based/abilities.h>
+#include <turn_based/moveable.h>
+#include <turn_based/components/applied_effects.h>
+#include <turn_based/entity_factory_interface.h>
+#include <grenade.h>
+#include <shoot.h>
 
-#include <core/game.h>
-#include <core/board.h>
+#include <turn_based/game.h>
+#include <turn_based/board.h>
 
 struct shooter_factory : public entity_factory_interface {
   void create(base_entity& entity) override;

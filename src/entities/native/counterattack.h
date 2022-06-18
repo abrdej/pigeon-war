@@ -1,7 +1,7 @@
 #pragma once
 
-#include <abilities/ability.h>
-#include <abilities/per_turn_usable.h>
+#include <turn_based/ability.h>
+#include <turn_based/per_turn_usable.h>
 
 class counterattack final : public passive_ability, per_turn_usable {
  public:

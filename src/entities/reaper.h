@@ -5,7 +5,7 @@
 #ifndef PIGEONWAR_REAPER_H
 #define PIGEONWAR_REAPER_H
 
-#include "entity.h"
+#include <turn_based/entity.h>
 
 struct reaper final {
     static void create(base_entity& entity);
