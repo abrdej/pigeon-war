@@ -6,7 +6,8 @@
 static const std::int32_t indestructible = std::numeric_limits<std::int32_t>::max();
 
 struct health_field {
-  explicit health_field(std::int32_t value) : health(value), base_health(value), is_destructible(true) {}
+  explicit health_field(std::int32_t value)
+      : health(value), base_health(value), is_destructible(value != indestructible) {}
 
   health_field() : health(indestructible), base_health(indestructible), is_destructible(false) {}
 
