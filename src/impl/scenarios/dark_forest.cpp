@@ -4,7 +4,7 @@
 #include <ai/ai_manager.h>
 #include <turn_based/board.h>
 #include <entities/pixie.h>
-#include <entities/samurai_rat.h>
+#include "entities/samurai_rat/samurai_rat.h"
 #include <entities/spectre.h>
 #include <creator_helper.h>
 #include <map_reader.h>

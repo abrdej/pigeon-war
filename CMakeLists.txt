@@ -51,8 +51,10 @@ add_subdirectory(src/impl)
 add_subdirectory(src/entities/environment)
 add_subdirectory(src/entities/native)
 add_subdirectory(src/entities/saberhand)
+add_subdirectory(src/entities/samurai_rat)
 add_subdirectory(src/entities/saurian)
 add_subdirectory(src/entities/shooter)
+add_subdirectory(src/entities/wolf)
 
 ## scenario plugins
 add_subdirectory(src/scenarios/saurian_web)

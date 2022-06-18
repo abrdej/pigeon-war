@@ -5,7 +5,7 @@
 #include <entities/destroyer.h>
 #include <entities/golem.h>
 #include <entities/warrior.h>
-#include <entities/wolf.h>
+#include "entities/wolf/wolf.cpp"
 
 void scenarios::create_total_destruction() {
   game_board().set_size(15, 10);

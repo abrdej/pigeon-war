@@ -3,9 +3,9 @@
 #include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include <turn_based/game_controller.h>
-#include <entities/samurai_rat.h>
+#include "entities/samurai_rat/samurai_rat.h"
 #include <entities/spectre.h>
-#include <entities/wolf.h>
+#include "entities/wolf/wolf.cpp"
 #include <creator_helper.h>
 #include <scenario_helper.h>
 

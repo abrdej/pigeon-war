@@ -1,6 +1,6 @@
 #include <wolf_herd.h>
 #include <turn_based/game_controller.h>
-#include <entities/wolf.h>
+#include "entities/wolf/wolf.cpp"
 #include <turn_based/managers/entity_manager.h>
 #include <turn_based/managers/players_manager.h>
 #include <random>

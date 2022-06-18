@@ -10,7 +10,7 @@ public:
   ADD_BITMAP_GETTER(sword_blow)
   DEFINE_DESC_ONE(sword_blow, damage_)
 
-  bool usable() const override {
+  [[nodiscard]] bool usable() const override {
     return !used;
   }
 
