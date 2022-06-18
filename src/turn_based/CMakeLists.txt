@@ -20,7 +20,6 @@ add_library(turn_based SHARED
   path_finder.cpp
   scenario_factory.cpp
   sender.cpp
-  straight_target_ability.cpp
   turn_system.cpp)
 target_include_directories(turn_based PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/external)
 target_link_libraries(turn_based PUBLIC Boost::headers Boost::system Boost::log pthread dl)
