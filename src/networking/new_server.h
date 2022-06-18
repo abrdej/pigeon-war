@@ -62,9 +62,18 @@ class server {
   }
 
   void send_message_to_all(const message_type& message) {
-    for (const auto& connection : connections_) {
-      // TODO: implement me
-      connection.second->send(message);
+    std::vector<std::uint32_t> to_remove;
+    for (auto& connection_entry : connections_) {
+      if (connection_entry.second && connection_entry.second->connected()) {
+        connection_entry.second->send(message);
+      } else {
+        on_client_disconnect_(connection_entry.second);
+        connection_entry.second.reset();
+        to_remove.push_back(connection_entry.first);
+      }
+    }
+    for (auto key : to_remove) {
+      connections_.erase(key);
     }
   }
 

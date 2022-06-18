@@ -11,13 +11,12 @@
 #include <impl/game_state/get_game_state.h>
 
 #include <impl/game_state/get_entities.h>
+#include <networking/new_server.h>
 #include <turn_based/board.h>
 #include <turn_based/managers/players_manager.h>
-#include <turn_based/scenario_factory.h>
-
-#include <networking/new_server.h>
-#include <turn_based/sender.h>
 #include <turn_based/messages/massages_makers.h>
+#include <turn_based/scenario_factory.h>
+#include <turn_based/sender.h>
 
 #include <message_processor.h>
 
