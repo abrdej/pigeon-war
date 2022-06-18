@@ -60,6 +60,5 @@ add_subdirectory(src/scenarios/saurian_web)
 add_executable(pigeon_war src/main.cpp src/message_processor.cpp)
 target_link_libraries(pigeon_war turn_based impl networking)
 
-#add_executable(tester src/tester.cpp)
-#target_link_libraries(tester game_core)
-#target_link_libraries(tester)
+add_executable(tester src/tester.cpp)
+target_link_libraries(tester turn_based)
