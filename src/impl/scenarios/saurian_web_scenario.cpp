@@ -1,6 +1,7 @@
 #include <impl/scenarios/saurian_web_scenario.h>
 
-#include <impl/scenarios/creator_helper.h>
+#include <config.h>
+#include <impl/scenarios/map_reader.h>
 #include <impl/scenarios/scenario_helper.h>
 #include <turn_based/ai/ai_factories.h>
 #include <turn_based/ai/ai_manager.h>
@@ -15,7 +16,9 @@ struct saurian {};
 void create_saurian_web() {
   LOG(debug) << "creating saurian web scenario";
 
-  game_board().set_size(15, 10);
+  std::pair<uint32_t, uint32_t> map_size;
+  read_map_from_json(maps_directory + "saurian_web.json", map_size);
+  game_board().set_size(map_size.first, map_size.second);
 
   auto &entity_manager_ref = game::get<entity_manager>();
   auto &players_manager_ref = game::get<players_manager>();
@@ -53,10 +56,6 @@ void create_saurian_web() {
   players_manager_ref.add_entity_for_player(enemy_id, saurian3_id);
   players_manager_ref.add_entity_for_player(enemy_id, saurian4_id);
   players_manager_ref.add_entity_for_player(enemy_id, saurian5_id);
-
-  using creator_helper::pos;
-  creator_helper::create_neutral_many("stone",
-                                      {pos(5, 0), pos(5, 1), pos(9, 9), pos(1, 8), pos(14, 8)});
 
   auto native_id = game::get<entities_factory>().create("native");
   game_board().insert(game_board().to_index(12, 4), native_id);

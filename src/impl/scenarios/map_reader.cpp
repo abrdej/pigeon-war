@@ -6,6 +6,7 @@
 #include <external/json.hpp>
 
 #include <impl/scenarios/creator_helper.h>
+#include <turn_based/board.h>
 
 using nlohmann::json;
 
