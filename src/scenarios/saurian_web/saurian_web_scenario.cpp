@@ -81,7 +81,21 @@ void saurian_web_scenario_factory::create() {
                                 [&players_manager_ref, tester_id, native_id, connection]() mutable {
                                   connection = nullptr;
                                   players_manager_ref.add_entity_for_player(tester_id, native_id);
+
+                                  sender::send(make_entity_talk_message(
+                                      game_board().index_for(native_id),
+                                      "Nie trzeba było chłopaki, już miałem się z nimi rozprawić..."));
                                 });
+
+  on_intro([shooter_id, saberhand_id]() {
+    sender::send(make_entity_talk_message(game_board().index_for(shooter_id),
+                                          "Te jaszczury uwięziły tubylca. "
+                                          "Jeśli go uwolnimy powinien do nas dołączyć!"));
+    sender::send(make_entity_talk_message(game_board().index_for(saberhand_id),
+                                          "Trzeba się tam szybko przedostać"));
+    sender::send(make_entity_talk_message(game_board().index_for(shooter_id),
+                                          "Niech zakosztują moich kul!"));
+  });
 
   if_any_die({shooter_id, saberhand_id, native_id}, [&]() {
     LOG(debug) << "defeat";
@@ -89,9 +103,9 @@ void saurian_web_scenario_factory::create() {
   });
   if_all_die({saurian1_id, saurian2_id, saurian3_id, saurian4_id},
              [&]() {
+               make_entity_talk_message(game_board().index_for(native_id),
+                                        "Jaszczury pogrzebane!");
                game_control().victory(tester_id);
-               make_entity_talk_message(game_board().index_for(shooter_id),
-                                        "Ale im dokopaliśmy! Brawo chłopaki!");
              });
 }
 

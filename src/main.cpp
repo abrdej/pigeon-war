@@ -13,6 +13,7 @@
 #include <impl/game_state/get_entities.h>
 #include <networking/new_server.h>
 #include <turn_based/board.h>
+#include <turn_based/event_center.h>
 #include <turn_based/managers/players_manager.h>
 #include <turn_based/messages/massages_makers.h>
 #include <turn_based/scenario_factory.h>
@@ -55,12 +56,7 @@ int main(int argc, char** argv) {
     server.send_message(client->get_id(), make_client_id_message(client->get_id()));
     server.send_message(client->get_id(), make_map_name_message(scenario));
     server.send_message(client->get_id(), make_entities_pack_message(get_entities()));
-
-    server.send_message(client->get_id(), make_entity_talk_message(game_board().to_index(2, 3),
-                                                                              "Wygląda że jaszczury uwięziły tubylca. "
-                                                                              "Jeśli go uwolnimy powinien się do nas przyłączyć!"));
-    server.send_message(client->get_id(), make_entity_talk_message(game_board().to_index(2, 5),
-                                                                   "Trzeba się tam jakoś przedostać"));
+    game::get<event_center>().emit(events::CLIENT_ACCEPTED);
   });
 
   using json_data_type = nlohmann::json;

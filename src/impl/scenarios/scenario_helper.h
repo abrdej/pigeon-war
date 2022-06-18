@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 
+#include <turn_based/event_center.h>
 #include <turn_based/game.h>
 #include <turn_based/managers/entity_manager.h>
 
@@ -59,4 +60,9 @@ void if_all_die(std::vector<std::uint32_t> entities_ids, Callback callback) {
     entities_ids_ptr->insert(entity_id);
     game::get<entity_manager>().on_destroy(entity_id, std::bind(someone_die, entity_id));
   }
+}
+
+template <typename Callback>
+void on_intro(Callback callback) {
+  game::get<event_center>().register_on(events::CLIENT_ACCEPTED, callback);
 }
