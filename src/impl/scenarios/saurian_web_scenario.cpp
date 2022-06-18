@@ -1,14 +1,14 @@
 #include <impl/scenarios/saurian_web_scenario.h>
 
-#include <turn_based/damage_dealers.h>
+#include <impl/scenarios/creator_helper.h>
+#include <impl/scenarios/scenario_helper.h>
 #include <turn_based/ai/ai_factories.h>
 #include <turn_based/ai/ai_manager.h>
+#include <turn_based/damage_dealers.h>
+#include <turn_based/entities_factory.h>
 #include <turn_based/game.h>
 #include <turn_based/game_controller.h>
 #include <turn_based/turn_system.h>
-#include <impl/scenarios/creator_helper.h>
-#include <impl/scenarios/scenario_helper.h>
-#include <turn_based/entities_factory.h>
 
 struct saurian {};
 
@@ -16,8 +16,6 @@ void create_saurian_web() {
   LOG(debug) << "creating saurian web scenario";
 
   game_board().set_size(15, 10);
-
-  LOG(debug) << "saurian web size: " << game_board().cols_n * game_board().rows_n;
 
   auto &entity_manager_ref = game::get<entity_manager>();
   auto &players_manager_ref = game::get<players_manager>();
@@ -30,6 +28,7 @@ void create_saurian_web() {
   auto saurian4_id = game::get<entities_factory>().create("saurian");
   auto saurian5_id = game::get<entities_factory>().create("saurian");
 
+  // TODO: make factory for ai
   game::get<ai_manager>().add_ai_for(saurian1_id, ai::make_ai<saurian>());
   game::get<ai_manager>().add_ai_for(saurian2_id, ai::make_ai<saurian>());
   game::get<ai_manager>().add_ai_for(saurian3_id, ai::make_ai<saurian>());
@@ -69,7 +68,7 @@ void create_saurian_web() {
 
   auto web_poison_connection = make_every_two_turns_from_next_callback_holder(
       std::numeric_limits<std::int32_t>::max(), [native_id]() {
-        LOG(debug) << "receive damage";
+        LOG(debug) << "dealing damage to native";
         damage_dealers::standard_damage_dealer(special_damage(4, native_id));
       });
   std::shared_ptr<turn_scoped_connection> connection =
@@ -89,5 +88,6 @@ void create_saurian_web() {
              [&]() {
                game_control().victory(tester_id);
                make_entity_talk_message(game_board().index_for(shooter_id),
-                                        "Ale im dokopaliśmy! Brawo chłopaki!");});
+                                        "Ale im dokopaliśmy! Brawo chłopaki!");
+             });
 }

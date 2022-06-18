@@ -9,41 +9,25 @@
 
 using creator_helper::pos;
 
-template <typename T>
-void create_around_map() {
-  std::vector<std::pair<std::uint32_t, std::uint32_t>> trees_positions;
-  for (std::int32_t i = 0; i < game_board().cols_n; ++i) {
-    for (std::int32_t j = 0; j < game_board().rows_n; ++j) {
-      if (i == 0 || j == 0 || i == game_board().cols_n - 1 || j == game_board().rows_n - 1) {
-        trees_positions.push_back(pos(i, j));
-      }
-    }
-  }
-  creator_helper::create_neutral_many<T>(trees_positions);
-}
-
 void winter_land() {
-  create_around_map<fir>();
-
-  creator_helper::create_neutral_many<fir>({pos(6, 1), pos(7, 1), pos(6, 2), pos(7, 2)});
-  creator_helper::create_neutral_many<fir>({pos(10, 1), pos(11, 1), pos(10, 2), pos(11, 2)});
-  creator_helper::create_neutral_many<fir>({pos(7, 7), pos(8, 7), pos(7, 8), pos(8, 8)});
-  creator_helper::create_neutral_many<fir>({pos(3, 7), pos(4, 7), pos(3, 8), pos(4, 8)});
-  creator_helper::create_neutral_many<wall>({pos(4, 4), pos(4, 5)});
-  creator_helper::create_neutral_many<wall>({pos(10, 5), pos(10, 6)});
-  creator_helper::create_neutral_many<fir>({pos(6, 4), pos(7, 4), pos(6, 5), pos(7, 5)});
+  creator_helper::create_around_map("fir");
+  creator_helper::create_neutral_many("fir", {pos(6, 1), pos(7, 1), pos(6, 2), pos(7, 2)});
+  creator_helper::create_neutral_many("fir", {pos(10, 1), pos(11, 1), pos(10, 2), pos(11, 2)});
+  creator_helper::create_neutral_many("fir", {pos(7, 7), pos(8, 7), pos(7, 8), pos(8, 8)});
+  creator_helper::create_neutral_many("fir", {pos(3, 7), pos(4, 7), pos(3, 8), pos(4, 8)});
+  creator_helper::create_neutral_many("wall", {pos(4, 4), pos(4, 5)});
+  creator_helper::create_neutral_many("wall", {pos(10, 5), pos(10, 6)});
+  creator_helper::create_neutral_many("fir", {pos(6, 4), pos(7, 4), pos(6, 5), pos(7, 5)});
 }
 
 void battlefield() {
-  create_around_map<tree>();
-
-  creator_helper::create_neutral_many<tree>({pos(8, 1), pos(9, 1), pos(10, 1), pos(10, 2)});
-  creator_helper::create_neutral_many<tree>({pos(10, 7), pos(11, 7), pos(10, 8), pos(11, 8)});
-  creator_helper::create_neutral_many<tree>(
-      {pos(3, 1), pos(3, 2), pos(4, 1), pos(4, 2), pos(3, 5), pos(3, 6)});
-  creator_helper::create_neutral_many<tree>({pos(5, 8), pos(6, 8)});
-  creator_helper::create_neutral_many<stone>({pos(1, 1), pos(4, 5)});
-  creator_helper::create_neutral_many<stone>({pos(1, 1), pos(4, 5)});
+  creator_helper::create_around_map("tree");
+  creator_helper::create_neutral_many("tree", {pos(8, 1), pos(9, 1), pos(10, 1), pos(10, 2)});
+  creator_helper::create_neutral_many("tree", {pos(10, 7), pos(11, 7), pos(10, 8), pos(11, 8)});
+  creator_helper::create_neutral_many("tree", {pos(3, 1), pos(3, 2), pos(4, 1), pos(4, 2), pos(3, 5), pos(3, 6)});
+  creator_helper::create_neutral_many("tree", {pos(5, 8), pos(6, 8)});
+  creator_helper::create_neutral_many("stone", {pos(1, 1), pos(4, 5)});
+  creator_helper::create_neutral_many("stone", {pos(1, 1), pos(4, 5)});
 }
 
 struct map_factory {
@@ -56,51 +40,12 @@ struct map_factory {
   }
 };
 
-// auto get_entities_selecting_positions() {
-//    std::vector<std::pair<std::uint32_t, std::uint32_t>> positions = {
-//            pos(5, 2),
-//            pos(6, 2),
-//            pos(7, 2),
-//            pos(8, 2),
-//            pos(9, 2),
-//
-//            pos(5, 3),
-//            pos(6, 3),
-//            pos(7, 3),
-//            pos(8, 3),
-//            pos(9, 3),
-//
-//            pos(5, 4),
-//            pos(6, 4),
-//            pos(7, 4),
-//            pos(8, 4),
-//            pos(9, 4),
-//
-//            pos(5, 5),
-//            pos(6, 5),
-//            pos(7, 5),
-//            pos(8, 5),
-//            pos(9, 5),
-//
-//            pos(5, 6),
-//            pos(6, 6),
-//            pos(7, 6),
-//            pos(8, 6),
-//            pos(9, 6)
-//    };
-//    return std::move(positions);
-//}
-
 auto get_entities_selecting_positions() {
   std::vector<std::pair<std::uint32_t, std::uint32_t>> positions = {
       pos(5, 2), pos(6, 2), pos(7, 2), pos(8, 2), pos(9, 2),
-
       pos(5, 3), pos(9, 3),
-
       pos(5, 4), pos(9, 4),
-
       pos(5, 5), pos(9, 5),
-
       pos(5, 6), pos(6, 6), pos(7, 6), pos(8, 6), pos(9, 6)};
   return std::move(positions);
 }
