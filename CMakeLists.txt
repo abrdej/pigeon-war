@@ -6,8 +6,6 @@ set(CMAKE_BUILD_TYPE Debug)
 
 add_compile_options(-fPIC)
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
-
 configure_file(src/config.h.in ${CMAKE_SOURCE_DIR}/src/config.h @ONLY)
 
 find_package(Boost COMPONENTS log system REQUIRED)
