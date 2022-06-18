@@ -1,4 +1,4 @@
-#include <impl/game_state/get_entity_names.h>
+#include <get_entity_names.h>
 
 #include <turn_based/game.h>
 #include <turn_based/managers/entity_manager.h>

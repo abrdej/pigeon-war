@@ -1,4 +1,4 @@
-#include <impl/game_state/get_effect_description.h>
+#include <get_effect_description.h>
 
 #include <turn_based/utils/descriptions.h>
 

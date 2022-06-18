@@ -3,12 +3,12 @@
 #include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include <turn_based/board.h>
-#include <entities/pixie.h>
-#include "entities/samurai_rat/samurai_rat.h"
-#include <entities/spectre.h>
-#include <creator_helper.h>
-#include <map_reader.h>
-#include <scenario_helper.h>
+#include <wip/entities/pixie.h>
+#include <entities/samurai_rat/samurai_rat.h>
+#include <wip/entities/spectre.h>
+#include <turn_based/creator_helper.h>
+#include <turn_based/map_reader.h>
+#include <turn_based/scenario_helper.h>
 
 void scenario::create_dark_forest() {
   std::pair<uint32_t, uint32_t> map_size;

@@ -1,4 +1,4 @@
-#include <impl/game_state/get_entities.h>
+#include <get_entities.h>
 
 #include <turn_based/components/power_field.h>
 #include <turn_based/managers/entity_manager.h>

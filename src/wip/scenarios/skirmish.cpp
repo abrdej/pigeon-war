@@ -1,11 +1,11 @@
 #include <skirmish.h>
 
 #include <config.h>
-#include <entities/all_entities.h>
+#include <wip/entities/all_entities.h>
 #include <turn_based/entities_factory.h>
-#include <creator_helper.h>
-#include <entities_reader.h>
-#include <map_reader.h>
+#include <turn_based/creator_helper.h>
+#include <turn_based/entities_reader.h>
+#include <turn_based/map_reader.h>
 
 using creator_helper::pos;
 

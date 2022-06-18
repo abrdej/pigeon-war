@@ -9,18 +9,22 @@ add_library(turn_based SHARED
   components/damage_taker.cpp
   components/modification.cpp
   configurable.cpp
+  creator_helper.cpp
   damage_dealers.cpp
   entities_factory.cpp
+  entities_reader.cpp
   game.cpp
   game_controller.cpp
   logger.cpp
   managers/players_manager.cpp
+  map_reader.cpp
   messages/massages_makers.cpp
   moveable.cpp
   path_finder.cpp
   scenario_factory.cpp
   sender.cpp
   turn_system.cpp)
+
 target_include_directories(turn_based PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/external)
 target_link_libraries(turn_based PUBLIC Boost::headers Boost::system Boost::log pthread dl)
 

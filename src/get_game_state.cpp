@@ -1,10 +1,10 @@
-#include <impl/game_state/get_game_state.h>
+#include <get_game_state.h>
 
 #include <turn_based/abilities.h>
 #include <turn_based/components/applied_effects.h>
 #include <turn_based/components/damage_taker.h>
 #include <turn_based/game_controller.h>
-#include <impl/game_state/get_entity_names.h>
+#include <get_entity_names.h>
 
 global_game_state get_global_game_state() {
   global_game_state state;

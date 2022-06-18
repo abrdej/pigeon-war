@@ -2,10 +2,10 @@
 
 #include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
-#include <entities/destroyer.h>
-#include <entities/golem.h>
-#include <entities/warrior.h>
-#include "entities/wolf/wolf.cpp"
+#include <wip/entities/destroyer.h>
+#include <wip/entities/golem.h>
+#include <wip/entities/warrior.h>
+#include <entities/wolf/wolf.cpp"
 
 void scenarios::create_total_destruction() {
   game_board().set_size(15, 10);

@@ -1,8 +1,8 @@
 #include <boost/dll/alias.hpp>
 
 #include <config.h>
-#include <impl/scenarios/map_reader.h>
-#include <impl/scenarios/scenario_helper.h>
+#include <turn_based/map_reader.h>
+#include <turn_based/scenario_helper.h>
 #include <turn_based/ai/ai_manager.h>
 #include <turn_based/ai_factory.h>
 #include <turn_based/board.h>

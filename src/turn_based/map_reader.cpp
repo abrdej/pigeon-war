@@ -1,11 +1,11 @@
-#include <impl/scenarios/map_reader.h>
+#include <turn_based/map_reader.h>
 
 #include <cassert>
 #include <fstream>
 
 #include <external/json.hpp>
 
-#include <impl/scenarios/creator_helper.h>
+#include <turn_based/creator_helper.h>
 #include <turn_based/board.h>
 
 using nlohmann::json;

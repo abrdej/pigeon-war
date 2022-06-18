@@ -1,4 +1,4 @@
-#include <impl/scenarios/entities_reader.h>
+#include <turn_based/entities_reader.h>
 
 #include <fstream>
 #include <iostream>

@@ -1,4 +1,4 @@
-#include <impl/scenarios/creator_helper.h>
+#include <turn_based/creator_helper.h>
 
 #include <turn_based/board.h>
 #include <turn_based/entities_factory.h>

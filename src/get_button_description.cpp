@@ -1,4 +1,4 @@
-#include <impl/game_state/get_button_description.h>
+#include <get_button_description.h>
 
 #include <turn_based/abilities.h>
 #include <turn_based/board.h>

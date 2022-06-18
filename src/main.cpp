@@ -6,12 +6,12 @@
 #include <turn_based/logger.h>
 
 #include <turn_based/game_controller.h>
-#include <impl/game_state/get_button_description.h>
-#include <impl/game_state/get_effect_description.h>
-#include <impl/game_state/get_game_state.h>
+#include <get_button_description.h>
+#include <get_effect_description.h>
+#include <get_game_state.h>
 
-#include <impl/game_state/get_entities.h>
-#include <networking/new_server.h>
+#include <get_entities.h>
+#include <networking/server.h>
 #include <turn_based/board.h>
 #include <turn_based/event_center.h>
 #include <turn_based/managers/players_manager.h>

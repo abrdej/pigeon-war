@@ -1,6 +1,6 @@
 #include <turn_based/game_controller.h>
 #include <turn_based/board.h>
-#include <entities/creature.h>
+#include <wip/entities/creature.h>
 #include <turn_based/managers/entity_manager.h>
 #include <messages/massages_makers.h>
 #include <spiral_of_fire.h>
