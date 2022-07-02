@@ -1,5 +1,7 @@
 #pragma once
 
+#include <unordered_set>
+
 #include <boost/process.hpp>
 #include <boost/filesystem.hpp>
 
@@ -12,9 +14,15 @@ class game_handler {
     return port_;
   }
 
+  void add_player(std::uint32_t player_id);
+  void remove_player(std::uint32_t player_id);
+
+  [[nodiscard]] bool is_valid() const;
+
  private:
   boost::process::child game_process_;
   std::int32_t port_;
+  std::unordered_set<std::uint32_t> players_;
 };
 
 class game_handler_factory {

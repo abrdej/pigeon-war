@@ -55,7 +55,7 @@ class client {
     connection_ = nullptr;
   }
 
-  bool connected() const {
+  [[nodiscard]] bool connected() const {
     return connection_ && connection_->connected();
   }
 

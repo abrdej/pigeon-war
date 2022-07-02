@@ -1,6 +1,7 @@
 #include <unordered_map>
 
 #include <boost/program_options.hpp>
+#include <boost/range/algorithm_ext/erase.hpp>
 
 #include <external/json.hpp>
 
@@ -41,6 +42,9 @@ int main(int argc, char** argv) {
 
   std::vector<game_handler> game_handlers;
   std::unordered_map<std::uint32_t, std::shared_ptr<player_handler>> player_handlers;
+
+  // TODO: how to clear the games that are not active any more???!!!
+  // TODO: we need to close both - web socket connection and also the game <-> handler connection!
 
   server.on_client_accepted([&](std::shared_ptr<networking::web_socket_connection> client) mutable {
     const auto client_id = client->get_id();
@@ -93,6 +97,22 @@ int main(int argc, char** argv) {
   while (!processing_interrupted) {
     server.update();
     std::this_thread::sleep_for(std::chrono::milliseconds(25));
+
+    // TODO: removal must be thread-safe
+//    std::vector<std::uint32_t> to_remove;
+//    for (const auto& player_handler : player_handlers) {
+//      if (!player_handler.second->is_valid()) {
+//        to_remove.push_back(player_handler.first);
+//      }
+//    }
+//    for (auto id : to_remove) {
+//      LOG(debug) << "removing player with id: " << id;
+//      player_handlers.erase(id);
+//    }
+
+//    boost::range::remove_erase_if(game_handlers, [](const game_handler& handler) {
+//      return !handler.is_valid();
+//    });
   }
   server.stop();
 
