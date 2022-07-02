@@ -1,7 +1,7 @@
 #include <turn_based/path_finder.h>
 
 #include <turn_based/board.h>
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 
 // TODO: we can use board_container to fill this
 path_finder::path_finder(bool all_fields) : start_index_(-1) {

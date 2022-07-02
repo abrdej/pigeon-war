@@ -5,7 +5,7 @@
 #include <external/json.hpp>
 
 #include <networking/server.h>
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 #include <lobby/game_handler.h>
 #include <lobby/player_handler.h>
 

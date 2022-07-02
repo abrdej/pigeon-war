@@ -4,7 +4,7 @@
 #include <turn_based/board.h>
 #include <turn_based/game_controller.h>
 #include <turn_based/utils/algorithm.h>
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 #include <turn_based/managers/entity_manager.h>
 
 sabers::sabers(std::uint32_t entity_id)

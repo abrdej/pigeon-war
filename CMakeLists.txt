@@ -11,6 +11,7 @@ configure_file(src/config.h.in ${CMAKE_SOURCE_DIR}/src/config.h @ONLY)
 find_package(Boost COMPONENTS program_options log system REQUIRED)
 find_package(GTest REQUIRED)
 
+add_subdirectory(src/logging)
 add_subdirectory(src/turn_based)
 add_subdirectory(src/networking)
 

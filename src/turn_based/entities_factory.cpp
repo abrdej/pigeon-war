@@ -10,7 +10,7 @@
 
 #include <config.h>
 #include <turn_based/game.h>
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 #include <turn_based/entity_factory_interface.h>
 #include <turn_based/managers/entity_manager.h>
 

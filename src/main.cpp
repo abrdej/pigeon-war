@@ -3,7 +3,7 @@
 
 #include <external/json.hpp>
 
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 
 #include <turn_based/game_controller.h>
 #include <get_button_description.h>

@@ -9,7 +9,7 @@
 #include <external/json.hpp>
 
 #include <config.h>
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 #include <turn_based/scenario_factory_interface.h>
 
 inline std::string get_scenario_plugin_path(const std::string& scenario_name) {

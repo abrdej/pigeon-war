@@ -15,7 +15,6 @@ add_library(turn_based SHARED
   entities_reader.cpp
   game.cpp
   game_controller.cpp
-  logger.cpp
   managers/players_manager.cpp
   map_reader.cpp
   messages/massages_makers.cpp
@@ -26,7 +25,7 @@ add_library(turn_based SHARED
   turn_system.cpp)
 
 target_include_directories(turn_based PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/external)
-target_link_libraries(turn_based PUBLIC Boost::headers Boost::system Boost::log pthread dl)
+target_link_libraries(turn_based PUBLIC logging Boost::headers Boost::system pthread dl)
 
 enable_testing()
 

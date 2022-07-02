@@ -2,7 +2,7 @@
 
 #include <turn_based/damage_dealers.h>
 #include <turn_based/board.h>
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 #include <turn_based/sender.h>
 #include <turn_based/messages/massages_makers.h>
 

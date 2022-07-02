@@ -4,7 +4,7 @@
 #include <typeindex>
 #include <unordered_map>
 
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 
 class module_holder {
  public:

@@ -9,7 +9,7 @@
 #include <external/json.hpp>
 
 #include <config.h>
-#include <turn_based/logger.h>
+#include <logging/logger.h>
 #include <turn_based/ai_factory_interface.h>
 
 inline std::string get_ai_plugin_path(const std::string& ai_name) {
