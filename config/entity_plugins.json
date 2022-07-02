@@ -5,6 +5,7 @@
   "saurian_web": "src/entities/saurian/libsaurian.so",
   "native": "src/entities/native/libnative.so",
   "samurai_rat": "src/entities/samurai_rat/libsamurai_rat.so",
+  "destroyer": "src/entities/destroyer/libdestroyer.so",
   "wolf": "src/entities/wolf/libwolf.so",
   "tree": "src/entities/environment/libenvironment.so",
   "fir": "src/entities/environment/libenvironment.so",

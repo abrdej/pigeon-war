@@ -1,6 +1,6 @@
 #include <armor.h>
 
-#include <components/damage_taker.h>
+#include <turn_based/components/damage_taker.h>
 
 armor::armor(std::uint32_t entity_id) {
   set_damage_receiver(

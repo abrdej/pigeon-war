@@ -1,0 +1,6 @@
+add_library(destroyer SHARED
+  armor.cpp
+  blow_the_ax.cpp
+  destroyer.cpp)
+target_link_libraries(destroyer turn_based)
+target_include_directories(destroyer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

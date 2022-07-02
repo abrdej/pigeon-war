@@ -1,6 +1,6 @@
 #pragma once
 
-#include <straight_target_ability.h>
+#include <turn_based/straight_target_ability.h>
 #include <turn_based/per_turn_usable.h>
 
 class blow_the_ax final : public straight_target_ability<1>,
@@ -19,7 +19,6 @@ public:
 private:
   void use(std::uint32_t on_index) override;
 
-private:
   std::uint32_t entity_id;
   std::int32_t damage{15};
 };
