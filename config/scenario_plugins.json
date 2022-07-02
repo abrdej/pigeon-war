@@ -1,4 +1,5 @@
 {
   "saurian_web": "src/scenarios/saurian_web/libsaurian_web.so",
-  "wolves_dinner": "src/scenarios/wolves_dinner/libwolves_dinner.so"
+  "wolves_dinner": "src/scenarios/wolves_dinner/libwolves_dinner.so",
+  "skirmish": "src/scenarios/skirmish/libskirmish.so"
 }

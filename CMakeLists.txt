@@ -26,6 +26,7 @@ add_subdirectory(src/entities/wolf)
 add_subdirectory(src/entities/destroyer)
 
 ## scenario plugins
+add_subdirectory(src/scenarios/skirmish)
 add_subdirectory(src/scenarios/saurian_web)
 add_subdirectory(src/scenarios/wolves_dinner)
 
