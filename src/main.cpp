@@ -12,6 +12,7 @@
 
 #include <get_entities.h>
 #include <networking/server.h>
+#include <networking/socket_connection.h>
 #include <turn_based/board.h>
 #include <turn_based/event_center.h>
 #include <turn_based/managers/players_manager.h>
@@ -31,7 +32,7 @@ int main(int argc, char** argv) {
   std::signal(SIGINT, &interrupt_processing);
 
   // TODO: nice parsing parameters from argv
-  std::int32_t port = 60000;
+  std::int32_t port = 60001;
 //  std::string scenario = "saurian_web";
   std::string scenario = "wolves_dinner";
   std::pair<std::uint32_t, std::uint32_t> map_size{15, 10};
@@ -45,19 +46,26 @@ int main(int argc, char** argv) {
 
   game::get<scenario_factory>().create(scenario);
 
-  networking::server server(port);
+  networking::server<networking::socket_connection> server(port);
+  LOG(debug) << "Loading game server on port: " << port;
 
   sender::set_sender([&server](std::string message) {
     server.send_message_to_all(message);
   });
 
   // TODO: do we want to use client_id or connection ptr??
-  server.on_client_accepted([&](std::shared_ptr<networking::web_socket_connection> client) {
+  server.on_client_accepted([&](std::shared_ptr<networking::socket_connection> client) {
+    const auto client_id = client->get_id();
+    LOG(debug) << "new client accepted with id: " << client_id;
+    LOG(debug) << "Sending initial messages to client";
+
     server.send_message(client->get_id(), make_map_size_message(map_size));
     server.send_message(client->get_id(), make_client_id_message(client->get_id()));
     server.send_message(client->get_id(), make_map_name_message(scenario));
     server.send_message(client->get_id(), make_entities_pack_message(get_entities()));
     game::get<event_center>().emit(events::CLIENT_ACCEPTED);
+
+    LOG(debug) << "Sending initial messages to client ready";
   });
 
   using json_data_type = nlohmann::json;
@@ -78,7 +86,12 @@ int main(int argc, char** argv) {
 
     bool single_client = server.number_of_clients() == 1;
 
+    LOG(debug) << "is single client: " << single_client;
+    LOG(debug) << "client_id: " << client_id;
+    LOG(debug) << "get_active_player_id: " << game::get<players_manager>().get_active_player_id();
+
     if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
+      LOG(debug) << "executing on board and sending local and global state";
       game_control().on_board(x, y);
       server.send_message_to_all(make_local_game_state_message(get_local_game_state()));
       server.send_message_to_all(make_global_game_state_message(get_global_game_state()));

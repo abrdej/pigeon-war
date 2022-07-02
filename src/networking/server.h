@@ -9,12 +9,16 @@
 #include <boost/asio.hpp>
 #include <boost/asio/ip/tcp.hpp>
 
+#include <networking/owned_message.h>
 #include <networking/web_socket_connection.h>
 
 namespace networking {
 
+template <typename connection_type>
 class server {
  public:
+  using my_owned_message_type = owned_message_type<connection_type>;
+
   explicit server(std::uint16_t port)
       : acceptor_(context_, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)) {}
 
@@ -29,6 +33,7 @@ class server {
       wait_for_connections();
       context_thread_ = std::thread([this]() {
         context_.run();
+        LOG(warning) << "Server context thread finished";
       });
 
     } catch (std::exception& e) {
@@ -50,6 +55,7 @@ class server {
     if (client_it != std::end(connections_)) {
       auto connection = client_it->second;
       if (connection && connection->connected()) {
+        LOG(debug) << "Sending message to client: " << client_id << ", which is: " << message;
         connection->send(std::move(message));
       } else {
         if (on_client_disconnect_) {
@@ -58,6 +64,8 @@ class server {
         connection.reset();
         connections_.erase(client_it);
       }
+    } else {
+      LOG(warning) << "There is no such client: " << client_id;
     }
   }
 
@@ -123,11 +131,12 @@ class server {
         LOG(debug) << "New client connected: " << socket.remote_endpoint().address().to_string();
 
         auto new_connection =
-            std::make_shared<web_socket_connection>(context_, std::move(socket), messages_in_);
+            std::make_shared<connection_type>(context_, std::move(socket), messages_in_);
 
         if (!on_client_connect_ || on_client_connect_(new_connection)) {
-          new_connection->connect_to_client(++id_counter_, on_client_accepted_);
-          connections_.emplace(new_connection->get_id(), std::move(new_connection));
+          auto client_id = id_counter_++;
+          connections_.emplace(client_id, std::move(new_connection))
+              .first->second->connect_to_client(client_id, on_client_accepted_);
 
         } else {
           LOG(debug) << "Client denied.";
@@ -140,14 +149,14 @@ class server {
     });
   }
 
-  std::function<bool(const std::shared_ptr<web_socket_connection>&)> on_client_connect_;
-  std::function<void(const std::shared_ptr<web_socket_connection>&)> on_client_disconnect_;
-  std::function<void(std::shared_ptr<web_socket_connection>)> on_client_accepted_;
+  std::function<bool(const std::shared_ptr<connection_type>&)> on_client_connect_;
+  std::function<void(const std::shared_ptr<connection_type>&)> on_client_disconnect_;
+  std::function<void(std::shared_ptr<connection_type>)> on_client_accepted_;
   std::function<void(std::uint32_t client_id, const std::string&)> on_message_;
 
-  std::unordered_map<std::uint32_t, std::shared_ptr<web_socket_connection>> connections_;
+  std::unordered_map<std::uint32_t, std::shared_ptr<connection_type>> connections_;
 
-  std::queue<owned_message_type> messages_in_;
+  std::queue<my_owned_message_type> messages_in_;
 
   boost::asio::io_context context_;
   std::thread context_thread_;

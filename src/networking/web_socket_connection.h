@@ -4,6 +4,7 @@
 #include <memory>
 #include <queue>
 
+#include <boost/algorithm/string.hpp>
 #include <boost/asio.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/beast/core.hpp>
@@ -14,17 +15,13 @@
 
 namespace networking {
 
-class web_socket_connection;
-
-using message_type = std::string;
-
-using owned_message_type = std::pair<std::shared_ptr<web_socket_connection>, message_type>;
-
 class web_socket_connection : public std::enable_shared_from_this<web_socket_connection> {
  public:
+  using my_owned_message_type = owned_message_type<web_socket_connection>;
+
   web_socket_connection(boost::asio::io_context& context,
                         boost::asio::ip::tcp::socket socket,
-                        std::queue<owned_message_type>& messages_in)
+                        std::queue<my_owned_message_type>& messages_in)
       : context_(context), web_socket_(std::move(socket)), messages_in_(messages_in), id_(-1) {}
 
   ~web_socket_connection() = default;
@@ -56,7 +53,9 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
     boost::asio::post(context_,
                       [this, my_message = std::move(message)]() mutable {
                         bool is_writing_message = !messages_out_.empty();
-                        messages_out_.push(std::move(my_message));
+                        // need to trim all "\n", and add one at the end
+                        boost::erase_all(my_message, "\n");
+                        messages_out_.push(std::move(my_message + "\n"));
                         if (!is_writing_message) {
                           write_message();
                         }
@@ -80,13 +79,14 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
     web_socket_.async_write(boost::asio::buffer(messages_out_.front()),
         [this](std::error_code ec, std::size_t length) {
           if (!ec) {
+            LOG(debug) << "Write message for: " << id_ << ".";
             messages_out_.pop();
 
             if (!messages_out_.empty()) {
               write_message();
             }
           } else {
-            LOG(debug) << "Write body fail for: " << id_ << ".";
+            LOG(debug) << "Write message fail for: " << id_ << ".";
             web_socket_.close(boost::beast::websocket::close_code::going_away);
           }
         });
@@ -96,7 +96,7 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
     boost::asio::async_read_until(web_socket_, boost::asio::dynamic_buffer(string_buffer_), "\n",
                             [this](std::error_code ec, std::size_t length) {
                               if (!ec) {
-                                add_incoming_message();
+                                add_incoming_message(length);
 
                               } else {
                                 LOG(debug) << "Read body fail for: " << id_ << ".";
@@ -105,8 +105,11 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
                             });
   }
 
-  void add_incoming_message() {
-    messages_in_.push(std::make_pair(shared_from_this(), std::move(string_buffer_)));
+  void add_incoming_message(std::size_t length) {
+    auto message = string_buffer_.substr(0, length);
+    LOG(debug) << "Adding incoming message: " << id_ << ", message: " << message;
+    messages_in_.push(std::make_pair(weak_from_this().lock(), std::move(message)));
+    boost::asio::dynamic_buffer(string_buffer_).consume(length);
     read_message();
   }
 
@@ -116,7 +119,7 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
 
   boost::asio::io_context& context_;
   std::queue<message_type> messages_out_;
-  std::queue<owned_message_type>& messages_in_;
+  std::queue<my_owned_message_type>& messages_in_;
 
   std::string string_buffer_;
 

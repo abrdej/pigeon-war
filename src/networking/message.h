@@ -1,8 +1,9 @@
-//
-// Created by abrdej on 09.06.22.
-//
+#pragma once
 
-#ifndef PIGEONWAR_SRC_SERVER_MESSAGE_H_
-#define PIGEONWAR_SRC_SERVER_MESSAGE_H_
+#include <string>
 
-#endif //PIGEONWAR_SRC_SERVER_MESSAGE_H_
+namespace networking {
+
+using message_type = std::string;
+
+}  // namespace networking

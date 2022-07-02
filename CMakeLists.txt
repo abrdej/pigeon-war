@@ -8,7 +8,7 @@ add_compile_options(-fPIC)
 
 configure_file(src/config.h.in ${CMAKE_SOURCE_DIR}/src/config.h @ONLY)
 
-find_package(Boost COMPONENTS log system REQUIRED)
+find_package(Boost COMPONENTS program_options log system REQUIRED)
 find_package(GTest REQUIRED)
 
 add_subdirectory(src/turn_based)
@@ -34,10 +34,18 @@ set(SOURCE_FILES
   src/get_entity_names.cpp
   src/get_game_state.cpp
   src/message_processor.cpp
-  )
+)
 
 add_executable(pigeon_war src/main.cpp ${SOURCE_FILES})
 target_link_libraries(pigeon_war turn_based networking)
 
 add_executable(tester src/tester.cpp)
 target_link_libraries(tester turn_based)
+
+add_subdirectory(src/lobby)
+
+add_executable(server_test src/server_test.cpp)
+target_link_libraries(server_test networking)
+
+add_executable(client_test src/client_test.cpp)
+target_link_libraries(client_test networking)
