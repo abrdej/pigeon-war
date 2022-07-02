@@ -5,7 +5,8 @@
 
 class game_handler {
  public:
-  game_handler(const boost::filesystem::path& game_exec_file, std::int32_t port);
+  game_handler(const boost::filesystem::path& game_exec_file,
+               std::int32_t port, const std::string& scenario, const std::string& map);
 
   [[nodiscard]] std::int32_t get_port() const {
     return port_;
@@ -22,8 +23,8 @@ class game_handler_factory {
       : game_exec_file_(std::move(game_exec_file)), first_port_(first_port) {
   }
 
-  game_handler make_game_handler() {
-    return {game_exec_file_, first_port_ + game_id_++};
+  game_handler make_game_handler(const std::string& scenario, const std::string& map) {
+    return {game_exec_file_, first_port_ + game_id_++, scenario, map};
   }
 
  private:

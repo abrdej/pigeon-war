@@ -35,13 +35,17 @@ int main(int argc, char** argv) {
   std::int32_t port = 60001;
 //  std::string scenario = "saurian_web";
   std::string scenario = "wolves_dinner";
+  std::string map;
   std::pair<std::uint32_t, std::uint32_t> map_size{15, 10};
 
   if (argc > 1) {
     port = std::atoi(argv[1]);
   }
-  if (argc == 4) {
+  if (argc >= 3) {
     scenario = std::string(argv[2]);
+  }
+  if (argc == 4) {
+    map = std::string(argv[3]);
   }
 
   game::get<scenario_factory>().create(scenario);

@@ -2,6 +2,8 @@
 
 #include <boost/program_options.hpp>
 
+#include <external/json.hpp>
+
 #include <networking/server.h>
 #include <turn_based/logger.h>
 #include <lobby/game_handler.h>
@@ -44,20 +46,42 @@ int main(int argc, char** argv) {
     const auto client_id = client->get_id();
     LOG(debug) << "new player connected with id: " << client_id;
 
-    game_handlers.emplace_back(game_handler_factory.make_game_handler());
+    //game_handlers.emplace_back(game_handler_factory.make_game_handler());
 
     // Sleep to initialize the game
-    std::this_thread::sleep_for(std::chrono::seconds(1)); // maybe here is too much
+    //std::this_thread::sleep_for(std::chrono::seconds(1)); // maybe here is too much
 
     // create player handler
     auto handler = std::make_shared<player_handler>(server, client_id);
-    handler->add_to_game(game_handlers.back());
+    //handler->add_to_game(game_handlers.back());
     player_handlers.emplace(std::piecewise_construct, std::make_tuple(client_id), std::make_tuple(handler));
 
     LOG(debug) << "Game created for client";
   });
 
+  // TODO: split scenario loading from normal message forwarding
   server.on_message([&](std::uint32_t client_id, const std::string& message) {
+    using json_data_type = nlohmann::json;
+
+    json_data_type data;
+    try {
+      data = json_data_type::parse(message);
+    } catch (std::exception& e) {
+      LOG(error) << "Message parsing error in: " << message << ", what: " << e.what();
+    }
+
+    if (data.count("configure")) {
+      std::string scenario = data["configure"]["scenario"];
+      std::string map = data["configure"]["map"];
+      LOG(debug) << "Got configuration message: scenario: " << scenario << ", map: " << map;
+
+      game_handlers.emplace_back(game_handler_factory.make_game_handler(scenario, map));
+      std::this_thread::sleep_for(std::chrono::seconds(1)); // maybe here is too much
+      player_handlers.at(client_id)->add_to_game(game_handlers.back());
+
+      return;
+    }
+
     LOG(debug) << "got message from client of id: " << client_id << ", which is: " << message;
     player_handlers.at(client_id)->send(message);
   });
