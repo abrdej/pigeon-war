@@ -3,6 +3,7 @@
   "saberhand": "src/entities/saberhand/libsaberhand.so",
   "saurian": "src/entities/saurian/libsaurian.so",
   "saurian_web": "src/entities/saurian/libsaurian.so",
+  "monk": "src/entities/monk/libmonk.so",
   "native": "src/entities/native/libnative.so",
   "samurai_rat": "src/entities/samurai_rat/libsamurai_rat.so",
   "destroyer": "src/entities/destroyer/libdestroyer.so",

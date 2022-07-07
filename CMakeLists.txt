@@ -17,6 +17,7 @@ add_subdirectory(src/networking)
 
 ## entities plugins
 add_subdirectory(src/entities/environment)
+add_subdirectory(src/entities/monk)
 add_subdirectory(src/entities/native)
 add_subdirectory(src/entities/saberhand)
 add_subdirectory(src/entities/samurai_rat)
