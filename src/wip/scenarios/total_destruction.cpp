@@ -3,7 +3,7 @@
 #include <ai/ai_factories.h>
 #include <ai/ai_manager.h>
 #include "entities/destroyer/destroyer.h"
-#include <wip/entities/golem.h>
+#include "entities/golem/golem.h"
 #include <wip/entities/warrior.h>
 #include <entities/wolf/wolf.cpp"
 
