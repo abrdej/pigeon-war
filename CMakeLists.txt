@@ -24,6 +24,7 @@ add_subdirectory(src/entities/saberhand)
 add_subdirectory(src/entities/samurai_rat)
 add_subdirectory(src/entities/saurian)
 add_subdirectory(src/entities/shooter)
+add_subdirectory(src/entities/sniper)
 add_subdirectory(src/entities/wolf)
 add_subdirectory(src/entities/destroyer)
 

@@ -1,8 +1,12 @@
 #include <sniper_shot.h>
 
-#include <turn_based/damage_dealers.h>
+#include <logging/logger.h>
 #include <turn_based/board.h>
+#include <turn_based/damage_dealers.h>
 #include <turn_based/game_controller.h>
+#include <turn_based/managers/entity_manager.h>
+#include <turn_based/messages/massages_makers.h>
+#include <turn_based/sender.h>
 
 void sniper_shot::prepare(std::uint32_t for_index) {
   game_control().selected_index_ = for_index;
@@ -19,8 +23,10 @@ void sniper_shot::prepare(std::uint32_t for_index) {
   }
 
   if (!enemy_close) {
-    board_helper::calc_straight(for_index, game_control().possible_movements_,
-                                game_control().possible_movements_costs_, range);
+    board_helper::calc_straight(for_index,
+                                game_control().possible_movements_,
+                                game_control().possible_movements_costs_,
+                                range);
 
   } else {
     game_control().possible_movements_.clear();
@@ -59,12 +65,9 @@ void sniper_shot::use(std::uint32_t index_on) {
 
 std::string sniper_shot::hint() const {
   std::string desc;
-  desc = "Sniper Shot - deals damage of: " + std::to_string(damage) +
-         ".\n"
-         "If the target is below 50% of health deals additional: " +
-         std::to_string(damage) +
-         " damage.\n"
-         "Sniper can't give a shot when the enemy unit is in his neighborhood.";
+  desc = "Sniper Shot - deals damage of: " + std::to_string(damage)
+      + ".\nIf the target is below 50% of health deals additional: " + std::to_string(damage)
+      + " damage.\nSniper can't give a shot when the enemy unit is in his neighborhood.";
   "Range: " + std::to_string(range) + ".";
 
   return std::move(desc);
