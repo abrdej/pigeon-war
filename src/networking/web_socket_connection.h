@@ -100,11 +100,8 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
 
                               } else {
                                 LOG(debug) << "Read body fail for: " << id_ << ".";
-                                try {
-                                  web_socket_.close(boost::beast::websocket::close_code::going_away);
-                                } catch (std::exception& e) {
-                                  LOG(error) << "Exception while closing web socket: " << e.what();
-                                }
+                                boost::beast::error_code bec;
+                                web_socket_.close(boost::beast::websocket::close_code::going_away, bec);
                               }
                             });
   }

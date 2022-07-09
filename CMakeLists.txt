@@ -9,6 +9,7 @@ add_compile_options(-fPIC)
 configure_file(src/config.h.in ${CMAKE_SOURCE_DIR}/src/config.h @ONLY)
 
 find_package(Boost COMPONENTS program_options log system REQUIRED)
+find_package(TBB REQUIRED)
 find_package(GTest REQUIRED)
 
 add_subdirectory(src/logging)

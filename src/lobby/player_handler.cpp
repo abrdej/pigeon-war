@@ -37,6 +37,15 @@ bool player_handler::is_valid() const {
   return !(game_handler_ && !client_.connected());
 }
 
+void player_handler::set_disconnected() {
+  disconnection_time_ = std::chrono::steady_clock::now();
+  disconnected_ = true;
+}
+
+bool player_handler::disconnected_timeouted() const {
+  return disconnected_ && std::chrono::steady_clock::now() > disconnection_time_ + disconnection_timeout_;
+}
+
 void player_handler::remove_from_game() {
   if (game_handler_) {
     game_handler_->remove_player(player_id_);

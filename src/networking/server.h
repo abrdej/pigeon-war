@@ -4,10 +4,10 @@
 #include <memory>
 #include <queue>
 #include <thread>
-#include <unordered_map>
 
 #include <boost/asio.hpp>
 #include <boost/asio/ip/tcp.hpp>
+#include <tbb/concurrent_hash_map.h>
 
 #include <networking/owned_message.h>
 #include <networking/web_socket_connection.h>
@@ -16,6 +16,10 @@ namespace networking {
 
 template <typename connection_type>
 class server {
+  using connection_map = tbb::concurrent_hash_map<std::uint32_t, std::shared_ptr<connection_type>>;
+  using connection_accessor = typename connection_map::accessor;
+  using const_connection_accessor = typename connection_map::const_accessor;
+
  public:
   using my_owned_message_type = owned_message_type<connection_type>;
 
@@ -51,37 +55,25 @@ class server {
   }
 
   void send_message(std::uint32_t client_id, std::string message) {
-    auto client_it = connections_.find(client_id);
-    if (client_it != std::end(connections_)) {
-      auto connection = client_it->second;
+    LOG(error) << "start sending message";
+    connection_accessor accessor;
+    if (connections_.find(accessor, client_id)) {
+      auto connection = accessor->second;
       if (connection && connection->connected()) {
         LOG(debug) << "Sending message to client: " << client_id << ", which is: " << message;
         connection->send(std::move(message));
-      } else {
-        if (on_client_disconnect_) {
-          on_client_disconnect_(connection);
-        }
-        connection.reset();
-        connections_.erase(client_it);
       }
     } else {
       LOG(warning) << "There is no such client: " << client_id;
     }
+    LOG(error) << "end sending message";
   }
 
   void send_message_to_all(const message_type& message) {
-    std::vector<std::uint32_t> to_remove;
     for (auto& connection_entry : connections_) {
       if (connection_entry.second && connection_entry.second->connected()) {
         connection_entry.second->send(message);
-      } else {
-        on_client_disconnect_(connection_entry.second);
-        connection_entry.second.reset();
-        to_remove.push_back(connection_entry.first);
       }
-    }
-    for (auto key : to_remove) {
-      connections_.erase(key);
     }
   }
 
@@ -122,6 +114,20 @@ class server {
 
       ++message_count;
     }
+
+    // collect invalid connections
+    std::vector<std::uint32_t> to_remove;
+    for (const auto& connection : connections_) {
+      if (!connection.second || !connection.second->connected()) {
+        to_remove.push_back(connection.first);
+        if (connection.second && on_client_disconnect_) {
+          on_client_disconnect_(connection.second);
+        }
+      }
+    }
+    for (auto id : to_remove) {
+      connections_.erase(id);
+    }
   }
 
  private:
@@ -135,8 +141,15 @@ class server {
 
         if (!on_client_connect_ || on_client_connect_(new_connection)) {
           auto client_id = id_counter_++;
-          connections_.emplace(client_id, std::move(new_connection))
-              .first->second->connect_to_client(client_id, on_client_accepted_);
+          connection_accessor accessor;
+          if (connections_.emplace(accessor, client_id, std::move(new_connection))) {
+            auto connection = accessor->second;
+            accessor.release();
+            connection->connect_to_client(client_id, on_client_accepted_);
+
+          } else {
+            LOG(error) << "Failed to add connection for client: " << client_id;
+          }
 
         } else {
           LOG(debug) << "Client denied.";
@@ -154,7 +167,7 @@ class server {
   std::function<void(std::shared_ptr<connection_type>)> on_client_accepted_;
   std::function<void(std::uint32_t client_id, const std::string&)> on_message_;
 
-  std::unordered_map<std::uint32_t, std::shared_ptr<connection_type>> connections_;
+  connection_map connections_;
 
   std::queue<my_owned_message_type> messages_in_;
 

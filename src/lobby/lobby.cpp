@@ -1,7 +1,9 @@
+#include <mutex>
 #include <unordered_map>
 
 #include <boost/program_options.hpp>
 #include <boost/range/algorithm_ext/erase.hpp>
+#include <tbb/concurrent_hash_map.h>
 
 #include <external/json.hpp>
 
@@ -39,8 +41,13 @@ int main(int argc, char** argv) {
 
   networking::server<networking::web_socket_connection> server(port);
 
-  std::unordered_map<std::string, game_handler> game_handlers;
-  std::unordered_map<std::uint32_t, std::shared_ptr<player_handler>> player_handlers;
+  using game_handlers_map = tbb::concurrent_hash_map<std::string, std::shared_ptr<game_handler>>;
+  using game_handler_accessor = game_handlers_map::accessor;
+  game_handlers_map game_handlers;
+
+  using player_handlers_map = tbb::concurrent_hash_map<std::uint32_t, std::shared_ptr<player_handler>>;
+  using player_handler_accessor = player_handlers_map::accessor;
+  player_handlers_map player_handlers;
 
   game_request_supervisor game_request_supervisor(game_handler_factory(game_exec, port + 1),
                                                   game_handlers,
@@ -51,9 +58,20 @@ int main(int argc, char** argv) {
 
   server.on_client_accepted([&](std::shared_ptr<networking::web_socket_connection> client) mutable {
     const auto client_id = client->get_id();
-    LOG(debug) << "new player connected with id: " << client_id;
+    LOG(debug) << "new player with id: " << client_id << " connected";
     auto handler = std::make_shared<player_handler>(server, client_id);
     player_handlers.emplace(std::piecewise_construct, std::make_tuple(client_id), std::make_tuple(handler));
+  });
+
+  server.on_client_disconnect([&](std::shared_ptr<networking::web_socket_connection> client) {
+    const auto client_id = client->get_id();
+    LOG(debug) << "player with id: " << client_id << " disconnected";
+    player_handler_accessor accessor;
+    if (player_handlers.find(accessor, client_id)) {
+      accessor->second->set_disconnected();
+    } else {
+      LOG(error) << "player with id: " << client_id << " disconnected, but there is no handler for it!";
+    }
   });
 
   // TODO: split scenario loading from normal message forwarding
@@ -76,7 +94,7 @@ int main(int argc, char** argv) {
       if (game_hash.empty() && number_of_players != 1) {
         game_request_supervisor.find_opponent_and_create_game(client_id);
 
-      } else if (game_handlers.contains(game_hash)) {
+      } else if (game_handlers.count(game_hash) > 0) {
         game_request_supervisor.join_game(client_id, game_hash);
 
       } else {
@@ -87,7 +105,12 @@ int main(int argc, char** argv) {
 
     } else {
       LOG(debug) << "got message from client of id: " << client_id << ", which is: " << message;
-      player_handlers.at(client_id)->send(message);
+      player_handler_accessor accessor;
+      if (player_handlers.find(accessor, client_id)) {
+        accessor->second->send(message);
+      } else {
+        LOG(error) << "there is no player with id: " << client_id << " while sending the message to it!";
+      }
     }
   });
 
@@ -99,21 +122,36 @@ int main(int argc, char** argv) {
     server.update();
     std::this_thread::sleep_for(std::chrono::milliseconds(25));
 
-    // TODO: removal must be thread-safe
-//    std::vector<std::uint32_t> to_remove;
-//    for (const auto& player_handler : player_handlers) {
-//      if (!player_handler.second->is_valid()) {
-//        to_remove.push_back(player_handler.first);
-//      }
-//    }
-//    for (auto id : to_remove) {
-//      LOG(debug) << "removing player with id: " << id;
-//      player_handlers.erase(id);
-//    }
+    // collect players that are disconnected above disconnection time threshold
+    // for all disconnected players we need to remove its clients
 
-//    boost::range::remove_erase_if(game_handlers, [](const game_handler& handler) {
-//      return !handler.is_valid();
-//    });
+    std::vector<std::uint32_t> outdated_disconnections;
+    for (const auto& player_handler : player_handlers) {
+      if (player_handler.second->disconnected_timeouted()) {
+        outdated_disconnections.push_back(player_handler.first);
+      }
+    }
+
+    // warning: removal from player_handlers can race with on_client_accepted
+    for (auto player_id : outdated_disconnections) {
+      LOG(debug) << "removing player with id: " << player_id;
+
+      // This is also updating the game_handler by removing its player
+      player_handlers.erase(player_id);
+    }
+
+    // collect game handlers that do not have any players
+    std::vector<std::string> invalid_games;
+    for (const auto& game_handler : game_handlers) {
+      if (game_handler.second->is_invalid()) {
+        invalid_games.push_back(game_handler.first);
+      }
+    }
+
+    for (auto game_hash : invalid_games) {
+      LOG(debug) << "removing game with hash: " << game_hash;
+      game_handlers.erase(game_hash);
+    }
   }
   server.stop();
 
