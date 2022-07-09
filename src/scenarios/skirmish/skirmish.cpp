@@ -15,13 +15,20 @@
 #include <turn_based/scenario_helper.h>
 #include <turn_based/turn_system.h>
 
+//auto get_entities_selecting_positions() {
+//  return std::vector<creator_helper::pos_type>{
+//      {5u, 2u}, {6, 2}, {7, 2}, {8, 2}, {9, 2},
+//      {5, 3}, {9, 3},
+//      {5, 4}, {9, 4},
+//      {5, 5}, {9, 5},
+//      {5, 6}, {6, 6}, {7, 6}, {8, 6}, {9, 6}};
+//}
+
 auto get_entities_selecting_positions() {
   return std::vector<creator_helper::pos_type>{
-      {5u, 2u}, {6, 2}, {7, 2}, {8, 2}, {9, 2},
-      {5, 3}, {9, 3},
-      {5, 4}, {9, 4},
-      {5, 5}, {9, 5},
-      {5, 6}, {6, 6}, {7, 6}, {8, 6}, {9, 6}};
+      {5, 2}, {7, 2}, {9, 2},
+      {5, 4},         {9, 4},
+      {5, 6}, {7, 6}, {9, 6}};
 }
 
 auto get_entities_starting_positions() {

@@ -122,7 +122,8 @@ class socket_connection : public std::enable_shared_from_this<socket_connection>
 
                                     } else {
                                       LOG(debug) << "Read body fail for: " << id_ << " with: " << ec.message();
-                                      socket_.close();
+                                      //socket_.close();
+                                      read_message();
                                     }
                                   });
   }

@@ -8,6 +8,7 @@
 #include <turn_based/game.h>
 #include <turn_based/managers/entity_manager.h>
 
+// TODO: these should work with dynamically changing sets of any and all!
 template <typename Callback>
 void if_any_die(std::initializer_list<std::uint32_t> entities_id, Callback callback) {
   auto any_die = [callback]() {
@@ -23,7 +24,7 @@ void if_any_die(std::vector<std::uint32_t> entities_id, Callback callback) {
   auto any_die = [callback]() {
     callback();
   };
-  for (auto&& entity_id : entities_id) {
+  for (auto entity_id : entities_id) {
     game::get<entity_manager>().on_destroy(entity_id, any_die);
   }
 }

@@ -32,6 +32,7 @@ add_subdirectory(src/entities/destroyer)
 add_subdirectory(src/scenarios/skirmish)
 add_subdirectory(src/scenarios/saurian_web)
 add_subdirectory(src/scenarios/wolves_dinner)
+add_subdirectory(src/scenarios/wolfs_night)
 
 set(SOURCE_FILES
   src/get_button_description.cpp

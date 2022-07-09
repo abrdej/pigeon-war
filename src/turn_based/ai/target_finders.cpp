@@ -94,6 +94,7 @@ bool find_lowest_health_target::operator()(ai_knowledge& knowledge) {
 
   knowledge.player(player_id).insert("lowest_health_target_index", lowest_health_enemy_index);
   knowledge.entity(entity_id).insert("target_enemy_index", lowest_health_enemy_index);
+  knowledge.entity(entity_id).insert("destination_index", lowest_health_enemy_index);
 
   return true;
 }

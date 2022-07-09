@@ -116,6 +116,11 @@ inline auto make_every_two_turns_from_next_callback_holder(std::int32_t duration
 }
 
 template <typename Callback>
+inline void set_every_two_turns_from_next_callback(std::int32_t duration, Callback callback) {
+  game::get<turn_system>().set_callback(frequency_types::every_two_turns_from_next, duration, callback).release();
+}
+
+template <typename Callback>
 inline auto make_after_n_round_callback_holder(std::int32_t duration, Callback callback) {
   return game::get<turn_system>().set_callback(frequency_types::after_n_rounds, duration, callback);
 }
