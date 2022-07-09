@@ -138,3 +138,9 @@ std::string make_entity_talk_message(std::uint32_t index, std::string text) {
   data["text"] = text;
   return data.dump();
 }
+
+std::string make_game_ready_message() {
+  json data;
+  data["game_ready"];
+  return data.dump();
+}

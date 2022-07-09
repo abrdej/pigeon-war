@@ -36,6 +36,7 @@ int main(int argc, char** argv) {
 //  std::string scenario = "saurian_web";
   std::string scenario = "skirmish";
   std::string map;
+  std::int32_t number_of_players = 1;
   std::pair<std::uint32_t, std::uint32_t> map_size{15, 10};
 
   if (argc > 1) {
@@ -47,6 +48,9 @@ int main(int argc, char** argv) {
   if (argc == 4) {
     map = std::string(argv[3]);
   }
+  if (argc == 5) {
+    number_of_players = std::atoi(argv[4]);
+  }
 
   game::get<scenario_factory>().create(scenario);
 
@@ -56,6 +60,9 @@ int main(int argc, char** argv) {
   sender::set_sender([&server](std::string message) {
     server.send_message_to_all(message);
   });
+
+  std::int32_t connected_players = 0;
+  LOG(debug) << "number_of_players: " << number_of_players << ", while connected_players: " << connected_players;
 
   // TODO: do we want to use client_id or connection ptr??
   server.on_client_accepted([&](std::shared_ptr<networking::socket_connection> client) {
@@ -68,6 +75,11 @@ int main(int argc, char** argv) {
     server.send_message(client->get_id(), make_map_name_message(scenario));
     server.send_message(client->get_id(), make_entities_pack_message(get_entities()));
     game::get<event_center>().emit(events::CLIENT_ACCEPTED);
+
+    ++connected_players;
+    if (connected_players == number_of_players) {
+      server.send_message_to_all(make_game_ready_message());
+    }
 
     LOG(debug) << "Sending initial messages to client ready";
   });

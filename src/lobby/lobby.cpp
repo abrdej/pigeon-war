@@ -8,6 +8,7 @@
 #include <networking/server.h>
 #include <logging/logger.h>
 #include <lobby/game_handler.h>
+#include <lobby/game_request_supervisor.h>
 #include <lobby/player_handler.h>
 
 volatile std::sig_atomic_t processing_interrupted = false;
@@ -38,10 +39,12 @@ int main(int argc, char** argv) {
 
   networking::server<networking::web_socket_connection> server(port);
 
-  game_handler_factory game_handler_factory(game_exec, port + 1);
-
-  std::vector<game_handler> game_handlers;
+  std::unordered_map<std::string, game_handler> game_handlers;
   std::unordered_map<std::uint32_t, std::shared_ptr<player_handler>> player_handlers;
+
+  game_request_supervisor game_request_supervisor(game_handler_factory(game_exec, port + 1),
+                                                  game_handlers,
+                                                  player_handlers);
 
   // TODO: how to clear the games that are not active any more???!!!
   // TODO: we need to close both - web socket connection and also the game <-> handler connection!
@@ -49,18 +52,8 @@ int main(int argc, char** argv) {
   server.on_client_accepted([&](std::shared_ptr<networking::web_socket_connection> client) mutable {
     const auto client_id = client->get_id();
     LOG(debug) << "new player connected with id: " << client_id;
-
-    //game_handlers.emplace_back(game_handler_factory.make_game_handler());
-
-    // Sleep to initialize the game
-    //std::this_thread::sleep_for(std::chrono::seconds(1)); // maybe here is too much
-
-    // create player handler
     auto handler = std::make_shared<player_handler>(server, client_id);
-    //handler->add_to_game(game_handlers.back());
     player_handlers.emplace(std::piecewise_construct, std::make_tuple(client_id), std::make_tuple(handler));
-
-    LOG(debug) << "Game created for client";
   });
 
   // TODO: split scenario loading from normal message forwarding
@@ -74,20 +67,28 @@ int main(int argc, char** argv) {
       LOG(error) << "Message parsing error in: " << message << ", what: " << e.what();
     }
 
-    if (data.count("configure")) {
-      std::string scenario = data["configure"]["scenario"];
-      std::string map = data["configure"]["map"];
-      LOG(debug) << "Got configuration message: scenario: " << scenario << ", map: " << map;
+    if (data.count("game_request")) {
+      std::string game_hash = data["game_request"]["game_hash"];
+      std::int32_t number_of_players = data["game_request"]["number_of_players"];
 
-      game_handlers.emplace_back(game_handler_factory.make_game_handler(scenario, map));
-      std::this_thread::sleep_for(std::chrono::seconds(1)); // maybe here is too much
-      player_handlers.at(client_id)->add_to_game(game_handlers.back());
+      LOG(debug) << "Got game_request message: game_hash: " << game_hash;
 
-      return;
+      if (game_hash.empty() && number_of_players != 1) {
+        game_request_supervisor.find_opponent_and_create_game(client_id);
+
+      } else if (game_handlers.contains(game_hash)) {
+        game_request_supervisor.join_game(client_id, game_hash);
+
+      } else {
+        std::string scenario = data["game_request"]["scenario"];
+        std::string map = data["game_request"]["map"];
+        game_request_supervisor.create_game(client_id, game_hash, scenario, map, number_of_players);
+      }
+
+    } else {
+      LOG(debug) << "got message from client of id: " << client_id << ", which is: " << message;
+      player_handlers.at(client_id)->send(message);
     }
-
-    LOG(debug) << "got message from client of id: " << client_id << ", which is: " << message;
-    player_handlers.at(client_id)->send(message);
   });
 
   server.start();

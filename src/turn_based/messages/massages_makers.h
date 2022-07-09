@@ -60,6 +60,8 @@ std::string make_defeat_message();
 
 std::string make_entity_talk_message(std::uint32_t index, std::string text);
 
+std::string make_game_ready_message();
+
 template <typename... Args>
 std::string make_action_message(const std::string& animation, Args&&... args) {
   using nlohmann::json;
