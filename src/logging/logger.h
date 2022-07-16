@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstring>
+
 #include <boost/exception/all.hpp>
 #include <boost/log/attributes/clock.hpp>
 #include <boost/log/attributes/mutable_constant.hpp>
@@ -12,6 +14,8 @@
 #include <boost/log/utility/manipulators/add_value.hpp>
 #include <boost/log/utility/setup/console.hpp>
 
+#define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+
 namespace logging = boost::log;
 
 using logger_t = logging::sources::severity_logger<logging::trivial::severity_level>;
@@ -22,12 +26,12 @@ BOOST_LOG_INLINE_GLOBAL_LOGGER_INIT(my_logger, logger_t) {
   return lg;
 }
 
-#define LOG(LEVEL) BOOST_LOG_SEV(my_logger::get(), logging::trivial::LEVEL)
+//#define LOG(LEVEL) BOOST_LOG_SEV(my_logger::get(), logging::trivial::LEVEL)
 
-#define LOG_LOCATION(LEVEL)      \
+#define LOG(LEVEL)      \
   BOOST_LOG_SEV(my_logger::get(), logging::trivial::LEVEL)     \
     << boost::log::add_value("Line", __LINE__)          \
-    << boost::log::add_value("File", __FILE__)          \
+    << boost::log::add_value("Filename", __FILENAME__)          \
     << boost::log::add_value("Function", __FUNCTION__)
 
 void init_logging();

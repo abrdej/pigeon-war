@@ -20,6 +20,8 @@ extern "C" void interrupt_processing( int ) {
 }
 
 int main(int argc, char** argv) {
+  init_logging();
+
   namespace po = boost::program_options;
   po::options_description desc("Lobby options");
   desc.add_options()

@@ -1,0 +1,6 @@
+{
+  "bullets": 2,
+  "bullets_per_turn": 2,
+  "damage": 6,
+  "hint": "Shoot - the Shooter can fire two bullets per turn.\nEach one deals %d damage.\nRemaining bullets: %d.\n"
+}

@@ -10,8 +10,7 @@
 
 /**
  * Base class for all abilities.
- * Abilities can be active and passive.
- *
+ * Abilities can be active or passive.
  */
 
 enum class ability_types {
@@ -19,13 +18,12 @@ enum class ability_types {
 };
 
 class ability {
-protected:
+ protected:
   virtual ~ability() = default;
 
-public:
+ public:
   virtual std::string hint() const {
-    std::string desc("desc");
-    return std::move(desc);
+    return "Not description yet";
   }
 
   virtual ability_types type() const {
@@ -39,11 +37,11 @@ public:
   virtual bitmap_key get_bitmap_key() const = 0;
 };
 
-struct active_ability : ability {
+struct active_ability : virtual ability {
   virtual void prepare(std::uint32_t for_index) = 0;
 };
 
-struct passive_ability : ability {
+struct passive_ability : virtual ability {
   ability_types type() const override {
     return ability_types::passive;
   }

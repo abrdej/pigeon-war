@@ -1,26 +1,34 @@
 #include <shoot.h>
 
-#include <turn_based/damage_dealers.h>
-#include <turn_based/board.h>
+#include <config.h>
 #include <logging/logger.h>
-#include <turn_based/sender.h>
+#include <turn_based/board.h>
+#include <turn_based/damage_dealers.h>
 #include <turn_based/messages/massages_makers.h>
+#include <turn_based/sender.h>
 
 shoot::shoot(id_t entity_id)
-    : configurable("shoot"),
+    : configurable(config_directory, "shoot"),
       entity_id_(entity_id),
-      bullets_per_turn_(get_param<decltype(bullets_per_turn_)>("bullets_per_turn")),
-      damage_(get_param<decltype(damage_)>("damage")),
-      bullets_(get_param<decltype(bullets_)>("bullets")) {
+      bullets_per_turn_(get_param_or_default("bullets_per_turn", bullets_per_turn_)),
+      damage_(get_param_or_default("damage", damage_)),
+      bullets_(get_param_or_default("bullets", bullets_)) {
 
+  LOG(debug) << "Shoot setup:";
   LOG(debug) << "entity_id: " << entity_id_;
   LOG(debug) << "bullets_per_turn: " << bullets_per_turn_;
   LOG(debug) << "damage: " << damage_;
   LOG(debug) << "bullets: " << bullets_;
 
+  configure_hint(config_directory + get_name() + ".json", "hint", damage_, bullets_);
+
   on_every_two_turns_from_next([this]() {
     bullets_ = bullets_per_turn_;
   });
+}
+
+bool shoot::usable() const {
+  return bullets_ != 0;
 }
 
 void shoot::use(index_t on_index) {

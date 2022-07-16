@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <string>
 
 struct sender {
   static std::function<void(std::string)> send_fn;

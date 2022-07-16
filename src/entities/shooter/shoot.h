@@ -1,21 +1,19 @@
 #pragma once
 
-#include <turn_based/per_turn_usable.h>
-#include <turn_based/straight_target_ability.h>
 #include <turn_based/configurable.h>
 #include <turn_based/defs.h>
+#include <turn_based/hint_configuration.h>
+#include <turn_based/per_turn_usable.h>
+#include <turn_based/straight_target_ability.h>
 
-class shoot final : public directed_target_ability<3>, protected per_turn_callback, protected configurable {
+class shoot final : public directed_target_ability<3>, private per_turn_callback, private configurable,
+                    private hint_configuration {
  public:
   explicit shoot(id_t entity_id);
 
   ADD_BITMAP_GETTER(bullet)
 
-  DEFINE_DESC(shoot, damage_, bullets_)
-
-  [[nodiscard]] bool usable() const override {
-    return bullets_ != 0;
-  }
+  [[nodiscard]] bool usable() const override;
 
  private:
   void use(index_t on_index) override;

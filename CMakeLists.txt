@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.5.1)
 project(pigeon_war)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_BUILD_TYPE Debug)
 
 add_compile_options(-fPIC)
 
 configure_file(src/config.h.in ${CMAKE_SOURCE_DIR}/src/config.h @ONLY)
 
-find_package(Boost COMPONENTS program_options log system REQUIRED)
+find_package(Boost COMPONENTS program_options log log_setup system REQUIRED)
 find_package(TBB REQUIRED)
 find_package(GTest REQUIRED)
 

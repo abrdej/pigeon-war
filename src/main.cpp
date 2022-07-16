@@ -31,6 +31,8 @@ extern "C" void interrupt_processing( int ) {
 int main(int argc, char** argv) {
   std::signal(SIGINT, &interrupt_processing);
 
+  init_logging();
+
   // TODO: nice parsing parameters from argv
   std::int32_t port = 60001;
 //  std::string scenario = "saurian_web";

@@ -1,0 +1,4 @@
+{
+  "damage": 12,
+  "hint": "Grenade - the Shooter can throw a grenade that will deal %d damage to the main target and half of that to targets around it.\nIt can be used only once per battle."
+}

@@ -1,0 +1,5 @@
+#pragma once
+
+#include <string>
+
+static const std::string config_directory = "@CMAKE_CURRENT_SOURCE_DIR@/config/";

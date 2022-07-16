@@ -4,7 +4,21 @@
 #include <turn_based/board.h>
 
 grenade::grenade(id_t entity_id)
-  : path_target_ability(3), entity_id_(entity_id) {}
+    : configurable(config_directory, "grenade"),
+      path_target_ability(3),
+      entity_id_(entity_id),
+      damage_(get_param_or_default("damage", damage_)) {
+
+  LOG(debug) << "Grenade setup:";
+  LOG(debug) << "entity_id: " << entity_id_;
+  LOG(debug) << "damage: " << damage_;
+
+  configure_hint(config_directory + get_name() + ".json", "hint", damage_);
+}
+
+bool grenade::usable() const {
+  return !used_;
+}
 
 void grenade::use(index_t on_index) {
   if (used_)
