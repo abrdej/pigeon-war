@@ -1,0 +1,5 @@
+{
+  "magic_power_accumulation_amount": 10,
+  "magic_power_drain_amount": 4,
+  "hint": "Magic Bullet - monk accumulates %d magic points for each turn.\nIn addition, he accumulates %d magic points for each enemy in his neighborhood.\nMagic point can be used to deal damage equal to the amount of magic points.\nAdditionally, half of the damage that monk receive firstly must destroys\nthe magic shield which is formed from this points.\nMagic power: %d"
+}

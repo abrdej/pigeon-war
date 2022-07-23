@@ -1,15 +1,20 @@
 #include <sabers.h>
 
-#include <turn_based/damage_dealers.h>
-#include <turn_based/board.h>
-#include <turn_based/game_controller.h>
-#include <turn_based/utils/algorithm.h>
 #include <logging/logger.h>
+#include <turn_based/board.h>
+#include <turn_based/damage_dealers.h>
+#include <turn_based/game_controller.h>
 #include <turn_based/managers/entity_manager.h>
+#include <turn_based/utils/algorithm.h>
 
 sabers::sabers(std::uint32_t entity_id)
-    : configurable("sabers"), entity_id_(entity_id), damage_(get_param<decltype(damage_)>("damage")) {
+    : active_ability(name),
+      entity_id_(entity_id),
+      damage_(get_param_or_default("damage", damage_)) {
 
+  configure_hint(config_directory + name + ".json", "hint", damage_);
+
+  LOG(debug) << "Sabers setup:";
   LOG(debug) << "entity_id: " << entity_id_;
   LOG(debug) << "damage: " << damage_;
 }
@@ -59,7 +64,7 @@ void sabers::use(std::uint32_t index_on) {
     return;
   }
 
-  sender::send(make_action_message("sabers", entity_id_, index_on));
+  sender::send(make_action_message(name, entity_id_, index_on));
 
   damage_dealers::standard_damage_dealer(melee_damage(damage_, game_board().at(index_on), entity_id_));
 

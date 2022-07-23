@@ -8,21 +8,24 @@
 #include <turn_based/sender.h>
 #include <turn_based/turn_system.h>
 
-hypnosis::hypnosis() : path_target_ability(4, target_types::enemy, true) {}
+hypnosis::hypnosis(id_t entity_id)
+    : path_target_ability(name, range, target_types::enemy, true),
+    duration_(get_param_or_default("duration", duration_)) {
+  configure_hint(config_directory + name + ".json", "hint");
+}
 
 void hypnosis::use(std::uint32_t index_on) {
-
-  if (used)
+  if (used_)
     return;
 
-  sender::send(make_action_message("hypnosis", index_on));
+  sender::send(make_action_message(name, index_on));
 
   auto enemy_id = game_board().at(index_on);
 
   auto enemy_abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
   enemy_abilities_ptr->is_active = false;
 
-  auto hypnosis_connection = make_after_n_round_callback_holder(duration, [enemy_id]() mutable {
+  auto hypnosis_connection = make_after_n_round_callback_holder(duration_, [enemy_id]() mutable {
 
     auto inner_enemy_abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
     inner_enemy_abilities_ptr->is_active = true;
@@ -35,5 +38,5 @@ void hypnosis::use(std::uint32_t index_on) {
 
   add_effect(enemy_id, hypnosis_effect);
 
-  used = true;
+  used_ = true;
 }

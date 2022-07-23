@@ -4,22 +4,17 @@
 
 class hypnosis final : public path_target_ability {
  public:
-  hypnosis();
-
-  bitmap_key get_name() const override {
-    return "hypnosis";
-  }
-
-  DEFINE_DESC_ZERO(hypnosis)
+  explicit hypnosis(id_t entity_id);
 
   bool usable() const override {
-    return !used;
+    return !used_;
   }
 
  private:
   void use(std::uint32_t index_on);
 
-  bool used{false};
-  const std::int32_t range{4};
-  const std::int32_t duration{1};
+  static constexpr auto name = "hypnosis";
+  bool used_{false};
+  static constexpr auto range = 4;
+  const std::int32_t duration_{1};
 };

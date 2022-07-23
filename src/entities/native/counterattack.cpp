@@ -1,6 +1,5 @@
 #include <counterattack.h>
 
-#include <config.h>
 #include <logging/logger.h>
 #include <turn_based/damage_dealers.h>
 #include <turn_based/components/damage_taker.h>
@@ -8,7 +7,6 @@
 
 counterattack::counterattack(std::uint32_t entity_id)
     : passive_ability(name),
-      configurable(config_directory, name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {
   on_receive_damage(entity_id, [this](const damage_pack& dmg) {

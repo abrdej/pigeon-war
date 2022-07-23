@@ -9,7 +9,6 @@
 
 blow_the_ax::blow_the_ax(std::uint32_t entity_id)
     : straight_target_ability(name),
-      configurable(config_directory, name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {
   configure_hint(config_directory + name + ".json", "hint", damage_);

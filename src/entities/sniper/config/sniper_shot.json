@@ -1,0 +1,6 @@
+{
+  "range": 10,
+  "damage": 12,
+  "additional_damage": 12,
+  "hint": "Sniper Shot - deals damage of %d.\nIf the target is below 50 percent of health deals additional: %d damage.\nSniper can't give a shot when the enemy is in his neighborhood.\nRange: %d."
+}

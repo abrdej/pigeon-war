@@ -4,15 +4,10 @@
 
 #include <turn_based/ability.h>
 #include <turn_based/per_turn_usable.h>
-#include <turn_based/configurable.h>
 
-class sabers final : public active_ability, per_turn_usable, configurable {
+class sabers final : public active_ability, per_turn_usable {
  public:
   explicit sabers(std::uint32_t entity_id);
-
-  ADD_BITMAP_GETTER(sabers)
-
-  DEFINE_DESC_ONE(sabers, damage_)
 
   [[nodiscard]] bool usable() const override {
     return !used;
@@ -23,7 +18,8 @@ class sabers final : public active_ability, per_turn_usable, configurable {
   void target(std::uint32_t on);
   void use(std::uint32_t index_on);
 
+  static constexpr auto name = "sabers";
   const std::uint32_t entity_id_;
-  const std::int32_t damage_ = 7;
+  const std::int32_t damage_{7};
   std::vector<std::uint32_t> targets_;
 };

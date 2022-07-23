@@ -15,8 +15,8 @@ DEFINE_ENTITY_FACTORY(sniper) {
 
   auto abilities_ptr = entity.add<abilities>();
   abilities_ptr->add_ability(std::make_shared<moveable>(3));
-  abilities_ptr->add_ability(std::make_shared<sniper_shot>());
-  abilities_ptr->add_ability(std::make_shared<hypnosis>());
+  abilities_ptr->add_ability(std::make_shared<sniper_shot>(entity.entity_id));
+  abilities_ptr->add_ability(std::make_shared<hypnosis>(entity.entity_id));
 }
 
 FACTORY_PLUGIN_ALIAS(sniper)

@@ -7,7 +7,6 @@
 
 drain::drain(std::uint32_t entity_id)
     : neighboring_target_ability(name),
-      configurable(config_directory, name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)),
       drain_amount_(get_param_or_default("drain_amount", drain_amount_)) {

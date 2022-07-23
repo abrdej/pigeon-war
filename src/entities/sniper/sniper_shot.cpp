@@ -8,6 +8,21 @@
 #include <turn_based/messages/massages_makers.h>
 #include <turn_based/sender.h>
 
+sniper_shot::sniper_shot(id_t entity_id)
+    : active_ability(name),
+      entity_id_(entity_id),
+      range_(get_param_or_default("range", range_)),
+      damage_(get_param_or_default("damage", damage_)),
+      additional_damage_(get_param_or_default("additional_damage", additional_damage_)) {
+  configure_hint(config_directory + name + ".json", "hint", damage_, additional_damage_, range_);
+
+  LOG(debug) << "Sniper shot setup:";
+  LOG(debug) << "entity_id: " << entity_id_;
+  LOG(debug) << "range: " << range_;
+  LOG(debug) << "damage: " << damage_;
+  LOG(debug) << "additional_damage: " << additional_damage_;
+}
+
 void sniper_shot::prepare(std::uint32_t for_index) {
   game_control().selected_index_ = for_index;
 
@@ -26,7 +41,7 @@ void sniper_shot::prepare(std::uint32_t for_index) {
     board_helper::calc_straight(for_index,
                                 game_control().possible_movements_,
                                 game_control().possible_movements_costs_,
-                                range);
+                                range_);
 
   } else {
     game_control().possible_movements_.clear();
@@ -43,7 +58,7 @@ void sniper_shot::use(std::uint32_t index_on) {
   auto used_from_index = game_control().selected_index_;
   auto entity_id = game_board().at(used_from_index);
 
-  sender::send(make_action_message("sniper_shot", used_from_index, index_on));
+  sender::send(make_action_message(name, used_from_index, index_on));
 
   auto enemy_id = game_board().at(index_on);
 
@@ -52,23 +67,13 @@ void sniper_shot::use(std::uint32_t index_on) {
 
   LOG(debug) << "health_percent: " << health_percent;
 
-  std::int32_t final_damage = damage;
+  std::int32_t final_damage = damage_;
 
   if (health_percent < 50.f) {
-    final_damage += additional_damage;
+    final_damage += additional_damage_;
   }
 
   damage_dealers::standard_damage_dealer(ranged_damage(final_damage, enemy_id, entity_id));
 
   used = true;
-}
-
-std::string sniper_shot::hint() const {
-  std::string desc;
-  desc = "Sniper Shot - deals damage of: " + std::to_string(damage)
-      + ".\nIf the target is below 50% of health deals additional: " + std::to_string(damage)
-      + " damage.\nSniper can't give a shot when the enemy unit is in his neighborhood.";
-  "Range: " + std::to_string(range) + ".";
-
-  return std::move(desc);
 }

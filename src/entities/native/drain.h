@@ -1,10 +1,9 @@
 #pragma once
 
-#include <turn_based/configurable.h>
 #include <turn_based/neighboring_target_ability.h>
 #include <turn_based/per_turn_usable.h>
 
-class drain final : public neighboring_target_ability<>, per_turn_usable, configurable {
+class drain final : public neighboring_target_ability<>, per_turn_usable {
  public:
   explicit drain(std::uint32_t entity_id);
 

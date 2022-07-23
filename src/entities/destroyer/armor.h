@@ -1,9 +1,8 @@
 #pragma once
 
 #include <turn_based/ability.h>
-#include <turn_based/configurable.h>
 
-class armor : public passive_ability, private configurable {
+class armor : public passive_ability {
  public:
   explicit armor(std::uint32_t entity_id);
 

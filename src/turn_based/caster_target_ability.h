@@ -5,6 +5,8 @@
 #include <turn_based/states.h>
 
 struct caster_target_ability : active_ability {
+  caster_target_ability() = default;
+  explicit caster_target_ability(std::string name) : active_ability(std::move(name)) {}
   void prepare(std::uint32_t for_index) override {
     game_control().actual_state_ = states_types::wait_for_action;
     game_control().possible_movements_.clear();

@@ -9,7 +9,6 @@
 
 shoot::shoot(id_t entity_id)
     : directed_target_ability(name),
-      configurable(config_directory, name),
       entity_id_(entity_id),
       bullets_per_turn_(get_param_or_default("bullets_per_turn", bullets_per_turn_)),
       damage_(get_param_or_default("damage", damage_)),

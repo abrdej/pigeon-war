@@ -10,6 +10,8 @@
 
 class configurable {
  public:
+  configurable() = default;
+
   explicit configurable(const std::string& name) {
     std::ifstream ifs(config_directory + name + ".json");
     parsed_ = nlohmann::json::parse(ifs);
@@ -17,8 +19,22 @@ class configurable {
 
   configurable(const std::string& custom_config_directory, const std::string& name) {
     std::ifstream ifs(custom_config_directory + name + ".json");
-    LOG(debug) << "loading configuration from: " << custom_config_directory + name + ".json";
-    parsed_ = nlohmann::json::parse(ifs);
+    if (ifs.is_open()) {
+      LOG(debug) << "loading configuration from: " << custom_config_directory + name + ".json";
+      parsed_ = nlohmann::json::parse(ifs);
+    }
+  }
+
+  configurable(const std::string& name, bool) {
+    initialize(name);
+  }
+
+  void initialize(const std::string& name) {
+    std::ifstream ifs(config_directory + name + ".json");
+    if (ifs.is_open()) {
+      LOG(debug) << "loading configuration from: " << config_directory + name + ".json";
+      parsed_ = nlohmann::json::parse(ifs);
+    }
   }
 
   template <typename T>

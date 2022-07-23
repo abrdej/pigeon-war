@@ -1,10 +1,10 @@
 #pragma once
 
+#include <config.h>
 #include <turn_based/ability.h>
-#include <turn_based/configurable.h>
 #include <turn_based/per_turn_usable.h>
 
-class counterattack final : public passive_ability, per_turn_usable, configurable {
+class counterattack final : public passive_ability, per_turn_usable {
  public:
   explicit counterattack(std::uint32_t entity_id);
 

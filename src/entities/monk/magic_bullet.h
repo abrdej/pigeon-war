@@ -7,21 +7,19 @@ class magic_bullet final : public path_target_ability, protected per_turn_callba
  public:
   explicit magic_bullet(std::uint32_t entity_id);
 
-  ADD_BITMAP_GETTER(magic_bullet)
-
-  std::string hint() const override;
-
   [[nodiscard]] bool usable() const override {
-    return !used;
+    return !used_;
   }
 
  private:
   void use(std::uint32_t index_on) override;
 
  private:
-  std::uint32_t entity_id;
-  std::int32_t magic_power_accumulation_amount{10};
-  std::int32_t magic_power_drain_amount{4};
-  bool used{false};
-  bool first_used{false};
+  static constexpr auto name = "magic_bullet";
+
+  std::uint32_t entity_id_;
+  std::int32_t magic_power_accumulation_amount_{10};
+  std::int32_t magic_power_drain_amount_{4};
+  bool used_{false};
+  bool first_used_{false};
 };

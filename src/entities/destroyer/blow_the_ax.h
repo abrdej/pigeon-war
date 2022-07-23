@@ -1,12 +1,10 @@
 #pragma once
 
-#include <turn_based/configurable.h>
 #include <turn_based/per_turn_usable.h>
 #include <turn_based/straight_target_ability.h>
 
 class blow_the_ax final : public straight_target_ability<1>,
-                          private per_turn_usable,
-                          private configurable {
+                          private per_turn_usable {
 public:
   explicit blow_the_ax(std::uint32_t entity_id);
 

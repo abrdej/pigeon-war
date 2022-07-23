@@ -1,9 +1,9 @@
 #pragma once
 
-#include <turn_based/configurable.h>
+#include <config.h>
 #include <turn_based/path_target_ability.h>
 
-class grenade final : public path_target_ability, private configurable {
+class grenade final : public path_target_ability {
  public:
   explicit grenade(id_t entity_id);
 

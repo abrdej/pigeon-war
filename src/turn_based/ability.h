@@ -32,10 +32,12 @@ struct active_ability_interface {
   virtual ~active_ability_interface() = default;
 };
 
-class ability : public ability_interface, protected hint_configuration {
+class ability : public ability_interface, protected configurable, protected hint_configuration {
  protected:
   ability() = default;
-  explicit ability(std::string name) : name_(std::move(name)) {}
+  explicit ability(std::string name) : name_(std::move(name)) {
+    configurable::initialize(name_);
+  }
 
   ~ability() override = default;
 

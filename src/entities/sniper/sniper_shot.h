@@ -5,9 +5,7 @@
 
 class sniper_shot final : public active_ability, per_turn_usable {
  public:
-  ADD_BITMAP_GETTER(sniper_bullet)
-
-  std::string hint() const override;
+  explicit sniper_shot(id_t entity_id);
 
   bool usable() const override {
     return !used;
@@ -18,7 +16,9 @@ class sniper_shot final : public active_ability, per_turn_usable {
   void use(std::uint32_t index_on);
 
  private:
-  const std::int32_t range{10};
-  const std::int32_t damage{12};
-  const std::int32_t additional_damage{12};
+  static constexpr auto name = "sniper_shot";
+  id_t entity_id_;
+  std::int32_t range_{10};
+  std::int32_t damage_{12};
+  std::int32_t additional_damage_{12};
 };

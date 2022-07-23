@@ -5,3 +5,4 @@
 static const std::string resources_directory = "@CMAKE_SOURCE_DIR@/res/";
 static const std::string config_directory = "@CMAKE_SOURCE_DIR@/config/";
 static const std::string maps_directory = "@CMAKE_SOURCE_DIR@/maps/";
+static const std::string entities_directory = "@CMAKE_SOURCE_DIR@/src/entities/";

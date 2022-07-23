@@ -7,7 +7,6 @@
 
 grenade::grenade(id_t entity_id)
     : path_target_ability(name, 3),
-      configurable(config_directory, name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {
   configure_hint(config_directory + name + ".json", "hint", damage_);

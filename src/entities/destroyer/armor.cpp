@@ -6,7 +6,6 @@
 
 armor::armor(std::uint32_t entity_id)
     : passive_ability("armor"),
-      configurable(config_directory, name),
       max_damage_(get_param_or_default("max_damage", max_damage_)) {
 
   set_damage_receiver(
