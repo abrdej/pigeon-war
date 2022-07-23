@@ -1,0 +1,13 @@
+function(add_entity name)
+  create_config()
+  file(GLOB _entity_sources "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+  if(_entity_sources)
+    add_library(${name} SHARED ${_entity_sources})
+    target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(${name} PRIVATE turn_based)
+  endif()
+endfunction()
+
+function(create_config)
+  configure_file(${PROJECT_SOURCE_DIR}/cmake/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h @ONLY)
+endfunction()

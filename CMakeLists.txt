@@ -17,6 +17,7 @@ add_subdirectory(src/turn_based)
 add_subdirectory(src/networking)
 
 ## entities plugins
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/entities.cmake)
 add_subdirectory(src/entities/environment)
 add_subdirectory(src/entities/golem)
 add_subdirectory(src/entities/monk)

@@ -6,6 +6,7 @@
 #include <external/json.hpp>
 
 #include <config.h>
+#include <logging/logger.h>
 
 class configurable {
  public:
@@ -16,6 +17,7 @@ class configurable {
 
   configurable(const std::string& custom_config_directory, const std::string& name) {
     std::ifstream ifs(custom_config_directory + name + ".json");
+    LOG(debug) << "loading configuration from: " << custom_config_directory + name + ".json";
     parsed_ = nlohmann::json::parse(ifs);
   }
 
