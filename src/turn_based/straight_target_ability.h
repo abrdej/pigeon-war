@@ -7,6 +7,9 @@
 template <std::int32_t Range, target_types TargetType = target_types::enemy, bool SkipObstacles = false>
 class straight_target_ability : public active_ability {
  public:
+  straight_target_ability() = default;
+  explicit straight_target_ability(std::string name) : active_ability(std::move(name)) {}
+
   void prepare(std::uint32_t index) override {
     game_control().selected_index_ = index;
 
@@ -31,6 +34,9 @@ class straight_target_ability : public active_ability {
 template <std::int32_t Range, target_types TargetType = target_types::enemy, bool SkipObstacles = false>
 class diagonal_target_ability : public active_ability {
  public:
+  diagonal_target_ability() = default;
+  explicit diagonal_target_ability(std::string name) : active_ability(std::move(name)) {}
+
   void prepare(std::uint32_t index) override {
     game_control().selected_index_ = index;
 
@@ -55,6 +61,9 @@ class diagonal_target_ability : public active_ability {
 template <std::int32_t Range, target_types TargetType = target_types::enemy, bool SkipObstacles = false>
 class directed_target_ability : public active_ability {
  public:
+  directed_target_ability() = default;
+  explicit directed_target_ability(std::string name) : active_ability(std::move(name)) {}
+
   void prepare(std::uint32_t index) override {
     game_control().selected_index_ = index;
 

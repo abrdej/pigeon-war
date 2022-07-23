@@ -13,7 +13,7 @@ class giant_blow final : public neighboring_target_ability<>, per_turn_usable
 public:
     ~giant_blow() final;
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return (counter == 2) ? "giant_blow_special" : "giant_blow";
     }
 

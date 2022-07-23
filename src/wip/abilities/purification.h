@@ -13,7 +13,7 @@ class purification : public path_target_ability,
 public:
     explicit purification(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "purification";
     }
 

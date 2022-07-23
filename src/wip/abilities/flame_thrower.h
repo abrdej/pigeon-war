@@ -13,7 +13,7 @@ class flame_thrower final : public path_target_ability,
 public:
   flame_thrower() : path_target_ability(4) {}
 
-  bitmap_key get_bitmap_key() const override {
+  bitmap_key get_name() const override {
     return "flame_thrower";
   }
 

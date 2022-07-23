@@ -11,7 +11,7 @@ class fist_of_doom : public active_ability {
 public:
     explicit fist_of_doom(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "fist_of_doom";
     }
 

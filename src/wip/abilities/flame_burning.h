@@ -13,7 +13,7 @@ class flame_burning final : public straight_target_ability<3>, protected per_tur
 public:
     explicit flame_burning(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "flame_burning";
     }
 

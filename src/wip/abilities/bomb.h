@@ -17,7 +17,7 @@ class bomb_detonation final : public active_ability, protected turn_callback_hel
 public:
 	explicit bomb_detonation(std::uint32_t bomb_id);
 
-	bitmap_key get_bitmap_key() const override {
+	bitmap_key get_name() const override {
 		return "bomb_detonation";
 	}
 
@@ -40,7 +40,7 @@ class bomb final : public path_target_ability,
 public:
 	explicit bomb(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
+	bitmap_key get_name() const override {
 		return "bomb";
 	}
 

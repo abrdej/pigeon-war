@@ -7,7 +7,7 @@ class immortality : public passive_ability {
 public:
     explicit immortality(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "immortality";
     }
 

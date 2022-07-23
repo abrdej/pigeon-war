@@ -14,7 +14,7 @@ public:
 	explicit death_mark(std::uint32_t entity_id);
 	~death_mark();
 
-	bitmap_key get_bitmap_key() const override {
+	bitmap_key get_name() const override {
 		return "assassin_slash";
 	}
 

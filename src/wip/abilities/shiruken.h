@@ -12,7 +12,7 @@ class shiruken final : public path_target_ability, per_turn_usable
 {
 public:
   shiruken() : path_target_ability(4) {}
-  bitmap_key get_bitmap_key() const override {
+  bitmap_key get_name() const override {
     return "shiruken";
   }
 

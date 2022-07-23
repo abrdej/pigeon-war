@@ -47,7 +47,7 @@ class moveable final : public moveable_base, turn_callback_helper {
 
   DEFINE_DESC_ONE(moveable, range)
 
-  bitmap_key get_bitmap_key() const override { return "moveable"; }
+  bitmap_key get_name() const override { return "moveable"; }
 
   void refresh_range() override { used = false; }
 

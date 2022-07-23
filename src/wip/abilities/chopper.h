@@ -15,7 +15,7 @@ class chopper final : public neighboring_target_ability<>, per_turn_usable {
  public:
   explicit chopper(std::uint32_t entity_id);
 
-  bitmap_key get_bitmap_key() const override { return "chopper"; }
+  bitmap_key get_name() const override { return "chopper"; }
 
  private:
   void use(std::uint32_t index_on) override;

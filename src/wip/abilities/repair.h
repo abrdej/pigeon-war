@@ -13,7 +13,7 @@ class repair  final : public caster_target_ability
 public:
     explicit repair(std::uint32_t id);
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "repair";
     }
 

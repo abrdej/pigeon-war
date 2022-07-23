@@ -11,7 +11,7 @@ class long_range_missile final : public straight_target_ability<12>
 {
 public:
 
-	bitmap_key get_bitmap_key() const override {
+	bitmap_key get_name() const override {
 		return "long_range_missile";
 	}
 

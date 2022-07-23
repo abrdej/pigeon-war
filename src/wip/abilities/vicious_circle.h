@@ -14,7 +14,7 @@ class vicious_circle final : public active_ability, per_turn_usable
 public:
     explicit vicious_circle(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "magic_energy";
     }
 

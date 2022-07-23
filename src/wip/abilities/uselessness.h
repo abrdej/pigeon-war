@@ -14,7 +14,7 @@ public:
 
     ~uselessness() override;
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "uselessness";
     }
 

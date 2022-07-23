@@ -13,7 +13,7 @@ class kill final : public active_ability, protected turn_callback_helper
 public:
     kill();
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "kill";
     }
 

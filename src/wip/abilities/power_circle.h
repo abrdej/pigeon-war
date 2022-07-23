@@ -16,7 +16,7 @@ public:
     explicit power_circle(std::uint32_t entity_id);
     ~power_circle() override;
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "power_circle";
     }
 

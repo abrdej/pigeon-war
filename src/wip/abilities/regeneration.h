@@ -15,7 +15,7 @@ class regeneration : public passive_ability, turn_callback_helper {
 public:
 	explicit regeneration(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
+	bitmap_key get_name() const override {
 		return "armor";
 	}
 

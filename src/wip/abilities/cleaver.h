@@ -7,7 +7,7 @@ class cleaver final : public neighboring_target_ability<>, per_turn_usable
 {
 public:
   explicit cleaver(std::uint32_t entity_id);
-  bitmap_key get_bitmap_key() const override {
+  bitmap_key get_name() const override {
     return "cleaver";
   }
   ability_types type() const override {

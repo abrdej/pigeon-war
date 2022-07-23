@@ -12,7 +12,7 @@ class protection_field : public straight_target_ability<3>, protected turn_callb
 public:
     explicit protection_field(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
+	bitmap_key get_name() const override {
 		return "protection_field";
 	}
 

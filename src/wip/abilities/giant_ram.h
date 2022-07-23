@@ -12,7 +12,7 @@ class giant_ram final : public straight_target_ability<5, target_types::enemy, t
 public:
     explicit giant_ram(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "giant_ram";
     }
 

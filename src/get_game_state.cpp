@@ -40,13 +40,13 @@ local_game_state get_local_game_state() {
     auto entity_id = game_board().at(game_control().selected_index_);
     auto entity = game::get<entity_manager>().get(entity_id);
 
-    if (entity_id != game_board().empty_id) {
+    if (entity_id != board::empty_id) {
       if (entity.contain<abilities>()) {
         auto abilities_ptr = entity.get<abilities>();
         for (std::int32_t i = 0; i < 5; ++i) {
           auto ability = abilities_ptr->at(i);
           if (ability) {
-            local_state.button_bitmaps[i] = ability->get_bitmap_key();
+            local_state.button_bitmaps[i] = ability->get_name();
             local_state.usable[i] = ability->usable();
           }
         }

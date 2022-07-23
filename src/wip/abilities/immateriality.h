@@ -7,7 +7,7 @@ class immateriality : public passive_ability, protected turn_callback_helper {
 public:
     explicit immateriality(std::uint32_t entity_id);
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "immateriality";
     }
 

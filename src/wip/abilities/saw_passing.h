@@ -13,7 +13,7 @@ class saw_passing final : public straight_target_ability<5, target_types::moving
 public:
 	explicit saw_passing(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
+	bitmap_key get_name() const override {
 		return "mechanical_saw";
 	}
 

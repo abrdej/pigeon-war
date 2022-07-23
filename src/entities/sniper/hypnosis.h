@@ -6,7 +6,7 @@ class hypnosis final : public path_target_ability {
  public:
   hypnosis();
 
-  bitmap_key get_bitmap_key() const override {
+  bitmap_key get_name() const override {
     return "hypnosis";
   }
 

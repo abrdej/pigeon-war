@@ -5,7 +5,7 @@
 
 class power_bullet final : public straight_target_ability<2>, per_turn_usable {
  public:
-  bitmap_key get_bitmap_key() const override {
+  bitmap_key get_name() const override {
     return "power_bullet";
   }
   ability_types type() const override {

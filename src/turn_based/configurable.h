@@ -9,20 +9,14 @@
 
 class configurable {
  public:
-  explicit configurable(std::string name) {
-    name_ = std::move(name);
-    std::ifstream ifs(config_directory + get_name() + ".json");
+  explicit configurable(const std::string& name) {
+    std::ifstream ifs(config_directory + name + ".json");
     parsed_ = nlohmann::json::parse(ifs);
   }
 
-  explicit configurable(const std::string& custom_config_directory, std::string name) {
-    name_ = std::move(name);
-    std::ifstream ifs(custom_config_directory + get_name() + ".json");
+  configurable(const std::string& custom_config_directory, const std::string& name) {
+    std::ifstream ifs(custom_config_directory + name + ".json");
     parsed_ = nlohmann::json::parse(ifs);
-  }
-
-  [[nodiscard]] const std::string& get_name() const {
-    return name_;
   }
 
   template <typename T>
@@ -42,6 +36,5 @@ class configurable {
   }
 
  private:
-  std::string name_;
   nlohmann::json parsed_;
 };

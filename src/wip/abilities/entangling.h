@@ -12,7 +12,7 @@
 //struct entangling_life_suck final : public active_ability, turn_callback_helper {
 //    explicit entangling_life_suck();
 //
-//    bitmap_key get_bitmap_key() const override {
+//    bitmap_key get_name() const override {
 //        return "entangling_life_suck;
 //    }
 //
@@ -45,7 +45,7 @@
 //public:
 //    explicit entangling(std::uint32_t id);
 //
-//    bitmap_key get_bitmap_key() const override {
+//    bitmap_key get_name() const override {
 //        return "entangling;
 //    }
 //

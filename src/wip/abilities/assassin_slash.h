@@ -11,7 +11,7 @@ class assassin_slash final : public active_ability {
 public:
 	explicit assassin_slash(std::uint32_t entity_id);
 
-	bitmap_key get_bitmap_key() const override {
+	bitmap_key get_name() const override {
 		return "assassin_slash";
 	}
 

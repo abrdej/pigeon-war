@@ -6,7 +6,7 @@
 class poke final : public neighboring_target_ability<>, per_turn_usable
 {
 public:
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "poke";
     }
     ability_types type() const override {

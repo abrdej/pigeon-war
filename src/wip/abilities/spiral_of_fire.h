@@ -15,7 +15,7 @@ class spiral_of_fire final : public straight_target_ability<3, target_types::ene
 public:
     spiral_of_fire();
 
-    bitmap_key get_bitmap_key() const override {
+    bitmap_key get_name() const override {
         return "spiral_of_fire";
     }
 

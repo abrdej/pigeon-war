@@ -7,8 +7,6 @@
 
 #include <external/json.hpp>
 
-#include <turn_based/ability.h>
-
 template <typename... Args>
 std::string string_format(const std::string& format, Args ... args) {
   int size_s = std::snprintf(nullptr, 0, format.c_str(), args ...) + 1; // Extra space for '\0'
@@ -26,7 +24,7 @@ inline std::string get_string_from_key(const std::string& config_file, const std
   return description_format;
 }
 
-class hint_configuration : virtual public ability {
+class hint_configuration {
  protected:
   template <typename... Args>
   void configure_hint(const std::string& config_file, const std::string& key, Args&... args) {
@@ -37,9 +35,8 @@ class hint_configuration : virtual public ability {
     };
   }
 
- public:
-  [[nodiscard]] std::string hint() const override {
-    return configurator_ ? configurator_() : "Hint configurator not configured yet...";
+  [[nodiscard]] std::string get_hint() const {
+    return configurator_ ? configurator_() : "Hint configuration not configured yet...";
   }
 
  private:
