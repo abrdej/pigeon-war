@@ -1,19 +1,17 @@
 #pragma once
 
 #include <turn_based/ability.h>
+#include <turn_based/configurable.h>
 #include <turn_based/per_turn_usable.h>
 
-class counterattack final : public passive_ability, per_turn_usable {
+class counterattack final : public passive_ability, per_turn_usable, configurable {
  public:
   explicit counterattack(std::uint32_t entity_id);
-
-  ADD_BITMAP_GETTER(counterattack)
-
-  DEFINE_DESC_ONE(counterattack, damage)
 
  private:
   void use(std::uint32_t index_on);
 
-  const std::uint32_t entity_id;
-  const std::int32_t damage{10};
+  static constexpr auto name = "counterattack";
+  const std::uint32_t entity_id_;
+  const std::int32_t damage_{10};
 };

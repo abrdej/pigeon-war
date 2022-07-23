@@ -1,4 +1,4 @@
 {
-  "max_damage": 6,
-  "hint": "Armor - limits the maximum damage from a single attack that Destroyer can receive to: %d."
+  "damage": 10,
+  "hint": "Counterattack - native performs a counterattack if\nthe attacker is within his range.\nCounterattack deals %d. It works only once per turn."
 }

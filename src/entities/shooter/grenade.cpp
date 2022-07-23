@@ -1,5 +1,7 @@
 #include <grenade.h>
 
+#include <config.h>
+#include <logging/logger.h>
 #include <turn_based/damage_dealers.h>
 #include <turn_based/board.h>
 

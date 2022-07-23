@@ -2,7 +2,6 @@
 
 #include <turn_based/configurable.h>
 #include <turn_based/defs.h>
-#include <turn_based/hint_configuration.h>
 #include <turn_based/per_turn_usable.h>
 #include <turn_based/straight_target_ability.h>
 

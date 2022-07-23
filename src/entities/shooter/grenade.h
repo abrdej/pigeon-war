@@ -1,7 +1,6 @@
 #pragma once
 
 #include <turn_based/configurable.h>
-#include <turn_based/hint_configuration.h>
 #include <turn_based/path_target_ability.h>
 
 class grenade final : public path_target_ability, private configurable {

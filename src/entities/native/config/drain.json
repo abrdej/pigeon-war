@@ -1,4 +1,5 @@
 {
-  "damage": 15,
-  "hint": "Blow The Ax - deals damage of: %d to single target."
+  "damage": 10,
+  "drain_amount": 4,
+  "hint": "Drain - deals damage of: %d and heals native by: %d regardless of dealt damage.\nThis skill can heal over the base level of health."
 }

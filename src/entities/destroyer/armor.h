@@ -2,7 +2,6 @@
 
 #include <turn_based/ability.h>
 #include <turn_based/configurable.h>
-#include <turn_based/hint_configuration.h>
 
 class armor : public passive_ability, private configurable {
  public:
