@@ -1,0 +1,5 @@
+{
+  "initial_damage_reduction": 0,
+  "reduction_increase_amount": 1,
+  "hint": "Stone Skin - with each received attack golem\nincrease his damage reduction by %d points.\nCurrent damage reduction: %d."
+}

@@ -17,7 +17,7 @@ DEFINE_ENTITY_FACTORY(golem) {
 
   auto abilities_ptr = entity.add<abilities>();
   abilities_ptr->add_ability(std::make_shared<moveable>(3));
-  abilities_ptr->add_ability(std::make_shared<power_bullet>());
+  abilities_ptr->add_ability(std::make_shared<power_bullet>(entity.entity_id));
   abilities_ptr->add_ability(std::make_shared<stone_skin>(entity.entity_id));
 }
 

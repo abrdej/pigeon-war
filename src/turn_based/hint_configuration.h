@@ -19,9 +19,14 @@ std::string string_format(const std::string& format, Args ... args) {
 
 inline std::string get_string_from_key(const std::string& config_file, const std::string& name) {
   std::ifstream ifs(config_file);
-  nlohmann::json j = nlohmann::json::parse(ifs);
-  std::string description_format = j[name];
-  return description_format;
+  try {
+    nlohmann::json j = nlohmann::json::parse(ifs);
+    std::string description_format = j[name];
+    return description_format;
+  } catch (std::exception& e) {
+    LOG(error) << "Failed to parse json for config file: " << config_file << " and name: " << name;
+    throw;
+  }
 }
 
 class hint_configuration {

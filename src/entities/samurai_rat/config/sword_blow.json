@@ -1,0 +1,4 @@
+{
+  "damage": 10,
+  "hint": "Sword Blow - deals damage of: %d to all units around the samurai.\nIf the samurai hits minimum tree units he performs an additional blow."
+}

@@ -11,6 +11,8 @@ drain::drain(std::uint32_t entity_id)
       damage_(get_param_or_default("damage", damage_)),
       drain_amount_(get_param_or_default("drain_amount", drain_amount_)) {
 
+  configure_hint(config_directory + name + ".json", "hint", damage_, drain_amount_);
+
   LOG(debug) << "Drain setup:";
   LOG(debug) << "entity_id: " << entity_id_;
   LOG(debug) << "damage: " << damage_;

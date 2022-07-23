@@ -5,14 +5,11 @@
 
 class power_bullet final : public straight_target_ability<2>, per_turn_usable {
  public:
-  bitmap_key get_name() const override {
-    return "power_bullet";
-  }
+  explicit power_bullet(std::uint32_t entity_id);
+
   ability_types type() const override {
     return ability_types::offensive;
   }
-
-  std::string hint() const override;
 
   bool usable() const override {
     return !used;
@@ -21,7 +18,10 @@ class power_bullet final : public straight_target_ability<2>, per_turn_usable {
  private:
   void use(std::uint32_t index_on) override;
 
-  const std::int32_t full_damage = 12;
-  const std::int32_t damage_with_power_bullet_effect = 4;
-  const std::int32_t duration_of_effect = 2;
+  static constexpr auto name = "power_bullet";
+
+  std::uint32_t entity_id_;
+  std::int32_t full_damage_ = 12;
+  std::int32_t damage_with_power_bullet_effect_ = 4;
+  std::int32_t duration_of_effect_ = 2;
 };

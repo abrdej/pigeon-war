@@ -1,0 +1,6 @@
+{
+  "full_damage": 12,
+  "damage_with_power_bullet_effect": 4,
+  "duration_of_effect": 2,
+  "hint": "Power Bullet - deals damage of %d.\nt also applies the effect of power bullet to enemy for %d turn.\nEnemies with power bullet effect receive only %d points of damage."
+}

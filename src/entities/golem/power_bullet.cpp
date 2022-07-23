@@ -6,6 +6,23 @@
 #include <turn_based/messages/massages_makers.h>
 #include <turn_based/sender.h>
 
+power_bullet::power_bullet(std::uint32_t entity_id)
+    : straight_target_ability(name),
+      entity_id_(entity_id),
+      full_damage_(get_param_or_default("full_damage", full_damage_)),
+      damage_with_power_bullet_effect_(
+          get_param_or_default("damage_with_power_bullet_effect", damage_with_power_bullet_effect_)),
+      duration_of_effect_(get_param_or_default("duration_of_effect", duration_of_effect_)) {
+
+  configure_hint(config_directory + name + ".json", "hint", full_damage_, duration_of_effect_,
+                 damage_with_power_bullet_effect_);
+
+  LOG(debug) << "Power bullet setup:";
+  LOG(debug) << "entity_id: " << entity_id_;
+  LOG(debug) << "damage_with_power_bullet_effect: " << damage_with_power_bullet_effect_;
+  LOG(debug) << "duration_of_effect: " << duration_of_effect_;
+}
+
 void power_bullet::use(std::uint32_t index_on) {
   if (used) {
     return;
@@ -17,16 +34,16 @@ void power_bullet::use(std::uint32_t index_on) {
 
   auto has_power_bullet_effect = has_effect(enemy_id, "power_bullet_effect");
 
-  sender::send(make_action_message("power_bullet", used_from_index, index_on));
+  sender::send(make_action_message(name, used_from_index, index_on));
 
-  damage_dealers::standard_damage_dealer(magic_damage(has_power_bullet_effect ? damage_with_power_bullet_effect
-                                                                              : full_damage,
+  damage_dealers::standard_damage_dealer(magic_damage(has_power_bullet_effect ? damage_with_power_bullet_effect_
+                                                                              : full_damage_,
                                                       game_board().at(index_on),
                                                       caster_id));
 
   if (game::get<entity_manager>().alive(enemy_id)) {
     auto power_bullet_effect_connection =
-        make_after_n_round_callback_holder(duration_of_effect, [enemy_id, caster_id]() mutable {
+        make_after_n_round_callback_holder(duration_of_effect_, [enemy_id, caster_id]() mutable {
           remove_effect(enemy_id, "power_bullet_effect");
         });
 
@@ -37,14 +54,4 @@ void power_bullet::use(std::uint32_t index_on) {
   }
 
   used = true;
-}
-
-std::string power_bullet::hint() const {
-  std::string desc;
-  desc = "Power Bullet - deals damage of " + std::to_string(full_damage)
-      + ".\nt also applies the effect of power bullet to enemy for one turn.\n"
-        "Enemies with power bullet effect receive only "
-      + std::to_string(damage_with_power_bullet_effect) + " points of damage.";
-
-  return std::move(desc);
 }
