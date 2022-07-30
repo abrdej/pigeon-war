@@ -10,8 +10,6 @@
 #include <turn_based/defs.h>
 #include <turn_based/states.h>
 
-static const auto no_selection = std::numeric_limits<std::uint32_t>::max();
-
 struct global_game_state {
   std::vector<std::deque<entity_id_t>> board;
   std::unordered_map<entity_id_t, std::int32_t> healths;
@@ -21,9 +19,9 @@ struct global_game_state {
 };
 
 struct local_game_state {
-  std::vector<std::uint32_t> possible_movements;
-  std::unordered_set<std::uint32_t> valid_movements;
-  std::uint32_t selected_index{no_selection};
+  std::vector<index_t> possible_movements;
+  std::unordered_set<index_t> valid_movements;
+  index_t selected_index{null_index};
   target_types actual_target_type{target_types::non};
   std::array<std::string, 5> button_bitmaps;
   std::array<bool, 5> usable;

@@ -12,7 +12,7 @@ class magic_bullet final : public path_target_ability, protected per_turn_callba
   }
 
  private:
-  void use(std::uint32_t index_on) override;
+  void use(index_t index_on) override;
 
  private:
   static constexpr auto name = "magic_bullet";

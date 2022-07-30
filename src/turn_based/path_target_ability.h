@@ -21,7 +21,7 @@ public:
   explicit path_target_ability(std::int32_t range, target_types target_type = target_types::enemy, bool all_fields = true)
     : path_target_ability("", range, target_type, all_fields) {}
 
-  explicit path_target_ability(std::uint32_t entity_id,
+  explicit path_target_ability(entity_id_t entity_id,
                                std::int32_t range,
                                target_types target_type = target_types::enemy,
                                bool all_fields = true)
@@ -31,7 +31,7 @@ public:
     this->range = range;
   }
 
-  void prepare(std::uint32_t for_index) override {
+  void prepare(index_t for_index) override {
     auto range = this->range;
 
     if (entity_id_ != null_entity_id) {
@@ -66,12 +66,12 @@ public:
                                        range);
 
     game_control().actual_targeting_type_ = target_type;
-    game_control().wait_for_action([this](std::uint32_t index) {
+    game_control().wait_for_action([this](index_t index) {
       return use(index);
     });
   }
 
-  virtual void use(std::uint32_t use_on_index) = 0;
+  virtual void use(index_t use_on_index) = 0;
 
 protected:
   entity_id_t entity_id_;

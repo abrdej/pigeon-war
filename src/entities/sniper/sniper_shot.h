@@ -11,9 +11,9 @@ class sniper_shot final : public active_ability, per_turn_usable {
     return !used;
   }
 
-  void prepare(std::uint32_t for_index) override;
+  void prepare(index_t for_index) override;
 
-  void use(std::uint32_t index_on);
+  void use(index_t index_on);
 
  private:
   static constexpr auto name = "sniper_shot";

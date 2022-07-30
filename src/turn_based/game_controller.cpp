@@ -11,7 +11,7 @@
 #include <turn_based/utils/algorithm.h>
 
 void game_controller::set_entity_default_state(index_t select_from_index) {
-  if (select_from_index == no_selected_index) return;
+  if (select_from_index == null_index) return;
 
   selected_index_ = select_from_index;
   index_t selected_index = selected_index_;
@@ -104,7 +104,7 @@ void game_controller::victory(std::uint32_t player_id) {
   sender::send(make_victory_message());
 }
 
-void game_controller::wait_for_action(const std::function<void(std::uint32_t index)>& caller) {
+void game_controller::wait_for_action(const std::function<void(index_t index)>& caller) {
   actual_state_ = states_types::wait_for_action;
   action_ = caller;
 }
@@ -120,7 +120,7 @@ bool game_controller::valid_target(index_t target_index) {
     case target_types::enemy: {
       auto caster_id = game_board().at(selected_index_);
 
-      std::uint32_t target_value = target_index;
+      std::uint32_t target_value = target_index.cast();
 
       if (custom_valid_target_type == custom_target_type::entity_id) {
         target_value = game_board().at(target_index).cast();

@@ -15,7 +15,7 @@ tongue_of_fire::tongue_of_fire(entity_id_t entity_id)
   LOG(debug) << "damage: " << damage_;
 }
 
-void tongue_of_fire::use(std::uint32_t index_on) {
+void tongue_of_fire::use(index_t index_on) {
   if (used) {
     return;
   }

@@ -17,7 +17,7 @@ claws::claws(entity_id_t entity_id)
   LOG(debug) << "damage: " << damage_;
 }
 
-void claws::use(std::uint32_t index_on) {
+void claws::use(index_t index_on) {
   if (used) {
     return;
   }

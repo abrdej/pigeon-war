@@ -14,7 +14,7 @@
 namespace ai::nodes {
 namespace {
 
-bool go_close_to_impl(ai_knowledge& knowledge, std::uint32_t target_index) {
+bool go_close_to_impl(ai_knowledge& knowledge, index_t target_index) {
   auto entity_id = active_entity_id(knowledge);
   auto entity_index = game_board().index_for(active_entity_id(knowledge));
 
@@ -25,15 +25,15 @@ bool go_close_to_impl(ai_knowledge& knowledge, std::uint32_t target_index) {
   path_finder distance_finder(false);
   distance_finder.calc(entity_index);
 
-  std::vector<std::uint32_t> neighbors;
+  std::vector<index_t> neighbors;
   board_helper::neighboring_fields(target_index, neighbors, false);
 
-  boost::range::remove_erase_if(neighbors, [entity_index](std::uint32_t index) {
+  boost::range::remove_erase_if(neighbors, [entity_index](index_t index) {
     return !game_board().empty(index) && index != entity_index;
   });
 
   auto closest_index_it = boost::range::min_element(
-      neighbors, [&distance_finder](std::uint32_t index_a, std::uint32_t index_b) {
+      neighbors, [&distance_finder](index_t index_a, index_t index_b) {
         return distance_finder.distance_to(index_a) < distance_finder.distance_to(index_b);
       });
   if (closest_index_it == std::end(neighbors)) {
@@ -43,7 +43,7 @@ bool go_close_to_impl(ai_knowledge& knowledge, std::uint32_t target_index) {
   auto closest_index = *closest_index_it;
   if (closest_index == entity_index) return true;
 
-  std::vector<std::uint32_t> path;
+  std::vector<index_t> path;
   distance_finder.path_to(closest_index, path);
 
   try_prepare_ability(*moving, entity_index);
@@ -72,7 +72,7 @@ bool go_to::operator()(ai_knowledge& knowledge) {
     return false;
   }
 
-  auto destination_index = knowledge.entity(entity_id).get<std::uint32_t>("destination_index");
+  auto destination_index = knowledge.entity(entity_id).get<index_t>("destination_index");
   if (destination_index == entity_index) {
     return true;
   }
@@ -80,7 +80,7 @@ bool go_to::operator()(ai_knowledge& knowledge) {
   path_finder path_finder(false);
   path_finder.calc(entity_index);
 
-  std::vector<std::uint32_t> path;
+  std::vector<index_t> path;
   path_finder.path_to(destination_index, path);
 
   try_prepare_ability(*moving, entity_index);
@@ -103,7 +103,7 @@ bool go_close_to_destination::operator()(ai_knowledge& knowledge) {
     return false;
   }
 
-  auto destination_index = knowledge.entity(entity_id).get<std::uint32_t>("destination_index");
+  auto destination_index = knowledge.entity(entity_id).get<index_t>("destination_index");
 
   return go_close_to_impl(knowledge, destination_index);
 }
@@ -117,7 +117,7 @@ bool go_close_to_target_index::operator()(ai_knowledge& knowledge) {
     return false;
   }
 
-  auto target_enemy_index = knowledge.entity(entity_id).get<std::uint32_t>("target_enemy_index");
+  auto target_enemy_index = knowledge.entity(entity_id).get<index_t>("target_enemy_index");
 
   return go_close_to_impl(knowledge, target_enemy_index);
 }
@@ -132,7 +132,7 @@ bool can_go_to::operator()(ai_knowledge& knowledge) {
   auto moving = abilities_ptr->of_type(ability_types::moving);
   if (!moving) return false;
 
-  auto destination_index = knowledge.entity(entity_id).get<std::uint32_t>("destination_index");
+  auto destination_index = knowledge.entity(entity_id).get<index_t>("destination_index");
   if (destination_index == entity_index) {
     return true;
   }

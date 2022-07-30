@@ -14,7 +14,7 @@ counterattack::counterattack(entity_id_t entity_id)
     if (game::get<entity_manager>().get(entity_id_).get<health_field>()->health > 0) {
       auto enemy_index = game_board().index_for(dmg.damage_dealer_id);
 
-      std::vector<std::uint32_t> neighbors;
+      std::vector<index_t> neighbors;
       board_helper::neighboring_fields(game_board().index_for(entity_id_), neighbors, false);
 
       for (auto index : neighbors) {
@@ -33,7 +33,7 @@ counterattack::counterattack(entity_id_t entity_id)
   LOG(debug) << "damage: " << damage_;
 }
 
-void counterattack::use(std::uint32_t index_on) {
+void counterattack::use(index_t index_on) {
   if (used) {
     return;
   }

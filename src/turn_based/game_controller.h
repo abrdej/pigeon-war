@@ -27,16 +27,16 @@ class game_controller {
   states_types actual_state_{states_types::waiting};
   target_types actual_targeting_type_{target_types::non};
   std::vector<index_t> possible_movements_;
-  std::vector<index_t> possible_movements_costs_;
+  std::vector<std::uint32_t> possible_movements_costs_;
 
-  std::unordered_map<entity_id_t, std::unordered_set<index_t>> custom_valid_targets;
+  std::unordered_map<entity_id_t, std::unordered_set<std::uint32_t>> custom_valid_targets;
 
   enum class custom_target_type { board_index, entity_id };
 
   custom_target_type custom_valid_target_type{custom_target_type::board_index};
 
  private:
-  std::function<void(std::uint32_t)> action_;
+  std::function<void(index_t)> action_;
 };
 
 inline auto& game_control() { return game::get<game_controller>(); }

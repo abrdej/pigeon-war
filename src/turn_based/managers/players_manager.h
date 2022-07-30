@@ -84,12 +84,12 @@ class players_manager {
 
 namespace players_helpers {
 
-void player_entities_indexes(std::uint32_t player_id, std::vector<std::uint32_t>& indexes);
-void enemy_entities_indexes(std::uint32_t player_id, std::vector<std::uint32_t>& indexes);
+void player_entities_indexes(std::uint32_t player_id, std::vector<index_t>& indexes);
+void enemy_entities_indexes(std::uint32_t player_id, std::vector<index_t>& indexes);
 
-bool is_player_entity(std::uint32_t entity_index);
-bool is_enemy_entity(std::uint32_t entity_index);
-bool is_neutral_entity(std::uint32_t entity_index);
-std::uint32_t active_player_first_entity_index();
+bool is_player_entity(index_t entity_index);
+bool is_enemy_entity(index_t entity_index);
+bool is_neutral_entity(index_t entity_index);
+index_t active_player_first_entity_index();
 
 }  // namespace players_helpers

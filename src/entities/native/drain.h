@@ -12,7 +12,7 @@ class drain final : public neighboring_target_ability<>, per_turn_usable {
   }
 
  private:
-  void use(std::uint32_t index_on) override;
+  void use(index_t index_on) override;
 
   static constexpr auto name = "drain";
   const entity_id_t entity_id_;

@@ -13,7 +13,7 @@ public:
   }
 
 private:
-  void use(std::uint32_t on_index) override;
+  void use(index_t on_index) override;
 
   static constexpr auto name = "blow_the_ax";
   const entity_id_t entity_id_;

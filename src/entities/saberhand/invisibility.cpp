@@ -16,7 +16,7 @@ invisibility::invisibility(entity_id_t entity_id)
   LOG(debug) << "duration: " << duration_;
 }
 
-void invisibility::use(std::uint32_t on_index) {
+void invisibility::use(index_t on_index) {
   if (used_)
     return;
 

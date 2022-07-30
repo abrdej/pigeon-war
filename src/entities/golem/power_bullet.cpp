@@ -23,7 +23,7 @@ power_bullet::power_bullet(entity_id_t entity_id)
   LOG(debug) << "duration_of_effect: " << duration_of_effect_;
 }
 
-void power_bullet::use(std::uint32_t index_on) {
+void power_bullet::use(index_t index_on) {
   if (used) {
     return;
   }

@@ -14,6 +14,13 @@ inline void from_json(const nlohmann::json& j, entity_id_t& x) {
   x = entity_id_t{j.get<entity_id_t::value_type>()};
 }
 
+inline void to_json(nlohmann::json& j, const index_t& x) {
+  j = x.cast();
+}
+
+inline void from_json(const nlohmann::json& j, index_t& x) {
+  x = index_t{j.get<index_t::value_type>()};
+}
 
 std::string make_map_size_message(const std::pair<std::uint32_t, std::uint32_t>& map_size);
 
@@ -54,12 +61,11 @@ std::string make_remove_entity_message(entity_id_t entity_id);
 
 std::string make_create_entity_message(entity_id_t entity_id, const std::string& name,
                                        std::int32_t health, std::int32_t power,
-                                       std::uint32_t index);
+                                       index_t index);
 
 std::string make_create_entity_message(entity_id_t entity_id);
 
-std::string make_move_entity_message(entity_id_t, std::uint32_t from_index,
-                                     std::uint32_t to_index);
+std::string make_move_entity_message(entity_id_t, index_t from_index, index_t to_index);
 
 std::string make_battle_end_message(std::uint32_t player_id);
 
@@ -67,7 +73,7 @@ std::string make_victory_message();
 
 std::string make_defeat_message();
 
-std::string make_entity_talk_message(std::uint32_t index, std::string text);
+std::string make_entity_talk_message(index_t index, std::string text);
 
 std::string make_game_ready_message();
 

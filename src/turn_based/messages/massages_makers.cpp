@@ -86,7 +86,7 @@ std::string make_remove_entity_message(entity_id_t entity_id) {
 
 std::string make_create_entity_message(entity_id_t entity_id, const std::string& name,
                                        std::int32_t health, std::int32_t power,
-                                       std::uint32_t index) {
+                                       index_t index) {
   json data;
   data["create_entity"] = entity_id.cast();
   data["name"] = name;
@@ -106,8 +106,7 @@ std::string make_create_entity_message(entity_id_t entity_id) {
       game_get<board>().index_for(entity_id));
 }
 
-std::string make_move_entity_message(entity_id_t entity_id, std::uint32_t from_index,
-                                     std::uint32_t to_index) {
+std::string make_move_entity_message(entity_id_t entity_id, index_t from_index, index_t to_index) {
   json data;
   data["move_entity"] = entity_id.cast();
   data["from_index"] = from_index;
@@ -133,7 +132,7 @@ std::string make_defeat_message() {
   return data.dump();
 }
 
-std::string make_entity_talk_message(std::uint32_t index, std::string text) {
+std::string make_entity_talk_message(index_t index, std::string text) {
   json data;
   data["entity_talk"] = index;
   data["text"] = text;

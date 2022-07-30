@@ -18,7 +18,7 @@ blow_the_ax::blow_the_ax(entity_id_t entity_id)
   LOG(debug) << "damage: " << damage_;
 }
 
-void blow_the_ax::use(std::uint32_t on_index) {
+void blow_the_ax::use(index_t on_index) {
   if (used) {
     return;
   }

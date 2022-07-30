@@ -15,35 +15,49 @@ path_finder::path_finder(bool all_fields) : start_index_(-1) {
 
         if (row < rows_n - 1) {
           auto key_to = game_board().to_index(col, row + 1);
-          if (game_board().empty(key_to) || all_fields) board_graph.add_edge(key_from, key_to);
+          if (game_board().empty(key_to) || all_fields) board_graph.add_edge(key_from.cast(), key_to.cast());
 
-          if (game_board().empty(key_from) || all_fields) board_graph.add_edge(key_to, key_from);
+          if (game_board().empty(key_from) || all_fields) board_graph.add_edge(key_to.cast(), key_from.cast());
         }
         if (col < cols_n - 1) {
           auto key_to = game_board().to_index(col + 1, row);
-          if (game_board().empty(key_to) || all_fields) board_graph.add_edge(key_from, key_to);
+          if (game_board().empty(key_to) || all_fields) board_graph.add_edge(key_from.cast(), key_to.cast());
 
-          if (game_board().empty(key_from) || all_fields) board_graph.add_edge(key_to, key_from);
+          if (game_board().empty(key_from) || all_fields) board_graph.add_edge(key_to.cast(), key_from.cast());
         }
       });
 }
 
-void path_finder::calc(std::uint32_t from_index) {
+void path_finder::calc(index_t from_index) {
   start_index_ = from_index;
   distance_map_.clear();
   sequence_map_.clear();
-  breadth_search(board_graph, from_index, distance_map_, sequence_map_);
+
+  std::vector<graph::vertex_descriptor> sequence_map;
+  breadth_search(board_graph, from_index.cast(), distance_map_, sequence_map);
+  for (auto index : sequence_map) {
+    sequence_map_.emplace_back(index_t{index});
+  }
 }
 
-std::uint32_t path_finder::find_first_satisfy_conditions(
-    std::uint32_t from_index, const std::function<bool(std::uint32_t)>& condition) {
+index_t path_finder::find_first_satisfy_conditions(
+    index_t from_index, const std::function<bool(index_t)>& condition) {
   start_index_ = from_index;
   distance_map_.clear();
   sequence_map_.clear();
-  return breadth_search(board_graph, from_index, distance_map_, sequence_map_, condition);
+
+  std::vector<graph::vertex_descriptor> sequence_map;
+  auto result = breadth_search(board_graph, from_index.cast(), distance_map_, sequence_map,
+                               [condition](graph::vertex_descriptor index) {
+                                  return condition(index_t{index});
+                               });
+  for (auto index : sequence_map) {
+    sequence_map_.emplace_back(index_t{index});
+  }
+  return index_t{result};
 }
 
-void path_finder::get_possible_movements(std::vector<std::uint32_t>& movements,
+void path_finder::get_possible_movements(std::vector<index_t>& movements,
                                          std::vector<std::uint32_t>& costs, std::int32_t range) {
   movements.clear();
   costs.clear();
@@ -54,13 +68,13 @@ void path_finder::get_possible_movements(std::vector<std::uint32_t>& movements,
     }
 }
 
-void path_finder::path_to(std::uint32_t index, std::vector<std::uint32_t>& path) {
+void path_finder::path_to(index_t index, std::vector<index_t>& path) {
   if (sequence_map_.empty()) return;
   auto path_index = index;
   path.push_back(index);
   int i = 0;
   while (path_index != start_index_ && i++ != 100) {
-    path_index = sequence_map_[path_index];
+    path_index = sequence_map_[path_index.cast()];
     path.push_back(path_index);
 
     LOG(debug) << "start_index_: " << path_index;
@@ -68,15 +82,15 @@ void path_finder::path_to(std::uint32_t index, std::vector<std::uint32_t>& path)
   }
 }
 
-std::int32_t path_finder::distance_to(std::uint32_t index) {
-  return static_cast<std::int32_t>(distance_map_[index]);
+std::int32_t path_finder::distance_to(index_t index) {
+  return static_cast<std::int32_t>(distance_map_[index.cast()]);
 }
 
 namespace board_helper {
 
 template <long unsigned int N>
 void calc_helper(const std::array<std::pair<std::int32_t, std::int32_t>, N>& ops,
-                 std::uint32_t from_index, std::vector<std::uint32_t>& movements,
+                 index_t from_index, std::vector<index_t>& movements,
                  std::vector<std::uint32_t>& costs, std::int32_t range, bool skip_obstacles) {
   movements.clear();
   costs.clear();
@@ -101,7 +115,7 @@ void calc_helper(const std::array<std::pair<std::int32_t, std::int32_t>, N>& ops
   }
 }
 
-void calc_straight(std::uint32_t from_index, std::vector<std::uint32_t>& movements,
+void calc_straight(index_t from_index, std::vector<index_t>& movements,
                    std::vector<std::uint32_t>& costs, std::int32_t range, bool skip_obstacles) {
   const std::array<std::pair<std::int32_t, std::int32_t>, 4> ops = {
       std::make_pair(-1, 0), std::make_pair(+1, 0), std::make_pair(0, +1), std::make_pair(0, -1)};
@@ -109,7 +123,7 @@ void calc_straight(std::uint32_t from_index, std::vector<std::uint32_t>& movemen
   calc_helper(ops, from_index, movements, costs, range, skip_obstacles);
 }
 
-void calc_diagonal(std::uint32_t from_index, std::vector<std::uint32_t>& movements,
+void calc_diagonal(index_t from_index, std::vector<index_t>& movements,
                    std::vector<std::uint32_t>& costs, std::int32_t range, bool skip_obstacles) {
   const std::array<std::pair<std::int32_t, std::int32_t>, 4> ops = {
       std::make_pair(-1, -1), std::make_pair(+1, +1), std::make_pair(-1, +1),
@@ -118,7 +132,7 @@ void calc_diagonal(std::uint32_t from_index, std::vector<std::uint32_t>& movemen
   calc_helper(ops, from_index, movements, costs, range, skip_obstacles);
 }
 
-void calc_directed(std::uint32_t from_index, std::vector<std::uint32_t>& movements,
+void calc_directed(index_t from_index, std::vector<index_t>& movements,
                    std::vector<std::uint32_t>& costs, std::int32_t range, bool skip_obstacles) {
   const std::array<std::pair<std::int32_t, std::int32_t>, 8> ops = {
       std::make_pair(-1, 0),  std::make_pair(+1, 0),  std::make_pair(0, +1),
@@ -128,7 +142,7 @@ void calc_directed(std::uint32_t from_index, std::vector<std::uint32_t>& movemen
   calc_helper(ops, from_index, movements, costs, range, skip_obstacles);
 }
 
-void neighboring_fields(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool available) {
+void neighboring_fields(index_t for_index, std::vector<index_t>& fields, bool available) {
   fields.clear();
   auto fld = game_board().to_pos(for_index);
 
@@ -145,7 +159,7 @@ void neighboring_fields(std::uint32_t for_index, std::vector<std::uint32_t>& fie
   }
 }
 
-void circle(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool available) {
+void circle(index_t for_index, std::vector<index_t>& fields, bool available) {
   fields.clear();
   auto fld = game_board().to_pos(for_index);
 
@@ -164,17 +178,17 @@ void circle(std::uint32_t for_index, std::vector<std::uint32_t>& fields, bool av
   }
 }
 
-void all_free(std::vector<std::uint32_t>& fields) {
+void all_free(std::vector<index_t>& fields) {
   for (std::uint32_t index = 0; index < game_board().rows_n * game_board().cols_n; ++index) {
-    if (game_board().empty(index)) {
-      fields.push_back(index);
+    if (game_board().empty(index_t{index})) {
+      fields.emplace_back(index_t{index});
     }
   }
 }
 
-void all(std::vector<std::uint32_t>& fields) {
+void all(std::vector<index_t>& fields) {
   for (std::uint32_t index = 0; index < game_board().rows_n * game_board().cols_n; ++index) {
-    fields.push_back(index);
+    fields.emplace_back(index_t{index});
   }
 }
 

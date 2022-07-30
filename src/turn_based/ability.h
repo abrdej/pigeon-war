@@ -7,6 +7,7 @@
 
 #include <turn_based/bitmap_key.h>
 #include <turn_based/configurable.h>
+#include <turn_based/defs.h>
 #include <turn_based/hint_configuration.h>
 #include <turn_based/utils/descriptions.h>
 
@@ -65,7 +66,7 @@ class ability : public ability_interface, protected configurable, protected hint
 struct active_ability : ability {
   active_ability() = default;
   explicit active_ability(std::string name) : ability(std::move(name)) {}
-  virtual void prepare(std::uint32_t for_index) = 0;
+  virtual void prepare(index_t for_index) = 0;
 };
 
 struct passive_ability : ability {
@@ -82,7 +83,7 @@ struct ranged_ability : active_ability {
   std::int32_t range{0};
 };
 
-inline void try_prepare_ability(ability& x, std::uint32_t for_index) {
+inline void try_prepare_ability(ability& x, index_t for_index) {
   try {
     dynamic_cast<active_ability&>(x).prepare(for_index);
   } catch (std::bad_cast&) {}

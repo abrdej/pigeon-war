@@ -12,8 +12,6 @@
 
 // TODO: refactor with board container
 struct board {
-  static const std::uint32_t empty_id = std::numeric_limits<std::uint32_t>::max();
-
   using board_change_signal = boost::signals2::signal<void()>;
   board_change_signal board_change_signal_;
 
@@ -22,20 +20,20 @@ struct board {
     board_change_signal_.connect(x);
   }
 
-  void insert(std::uint32_t on_index, entity_id_t entity_id);
-  void remove(std::uint32_t from_index);
-  entity_id_t move(std::uint32_t from_index, std::uint32_t to_index);
-  entity_id_t take(std::uint32_t from_index);
-  entity_id_t take_bottom(std::uint32_t from_index);
-  void give_back(entity_id_t entity_id, std::uint32_t to_index);
-  entity_id_t at(std::uint32_t at_index);
-  bool empty(std::uint32_t at_index);
-  std::uint32_t index_for(entity_id_t entity_id);
+  void insert(index_t on_index, entity_id_t entity_id);
+  void remove(index_t from_index);
+  entity_id_t move(index_t from_index, index_t to_index);
+  entity_id_t take(index_t from_index);
+  entity_id_t take_bottom(index_t from_index);
+  void give_back(entity_id_t entity_id, index_t to_index);
+  entity_id_t at(index_t at_index);
+  bool empty(index_t at_index);
+  index_t index_for(entity_id_t entity_id);
   void remove_entity(entity_id_t entity_id);
   void for_each(const std::function<void(entity_id_t entity_id, std::uint32_t col, std::uint32_t row)>& func);
   void set_size(std::uint32_t cols, std::uint32_t rows);
-  std::pair<std::uint32_t, std::uint32_t> to_pos(std::uint32_t index);
-  std::uint32_t to_index(std::uint32_t col, std::uint32_t row);
+  std::pair<std::uint32_t, std::uint32_t> to_pos(index_t index);
+  index_t to_index(std::uint32_t col, std::uint32_t row);
   bool is_valid(std::uint32_t col, std::uint32_t row);
 
   std::uint32_t cols_n{0};

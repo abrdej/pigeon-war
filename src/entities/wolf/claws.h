@@ -10,7 +10,7 @@ class claws final : public neighboring_target_ability<>, per_turn_usable {
   ABILITY_TYPE(offensive)
 
  private:
-  void use(std::uint32_t index_on) override;
+  void use(index_t index_on) override;
 
  private:
   static constexpr auto name = "claws";

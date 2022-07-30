@@ -19,12 +19,12 @@ sword_blow::sword_blow(entity_id_t entity_id)
   LOG(debug) << "damage: " << damage_;
 }
 
-void sword_blow::use(std::uint32_t index_on) {
+void sword_blow::use(index_t index_on) {
   if (used) return;
 
   auto used_from_index = game_control().selected_index_;
 
-  std::vector<std::uint32_t> around_fields_ids;
+  std::vector<index_t> around_fields_ids;
   board_helper::neighboring_fields(used_from_index, around_fields_ids, false);
 
   sender::send(make_action_message(name, used_from_index));

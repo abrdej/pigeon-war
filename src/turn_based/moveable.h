@@ -7,12 +7,12 @@
 #include <turn_based/base_effect.h>
 
 class moveable_base : public active_ability {
-  using move_callback_type = std::function<void(std::uint32_t, std::uint32_t, std::int32_t)>;
+  using move_callback_type = std::function<void(index_t, index_t, std::int32_t)>;
 
   std::unordered_map<std::uint32_t, moveable_base::move_callback_type> move_callbacks;
 
  protected:
-  void call_move_callbacks(std::uint32_t from_index, std::uint32_t to_index, std::int32_t cost) {
+  void call_move_callbacks(index_t from_index, index_t to_index, std::int32_t cost) {
     for (auto&& callback_pack : move_callbacks) {
       callback_pack.second(from_index, to_index, cost);
     }
@@ -63,8 +63,8 @@ class moveable final : public moveable_base, turn_callback_helper {
   void skip_collisions(bool value) { skip_collisions_ = value; }
 
  private:
-  void prepare(std::uint32_t for_index) override;
-  void move(std::uint32_t index_to);
+  void prepare(index_t for_index) override;
+  void move(index_t index_to);
 
  private:
   std::int32_t range;

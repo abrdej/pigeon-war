@@ -14,7 +14,7 @@ hypnosis::hypnosis(entity_id_t entity_id)
   configure_hint(config_directory + name + ".json", "hint");
 }
 
-void hypnosis::use(std::uint32_t index_on) {
+void hypnosis::use(index_t index_on) {
   if (used_)
     return;
 

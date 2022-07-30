@@ -19,10 +19,10 @@ using damage_signal = boost::signals2::signal<void(const damage_pack&)>;
 using damage_slot = damage_signal::slot_type;
 using damage_turn_slot = damage_signal::extended_slot_type;
 
-void play_change_health_animation(std::uint32_t to_index, entity_id_t entity_id,
+void play_change_health_animation(index_t to_index, entity_id_t entity_id,
                                   std::int32_t change_health);
 
-void play_power_change_animation(std::uint32_t to_index, std::int32_t change_power);
+void play_power_change_animation(index_t to_index, std::int32_t change_power);
 
 std::unordered_map<entity_id_t, std::int32_t> get_healths();
 

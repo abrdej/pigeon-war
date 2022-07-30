@@ -11,7 +11,7 @@ class hypnosis final : public path_target_ability {
   }
 
  private:
-  void use(std::uint32_t index_on);
+  void use(index_t index_on);
 
   static constexpr auto name = "hypnosis";
   bool used_{false};

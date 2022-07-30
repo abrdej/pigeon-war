@@ -12,7 +12,7 @@ public:
   }
 
 private:
-  void use(std::uint32_t index_on) override;
+  void use(index_t index_on) override;
 
   static constexpr auto name = "sword_blow";
   const entity_id_t entity_id_;

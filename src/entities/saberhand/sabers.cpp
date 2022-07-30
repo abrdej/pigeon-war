@@ -19,16 +19,16 @@ sabers::sabers(entity_id_t entity_id)
   LOG(debug) << "damage: " << damage_;
 }
 
-void sabers::prepare(std::uint32_t for_index) {
+void sabers::prepare(index_t for_index) {
   game_control().selected_index_ = for_index;
   board_helper::neighboring_fields(for_index, game_control().possible_movements_, false);
   game_control().actual_targeting_type_ = target_types::enemy;
-  game_control().wait_for_action([this](std::uint32_t index) {
+  game_control().wait_for_action([this](index_t index) {
     return target(index);
   });
 }
 
-void sabers::target(std::uint32_t target_index) {
+void sabers::target(index_t target_index) {
   if (has_value(targets_, target_index)) {
     if (used) {
       return;
@@ -49,13 +49,13 @@ void sabers::target(std::uint32_t target_index) {
     board_helper::neighboring_fields(target_index, game_control().possible_movements_, false);
     game_control().possible_movements_.push_back(target_index);
     game_control().actual_targeting_type_ = target_types::enemy;
-    game_control().wait_for_action([this](std::uint32_t index) {
+    game_control().wait_for_action([this](index_t index) {
       return target(index);
     });
   }
 }
 
-void sabers::use(std::uint32_t index_on) {
+void sabers::use(index_t index_on) {
   if (game_board().empty(index_on)) {
     return;
   }

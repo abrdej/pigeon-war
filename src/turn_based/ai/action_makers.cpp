@@ -27,7 +27,7 @@ bool attack_enemy::operator()(ai_knowledge& knowledge) {
 
   try_prepare_ability(*offensive, entity_index);
 
-  auto target_enemy_index = knowledge.entity(entity_id).get<std::uint32_t>("target_enemy_index");
+  auto target_enemy_index = knowledge.entity(entity_id).get<index_t>("target_enemy_index");
 
   if (game_control().is_possible_movement(target_enemy_index)) {
     game_control().do_action(target_enemy_index);

@@ -48,7 +48,7 @@ void wolfs_night_scenario_factory::create() {
 
   auto spawn_samurai_rat = [&players_manager_ref, tester_id]() mutable {
     auto samurai_rat_id = game::get<entities_factory>().create("samurai_rat");
-    game_board().insert(10, samurai_rat_id);
+    game_board().insert(index_t{10}, samurai_rat_id);
     players_manager_ref.add_entity_for_player(tester_id, samurai_rat_id);
 
     if_any_die({samurai_rat_id}, [&]() {
@@ -60,18 +60,18 @@ void wolfs_night_scenario_factory::create() {
   };
 
   std::vector<index_t> spawning_indices = {
-      4, 28, 136
+      index_t{4}, index_t{28}, index_t{136}
   };
 
   auto spawner_holder = make_every_two_turns_from_next_callback_holder(
       std::numeric_limits<std::int32_t>::max(), [i = 0, spawn_wolf, spawning_indices]() mutable {
         LOG(debug) << "Spawning wolf";
-        auto spawn_index = i++ % spawning_indices.size();
+        auto spawn_index = index_t{static_cast<index_t::value_type>(i++ % spawning_indices.size())};
 
         LOG(debug) << "Is slot empty: " << game_board().empty(spawn_index);
 
         if (game::get<board>().empty(spawn_index)) {
-          spawn_wolf(spawning_indices[spawn_index]);
+          spawn_wolf(spawning_indices[spawn_index.cast()]);
         }
       });
 

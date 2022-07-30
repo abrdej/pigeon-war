@@ -17,7 +17,7 @@ class power_bullet final : public straight_target_ability<2>, per_turn_usable {
   }
 
  private:
-  void use(std::uint32_t index_on) override;
+  void use(index_t index_on) override;
 
   static constexpr auto name = "power_bullet";
 

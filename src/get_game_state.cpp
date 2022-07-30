@@ -27,7 +27,7 @@ global_game_state get_global_game_state() {
 local_game_state get_local_game_state() {
   local_game_state local_state{};
 
-  for (auto&& idx : game_control().possible_movements_)
+  for (auto idx : game_control().possible_movements_)
     local_state.possible_movements.push_back(idx);
 
   local_state.actual_target_type = game_control().actual_targeting_type_;
@@ -36,7 +36,7 @@ local_game_state get_local_game_state() {
   local_state.usable.fill(false);
 
   // verify this
-  if (game_control().selected_index_ != no_selected_index) {
+  if (game_control().selected_index_ != null_index) {
     auto entity_id = game_board().at(game_control().selected_index_);
     auto entity = game::get<entity_manager>().get(entity_id);
 

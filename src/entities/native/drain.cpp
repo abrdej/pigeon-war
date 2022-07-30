@@ -19,7 +19,7 @@ drain::drain(entity_id_t entity_id)
   LOG(debug) << "drain_amount: " << drain_amount_;
 }
 
-void drain::use(std::uint32_t index_on) {
+void drain::use(index_t index_on) {
   if (used) {
     return;
   }

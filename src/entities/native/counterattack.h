@@ -9,7 +9,7 @@ class counterattack final : public passive_ability, per_turn_usable {
   explicit counterattack(entity_id_t entity_id);
 
  private:
-  void use(std::uint32_t index_on);
+  void use(index_t index_on);
 
   static constexpr auto name = "counterattack";
   const entity_id_t entity_id_;

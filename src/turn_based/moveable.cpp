@@ -5,7 +5,7 @@
 #include <turn_based/managers/entity_manager.h>
 #include <turn_based/game_controller.h>
 
-void moveable::prepare(std::uint32_t for_index) {
+void moveable::prepare(index_t for_index) {
   game_control().selected_index_ = for_index;
   game_control().actual_state_ = states_types::wait_for_action;
 
@@ -26,10 +26,10 @@ void moveable::prepare(std::uint32_t for_index) {
   }
 
   game_control().actual_targeting_type_ = target_types::moving;
-  game_control().wait_for_action([this](std::uint32_t index) { return move(index); });
+  game_control().wait_for_action([this](index_t index) { return move(index); });
 }
 
-void moveable::move(std::uint32_t index_to) {
+void moveable::move(index_t index_to) {
   if (used) {
     return;
   }
@@ -46,7 +46,7 @@ void moveable::move(std::uint32_t index_to) {
 
   call_move_callbacks(move_from_index, index_to, cost);
 
-  game_control().selected_index_ = no_selected_index;
+  game_control().selected_index_ = null_index;
 
   //	sender::send(make_action_message("move", move_from_index, index_to));
   sender::send(make_action_message("move", entity_id, index_to));

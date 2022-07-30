@@ -14,7 +14,7 @@ bool find_nearest_enemy::operator()(ai_knowledge& knowledge) {
 
   auto player_id = active_player_id(knowledge);
 
-  std::vector<std::uint32_t> enemies_indexes;
+  std::vector<index_t> enemies_indexes;
   players_helpers::enemy_entities_indexes(player_id, enemies_indexes);
   if (enemies_indexes.empty()) return false;
 
@@ -30,7 +30,7 @@ bool find_nearest_enemy::operator()(ai_knowledge& knowledge) {
   auto entity_id = active_entity_id(knowledge);
 
   auto min_it = boost::range::min_element(distances_to_enemies);
-  std::uint32_t nearest_enemy_index = enemies_indexes[min_it - std::begin(distances_to_enemies)];
+  auto nearest_enemy_index = enemies_indexes[min_it - std::begin(distances_to_enemies)];
 
   knowledge.entity(entity_id).insert("nearest_enemy_index", nearest_enemy_index);
   knowledge.entity(entity_id).insert("target_enemy_index", nearest_enemy_index);
@@ -55,13 +55,13 @@ bool find_position_for_shot::operator()(ai_knowledge& knowledge) {
   path_finder path_finder(false);
 
   auto destination_index = path_finder.find_first_satisfy_conditions(
-      entity_index, [&offensive_ability, &knowledge, entity_id](std::uint32_t index) -> bool {
+      entity_index, [&offensive_ability, &knowledge, entity_id](index_t index) -> bool {
         try_prepare_ability(*offensive_ability, index);
         return game_control().is_possible_movement(
-            knowledge.entity(entity_id).get<std::uint32_t>("target_enemy_index"));
+            knowledge.entity(entity_id).get<index_t>("target_enemy_index"));
       });
 
-  if (destination_index == no_selected_index) {
+  if (destination_index == null_index) {
     return false;
   }
 
@@ -75,12 +75,12 @@ bool find_lowest_health_target::operator()(ai_knowledge& knowledge) {
   auto player_id = active_player_id(knowledge);
   auto entity_id = active_entity_id(knowledge);
 
-  std::vector<std::uint32_t> enemies_indexes;
+  std::vector<index_t> enemies_indexes;
   players_helpers::enemy_entities_indexes(player_id, enemies_indexes);
   if (enemies_indexes.empty()) return false;
 
   std::int32_t lowest_health = std::numeric_limits<std::int32_t>::max();
-  std::uint32_t lowest_health_enemy_index = 0;
+  index_t lowest_health_enemy_index{0};
 
   for (auto enemy_index : enemies_indexes) {
     auto enemy_id = game_board().at(enemy_index);
@@ -105,13 +105,13 @@ bool find_best_target_for_golem::operator()(ai_knowledge& knowledge) {
   auto player_id = active_player_id(knowledge);
   auto entity_id = active_entity_id(knowledge);
 
-  std::vector<std::uint32_t> enemies_indexes;
+  std::vector<index_t> enemies_indexes;
   players_helpers::enemy_entities_indexes(player_id, enemies_indexes);
 
   if (enemies_indexes.empty()) return false;
 
   std::int32_t lowest_health = std::numeric_limits<std::int32_t>::max();
-  std::uint32_t best_target_index = std::numeric_limits<std::uint32_t>::max();
+  index_t best_target_index = null_index;
 
   for (auto enemy_index : enemies_indexes) {
     auto enemy_id = game_board().at(enemy_index);
@@ -129,7 +129,7 @@ bool find_best_target_for_golem::operator()(ai_knowledge& knowledge) {
     }
   }
 
-  if (best_target_index == std::numeric_limits<std::uint32_t>::max()) {
+  if (best_target_index == null_index) {
     return false;
   }
 
