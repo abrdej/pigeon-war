@@ -5,7 +5,7 @@
 #include <turn_based/board.h>
 #include <turn_based/turn_system.h>
 #include <turn_based/sender.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 
 struct power_filed : turn_callback_helper {
   explicit power_filed(std::uint32_t entity_id, std::int32_t initial_power,

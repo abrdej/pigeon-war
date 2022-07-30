@@ -16,7 +16,7 @@
 #include <turn_based/board.h>
 #include <turn_based/event_center.h>
 #include <turn_based/managers/players_manager.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/scenario_factory.h>
 #include <turn_based/sender.h>
 

@@ -4,7 +4,7 @@
 #include <logging/logger.h>
 #include <turn_based/board.h>
 #include <turn_based/damage_dealers.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
 shoot::shoot(id_t entity_id)

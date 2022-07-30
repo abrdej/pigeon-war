@@ -2,7 +2,7 @@
 
 #include <turn_based/components/damage_taker.h>
 #include <turn_based/board.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
 invisibility::invisibility(std::uint32_t entity_id)

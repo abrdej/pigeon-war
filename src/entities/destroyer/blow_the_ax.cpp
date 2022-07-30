@@ -4,7 +4,7 @@
 #include <logging/logger.h>
 #include <turn_based/board.h>
 #include <turn_based/damage_dealers.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
 blow_the_ax::blow_the_ax(std::uint32_t entity_id)

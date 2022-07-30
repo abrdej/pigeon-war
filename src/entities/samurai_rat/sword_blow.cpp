@@ -4,7 +4,7 @@
 #include <turn_based/components/health_field.h>
 #include <turn_based/damage_dealers.h>
 #include <turn_based/managers/entity_manager.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
 sword_blow::sword_blow(std::uint32_t entity_id)

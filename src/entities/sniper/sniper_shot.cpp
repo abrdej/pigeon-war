@@ -5,7 +5,7 @@
 #include <turn_based/damage_dealers.h>
 #include <turn_based/game_controller.h>
 #include <turn_based/managers/entity_manager.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
 sniper_shot::sniper_shot(id_t entity_id)

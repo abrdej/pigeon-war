@@ -10,7 +10,7 @@
 #include <boost/function.hpp>
 
 #include <turn_based/entity.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
 class entity_manager final {

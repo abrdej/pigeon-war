@@ -3,7 +3,7 @@
 #include <turn_based/components/applied_effects.h>
 #include <turn_based/damage_dealers.h>
 #include <turn_based/game_controller.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
 power_bullet::power_bullet(std::uint32_t entity_id)

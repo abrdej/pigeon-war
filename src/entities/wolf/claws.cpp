@@ -3,7 +3,7 @@
 #include <config.h>
 #include <turn_based/board.h>
 #include <turn_based/damage_dealers.h>
-#include <turn_based/messages/massages_makers.h>
+#include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
 claws::claws(id_t entity_id)
