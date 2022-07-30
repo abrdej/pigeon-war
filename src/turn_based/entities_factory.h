@@ -3,11 +3,13 @@
 #include <memory>
 #include <string>
 
+#include <turn_based/defs.h>
+
 class entities_factory {
  public:
   entities_factory();
   ~entities_factory();
-  std::uint32_t create(const std::string& entity_name);
+  entity_id_t create(const std::string& entity_name);
 
  private:
   struct pimpl;

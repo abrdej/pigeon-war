@@ -12,6 +12,7 @@ find_package(Boost COMPONENTS program_options log log_setup system REQUIRED)
 find_package(TBB REQUIRED)
 find_package(GTest REQUIRED)
 
+add_subdirectory(external/external/type_safe)
 add_subdirectory(src/logging)
 add_subdirectory(src/turn_based)
 add_subdirectory(src/networking)

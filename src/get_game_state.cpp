@@ -21,7 +21,7 @@ global_game_state get_global_game_state() {
   state.entities_players = get_entity_players();
   state.entities_additional_effects = get_effects();
 
-  return std::move(state);
+  return state;
 }
 
 local_game_state get_local_game_state() {
@@ -40,7 +40,7 @@ local_game_state get_local_game_state() {
     auto entity_id = game_board().at(game_control().selected_index_);
     auto entity = game::get<entity_manager>().get(entity_id);
 
-    if (entity_id != board::empty_id) {
+    if (entity_id != null_entity_id) {
       if (entity.contain<abilities>()) {
         auto abilities_ptr = entity.get<abilities>();
         for (std::int32_t i = 0; i < 5; ++i) {
@@ -63,5 +63,5 @@ local_game_state get_local_game_state() {
     }
   }
 
-  return std::move(local_state);
+  return local_state;
 }

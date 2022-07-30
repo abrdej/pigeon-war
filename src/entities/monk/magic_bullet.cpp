@@ -5,7 +5,7 @@
 #include <turn_based/components/power_field.h>
 #include <turn_based/damage_dealers.h>
 
-magic_bullet::magic_bullet(std::uint32_t entity_id)
+magic_bullet::magic_bullet(entity_id_t entity_id)
     : path_target_ability(name, 3),
       entity_id_(entity_id),
       magic_power_accumulation_amount_(

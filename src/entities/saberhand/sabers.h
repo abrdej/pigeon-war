@@ -7,7 +7,7 @@
 
 class sabers final : public active_ability, per_turn_usable {
  public:
-  explicit sabers(std::uint32_t entity_id);
+  explicit sabers(entity_id_t entity_id);
 
   [[nodiscard]] bool usable() const override {
     return !used;
@@ -19,7 +19,7 @@ class sabers final : public active_ability, per_turn_usable {
   void use(std::uint32_t index_on);
 
   static constexpr auto name = "sabers";
-  const std::uint32_t entity_id_;
+  const entity_id_t entity_id_;
   const std::int32_t damage_{7};
   std::vector<std::uint32_t> targets_;
 };

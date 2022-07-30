@@ -19,12 +19,12 @@ using damage_signal = boost::signals2::signal<void(const damage_pack&)>;
 using damage_slot = damage_signal::slot_type;
 using damage_turn_slot = damage_signal::extended_slot_type;
 
-void play_change_health_animation(std::uint32_t to_index, std::uint32_t entity_id,
+void play_change_health_animation(std::uint32_t to_index, entity_id_t entity_id,
                                   std::int32_t change_health);
 
 void play_power_change_animation(std::uint32_t to_index, std::int32_t change_power);
 
-std::unordered_map<std::uint32_t, std::int32_t> get_healths();
+std::unordered_map<entity_id_t, std::int32_t> get_healths();
 
 enum class on_receive_damage_policy { before, after };
 
@@ -185,7 +185,7 @@ class damage_manager {
     std::function<std::int32_t(health_field&, const damage_pack&)> impl;
   };
 
-  std::unordered_map<std::uint32_t, damage_receiver_impl> damage_receivers_;
+  std::unordered_map<entity_id_t, damage_receiver_impl> damage_receivers_;
   damage_signal receive_damage_before_signal_;
   damage_signal receive_damage_after_signal_;
 
@@ -250,11 +250,11 @@ class damage_manager {
   }
 
   template <typename DamageReceiver>
-  void set_damage_receiver(std::uint32_t entity_id, DamageReceiver dmg_receiver) {
+  void set_damage_receiver(entity_id_t entity_id, DamageReceiver dmg_receiver) {
     damage_receivers_[entity_id] = dmg_receiver;
   }
 
-  std::function<std::int32_t(health_field&, const damage_pack&)> get_damage_receiver(std::uint32_t entity_id) {
+  std::function<std::int32_t(health_field&, const damage_pack&)> get_damage_receiver(entity_id_t entity_id) {
     return damage_receivers_[entity_id];
   }
 
@@ -264,14 +264,14 @@ class damage_manager {
 };
 
 template <typename DamageReceiver>
-inline void set_damage_receiver(std::uint32_t entity_id, DamageReceiver damage_receiver) {
+inline void set_damage_receiver(entity_id_t entity_id, DamageReceiver damage_receiver) {
 //  game::get<entity_manager>().get(entity_id).get<damage_taker>()->set_damage_receiver(
 //      damage_receiver);
   game::get<damage_manager>().set_damage_receiver(entity_id, damage_receiver);
 }
 
 template <typename Callback>
-inline damage_connection on_receive_damage(std::uint32_t entity_id, Callback callback,
+inline damage_connection on_receive_damage(entity_id_t entity_id, Callback callback,
                                            const on_receive_damage_policy& policy) {
   //return game::get<entity_manager>().get(entity_id).get<damage_taker>()->on_receive_damage(callback,
   //                                                                                         policy);
@@ -287,11 +287,11 @@ inline damage_connection on_receive_damage(std::uint32_t entity_id, Callback cal
 //      callback_id);
 //}
 
-inline std::function<std::int32_t(health_field&, const damage_pack&)> get_damage_receiver(std::uint32_t entity_id) {
+inline std::function<std::int32_t(health_field&, const damage_pack&)> get_damage_receiver(entity_id_t entity_id) {
   //return game::get<entity_manager>().get(entity_id).get<damage_taker>()->get_damage_receiver();
   return game::get<damage_manager>().get_damage_receiver(entity_id);
 }
 
-inline void set_destructible(std::uint32_t entity_id, bool value) {
+inline void set_destructible(entity_id_t entity_id, bool value) {
   game::get<entity_manager>().get(entity_id).get<health_field>()->is_destructible = value;
 }

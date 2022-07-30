@@ -5,7 +5,7 @@
 
 class sniper_shot final : public active_ability, per_turn_usable {
  public:
-  explicit sniper_shot(id_t entity_id);
+  explicit sniper_shot(entity_id_t entity_id);
 
   bool usable() const override {
     return !used;
@@ -17,7 +17,7 @@ class sniper_shot final : public active_ability, per_turn_usable {
 
  private:
   static constexpr auto name = "sniper_shot";
-  id_t entity_id_;
+  const entity_id_t entity_id_;
   std::int32_t range_{10};
   std::int32_t damage_{12};
   std::int32_t additional_damage_{12};

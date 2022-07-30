@@ -5,7 +5,7 @@
 
 class drain final : public neighboring_target_ability<>, per_turn_usable {
  public:
-  explicit drain(std::uint32_t entity_id);
+  explicit drain(entity_id_t entity_id);
 
   bool usable() const override {
     return !used;
@@ -15,7 +15,7 @@ class drain final : public neighboring_target_ability<>, per_turn_usable {
   void use(std::uint32_t index_on) override;
 
   static constexpr auto name = "drain";
-  const std::uint32_t entity_id_;
+  const entity_id_t entity_id_;
   const std::int32_t damage_ = 10;
   const std::int32_t drain_amount_ = 4;
 };

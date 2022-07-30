@@ -4,7 +4,7 @@
 #include <turn_based/damage_dealers.h>
 #include <turn_based/board.h>
 
-tongue_of_fire::tongue_of_fire(std::uint32_t entity_id)
+tongue_of_fire::tongue_of_fire(entity_id_t entity_id)
     : path_target_ability(name, 7),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {

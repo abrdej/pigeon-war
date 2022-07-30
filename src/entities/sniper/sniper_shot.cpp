@@ -8,7 +8,7 @@
 #include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
-sniper_shot::sniper_shot(id_t entity_id)
+sniper_shot::sniper_shot(entity_id_t entity_id)
     : active_ability(name),
       entity_id_(entity_id),
       range_(get_param_or_default("range", range_)),

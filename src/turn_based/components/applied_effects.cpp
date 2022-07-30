@@ -1,6 +1,6 @@
 #include <turn_based/components/applied_effects.h>
 
-void remove_negative_effects(std::uint32_t entity_id) {
+void remove_negative_effects(entity_id_t entity_id) {
   auto& entity_effects =
       game::get<entity_manager>().get(entity_id).get<applied_effects>()->named_data;
   std::vector<std::string> effects_to_remove;
@@ -15,9 +15,8 @@ void remove_negative_effects(std::uint32_t entity_id) {
   }
 }
 
-std::unordered_map<std::uint32_t, std::vector<std::string>> get_effects() {
-  std::unordered_map<std::uint32_t, std::vector<std::string>> result;
-
+std::unordered_map<entity_id_t, std::vector<std::string>> get_effects() {
+  std::unordered_map<entity_id_t, std::vector<std::string>> result;
   game::get<entity_manager>().for_all([&result](base_entity entity) {
     if (entity.contain<applied_effects>()) {
       std::shared_ptr<applied_effects> effect_ptr = entity.get<applied_effects>();
@@ -29,5 +28,5 @@ std::unordered_map<std::uint32_t, std::vector<std::string>> get_effects() {
       }
     }
   });
-  return std::move(result);
+  return result;
 }

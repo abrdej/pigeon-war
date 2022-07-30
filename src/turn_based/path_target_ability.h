@@ -34,7 +34,7 @@ public:
   void prepare(std::uint32_t for_index) override {
     auto range = this->range;
 
-    if (entity_id_ != std::numeric_limits<std::uint32_t>::max()) {
+    if (entity_id_ != null_entity_id) {
       auto modifications = game_get<entity_manager>().get(entity_id_).get<modification>();
 
       switch (target_type) {
@@ -74,7 +74,7 @@ public:
   virtual void use(std::uint32_t use_on_index) = 0;
 
 protected:
-  std::uint32_t entity_id_;
+  entity_id_t entity_id_;
   const target_types target_type;
   const bool all_fields;
 };

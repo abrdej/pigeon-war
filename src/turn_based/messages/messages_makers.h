@@ -6,6 +6,15 @@
 
 #include <turn_based/game_state.h>
 
+inline void to_json(nlohmann::json& j, const entity_id_t& x) {
+  j = x.cast();
+}
+
+inline void from_json(const nlohmann::json& j, entity_id_t& x) {
+  x = entity_id_t{j.get<entity_id_t::value_type>()};
+}
+
+
 std::string make_map_size_message(const std::pair<std::uint32_t, std::uint32_t>& map_size);
 
 std::string make_client_id_message(std::uint32_t client_id);
@@ -41,15 +50,15 @@ std::string make_description_message(const std::string& desc);
 
 std::string make_effect_description_message(const std::string& desc);
 
-std::string make_remove_entity_message(std::uint32_t entity_id);
+std::string make_remove_entity_message(entity_id_t entity_id);
 
-std::string make_create_entity_message(std::uint32_t entity_id, const std::string& name,
+std::string make_create_entity_message(entity_id_t entity_id, const std::string& name,
                                        std::int32_t health, std::int32_t power,
                                        std::uint32_t index);
 
-std::string make_create_entity_message(std::uint32_t entity_id);
+std::string make_create_entity_message(entity_id_t entity_id);
 
-std::string make_move_entity_message(std::uint32_t entity_id, std::uint32_t from_index,
+std::string make_move_entity_message(entity_id_t, std::uint32_t from_index,
                                      std::uint32_t to_index);
 
 std::string make_battle_end_message(std::uint32_t player_id);

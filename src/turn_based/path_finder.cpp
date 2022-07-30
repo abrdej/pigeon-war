@@ -8,7 +8,7 @@ path_finder::path_finder(bool all_fields) : start_index_(-1) {
   board_graph.set_size(game_board().cols_n * game_board().rows_n);
 
   game_board().for_each(
-      [this, &all_fields](std::uint32_t entity_id, std::uint32_t col, std::uint32_t row) {
+      [this, &all_fields](entity_id_t entity_id, std::uint32_t col, std::uint32_t row) {
         auto rows_n = game_board().rows_n;
         auto cols_n = game_board().cols_n;
         auto key_from = game_board().to_index(col, row);

@@ -4,7 +4,7 @@
 
 class hypnosis final : public path_target_ability {
  public:
-  explicit hypnosis(id_t entity_id);
+  explicit hypnosis(entity_id_t entity_id);
 
   bool usable() const override {
     return !used_;

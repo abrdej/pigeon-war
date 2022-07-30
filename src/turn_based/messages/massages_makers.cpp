@@ -1,5 +1,6 @@
 #include <turn_based/messages/messages_makers.h>
 #include <turn_based/components/power_field.h>
+#include <turn_based/defs.h>
 #include <turn_based/game.h>
 #include <turn_based/managers/entity_manager.h>
 #include <turn_based/messages/from_to_json.h>
@@ -77,17 +78,17 @@ std::string make_effect_description_message(const std::string& desc) {
   return data.dump();
 }
 
-std::string make_remove_entity_message(std::uint32_t entity_id) {
+std::string make_remove_entity_message(entity_id_t entity_id) {
   json data;
-  data["remove_entity"] = entity_id;
+  data["remove_entity"] = entity_id.cast();
   return data.dump();
 }
 
-std::string make_create_entity_message(std::uint32_t entity_id, const std::string& name,
+std::string make_create_entity_message(entity_id_t entity_id, const std::string& name,
                                        std::int32_t health, std::int32_t power,
                                        std::uint32_t index) {
   json data;
-  data["create_entity"] = entity_id;
+  data["create_entity"] = entity_id.cast();
   data["name"] = name;
   data["health"] = health;
   data["power"] = power;
@@ -95,7 +96,7 @@ std::string make_create_entity_message(std::uint32_t entity_id, const std::strin
   return data.dump();
 }
 
-std::string make_create_entity_message(std::uint32_t entity_id) {
+std::string make_create_entity_message(entity_id_t entity_id) {
   return make_create_entity_message(
       entity_id, game_get<entity_manager>().get(entity_id).name,
       game_get<entity_manager>().get(entity_id).get<health_field>()->health,
@@ -105,10 +106,10 @@ std::string make_create_entity_message(std::uint32_t entity_id) {
       game_get<board>().index_for(entity_id));
 }
 
-std::string make_move_entity_message(std::uint32_t entity_id, std::uint32_t from_index,
+std::string make_move_entity_message(entity_id_t entity_id, std::uint32_t from_index,
                                      std::uint32_t to_index) {
   json data;
-  data["move_entity"] = entity_id;
+  data["move_entity"] = entity_id.cast();
   data["from_index"] = from_index;
   data["to_index"] = to_index;
   return data.dump();

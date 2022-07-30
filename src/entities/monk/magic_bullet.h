@@ -5,7 +5,7 @@
 
 class magic_bullet final : public path_target_ability, protected per_turn_callback {
  public:
-  explicit magic_bullet(std::uint32_t entity_id);
+  explicit magic_bullet(entity_id_t entity_id);
 
   [[nodiscard]] bool usable() const override {
     return !used_;
@@ -17,7 +17,7 @@ class magic_bullet final : public path_target_ability, protected per_turn_callba
  private:
   static constexpr auto name = "magic_bullet";
 
-  std::uint32_t entity_id_;
+  entity_id_t entity_id_;
   std::int32_t magic_power_accumulation_amount_{10};
   std::int32_t magic_power_drain_amount_{4};
   bool used_{false};

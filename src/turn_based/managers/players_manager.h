@@ -7,6 +7,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include <turn_based/defs.h>
+
 enum players_ids : std::uint32_t {
   neutral_id = std::numeric_limits<std::uint32_t>::max(),
   no_player_id = std::numeric_limits<std::uint32_t>::max() - 1,
@@ -25,37 +27,37 @@ class players_manager {
     return static_cast<std::uint32_t>(players.size() - 1);
   }
 
-  void add_entity_for_player(std::uint32_t player_id, std::uint32_t entity_id) {
+  void add_entity_for_player(std::uint32_t player_id, entity_id_t entity_id) {
     entity_id_to_player_id[entity_id] = player_id;
   }
 
-  void add_neutral_entity(std::uint32_t entity_id) {
+  void add_neutral_entity(entity_id_t entity_id) {
     entity_id_to_player_id[entity_id] = players_ids::neutral_id;
   }
 
-  void add_destructive_surroundings(std::uint32_t entity_id) {
+  void add_destructive_surroundings(entity_id_t entity_id) {
     entity_id_to_player_id[entity_id] = players_ids::destructive_surroundings_id;
   }
 
-  bool player_entity(std::uint32_t player_id, std::uint32_t entity_id) {
+  bool player_entity(std::uint32_t player_id, entity_id_t entity_id) {
     return entity_id_to_player_id[entity_id] == player_id;
   }
-  bool active_player_entity(std::uint32_t entity_id) {
+  bool active_player_entity(entity_id_t entity_id) {
     return entity_id_to_player_id[entity_id] == active_player_id;
   }
 
-  bool enemy_entity(std::uint32_t player_id, std::uint32_t entity_id) {
+  bool enemy_entity(std::uint32_t player_id, entity_id_t entity_id) {
     return entity_id_to_player_id[entity_id] != player_id
         && entity_id_to_player_id[entity_id] != players_ids::neutral_id;
   }
 
-  bool neutral_entity(std::uint32_t entity_id) {
+  bool neutral_entity(entity_id_t entity_id) {
     return entity_id_to_player_id[entity_id] == players_ids::neutral_id;
   }
 
   std::string player_name(std::uint32_t player_id) { return players[player_id].first; }
 
-  std::uint32_t player_for_entity(std::uint32_t entity_id) {
+  std::uint32_t player_for_entity(entity_id_t entity_id) {
     auto it = entity_id_to_player_id.find(entity_id);
     if (it != std::end(entity_id_to_player_id)) {
       return it->second;
@@ -76,7 +78,7 @@ class players_manager {
 
  private:
   std::vector<std::pair<std::string, bool>> players;
-  std::unordered_map<std::uint32_t, std::uint32_t> entity_id_to_player_id;
+  std::unordered_map<entity_id_t, std::uint32_t> entity_id_to_player_id;
   std::uint32_t active_player_id{0};
 };
 

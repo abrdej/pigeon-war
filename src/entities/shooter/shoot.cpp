@@ -7,7 +7,7 @@
 #include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
-shoot::shoot(id_t entity_id)
+shoot::shoot(entity_id_t entity_id)
     : directed_target_ability(name),
       entity_id_(entity_id),
       bullets_per_turn_(get_param_or_default("bullets_per_turn", bullets_per_turn_)),

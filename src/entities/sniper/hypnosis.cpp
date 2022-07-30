@@ -8,7 +8,7 @@
 #include <turn_based/sender.h>
 #include <turn_based/turn_system.h>
 
-hypnosis::hypnosis(id_t entity_id)
+hypnosis::hypnosis(entity_id_t entity_id)
     : path_target_ability(name, range, target_types::enemy, true),
     duration_(get_param_or_default("duration", duration_)) {
   configure_hint(config_directory + name + ".json", "hint");

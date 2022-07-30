@@ -122,8 +122,9 @@ bool game_controller::valid_target(index_t target_index) {
 
       std::uint32_t target_value = target_index;
 
-      if (custom_valid_target_type == custom_target_type::entity_id)
-        target_value = game_board().at(target_index);
+      if (custom_valid_target_type == custom_target_type::entity_id) {
+        target_value = game_board().at(target_index).cast();
+      }
 
       if (!custom_valid_targets[caster_id].empty()) {
         LOG(debug) << "custom";

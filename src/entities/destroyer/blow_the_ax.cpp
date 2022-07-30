@@ -7,7 +7,7 @@
 #include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
-blow_the_ax::blow_the_ax(std::uint32_t entity_id)
+blow_the_ax::blow_the_ax(entity_id_t entity_id)
     : straight_target_ability(name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {

@@ -3,8 +3,9 @@
 #include <logging/logger.h>
 #include <turn_based/components/damage_taker.h>
 
-stone_skin::stone_skin(std::uint32_t entity_id)
+stone_skin::stone_skin(entity_id_t entity_id)
     : passive_ability(name),
+      entity_id_(entity_id),
       damage_reduction_(get_param_or_default("initial_damage_reduction", damage_reduction_)),
       reduction_increase_amount_(get_param_or_default("reduction_increase_amount", reduction_increase_amount_)) {
   set_damage_receiver(entity_id, [this](health_field& health_pack, const damage_pack& dmg) mutable {

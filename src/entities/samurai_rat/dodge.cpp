@@ -2,7 +2,7 @@
 
 #include <turn_based/components/damage_taker.h>
 
-dodge::dodge(std::uint32_t entity_id)
+dodge::dodge(entity_id_t entity_id)
     : passive_ability(name),
       entity_id_(entity_id) {
   set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {

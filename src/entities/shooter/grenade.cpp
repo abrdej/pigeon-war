@@ -5,7 +5,7 @@
 #include <turn_based/damage_dealers.h>
 #include <turn_based/board.h>
 
-grenade::grenade(id_t entity_id)
+grenade::grenade(entity_id_t entity_id)
     : path_target_ability(name, 3),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {

@@ -2,7 +2,7 @@
 
 #include <turn_based/managers/entity_manager.h>
 
-void board::insert(std::uint32_t on_index, std::uint32_t entity_id) {
+void board::insert(std::uint32_t on_index, entity_id_t entity_id) {
   fields_[on_index].push_back(entity_id);
 
   // TODO: we want to register this callback from somewhere else
@@ -18,7 +18,7 @@ void board::remove(std::uint32_t from_index) {
   board_change_signal_();
 }
 
-std::uint32_t board::move(std::uint32_t from_index, std::uint32_t to_index) {
+entity_id_t board::move(std::uint32_t from_index, std::uint32_t to_index) {
   auto entity_id = fields_[from_index].back();
   fields_[from_index].pop_back();
   fields_[to_index].push_back(entity_id);
@@ -28,7 +28,7 @@ std::uint32_t board::move(std::uint32_t from_index, std::uint32_t to_index) {
   return entity_id;
 }
 
-std::uint32_t board::take(std::uint32_t from_index) {
+entity_id_t board::take(std::uint32_t from_index) {
   auto entity_id = fields_[from_index].back();
   fields_[from_index].pop_back();
 
@@ -37,7 +37,7 @@ std::uint32_t board::take(std::uint32_t from_index) {
   return entity_id;
 }
 
-std::uint32_t board::take_bottom(std::uint32_t from_index) {
+entity_id_t board::take_bottom(std::uint32_t from_index) {
   auto entity_id = fields_[from_index].front();
   fields_[from_index].erase(std::begin(fields_[from_index]));
 
@@ -46,20 +46,20 @@ std::uint32_t board::take_bottom(std::uint32_t from_index) {
   return entity_id;
 }
 
-void board::give_back(std::uint32_t entity_id, std::uint32_t to_index) {
+void board::give_back(entity_id_t entity_id, std::uint32_t to_index) {
   fields_[to_index].push_back(entity_id);
   board_change_signal_();
 }
 
-std::uint32_t board::at(std::uint32_t at_index) {
+entity_id_t board::at(std::uint32_t at_index) {
   auto& field = fields_[at_index];
-  if (field.empty()) return empty_id;
+  if (field.empty()) return null_entity_id;
   return field.back();
 }
 
 bool board::empty(std::uint32_t at_index) { return fields_[at_index].empty(); }
 
-std::uint32_t board::index_for(std::uint32_t entity_id) {
+std::uint32_t board::index_for(entity_id_t entity_id) {
   auto it = std::find_if(std::begin(fields_), std::end(fields_), [entity_id](auto field) {
     if (field.empty()) return false;
     for (auto&& item : field) {
@@ -76,7 +76,7 @@ std::uint32_t board::index_for(std::uint32_t entity_id) {
     return empty_id;
 }
 
-void board::remove_entity(std::uint32_t entity_id) {
+void board::remove_entity(entity_id_t entity_id) {
   for (auto&& field : fields_) {
     auto it = std::remove(std::begin(field), std::end(field), entity_id);
     if (it != std::end(field)) {
@@ -88,12 +88,12 @@ void board::remove_entity(std::uint32_t entity_id) {
   board_change_signal_();
 }
 
-void board::for_each(const std::function<void(std::uint32_t entity_id, std::uint32_t col,
+void board::for_each(const std::function<void(entity_id_t entity_id, std::uint32_t col,
                                               std::uint32_t row)>& func) {
   for (std::uint32_t i = 0; i < fields_.size(); ++i) {
     auto col_row = to_pos(i);
     if (fields_[i].empty()) {
-      func(empty_id, col_row.first, col_row.second);
+      func(null_entity_id, col_row.first, col_row.second);
     } else {
       for (auto&& id : fields_[i]) {
         func(id, col_row.first, col_row.second);

@@ -33,20 +33,20 @@ struct ai_knowledge {
 
   knowledge_box& player(id_t player_id) { return players_knowledge_boxes_[player_id]; }
 
-  knowledge_box& entity(id_t entity_id) { return entities_knowledge_boxes_[entity_id]; }
+  knowledge_box& entity(entity_id_t entity_id) { return entities_knowledge_boxes_[entity_id]; }
 
  private:
   knowledge_box global_knowledge_box_;
   std::unordered_map<id_t, knowledge_box> players_knowledge_boxes_;
-  std::unordered_map<id_t, knowledge_box> entities_knowledge_boxes_;
+  std::unordered_map<entity_id_t, knowledge_box> entities_knowledge_boxes_;
 };
 
 inline id_t active_player_id(ai_knowledge& knowledge) {
   return knowledge.global().get<id_t>("active_player_id");
 }
 
-inline id_t active_entity_id(ai_knowledge& knowledge) {
-  return knowledge.global().get<id_t>("active_entity_id");
+inline entity_id_t active_entity_id(ai_knowledge& knowledge) {
+  return knowledge.global().get<entity_id_t>("active_entity_id");
 }
 
 }  // namespace ai

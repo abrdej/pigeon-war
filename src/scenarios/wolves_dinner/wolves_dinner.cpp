@@ -37,7 +37,7 @@ void wolves_dinner_scenario_factory::create() {
   using creator_helper::pos;
   std::vector<std::pair<std::uint32_t, std::uint32_t>> wolves_positions = {
       pos(5, 6), pos(9, 7), pos(12, 2), pos(12, 6), pos(8, 2)};
-  std::vector<std::uint32_t> enemies_ids;
+  std::vector<entity_id_t> enemies_ids;
   for (auto&& wolf_pos : wolves_positions) {
     auto wolf_id = game::get<entities_factory>().create("wolf");
     game::get<ai_manager>().add_ai_for(wolf_id, game::get<ai_factory>().create("wolf_ai"));

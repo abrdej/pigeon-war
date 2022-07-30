@@ -5,7 +5,7 @@
 #include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
-invisibility::invisibility(std::uint32_t entity_id)
+invisibility::invisibility(entity_id_t entity_id)
     : caster_target_ability(name),
       entity_id_(entity_id),
       duration_(get_param_or_default("duration", duration_)) {

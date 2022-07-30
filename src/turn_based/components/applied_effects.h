@@ -19,21 +19,21 @@ struct applied_effects {
   }
 };
 
-inline void add_effect(std::uint32_t entity_id, std::shared_ptr<applied_effect> x) {
+inline void add_effect(entity_id_t entity_id, std::shared_ptr<applied_effect> x) {
   auto applied_effects_ptr = game::get<entity_manager>().get(entity_id).get<applied_effects>();
   if (applied_effects_ptr) {
     applied_effects_ptr->put_named(x->get_name(), x);
   }
 }
 
-inline void remove_effect(std::uint32_t entity_id, const std::string& effect_name) {
+inline void remove_effect(entity_id_t entity_id, const std::string& effect_name) {
   game::get<entity_manager>().get(entity_id).get<applied_effects>()->destroy_named(effect_name);
 }
 
-inline bool has_effect(std::uint32_t entity_id, const std::string& effect_name) {
+inline bool has_effect(entity_id_t entity_id, const std::string& effect_name) {
   return game::get<entity_manager>().get(entity_id).get<applied_effects>()->has(effect_name);
 }
 
-void remove_negative_effects(std::uint32_t entity_id);
+void remove_negative_effects(entity_id_t entity_id);
 
-std::unordered_map<std::uint32_t, std::vector<std::string>> get_effects();
+std::unordered_map<entity_id_t, std::vector<std::string>> get_effects();

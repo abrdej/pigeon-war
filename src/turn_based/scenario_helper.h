@@ -20,7 +20,7 @@ void if_any_die(std::initializer_list<std::uint32_t> entities_id, Callback callb
 }
 
 template <typename Callback>
-void if_any_die(std::vector<std::uint32_t> entities_id, Callback callback) {
+void if_any_die(std::vector<entity_id_t> entities_id, Callback callback) {
   auto any_die = [callback]() {
     callback();
   };
@@ -30,10 +30,10 @@ void if_any_die(std::vector<std::uint32_t> entities_id, Callback callback) {
 }
 
 template <typename Callback>
-void if_all_die(std::initializer_list<std::uint32_t> entities_ids, Callback callback) {
-  auto entities_ids_ptr = std::make_shared<std::unordered_set<std::uint32_t>>();
+void if_all_die(std::initializer_list<entity_id_t> entities_ids, Callback callback) {
+  auto entities_ids_ptr = std::make_shared<std::unordered_set<entity_id_t>>();
 
-  auto someone_die = [callback, entities_ids_ptr](std::uint32_t entity_id) mutable {
+  auto someone_die = [callback, entities_ids_ptr](entity_id_t entity_id) mutable {
     entities_ids_ptr->erase(entity_id);
     if (entities_ids_ptr->empty()) {
       callback();
@@ -47,10 +47,10 @@ void if_all_die(std::initializer_list<std::uint32_t> entities_ids, Callback call
 }
 
 template <typename Callback>
-void if_all_die(std::vector<std::uint32_t> entities_ids, Callback callback) {
-  auto entities_ids_ptr = std::make_shared<std::unordered_set<std::uint32_t>>();
+void if_all_die(std::vector<entity_id_t> entities_ids, Callback callback) {
+  auto entities_ids_ptr = std::make_shared<std::unordered_set<entity_id_t>>();
 
-  auto someone_die = [callback, entities_ids_ptr](std::uint32_t entity_id) mutable {
+  auto someone_die = [callback, entities_ids_ptr](entity_id_t entity_id) mutable {
     entities_ids_ptr->erase(entity_id);
     if (entities_ids_ptr->empty()) {
       callback();

@@ -35,7 +35,7 @@ void wolfs_night_scenario_factory::create() {
   auto enemy_id = players_manager_ref.create_ai_player("enemy");
   players_manager_ref.add_entity_for_player(tester_id, shooter_id);
 
-  std::vector<std::uint32_t> enemies_ids;
+  std::vector<entity_id_t> enemies_ids;
 
   auto spawn_wolf = [&players_manager_ref, enemy_id, enemies_ids](index_t index) mutable {
     auto wolf_id = game::get<entities_factory>().create("wolf");

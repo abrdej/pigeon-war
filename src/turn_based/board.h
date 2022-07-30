@@ -7,6 +7,7 @@
 
 #include <boost/signals2.hpp>
 
+#include <turn_based/defs.h>
 #include <turn_based/game.h>
 
 // TODO: refactor with board container
@@ -21,17 +22,17 @@ struct board {
     board_change_signal_.connect(x);
   }
 
-  void insert(std::uint32_t on_index, std::uint32_t entity_id);
+  void insert(std::uint32_t on_index, entity_id_t entity_id);
   void remove(std::uint32_t from_index);
-  std::uint32_t move(std::uint32_t from_index, std::uint32_t to_index);
-  std::uint32_t take(std::uint32_t from_index);
-  std::uint32_t take_bottom(std::uint32_t from_index);
-  void give_back(std::uint32_t entity_id, std::uint32_t to_index);
-  std::uint32_t at(std::uint32_t at_index);
+  entity_id_t move(std::uint32_t from_index, std::uint32_t to_index);
+  entity_id_t take(std::uint32_t from_index);
+  entity_id_t take_bottom(std::uint32_t from_index);
+  void give_back(entity_id_t entity_id, std::uint32_t to_index);
+  entity_id_t at(std::uint32_t at_index);
   bool empty(std::uint32_t at_index);
-  std::uint32_t index_for(std::uint32_t entity_id);
-  void remove_entity(std::uint32_t entity_id);
-  void for_each(const std::function<void(std::uint32_t entity_id, std::uint32_t col, std::uint32_t row)>& func);
+  std::uint32_t index_for(entity_id_t entity_id);
+  void remove_entity(entity_id_t entity_id);
+  void for_each(const std::function<void(entity_id_t entity_id, std::uint32_t col, std::uint32_t row)>& func);
   void set_size(std::uint32_t cols, std::uint32_t rows);
   std::pair<std::uint32_t, std::uint32_t> to_pos(std::uint32_t index);
   std::uint32_t to_index(std::uint32_t col, std::uint32_t row);
@@ -39,7 +40,7 @@ struct board {
 
   std::uint32_t cols_n{0};
   std::uint32_t rows_n{0};
-  std::vector<std::vector<std::uint32_t>> fields_;
+  std::vector<std::vector<entity_id_t>> fields_;
 };
 
 inline auto& game_board() { return game::get<board>(); }

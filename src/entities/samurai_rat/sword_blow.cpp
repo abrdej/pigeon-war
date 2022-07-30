@@ -7,7 +7,7 @@
 #include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
-sword_blow::sword_blow(std::uint32_t entity_id)
+sword_blow::sword_blow(entity_id_t entity_id)
     : neighboring_target_ability(name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {

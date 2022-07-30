@@ -13,11 +13,11 @@
 static const auto no_selection = std::numeric_limits<std::uint32_t>::max();
 
 struct global_game_state {
-  std::vector<std::deque<id_t>> board;
-  std::unordered_map<std::uint32_t, std::int32_t> healths;
-  std::unordered_map<std::uint32_t, std::string> entities_names;
-  std::unordered_map<std::uint32_t, std::uint32_t> entities_players;
-  std::unordered_map<std::uint32_t, std::vector<std::string>> entities_additional_effects;
+  std::vector<std::deque<entity_id_t>> board;
+  std::unordered_map<entity_id_t, std::int32_t> healths;
+  std::unordered_map<entity_id_t, std::string> entities_names;
+  std::unordered_map<entity_id_t, std::uint32_t> entities_players;
+  std::unordered_map<entity_id_t, std::vector<std::string>> entities_additional_effects;
 };
 
 struct local_game_state {

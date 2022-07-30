@@ -29,7 +29,7 @@ class game_controller {
   std::vector<index_t> possible_movements_;
   std::vector<index_t> possible_movements_costs_;
 
-  std::unordered_map<index_t, std::unordered_set<index_t>> custom_valid_targets;
+  std::unordered_map<entity_id_t, std::unordered_set<index_t>> custom_valid_targets;
 
   enum class custom_target_type { board_index, entity_id };
 

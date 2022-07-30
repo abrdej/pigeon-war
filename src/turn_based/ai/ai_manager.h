@@ -4,7 +4,7 @@
 
 class ai_manager {
  public:
-  void add_ai_for(id_t entity_id, ai::behavior_node_ptr behavior_tree);
+  void add_ai_for(entity_id_t entity_id, ai::behavior_node_ptr behavior_tree);
   void perform_movement_new_ai(id_t player_id);
 
   ai::ai_knowledge& game_scope_knowledge() {
@@ -15,6 +15,6 @@ class ai_manager {
   }
 
  private:
-  std::unordered_map<id_t, ai::behavior_node_ptr> behavior_trees_;
+  std::unordered_map<entity_id_t, ai::behavior_node_ptr> behavior_trees_;
   ai::ai_knowledge game_scope_knowledge_;
 };

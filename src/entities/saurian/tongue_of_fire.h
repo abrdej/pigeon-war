@@ -5,7 +5,7 @@
 
 class tongue_of_fire final : public path_target_ability, per_turn_usable {
  public:
-  explicit tongue_of_fire(std::uint32_t entity_id);
+  explicit tongue_of_fire(entity_id_t entity_id);
 
   ABILITY_TYPE(offensive)
 
@@ -14,6 +14,6 @@ class tongue_of_fire final : public path_target_ability, per_turn_usable {
 
  private:
   static constexpr auto name = "tongue_of_fire";
-  const std::uint32_t entity_id_;
+  const entity_id_t entity_id_;
   std::int32_t damage_{9};
 };

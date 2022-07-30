@@ -47,7 +47,7 @@ struct entity_plugin {
 struct entities_factory::pimpl {
   pimpl() = default;
 
-  std::uint32_t create(const std::string& entity_name) {
+  entity_id_t create(const std::string& entity_name) {
     auto it = plugins_.find(entity_name);
     if (it == std::end(plugins_)) {
       it = plugins_.emplace(entity_name, entity_name).first;
@@ -66,6 +66,6 @@ entities_factory::entities_factory() : pimpl_(std::make_unique<pimpl>()) {
 
 entities_factory::~entities_factory() = default;
 
-std::uint32_t entities_factory::create(const std::string& entity_name) {
+entity_id_t entities_factory::create(const std::string& entity_name) {
   return pimpl_->create(entity_name);
 }

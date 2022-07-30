@@ -5,7 +5,7 @@
 
 class invisibility final : public caster_target_ability {
  public:
-  explicit invisibility(std::uint32_t entity_id);
+  explicit invisibility(entity_id_t entity_id);
 
   [[nodiscard]] bool usable() const override {
     return !used_;
@@ -18,7 +18,7 @@ class invisibility final : public caster_target_ability {
 
   static constexpr auto name = "invisibility";
   bool used_{false};
-  const std::uint32_t entity_id_;
+  const entity_id_t entity_id_;
   std::uint32_t index_{0};
   std::int32_t turn_counter_{0};
   const std::int32_t duration_{2};

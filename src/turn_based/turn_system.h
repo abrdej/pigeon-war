@@ -149,7 +149,7 @@ class turn_callback_helper {
   }
 
   template <typename Callback>
-  void after_player_turn(std::uint32_t entity_id, Callback callback) {
+  void after_player_turn(entity_id_t entity_id, Callback callback) {
     after_player_turn_holder_ =
         std::move(game::get<turn_system>().set_callback(frequency_types::every_turn, 0, [entity_id, callback]() {
           if (game::get<players_manager>().active_player_entity(entity_id)) {

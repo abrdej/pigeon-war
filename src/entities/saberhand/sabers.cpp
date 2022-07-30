@@ -7,7 +7,7 @@
 #include <turn_based/managers/entity_manager.h>
 #include <turn_based/utils/algorithm.h>
 
-sabers::sabers(std::uint32_t entity_id)
+sabers::sabers(entity_id_t entity_id)
     : active_ability(name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {

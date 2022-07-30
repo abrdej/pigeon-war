@@ -5,7 +5,7 @@
 
 class claws final : public neighboring_target_ability<>, per_turn_usable {
  public:
-  explicit claws(id_t entity_id);
+  explicit claws(entity_id_t entity_id);
 
   ABILITY_TYPE(offensive)
 
@@ -14,6 +14,6 @@ class claws final : public neighboring_target_ability<>, per_turn_usable {
 
  private:
   static constexpr auto name = "claws";
-  const id_t entity_id_;
+  const entity_id_t entity_id_;
   std::int32_t damage_{4};
 };

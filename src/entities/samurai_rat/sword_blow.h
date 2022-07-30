@@ -5,7 +5,7 @@
 
 class sword_blow final : public neighboring_target_ability<>, per_turn_usable {
 public:
-  explicit sword_blow(std::uint32_t entity_id);
+  explicit sword_blow(entity_id_t entity_id);
 
   [[nodiscard]] bool usable() const override {
     return !used;
@@ -15,6 +15,6 @@ private:
   void use(std::uint32_t index_on) override;
 
   static constexpr auto name = "sword_blow";
-  std::uint32_t entity_id_;
+  const entity_id_t entity_id_;
   std::int32_t damage_{10};
 };

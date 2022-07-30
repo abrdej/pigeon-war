@@ -4,7 +4,7 @@
 #include <logging/logger.h>
 #include <turn_based/components/damage_taker.h>
 
-armor::armor(std::uint32_t entity_id)
+armor::armor(entity_id_t entity_id)
     : passive_ability("armor"),
       max_damage_(get_param_or_default("max_damage", max_damage_)) {
 

@@ -1,11 +1,12 @@
 #pragma once
 
+#include <turn_based/defs.h>
 #include <turn_based/per_turn_usable.h>
 #include <turn_based/straight_target_ability.h>
 
 class power_bullet final : public straight_target_ability<2>, per_turn_usable {
  public:
-  explicit power_bullet(std::uint32_t entity_id);
+  explicit power_bullet(entity_id_t entity_id);
 
   ability_types type() const override {
     return ability_types::offensive;
@@ -20,7 +21,7 @@ class power_bullet final : public straight_target_ability<2>, per_turn_usable {
 
   static constexpr auto name = "power_bullet";
 
-  std::uint32_t entity_id_;
+  entity_id_t entity_id_;
   std::int32_t full_damage_ = 12;
   std::int32_t damage_with_power_bullet_effect_ = 4;
   std::int32_t duration_of_effect_ = 2;

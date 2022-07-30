@@ -14,7 +14,7 @@ pos_type pos(std::uint32_t col, std::uint32_t row) {
 void create_neutral_many(const std::string& entity_name,
                          const std::vector<pos_type>& positions) {
   for (const auto& position : positions) {
-    std::uint32_t entity_id = game::get<entities_factory>().create(entity_name);
+    entity_id_t entity_id = game::get<entities_factory>().create(entity_name);
     game_board().insert(game_board().to_index(position.first, position.second), entity_id);
     game::get<players_manager>().add_neutral_entity(entity_id);
   }

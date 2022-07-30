@@ -25,7 +25,7 @@ add_library(turn_based SHARED
   turn_system.cpp)
 
 target_include_directories(turn_based PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/external)
-target_link_libraries(turn_based PUBLIC logging Boost::headers Boost::system pthread dl)
+target_link_libraries(turn_based PUBLIC logging Boost::headers Boost::system pthread dl type_safe)
 
 enable_testing()
 

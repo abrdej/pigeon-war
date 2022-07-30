@@ -4,7 +4,7 @@
 #include <turn_based/managers/entity_manager.h>
 #include <turn_based/game_controller.h>
 
-void ai_manager::add_ai_for(id_t entity_id, ai::behavior_node_ptr behavior_tree) {
+void ai_manager::add_ai_for(entity_id_t entity_id, ai::behavior_node_ptr behavior_tree) {
   behavior_trees_.emplace(entity_id, std::move(behavior_tree));
   game::get<entity_manager>().on_destroy(entity_id,
                                          [this, entity_id]() { behavior_trees_.erase(entity_id); });

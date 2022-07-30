@@ -6,7 +6,7 @@
 #include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
-power_bullet::power_bullet(std::uint32_t entity_id)
+power_bullet::power_bullet(entity_id_t entity_id)
     : straight_target_ability(name),
       entity_id_(entity_id),
       full_damage_(get_param_or_default("full_damage", full_damage_)),

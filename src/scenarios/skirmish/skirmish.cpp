@@ -54,7 +54,7 @@ void skirmish_scenario_factory::create() {
   }
 
   const auto selecting_positions = get_entities_selecting_positions();
-  std::unordered_set<std::uint32_t> entities_to_choose;
+  std::unordered_set<entity_id_t> entities_to_choose;
 
   const auto entities = read_entities_from_json(config_directory + "entities.json");
   for (std::size_t i = 0; i < std::min(selecting_positions.size(), entities.size()); ++i) {
@@ -66,7 +66,7 @@ void skirmish_scenario_factory::create() {
   }
 
   auto create_entities_container = []() {
-    return std::unordered_map<std::uint32_t, std::vector<std::uint32_t>>();
+    return std::unordered_map<std::uint32_t, std::vector<entity_id_t>>();
   };
   const std::int32_t entities_for_player = 4;
 

@@ -5,7 +5,7 @@
 #include <turn_based/damage_dealers.h>
 #include <turn_based/components/damage_taker.h>
 
-drain::drain(std::uint32_t entity_id)
+drain::drain(entity_id_t entity_id)
     : neighboring_target_ability(name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)),

@@ -5,7 +5,7 @@
 #include <turn_based/components/damage_taker.h>
 #include <turn_based/game_controller.h>
 
-counterattack::counterattack(std::uint32_t entity_id)
+counterattack::counterattack(entity_id_t entity_id)
     : passive_ability(name),
       entity_id_(entity_id),
       damage_(get_param_or_default("damage", damage_)) {
