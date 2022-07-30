@@ -14,6 +14,6 @@ class claws final : public neighboring_target_ability<>, per_turn_usable {
 
  private:
   static constexpr auto name = "claws";
-  id_t entity_id_;
+  const id_t entity_id_;
   std::int32_t damage_{4};
 };
