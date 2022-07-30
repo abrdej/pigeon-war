@@ -1,6 +1,6 @@
 #pragma once
 
-#include <external/json.hpp>
+#include <json.hpp>
 #include <turn_based/game_state.h>
 
 template <typename K, typename T>

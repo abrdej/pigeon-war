@@ -3,7 +3,7 @@
 #include <cassert>
 #include <fstream>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 #include <turn_based/creator_helper.h>
 #include <turn_based/board.h>

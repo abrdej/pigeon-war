@@ -6,7 +6,7 @@
 #include <boost/dll/import.hpp>
 #include <boost/function.hpp>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 #include <config.h>
 #include <logging/logger.h>

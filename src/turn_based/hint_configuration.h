@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <string>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 template <typename... Args>
 std::string string_format(const std::string& format, Args ... args) {

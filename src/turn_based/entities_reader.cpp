@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 using nlohmann::json;
 

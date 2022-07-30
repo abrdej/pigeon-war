@@ -5,7 +5,7 @@
 #include <boost/range/algorithm_ext/erase.hpp>
 #include <tbb/concurrent_hash_map.h>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 #include <networking/server.h>
 #include <logging/logger.h>

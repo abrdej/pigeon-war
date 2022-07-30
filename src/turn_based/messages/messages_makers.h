@@ -2,7 +2,7 @@
 
 #include <unordered_map>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 #include <turn_based/game_state.h>
 

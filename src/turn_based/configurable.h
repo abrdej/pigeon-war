@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 #include <config.h>
 #include <logging/logger.h>

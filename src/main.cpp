@@ -1,7 +1,7 @@
 #include <chrono>
 #include <thread>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 #include <logging/logger.h>
 

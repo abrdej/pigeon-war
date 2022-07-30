@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include <external/json.hpp>
+#include <json.hpp>
 
 #include <turn_based/bitmap_key.h>
 #include <turn_based/defs.h>
