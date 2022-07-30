@@ -23,7 +23,7 @@ class game_controller {
   void set_entity_default_state(index_t select_from_index);
   bool valid_target(index_t target_index);
 
-  index_t selected_index_{no_selected_index};
+  index_t selected_index_{null_index};
   states_types actual_state_{states_types::waiting};
   target_types actual_targeting_type_{target_types::non};
   std::vector<index_t> possible_movements_;

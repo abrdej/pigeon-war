@@ -2,6 +2,8 @@
 
 #include <unordered_map>
 
+#include <boost/hana.hpp>
+
 #include <json.hpp>
 
 #include <turn_based/game_state.h>
@@ -43,7 +45,7 @@ std::string make_entities_healths_message(
     const std::unordered_map<std::uint32_t, std::int32_t>& healths);
 
 std::string make_entities_pack_message(
-    const std::unordered_map<std::uint32_t,
+    const std::unordered_map<entity_id_t,
                              std::tuple<std::string, std::int32_t, std::int32_t, std::uint32_t>>&
         entities_pack);
 
@@ -78,15 +80,15 @@ std::string make_entity_talk_message(index_t index, std::string text);
 std::string make_game_ready_message();
 
 template <typename... Args>
-std::string make_action_message(const std::string& animation, Args&&... args) {
+std::string make_action_message(const std::string& animation, const Args&... args) {
   using nlohmann::json;
   json array_of_data;
 
   array_of_data.emplace_back(animation);
 
-  auto packer = [&array_of_data](auto x) { array_of_data.emplace_back(x); };
-
-  std::int32_t tab[] = {(packer(std::forward<Args>(args)), 0)...};
+  boost::hana::for_each(boost::hana::make_tuple(args...), [&array_of_data](const auto& arg) {
+    array_of_data.emplace_back(arg);
+  });
 
   json data;
   data["animation"] = array_of_data;

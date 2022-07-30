@@ -6,7 +6,6 @@
 
 #include <json.hpp>
 
-#include <turn_based/bitmap_key.h>
 #include <turn_based/defs.h>
 #include <turn_based/states.h>
 

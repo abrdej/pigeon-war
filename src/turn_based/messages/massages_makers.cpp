@@ -40,7 +40,7 @@ std::string make_entities_healths_message(
 }
 
 std::string make_entities_pack_message(
-    const std::unordered_map<std::uint32_t,
+    const std::unordered_map<entity_id_t,
                              std::tuple<std::string, std::int32_t, std::int32_t, std::uint32_t>>&
         entities_pack) {
   json data;
