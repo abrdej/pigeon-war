@@ -14,7 +14,7 @@ DEFINE_ENTITY_FACTORY(wolf) {
 
   auto abilities_ptr = entity.add<abilities>();
   abilities_ptr->add_ability(std::make_shared<moveable>(3));
-  abilities_ptr->add_ability(std::make_shared<claws>());
+  abilities_ptr->add_ability(std::make_shared<claws>(entity.entity_id));
 }
 
 FACTORY_PLUGIN_ALIAS(wolf)

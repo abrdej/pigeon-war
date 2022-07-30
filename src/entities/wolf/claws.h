@@ -5,7 +5,7 @@
 
 class claws final : public neighboring_target_ability<>, per_turn_usable {
  public:
-  ADD_BITMAP_GETTER(claws)
+  explicit claws(id_t entity_id);
 
   ABILITY_TYPE(offensive)
 
@@ -13,6 +13,7 @@ class claws final : public neighboring_target_ability<>, per_turn_usable {
   void use(std::uint32_t index_on) override;
 
  private:
-  const std::int32_t range = 1;
-  const std::int32_t damage = 4;
+  static constexpr auto name = "claws";
+  id_t entity_id_;
+  std::int32_t damage_{4};
 };
