@@ -8,8 +8,8 @@ using board_container_type = board_container<std::int32_t, std::numeric_limits<s
 
 TEST(BoardContainer, General) {
   board_container_type board(10, 8);
-  EXPECT_EQ(board.rows(), 10);
-  EXPECT_EQ(board.cols(), 8);
+  EXPECT_EQ(board.rows(), 8);
+  EXPECT_EQ(board.cols(), 10);
   EXPECT_TRUE(board.empty_at(10));
   board.insert(10, 5);
   EXPECT_FALSE(board.empty_at(10));
