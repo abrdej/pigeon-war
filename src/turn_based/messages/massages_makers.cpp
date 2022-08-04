@@ -1,9 +1,10 @@
-#include <turn_based/messages/messages_makers.h>
+#include <turn_based/board.h>
 #include <turn_based/components/power_field.h>
 #include <turn_based/defs.h>
 #include <turn_based/game.h>
 #include <turn_based/managers/entity_manager.h>
 #include <turn_based/messages/from_to_json.h>
+#include <turn_based/messages/messages_makers.h>
 
 using nlohmann::json;
 

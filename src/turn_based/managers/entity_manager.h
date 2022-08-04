@@ -38,15 +38,6 @@ class entity_manager final {
     on_destroy_callbacks.clear();
   }
 
-  template <typename EntityFactory>
-  inline entity_id_t create() {
-    auto entity_id = generate_id();
-    auto& entity = entities.emplace(entity_id, base_entity()).first->second;
-    entity.entity_id = entity_id;
-    EntityFactory::create(entity);
-    return entity_id;
-  }
-
   base_entity get(entity_id_t entity_id) {
     return entities.at(entity_id);
   }

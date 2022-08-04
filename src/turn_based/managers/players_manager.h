@@ -66,7 +66,7 @@ class players_manager {
     }
   }
 
-  std::uint32_t get_active_player_id() { return active_player_id; }
+  std::uint32_t get_active_player_id() const { return active_player_id; }
 
   std::uint32_t next_player() {
     auto next_player_id = static_cast<std::uint32_t>(++active_player_id % players.size());

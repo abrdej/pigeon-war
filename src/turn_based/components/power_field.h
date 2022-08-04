@@ -2,7 +2,6 @@
 
 #include <cstdint>
 
-#include <turn_based/board.h>
 #include <turn_based/turn_system.h>
 #include <turn_based/sender.h>
 #include <turn_based/messages/messages_makers.h>
