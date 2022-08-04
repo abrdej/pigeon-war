@@ -81,17 +81,18 @@ class turn_system {
   turn_scoped_connection set_callback(const frequency_types& frequency,
                                       int32_t duration,
                                       const extended_turn_callback& callback) {
-    return turn_scoped_connection(next_turn_signal_.connect_extended(turn_callback_wrapper(frequency,
-                                                                                           duration,
-                                                                                           callback)));
+    return {next_turn_signal_.connect_extended(turn_callback_wrapper(frequency,
+                                                                     duration,
+                                                                     callback))};
   }
 
   turn_scoped_connection set_callback(const frequency_types& frequency,
                                       int32_t duration,
                                       const turn_callback& callback) {
-    return turn_scoped_connection(next_turn_signal_.connect_extended(turn_callback_wrapper(frequency,
-                                                                                           duration,
-                                                                                           [callback](turn_callback_info&) { return callback(); })));
+    return {next_turn_signal_.connect_extended(
+        turn_callback_wrapper(frequency,
+                              duration,
+                              [callback](turn_callback_info&) { return callback(); }))};
   }
 
  private:

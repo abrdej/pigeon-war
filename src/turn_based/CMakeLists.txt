@@ -29,5 +29,5 @@ target_link_libraries(turn_based PUBLIC logging Boost::headers Boost::system pth
 
 enable_testing()
 
-add_executable(turn_based_test board_container_test.cpp)
+add_executable(turn_based_test board_container_test.cpp turn_system_test.cpp)
 target_link_libraries(turn_based_test gtest gtest_main turn_based pthread)
