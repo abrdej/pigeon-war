@@ -4,6 +4,9 @@
 
 using per_turn_callback = turn_callback_helper;
 
+/**
+ * @brief Derive from to add automatic 'used' flag reset every two turns.
+ */
 class per_turn_usable : protected turn_callback_helper {
  public:
   per_turn_usable() {
