@@ -41,14 +41,11 @@ class diagonal_target_ability : public active_ability {
   explicit diagonal_target_ability(std::string name) : active_ability(std::move(name)) {}
 
   void prepare(index_t index) override {
-    game_control().selected_index_ = index;
-
     board_helper::calc_diagonal(index,
                                 game_control().possible_movements_,
                                 game_control().possible_movements_costs_,
                                 range,
                                 skip_obstacles);
-
     game_control().actual_targeting_type_ = target_type;
     game_control().wait_for_action([this](index_t used_on_index) {
       return use(used_on_index);

@@ -32,5 +32,6 @@ add_executable(turn_based_test
   board_container_test.cpp
   turn_system_test.cpp
   neighboring_target_ability_test.cpp
-  per_turn_usable_test.cpp)
+  per_turn_usable_test.cpp
+  caster_target_ability_test.cpp)
 target_link_libraries(turn_based_test gtest gtest_main turn_based pthread)

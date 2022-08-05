@@ -6,6 +6,8 @@
 
 #include <boost/range/combine.hpp>
 
+namespace {
+
 struct ability_test : neighboring_target_ability<> {
   ability_test() : neighboring_target_ability<>("ability_test") {}
 
@@ -15,6 +17,8 @@ struct ability_test : neighboring_target_ability<> {
 
   index_t selected_index;
 };
+
+}  // namespace
 
 void CompareToExpected(const std::vector<index_t::value_type>& expected_indices) {
   std::set<index_t::value_type> ordered_indices;
@@ -38,7 +42,6 @@ TEST(NeighboringTargetAbility, Prepare) {
   game_board().set_size(3, 3);
   ability.prepare(index_t{4});
 
-  EXPECT_EQ(game_control().selected_index_, index_t{4});
   ASSERT_EQ(game_control().possible_movements_.size(), 8u);
 
   CompareToExpected({0, 1, 2, 3, 5, 6, 7, 8});
@@ -59,7 +62,6 @@ TEST(NeighboringTargetAbility, PrepareOnBoundary) {
   game_board().set_size(3, 3);
   ability.prepare(index_t{3});
 
-  EXPECT_EQ(game_control().selected_index_, index_t{3});
   ASSERT_EQ(game_control().possible_movements_.size(), 5u);
 
   CompareToExpected({0, 1, 4, 6, 7});
