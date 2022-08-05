@@ -12,15 +12,15 @@ class neighboring_target_ability : public active_ability {
 
   void prepare(index_t for_index) override {
     game_control().selected_index_ = for_index;
-    board_helper::neighboring_fields(for_index, game_control().possible_movements_, available);
+    board_helper::neighboring_fields(for_index, game_control().possible_movements_, available_);
 
-    game_control().actual_targeting_type_ = target_type;
+    game_control().actual_targeting_type_ = target_type_;
     game_control().wait_for_action([this](index_t index) { return use(index); });
   }
 
   virtual void use(index_t use_on_index) = 0;
 
  protected:
-  const target_types target_type{TargetType};
-  const bool available{Available};
+  const target_types target_type_{TargetType};
+  const bool available_{Available};
 };
