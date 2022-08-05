@@ -6,8 +6,6 @@
 
 #include <type_safe/strong_typedef.hpp>
 
-//using index_t = std::uint32_t;
-
 struct entity_id_t : type_safe::strong_typedef<entity_id_t, std::uint32_t>,
                      type_safe::strong_typedef_op::equality_comparison<entity_id_t> {
   using strong_typedef::strong_typedef;

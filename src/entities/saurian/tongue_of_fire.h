@@ -7,7 +7,9 @@ class tongue_of_fire final : public path_target_ability, per_turn_usable {
  public:
   explicit tongue_of_fire(entity_id_t entity_id);
 
-  ABILITY_TYPE(offensive)
+  [[nodiscard]] ability_types type() const override {
+    return ability_types::offensive;
+  }
 
  private:
   void use(index_t index_on) override;
