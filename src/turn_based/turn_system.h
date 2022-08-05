@@ -25,52 +25,57 @@ struct turn_callback_info {
 using turn_callback = std::function<void()>;
 using extended_turn_callback = std::function<void(turn_callback_info&)>;
 
+/**
+ * @brief Controls turns in the game and handles turn-related callbacks.
+ */
 class turn_system {
-  struct turn_callback_wrapper {
-    frequency_types frequency;
-    int32_t duration;
-    int32_t number_of_calls;
-    std::function<void(turn_callback_info&)> callback;
-
+  class turn_callback_wrapper {
+   public:
     turn_callback_wrapper(const frequency_types& frequency,
                           int32_t duration,
-                          std::function<void(turn_callback_info&)> callback)
-        : frequency(frequency), duration(duration), number_of_calls(0), callback(std::move(callback)) {}
+                          extended_turn_callback callback)
+        : frequency_(frequency), duration_(duration), number_of_calls_(0), callback_(std::move(callback)) {}
 
     void operator()(const turn_connection& conn) {
-      if (frequency == frequency_types::every_turn) {
-        turn_callback_info info{duration && ++number_of_calls == duration, conn};
-        callback(info);
+      if (frequency_ == frequency_types::every_turn) {
+        turn_callback_info info{duration_ && ++number_of_calls_ == duration_, conn};
+        callback_(info);
         if (info.is_ending) {
           conn.disconnect();
         }
 
-      } else if (frequency == frequency_types::every_two_turns_from_this) {
-        turn_callback_info info{duration && ++number_of_calls == duration, conn};
-        callback(info);
-        frequency = frequency_types::every_two_turns_from_next;
+      } else if (frequency_ == frequency_types::every_two_turns_from_this) {
+        turn_callback_info info{duration_ && ++number_of_calls_ == duration_, conn};
+        callback_(info);
+        frequency_ = frequency_types::every_two_turns_from_next;
         if (info.is_ending) {
           conn.disconnect();
         }
 
-      } else if (frequency == frequency_types::every_two_turns_from_next) {
-        frequency = frequency_types::every_two_turns_from_this;
+      } else if (frequency_ == frequency_types::every_two_turns_from_next) {
+        frequency_ = frequency_types::every_two_turns_from_this;
 
-      } else if (frequency == frequency_types::after_n_rounds) {
-        if (++number_of_calls == duration * 2) {
+      } else if (frequency_ == frequency_types::after_n_rounds) {
+        if (++number_of_calls_ == duration_ * 2) {
           turn_callback_info info{true, conn};
-          callback(info);
+          callback_(info);
           conn.disconnect();
         }
 
-      } else if (frequency == frequency_types::after_n_turns) {
-        if (++number_of_calls == duration) {
+      } else if (frequency_ == frequency_types::after_n_turns) {
+        if (++number_of_calls_ == duration_) {
           turn_callback_info info{true, conn};
-          callback(info);
+          callback_(info);
           conn.disconnect();
         }
       }
     }
+
+   private:
+    frequency_types frequency_;
+    int32_t duration_;
+    int32_t number_of_calls_;
+    extended_turn_callback callback_;
   };
 
  public:
