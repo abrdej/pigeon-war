@@ -2,7 +2,7 @@
 
 #include <turn_based/abilities.h>
 #include <abilities/long_range_missile.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/poisoned_missile.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>

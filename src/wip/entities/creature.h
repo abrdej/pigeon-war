@@ -10,7 +10,7 @@
 #include <components/applied_effects.h>
 #include <components/modification.h>
 #include <turn_based/abilities.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <turn_based/entity.h>
 
 class creature final {

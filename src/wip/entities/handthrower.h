@@ -7,7 +7,7 @@
 
 #include <turn_based/entity.h>
 #include <turn_based/abilities.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/handcannon.h>
 #include <abilities/protection_field.h>
 

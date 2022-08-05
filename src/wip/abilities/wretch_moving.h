@@ -1,7 +1,7 @@
 #pragma once
 
 #include <turn_based/ability.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <turn_based/turn_system.h>
 
 class wretch_moving final : public moveable_base, turn_callback_helper {

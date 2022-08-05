@@ -8,7 +8,7 @@
 #include <turn_based/entity.h>
 #include <turn_based/abilities.h>
 #include <abilities/laser.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/teleport.h>
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>

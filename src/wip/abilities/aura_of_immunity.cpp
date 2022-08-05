@@ -8,7 +8,7 @@
 #include <components/applied_effects.h>
 #include <components/modification.h>
 #include <turn_based/sender.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 
 aura_of_immunity::aura_of_immunity(std::uint32_t entity_id)
 		: entity_id(entity_id) {

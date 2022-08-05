@@ -1,6 +1,6 @@
 #include <turn_based/abilities.h>
 #include <turn_based/board.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <turn_based/components/applied_effects.h>
 #include <turn_based/entity_factory_macro.h>
 #include <grenade.h>
@@ -16,7 +16,7 @@ DEFINE_ENTITY_FACTORY(shooter) {
   entity.add<modification>();
 
   auto abilities_ptr = entity.add<abilities>();
-  abilities_ptr->add_ability(std::make_shared<moveable>(4));
+  abilities_ptr->add_ability(std::make_shared<move>(4));
   abilities_ptr->add_ability(std::make_shared<shoot>(entity.entity_id));
   abilities_ptr->add_ability(std::make_shared<grenade>(entity.entity_id));
 }

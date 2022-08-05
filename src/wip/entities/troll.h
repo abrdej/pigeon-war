@@ -5,7 +5,7 @@
 #ifndef PIGEONWAR_TROLL_H
 #define PIGEONWAR_TROLL_H
 
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/bludgeon.h>
 #include <abilities/rage.h>
 #include <abilities/regeneration.h>

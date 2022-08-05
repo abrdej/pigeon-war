@@ -14,6 +14,8 @@ find_package(GTest REQUIRED)
 
 add_subdirectory(external/type_safe)
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/utilities.cmake)
+
 add_subdirectory(src/logging)
 add_subdirectory(src/turn_based)
 add_subdirectory(src/networking)

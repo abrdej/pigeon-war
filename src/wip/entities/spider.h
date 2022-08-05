@@ -8,7 +8,7 @@
 #include <abilities/surroundings.h>
 #include <abilities/jaw_spider.h>
 #include <turn_based/entity.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <turn_based/abilities.h>
 #include <abilities/spider_web.h>
 

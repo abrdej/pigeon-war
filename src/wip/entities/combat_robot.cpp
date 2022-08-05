@@ -2,7 +2,7 @@
 #include <turn_based/abilities.h>
 #include <abilities/barrier.h>
 #include <abilities/missile_of_doom.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 

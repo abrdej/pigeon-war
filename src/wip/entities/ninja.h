@@ -9,7 +9,7 @@
 #include <abilities/death_mark.h>
 #include <turn_based/entity.h>
 #include <turn_based/abilities.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 
 class ninja final
 {

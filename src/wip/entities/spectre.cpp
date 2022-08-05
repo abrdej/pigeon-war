@@ -4,7 +4,7 @@
 #include <abilities/cleaver.h>
 #include <abilities/havoc.h>
 #include <abilities/immateriality.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>
 #include <components/power_field.h>

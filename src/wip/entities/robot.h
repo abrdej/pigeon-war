@@ -6,7 +6,7 @@
 #define PIGEONWAR_ROBO_H
 
 #include <turn_based/entity.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <turn_based/abilities.h>
 #include <pigeon_war/entities/shooter/shoot.h>
 #include <pigeon_war/entities/shooter/grenade.h>

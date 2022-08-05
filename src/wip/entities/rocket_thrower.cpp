@@ -2,7 +2,7 @@
 
 #include <turn_based/abilities.h>
 #include <abilities/mortar_thrower.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/rocket_launcher.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>

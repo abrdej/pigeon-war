@@ -1,7 +1,7 @@
 #include <snake.h>
 
 #include <turn_based/abilities.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/fast_draw.h>
 #include <abilities/revolver.h>
 #include <abilities/smokescreen.h>

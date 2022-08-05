@@ -8,7 +8,7 @@
 #include <turn_based/entity.h>
 #include <abilities/entangling.h>
 #include <abilities/recovery.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 
 
 struct treant final

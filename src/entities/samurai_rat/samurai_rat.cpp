@@ -4,7 +4,7 @@
 #include <turn_based/components/applied_effects.h>
 #include <turn_based/components/modification.h>
 #include <turn_based/entity_factory_macro.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 
 DEFINE_ENTITY_FACTORY(samurai_rat) {
   entity.name = "Samurai";
@@ -14,7 +14,7 @@ DEFINE_ENTITY_FACTORY(samurai_rat) {
   entity.add<modification>();
 
   auto abilities_ptr = entity.add<abilities>();
-  abilities_ptr->add_ability(std::make_shared<moveable>(4));
+  abilities_ptr->add_ability(std::make_shared<move>(4));
   abilities_ptr->add_ability(std::make_shared<sword_blow>(entity.entity_id));
   abilities_ptr->add_ability(std::make_shared<dodge>(entity.entity_id));
 }

@@ -7,7 +7,3 @@ function(add_entity name)
     target_link_libraries(${name} PRIVATE turn_based)
   endif()
 endfunction()
-
-function(create_config)
-  configure_file(${PROJECT_SOURCE_DIR}/cmake/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h @ONLY)
-endfunction()

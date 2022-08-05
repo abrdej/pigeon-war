@@ -10,7 +10,7 @@
 #include <components/applied_effects.h>
 #include <abilities/suck_the_soul.h>
 #include <turn_based/entity.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 
 struct soul_hunter final
 {

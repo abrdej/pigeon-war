@@ -1,7 +1,7 @@
 #include <sorcerer.h>
 
 #include <turn_based/abilities.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/prison_connection.h>
 #include <components/applied_effects.h>
 #include <components/damage_taker.h>

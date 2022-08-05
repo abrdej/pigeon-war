@@ -7,7 +7,7 @@
 
 #include <abilities/kill.h>
 #include <turn_based/entity.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/killer_instinct.h>
 
 class killer final

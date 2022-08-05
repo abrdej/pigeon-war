@@ -8,7 +8,6 @@ add_library(turn_based SHARED
   components/applied_effects.cpp
   components/damage_taker.cpp
   components/modification.cpp
-  configurable.cpp
   creator_helper.cpp
   damage_dealers.cpp
   entities_factory.cpp
@@ -18,7 +17,7 @@ add_library(turn_based SHARED
   managers/players_manager.cpp
   map_reader.cpp
   messages/massages_makers.cpp
-  moveable.cpp
+  move.cpp
   path_finder.cpp
   scenario_factory.cpp
   sender.cpp

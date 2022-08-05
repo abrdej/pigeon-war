@@ -7,7 +7,7 @@
 
 #include <abilities/saw_passing.h>
 #include <turn_based/entity.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/repair.h>
 #include <components/damage_taker.h>
 #include <components/applied_effects.h>

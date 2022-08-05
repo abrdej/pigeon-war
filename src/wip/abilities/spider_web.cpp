@@ -3,7 +3,7 @@
 #include <turn_based/abilities.h>
 #include <turn_based/damage_dealers.h>
 #include <jaw_spider.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <components/applied_effects.h>
 #include <turn_based/board.h>
 

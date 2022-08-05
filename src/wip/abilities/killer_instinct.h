@@ -6,7 +6,7 @@
 #define PIGEONWAR_KILLER_INSTINCT_H
 
 #include <turn_based/path_target_ability.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 
 class killer_instinct : public path_target_ability {
 public:

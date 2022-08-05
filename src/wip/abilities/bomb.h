@@ -9,7 +9,7 @@
 #include <turn_based/path_target_ability.h>
 #include <turn_based/abilities.h>
 #include <turn_based/turn_system.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <boost/circular_buffer.hpp>
 #include <turn_based/managers/entity_manager.h>
 

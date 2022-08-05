@@ -1,7 +1,7 @@
 #include <trailer.h>
 
 #include <turn_based/abilities.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/talons.h>
 #include <abilities/trash_trail.h>
 #include <components/applied_effects.h>

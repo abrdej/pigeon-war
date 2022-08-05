@@ -9,17 +9,19 @@
 class moveable_base : public active_ability {
   using move_callback_type = std::function<void(index_t, index_t, std::int32_t)>;
 
-  std::unordered_map<std::uint32_t, moveable_base::move_callback_type> move_callbacks;
-
  protected:
+  explicit moveable_base(std::string name) : active_ability(std::move(name)) {}
+
   void call_move_callbacks(index_t from_index, index_t to_index, std::int32_t cost) {
-    for (auto&& callback_pack : move_callbacks) {
+    for (auto&& callback_pack : move_callbacks_) {
       callback_pack.second(from_index, to_index, cost);
     }
   }
 
  public:
-  MOVING_ABILITY()
+  ability_types type() const override {
+    return ability_types::moving;
+  }
 
   virtual void refresh_range() = 0;
   virtual bool has_range() const = 0;
@@ -29,34 +31,30 @@ class moveable_base : public active_ability {
 
   virtual std::uint32_t set_move_callback(move_callback_type callback) {
     static std::uint32_t callback_id_gen = 0;
-    move_callbacks[callback_id_gen] = callback;
+    move_callbacks_.emplace(callback_id_gen, std::move(callback));
     return callback_id_gen++;
   }
   virtual void remove_move_callback(std::uint32_t callback_id) {
-    move_callbacks.erase(callback_id);
+    move_callbacks_.erase(callback_id);
   }
+
+ private:
+  std::unordered_map<std::uint32_t, moveable_base::move_callback_type> move_callbacks_;
 };
 
-class moveable final : public moveable_base, turn_callback_helper {
+class move final : public moveable_base, turn_callback_helper {
  public:
   enum class types { path, straight };
-  explicit moveable(std::int32_t range, types type = types::path)
-      : range(range), base_range(range), movement_type(type) {
-    on_every_two_turns_from_next([this]() { used = false; });
-  }
+  explicit move(std::int32_t range, types type = types::path);
 
-  DEFINE_DESC_ONE(moveable, range)
+  void refresh_range() override { used_ = false; }
 
-  bitmap_key get_name() const override { return "moveable"; }
+  bool has_range() const override { return !used_; }
 
-  void refresh_range() override { used = false; }
+  void remove_range() override { used_ = true; }
 
-  bool has_range() const override { return !used; }
-
-  void remove_range() override { used = true; }
-
-  void set_slow_down(std::int32_t value) override { range = value; }
-  void remove_slow_down() override { range = base_range; }
+  void set_slow_down(std::int32_t value) override { range_ = value; }
+  void remove_slow_down() override { range_ = base_range_; }
 
   bool usable() const override { return has_range(); }
 
@@ -64,12 +62,14 @@ class moveable final : public moveable_base, turn_callback_helper {
 
  private:
   void prepare(index_t for_index) override;
-  void move(index_t index_to);
+  void do_move(index_t index_to);
 
  private:
-  std::int32_t range;
-  const std::int32_t base_range;
-  bool used{false};
+  static constexpr auto name = "move";
+
+  std::int32_t range_;
+  const std::int32_t base_range_;
+  bool used_{false};
   bool skip_collisions_{false};
-  types movement_type;
+  types movement_type_;
 };

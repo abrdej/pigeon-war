@@ -6,7 +6,7 @@
 #include <abilities/wolf_herd.h>
 #include <turn_based/entity.h>
 #include <components/damage_taker.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <components/applied_effects.h>
 
 struct werewolf final

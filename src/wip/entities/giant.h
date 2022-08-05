@@ -7,7 +7,7 @@
 
 #include <turn_based/entity.h>
 #include <turn_based/abilities.h>
-#include <turn_based/moveable.h>
+#include <turn_based/move.h>
 #include <abilities/aura_of_immunity.h>
 #include <abilities/giant_blow.h>
 #include <abilities/giant_ram.h>
