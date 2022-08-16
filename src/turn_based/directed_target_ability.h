@@ -1,6 +1,7 @@
 #pragma once
 
 #include <turn_based/ability.h>
+#include <turn_based/board_helpers.h>
 #include <turn_based/game_controller.h>
 #include <turn_based/states.h>
 

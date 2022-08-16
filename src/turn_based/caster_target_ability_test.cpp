@@ -21,6 +21,7 @@ struct ability_test : caster_target_ability {
 TEST(CasterTargetAbility, Prepare) {
   ability_test ability{};
 
+  game_board() = board();
   game_board().set_size(3, 3);
 
   // add some values that are expected to be overwritten

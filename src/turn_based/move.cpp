@@ -3,6 +3,7 @@
 #include <config.h>
 #include <logging/logger.h>
 #include <turn_based/board.h>
+#include <turn_based/board_helpers.h>
 #include <turn_based/game_controller.h>
 #include <turn_based/managers/entity_manager.h>
 

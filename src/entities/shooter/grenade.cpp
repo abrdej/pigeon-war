@@ -2,8 +2,9 @@
 
 #include <config.h>
 #include <logging/logger.h>
-#include <turn_based/damage_dealers.h>
 #include <turn_based/board.h>
+#include <turn_based/board_helpers.h>
+#include <turn_based/damage_dealers.h>
 
 grenade::grenade(entity_id_t entity_id)
     : path_target_ability(name, 3),

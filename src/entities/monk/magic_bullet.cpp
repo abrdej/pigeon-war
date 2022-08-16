@@ -1,6 +1,7 @@
 #include <magic_bullet.h>
 
 #include <logging/logger.h>
+#include <turn_based/board_helpers.h>
 #include <turn_based/components/damage_taker.h>
 #include <turn_based/components/power_field.h>
 #include <turn_based/damage_dealers.h>
