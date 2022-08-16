@@ -4,7 +4,7 @@
 
 #include <turn_based/defs.h>
 
-namespace board_helper {
+namespace board_helpers {
 
 void calc_straight(index_t from_index,
                    std::vector<index_t>& movements,
@@ -32,4 +32,4 @@ void all_free(std::vector<index_t>& fields);
 
 void all(std::vector<index_t>& fields);
 
-}  // namespace board_helper
+}  // namespace board_helpers

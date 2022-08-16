@@ -15,7 +15,7 @@ class neighboring_target_ability : public active_ability {
   explicit neighboring_target_ability(std::string name) : active_ability(std::move(name)) {}
 
   void prepare(index_t for_index) override {
-    board_helper::neighboring_fields(for_index, game_control().possible_movements_, available_);
+    board_helpers::neighboring_fields(for_index, game_control().possible_movements_, available_);
     game_control().actual_targeting_type_ = target_type_;
     game_control().wait_for_action([this](index_t index) { return use(index); });
   }

@@ -27,7 +27,7 @@ bool go_close_to_impl(ai_knowledge& knowledge, index_t target_index) {
   distance_finder.calc(entity_index);
 
   std::vector<index_t> neighbors;
-  board_helper::neighboring_fields(target_index, neighbors, false);
+  board_helpers::neighboring_fields(target_index, neighbors, false);
 
   boost::range::remove_erase_if(neighbors, [entity_index](index_t index) {
     return !game_board().empty(index) && index != entity_index;

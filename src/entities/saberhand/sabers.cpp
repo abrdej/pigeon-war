@@ -22,7 +22,7 @@ sabers::sabers(entity_id_t entity_id)
 
 void sabers::prepare(index_t for_index) {
   game_control().selected_index_ = for_index;
-  board_helper::neighboring_fields(for_index, game_control().possible_movements_, false);
+  board_helpers::neighboring_fields(for_index, game_control().possible_movements_, false);
   game_control().actual_targeting_type_ = target_types::enemy;
   game_control().wait_for_action([this](index_t index) {
     return target(index);
@@ -47,7 +47,7 @@ void sabers::target(index_t target_index) {
   } else {
     targets_.push_back(target_index);
 
-    board_helper::neighboring_fields(target_index, game_control().possible_movements_, false);
+    board_helpers::neighboring_fields(target_index, game_control().possible_movements_, false);
     game_control().possible_movements_.push_back(target_index);
     game_control().actual_targeting_type_ = target_types::enemy;
     game_control().wait_for_action([this](index_t index) {

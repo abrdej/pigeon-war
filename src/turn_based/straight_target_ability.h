@@ -19,11 +19,11 @@ class straight_target_ability : public active_ability {
   void prepare(index_t index) override {
     game_control().selected_index_ = index;
 
-    board_helper::calc_straight(index,
-                                game_control().possible_movements_,
-                                game_control().possible_movements_costs_,
-                                range_,
-                                skip_obstacles_);
+    board_helpers::calc_straight(index,
+                                 game_control().possible_movements_,
+                                 game_control().possible_movements_costs_,
+                                 range_,
+                                 skip_obstacles_);
 
     game_control().actual_targeting_type_ = target_type_;
     game_control().wait_for_action([this](index_t used_on_index) {

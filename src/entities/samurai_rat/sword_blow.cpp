@@ -25,7 +25,7 @@ void sword_blow::use(index_t index_on) {
   auto used_from_index = game_control().selected_index_;
 
   std::vector<index_t> around_fields_ids;
-  board_helper::neighboring_fields(used_from_index, around_fields_ids, false);
+  board_helpers::neighboring_fields(used_from_index, around_fields_ids, false);
 
   sender::send(make_action_message(name, used_from_index));
 

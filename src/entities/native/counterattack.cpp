@@ -16,7 +16,7 @@ counterattack::counterattack(entity_id_t entity_id)
       auto enemy_index = game_board().index_for(dmg.damage_dealer_id);
 
       std::vector<index_t> neighbors;
-      board_helper::neighboring_fields(game_board().index_for(entity_id_), neighbors, false);
+      board_helpers::neighboring_fields(game_board().index_for(entity_id_), neighbors, false);
 
       for (auto index : neighbors) {
         if (index == enemy_index) {

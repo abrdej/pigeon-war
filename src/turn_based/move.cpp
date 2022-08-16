@@ -31,9 +31,9 @@ void move::prepare(index_t for_index) {
                                        used_ ? 0 : range_);
 
   } else if (movement_type_ == types::straight) {
-    board_helper::calc_straight(game_control().selected_index_,
-                                game_control().possible_movements_,
-                                game_control().possible_movements_costs_,
+    board_helpers::calc_straight(game_control().selected_index_,
+                                 game_control().possible_movements_,
+                                 game_control().possible_movements_costs_,
                                 used_ ? 0 : range_);
   }
 

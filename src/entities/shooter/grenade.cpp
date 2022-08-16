@@ -28,7 +28,7 @@ void grenade::use(index_t on_index) {
   used_ = true;
 
   std::vector<index_t> neighbors;
-  board_helper::neighboring_fields(on_index, neighbors, false);
+  board_helpers::neighboring_fields(on_index, neighbors, false);
 
   sender::send(make_action_message("grenade", game_control().selected_index_, on_index));
 

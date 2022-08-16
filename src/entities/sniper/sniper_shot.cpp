@@ -31,7 +31,7 @@ void sniper_shot::prepare(index_t for_index) {
   bool enemy_close = false;
 
   std::vector<index_t> neighbors;
-  board_helper::neighboring_fields(for_index, neighbors, false);
+  board_helpers::neighboring_fields(for_index, neighbors, false);
   for (auto& neighbor_index : neighbors) {
     if (!game_board().empty(neighbor_index) && players_helpers::is_enemy_entity(neighbor_index)) {
       enemy_close = true;
@@ -40,10 +40,10 @@ void sniper_shot::prepare(index_t for_index) {
   }
 
   if (!enemy_close) {
-    board_helper::calc_straight(for_index,
-                                game_control().possible_movements_,
-                                game_control().possible_movements_costs_,
-                                range_);
+    board_helpers::calc_straight(for_index,
+                                 game_control().possible_movements_,
+                                 game_control().possible_movements_costs_,
+                                 range_);
 
   } else {
     game_control().possible_movements_.clear();
