@@ -5,18 +5,15 @@
 #include <turn_based/states.h>
 
 template <std::int32_t Range, target_types TargetType = target_types::enemy, bool SkipObstacles = false>
-class straight_target_ability : public active_ability {
+class directed_target_ability : public active_ability {
  public:
-  straight_target_ability() = default;
-  explicit straight_target_ability(std::string name) : active_ability(std::move(name)) {}
-  explicit straight_target_ability(std::string name, std::int32_t range,
-                                   target_types target_type = target_types::enemy, bool skip_obstacles = false)
-      : active_ability(std::move(name)), range(range), target_type(target_type), skip_obstacles(skip_obstacles) {}
+  directed_target_ability() = default;
+  explicit directed_target_ability(std::string name) : active_ability(std::move(name)) {}
 
   void prepare(index_t index) override {
     game_control().selected_index_ = index;
 
-    board_helper::calc_straight(index,
+    board_helper::calc_directed(index,
                                 game_control().possible_movements_,
                                 game_control().possible_movements_costs_,
                                 range,

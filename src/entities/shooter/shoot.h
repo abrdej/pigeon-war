@@ -2,7 +2,7 @@
 
 #include <turn_based/defs.h>
 #include <turn_based/per_turn_usable.h>
-#include <turn_based/straight_target_ability.h>
+#include <turn_based/directed_target_ability.h>
 
 class shoot final : public directed_target_ability<3>, private per_turn_callback {
  public:
