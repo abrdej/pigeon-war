@@ -6,6 +6,7 @@
 #include <turn_based/abilities.h>
 #include <turn_based/board.h>
 #include <turn_based/components/applied_effects.h>
+#include <turn_based/components/health_field.h>
 
 namespace ai::nodes {
 

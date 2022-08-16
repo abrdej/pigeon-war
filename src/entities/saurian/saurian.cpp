@@ -1,8 +1,9 @@
+#include <tongue_of_fire.h>
 #include <turn_based/abilities.h>
 #include <turn_based/components/applied_effects.h>
+#include <turn_based/components/health_field.h>
 #include <turn_based/components/modification.h>
 #include <turn_based/entity_factory_macro.h>
-#include <tongue_of_fire.h>
 
 DEFINE_ENTITY_FACTORY(saurian) {
   entity.name = "Saurian";

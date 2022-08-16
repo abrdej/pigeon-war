@@ -1,4 +1,5 @@
 #include <turn_based/board.h>
+#include <turn_based/components/health_field.h>
 #include <turn_based/components/power_field.h>
 #include <turn_based/defs.h>
 #include <turn_based/game.h>

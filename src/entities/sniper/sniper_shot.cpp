@@ -2,6 +2,7 @@
 
 #include <logging/logger.h>
 #include <turn_based/board.h>
+#include <turn_based/components/health_field.h>
 #include <turn_based/damage_dealers.h>
 #include <turn_based/game_controller.h>
 #include <turn_based/managers/entity_manager.h>

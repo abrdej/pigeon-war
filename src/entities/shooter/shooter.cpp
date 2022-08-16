@@ -1,10 +1,11 @@
-#include <turn_based/abilities.h>
-#include <turn_based/board.h>
-#include <turn_based/move.h>
-#include <turn_based/components/applied_effects.h>
-#include <turn_based/entity_factory_macro.h>
 #include <grenade.h>
 #include <shoot.h>
+#include <turn_based/abilities.h>
+#include <turn_based/board.h>
+#include <turn_based/components/applied_effects.h>
+#include <turn_based/components/health_field.h>
+#include <turn_based/entity_factory_macro.h>
+#include <turn_based/move.h>
 
 DEFINE_ENTITY_FACTORY(shooter) {
   entity.name = "Shooter";
