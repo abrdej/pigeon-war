@@ -8,7 +8,8 @@
 namespace {
 
 struct ability_test : neighboring_target_ability<> {
-  ability_test() : neighboring_target_ability<>("ability_test") {}
+  explicit ability_test(bool available = true)
+      : neighboring_target_ability<>("ability_test", target_types::enemy, available) {}
 
   void use(index_t use_on_index) override {
     selected_index = use_on_index;
@@ -23,17 +24,20 @@ TEST(NeighboringTargetAbility, Prepare) {
   ability_test ability;
 
   // Board:
-  // 0 1 2
+  // 0 1 E
   // 3 X 5
-  // 6 7 8
+  // E 7 8
 
   game_board() = board();
   game_board().set_size(3, 3);
+  game_board().insert(index_t{2}, entity_id_t{1});
+  game_board().insert(index_t{6}, entity_id_t{2});
+
   ability.prepare(index_t{4});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 8u);
+  ASSERT_EQ(game_control().possible_movements_.size(), 6u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {0, 1, 2, 3, 5, 6, 7, 8});
+  testing::CompareWithoutOrdering(game_control().possible_movements_, {0, 1, 3, 5, 7, 8});
 
   EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
   game_control().do_action(index_t{1});
@@ -59,4 +63,28 @@ TEST(NeighboringTargetAbility, PrepareOnBoundary) {
   EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
   game_control().do_action(index_t{6});
   EXPECT_EQ(ability.selected_index, index_t{6});
+}
+
+TEST(NeighboringTargetAbility, PrepareIncludingOccupied) {
+  ability_test ability(false);
+
+  // Board:
+  // 0 1 E
+  // 3 X 5
+  // E 7 8
+
+  game_board() = board();
+  game_board().set_size(3, 3);
+  game_board().insert(index_t{2}, entity_id_t{1});
+  game_board().insert(index_t{6}, entity_id_t{2});
+
+  ability.prepare(index_t{4});
+
+  ASSERT_EQ(game_control().possible_movements_.size(), 8u);
+
+  testing::CompareWithoutOrdering(game_control().possible_movements_, {0, 1, 2, 3, 5, 6, 7, 8});
+
+  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  game_control().do_action(index_t{1});
+  EXPECT_EQ(ability.selected_index, index_t{1});
 }

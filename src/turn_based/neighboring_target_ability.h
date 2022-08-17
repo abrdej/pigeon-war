@@ -12,7 +12,10 @@ template <target_types TargetType = target_types::enemy, bool Available = false>
 class neighboring_target_ability : public active_ability {
  public:
   neighboring_target_ability() = default;
-  explicit neighboring_target_ability(std::string name) : active_ability(std::move(name)) {}
+
+  explicit neighboring_target_ability(
+      std::string name, target_types target_type = TargetType, bool available = Available)
+      : active_ability(std::move(name)), target_type_(target_type), available_(available) {}
 
   void prepare(index_t for_index) override {
     board_helpers::neighboring_fields(for_index, game_control().possible_movements_, available_);
