@@ -10,7 +10,7 @@
 class path_target_ability : public ranged_ability {
 public:
   path_target_ability(std::string name, std::int32_t range,
-                               target_types target_type = target_types::enemy, bool all_fields = true)
+                      target_types target_type = target_types::enemy, bool all_fields = true)
       : ranged_ability(std::move(name)),
         entity_id_(std::numeric_limits<std::uint32_t>::max()),
         target_type(target_type),
@@ -18,8 +18,9 @@ public:
     this->range = range;
   }
 
-  explicit path_target_ability(std::int32_t range, target_types target_type = target_types::enemy, bool all_fields = true)
-    : path_target_ability("", range, target_type, all_fields) {}
+  explicit path_target_ability(
+      std::int32_t range, target_types target_type = target_types::enemy, bool all_fields = true)
+      : path_target_ability("", range, target_type, all_fields) {}
 
   explicit path_target_ability(entity_id_t entity_id,
                                std::int32_t range,
