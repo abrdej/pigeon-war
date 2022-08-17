@@ -5,12 +5,16 @@
 #include <turn_based/game_controller.h>
 #include <turn_based/states.h>
 
-template <std::int32_t Range, target_types TargetType = target_types::enemy, bool SkipObstacles = false>
+template <std::int32_t Range = -1, target_types TargetType = target_types::enemy, bool SkipObstacles = false>
 class directed_target_ability : public active_ability {
  public:
   directed_target_ability() = default;
 
   explicit directed_target_ability(std::string name) : active_ability(std::move(name)) {}
+
+  directed_target_ability(std::string name, std::int32_t range,
+                          target_types target_type = target_types::enemy, bool skip_obstacles = false)
+      : active_ability(std::move(name)), range_(range), target_type_(target_type), skip_obstacles_(skip_obstacles) {}
 
   void prepare(index_t index) override {
     game_control().selected_index_ = index;

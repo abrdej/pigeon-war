@@ -33,6 +33,7 @@ add_executable(turn_based_test
   board_container_test.cpp
   caster_target_ability_test.cpp
   diagonal_target_ability_test.cpp
+  directed_target_ability_test.cpp
   neighboring_target_ability_test.cpp
   per_turn_usable_test.cpp
   straight_target_ability_test.cpp
