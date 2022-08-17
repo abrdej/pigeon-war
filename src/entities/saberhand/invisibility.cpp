@@ -1,7 +1,7 @@
 #include <invisibility.h>
 
-#include <turn_based/components/damage_taker.h>
 #include <turn_based/board.h>
+#include <turn_based/components/damage_taker.h>
 #include <turn_based/messages/messages_makers.h>
 #include <turn_based/sender.h>
 
@@ -32,15 +32,11 @@ void invisibility::use(index_t on_index) {
 }
 
 void invisibility::hide_me() {
-  index_ = game_board().index_for(entity_id_);
-
   sender::send(make_action_message("set_invisibility", entity_id_));
-
   set_destructible(entity_id_, false);
 }
 
 void invisibility::show_me() {
   sender::send(make_action_message("remove_invisibility", entity_id_));
-
   set_destructible(entity_id_, true);
 }
