@@ -3,6 +3,9 @@
 #include <memory>
 #include <string>
 
+/**
+ * @brief Scenario factory.
+ */
 class scenario_factory {
  public:
   scenario_factory();

@@ -11,6 +11,9 @@
 #include <turn_based/game.h>
 
 // TODO: refactor with board container
+/**
+ * @brief Board container keeping where entities are located.
+ */
 struct board {
   using board_change_signal = boost::signals2::signal<void()>;
   board_change_signal board_change_signal_;

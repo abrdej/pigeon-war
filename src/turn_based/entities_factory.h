@@ -5,6 +5,9 @@
 
 #include <turn_based/defs.h>
 
+/**
+ * @brief Entities factory.
+ */
 class entities_factory {
  public:
   entities_factory();

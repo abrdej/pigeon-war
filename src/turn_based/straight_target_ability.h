@@ -5,6 +5,9 @@
 #include <turn_based/game_controller.h>
 #include <turn_based/states.h>
 
+/**
+ * @brief Ability that can be used on straight fields.
+ */
 template <std::int32_t Range = -1, target_types TargetType = target_types::enemy, bool SkipObstacles = false>
 class straight_target_ability : public active_ability {
  public:

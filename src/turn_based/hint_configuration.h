@@ -29,6 +29,9 @@ inline std::string get_string_from_key(const std::string& config_file, const std
   }
 }
 
+/**
+ * @brief Adds functionality to configure hint for abilities from config file.
+ */
 class hint_configuration {
  protected:
   template <typename... Args>

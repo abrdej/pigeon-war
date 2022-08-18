@@ -6,6 +6,9 @@
 
 #include <turn_based/ai/behavior_node.h>
 
+/**
+ * @brief AI factory interface.
+ */
 struct BOOST_SYMBOL_VISIBLE ai_factory_interface {
   virtual ai::behavior_node_ptr create() = 0;
   virtual ~ai_factory_interface() = default;

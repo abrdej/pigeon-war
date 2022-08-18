@@ -7,6 +7,9 @@
 #include <turn_based/path_finder.h>
 #include <turn_based/states.h>
 
+/**
+ * @brief Ability that can be used on fields calculated with path finding algorithm.
+ */
 class path_target_ability : public ranged_ability {
 public:
   path_target_ability(std::string name, std::int32_t range,

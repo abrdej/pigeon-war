@@ -5,6 +5,9 @@
 #include <turn_based/defs.h>
 #include <turn_based/utils/graph.h>
 
+/**
+ * @brief Class used to calculate path finding related outcomes.
+ */
 class path_finder {
  public:
   explicit path_finder(bool all_fields = false);

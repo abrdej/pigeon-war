@@ -8,6 +8,9 @@
 #include <config.h>
 #include <logging/logger.h>
 
+/**
+ * @brief Adds functionality to configure parameters from json configs.
+ */
 class configurable {
  public:
   configurable() = default;

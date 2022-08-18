@@ -5,6 +5,9 @@
 
 #include <turn_based/ai/behavior_node.h>
 
+/**
+ * @brief AI factory.
+ */
 class ai_factory {
  public:
   ai_factory();
