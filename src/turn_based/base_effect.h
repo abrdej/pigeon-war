@@ -16,72 +16,58 @@ struct base_effect {
 enum class effect_types { positive, negative };
 
 class applied_effect {
- private:
-  std::string name;
-  std::string description;
-  effect_types effect_type{effect_types::negative};
-  bool effect_removable{false};
-  turn_scoped_connection turn_connection;
-  std::function<void()> on_destruction{nullptr};
-
  public:
   applied_effect() = default;
+  applied_effect(std::string name, std::string description, effect_types effect_type, bool effect_removable)
+      : name_(std::move(name)),
+        description_(std::move(description)),
+        effect_type_(effect_type),
+        effect_removable_(effect_removable) {}
 
   ~applied_effect() {
-    if (on_destruction) on_destruction();
+    if (on_destruction_) on_destruction_();
   }
 
-  std::string get_name() const { return name; }
+  [[nodiscard]] std::string get_name() const { return name_; }
 
-  std::string get_description() const { return description; }
+  [[nodiscard]] std::string get_description() const { return description_; }
 
-  effect_types get_effect_type() const { return effect_type; }
+  [[nodiscard]] effect_types get_effect_type() const { return effect_type_; }
 
-  bool is_effect_removable() const { return effect_removable; }
+  [[nodiscard]] bool is_effect_removable() const { return effect_removable_; }
 
   void set_turn_connection(turn_scoped_connection connection) {
-    turn_connection = std::move(connection);
+    turn_connection_ = std::move(connection);
   }
 
   template <typename Callback>
   void set_on_destruction(Callback callback) {
-    on_destruction = callback;
+    on_destruction_ = callback;
   }
 
-  friend std::shared_ptr<applied_effect> make_negative_effect(const std::string&);
-  friend std::shared_ptr<applied_effect> make_positive_effect(const std::string&);
-  friend std::shared_ptr<applied_effect> make_not_removable_negative_effect(const std::string&);
-  friend std::shared_ptr<applied_effect> make_not_removable_positive_effect(const std::string&);
+ private:
+  std::string name_;
+  std::string description_;
+  effect_types effect_type_{effect_types::negative};
+  bool effect_removable_{false};
+  turn_scoped_connection turn_connection_;
+  std::function<void()> on_destruction_{nullptr};
 };
 
-inline std::shared_ptr<applied_effect> make_negative_effect(const std::string& name) {
-  auto effect = std::make_shared<applied_effect>();
-  effect->name = name;
-  effect->effect_removable = true;
-  effect->effect_type = effect_types::negative;
-  return effect;
+inline std::shared_ptr<applied_effect> make_negative_effect(std::string name, std::string description = {}) {
+  return std::make_shared<applied_effect>(std::move(name), std::move(description), effect_types::negative, true);
 }
 
-inline std::shared_ptr<applied_effect> make_positive_effect(const std::string& name) {
-  auto effect = std::make_shared<applied_effect>();
-  effect->name = name;
-  effect->effect_removable = true;
-  effect->effect_type = effect_types::positive;
-  return effect;
+inline std::shared_ptr<applied_effect> make_positive_effect(std::string name, std::string description = {}) {
+  return std::make_shared<applied_effect>(std::move(name), std::move(description), effect_types::positive, true);
 }
 
-inline std::shared_ptr<applied_effect> make_not_removable_positive_effect(const std::string& name) {
-  auto effect = std::make_shared<applied_effect>();
-  effect->name = name;
-  effect->effect_removable = false;
-  effect->effect_type = effect_types::positive;
-  return effect;
+inline std::shared_ptr<applied_effect> make_not_removable_positive_effect(
+    std::string name, std::string description = {}) {
+  return std::make_shared<applied_effect>(std::move(name), std::move(description), effect_types::positive, false);
 }
 
-inline std::shared_ptr<applied_effect> make_not_removable_negative_effect(const std::string& name) {
-  auto effect = std::make_shared<applied_effect>();
-  effect->name = name;
-  effect->effect_removable = false;
-  effect->effect_type = effect_types::negative;
-  return effect;
+inline std::shared_ptr<applied_effect> make_not_removable_negative_effect(
+    std::string name, std::string description = {}) {
+  return std::make_shared<applied_effect>(std::move(name), std::move(description), effect_types::negative, false);
 }

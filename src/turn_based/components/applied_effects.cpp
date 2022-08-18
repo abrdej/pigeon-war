@@ -2,7 +2,8 @@
 
 void remove_negative_effects(entity_id_t entity_id) {
   auto& entity_effects =
-      game::get<entity_manager>().get(entity_id).get<applied_effects>()->named_data;
+      game::get<entity_manager>().get(entity_id).get<applied_effects>()->named_data_;
+
   std::vector<std::string> effects_to_remove;
   for (auto&& effect_pack : entity_effects) {
     if (effect_pack.second->is_effect_removable() &&
@@ -23,7 +24,7 @@ std::unordered_map<entity_id_t, std::vector<std::string>> get_effects() {
 
       auto& field = result[entity.entity_id];
 
-      for (auto&& effect : effect_ptr->named_data) {
+      for (auto&& effect : effect_ptr->named_data_) {
         field.push_back(effect.second->get_name());
       }
     }
