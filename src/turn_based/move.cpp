@@ -5,7 +5,8 @@
 #include <turn_based/board.h>
 #include <turn_based/board_helpers.h>
 #include <turn_based/game_controller.h>
-#include <turn_based/managers/entity_manager.h>
+#include <turn_based/messages/messages_makers.h>
+#include <turn_based/sender.h>
 
 move::move(std::int32_t range, types type)
     : move_ability(name), range_(range), base_range_(range), movement_type_(type) {

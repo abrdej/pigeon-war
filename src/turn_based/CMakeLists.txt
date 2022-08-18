@@ -17,7 +17,7 @@ add_library(turn_based SHARED
   game_controller.cpp
   managers/players_manager.cpp
   map_reader.cpp
-  messages/massages_makers.cpp
+  messages/messages_makers.cpp
   move.cpp
   path_finder.cpp
   scenario_factory.cpp
