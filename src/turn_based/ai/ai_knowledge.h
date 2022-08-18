@@ -9,7 +9,7 @@
 
 namespace ai {
 
-class knowledge_box {
+class knowledge_scope {
  public:
   template <typename T>
   T get(const std::string& key) {
@@ -29,16 +29,16 @@ class knowledge_box {
 
 struct ai_knowledge {
  public:
-  knowledge_box& global() { return global_knowledge_box_; }
+  knowledge_scope& global() { return global_knowledge_scope_; }
 
-  knowledge_box& player(id_t player_id) { return players_knowledge_boxes_[player_id]; }
+  knowledge_scope& player(id_t player_id) { return players_knowledge_scope_[player_id]; }
 
-  knowledge_box& entity(entity_id_t entity_id) { return entities_knowledge_boxes_[entity_id]; }
+  knowledge_scope& entity(entity_id_t entity_id) { return entities_knowledge_scope_[entity_id]; }
 
  private:
-  knowledge_box global_knowledge_box_;
-  std::unordered_map<id_t, knowledge_box> players_knowledge_boxes_;
-  std::unordered_map<entity_id_t, knowledge_box> entities_knowledge_boxes_;
+  knowledge_scope global_knowledge_scope_;
+  std::unordered_map<id_t, knowledge_scope> players_knowledge_scope_;
+  std::unordered_map<entity_id_t, knowledge_scope> entities_knowledge_scope_;
 };
 
 inline id_t active_player_id(ai_knowledge& knowledge) {
