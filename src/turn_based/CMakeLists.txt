@@ -35,6 +35,7 @@ add_executable(turn_based_test
   diagonal_target_ability_test.cpp
   directed_target_ability_test.cpp
   neighboring_target_ability_test.cpp
+  path_target_ability_test.cpp
   per_turn_usable_test.cpp
   straight_target_ability_test.cpp
   turn_system_test.cpp
