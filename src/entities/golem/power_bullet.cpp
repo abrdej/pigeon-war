@@ -28,7 +28,7 @@ void power_bullet::use(index_t index_on) {
     return;
   }
 
-  auto used_from_index = game_control().selected_index_;
+  auto used_from_index = game_control().selected_index;
   auto caster_id = game_board().at(used_from_index);
   auto enemy_id = game_board().at(index_on);
 

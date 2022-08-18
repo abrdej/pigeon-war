@@ -25,13 +25,13 @@ TEST(CasterTargetAbility, Prepare) {
   game_board().set_size(3, 3);
 
   // add some values that are expected to be overwritten
-  game_control().possible_movements_ = {index_t{0}, index_t{5}};
+  game_control().possible_movements = {index_t{0}, index_t{5}};
 
   ability.prepare(index_t{4});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 1u);
-  EXPECT_EQ(game_control().possible_movements_.front(), index_t{4});
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::caster);
+  ASSERT_EQ(game_control().possible_movements.size(), 1u);
+  EXPECT_EQ(game_control().possible_movements.front(), index_t{4});
+  EXPECT_EQ(game_control().current_targeting_type, target_types::caster);
 
   game_control().do_action(index_t{4});
 

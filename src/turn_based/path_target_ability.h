@@ -58,15 +58,15 @@ public:
       }
     }
 
-    game_control().selected_index_ = for_index;
+    game_control().selected_index = for_index;
 
     path_finder path_finder(all_fields);
     path_finder.calc(for_index);
-    path_finder.get_possible_movements(game_control().possible_movements_,
-                                       game_control().possible_movements_costs_,
+    path_finder.get_possible_movements(game_control().possible_movements,
+                                       game_control().possible_movements_costs,
                                        range);
 
-    game_control().actual_targeting_type_ = target_type;
+    game_control().current_targeting_type = target_type;
     game_control().wait_for_action([this](index_t index) {
       return use(index);
     });

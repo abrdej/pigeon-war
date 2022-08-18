@@ -17,15 +17,15 @@ class straight_target_ability : public active_ability {
       : active_ability(std::move(name)), range_(range), target_type_(target_type), skip_obstacles_(skip_obstacles) {}
 
   void prepare(index_t index) override {
-    game_control().selected_index_ = index;
+    game_control().selected_index = index;
 
     board_helpers::calc_straight(index,
-                                 game_control().possible_movements_,
-                                 game_control().possible_movements_costs_,
+                                 game_control().possible_movements,
+                                 game_control().possible_movements_costs,
                                  range_,
                                  skip_obstacles_);
 
-    game_control().actual_targeting_type_ = target_type_;
+    game_control().current_targeting_type = target_type_;
     game_control().wait_for_action([this](index_t used_on_index) {
       return use(used_on_index);
     });

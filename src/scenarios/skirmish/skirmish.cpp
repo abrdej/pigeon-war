@@ -79,12 +79,12 @@ void skirmish_scenario_factory::create() {
         auto starting_position = starting_positions[selections];
         auto starting_index = game_board().to_index(starting_position.first, starting_position.second);
 
-        auto entity_id = game_board().move(game_control().selected_index_, starting_index);
-        sender::send(make_move_entity_message(entity_id, game_control().selected_index_, starting_index));
+        auto entity_id = game_board().move(game_control().selected_index, starting_index);
+        sender::send(make_move_entity_message(entity_id, game_control().selected_index, starting_index));
 
         entities[players[selections % number_of_players]].push_back(entity_id);
 
-        game_control().selected_index_ = starting_index;
+        game_control().selected_index = starting_index;
 
         entities_to_choose.erase(entity_id);
 

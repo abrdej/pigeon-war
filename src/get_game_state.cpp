@@ -27,17 +27,17 @@ global_game_state get_global_game_state() {
 local_game_state get_local_game_state() {
   local_game_state local_state{};
 
-  for (auto idx : game_control().possible_movements_)
+  for (auto idx : game_control().possible_movements)
     local_state.possible_movements.push_back(idx);
 
-  local_state.actual_target_type = game_control().actual_targeting_type_;
+  local_state.actual_target_type = game_control().current_targeting_type;
 
   local_state.button_bitmaps.fill("");
   local_state.usable.fill(false);
 
   // verify this
-  if (game_control().selected_index_ != null_index) {
-    auto entity_id = game_board().at(game_control().selected_index_);
+  if (game_control().selected_index != null_index) {
+    auto entity_id = game_board().at(game_control().selected_index);
     auto entity = game::get<entity_manager>().get(entity_id);
 
     if (entity_id != null_entity_id) {
@@ -54,9 +54,9 @@ local_game_state get_local_game_state() {
     }
 
     local_state.entity_name = entity.name;
-    local_state.selected_index = game_control().selected_index_;
+    local_state.selected_index = game_control().selected_index;
 
-    for (auto&& move : game_control().possible_movements_) {
+    for (auto&& move : game_control().possible_movements) {
       if (game_control().valid_target(move)) {
         local_state.valid_movements.insert(move);
       }

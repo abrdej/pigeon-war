@@ -18,8 +18,8 @@ class neighboring_target_ability : public active_ability {
       : active_ability(std::move(name)), target_type_(target_type), available_(available) {}
 
   void prepare(index_t for_index) override {
-    board_helpers::neighboring_fields(for_index, game_control().possible_movements_, available_);
-    game_control().actual_targeting_type_ = target_type_;
+    board_helpers::neighboring_fields(for_index, game_control().possible_movements, available_);
+    game_control().current_targeting_type = target_type_;
     game_control().wait_for_action([this](index_t index) { return use(index); });
   }
 

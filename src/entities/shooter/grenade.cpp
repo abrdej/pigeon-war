@@ -30,7 +30,7 @@ void grenade::use(index_t on_index) {
   std::vector<index_t> neighbors;
   board_helpers::neighboring_fields(on_index, neighbors, false);
 
-  sender::send(make_action_message("grenade", game_control().selected_index_, on_index));
+  sender::send(make_action_message("grenade", game_control().selected_index, on_index));
 
   damage_dealers::standard_damage_dealer(ranged_damage(damage_, game_board().at(on_index), entity_id_));
 

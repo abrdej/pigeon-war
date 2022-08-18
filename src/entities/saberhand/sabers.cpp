@@ -21,9 +21,9 @@ sabers::sabers(entity_id_t entity_id)
 }
 
 void sabers::prepare(index_t for_index) {
-  game_control().selected_index_ = for_index;
-  board_helpers::neighboring_fields(for_index, game_control().possible_movements_, false);
-  game_control().actual_targeting_type_ = target_types::enemy;
+  game_control().selected_index = for_index;
+  board_helpers::neighboring_fields(for_index, game_control().possible_movements, false);
+  game_control().current_targeting_type = target_types::enemy;
   game_control().wait_for_action([this](index_t index) {
     return target(index);
   });
@@ -47,9 +47,9 @@ void sabers::target(index_t target_index) {
   } else {
     targets_.push_back(target_index);
 
-    board_helpers::neighboring_fields(target_index, game_control().possible_movements_, false);
-    game_control().possible_movements_.push_back(target_index);
-    game_control().actual_targeting_type_ = target_types::enemy;
+    board_helpers::neighboring_fields(target_index, game_control().possible_movements, false);
+    game_control().possible_movements.push_back(target_index);
+    game_control().current_targeting_type = target_types::enemy;
     game_control().wait_for_action([this](index_t index) {
       return target(index);
     });
@@ -69,6 +69,6 @@ void sabers::use(index_t index_on) {
 
   damage_dealers::standard_damage_dealer(melee_damage(damage_, game_board().at(index_on), entity_id_));
 
-  game_control().selected_index_ = game_board().index_for(entity_id_);
-  game_control().possible_movements_.clear();
+  game_control().selected_index = game_board().index_for(entity_id_);
+  game_control().possible_movements.clear();
 }

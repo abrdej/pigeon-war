@@ -16,11 +16,11 @@ class diagonal_target_ability : public active_ability {
 
   void prepare(index_t index) override {
     board_helpers::calc_diagonal(index,
-                                 game_control().possible_movements_,
-                                 game_control().possible_movements_costs_,
+                                 game_control().possible_movements,
+                                 game_control().possible_movements_costs,
                                  range_,
                                  skip_obstacles_);
-    game_control().actual_targeting_type_ = target_type_;
+    game_control().current_targeting_type = target_type_;
     game_control().wait_for_action([this](index_t used_on_index) {
       return use(used_on_index);
     });

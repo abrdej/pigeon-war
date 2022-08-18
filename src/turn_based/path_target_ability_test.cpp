@@ -37,11 +37,11 @@ TEST(PathTargetAbility, Prepare) {
 
   ability.prepare(index_t{12});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 9u);
+  ASSERT_EQ(game_control().possible_movements.size(), 9u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {2, 6, 7, 8, 13, 14, 16, 17, 18});
+  testing::CompareWithoutOrdering(game_control().possible_movements, {2, 6, 7, 8, 13, 14, 16, 17, 18});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{2});
   EXPECT_EQ(ability.selected_index, index_t{2});
 }
@@ -61,11 +61,11 @@ TEST(PathTargetAbility, PrepareOnBoundaryTL) {
 
   ability.prepare(index_t{6});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 10u);
+  ASSERT_EQ(game_control().possible_movements.size(), 10u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {0, 1, 2, 5, 7, 8, 10, 11, 12, 16});
+  testing::CompareWithoutOrdering(game_control().possible_movements, {0, 1, 2, 5, 7, 8, 10, 11, 12, 16});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{11});
   EXPECT_EQ(ability.selected_index, index_t{11});
 }
@@ -85,11 +85,11 @@ TEST(PathTargetAbility, PrepareOnBoundaryBR) {
 
   ability.prepare(index_t{18});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 10u);
+  ASSERT_EQ(game_control().possible_movements.size(), 10u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {8, 12, 13, 14, 16, 17, 19, 22, 23, 24});
+  testing::CompareWithoutOrdering(game_control().possible_movements, {8, 12, 13, 14, 16, 17, 19, 22, 23, 24});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{8});
   EXPECT_EQ(ability.selected_index, index_t{8});
 }
@@ -111,15 +111,15 @@ TEST(PathTargetAbility, AllFields) {
 
   ability.prepare(index_t{12});
 
-  for (auto id : game_control().possible_movements_) {
+  for (auto id : game_control().possible_movements) {
     std::cout << id << ", ";
   }
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 12u);
+  ASSERT_EQ(game_control().possible_movements.size(), 12u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {2, 6, 7, 8, 10, 11, 13, 14, 16, 17, 18, 22});
+  testing::CompareWithoutOrdering(game_control().possible_movements, {2, 6, 7, 8, 10, 11, 13, 14, 16, 17, 18, 22});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{2});
   EXPECT_EQ(ability.selected_index, index_t{2});
 }

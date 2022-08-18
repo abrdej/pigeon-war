@@ -37,11 +37,11 @@ TEST(StraightTargetAbility, Prepare) {
 
   ability.prepare(index_t{12});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 7u);
+  ASSERT_EQ(game_control().possible_movements.size(), 7u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {2, 7, 11, 13, 14, 17, 22});
+  testing::CompareWithoutOrdering(game_control().possible_movements, {2, 7, 11, 13, 14, 17, 22});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{2});
   EXPECT_EQ(ability.selected_index, index_t{2});
 }
@@ -61,11 +61,11 @@ TEST(StraightTargetAbility, PrepareOnBoundaryTL) {
 
   ability.prepare(index_t{6});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 6u);
+  ASSERT_EQ(game_control().possible_movements.size(), 6u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {1, 5, 7, 8, 11, 16});
+  testing::CompareWithoutOrdering(game_control().possible_movements, {1, 5, 7, 8, 11, 16});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{11});
   EXPECT_EQ(ability.selected_index, index_t{11});
 }
@@ -85,11 +85,11 @@ TEST(StraightTargetAbility, PrepareOnBoundaryBR) {
 
   ability.prepare(index_t{18});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 6u);
+  ASSERT_EQ(game_control().possible_movements.size(), 6u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {8, 13, 16, 17, 19, 23});
+  testing::CompareWithoutOrdering(game_control().possible_movements, {8, 13, 16, 17, 19, 23});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{8});
   EXPECT_EQ(ability.selected_index, index_t{8});
 }
@@ -111,11 +111,11 @@ TEST(StraightTargetAbility, PrepareSkipObstacles) {
 
   ability.prepare(index_t{12});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 8u);
+  ASSERT_EQ(game_control().possible_movements.size(), 8u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_, {2, 7, 10, 11, 13, 14, 17, 22});
+  testing::CompareWithoutOrdering(game_control().possible_movements, {2, 7, 10, 11, 13, 14, 17, 22});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{2});
   EXPECT_EQ(ability.selected_index, index_t{2});
 }

@@ -36,6 +36,6 @@ void shoot::use(index_t on_index) {
   }
   --bullets_;
 
-  sender::send(make_action_message(name, game_control().selected_index_, on_index));
+  sender::send(make_action_message(name, game_control().selected_index, on_index));
   damage_dealers::standard_damage_dealer(ranged_damage(damage_, game_board().at(on_index), entity_id_));
 }

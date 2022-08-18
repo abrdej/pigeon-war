@@ -26,7 +26,7 @@ sniper_shot::sniper_shot(entity_id_t entity_id)
 }
 
 void sniper_shot::prepare(index_t for_index) {
-  game_control().selected_index_ = for_index;
+  game_control().selected_index = for_index;
 
   bool enemy_close = false;
 
@@ -41,23 +41,23 @@ void sniper_shot::prepare(index_t for_index) {
 
   if (!enemy_close) {
     board_helpers::calc_straight(for_index,
-                                 game_control().possible_movements_,
-                                 game_control().possible_movements_costs_,
+                                 game_control().possible_movements,
+                                 game_control().possible_movements_costs,
                                  range_);
 
   } else {
-    game_control().possible_movements_.clear();
-    game_control().possible_movements_costs_.clear();
+    game_control().possible_movements.clear();
+    game_control().possible_movements_costs.clear();
   }
 
-  game_control().actual_targeting_type_ = target_types::enemy;
+  game_control().current_targeting_type = target_types::enemy;
   game_control().wait_for_action([this](index_t index) { return use(index); });
 }
 
 void sniper_shot::use(index_t index_on) {
   if (used) return;
 
-  auto used_from_index = game_control().selected_index_;
+  auto used_from_index = game_control().selected_index;
   auto entity_id = game_board().at(used_from_index);
 
   sender::send(make_action_message(name, used_from_index, index_on));

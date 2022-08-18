@@ -20,7 +20,7 @@ void tongue_of_fire::use(index_t index_on) {
     return;
   }
 
-  sender::send(make_action_message("tongue_of_fire", game_control().selected_index_, index_on));
+  sender::send(make_action_message("tongue_of_fire", game_control().selected_index, index_on));
 
   damage_dealers::standard_damage_dealer(ranged_damage(damage_, game_board().at(index_on), entity_id_));
 

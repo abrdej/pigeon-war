@@ -60,7 +60,7 @@ void magic_bullet::use(index_t index_on) {
     return;
   }
 
-  auto from_index = game_control().selected_index_;
+  auto from_index = game_control().selected_index;
 
   auto power = game::get<entity_manager>().get(entity_id_).get<power_filed>();
 

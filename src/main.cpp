@@ -149,7 +149,7 @@ int main(int argc, char** argv) {
 
     if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
 
-      description = get_button_description(game_control().selected_index_, button);
+      description = get_button_description(game_control().selected_index, button);
       server.send_message(client_id, make_description_message(description));
     }
   });

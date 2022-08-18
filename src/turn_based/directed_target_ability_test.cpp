@@ -38,12 +38,12 @@ TEST(DirectedTargetAbility, Prepare) {
 
   ability.prepare(index_t{12});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 14u);
+  ASSERT_EQ(game_control().possible_movements.size(), 14u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_,
+  testing::CompareWithoutOrdering(game_control().possible_movements,
                                   {4, 6, 7, 8, 10, 11, 13, 14, 16, 17, 18, 20, 22, 24});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{6});
   EXPECT_EQ(ability.selected_index, index_t{6});
 }
@@ -63,12 +63,12 @@ TEST(DirectedTargetAbility, PrepareOnBoundaryTL) {
 
   ability.prepare(index_t{6});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 11u);
+  ASSERT_EQ(game_control().possible_movements.size(), 11u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_,
+  testing::CompareWithoutOrdering(game_control().possible_movements,
                                   {0, 1, 2, 5, 7, 8, 10, 11, 12, 16, 18});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{12});
   EXPECT_EQ(ability.selected_index, index_t{12});
 }
@@ -88,12 +88,12 @@ TEST(DirectedTargetAbility, PrepareOnBoundaryBR) {
 
   ability.prepare(index_t{18});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 11u);
+  ASSERT_EQ(game_control().possible_movements.size(), 11u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_,
+  testing::CompareWithoutOrdering(game_control().possible_movements,
                                   {6, 8, 12, 13, 14, 16, 17, 19, 22, 23, 24});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{6});
   EXPECT_EQ(ability.selected_index, index_t{6});
 }
@@ -116,12 +116,12 @@ TEST(DirectedTargetAbility, PrepareSkipObstacles) {
 
   ability.prepare(index_t{12});
 
-  ASSERT_EQ(game_control().possible_movements_.size(), 16u);
+  ASSERT_EQ(game_control().possible_movements.size(), 16u);
 
-  testing::CompareWithoutOrdering(game_control().possible_movements_,
+  testing::CompareWithoutOrdering(game_control().possible_movements,
                                   {0, 2, 4, 6, 7, 8, 10, 11, 13, 14, 16, 17, 18, 20, 22, 24});
 
-  EXPECT_EQ(game_control().actual_targeting_type_, target_types::enemy);
+  EXPECT_EQ(game_control().current_targeting_type, target_types::enemy);
   game_control().do_action(index_t{4});
   EXPECT_EQ(ability.selected_index, index_t{4});
 }
