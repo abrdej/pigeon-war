@@ -23,9 +23,9 @@ void game_controller::set_entity_default_state(index_t select_from_index) {
     auto abilities_ptr = entity.get<abilities>();
 
     if (abilities_ptr->is_active) {
-      auto moveable = abilities_ptr->at(0);
-      if (moveable) {
-        try_prepare_ability(*moveable, selected_index_);
+      auto default_ability = abilities_ptr->at(0);
+      if (default_ability) {
+        try_prepare_ability(*default_ability, selected_index_);
       }
     }
   }
