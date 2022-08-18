@@ -8,7 +8,7 @@
 #include <turn_based/managers/entity_manager.h>
 
 move::move(std::int32_t range, types type)
-    : moveable_base(name), range_(range), base_range_(range), movement_type_(type) {
+    : move_ability(name), range_(range), base_range_(range), movement_type_(type) {
   on_every_two_turns_from_next([this]() { used_ = false; });
 
   configure_hint(config_directory + name + ".json", "hint", range_);
