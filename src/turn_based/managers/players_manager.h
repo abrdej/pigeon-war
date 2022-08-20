@@ -24,69 +24,69 @@ static constexpr player_id_t destructive_surroundings_id{std::numeric_limits<pla
 class players_manager {
  public:
   player_id_t create_human_player(const std::string& player_name) {
-    players.emplace_back(std::make_pair(player_name, false));
-    return static_cast<player_id_t>(players.size() - 1);
+    players_.emplace_back(std::make_pair(player_name, false));
+    return static_cast<player_id_t>(players_.size() - 1);
   }
 
   player_id_t create_ai_player(const std::string& player_name) {
-    players.emplace_back(std::make_pair(player_name, true));
-    return static_cast<player_id_t>(players.size() - 1);
+    players_.emplace_back(std::make_pair(player_name, true));
+    return static_cast<player_id_t>(players_.size() - 1);
   }
 
   void add_entity_for_player(player_id_t player_id, entity_id_t entity_id) {
-    entity_id_to_player_id[entity_id] = player_id;
+    entity_id_to_player_id_[entity_id] = player_id;
   }
 
   void add_neutral_entity(entity_id_t entity_id) {
-    entity_id_to_player_id[entity_id] = players_ids::neutral_id;
+    entity_id_to_player_id_[entity_id] = players_ids::neutral_id;
   }
 
   void add_destructive_surroundings(entity_id_t entity_id) {
-    entity_id_to_player_id[entity_id] = players_ids::destructive_surroundings_id;
+    entity_id_to_player_id_[entity_id] = players_ids::destructive_surroundings_id;
   }
 
   bool player_entity(player_id_t player_id, entity_id_t entity_id) {
-    return entity_id_to_player_id[entity_id] == player_id;
+    return entity_id_to_player_id_[entity_id] == player_id;
   }
   bool active_player_entity(entity_id_t entity_id) {
-    return entity_id_to_player_id[entity_id] == active_player_id;
+    return entity_id_to_player_id_[entity_id] == active_player_id_;
   }
 
   bool enemy_entity(player_id_t player_id, entity_id_t entity_id) {
-    return entity_id_to_player_id[entity_id] != player_id
-        && entity_id_to_player_id[entity_id] != players_ids::neutral_id;
+    return entity_id_to_player_id_[entity_id] != player_id
+        && entity_id_to_player_id_[entity_id] != players_ids::neutral_id;
   }
 
   bool neutral_entity(entity_id_t entity_id) {
-    return entity_id_to_player_id[entity_id] == players_ids::neutral_id;
+    return entity_id_to_player_id_[entity_id] == players_ids::neutral_id;
   }
 
-  std::string player_name(player_id_t player_id) { return players[player_id.cast()].first; }
+  std::string player_name(player_id_t player_id) { return players_[player_id.cast()].first; }
 
   player_id_t player_for_entity(entity_id_t entity_id) {
-    auto it = entity_id_to_player_id.find(entity_id);
-    if (it != std::end(entity_id_to_player_id)) {
+    auto it = entity_id_to_player_id_.find(entity_id);
+    if (it != std::end(entity_id_to_player_id_)) {
       return it->second;
     } else {
       return players_ids::no_player_id;
     }
   }
 
-  player_id_t get_active_player_id() const { return active_player_id; }
+  player_id_t get_active_player_id() const { return active_player_id_; }
 
   player_id_t next_player() {
-    auto id = active_player_id.cast();
-    auto next_player_id = static_cast<player_id_t>(++id % players.size());
-    active_player_id = next_player_id;
+    auto id = active_player_id_.cast();
+    auto next_player_id = static_cast<player_id_t>(++id % players_.size());
+    active_player_id_ = next_player_id;
     return next_player_id;
   }
 
-  bool is_active_player_ai() { return players[active_player_id.cast()].second; }
+  bool is_active_player_ai() { return players_[active_player_id_.cast()].second; }
 
  private:
-  std::vector<std::pair<std::string, bool>> players;
-  std::unordered_map<entity_id_t, player_id_t> entity_id_to_player_id;
-  player_id_t active_player_id{0};
+  std::vector<std::pair<std::string, bool>> players_;
+  std::unordered_map<entity_id_t, player_id_t> entity_id_to_player_id_;
+  player_id_t active_player_id_{0};
 };
 
 namespace players_helpers {
