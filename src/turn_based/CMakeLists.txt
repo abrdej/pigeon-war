@@ -29,15 +29,4 @@ target_link_libraries(turn_based PUBLIC logging Boost::headers Boost::system pth
 
 enable_testing()
 
-add_executable(turn_based_test
-  board_container_test.cpp
-  caster_target_ability_test.cpp
-  diagonal_target_ability_test.cpp
-  directed_target_ability_test.cpp
-  neighboring_target_ability_test.cpp
-  path_target_ability_test.cpp
-  per_turn_usable_test.cpp
-  straight_target_ability_test.cpp
-  turn_system_test.cpp
-  testing/compare.cpp)
-target_link_libraries(turn_based_test gtest gtest_main turn_based pthread)
+add_tests(turn_based_test)

@@ -111,10 +111,6 @@ TEST(PathTargetAbility, AllFields) {
 
   ability.prepare(index_t{12});
 
-  for (auto id : game_control().possible_movements) {
-    std::cout << id << ", ";
-  }
-
   ASSERT_EQ(game_control().possible_movements.size(), 12u);
 
   testing::CompareWithoutOrdering(game_control().possible_movements, {2, 6, 7, 8, 10, 11, 13, 14, 16, 17, 18, 22});

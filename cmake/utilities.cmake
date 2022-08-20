@@ -1,3 +1,13 @@
 function(create_config)
   configure_file(${PROJECT_SOURCE_DIR}/cmake/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h @ONLY)
 endfunction()
+
+function(add_tests name)
+  create_config()
+  file(GLOB _tests_sources "${CMAKE_CURRENT_SOURCE_DIR}/*_test.cpp")
+  file(GLOB _tests_helpers "${CMAKE_CURRENT_SOURCE_DIR}/testing/*.cpp")
+  if(_tests_sources)
+    add_executable(${name} ${_tests_sources} ${_tests_helpers})
+    target_link_libraries(${name} gtest gtest_main turn_based pthread)
+  endif()
+endfunction()
