@@ -31,18 +31,18 @@ struct ai_knowledge {
  public:
   knowledge_scope& global() { return global_knowledge_scope_; }
 
-  knowledge_scope& player(id_t player_id) { return players_knowledge_scope_[player_id]; }
+  knowledge_scope& player(player_id_t player_id) { return players_knowledge_scope_[player_id]; }
 
   knowledge_scope& entity(entity_id_t entity_id) { return entities_knowledge_scope_[entity_id]; }
 
  private:
   knowledge_scope global_knowledge_scope_;
-  std::unordered_map<id_t, knowledge_scope> players_knowledge_scope_;
+  std::unordered_map<player_id_t, knowledge_scope> players_knowledge_scope_;
   std::unordered_map<entity_id_t, knowledge_scope> entities_knowledge_scope_;
 };
 
-inline id_t active_player_id(ai_knowledge& knowledge) {
-  return knowledge.global().get<id_t>("active_player_id");
+inline player_id_t active_player_id(ai_knowledge& knowledge) {
+  return knowledge.global().get<player_id_t>("active_player_id");
 }
 
 inline entity_id_t active_entity_id(ai_knowledge& knowledge) {

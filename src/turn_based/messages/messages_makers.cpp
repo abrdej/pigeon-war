@@ -62,9 +62,9 @@ std::string make_global_game_state_message(const global_game_state& state) {
   return data.dump();
 }
 
-std::string make_end_turn_message(std::uint32_t active_player) {
+std::string make_end_turn_message(player_id_t active_player) {
   json data;
-  data["end_turn"] = active_player;
+  data["end_turn"] = active_player.cast();
   return data.dump();
 }
 

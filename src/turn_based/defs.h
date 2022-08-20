@@ -6,51 +6,40 @@
 
 #include <type_safe/strong_typedef.hpp>
 
-struct entity_id_t : type_safe::strong_typedef<entity_id_t, std::uint32_t>,
-                     type_safe::strong_typedef_op::equality_comparison<entity_id_t> {
-  using strong_typedef::strong_typedef;
-  using value_type = decltype(value_);
+template <typename Tag>
+struct tagged_uint : type_safe::strong_typedef<tagged_uint<Tag>, std::uint32_t>,
+                     type_safe::strong_typedef_op::equality_comparison<tagged_uint<Tag>> {
+  using type_safe::strong_typedef<tagged_uint<Tag>, std::uint32_t>::strong_typedef;
+  using value_type = decltype(type_safe::strong_typedef<tagged_uint<Tag>, std::uint32_t>::value_);
 
   [[nodiscard]] value_type cast() const {
-    return value_;
+    return type_safe::strong_typedef<tagged_uint<Tag>, std::uint32_t>::value_;
   }
 };
 
+struct entity_id_tag {};
+struct player_id_tag {};
+struct index_tag {};
+
+using entity_id_t = tagged_uint<entity_id_tag>;
 static constexpr entity_id_t null_entity_id{std::numeric_limits<entity_id_t::value_type>::max()};
 
-struct index_t : type_safe::strong_typedef<index_t, std::uint32_t>,
-                 type_safe::strong_typedef_op::equality_comparison<index_t> {
-  using strong_typedef::strong_typedef;
-  using value_type = decltype(value_);
+using player_id_t = tagged_uint<player_id_tag>;
 
-  [[nodiscard]] value_type cast() const {
-    return value_;
-  }
-};
-
+using index_t = tagged_uint<index_tag>;
 static constexpr index_t null_index{std::numeric_limits<entity_id_t::value_type>::max()};
 
-inline std::ostream& operator<<(std::ostream& out, const entity_id_t& entity_id) {
-  return out << entity_id.cast();
-}
-
-inline std::ostream& operator<<(std::ostream& out, const index_t& index) {
-  return out << index.cast();
+template <typename T>
+std::ostream& operator<<(std::ostream& out, const tagged_uint<T>& x) {
+  return out << x.cast();
 }
 
 namespace std {
 
-template <>
-struct hash<entity_id_t> {
-  std::size_t operator()(const entity_id_t& x) const noexcept {
-    return std::hash<entity_id_t::value_type>()(x.cast());
-  }
-};
-
-template <>
-struct hash<index_t> {
-  std::size_t operator()(const index_t& x) const noexcept {
-    return std::hash<index_t::value_type>()(x.cast());
+template <typename T>
+struct hash<tagged_uint<T>> {
+  std::size_t operator()(const tagged_uint<T>& x) const noexcept {
+    return std::hash<typename tagged_uint<T>::value_type>()(x.cast());
   }
 };
 

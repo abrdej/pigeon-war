@@ -48,7 +48,7 @@ void skirmish_scenario_factory::create() {
   auto name = read_map_from_json(maps_directory + "battlefield.json", map_size);
 
   const int number_of_players = 2;
-  std::array<std::uint32_t, number_of_players> players = {};
+  std::array<player_id_t, number_of_players> players = {};
   for (auto& player : players) {
     player = game::get<players_manager>().create_human_player("");
   }
@@ -66,7 +66,7 @@ void skirmish_scenario_factory::create() {
   }
 
   auto create_entities_container = []() {
-    return std::unordered_map<std::uint32_t, std::vector<entity_id_t>>();
+    return std::unordered_map<player_id_t, std::vector<entity_id_t>>();
   };
   const std::int32_t entities_for_player = 4;
 

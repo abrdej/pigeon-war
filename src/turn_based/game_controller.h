@@ -19,7 +19,7 @@ class game_controller {
   void on_board(std::uint32_t col, std::uint32_t row);
   void on_button(std::uint32_t n);
   void defeat();
-  void victory(std::uint32_t player_id);
+  void victory(player_id_t player_id);
   void wait_for_action(const std::function<void(index_t index)>& caller);
   void do_action(index_t index);
   bool is_possible_movement(index_t index) const;

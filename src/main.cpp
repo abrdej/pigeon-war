@@ -108,7 +108,7 @@ int main(int argc, char** argv) {
     LOG(debug) << "client_id: " << client_id;
     LOG(debug) << "get_active_player_id: " << game::get<players_manager>().get_active_player_id();
 
-    if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
+    if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
       LOG(debug) << "executing on board and sending local and global state";
       game_control().on_board(x, y);
       server.send_message_to_all(make_local_game_state_message(get_local_game_state()));
@@ -124,7 +124,7 @@ int main(int argc, char** argv) {
 
     const bool single_client = server.number_of_clients() == 1;
 
-    if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
+    if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
       LOG(debug) << "client_id: " << client_id << " single_client:" << single_client;
       game_control().on_button(button);
 
@@ -147,7 +147,7 @@ int main(int argc, char** argv) {
 
     const bool single_client = server.number_of_clients() == 1;
 
-    if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
+    if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
 
       description = get_button_description(game_control().selected_index, button);
       server.send_message(client_id, make_description_message(description));
@@ -162,7 +162,7 @@ int main(int argc, char** argv) {
 
     const bool single_client = server.number_of_clients() == 1;
 
-    if (client_id == game::get<players_manager>().get_active_player_id() || single_client) {
+    if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
       description = get_effect_description(effect);
       server.send_message(client_id, make_effect_description_message(description));
     }

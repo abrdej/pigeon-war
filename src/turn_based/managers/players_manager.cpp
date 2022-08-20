@@ -3,7 +3,7 @@
 #include <turn_based/states.h>
 #include <turn_based/board.h>
 
-void players_helpers::player_entities_indexes(std::uint32_t player_id, std::vector<index_t>& indexes) {
+void players_helpers::player_entities_indexes(player_id_t player_id, std::vector<index_t>& indexes) {
   indexes.clear();
   game_board().for_each([&player_id, &indexes](entity_id_t entity_id, std::uint32_t col, std::uint32_t row) {
     if (entity_id != null_entity_id && game::get<players_manager>().player_entity(player_id, entity_id))
@@ -11,7 +11,7 @@ void players_helpers::player_entities_indexes(std::uint32_t player_id, std::vect
   });
 }
 
-void players_helpers::enemy_entities_indexes(std::uint32_t player_id, std::vector<index_t>& indexes) {
+void players_helpers::enemy_entities_indexes(player_id_t player_id, std::vector<index_t>& indexes) {
   indexes.clear();
   game_board().for_each([player_id, &indexes](entity_id_t entity_id, std::uint32_t col, std::uint32_t row) {
     if (entity_id != null_entity_id && game::get<players_manager>().enemy_entity(player_id, entity_id))

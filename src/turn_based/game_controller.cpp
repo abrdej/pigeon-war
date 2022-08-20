@@ -78,7 +78,7 @@ void game_controller::defeat() {
   sender::send(make_defeat_message());
 }
 
-void game_controller::victory(std::uint32_t player_id) {
+void game_controller::victory(player_id_t player_id) {
   sender::send(make_victory_message());
 }
 

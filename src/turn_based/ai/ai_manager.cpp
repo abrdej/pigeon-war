@@ -10,7 +10,7 @@ void ai_manager::add_ai_for(entity_id_t entity_id, ai::behavior_node_ptr behavio
                                          [this, entity_id]() { behavior_trees_.erase(entity_id); });
 }
 
-void ai_manager::perform_movement_new_ai(id_t player_id) {
+void ai_manager::perform_movement_new_ai(player_id_t player_id) {
   auto temp_behavior_trees = behavior_trees_;
 
   for (auto& behavior_tree_entry : temp_behavior_trees) {
