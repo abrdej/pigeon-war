@@ -25,7 +25,7 @@ magic_bullet::magic_bullet(entity_id_t entity_id)
       std::vector<index_t> neighbors;
       board_helpers::neighboring_fields(game_board().index_for(entity_id), neighbors, false);
       for (auto index : neighbors) {
-        if (!game_board().empty(index) && players_helpers::is_enemy_entity(index)) {
+        if (!game_board().empty(index) && players_helpers::is_enemy_entity_at(index)) {
           power->power += magic_power_drain_amount_;
           sender::send(make_action_message("magic_suck", index));
         }

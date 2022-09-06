@@ -9,12 +9,6 @@
 
 #include <turn_based/defs.h>
 
-//enum players_ids : player_id_t {
-//  neutral_id = std::numeric_limits<std::uint32_t>::max(),
-//  no_player_id = std::numeric_limits<std::uint32_t>::max() - 1,
-//  destructive_surroundings_id = std::numeric_limits<std::uint32_t>::max() - 2
-//};
-
 namespace players_ids {
 static constexpr player_id_t neutral_id{std::numeric_limits<player_id_t::value_type>::max()};
 static constexpr player_id_t no_player_id{std::numeric_limits<player_id_t::value_type>::max() - 1};
@@ -91,12 +85,12 @@ class players_manager {
 
 namespace players_helpers {
 
-void player_entities_indexes(player_id_t player_id, std::vector<index_t>& indexes);
-void enemy_entities_indexes(player_id_t player_id, std::vector<index_t>& indexes);
+void get_player_entities_indices(player_id_t player_id, std::vector<index_t>& indexes);
+void get_enemy_entities_indices(player_id_t player_id, std::vector<index_t>& indexes);
 
-bool is_player_entity(index_t entity_index);
-bool is_enemy_entity(index_t entity_index);
-bool is_neutral_entity(index_t entity_index);
+bool is_player_entity_at(index_t entity_index);
+bool is_enemy_entity_at(index_t entity_index);
+bool is_neutral_entity_at(index_t entity_index);
 index_t active_player_first_entity_index();
 
 }  // namespace players_helpers

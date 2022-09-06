@@ -3,7 +3,7 @@
 #include <turn_based/states.h>
 #include <turn_based/board.h>
 
-void players_helpers::player_entities_indexes(player_id_t player_id, std::vector<index_t>& indexes) {
+void players_helpers::get_player_entities_indices(player_id_t player_id, std::vector<index_t>& indexes) {
   indexes.clear();
   game_board().for_each([&player_id, &indexes](entity_id_t entity_id, std::uint32_t col, std::uint32_t row) {
     if (entity_id != null_entity_id && game::get<players_manager>().player_entity(player_id, entity_id))
@@ -11,7 +11,7 @@ void players_helpers::player_entities_indexes(player_id_t player_id, std::vector
   });
 }
 
-void players_helpers::enemy_entities_indexes(player_id_t player_id, std::vector<index_t>& indexes) {
+void players_helpers::get_enemy_entities_indices(player_id_t player_id, std::vector<index_t>& indexes) {
   indexes.clear();
   game_board().for_each([player_id, &indexes](entity_id_t entity_id, std::uint32_t col, std::uint32_t row) {
     if (entity_id != null_entity_id && game::get<players_manager>().enemy_entity(player_id, entity_id))
@@ -19,27 +19,27 @@ void players_helpers::enemy_entities_indexes(player_id_t player_id, std::vector<
   });
 }
 
-bool players_helpers::is_player_entity(index_t entity_index) {
+bool players_helpers::is_player_entity_at(index_t entity_index) {
   auto entity_id = game_board().at(entity_index);
   if (entity_id != null_entity_id)
     return game::get<players_manager>().player_entity(game::get<players_manager>().get_active_player_id(), entity_id);
   return false;
 }
 
-bool players_helpers::is_enemy_entity(index_t entity_index) {
+bool players_helpers::is_enemy_entity_at(index_t entity_index) {
   auto entity_id = game_board().at(entity_index);
   if (entity_id != null_entity_id)
     return game::get<players_manager>().enemy_entity(game::get<players_manager>().get_active_player_id(), entity_id);
   return false;
 }
 
-bool players_helpers::is_neutral_entity(index_t entity_index) {
+bool players_helpers::is_neutral_entity_at(index_t entity_index) {
   auto entity_id = game_board().at(entity_index);
   return (entity_id != null_entity_id) && game::get<players_manager>().neutral_entity(entity_id);
 }
 
 index_t players_helpers::active_player_first_entity_index() {
   std::vector<index_t> indexes;
-  player_entities_indexes(game::get<players_manager>().get_active_player_id(), indexes);
+  get_player_entities_indices(game::get<players_manager>().get_active_player_id(), indexes);
   return indexes.empty() ? null_index : indexes.front();
 }

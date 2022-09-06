@@ -20,19 +20,19 @@ void game_controller::on_board(std::uint32_t col, std::uint32_t row) {
     if (is_possible_movement(index) && valid_target(index)) {
       do_action(index);
 
-    } else if (!game_board().empty(index) && players_helpers::is_player_entity(index))
+    } else if (!game_board().empty(index) && players_helpers::is_player_entity_at(index))
       set_entity_default_state(index);
 
-    else if (!game_board().empty(index) && !players_helpers::is_player_entity(index)) {
+    else if (!game_board().empty(index) && !players_helpers::is_player_entity_at(index)) {
       current_state = states_types::waiting;
       current_targeting_type = target_types::non;
       selected_index = index;
     }
 
-  } else if (!game_board().empty(index) && players_helpers::is_player_entity(index)) {
+  } else if (!game_board().empty(index) && players_helpers::is_player_entity_at(index)) {
     set_entity_default_state(index);
 
-  } else if (!game_board().empty(index) && !players_helpers::is_player_entity(index)) {
+  } else if (!game_board().empty(index) && !players_helpers::is_player_entity_at(index)) {
     current_state = states_types::waiting;
     current_targeting_type = target_types::non;
     selected_index = index;
@@ -41,7 +41,7 @@ void game_controller::on_board(std::uint32_t col, std::uint32_t row) {
 
 void game_controller::on_button(std::uint32_t n) {
   if (n <= 4) {
-    if (!players_helpers::is_player_entity(selected_index)) {
+    if (!players_helpers::is_player_entity_at(selected_index)) {
       LOG(debug) << "not player entity";
       return;
     }
@@ -113,11 +113,11 @@ bool game_controller::valid_target(index_t target_index) {
   }
 
   switch (current_targeting_type) {
-    case target_types::enemy: return players_helpers::is_enemy_entity(target_index);
+    case target_types::enemy: return players_helpers::is_enemy_entity_at(target_index);
     case target_types::moving: return game_board().empty(target_index);
-    case target_types::friendly: return players_helpers::is_player_entity(target_index);
+    case target_types::friendly: return players_helpers::is_player_entity_at(target_index);
     case target_types::caster: return target_index == selected_index;
-    case target_types::neutral: return players_helpers::is_neutral_entity(target_index);
+    case target_types::neutral: return players_helpers::is_neutral_entity_at(target_index);
     case target_types::all: return true;
     default: return false;
   }

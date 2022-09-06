@@ -16,7 +16,7 @@ bool find_nearest_enemy::operator()(ai_knowledge& knowledge) {
   auto player_id = active_player_id(knowledge);
 
   std::vector<index_t> enemies_indexes;
-  players_helpers::enemy_entities_indexes(player_id, enemies_indexes);
+  players_helpers::get_enemy_entities_indices(player_id, enemies_indexes);
   if (enemies_indexes.empty()) return false;
 
   auto entity_index = game_board().index_for(active_entity_id(knowledge));
@@ -77,7 +77,7 @@ bool find_lowest_health_target::operator()(ai_knowledge& knowledge) {
   auto entity_id = active_entity_id(knowledge);
 
   std::vector<index_t> enemies_indexes;
-  players_helpers::enemy_entities_indexes(player_id, enemies_indexes);
+  players_helpers::get_enemy_entities_indices(player_id, enemies_indexes);
   if (enemies_indexes.empty()) return false;
 
   std::int32_t lowest_health = std::numeric_limits<std::int32_t>::max();
@@ -107,7 +107,7 @@ bool find_best_target_for_golem::operator()(ai_knowledge& knowledge) {
   auto entity_id = active_entity_id(knowledge);
 
   std::vector<index_t> enemies_indexes;
-  players_helpers::enemy_entities_indexes(player_id, enemies_indexes);
+  players_helpers::get_enemy_entities_indices(player_id, enemies_indexes);
 
   if (enemies_indexes.empty()) return false;
 

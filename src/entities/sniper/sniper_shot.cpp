@@ -33,7 +33,7 @@ void sniper_shot::prepare(index_t for_index) {
   std::vector<index_t> neighbors;
   board_helpers::neighboring_fields(for_index, neighbors, false);
   for (auto& neighbor_index : neighbors) {
-    if (!game_board().empty(neighbor_index) && players_helpers::is_enemy_entity(neighbor_index)) {
+    if (!game_board().empty(neighbor_index) && players_helpers::is_enemy_entity_at(neighbor_index)) {
       enemy_close = true;
       break;
     }
