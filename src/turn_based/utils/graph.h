@@ -1,9 +1,8 @@
 #pragma once
 
+#include <cstdint>
 #include <limits>
-#include <list>
 #include <queue>
-#include <unordered_map>
 #include <vector>
 
 struct graph {
