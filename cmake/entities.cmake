@@ -1,5 +1,5 @@
 function(add_entity name)
-  create_config()
+  create_abilities_config_symlink()
   file(GLOB _entity_sources "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
   if(_entity_sources)
     add_library(${name} SHARED ${_entity_sources})
