@@ -15,5 +15,6 @@
   "fire": "src/entities/environment/libenvironment.so",
   "stone": "src/entities/environment/libenvironment.so",
   "water": "src/entities/environment/libenvironment.so",
-  "wall": "src/entities/environment/libenvironment.so"
+  "wall": "src/entities/environment/libenvironment.so",
+  "poisoner": "src/entities/poisoner/libpoisoner.so"
 }
