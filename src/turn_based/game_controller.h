@@ -28,6 +28,7 @@ class game_controller {
   void add_custom_valid_target_indices(entity_id_t entity_id, const std::vector<index_t>& custom_target_indices);
   void reset_custom_valid_targets_entities(entity_id_t entity_id);
   void reset_custom_valid_targets_indices(entity_id_t entity_id);
+  void reset_movements_and_targeting_type();
 
   index_t selected_index{null_index};
   states_types current_state{states_types::waiting};
