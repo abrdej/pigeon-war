@@ -145,6 +145,12 @@ void game_controller::reset_custom_valid_targets_indices(entity_id_t entity_id) 
   custom_target_indices_[entity_id].clear();
 }
 
+void game_controller::reset_movements_and_targeting_type() {
+  possible_movements.clear();
+  possible_movements_costs.clear();
+  current_targeting_type = target_types::non;
+}
+
 void game_controller::set_entity_default_state(index_t select_from_index) {
   if (select_from_index == null_index) {
     return;
@@ -162,6 +168,8 @@ void game_controller::set_entity_default_state(index_t select_from_index) {
       if (default_ability) {
         try_prepare_ability(*default_ability, selected_index);
       }
+    } else {
+      reset_movements_and_targeting_type();
     }
   }
 }

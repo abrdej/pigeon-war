@@ -26,7 +26,6 @@ void hypnosis::use(index_t index_on) {
   enemy_abilities_ptr->is_active = false;
 
   auto hypnosis_connection = make_after_n_round_callback_holder(duration_, [enemy_id]() mutable {
-
     auto inner_enemy_abilities_ptr = game::get<entity_manager>().get(enemy_id).get<abilities>();
     inner_enemy_abilities_ptr->is_active = true;
 
