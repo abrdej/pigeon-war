@@ -33,6 +33,7 @@ add_subdirectory(src/entities/shooter)
 add_subdirectory(src/entities/sniper)
 add_subdirectory(src/entities/wolf)
 add_subdirectory(src/entities/destroyer)
+add_subdirectory(src/entities/poisoner)
 
 ## scenario plugins
 add_subdirectory(src/scenarios/skirmish)

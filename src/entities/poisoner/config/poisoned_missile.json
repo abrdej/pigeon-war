@@ -1,0 +1,6 @@
+{
+  "damage": 6,
+  "poison_duration": 3,
+  "poison_power": 5,
+  "hint": "Poisoned missile - deals damage of: %d and poisons the opponent for: %d turns.\nPoison deals: %d damage per turn."
+}
