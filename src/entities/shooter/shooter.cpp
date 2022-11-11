@@ -12,6 +12,7 @@ DEFINE_ENTITY_FACTORY(shooter) {
 
   LOG(debug) << "shooter_factory size: " << game_board().cols_n * game_board().rows_n;
 
+  entity.description = configurable("shooter").get_param<std::string>("description");
   entity.add<health_field>(50);
   entity.add<applied_effects>();
   entity.add<modification>();

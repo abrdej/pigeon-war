@@ -10,6 +10,7 @@
 DEFINE_ENTITY_FACTORY(samurai_rat) {
   entity.name = "Samurai";
 
+  entity.description = configurable("samurai").get_param<std::string>("description");
   entity.add<health_field>(60);
   entity.add<applied_effects>();
   entity.add<modification>();

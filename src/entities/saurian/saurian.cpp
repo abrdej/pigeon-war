@@ -8,6 +8,7 @@
 DEFINE_ENTITY_FACTORY(saurian) {
   entity.name = "Saurian";
 
+  entity.description = configurable("saurian").get_param<std::string>("description");
   entity.add<health_field>(35);
   entity.add<applied_effects>();
   entity.add<modification>();

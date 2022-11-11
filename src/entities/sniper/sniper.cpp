@@ -10,6 +10,7 @@
 DEFINE_ENTITY_FACTORY(sniper) {
   entity.name = "Sniper";
 
+  entity.description = configurable("sniper").get_param<std::string>("description");
   entity.add<health_field>(35);
   entity.add<applied_effects>();
   entity.add<modification>();

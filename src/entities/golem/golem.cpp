@@ -10,6 +10,7 @@
 DEFINE_ENTITY_FACTORY(golem) {
   entity.name = "Golem";
 
+  entity.description = configurable("golem").get_param<std::string>("description");
   entity.add<health_field>(60);
   // entity.add<damage_taker>();
   entity.add<applied_effects>();

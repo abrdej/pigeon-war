@@ -9,6 +9,7 @@
 DEFINE_ENTITY_FACTORY(native) {
   entity.name = "Native";
 
+  entity.description = configurable("native").get_param<std::string>("description");
   entity.add<health_field>(50);
   entity.add<applied_effects>();
   entity.add<modification>();

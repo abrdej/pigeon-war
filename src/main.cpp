@@ -8,6 +8,7 @@
 #include <turn_based/game_controller.h>
 #include <get_button_description.h>
 #include <get_effect_description.h>
+#include <get_entity_description.h>
 #include <get_game_state.h>
 
 #include <get_entities.h>
@@ -135,6 +136,20 @@ int main(int argc, char** argv) {
 
       server.send_message_to_all(make_local_game_state_message(get_local_game_state()));
       server.send_message_to_all(make_global_game_state_message(get_global_game_state()));
+    }
+  });
+
+  message_processor.bind("get_entity_description", [&](json_data_type& data) {
+    // TODO: uint32 or int32??
+    std::uint32_t client_id = data["client_id"];
+
+    std::string description;
+
+    const bool single_client = server.number_of_clients() == 1;
+
+    if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
+      description = get_entity_description(game_control().selected_index);
+      server.send_message(client_id, make_entity_description_message(description));
     }
   });
 

@@ -9,6 +9,7 @@
 DEFINE_ENTITY_FACTORY(wolf) {
   entity.name = "Wolf";
 
+  entity.description = configurable("wolf").get_param<std::string>("description");
   entity.add<health_field>(30);
   entity.add<applied_effects>();
   entity.add<modification>();

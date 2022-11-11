@@ -51,6 +51,8 @@ std::string make_end_turn_message(player_id_t active_player);
 
 std::string make_description_message(const std::string& desc);
 
+std::string make_entity_description_message(const std::string& desc);
+
 std::string make_effect_description_message(const std::string& desc);
 
 std::string make_remove_entity_message(entity_id_t entity_id);

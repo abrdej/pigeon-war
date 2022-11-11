@@ -43,6 +43,7 @@ add_subdirectory(src/scenarios/wolfs_night)
 set(SOURCE_FILES
   src/get_button_description.cpp
   src/get_effect_description.cpp
+  src/get_entity_description.cpp
   src/get_entities.cpp
   src/get_entity_names.cpp
   src/get_game_state.cpp

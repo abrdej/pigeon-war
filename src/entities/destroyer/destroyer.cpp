@@ -9,6 +9,7 @@
 DEFINE_ENTITY_FACTORY(destroyer) {
   entity.name = "Destroyer";
 
+  entity.description = configurable("destroyer").get_param<std::string>("description");
   entity.add<health_field>(50);
   entity.add<applied_effects>();
   entity.add<modification>();
