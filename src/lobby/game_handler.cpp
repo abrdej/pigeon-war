@@ -31,7 +31,7 @@ void game_handler::start_if_full() {
 
 bool game_handler::is_invalid() const {
   std::lock_guard<std::mutex> lk(players_mtx_);
-  return started_ && players_.empty();
+  return anyone_added_ && players_.empty();
 }
 
 [[nodiscard]] bool game_handler::is_full() const {
@@ -42,6 +42,7 @@ bool game_handler::is_invalid() const {
 void game_handler::add_player(std::uint32_t player_id) {
   std::lock_guard<std::mutex> lk(players_mtx_);
   players_.insert(player_id);
+  anyone_added_ = true;
 }
 
 void game_handler::remove_player(std::uint32_t player_id) {
