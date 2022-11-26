@@ -31,6 +31,7 @@ class game_handler {
   boost::process::child game_process_;
   std::int32_t port_;
   std::uint32_t number_of_players_{0};
+  bool anyone_added_{false};
   mutable std::mutex players_mtx_;
   std::unordered_set<std::uint32_t> players_;
   bool started_{false};

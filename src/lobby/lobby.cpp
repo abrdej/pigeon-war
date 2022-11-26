@@ -154,6 +154,9 @@ int main(int argc, char** argv) {
       LOG(debug) << "removing game with hash: " << game_hash;
       game_handlers.erase(game_hash);
     }
+
+    LOG(debug) << "number of games: " << game_handlers.size();
+    LOG(debug) << "number of players: " << player_handlers.size();
   }
   server.stop();
 
