@@ -108,7 +108,7 @@ class socket_connection : public std::enable_shared_from_this<socket_connection>
                                    write_message();
                                  }
                                } else {
-                                 LOG(debug) << "Write body fail for: " << id_ << ".";
+                                 LOG(debug) << "Write body fail for: " << id_ << " with: " << ec.message();
                                  socket_.close();
                                }
                              });

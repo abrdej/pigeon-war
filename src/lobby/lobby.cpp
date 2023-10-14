@@ -43,14 +43,17 @@ int main(int argc, char** argv) {
 
   networking::server<networking::web_socket_connection> server(port);
 
+  // Create map of games
   using game_handlers_map = tbb::concurrent_hash_map<std::string, std::shared_ptr<game_handler>>;
   using game_handler_accessor = game_handlers_map::accessor;
   game_handlers_map game_handlers;
 
+  // Create map of players
   using player_handlers_map = tbb::concurrent_hash_map<std::uint32_t, std::shared_ptr<player_handler>>;
   using player_handler_accessor = player_handlers_map::accessor;
   player_handlers_map player_handlers;
 
+  // Create game request supervisor
   game_request_supervisor game_request_supervisor(game_handler_factory(game_exec, port + 1),
                                                   game_handlers,
                                                   player_handlers);
@@ -58,6 +61,7 @@ int main(int argc, char** argv) {
   // TODO: how to clear the games that are not active any more???!!!
   // TODO: we need to close both - web socket connection and also the game <-> handler connection!
 
+  // If a new client is accepted, we're creating a player handler for him
   server.on_client_accepted([&](std::shared_ptr<networking::web_socket_connection> client) mutable {
     const auto client_id = client->get_id();
     LOG(debug) << "new player with id: " << client_id << " connected";
@@ -65,6 +69,7 @@ int main(int argc, char** argv) {
     player_handlers.emplace(std::piecewise_construct, std::make_tuple(client_id), std::make_tuple(handler));
   });
 
+  // If a client disconnects we set that he is disconnected for its player handler
   server.on_client_disconnect([&](std::shared_ptr<networking::web_socket_connection> client) {
     const auto client_id = client->get_id();
     LOG(debug) << "player with id: " << client_id << " disconnected";
@@ -87,6 +92,7 @@ int main(int argc, char** argv) {
       LOG(error) << "Message parsing error in: " << message << ", what: " << e.what();
     }
 
+    // We got a request for a game.
     if (data.count("game_request")) {
       std::string game_hash = data["game_request"]["game_hash"];
       std::int32_t number_of_players = data["game_request"]["number_of_players"];
@@ -106,6 +112,8 @@ int main(int argc, char** argv) {
       }
 
     } else {
+      // This case just forwards a message to a client
+
       LOG(debug) << "got message from client of id: " << client_id << ", which is: " << message;
       player_handler_accessor accessor;
       if (player_handlers.find(accessor, client_id)) {
@@ -145,7 +153,7 @@ int main(int argc, char** argv) {
     // collect game handlers that do not have any players
     std::vector<std::string> invalid_games;
     for (const auto& game_handler : game_handlers) {
-      if (game_handler.second->is_invalid()) {
+      if (game_handler.second->all_removed()) {
         invalid_games.push_back(game_handler.first);
       }
     }

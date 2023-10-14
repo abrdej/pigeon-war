@@ -3,49 +3,54 @@
 #include <logging/logger.h>
 #include <turn_based/sender.h>
 
-game_handler::game_handler(const boost::filesystem::path& game_exec_file, std::int32_t port,
-                           const std::string& scenario, const std::string& map, std::uint32_t number_of_players)
-    : game_process_(game_exec_file,
-                    std::to_string(port),
-                    scenario,
-                    map,
-                    std::to_string(number_of_players),
-                    boost::process::std_out > stdout,
-                    boost::process::std_err > stderr,
-                    boost::process::std_in < stdin),
-      port_(port),
-      number_of_players_(number_of_players) {
-}
+players_set::players_set(std::uint32_t number_of_players)
+    : number_of_players_(number_of_players) {}
 
-game_handler::~game_handler() {
-  std::error_code ec;
-  game_process_.terminate(ec);
-  LOG(debug) << "terminated game with error code: " << ec.message();
-}
-
-void game_handler::start_if_full() {
-  if (is_full()) {
-    started_ = true;
+bool players_set::add_player(std::uint32_t player_id) {
+  std::lock_guard<std::mutex> lk(mtx_);
+  if (players_.size() < number_of_players_) {
+    players_.insert(player_id);
+    anyone_added_ = true;
+    return true;
   }
+  return false;
 }
 
-bool game_handler::is_invalid() const {
-  std::lock_guard<std::mutex> lk(players_mtx_);
-  return anyone_added_ && players_.empty();
+void players_set::remove_player(std::uint32_t player_id) {
+  std::lock_guard<std::mutex> lk(mtx_);
+  players_.erase(player_id);
 }
 
-[[nodiscard]] bool game_handler::is_full() const {
-  std::lock_guard<std::mutex> lk(players_mtx_);
+bool players_set::all_players_added() const {
+  std::lock_guard<std::mutex> lk(mtx_);
   return players_.size() == number_of_players_;
 }
 
-void game_handler::add_player(std::uint32_t player_id) {
-  std::lock_guard<std::mutex> lk(players_mtx_);
-  players_.insert(player_id);
-  anyone_added_ = true;
+bool players_set::anyone_added() const {
+  return anyone_added_;
 }
 
-void game_handler::remove_player(std::uint32_t player_id) {
-  std::lock_guard<std::mutex> lk(players_mtx_);
-  players_.erase(player_id);
+std::size_t players_set::number_of_added_players() const {
+  std::lock_guard<std::mutex> lk(mtx_);
+  return players_.size();
+}
+
+bool players_set::has_all_players() const {
+  std::lock_guard<std::mutex> lk(mtx_);
+  return players_.size() == number_of_players_;
+}
+
+bool players_set::all_removed() const {
+  std::lock_guard<std::mutex> lk(mtx_);
+  return anyone_added_ && players_.empty();
+}
+
+game_handler::game_handler(const game_arguments& arguments)
+    : players_set(arguments.number_of_players),
+      executable_(make_executable(arguments.game_path,
+                                  std::to_string(arguments.port),
+                                  arguments.scenario,
+                                  arguments.map,
+                                  std::to_string(arguments.number_of_players))),
+      port_(arguments.port) {
 }

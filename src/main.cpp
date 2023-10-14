@@ -14,6 +14,7 @@
 #include <get_entities.h>
 #include <networking/server.h>
 #include <networking/socket_connection.h>
+#include <networking/web_socket_connection.h>
 #include <turn_based/board.h>
 #include <turn_based/event_center.h>
 #include <turn_based/managers/players_manager.h>
@@ -57,7 +58,7 @@ int main(int argc, char** argv) {
 
   game::get<scenario_factory>().create(scenario);
 
-  networking::server<networking::socket_connection> server(port);
+  networking::server<networking::web_socket_connection> server(port);
   LOG(debug) << "Loading game server on port: " << port;
 
   sender::set_sender([&server](std::string message) {
@@ -68,7 +69,7 @@ int main(int argc, char** argv) {
   LOG(debug) << "number_of_players: " << number_of_players << ", while connected_players: " << connected_players;
 
   // TODO: do we want to use client_id or connection ptr??
-  server.on_client_accepted([&](std::shared_ptr<networking::socket_connection> client) {
+  server.on_client_accepted([&](std::shared_ptr<networking::web_socket_connection> client) {
     const auto client_id = client->get_id();
     LOG(debug) << "new client accepted with id: " << client_id;
     LOG(debug) << "Sending initial messages to client";

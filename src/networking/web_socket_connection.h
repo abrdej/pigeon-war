@@ -99,7 +99,7 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
                                 add_incoming_message(length);
 
                               } else {
-                                LOG(debug) << "Read body fail for: " << id_ << ".";
+                                LOG(debug) << ": " << id_ << " with: " << ec.message() << "\n";
                                 boost::beast::error_code bec;
                                 web_socket_.close(boost::beast::websocket::close_code::going_away, bec);
                               }

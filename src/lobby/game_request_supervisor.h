@@ -8,6 +8,15 @@
 #include <lobby/game_handler.h>
 #include <lobby/player_handler.h>
 
+// Here we want to have:
+// - players_matcher: provide ability to match opponents
+// - game_request_supervisor: uses players_matcher, and creates games, adds players to game, and finds opponents.
+
+// Provides functionality to:
+// - create a game
+// - add player to a game
+// - find opponent and create a game
+
 class game_request_supervisor {
   using game_handlers_map = tbb::concurrent_hash_map<std::string, std::shared_ptr<game_handler>>;
   using game_handler_accessor = game_handlers_map::accessor;

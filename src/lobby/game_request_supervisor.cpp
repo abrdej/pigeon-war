@@ -50,7 +50,7 @@ void game_request_supervisor::join_game(std::uint32_t player_id, const std::stri
     game_handler = accessor->second;
   }
 
-  if (!game_handler->is_full()) {
+  if (!game_handler->has_all_players()) {
     player_handler_accessor accessor;
     if (player_handlers_.find(accessor, player_id)) {
       accessor->second->add_to_game(*game_handler);
