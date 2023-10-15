@@ -79,14 +79,13 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
     web_socket_.async_write(boost::asio::buffer(messages_out_.front()),
         [this](std::error_code ec, std::size_t length) {
           if (!ec) {
-            LOG(debug) << "Write message for: " << id_ << ".";
             messages_out_.pop();
 
             if (!messages_out_.empty()) {
               write_message();
             }
           } else {
-            LOG(debug) << "Write message fail for: " << id_ << ".";
+            LOG(warning) << "Write message fail for: " << id_ << ".";
             web_socket_.close(boost::beast::websocket::close_code::going_away);
           }
         });
