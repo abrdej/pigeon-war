@@ -55,7 +55,6 @@ class server {
   }
 
   void send_message(std::uint32_t client_id, std::string message) {
-    LOG(error) << "start sending message";
     connection_accessor accessor;
     if (connections_.find(accessor, client_id)) {
       auto connection = accessor->second;
@@ -66,7 +65,6 @@ class server {
     } else {
       LOG(warning) << "There is no such client: " << client_id;
     }
-    LOG(error) << "end sending message";
   }
 
   void send_message_to_all(const message_type& message) {
