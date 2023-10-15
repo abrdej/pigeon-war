@@ -17,6 +17,16 @@
 // - add player to a game
 // - find opponent and create a game
 
+class player_matcher {
+ public:
+  void find_opponent(std::uint32_t player_id);
+
+ private:
+  std::optional<std::uint32_t> get_next_waiting_player();
+
+  std::queue<std::uint32_t> waiting_players_;
+};
+
 class game_request_supervisor {
   using game_handlers_map = tbb::concurrent_hash_map<std::string, std::shared_ptr<game_handler>>;
   using game_handler_accessor = game_handlers_map::accessor;

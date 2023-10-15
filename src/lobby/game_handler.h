@@ -74,7 +74,7 @@ class port_provider {
   // TODO: maybe we can make port be RAII??
   // it can be shared_ptr with special deleter :thinking
 
-  explicit port_provider(std::int32_t initial_port) : port_generator_(initial_port) {}
+  explicit port_provider(std::int32_t initial_port) : port_generator_(initial_port), max_port_(initial_port + 1000) {}
 
   std::int32_t get_port() {
     auto port = get_next_available_port();
@@ -108,7 +108,7 @@ class port_provider {
   }
 
   std::int32_t port_generator_{0};
-  std::int32_t max_port_{1000};
+  std::int32_t max_port_;
   std::unordered_set<std::int32_t> available_ports_;
   std::unordered_set<std::int32_t> used_ports_;
 };

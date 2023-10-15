@@ -9,6 +9,7 @@
 
 #include <networking/server.h>
 #include <logging/logger.h>
+#include <lobby/connection_type.h>
 #include <lobby/game_handler.h>
 #include <lobby/game_request_supervisor.h>
 #include <lobby/player_handler.h>
@@ -41,7 +42,7 @@ int main(int argc, char** argv) {
   auto port = vm.at("port").as<std::int32_t>();
   auto game_exec = vm.at("game_exec").as<std::string>();
 
-  networking::server<networking::web_socket_connection> server(port);
+  networking::server<connection_type> server(port);
 
   // Create map of games
   using game_handlers_map = tbb::concurrent_hash_map<std::string, std::shared_ptr<game_handler>>;
@@ -62,7 +63,7 @@ int main(int argc, char** argv) {
   // TODO: we need to close both - web socket connection and also the game <-> handler connection!
 
   // If a new client is accepted, we're creating a player handler for him
-  server.on_client_accepted([&](std::shared_ptr<networking::web_socket_connection> client) mutable {
+  server.on_client_accepted([&](std::shared_ptr<connection_type> client) mutable {
     const auto client_id = client->get_id();
     LOG(debug) << "new player with id: " << client_id << " connected";
     auto handler = std::make_shared<player_handler>(server, client_id);
@@ -70,7 +71,7 @@ int main(int argc, char** argv) {
   });
 
   // If a client disconnects we set that he is disconnected for its player handler
-  server.on_client_disconnect([&](std::shared_ptr<networking::web_socket_connection> client) {
+  server.on_client_disconnect([&](std::shared_ptr<connection_type> client) {
     const auto client_id = client->get_id();
     LOG(debug) << "player with id: " << client_id << " disconnected";
     player_handler_accessor accessor;
@@ -84,6 +85,8 @@ int main(int argc, char** argv) {
   // TODO: split scenario loading from normal message forwarding
   server.on_message([&](std::uint32_t client_id, const std::string& message) {
     using json_data_type = nlohmann::json;
+
+    // TODO: catch: nlohmann::detail::type_error, in ex: data["game_request"]["number_of_players"];
 
     json_data_type data;
     try {
@@ -163,8 +166,8 @@ int main(int argc, char** argv) {
       game_handlers.erase(game_hash);
     }
 
-    LOG(debug) << "number of games: " << game_handlers.size();
-    LOG(debug) << "number of players: " << player_handlers.size();
+    //LOG(debug) << "number of games: " << game_handlers.size();
+    //LOG(debug) << "number of players: " << player_handlers.size();
   }
   server.stop();
 
