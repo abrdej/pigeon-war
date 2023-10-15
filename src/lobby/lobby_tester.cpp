@@ -9,14 +9,58 @@ extern "C" void interrupt_processing( int ) {
   processing_interrupted = true;
 }
 
+std::string create_game_for_single_player() {
+  nlohmann::json game_request;
+  game_request["scenario"] = "saurian_web";
+  game_request["map"] = "saurian_web";
+  game_request["number_of_players"] = 1;
+  game_request["game_hash"] = "";
+
+  nlohmann::json message;
+  message["game_request"] = game_request;
+
+  return message.dump();
+}
+
+std::string find_opponent_and_create_game() {
+  nlohmann::json game_request;
+  game_request["scenario"] = "saurian_web";
+  game_request["map"] = "saurian_web";
+  game_request["number_of_players"] = 2;
+  game_request["game_hash"] = "";
+
+  nlohmann::json message;
+  message["game_request"] = game_request;
+
+  return message.dump();
+}
+
+std::string make_incorrect_create_game_message() {
+  nlohmann::json game_request;
+  game_request["scenario"] = "saurian_web";
+  game_request["map"] = "saurian_web";
+
+  nlohmann::json message;
+  message["game_request"] = game_request;
+
+  return message.dump();
+}
+
+std::string make_message(const std::string& text) {
+  nlohmann::json message;
+  message["message"] = text;
+  return message.dump();
+}
+
 int main(int argc, char** argv) {
   using namespace networking;
   client client;
 
   client.connect("127.0.0.1", 60000);
 
-  client.on_message([](const std::string& message) {
+  client.on_message([&client](const std::string& message) {
     std::cout << "Got message from server: " << message << "\n";
+    client.send("Hello my game, this message should be forwarded to you");
   });
 
 
@@ -27,16 +71,7 @@ int main(int argc, char** argv) {
   // - when all client disconnect, game should be removed
   // - when client disconnect for a while, it should be re-added to the game
 
-  nlohmann::json game_request;
-  game_request["scenario"] = "saurian_web";
-  game_request["map"] = "saurian_web";
-  game_request["number_of_players"] = 1;
-  game_request["game_hash"] = "";
-
-  nlohmann::json message;
-  message["game_request"] = game_request;
-
-  client.send(message.dump());
+  client.send(make_incorrect_create_game_message());
 
   while (!processing_interrupted) {
     client.update();
