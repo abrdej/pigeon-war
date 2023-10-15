@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     const auto client_id = client->get_id();
     LOG(debug) << "new client accepted with id: " << client_id;
     LOG(debug) << "Sending initial messages to client";
-    server.send_message_to_all("Hello client, I'm a server mock");
+    server.send_message(client_id, "Hello client, I'm a server mock");
   });
 
   server.on_message([&](std::uint32_t client_id, const std::string& message) {

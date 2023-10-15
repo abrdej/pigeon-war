@@ -20,6 +20,8 @@ extern "C" void interrupt_processing( int ) {
   processing_interrupted = true;
 }
 
+
+
 int main(int argc, char** argv) {
   init_logging();
 
@@ -91,40 +93,41 @@ int main(int argc, char** argv) {
     json_data_type data;
     try {
       data = json_data_type::parse(message);
+
+      // We got a request for a game.
+      if (data.count("game_request")) {
+        std::string game_hash = data["game_request"]["game_hash"];
+        std::int32_t number_of_players = data["game_request"]["number_of_players"];
+
+        LOG(debug) << "Got game_request message: game_hash: " << game_hash;
+
+        if (game_hash.empty() && number_of_players != 1) {
+          game_request_supervisor.find_opponent_and_create_game(client_id);
+
+        } else if (game_handlers.count(game_hash) > 0) {
+          game_request_supervisor.join_game(client_id, game_hash);
+
+        } else {
+          std::string scenario = data["game_request"]["scenario"];
+          std::string map = data["game_request"]["map"];
+          game_request_supervisor.create_game(client_id, game_hash, scenario, map, number_of_players);
+        }
+        return;
+      }
+
     } catch (std::exception& e) {
-      LOG(error) << "Message parsing error in: " << message << ", what: " << e.what();
+      LOG(error) << "Was not able to parse message: " << message << ", issue: " << e.what();
     }
 
-    // We got a request for a game.
-    if (data.count("game_request")) {
-      std::string game_hash = data["game_request"]["game_hash"];
-      std::int32_t number_of_players = data["game_request"]["number_of_players"];
-
-      LOG(debug) << "Got game_request message: game_hash: " << game_hash;
-
-      if (game_hash.empty() && number_of_players != 1) {
-        game_request_supervisor.find_opponent_and_create_game(client_id);
-
-      } else if (game_handlers.count(game_hash) > 0) {
-        game_request_supervisor.join_game(client_id, game_hash);
-
-      } else {
-        std::string scenario = data["game_request"]["scenario"];
-        std::string map = data["game_request"]["map"];
-        game_request_supervisor.create_game(client_id, game_hash, scenario, map, number_of_players);
-      }
-
+    // This case just forwards a message to a client
+    LOG(debug) << "got message from client of id: " << client_id << ", which is: " << message;
+    player_handler_accessor accessor;
+    if (player_handlers.find(accessor, client_id)) {
+      accessor->second->send(message);
     } else {
-      // This case just forwards a message to a client
-
-      LOG(debug) << "got message from client of id: " << client_id << ", which is: " << message;
-      player_handler_accessor accessor;
-      if (player_handlers.find(accessor, client_id)) {
-        accessor->second->send(message);
-      } else {
-        LOG(error) << "there is no player with id: " << client_id << " while sending the message to it!";
-      }
+      LOG(error) << "there is no player with id: " << client_id << " while sending the message to it!";
     }
+
   });
 
   server.start();
