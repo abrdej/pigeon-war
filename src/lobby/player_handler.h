@@ -5,6 +5,7 @@
 
 #include <networking/client.h>
 #include <networking/server.h>
+#include <lobby/connection_type.h>
 #include <lobby/game_handler.h>
 
 // Here we want to have:
@@ -27,7 +28,7 @@
 
 class network_connection {
  public:
-  using server_type = networking::server<networking::web_socket_connection>;
+  using server_type = networking::server<connection_type>;
   static constexpr auto localhost = "127.0.0.1";
 
   explicit network_connection(server_type& server, std::int32_t client_id);

@@ -3,6 +3,42 @@
 #include <logging/logger.h>
 #include <lobby/random_string.h>
 
+void player_matcher::find_opponent(std::uint32_t player_id) {
+  waiting_players_.push(player_id);
+
+  LOG(debug) << "Player with id: " << player_id << " adding to waiting player, there are: "
+             << waiting_players_.size() << " waiting players.";
+
+  while (waiting_players_.size() >= 2) {
+    auto first_client_id = get_next_waiting_player();
+    if (!first_client_id) {
+      continue;
+    }
+    auto second_client_id = get_next_waiting_player();
+    if (!second_client_id) {
+      continue;
+    }
+  }
+}
+
+std::optional<std::uint32_t> player_matcher::get_next_waiting_player() {
+//  if (waiting_players_.empty()) {
+//    return std::nullopt;
+//  }
+//
+//  auto player_id = waiting_players_.front();
+//  waiting_players_.pop();
+//
+//  player_handler_accessor accessor;
+//  if (!player_handlers_.find(accessor, player_id) || !accessor->second->is_valid()) {
+//    return std::nullopt;
+//  }
+//
+//  return accessor->first;
+
+  return std::nullopt;
+}
+
 game_request_supervisor::game_request_supervisor(game_handler_factory game_handler_factory,
                                                  game_handlers_map& game_handlers,
                                                  const player_handlers_map& player_handlers)
