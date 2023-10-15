@@ -20,7 +20,58 @@ extern "C" void interrupt_processing( int ) {
   processing_interrupted = true;
 }
 
+class game_request_handler {
+ public:
+  using game_handlers_map = tbb::concurrent_hash_map<std::string, std::shared_ptr<game_handler>>;
 
+  explicit game_request_handler(game_request_supervisor& game_request_supervisor,
+                                game_handlers_map& game_handlers)
+      : game_request_supervisor_(game_request_supervisor),
+        game_handlers_(game_handlers) {}
+
+  bool handle_game_request(std::uint32_t client_id, const std::string& message) {
+    using json_data_type = nlohmann::json;
+
+    json_data_type data;
+    try {
+      data = json_data_type::parse(message);
+    } catch (nlohmann::json::parse_error& e) {
+      LOG(error) << "Was not able to parse message: " << message << ", issue: " << e.what();
+      return false;
+    }
+
+    try {
+      if (data.count("game_request")) {
+        std::string game_hash = data["game_request"]["game_hash"];
+        std::int32_t number_of_players = data["game_request"]["number_of_players"];
+
+        LOG(debug) << "Got game_request message: game_hash: " << game_hash;
+
+        if (game_hash.empty() && number_of_players != 1) {
+          game_request_supervisor_.find_opponent_and_create_game(client_id);
+
+        } else if (game_handlers_.count(game_hash) > 0) {
+          game_request_supervisor_.join_game(client_id, game_hash);
+
+        } else {
+          std::string scenario = data["game_request"]["scenario"];
+          std::string map = data["game_request"]["map"];
+          game_request_supervisor_.create_game(client_id, game_hash, scenario, map, number_of_players);
+        }
+        return true;
+      }
+    } catch (nlohmann::json::type_error& e) {
+      LOG(error) << "Incorrect game_request definition: " << message << ", issue: " << e.what();
+      // TODO: consider to return that request was declined
+      return false;
+    }
+    return false;
+  }
+
+ private:
+  game_request_supervisor& game_request_supervisor_;
+  game_handlers_map& game_handlers_;
+};
 
 int main(int argc, char** argv) {
   init_logging();
@@ -61,9 +112,6 @@ int main(int argc, char** argv) {
                                                   game_handlers,
                                                   player_handlers);
 
-  // TODO: how to clear the games that are not active any more???!!!
-  // TODO: we need to close both - web socket connection and also the game <-> handler connection!
-
   // If a new client is accepted, we're creating a player handler for him
   server.on_client_accepted([&](std::shared_ptr<connection_type> client) mutable {
     const auto client_id = client->get_id();
@@ -75,50 +123,21 @@ int main(int argc, char** argv) {
   // If a client disconnects we set that he is disconnected for its player handler
   server.on_client_disconnect([&](std::shared_ptr<connection_type> client) {
     const auto client_id = client->get_id();
-    LOG(debug) << "player with id: " << client_id << " disconnected";
     player_handler_accessor accessor;
     if (player_handlers.find(accessor, client_id)) {
       accessor->second->set_disconnected();
+      LOG(debug) << "player with id: " << client_id << " disconnected";
     } else {
       LOG(error) << "player with id: " << client_id << " disconnected, but there is no handler for it!";
     }
   });
 
-  // TODO: split scenario loading from normal message forwarding
+  game_request_handler game_request_handler(game_request_supervisor, game_handlers);
+
   server.on_message([&](std::uint32_t client_id, const std::string& message) {
-    using json_data_type = nlohmann::json;
-
-    // TODO: catch: nlohmann::detail::type_error, in ex: data["game_request"]["number_of_players"];
-
-    json_data_type data;
-    try {
-      data = json_data_type::parse(message);
-
-      // We got a request for a game.
-      if (data.count("game_request")) {
-        std::string game_hash = data["game_request"]["game_hash"];
-        std::int32_t number_of_players = data["game_request"]["number_of_players"];
-
-        LOG(debug) << "Got game_request message: game_hash: " << game_hash;
-
-        if (game_hash.empty() && number_of_players != 1) {
-          game_request_supervisor.find_opponent_and_create_game(client_id);
-
-        } else if (game_handlers.count(game_hash) > 0) {
-          game_request_supervisor.join_game(client_id, game_hash);
-
-        } else {
-          std::string scenario = data["game_request"]["scenario"];
-          std::string map = data["game_request"]["map"];
-          game_request_supervisor.create_game(client_id, game_hash, scenario, map, number_of_players);
-        }
-        return;
-      }
-
-    } catch (std::exception& e) {
-      LOG(error) << "Was not able to parse message: " << message << ", issue: " << e.what();
+    if (game_request_handler.handle_game_request(client_id, message)) {
+      return;
     }
-
     // This case just forwards a message to a client
     LOG(debug) << "got message from client of id: " << client_id << ", which is: " << message;
     player_handler_accessor accessor;
@@ -127,7 +146,6 @@ int main(int argc, char** argv) {
     } else {
       LOG(error) << "there is no player with id: " << client_id << " while sending the message to it!";
     }
-
   });
 
   server.start();

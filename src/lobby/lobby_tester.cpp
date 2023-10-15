@@ -54,15 +54,6 @@ std::string make_message(const std::string& text) {
 
 int main(int argc, char** argv) {
   using namespace networking;
-  client client;
-
-  client.connect("127.0.0.1", 60000);
-
-  client.on_message([&client](const std::string& message) {
-    std::cout << "Got message from server: " << message << "\n";
-    client.send("Hello my game, this message should be forwarded to you");
-  });
-
 
   // What we want to test
   // - creating a game
@@ -71,13 +62,29 @@ int main(int argc, char** argv) {
   // - when all client disconnect, game should be removed
   // - when client disconnect for a while, it should be re-added to the game
 
-  client.send(make_incorrect_create_game_message());
+  int number_of_clients = 4;
+
+  std::deque<client> clients;
+  for (int i = 0; i < number_of_clients; ++i) {
+    clients.emplace_back();
+    clients.back().connect("127.0.0.1", 60000);
+
+    clients.back().on_message([&client = clients.back()](const std::string& message) {
+      std::cout << "Got message from server: " << message << "\n";
+      client.send("Hello my game, this message should be forwarded to you");
+    });
+
+    clients.back().send(find_opponent_and_create_game());
+  }
 
   while (!processing_interrupted) {
-    client.update();
+    for (auto& client : clients) {
+      client.update();
+    }
     std::this_thread::sleep_for(std::chrono::milliseconds(50));
   }
-  // TODO: close client?
 
-  std::cout << "Client finished\n";
+  // TODO: close clients?
+
+  std::cout << "Clients finished\n";
 }
