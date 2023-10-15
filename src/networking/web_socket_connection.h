@@ -96,7 +96,6 @@ class web_socket_connection : public std::enable_shared_from_this<web_socket_con
                             [this](std::error_code ec, std::size_t length) {
                               if (!ec) {
                                 add_incoming_message(length);
-
                               } else {
                                 LOG(debug) << ": " << id_ << " with: " << ec.message() << "\n";
                                 boost::beast::error_code bec;
