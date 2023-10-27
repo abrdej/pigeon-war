@@ -3,13 +3,13 @@
 #include <turn_based/components/health_field.h>
 #include <turn_based/entity_factory_interface.h>
 
-#define ENVIRONMENT_FACTORY_CREATOR(TYPE, NAME) \
-entity_factory_interface_ptr create_##TYPE##_factory() { \
+#define ENVIRONMENT_FACTORY_CREATOR(NAME) \
+entity_factory_interface_ptr create_##NAME##_factory() { \
   return std::make_shared<environment_factory>(#NAME); \
 }
 
-#define ENVIRONMENT_DESTRUCTIBLE(TYPE, NAME, HEALTH) \
-entity_factory_interface_ptr create_##TYPE##_factory() { \
+#define ENVIRONMENT_DESTRUCTIBLE(NAME, HEALTH) \
+entity_factory_interface_ptr create_##NAME##_factory() { \
   return std::make_shared<environment_factory>(#NAME, HEALTH); \
 }
 
@@ -28,13 +28,13 @@ void environment_factory::create(base_entity& entity) {
   entity.add<health_field>(health_);
 }
 
-ENVIRONMENT_FACTORY_CREATOR(tree, Tree);
-ENVIRONMENT_FACTORY_CREATOR(fir, Fir);
-ENVIRONMENT_FACTORY_CREATOR(fire, Fire);
-ENVIRONMENT_FACTORY_CREATOR(stone, Stone);
-ENVIRONMENT_FACTORY_CREATOR(water, Water);
+ENVIRONMENT_FACTORY_CREATOR(tree);
+ENVIRONMENT_FACTORY_CREATOR(fir);
+ENVIRONMENT_FACTORY_CREATOR(fire);
+ENVIRONMENT_FACTORY_CREATOR(stone);
+ENVIRONMENT_FACTORY_CREATOR(water);
 
-ENVIRONMENT_DESTRUCTIBLE(wall, Wall, 30);
+ENVIRONMENT_DESTRUCTIBLE(wall, 30);
 
 BOOST_DLL_ALIAS(create_tree_factory, tree)
 BOOST_DLL_ALIAS(create_fir_factory, fir)

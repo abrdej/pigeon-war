@@ -101,8 +101,7 @@ int main(int argc, char** argv) {
     LOG(debug) << "on board";
 
     std::int32_t client_id = data["client_id"];
-    std::uint32_t x = data["col"];
-    std::uint32_t y = data["row"];
+    std::uint32_t index = data["index"];
 
     bool single_client = server.number_of_clients() == 1;
 
@@ -112,6 +111,7 @@ int main(int argc, char** argv) {
 
     if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
       LOG(debug) << "executing on board and sending local and global state";
+      auto [x, y] = game_board().to_pos(index_t(index));
       game_control().on_board(x, y);
       server.send_message_to_all(make_local_game_state_message(get_local_game_state()));
       server.send_message_to_all(make_global_game_state_message(get_global_game_state()));

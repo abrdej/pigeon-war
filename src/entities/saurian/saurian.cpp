@@ -6,7 +6,7 @@
 #include <turn_based/entity_factory_macro.h>
 
 DEFINE_ENTITY_FACTORY(saurian) {
-  entity.name = "Saurian";
+  entity.name = "saurian";
 
   entity.description = configurable("saurian").get_param<std::string>("description");
   entity.add<health_field>(35);

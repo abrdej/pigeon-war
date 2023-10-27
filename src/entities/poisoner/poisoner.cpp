@@ -7,7 +7,7 @@
 #include <turn_based/move.h>
 
 DEFINE_ENTITY_FACTORY(poisoner) {
-  entity.name = "Poisoner";
+  entity.name = "poisoner";
 
   entity.description = configurable("poisoner").get_param<std::string>("description");
   entity.add<health_field>(35);
