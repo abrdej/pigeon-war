@@ -116,9 +116,9 @@ std::string make_create_entity_message(entity_id_t entity_id) {
 
 std::string make_move_entity_message(entity_id_t entity_id, index_t from_index, index_t to_index) {
   json data;
-  data["move_entity"] = entity_id.cast();
-  data["from_index"] = from_index;
-  data["to_index"] = to_index;
+  data["move_entity"]["move_entity"] = entity_id.cast();
+  data["move_entity"]["from_index"] = from_index;
+  data["move_entity"]["to_index"] = to_index;
   return data.dump();
 }
 

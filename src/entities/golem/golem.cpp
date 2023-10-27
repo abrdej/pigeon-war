@@ -8,7 +8,7 @@
 #include <stone_skin.h>
 
 DEFINE_ENTITY_FACTORY(golem) {
-  entity.name = "Golem";
+  entity.name = "golem";
 
   entity.description = configurable("golem").get_param<std::string>("description");
   entity.add<health_field>(60);

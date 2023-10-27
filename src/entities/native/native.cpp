@@ -7,7 +7,7 @@
 #include <drain.h>
 
 DEFINE_ENTITY_FACTORY(native) {
-  entity.name = "Native";
+  entity.name = "native";
 
   entity.description = configurable("native").get_param<std::string>("description");
   entity.add<health_field>(50);

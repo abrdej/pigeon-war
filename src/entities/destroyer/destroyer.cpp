@@ -7,7 +7,7 @@
 #include <blow_the_ax.h>
 
 DEFINE_ENTITY_FACTORY(destroyer) {
-  entity.name = "Destroyer";
+  entity.name = "destroyer";
 
   entity.description = configurable("destroyer").get_param<std::string>("description");
   entity.add<health_field>(50);

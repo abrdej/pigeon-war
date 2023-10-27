@@ -8,7 +8,7 @@
 #include <turn_based/move.h>
 
 DEFINE_ENTITY_FACTORY(shooter) {
-  entity.name = "Shooter";
+  entity.name = "shooter";
 
   LOG(debug) << "shooter_factory size: " << game_board().cols_n * game_board().rows_n;
 

@@ -7,8 +7,8 @@
 #include <turn_based/entity_factory_macro.h>
 #include <turn_based/move.h>
 
-DEFINE_ENTITY_FACTORY(samurai_rat) {
-  entity.name = "Samurai";
+DEFINE_ENTITY_FACTORY(samurai) {
+  entity.name = "samurai";
 
   entity.description = configurable("samurai").get_param<std::string>("description");
   entity.add<health_field>(60);
@@ -21,4 +21,4 @@ DEFINE_ENTITY_FACTORY(samurai_rat) {
   abilities_ptr->add_ability(std::make_shared<dodge>(entity.entity_id));
 }
 
-FACTORY_PLUGIN_ALIAS(samurai_rat)
+FACTORY_PLUGIN_ALIAS(samurai)

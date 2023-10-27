@@ -20,6 +20,9 @@ extern "C" void interrupt_processing( int ) {
   processing_interrupted = true;
 }
 
+// TODO: Something that will parse message into game_request
+//
+
 class game_request_handler {
  public:
   using game_handlers_map = tbb::concurrent_hash_map<std::string, std::shared_ptr<game_handler>>;
