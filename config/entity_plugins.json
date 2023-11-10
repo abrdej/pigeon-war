@@ -5,7 +5,7 @@
   "saurian_web": "src/entities/saurian/libsaurian.so",
   "monk": "src/entities/monk/libmonk.so",
   "native": "src/entities/native/libnative.so",
-  "samurai_rat": "src/entities/samurai_rat/libsamurai_rat.so",
+  "samurai": "src/entities/samurai/libsamurai.so",
   "destroyer": "src/entities/destroyer/libdestroyer.so",
   "golem": "src/entities/golem/libgolem.so",
   "sniper": "src/entities/sniper/libsniper.so",

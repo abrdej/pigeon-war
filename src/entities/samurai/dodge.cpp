@@ -8,8 +8,7 @@ dodge::dodge(entity_id_t entity_id)
   set_damage_receiver(entity_id, [this, entity_id](health_field& health_pack, const damage_pack& dmg) mutable {
     if (++counter_ == 3) {
       counter_ = 0;
-      auto index = game_board().index_for(entity_id);
-      sender::send(make_action_message(name, index));
+      sender::send(make_action_message(name, entity_id));
       return 0;
 
     } else {

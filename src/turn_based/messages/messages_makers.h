@@ -49,6 +49,8 @@ std::string make_global_game_state_message(const global_game_state& state);
 
 std::string make_end_turn_message(player_id_t active_player);
 
+std::string make_hint_message(const std::string& hint);
+
 std::string make_description_message(const std::string& desc);
 
 std::string make_entity_description_message(const std::string& desc);
