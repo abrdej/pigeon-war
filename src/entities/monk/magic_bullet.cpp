@@ -39,7 +39,7 @@ magic_bullet::magic_bullet(entity_id_t entity_id)
 
     auto power_burn = std::min<std::int32_t>(power->power, half_damage);
     power->power -= power_burn;
-    sender::send(make_action_message("change_power", entity_id, -power_burn));
+    send_change_power_message(entity_id, -power_burn);
 
     auto damage = std::min(health_pack.health, 2 * half_damage - power_burn);
     health_pack.health -= damage;
@@ -73,7 +73,7 @@ void magic_bullet::use(index_t index_on) {
   auto change_power = -power->power;
   power->power = 0;
 
-  sender::send(make_action_message("change_power", entity_id_, change_power));
+  send_change_power_message(entity_id_, change_power);
 
   first_used_ = true;
   used_ = true;

@@ -150,7 +150,7 @@ int main(int argc, char** argv) {
 
     if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
       description = get_entity_description(game_control().selected_index);
-      server.send_message(client_id, make_entity_description_message(description));
+      server.send_message(client_id, make_hint_message(description));
     }
   });
 
@@ -166,7 +166,7 @@ int main(int argc, char** argv) {
     if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
 
       description = get_button_description(game_control().selected_index, button);
-      server.send_message(client_id, make_description_message(description));
+      server.send_message(client_id, make_hint_message(description));
     }
   });
 
@@ -180,7 +180,7 @@ int main(int argc, char** argv) {
 
     if (client_id == game::get<players_manager>().get_active_player_id().cast() || single_client) {
       description = get_effect_description(effect);
-      server.send_message(client_id, make_effect_description_message(description));
+      server.send_message(client_id, make_hint_message(description));
     }
   });
 

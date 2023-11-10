@@ -68,6 +68,12 @@ std::string make_end_turn_message(player_id_t active_player) {
   return data.dump();
 }
 
+std::string make_hint_message(const std::string& hint) {
+  json data;
+  data["hint"] = hint;
+  return data.dump();
+}
+
 std::string make_description_message(const std::string& desc) {
   json data;
   data["description"] = desc;

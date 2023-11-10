@@ -27,7 +27,7 @@ void sword_blow::use(index_t index_on) {
   std::vector<index_t> around_fields_ids;
   board_helpers::neighboring_fields(used_from_index, around_fields_ids, false);
 
-  sender::send(make_action_message(name, used_from_index));
+  sender::send(make_action_message(name, entity_id_));
 
   std::int32_t hit_entities_counter = 0;
 
@@ -49,7 +49,7 @@ void sword_blow::use(index_t index_on) {
   }
 
   if (hit_entities_counter >= 3 && game_get<entity_manager>().alive(entity_id)) {
-    sender::send(make_action_message(name, used_from_index));
+    sender::send(make_action_message(name, entity_id_));
     for (auto field_id : around_fields_ids) {
       if (!game_board().empty(field_id)) {
         damage_dealers::standard_damage_dealer(

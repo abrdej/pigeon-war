@@ -8,8 +8,8 @@ void send_change_health_message(index_t to_index, entity_id_t entity_id,
   sender::send(make_action_message("change_health", entity_id, change_health));
 }
 
-void send_change_power_message(index_t to_index, std::int32_t change_power) {
-  sender::send(make_action_message("change_power", game_board().at(to_index), change_power));
+void send_change_power_message(entity_id_t entity_id, std::int32_t change_power) {
+  sender::send(make_action_message("change_power", entity_id, change_power));
 }
 
 std::unordered_map<entity_id_t, std::int32_t> get_healths() {
